@@ -1,6 +1,8 @@
 # prj_app_feat_nomadcoder_class
 
-연습작업물 feat. 노마드 코더의 flutter 강의
+연습작업물
+feat. 노마드 코더의 flutter 강의
+
 
 ## Getting Started
 
