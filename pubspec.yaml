@@ -42,12 +42,13 @@ dependencies:
   date_format: ^2.0.7
   url_launcher: ^6.1.11
   path_provider: ^2.0.15
-  permission_handler: ^8.3.0
+  permission_handler:
   shared_preferences:  # web 불가
   localstorage: # Web 가능 # 로컬 데이터를 저장용
   flutter_session_manager: # Web 가능 # 로컬 데이터를 저장용
   #  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
   dio_cookie_manager: ^3.1.0
+  flutter_tts: ^3.6.3
 
 dev_dependencies:
   flutter_test:
