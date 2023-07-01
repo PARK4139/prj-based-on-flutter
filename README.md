@@ -1,18 +1,7 @@
-# prj_app_feat_nomadcoder_class
+# Flutter All In One 프로젝트
 
-연습작업물
-feat. 노마드 코더의 flutter 강의
-
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 클론 코딩
+- 플러터 샘플 코드 수집
+- 플러터 문제 발생 시 시도대안 코드 수집
+- feat. 노마드 코더 flutter 기초앱 클론코딩 강의
+- feat. 인프런 flutter 넥플릭스 클론코딩 강의 
