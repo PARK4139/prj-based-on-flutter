@@ -1,16 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/simple_samples/SampleGridSystem.dart';
 
-import '../simple_samples/SampleGridSystem1.dart';
-import '../simple_samples/SampleGridSystem2.dart';
-import '../simple_samples/SamplePopUpAlert.dart';
+import '../simple_samples/SampleButtonGeneral.dart';
 import '../simple_samples/SampleCheckBox.dart';
+import '../simple_samples/SamplePopUpAlert.dart';
 import '../simple_samples/SamplePopUpForm.dart';
 import '../simple_samples/SampleToggle.dart';
-import 'My_functions.dart';
-import '../simple_samples/SampleButtonGeneral.dart';
+import 'my_functions.dart';
 
 class Screen_samples extends StatefulWidget {
   const Screen_samples({Key? key}) : super(key: key);
@@ -76,11 +71,14 @@ class _Screen_sample_subState extends State<Screen_sample_sub> {
       backgroundColor: MyColors.black_undefined,
       body: ListView(
         children: [
-          ElevatedButton(
-            child: Text('go to index'.toUpperCase()),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+          Container(
+            color: Colors.lightBlueAccent.shade100,
+            child: TextButton(
+              child: const Text('GO TO INDEX', style: TextStyle(color: Colors.white)),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
           Container(
             child: Column(
@@ -90,7 +88,7 @@ class _Screen_sample_subState extends State<Screen_sample_sub> {
               ],
             ),
           ),
-          const  SizedBox(height: 10),
+          const SizedBox(height: 10),
           SampleToggle(),
           SampleCheckBox(),
           // SampleGridSystem1(),....안되는데 왜 안될까?

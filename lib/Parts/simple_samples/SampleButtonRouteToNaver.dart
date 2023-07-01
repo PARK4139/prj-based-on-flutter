@@ -56,9 +56,9 @@ class _Button_to_route_to_naverState extends State<Button_to_route_to_naver> {
   }
 
   Future<void> openNewTab(
-      Uri url, {
-        String? hostOperatingEnvironment, //아래도 이게 꼭 필요하다
-      }) async {
+    Uri url, {
+    String? hostOperatingEnvironment, //아래도 이게 꼭 필요하다
+  }) async {
     if (!await launchUrl(url)) {
       throw Exception('Could not launch $url');
     }

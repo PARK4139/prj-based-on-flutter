@@ -1,17 +1,8 @@
-import 'dart:async';
-
-import 'package:clipboard/clipboard.dart';
 import 'package:date_format/date_format.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../in_operating/Iterable_structure_maker.dart';
-import '../in_operating/My_functions.dart';
 
 class COMMON_TEXT_DATA {
-  final String CODE0000 = "CODE_COMMON";
-  final String CODE1000 = "CODE_BIZMEKA";
+  static const String CODE0000 = "CODE_COMMON";
+  static const String CODE1000 = "CODE_BIZMEKA";
   final Map<String, dynamic> STAMPS = {
     "0000": 'CODE_COMMON',
     "0001": '',

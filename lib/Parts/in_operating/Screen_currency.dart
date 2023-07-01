@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 class Screen_currency extends StatefulWidget {
   const Screen_currency({Key? key}) : super(key: key);
 
   @override
   State<Screen_currency> createState() => _Screen_currencyState();
 }
+
 class _Screen_currencyState extends State<Screen_currency> {
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,6 @@ class _Screen_currencyState extends State<Screen_currency> {
       home: Scaffold(
         backgroundColor: const Color(0xFF181818),
         body: SingleChildScrollView(
-
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
             child: Column(
@@ -30,17 +31,11 @@ class _Screen_currencyState extends State<Screen_currency> {
                       children: [
                         const Text(
                           'Hey, Selena',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 28,
-                              fontWeight: FontWeight.w700),
+                          style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w700),
                         ),
                         Text(
                           'Welcome back',
-                          style: TextStyle(
-                              color: Colors.white.withOpacity(0.6),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
+                          style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -56,17 +51,10 @@ class _Screen_currencyState extends State<Screen_currency> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Total Balance',
-                            style: TextStyle(
-                                color: Colors.white.withOpacity(0.6),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500)),
+                        Text('Total Balance', style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 20, fontWeight: FontWeight.w500)),
                         const Text(
                           '\$5 194 482',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 42,
-                              fontWeight: FontWeight.w600),
+                          style: TextStyle(color: Colors.white, fontSize: 42, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
                           height: 20, // width: 100
@@ -97,7 +85,8 @@ class _Screen_currencyState extends State<Screen_currency> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Wallets',
+                    const Text(
+                      'Wallets',
                       style: TextStyle(
                         color: Colors.white,
                         backgroundColor: Color(0xFF181818),
@@ -120,8 +109,14 @@ class _Screen_currencyState extends State<Screen_currency> {
                   height: 20, // width: 100
                 ),
                 Card_v2(),
-                Transform.translate(offset: Offset(0, -20),child: Card_v3(),),
-                Transform.translate(offset: Offset(0, -35),child: Card_v4(),),
+                Transform.translate(
+                  offset: Offset(0, -20),
+                  child: Card_v3(),
+                ),
+                Transform.translate(
+                  offset: Offset(0, -35),
+                  child: Card_v4(),
+                ),
                 Transform.translate(
                   offset: Offset(0, -50),
                   child: const Card_currency(
@@ -143,7 +138,10 @@ class _Screen_currencyState extends State<Screen_currency> {
                     text_currency_category: 'Bitcoin',
                     currency_unit: 'BTC',
                     currency_number: '9 785',
-                    currency_icon_or_text: Icon(Icons.currency_bitcoin_outlined, color: Colors.white54,),
+                    currency_icon_or_text: Icon(
+                      Icons.currency_bitcoin_outlined,
+                      color: Colors.white54,
+                    ),
                   ),
                 ),
                 Transform.translate(
@@ -163,18 +161,14 @@ class _Screen_currencyState extends State<Screen_currency> {
     );
   }
 }
+
 class Card_currency extends StatelessWidget {
   final String text_currency_category;
   final String currency_unit;
   final String currency_number;
   final Widget currency_icon_or_text;
 
-  const Card_currency(
-      {super.key,
-        required this.text_currency_category,
-        required this.currency_unit,
-        required this.currency_number,
-        required Widget this.currency_icon_or_text});
+  const Card_currency({super.key, required this.text_currency_category, required this.currency_unit, required this.currency_number, required Widget this.currency_icon_or_text});
 
   @override
   Widget build(BuildContext context) {
@@ -197,30 +191,18 @@ class Card_currency extends StatelessWidget {
             children: [
               Text(
                 text_currency_category,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700),
+                style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w700),
               ),
-              const SizedBox(
-                height: 5,
-                // width: 100,
-              ),
+              const SizedBox(height: 5),
               Row(
                 children: [
                   Text(
                     currency_number + ' ',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   Text(
                     currency_unit,
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -245,6 +227,7 @@ class Card_currency extends StatelessWidget {
     );
   }
 }
+
 class Card_v4 extends StatelessWidget {
   const Card_v4({Key? key}) : super(key: key);
 
@@ -268,30 +251,18 @@ class Card_v4 extends StatelessWidget {
             children: [
               const Text(
                 'Won',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700),
+                style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w700),
               ),
-              const SizedBox(
-                height: 5,
-                // width: 100,
-              ),
+              const SizedBox(height: 5),
               Row(
                 children: [
                   Text(
                     '180,000' + ' ',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   Text(
                     'KRW',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -322,6 +293,7 @@ class Card_v4 extends StatelessWidget {
     );
   }
 }
+
 class Card_v3 extends StatelessWidget {
   const Card_v3({Key? key}) : super(key: key);
 
@@ -336,10 +308,7 @@ class Card_v3 extends StatelessWidget {
             children: [
               Text(
                 'Won',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700),
+                style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w700),
               ),
               SizedBox(
                 height: 5,
@@ -349,17 +318,11 @@ class Card_v3 extends StatelessWidget {
                 children: [
                   Text(
                     '180,000' + ' ',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   Text(
                     'KRW',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -393,6 +356,7 @@ class Card_v3 extends StatelessWidget {
     );
   }
 }
+
 class Card_v2 extends StatelessWidget {
   const Card_v2({Key? key}) : super(key: key);
 
@@ -415,30 +379,18 @@ class Card_v2 extends StatelessWidget {
             children: [
               const Text(
                 'Euro',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700),
+                style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w700),
               ),
-              const SizedBox(
-                height: 5,
-                // width: 100,
-              ),
+              const SizedBox(height: 5),
               Row(
                 children: [
                   Text(
                     '6 428' + ' ',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   Text(
                     'EUR',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -460,6 +412,7 @@ class Card_v2 extends StatelessWidget {
     );
   }
 }
+
 class Button_v3 extends StatelessWidget {
   final String text;
   final Color bgcolor;
@@ -502,6 +455,7 @@ class Button_v3 extends StatelessWidget {
     );
   }
 }
+
 class Button extends StatelessWidget {
   final String text;
   final Color bgcolor;
@@ -527,8 +481,7 @@ class Button extends StatelessWidget {
       ),
       child: Text(
         text,
-        style:
-        TextStyle(color: color, fontSize: 20, fontWeight: FontWeight.w500),
+        style: TextStyle(color: color, fontSize: 20, fontWeight: FontWeight.w500),
       ),
     );
   }

@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../in_operating/My_functions.dart';
-import 'Button_to_move_button_name_into_clipboard.dart';
-import 'Iterable_structure_maker.dart';
-
+import '../in_operating/my_functions.dart';
+import 'button_to_move_button_name_into_clipboard.dart';
+import 'iterable_structure_maker.dart';
 
 class Button_to_record_work_end_time extends StatefulWidget {
   String text;
@@ -55,7 +54,6 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     button_title = widget.text;
     init_states_of_this_button();
@@ -125,7 +123,10 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
                   builder: (BuildContext context) {
                     return AlertDialog(
                       backgroundColor: Colors.black,
-                      title: Text(button_title,style: TextStyle(color: Colors.blueAccent),),
+                      title: Text(
+                        button_title,
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
@@ -135,7 +136,10 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
                       ),
                       actions: <Widget>[
                         TextButton(
-                          child: const Text('닫기',style: TextStyle(color: Colors.lightBlueAccent),),
+                          child: const Text(
+                            '닫기',
+                            style: TextStyle(color: Colors.lightBlueAccent),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },

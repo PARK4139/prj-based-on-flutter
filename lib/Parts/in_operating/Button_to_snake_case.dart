@@ -1,9 +1,6 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
-import 'My_functions.dart';
-import 'dart:io';
-
 class Button_to_snake_case extends StatefulWidget {
   String text_place_holder;
   final Color? color;
@@ -62,10 +59,11 @@ class _Button_to_snake_caseState extends State<Button_to_snake_case> {
     setState(() {
       if (isFirstClick == true) {
         FlutterClipboard.paste().then((value) {
-
-            widget.text_place_holder = Snake_case_maker(value: value);
-            isFirstClick = false;
-
+          widget.text_place_holder = Snake_case_maker(value: value);
+          FlutterClipboard.copy(widget.text_place_holder).then((value) {
+            print('copied : ' + widget.text_place_holder);
+          });
+          isFirstClick = false;
         });
       } else {
         FlutterClipboard.copy(widget.text_place_holder).then((value) {
@@ -74,6 +72,7 @@ class _Button_to_snake_caseState extends State<Button_to_snake_case> {
       }
     });
   }
+
   String Snake_case_maker({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
@@ -83,16 +82,17 @@ class _Button_to_snake_caseState extends State<Button_to_snake_case> {
     }
     return result.join('');
   }
+
   bool isThisDigitUpperCase(String one_digit) {
     var codeUnit = one_digit.codeUnitAt(0);
-    bool result=false;
+    bool result = false;
     if (codeUnit >= 65 && codeUnit <= 90) {
       print('문자열이 대문자입니다.');
-      result=true;
+      result = true;
     } else if (codeUnit >= 97 && codeUnit <= 122) {
       print('문자열이 소문자입니다.');
     } else {
-      print('문자열이 대소문자가 아닙니다.');//특수문자?
+      print('문자열이 대소문자가 아닙니다.'); //특수문자?
     }
     return result;
   }

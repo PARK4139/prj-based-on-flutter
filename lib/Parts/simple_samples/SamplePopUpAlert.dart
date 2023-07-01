@@ -1,15 +1,4 @@
-import 'dart:async';
-
-import 'package:clipboard/clipboard.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'package:timer_builder/timer_builder.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:io';
-
-import '../in_operating/My_functions.dart';
 
 class SamplePopUpAlert extends StatefulWidget {
   final String text;
@@ -40,7 +29,7 @@ class SamplePopUpAlert extends StatefulWidget {
 class _SamplePopUpAlertState extends State<SamplePopUpAlert> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return /*경고팝업버튼*/ Container(
       decoration: BoxDecoration(
         color: widget.background_color,
         borderRadius: widget.border_radius,
@@ -65,11 +54,11 @@ class _SamplePopUpAlertState extends State<SamplePopUpAlert> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   backgroundColor: Colors.white,
-                  title: Icon(Icons.warning_outlined,color: Colors.orangeAccent),
+                  title: Icon(Icons.warning_outlined, color: Colors.orangeAccent),
                   content: Text("당신 경고입니다.\n이번엔 봐줄게요"),
                   actions: <Widget>[
                     TextButton(
-                      child: Text("OK"),
+                      child: Text("네! 알겠어요!"),
                       onPressed: () {
                         Navigator.pop(context);
                         // Navigator.of(context).pop();
@@ -79,7 +68,7 @@ class _SamplePopUpAlertState extends State<SamplePopUpAlert> {
                 );
               },
             );
-          });
+          }); //  setState(() {
         },
       ),
     );

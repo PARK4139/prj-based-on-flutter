@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_text.dart';
 
 class Screen_tts extends StatefulWidget {
   const Screen_tts({Key? key}) : super(key: key);
@@ -13,20 +14,11 @@ class _Screen_ttsState extends State<Screen_tts> {
       '＊"" :.';
   FlutterTts flutterTts = FlutterTts();
 
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController textEditingController = TextEditingController(text: null);
+
+  late var language;
 
   convert_to_voice(String text) async {
-    List<dynamic> languages = await flutterTts.getLanguages;
-    // print(languages);//DEVELOPMENT
-    var language;
-    // language = "en-US";
-    // language = "ja-JP";
-    language = "ko-KR";
-    await flutterTts.setLanguage(language);
-    await flutterTts.isLanguageAvailable(language);
-    await flutterTts.setSpeechRate(1.5);
-    await flutterTts.setPitch(1.9);
-    await flutterTts.setVolume(1.0);
     if (text.contains('!')) {
       await flutterTts.setSpeechRate(0.75);
       String result = text.replaceAll("!", " 느낌표 ");
@@ -38,6 +30,13 @@ class _Screen_ttsState extends State<Screen_tts> {
     } else {
       await flutterTts.speak(text);
     }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initTTS();
   }
 
   @override
@@ -65,9 +64,7 @@ class _Screen_ttsState extends State<Screen_tts> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 100,
-            ),
+            const SizedBox(height: 100),
             Center(
               child: Column(
                 children: [
@@ -101,8 +98,8 @@ class _Screen_ttsState extends State<Screen_tts> {
                     onFieldSubmitted: (value) {},
                   ),
                   TextButton(
+                    child: Rainbow_text(text: '저를 눌러주세요!', color: Colors.lightBlueAccent.withOpacity(0.9), font_size: 14.0, font_weight: FontWeight.w300, text_decoration: TextDecoration.none, font_family: "NotoSansCJKkr", font_style: FontStyle.normal, text_align: TextAlign.left, isRainbowMode: true),
                     onPressed: () => convert_to_voice(textEditingController.text),
-                    child: Text('Convert To Voice', style: TextStyle(color: Colors.lightBlueAccent)),
                   ),
                 ],
               ),
@@ -112,5 +109,19 @@ class _Screen_ttsState extends State<Screen_tts> {
         ),
       ),
     );
+  }
+
+  Future<void> initTTS() async {
+    // List<dynamic> languages = await flutterTts.getLanguages;//DEVELOPMENT
+    // print(languages);//DEVELOPMENT
+    language;
+    // language = "en-US";
+    // language = "ja-JP";
+    language = "ko-KR";
+    await flutterTts.setLanguage(language);
+    await flutterTts.isLanguageAvailable(language);
+    await flutterTts.setSpeechRate(1.5);
+    await flutterTts.setPitch(1.9);
+    await flutterTts.setVolume(1.0);
   }
 }

@@ -3,15 +3,12 @@ import 'dart:async';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
-
-import 'Button_to_move_button_name_into_clipboard.dart';
-import 'Iterable_structure_maker.dart';
-import '../in_operating/My_functions.dart';
-import '../in_developing/Buttons.dart';
-import 'Rainbow_text.dart';
+import '../in_operating/my_functions.dart';
+import 'button_to_move_button_name_into_clipboard.dart';
+import 'iterable_structure_maker.dart';
+import 'rainbow_text.dart';
 
 class Buttons_for_kakaotalk extends StatefulWidget {
   String text;
@@ -58,7 +55,6 @@ class _Buttons_for_kakaotalkState extends State<Buttons_for_kakaotalk> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     button_title = widget.text;
     init_states_of_this_button();
@@ -106,8 +102,9 @@ class _Buttons_for_kakaotalkState extends State<Buttons_for_kakaotalk> {
             child: TextButton(
                 child: Rainbow_text(
                   text: widget.text.length <= 60 ? widget.text + ' ' + ClickCounter.toString() + '/' + items_length.toString() : widget.text.substring(0, 60) + ' ' + ClickCounter.toString() + '/' + items_length.toString(),
-                  color: widget.color, /*Colors.grey.withOpacity(0.9)*/
-                  font_size:  widget.font_size,
+                  color: widget.color,
+                  /*Colors.grey.withOpacity(0.9)*/
+                  font_size: widget.font_size,
                   font_weight: widget.font_weight,
                   isRainbowMode: false,
                 ),
@@ -126,24 +123,23 @@ class _Buttons_for_kakaotalkState extends State<Buttons_for_kakaotalk> {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       backgroundColor: Colors.black,
-                      title: Text(button_title,style: TextStyle(color: Colors.blueAccent),),
+                      title: Text(
+                        button_title,
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
-                            for (var item in items_snapshot_at_start) Button_to_move_button_name_into_clipboard(text: item,
-                                background_color: Colors.amberAccent.withOpacity(0.8),
-                                color: Colors.black,
-                                font_size: 10,
-                                font_weight: FontWeight.w200,
-                                padding_vertical: 5,
-                                padding_horizontal: 4,
-                                border_radius: BorderRadius.circular(5)),
+                            for (var item in items_snapshot_at_start) Button_to_move_button_name_into_clipboard(text: item, background_color: Colors.amberAccent.withOpacity(0.8), color: Colors.black, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
                           ],
                         ),
                       ),
                       actions: <Widget>[
                         TextButton(
-                          child: const Text('닫기',style: TextStyle(color: Colors.lightBlueAccent),),
+                          child: const Text(
+                            '닫기',
+                            style: TextStyle(color: Colors.lightBlueAccent),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -170,14 +166,14 @@ class _Buttons_for_kakaotalkState extends State<Buttons_for_kakaotalk> {
             },
             icon: isCheckBoxIconPressed == true
                 ? Icon(
-              // Icons.check,
-              Icons.check_box_outlined,
-              color: Colors.lightBlueAccent, //상큼
-            )
+                    // Icons.check,
+                    Icons.check_box_outlined,
+                    color: Colors.lightBlueAccent, //상큼
+                  )
                 : Icon(
-              Icons.check_box_outline_blank,
-              color: Colors.lightBlueAccent, //상큼
-            ),
+                    Icons.check_box_outline_blank,
+                    color: Colors.lightBlueAccent, //상큼
+                  ),
             //check_box_outline_blank
             //         Icon(
             //           Icons.check_box_outline_blank,

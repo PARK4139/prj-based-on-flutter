@@ -2,12 +2,11 @@ import 'dart:async';
 
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'Iterable_structure_maker.dart';
-import '../in_operating/My_functions.dart';
-import '../in_developing/Common.dart';
+import '../in_developing/common.dart';
+import '../in_operating/my_functions.dart';
+import 'iterable_structure_maker.dart';
 
 class Button_to_login_to_kul extends StatefulWidget {
   String text;
@@ -47,7 +46,6 @@ class _ButtonMoveToBizmekaDailyReportState extends State<Button_to_login_to_kul>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     init_this_buton();
   }
@@ -65,7 +63,7 @@ class _ButtonMoveToBizmekaDailyReportState extends State<Button_to_login_to_kul>
       ),
       child: TextButton(
           child: Text(
-            widget.text.substring(10,40),
+            widget.text.substring(10, 40),
             style: TextStyle(
               color: widget.color,
               fontSize: widget.font_size,
@@ -122,6 +120,7 @@ class _ButtonMoveToBizmekaDailyReportState extends State<Button_to_login_to_kul>
       throw 'Could not launch $url';
     }
   }
+
   void init_this_buton() {
     Stamps = COMMON_TEXT_DATA().STAMPS;
     items_to_copy = <String>[

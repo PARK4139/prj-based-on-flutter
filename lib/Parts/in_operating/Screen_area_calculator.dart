@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'My_functions.dart';
+import 'my_functions.dart';
 
 class Screen_area_calculator extends StatefulWidget {
   const Screen_area_calculator({Key? key}) : super(key: key);
@@ -34,7 +33,6 @@ class _Screen_area_calculatorState extends State<Screen_area_calculator> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initIsUnitSquaredMeter();
     initTextEditingController();
@@ -93,22 +91,19 @@ class _Screen_area_calculatorState extends State<Screen_area_calculator> {
                           style: TextStyle(color: Rainbow_color),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
-                            labelText: isUnitSquaredMeter ? '㎡' : '평',
-                            floatingLabelAlignment: FloatingLabelAlignment.center,
-                            labelStyle: TextStyle(
-                              color: isUnitSquaredMeter? Colors.deepOrangeAccent:Colors.lightGreenAccent,
-                            ),
-                            hintText: isUnitSquaredMeter ? 'ex )  3.3 / 58' : 'ex )  1 / 5 / 17 / 32 / 48',
-                            hintStyle: TextStyle(
-                              color: Colors.blue.shade50,
-                            ),
-                            fillColor: Colors.blueGrey,
-                            focusColor: Colors.blueAccent,
-                            hoverColor: Colors.blueAccent,
-                            iconColor: Colors.blueAccent,
-                            prefixIconColor: Colors.blueAccent,
-                            suffixIconColor: Colors.blueAccent,
-                          ),
+                              labelText: isUnitSquaredMeter ? '㎡' : '평',
+                              floatingLabelAlignment: FloatingLabelAlignment.center,
+                              labelStyle: TextStyle(
+                                color: isUnitSquaredMeter ? Colors.deepOrangeAccent : Colors.lightGreenAccent,
+                              ),
+                              hintText: isUnitSquaredMeter ? 'ex )  3.3 / 58' : 'ex )  1 / 5 / 17 / 32 / 48',
+                              hintStyle: TextStyle(color: Colors.blue.shade50),
+                              fillColor: Colors.blueGrey,
+                              focusColor: Colors.blueAccent,
+                              hoverColor: Colors.blueAccent,
+                              iconColor: Colors.blueAccent,
+                              prefixIconColor: Colors.blueAccent,
+                              suffixIconColor: Colors.blueAccent),
 
                           onChanged: (text) {
                             setState(() {
@@ -120,9 +115,7 @@ class _Screen_area_calculatorState extends State<Screen_area_calculator> {
                       Container(
                         child: Column(
                           children: <Widget>[
-                            SizedBox(
-                              height: 40,
-                            ),
+                            SizedBox(height: 40),
                             // Icon(Icons.read_more),
                             const Icon(Icons.arrow_downward_outlined, color: Colors.lightBlueAccent),
                             const Icon(Icons.calculate_rounded, color: Colors.lightBlueAccent),
@@ -132,12 +125,10 @@ class _Screen_area_calculatorState extends State<Screen_area_calculator> {
                             ),
                             Text(
                               "$result",
-                              style: const TextStyle(
-                                // color: Colors.cyanAccent,
-                                color: Colors.lightBlueAccent,
-                                fontSize: 20.0,
+                              style: TextStyle(
+                                color: Colors.grey.withOpacity(0.9),
+                                fontSize: 50.0,
                                 fontWeight: FontWeight.w100,
-                                backgroundColor: Colors.black26,
                               ),
                             ),
                           ],

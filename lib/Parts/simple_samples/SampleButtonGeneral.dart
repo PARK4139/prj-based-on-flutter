@@ -1,15 +1,4 @@
-import 'dart:async';
-
-import 'package:clipboard/clipboard.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'package:timer_builder/timer_builder.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:io';
-
-import '../in_operating/My_functions.dart';
 
 class SampleButtonGeneral extends StatefulWidget {
   final String text;
@@ -21,7 +10,6 @@ class SampleButtonGeneral extends StatefulWidget {
   final double padding_horizontal;
   final BorderRadius? border_radius;
 
-
   SampleButtonGeneral({
     Key? key,
     required this.text,
@@ -32,7 +20,6 @@ class SampleButtonGeneral extends StatefulWidget {
     required this.padding_vertical,
     required this.padding_horizontal,
     required this.border_radius,
-
   }) : super(key: key);
 
   @override
@@ -65,6 +52,5 @@ class _SampleButtonGeneralState extends State<SampleButtonGeneral> {
     );
   }
 
-  void onClick() {
-  }
+  void onClick() {}
 }

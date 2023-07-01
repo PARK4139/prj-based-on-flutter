@@ -3,13 +3,11 @@ import 'dart:async';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:localstorage/localstorage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'Button_to_move_button_name_into_clipboard.dart';
-import 'Iterable_structure_maker.dart';
-import '../in_operating/My_functions.dart';
-import '../in_developing/Buttons.dart';
+import '../in_operating/my_functions.dart';
+import 'button_to_move_button_name_into_clipboard.dart';
+import 'iterable_structure_maker.dart';
 
 class Button_to_login_bizmeka extends StatefulWidget {
   String text;
@@ -58,7 +56,6 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     button_title = widget.text;
     init_states_of_this_button();
@@ -74,11 +71,6 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
     // html.window.open(url.toString(), 'new tab');
     //way2-1
     // html.window.location.href = url.toString();
-    //way3
-    // launch(url.toString(), isNewTab: true);
-
-    //newTab
-    // runUrl(url:URL); //이것도 안되네...기존 login 정보 접근 불가.
 
     //newWindow
 

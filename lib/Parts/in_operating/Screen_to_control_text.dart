@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../Index.dart';
-import '../in_developing/Buttons.dart';
-import 'Button_to_calmel_case.dart';
-import 'Button_to_move_button_name_into_clipboard.dart';
-import 'Button_to_make_multi_case.dart';
-import 'Button_to_snake_case.dart';
-import 'Buttons_for_kakaotalk.dart';
-import 'My_functions.dart';
-import 'Rainbow_text.dart';
+
+import '../../main.dart';
+import '../in_developing/buttons.dart';
+import 'button_to_calmel_case.dart';
+import 'button_to_make_multi_case.dart';
+import 'button_to_move_button_name_into_clipboard.dart';
+import 'button_to_snake_case.dart';
+import 'buttons_for_kakaotalk.dart';
+import 'my_functions.dart';
+import 'rainbow_text.dart';
 
 class Screen_to_control_text extends StatefulWidget {
   const Screen_to_control_text({Key? key}) : super(key: key);
@@ -27,7 +28,6 @@ class _Screen_to_control_textState extends State<Screen_to_control_text> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDevelopingMode;
@@ -58,9 +58,7 @@ class _Screen_to_control_textState extends State<Screen_to_control_text> {
               ),
             ),
             Icon(Icons.android, color: Colors.lightBlueAccent),
-            Center(
-              child: Text("$ment", style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
-            ),
+            Center(child: Text("$ment", style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600))),
             const SizedBox(height: 40),
             Button_to_move_button_name_into_clipboard(text: "caretELOPMENT", background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
             Button_to_move_button_name_into_clipboard(text: "caretqlwjs@202204^", background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
@@ -78,69 +76,63 @@ class _Screen_to_control_textState extends State<Screen_to_control_text> {
             Button_to_move_button_name_into_clipboard(text: "___________", background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
             Button_to_move_button_name_into_clipboard(text: "___________", background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
             const SizedBox(height: 20),
-            Multi_case_maker(text: '해당 버튼을 누르면 멀티 케이스 메이커에 클립보드로 부터 바인딩 됩니다.', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Multi_case_maker(text: '해당 버튼을 누르면 멀티 케이스 메이커에 클립보드로 부터 바인딩 됩니다.', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Multi_case_maker(text: '해당 버튼을 누르면 멀티 케이스 메이커에 클립보드로 부터 바인딩 됩니다.', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Multi_case_maker(text: '해당 버튼을 누르면 멀티 케이스 메이커에 클립보드로 부터 바인딩 됩니다.', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Multi_case_maker(text: '해당 버튼을 누르면 멀티 케이스 메이커에 클립보드로 부터 바인딩 됩니다.', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Multi_case_maker(text: '해당 버튼을 누르면 멀티 케이스 메이커에 클립보드로 부터 바인딩 됩니다.', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Multi_case_maker(text: '해당 버튼을 누르면 멀티 케이스 메이커에 클립보드로 부터 바인딩 됩니다.', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Multi_case_maker(text: '해당 버튼을 누르면 멀티 케이스 메이커에 클립보드로 부터 바인딩 됩니다.', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Multi_case_maker(text: '.to_multi_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Multi_case_maker(text: '.to_multi_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Multi_case_maker(text: '.to_multi_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Multi_case_maker(text: '.to_multi_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Multi_case_maker(text: '.to_multi_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Multi_case_maker(text: '.to_multi_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Multi_case_maker(text: '.to_multi_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Multi_case_maker(text: '.to_multi_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             const SizedBox(height: 100),
             Center(child: Rainbow_text(text: "슈퍼 스탬프", color: Colors.blueAccent /*Colors.grey.withOpacity(0.9)*/, font_size: 16, font_weight: FontWeight.w200, isRainbowMode: true)),
             const SizedBox(height: 100),
             Center(child: Rainbow_text(text: "커스텀 스탬프", color: Colors.blueAccent /*Colors.grey.withOpacity(0.9)*/, font_size: 16, font_weight: FontWeight.w200, isRainbowMode: false)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '이 버튼을 클릭을 하면 클립보드의 텍스트가 버튼명으로 바인딩됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click(text: '* stamp', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             const SizedBox(height: 100),
-            Center(child: Rainbow_text(text: "낙타 스탬프", color: Colors.blueAccent /*Colors.grey.withOpacity(0.9)*/, font_size: 16, font_weight: FontWeight.w200, isRainbowMode: false)),
-            Button_to_calmel_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_calmel_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_calmel_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_calmel_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_calmel_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_calmel_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_calmel_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Center(child: Rainbow_text(text: ".toCarmelCase()", color: Colors.blueAccent /*Colors.grey.withOpacity(0.9)*/, font_size: 16, font_weight: FontWeight.w200, isRainbowMode: false)),
+            Button_to_calmel_case(text_place_holder: '.toCarmelCase()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_calmel_case(text_place_holder: '.toCarmelCase()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_calmel_case(text_place_holder: '.toCarmelCase()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_calmel_case(text_place_holder: '.toCarmelCase()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_calmel_case(text_place_holder: '.toCarmelCase()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_calmel_case(text_place_holder: '.toCarmelCase()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_calmel_case(text_place_holder: '.toCarmelCase()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             const SizedBox(height: 100),
-            Center(child: Rainbow_text(text: "뱀 스탬프", color: Colors.blueAccent /*Colors.grey.withOpacity(0.9)*/, font_size: 16, font_weight: FontWeight.w200, isRainbowMode: false)),
-            Button_to_snake_case(text_place_holder: '카멜케이스로 바꾸어 주는 버튼', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_snake_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_snake_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_snake_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_snake_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_snake_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_snake_case(text_place_holder: '이 버튼을 클릭을 하면 클립보드의 텍스트가 카멜케이스로 바꾸어 바인딩 됩니다', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Center(child: Rainbow_text(text: ".to_snake_case()", color: Colors.blueAccent /*Colors.grey.withOpacity(0.9)*/, font_size: 16, font_weight: FontWeight.w200, isRainbowMode: false)),
+            Button_to_snake_case(text_place_holder: '.to_snake_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_snake_case(text_place_holder: '.to_snake_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_snake_case(text_place_holder: '.to_snake_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_snake_case(text_place_holder: '.to_snake_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_snake_case(text_place_holder: '.to_snake_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_snake_case(text_place_holder: '.to_snake_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Button_to_snake_case(text_place_holder: '.to_snake_case()', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             const SizedBox(height: 100),
-            Buttons_for_kakaotalk(text: "카톡 업무 시작/중간/종료/특이사항 보고 스탬프", background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+            Buttons_for_kakaotalk(text: "카톡 보고 스탬프", background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Center(child: Rainbow_text(text: '주석', color: Colors.grey.withOpacity(0.9), font_size: 14.0, font_weight: FontWeight.w300, text_decoration: TextDecoration.none, font_family: "NotoSansCJKkr", font_style: FontStyle.normal, text_align: TextAlign.left, isRainbowMode: false)),
             const SizedBox(height: 10),
             Button_to_move_button_name_into_clipboard(text: "//DEVELOPMENT", background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
             const SizedBox(height: 20),
             Center(child: Rainbow_text(text: 'flutter theme color reference', color: Colors.grey.withOpacity(0.9), font_size: 14.0, font_weight: FontWeight.w300, text_decoration: TextDecoration.none, font_family: "NotoSansCJKkr", font_style: FontStyle.normal, text_align: TextAlign.left, isRainbowMode: false)),
             Button_to_move_button_name_into_clipboard(text: "color: Theme.of(context).cardColor", background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Center(child: Rainbow_text(text: 'flutter collection for sample', color: Colors.grey.withOpacity(0.9), font_size: 14.0, font_weight: FontWeight.w300, text_decoration: TextDecoration.none, font_family: "NotoSansCJKkr", font_style: FontStyle.normal, text_align: TextAlign.left, isRainbowMode: false)),
             Button_to_move_button_name_into_clipboard(text: "for (String element in <String>['String1','String2','String3']) Text(element),", background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Center(child: Rainbow_text(text: '____________________', color: Colors.grey.withOpacity(0.9), font_size: 14.0, font_weight: FontWeight.w300, text_decoration: TextDecoration.none, font_family: "NotoSansCJKkr", font_style: FontStyle.normal, isRainbowMode: false)),
             Button_to_move_button_name_into_clipboard(text: "____________________", background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Center(child: Rainbow_text(text: 'flutter shared_freference for using mobile local storage', color: Colors.grey.withOpacity(0.9), font_size: 14.0, font_weight: FontWeight.w300, text_decoration: TextDecoration.none, font_family: "NotoSansCJKkr", font_style: FontStyle.normal, isRainbowMode: false)),
             Button_to_move_button_name_into_clipboard(text: """
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -156,7 +148,7 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   }
   @override
   void initState() {
-    // TODO: implement initState
+   
     super.initState();
     _counter = _prefs.then((SharedPreferences prefs) {
       return prefs.getInt('counter') ?? 0;
@@ -195,32 +187,11 @@ IconButton(
         color: Colors.tealAccent,
     )),
             """, background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Center(child: Rainbow_text(text: 'FLUTTER PAGE ROUTING', color: Colors.grey.withOpacity(0.9), font_size: 14.0, font_weight: FontWeight.w300, text_decoration: TextDecoration.none, font_family: "NotoSansCJKkr", font_style: FontStyle.normal, text_align: TextAlign.left, isRainbowMode: false)),
             SizedBox(
               height: 10,
             ),
-            Button_to_move_button_name_into_clipboard(text: '''
-ElevatedButton(
-  child: const Text('go to ScreenSecond'),
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const ScreenSecond()),
-    );
-  },
-),
-''', background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
-            Button_to_move_button_name_into_clipboard(text: '''
-ElevatedButton(
-  child: const Text('go to ScreenFirst'),
-  onPressed: () {
-    Navigator.pop(context);
-  },
-),
-''', background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 10, border_radius: BorderRadius.circular(10)),
           ],
         ),
       ),

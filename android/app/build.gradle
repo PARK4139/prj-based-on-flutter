@@ -48,16 +48,19 @@ android {
         applicationId "com.example.prj_app_feat_nomadcoder_class"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+
+        // code for solve trouble when building for Flutter_tts, flutter sdk version Compatibility s
+//        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
+        // code for solve trouble when building for Flutter_tts, flutter sdk version Compatibility e
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
     }

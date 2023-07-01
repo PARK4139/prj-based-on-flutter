@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 //내가 수집한 텍스트들
@@ -22,8 +23,8 @@ class Rainbow_text extends StatefulWidget {
     required this.font_size,
     required this.font_weight,
     this.isRainbowMode,
-    // this.isUpperCaseMode = false,
-    this.isUpperCaseMode = true,
+    this.isUpperCaseMode = false,
+    // this.isUpperCaseMode = true,
     this.text_align = null,
     this.text_decoration,
     this.font_family,
@@ -54,7 +55,6 @@ class _Rainbow_textState extends State<Rainbow_text> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     color = widget.color!;
     if (widget.isRainbowMode == false) {
@@ -68,11 +68,10 @@ class _Rainbow_textState extends State<Rainbow_text> {
       // timer = Timer.periodic(Duration(milliseconds: 20), changeTextColor);  // 광고용
     }
     if (widget.isUpperCaseMode == true) {
-      isUpperCaseMode =true;
-    }else{
-      isUpperCaseMode =false;
+      isUpperCaseMode = true;
+    } else {
+      isUpperCaseMode = false;
     }
-
   }
 
   @override

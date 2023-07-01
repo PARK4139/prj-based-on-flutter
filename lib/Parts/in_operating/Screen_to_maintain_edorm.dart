@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../in_developing/Buttons.dart';
-
-import 'Button_to_maintain_edorm.dart';
-import 'Button_to_move_button_name_into_clipboard.dart';
-
-import 'Buttons_for_kakaotalk.dart';
-import 'My_functions.dart';
-import 'Rainbow_text.dart';
+import '../in_developing/buttons.dart';
+import 'button_to_maintain_edorm.dart';
+import 'my_functions.dart';
 
 class Screen_to_maintain_dorm extends StatefulWidget {
   const Screen_to_maintain_dorm({Key? key}) : super(key: key);
@@ -44,10 +39,9 @@ class _Screen_to_maintain_dormState extends State<Screen_to_maintain_dorm> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initButtonTexts();
-initRequestContents();
+    initRequestContents();
   }
 
   @override
@@ -103,17 +97,17 @@ initRequestContents();
             Button_for_data_maintennace(text: std_name, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_for_data_maintennace(text: request_context, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_for_data_maintennace(text: '________________', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            const  SizedBox(height: 10),
+            const SizedBox(height: 10),
             Button_to_maintain_dorm(texts: texts_asterisk, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_to_maintain_dorm(texts: texts_op_access, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            const  SizedBox(height: 10),
+            const SizedBox(height: 10),
             Button_to_maintain_dorm(texts: texts_CODE_TB, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_to_maintain_dorm(texts: texts_MEMBER_TB, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_to_maintain_dorm(texts: texts_DORM_APPLY_TB, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_to_maintain_dorm(texts: texts_ROOM_INFO_TB, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_to_maintain_dorm(texts: texts_APPLY_TERM_TB, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_to_maintain_dorm(texts: texts_EDU_SCHEDULE_TB, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            const  SizedBox(height: 10),
+            const SizedBox(height: 10),
             Button_to_maintain_dorm(texts: texts_dummy_account_preparation, background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5))
           ],
         ),
@@ -197,6 +191,7 @@ initRequestContents();
     //
     // ];
   }
+
   void initRequestContents() {
     requester_summary = '{{요청요약}}';
     requester_date = '{{작업수행일자}}';

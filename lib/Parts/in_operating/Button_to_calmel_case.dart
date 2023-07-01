@@ -1,9 +1,6 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
-import 'My_functions.dart';
-
-
 class Button_to_calmel_case extends StatefulWidget {
   String text_place_holder;
   final Color? color;
@@ -63,6 +60,9 @@ class _Button_to_calmel_caseState extends State<Button_to_calmel_case> {
       FlutterClipboard.paste().then((value) {
         setState(() {
           widget.text_place_holder = Calmel_case_maker(value: value);
+          FlutterClipboard.copy(widget.text_place_holder).then((value) {
+            print('copied : ' + widget.text_place_holder);
+          });
           isFirstClick = false;
         });
       });

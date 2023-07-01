@@ -1,14 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:http/http.dart';
 
-import '../in_developing/Model and API.dart';
+import 'my_data_layer.dart';
 
 enum job { paladin, worrior, magitian }
 
@@ -62,18 +61,19 @@ class MyFunctions {
   }
 
   Future<void> speak({required String text}) async {
-    AudioPlayer player = AudioPlayer(); // Create an AudioPlayer instance.
-
-    // Download the MP3 file.
-    await player.play('http://172.30.1.31:9090/' + text + '.wav');
-
-    // Listen for the player's state changes.
-    player.onPlayerStateChanged.listen(
-      (state) {
-        print(state);
-        print(player.state);
-      },
-    );
+    // // Create an AudioPlayer instance.
+    // AudioPlayer player = AudioPlayer();
+    //
+    // // Download the MP3 file.
+    // await player.play('http://172.30.1.31:9090/' + text + '.wav');
+    //
+    // // Listen for the player's state changes.
+    // player.onPlayerStateChanged.listen(
+    //   (state) {
+    //     print(state);
+    //     print(player.state);
+    //   },
+    // );
 
 // // 오디오 재생을 중지합니다.
 //     player.stop();
@@ -90,10 +90,10 @@ class MyFunctions {
 
   void process_properly({required String somthing}) {
     if (somthing.split(".").last == 'mp3') {
-      AudioPlayer player = AudioPlayer();
-      player.setVolume(1.0);
-      player.play(somthing);
-      // print(player.getDuration()); //재생 시간
+      // AudioPlayer player = AudioPlayer();
+      // player.setVolume(1.0);
+      // player.play(somthing);
+      //  print(player.getDuration()); //재생 시간
       // print(player.getCurrentPosition()); //남은 시간
     }
     if (somthing.split(".").last == 'wav') {}
@@ -296,7 +296,6 @@ class MyFunctions {
     print('_______________________________________________________________________ iterable nature number e');
   }
 
-
   Future<void> setMySession() async {
     //set
     // var sessionManager = SessionManager();
@@ -308,11 +307,11 @@ class MyFunctions {
 
     //set
     User user = User(id: 1, name: "박정훈", date_join: "2023-06-05", date_login: "2023-06-05");
-    Map<String, dynamic> json = {//DEVELOPMENT
-      'user': user,//DEVELOPMENT'
-    };//DEVELOPMENT
+    Map<String, dynamic> json = {
+      //DEVELOPMENT
+      'user': user, //DEVELOPMENT'
+    }; //DEVELOPMENT
     await SessionManager().set('user', user);
-
 
     //set
     User user2 = User(id: 2, name: "박정훈", date_join: "2023-06-05", date_login: "2023-06-05");
@@ -320,13 +319,11 @@ class MyFunctions {
   }
 
   Future<void> getMySession(String session_key) async {
-
     //get
     final User user = User.fromJson(await SessionManager().get('user'));
     print(user.name); // John Doe
     print(user.id); // 30
   }
-
 
   Future<void> setMyCookie() async {
     // final dio = Dio();
@@ -367,6 +364,8 @@ class MyIcons {
   static Icon icon_20 = Icon(Icons.laptop_mac);
   static Icon icon_21 = Icon(Icons.monitor_heart);
   static Icon icon_22 = Icon(Icons.favorite);
+  static Icon icon_24 = Icon(Icons.set_meal_outlined);
+  static Icon icon_25 = Icon(Icons.settings_ethernet);
 }
 
 class MyColors {
@@ -424,11 +423,8 @@ class IteralbleNatureNumber {
   List<int> All_History() => itemsHistory;
 }
 
-
-
-
 class IterableAlphabets {
-  final List<String> Alpabets_snapshot_at_first_initialization =  ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+  final List<String> Alpabets_snapshot_at_first_initialization = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   late List<String> Alpabets;
   late int length;
 
@@ -536,7 +532,6 @@ class _RainbowContainerMakerState extends State<RainbowContainerMaker> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     color = widget.color!;
     if (widget.isRainbow == false) {
@@ -568,69 +563,6 @@ class _RainbowContainerMakerState extends State<RainbowContainerMaker> {
       padding: padding,
       margin: margin,
       child: child,
-    );
-  }
-}
-
-class RainbowIconMaker extends StatefulWidget {
-  String text;
-  Color? color;
-  final FontWeight? font_weight;
-  final double? icon_size;
-  bool? isRainbow;
-  IconData icon;
-
-  RainbowIconMaker(this.text, this.color, this.font_weight, this.icon_size, this.isRainbow, this.icon);
-
-  @override
-  State<RainbowIconMaker> createState() => _RainbowIconMakerState();
-}
-
-class _RainbowIconMakerState extends State<RainbowIconMaker> {
-  int buildMethodCounter = 0;
-  late Color color;
-  List<Color> colors = [Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.purple];
-
-  late Timer? timer;
-
-  void changeIconColor(Timer timer) {
-    if (buildMethodCounter == colors.length) {
-      buildMethodCounter = 0;
-    }
-    color = colors[buildMethodCounter];
-    buildMethodCounter = buildMethodCounter + 1;
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    color = widget.color!;
-    if (widget.isRainbow == false) {
-      timer = null;
-    } else {
-      // timer = Timer.periodic(Duration(milliseconds: 1000), changeTextColor);//답답한
-      // timer = Timer.periodic(Duration(milliseconds: 100), changeTextColor); //느린
-      timer = Timer.periodic(Duration(milliseconds: 50), changeIconColor); //크리스마스
-      // timer = Timer.periodic(Duration(milliseconds: 25), changeTextColor);  // 빠른
-      // timer = Timer.periodic(Duration(milliseconds: 20), changeTextColor);  // 광고용 속도
-    }
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    timer?.cancel();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Icon(
-      widget.icon,
-      color: color,
-      size: widget.icon_size,
     );
   }
 }

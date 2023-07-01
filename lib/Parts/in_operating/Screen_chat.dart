@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-
-import 'Buttons_for_kakaotalk.dart';
-import 'My_functions.dart';
+import 'my_functions.dart';
 
 class Screen_promodo extends StatefulWidget {
   const Screen_promodo({Key? key}) : super(key: key);
@@ -28,7 +26,6 @@ class _Screen_pomodoState extends State<Screen_promodo> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     foo = 0;
   }
@@ -41,7 +38,6 @@ class _Screen_pomodoState extends State<Screen_promodo> {
 
   @override
   Widget build(BuildContext context) {
-    print('built() worked');
     return Scaffold(
       body: screen_chat_home(),
     );
@@ -56,12 +52,8 @@ class screen_chat_home extends StatefulWidget {
 }
 
 class _screen_chat_homeState extends State<screen_chat_home> {
-
-
   final ment = '해당 스크린에서는 pomodoro를 서비스를 제공합니다 \n\n'
       '＊"pomodoro" : 포모도로 기법은 프란체스코 시릴로가 고안한 시간 관리 기법입니다.\n 25분 동안 집중해서 일을 한 다음 5분간 휴식을 취하는 것을 반복하는 방식입니다.\n 이 기법은 25분을 토마토 모양의 요리용 타이머로 측정한 데서 이름이 유래했습니다.\n 포모도로 기법은 집중력 향상과 생산성 향상에 도움이 될 수 있습니다.';
-
-
 
   void Foo(Timer timer) {
     setState(() {
@@ -113,7 +105,6 @@ class _screen_chat_homeState extends State<screen_chat_home> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     // onCountPer1Second(); //DEVELOPMENT // 화면 시작시 바로시작하도록
@@ -166,14 +157,9 @@ class _screen_chat_homeState extends State<screen_chat_home> {
           ),
           Center(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Row(
                 children: [
-                  // Container(
-                  //   child: SizedBox(
-                  //     width: 5,
-                  //   ),
-                  // ),
                   Container(
                     child: TextButton(
                       onPressed: resetAllPomodoro,
@@ -192,9 +178,8 @@ class _screen_chat_homeState extends State<screen_chat_home> {
                       onPressed: togglePlayAndPause,
                       iconSize: 120,
                       icon: Icon(
-                        // true ? Icons.play_circle_outline : Icons.pause_circle_outline,
-                        // false ? Icons.play_circle_outline : Icons.pause_circle_outline,
                         isRunning ? Icons.pause_circle_outline : Icons.play_circle_outline,
+                        size: 60,
                       ),
                     ),
                   ),
@@ -203,10 +188,7 @@ class _screen_chat_homeState extends State<screen_chat_home> {
                       onPressed: resetStatus,
                       child: Text(
                         'CURRENT\nLAP\nRESET',
-                        style: TextStyle(
-                          color: Colors.lightBlueAccent,
-                          fontSize: 20,
-                        ),
+                        style: TextStyle(color: Colors.lightBlueAccent, fontSize: 20),
                       ),
                     ),
                   ),
@@ -224,19 +206,11 @@ class _screen_chat_homeState extends State<screen_chat_home> {
                   children: [
                     Text(
                       'Pomodoro',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
                     ),
                     Text(
                       '$pomodoros',
-                      style: TextStyle(
-                        fontSize: 58,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white38,
-                      ),
+                      style: TextStyle(fontSize: 58, fontWeight: FontWeight.w600, color: Colors.white38),
                     ),
                   ],
                 ),

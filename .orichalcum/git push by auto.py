@@ -1712,8 +1712,8 @@ def push_to_remote_repository():
     # commit_ment = "auto pushed"
     # commit_ment = "auto pushed at " + to_time_style('0')
     # commit_ment = "테스트 커밋"
-    commit_ment = "프로젝트 이니셜 커밋"
-    # commit_ment = "플러터 안드로이드 앱 업데이트 PHASE 1"
+    # commit_ment = "프로젝트 이니셜 커밋"
+    commit_ment = "플러터 안드로이드 앱들 업데이트 PHASE 1"
     # commit_ment = "당근마껫 UI 업데이트"#월
     # commit_ment = "당근마껫 페이지 추가제작"#화
     # commit_ment = "당근마껫 페이지 추가제작"#수

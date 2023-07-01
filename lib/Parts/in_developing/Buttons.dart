@@ -1,19 +1,7 @@
-import 'dart:async';
-
 import 'package:clipboard/clipboard.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:timer_builder/timer_builder.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:io';
-
-import '../in_operating/My_functions.dart';
-
-
-
-
 
 //처음에 클립보드의 값이 버튼명으로 저장이 되고 그 이후로 클릭을 하면 클립보드로 값이 저장되는 클립보드의 내용을 버튼명에 바인딩하는 버튼
 class Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click extends StatefulWidget {
@@ -75,6 +63,9 @@ class _Button_that_user_click_save_button_name_into_clipboard_after_saving_clipe
       FlutterClipboard.paste().then((value) {
         setState(() {
           widget.text = value;
+          FlutterClipboard.copy(widget.text).then((value) {
+            print('copied : ' + widget.text);
+          });
           isFirstClick = false;
         });
       });
@@ -158,7 +149,6 @@ class _Button_v7State extends State<Button_v7> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -246,7 +236,6 @@ class _Button_v8State extends State<Button_v8> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -334,7 +323,6 @@ class _Button_v9State extends State<Button_v9> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -422,7 +410,6 @@ class _Button_withv_daily_report_titleState extends State<Button_withv_daily_rep
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

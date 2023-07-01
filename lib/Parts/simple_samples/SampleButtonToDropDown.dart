@@ -2,21 +2,17 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
 //dio
-const List<String> list = <String>['좋아써','이거지','그래','잘했어'];
-
+const List<String> list = <String>['좋아써', '이거지', '그래', '잘했어'];
 
 class SampleButtonToDropDown extends StatefulWidget {
   // List<String> items;
-  String selected_value=list.first;
-
-
+  String selected_value = list.first;
 
   @override
   State<SampleButtonToDropDown> createState() => _SampleButtonToDropDownState();
 }
 
 class _SampleButtonToDropDownState extends State<SampleButtonToDropDown> {
-
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(

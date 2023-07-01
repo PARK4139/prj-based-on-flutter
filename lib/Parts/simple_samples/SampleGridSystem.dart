@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 
 //내가 수집한 텍스트들
 class SampleGridSystem extends StatefulWidget {
-
   @override
   State<SampleGridSystem> createState() => _SampleGridSystemState();
 
@@ -11,7 +9,6 @@ class SampleGridSystem extends StatefulWidget {
 }
 
 class _SampleGridSystemState extends State<SampleGridSystem> {
-
   @override
   Widget build(BuildContext context) {
     return GridView(
@@ -29,6 +26,4 @@ class _SampleGridSystemState extends State<SampleGridSystem> {
       ),
     );
   }
-
-
 }

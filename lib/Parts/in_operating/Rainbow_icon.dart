@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 //내가 수집한 텍스트들
@@ -18,7 +19,7 @@ class Rainbow_icon extends StatefulWidget {
   Rainbow_icon({
     Key? key,
     required this.iconData,
-    this.color=Colors.lightGreenAccent,
+    this.color = Colors.lightGreenAccent,
     this.icon_size,
     this.font_weight,
     this.isRainbowMode,
@@ -53,7 +54,6 @@ class _Rainbow_iconState extends State<Rainbow_icon> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     color = widget.color!;
     if (widget.isRainbowMode == false) {

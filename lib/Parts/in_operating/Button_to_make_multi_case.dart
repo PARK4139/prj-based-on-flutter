@@ -1,13 +1,9 @@
-import 'dart:async';
-
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import 'Button_to_move_button_name_into_clipboard.dart';
-import 'Iterable_structure_maker.dart';
-import 'My_functions.dart';
+import 'button_to_move_button_name_into_clipboard.dart';
+import 'iterable_structure_maker.dart';
+import 'my_functions.dart';
 
 class Multi_case_maker extends StatefulWidget {
   String text;
@@ -51,12 +47,16 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
 
   bool isFirstClick = true;
 
+  late String labelText;
+
+  late String titleText;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     button_title = widget.text;
     init_states_of_this_button();
+    init_label_text();
   }
 
   @override
@@ -67,18 +67,29 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
           Container(
             // width: 300,
             child: TextButton(
-                child: Text(
-                  // widget.text.length <= 60 ? widget.text + '     ' + ClickCounter.toString() + '/' + items.length.toString() : widget.text.substring(0, 60) + ' ' + ClickCounter.toString() + '/' + items.length.toString(),
-                  widget.text.length <= 60 ? widget.text + '  ' : widget.text.substring(0, 60),
-                  style: TextStyle(
-                    color: widget.color,
-                    fontSize: widget.font_size,
-                    fontWeight: widget.font_weight,
-                  ),
+              child: Text(
+                labelText,
+                style: TextStyle(
+                  color: widget.color,
+                  fontSize: widget.font_size,
+                  fontWeight: widget.font_weight,
                 ),
-                onPressed: () {
-                  onTextButtonPressed();
-                }),
+              ),
+              onPressed: () {
+                onTextButtonPressed();
+              },
+              onHover: (isHovered) {
+                if (isHovered) {
+                  setState(() {
+                    init_label_text();
+                  });
+                } else {
+                  setState(() {
+                    labelText = widget.text.length <= 60 ? widget.text + '  ' : widget.text.substring(0, 60);
+                  });
+                }
+              },
+            ),
           ),
           Container(
             width: 40,
@@ -187,6 +198,16 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
     return result.join('').replaceFirst("_", "");
   }
 
+  String case_4_maker({required String value}) {
+    var result = value.split('');
+    for (int i = 0; i < result.length; i++) {
+      if (isThisDigitUpperCase(result[i])) {
+        result[i] = '_' + result[i].toLowerCase();
+      }
+    }
+    return result.join('').replaceFirst("_", "").replaceAll("__", "_");
+  }
+
   String case_3_maker({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
@@ -195,6 +216,16 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
       }
     }
     return Capitalized_case_maker(value: result.join('').replaceFirst("_", ""));
+  }
+
+  String case_5_maker({required String value}) {
+    var result = value.split('');
+    for (int i = 0; i < result.length; i++) {
+      if (isThisDigitUpperCase(result[i])) {
+        result[i] = '_' + result[i].toLowerCase();
+      }
+    }
+    return Capitalized_case_maker(value: result.join('').replaceFirst("_", "").replaceAll("__", "_"));
   }
 
   bool isThisDigitUpperCase(String one_digit) {
@@ -251,6 +282,8 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
       case_1_maker(value: widget.text),
       case_2_maker(value: widget.text),
       case_3_maker(value: widget.text),
+      case_4_maker(value: widget.text),
+      case_5_maker(value: widget.text),
       Calmel_case_maker(value: widget.text),
       Snake_case_maker(value: widget.text),
       Upper_calmel_case_maker(value: widget.text),
@@ -259,5 +292,12 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
     ];
     items_iterable = IterableStringListMaker(items: items);
     button_title = widget.text;
+  }
+
+  void init_label_text() {
+    setState(() {
+      titleText = widget.text;
+      labelText = '멀티 케이스 메이커에 클립보드로 부터 바인딩';
+    });
   }
 }
