@@ -33,18 +33,31 @@ REM :------------------------------------------ below cript will acted as admini
 color 0a
 chcp 65001
 cls
-setlocal
-REM set directory_or_file_p=.\
-REM set directory_or_file_n=private
-REM set directory_or_file_x=.txt
-REM set directory_or_file_pn=%directory_or_file_p%%directory_or_file_n%
-REM set directory_or_file_nx=%directory_or_file_n%%directory_or_file_x%
-REM set directory_or_file_pnx=%directory_or_file_p%%directory_or_file_n%%directory_or_file_x%
+setlocal 
 REM for /f "delims=" %%i in ('Powershell.exe get-date -Format 'yyyy MM dd HH mm ss'') do set yyyyMMddhhmmss=%%i
 
 
 
 echo "______________________________________________________________________________________________________________________________ s
-start /max explorer "https://github.com/PARK4139/PRJS_PRIVATE"
-REM del /f "git push by auto.py"
+
+set DIRECTORY_THAT_CONTAINING_GIT_FILE=%cd%
+CD ..
+set DIRECTORY_THAT_CONTAINING_GIT_USELESS_PART=%cd%
+echo %DIRECTORY_THAT_CONTAINING_GIT_FILE%
+echo %DIRECTORY_THAT_CONTAINING_GIT_USELESS_PART%
+SET OPENING_DIRECTORY=%DIRECTORY_THAT_CONTAINING_GIT_FILE%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*\=FOO%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*\=FOO%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*\=FOO%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*\=FOO%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*\=FOO%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*\=FOO%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*\=FOO%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*\=FOO%
+SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*FOO=%
+ECHO %OPENING_DIRECTORY%
+explorer https://github.com/PARK4139/%OPENING_DIRECTORY%
+del /f "git push by auto.py"
+REM echo %~n0.log
+REM timeout 5
 echo "______________________________________________________________________________________________________________________________ e
