@@ -1698,7 +1698,7 @@ def mkr_s():
 def mkr_e():
     print("__________________________________________________________ mkr e")
 
-def push_local_repository_to_remote_repository():
+def push_to_remote_repository():
     print('__________________________________________________________ auto git add.log ' + to_time_style('0') + ' s')
     cmd_result = subprocess.check_output('git add * ', shell=True).decode('utf-8')  # cmd 결과 를 python 에서 값읽기
     if "" in cmd_result:
@@ -1712,7 +1712,7 @@ def push_local_repository_to_remote_repository():
     # commit_ment = "auto pushed"
     commit_ment = "auto pushed at " + to_time_style('0')
     
-    cmd_result = subprocess.check_output('git commit -m "auto git push ' + commit_ment + '"',
+    cmd_result = subprocess.check_output('git commit -m "' + commit_ment + '"',
                                          shell=True).decode('utf-8')
     print(
         '__________________________________________________________ auto git commit.log ' + to_time_style('0') + ' s')
@@ -1751,7 +1751,7 @@ print("__________________________________________________________ opening log e"
 print("__________________________________________________________ s")
 import random
 while True:
-    push_local_repository_to_remote_repository()
+    push_to_remote_repository()
     # tmp = random.randint(0, 5) # FOR 확신하고 빠르게 GIT PUSH
     tmp = random.randint(400, 600) # FOR GIT HUB CONTRIBUTION COUNT INCREASEMENT
     print("RPA works again in "+str(tmp)+" seconds...")
