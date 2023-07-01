@@ -13,8 +13,9 @@ setlocal
 for /f "delims=" %%i in ('Powershell.exe get-date -Format 'yyyy MM dd HH mm ss'') do set yyyyMMddHHmmss=%%i
 cls
 echo "__________________________________________________________________________________________________________________________________________ add / commit / push
-rem set commit_ment=%yyyyMMddHHmmss%
 
+
+::set commit_ment=%yyyyMMddHHmmss%
 set commit_ment=수동 테스트 커밋.
 ::set commit_ment=플러터 안드로이드 앱 업데이트 PHASE 1
 
