@@ -2,32 +2,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/flutter_provider.dart';
 
-class Foo {
-  Foo() {
-    print('$this::init');
-  }
+import 'Consumer.dart';
 
-  String foo() => 'Hello';
+class MyProvider1 {
+  String greet1() => 'Hello';
 
   void dispose() => print('$this::dispose');
 }
 
-class Bar1 {
-  Bar1() {
+class MyProvider2 {
+  MyProvider2() {
     print('$this::init');
   }
 
-  String bar1() => 'Hello everyone';
-
-  void dispose() => print('$this::dispose');
-}
-
-class Bar2 {
-  Bar2() {
-    print('$this::init');
-  }
-
-  String bar2() => 'Fall in love with Flutter';
+  String greet2() => 'Hello everyone';
 
   void dispose() => print('$this::dispose');
 }
@@ -40,15 +28,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Provider example',
       theme: ThemeData.dark(),
-      home: const WelcomePage(),
+      home: const ScreenProviding(),
     );
   }
 }
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+class ScreenProviding extends StatelessWidget {
+  const ScreenProviding({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,59 +47,23 @@ class WelcomePage extends StatelessWidget {
             context,
             MaterialPageRoute<void>(
               builder: (context) {
-                final foo = Foo();
-                final bar1 = Bar1();
+                final foo = MyProvider1();
+                final bar1 = MyProvider2();
 
                 return Providers(
                   providers: [
-                    Provider<Bar1>.value(
+                    Provider<MyProvider2>.value(
                       bar1,
                       disposer: (v) => v.dispose(),
                     ),
-                    Provider<Bar2>.factory(
-                          (context) => Bar2(),
-                      disposer: (v) => v.dispose(),
-                    ),
                   ],
-                  child: Provider<Foo>.value(
+                  child: Provider<MyProvider1>.value(
                     foo,
                     disposer: (v) => v.dispose(),
-                    child: const HomePage(),
+                    child: const ScreenConsuming(),
                   ),
                 );
               },
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter provider example'),
-      ),
-      body: Consumer3<Foo, Bar1, Bar2>(
-        builder: (BuildContext context, Foo a, Bar1 b, Bar2 c) {
-          return Container(
-            constraints: const BoxConstraints.expand(),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(a.foo()),
-                  Text(b.bar1()),
-                  Text(c.bar2()),
-                ],
-              ),
             ),
           );
         },
