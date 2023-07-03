@@ -26,7 +26,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   String index_name_flutter_samples = '플러터 샘플';
   String index_name_ = '';
 
-  late bool isDevelopingMode;
+
 
   String indexNameCutter(String indexName) {
     String result = '';
@@ -43,13 +43,17 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   void initState() {
     super.initState();
     initItems();
-    isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDevelopingMode;
+
+
   }
 
   @override
   Widget build(BuildContext context) {
+    bool isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDevelopingMode;
+    print(isDevelopingMode.toString());
     return Scaffold(
       backgroundColor: isDevelopingMode?Colors.white:Colors.blue,
+      // backgroundColor: Colors.white,
       body: GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 5, mainAxisSpacing: 10),
         children: <Widget>[
