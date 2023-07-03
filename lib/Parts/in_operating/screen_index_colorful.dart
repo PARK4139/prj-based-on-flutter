@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_carrot_market.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_digital_clock.dart';
 
-import '../../Index.dart';
 import 'screen_area_calculation_ver_orange.dart';
 import 'screen_netflix.dart';
 import 'screen_pomodo_version_pink.dart';
 import 'screen_samples.dart';
 
 class Screen_index_colorful extends StatefulWidget {
-  const Screen_index_colorful({Key? key}) : super(key: key);
+  bool isDevelopingMode;
+
+  Screen_index_colorful({super.key, required this.isDevelopingMode});
 
   @override
   State<Screen_index_colorful> createState() => _Screen_index_colorfulState();
@@ -26,8 +27,6 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   String index_name_flutter_samples = '플러터 샘플';
   String index_name_ = '';
 
-
-
   String indexNameCutter(String indexName) {
     String result = '';
     if (indexName.length >= 10) {
@@ -43,17 +42,17 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   void initState() {
     super.initState();
     initItems();
-
-
   }
 
   @override
   Widget build(BuildContext context) {
-    bool isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDevelopingMode;
-    print(isDevelopingMode.toString());
+    // bool isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDevelopingMode;
+    // print(isDevelopingMode.toString());
+    // .. 왜 부모인 main 에서 isDevelopingMode 를 못가져오는지 모르겠다..
+
     return Scaffold(
-      backgroundColor: isDevelopingMode?Colors.white:Colors.blue,
       // backgroundColor: Colors.white,
+      backgroundColor: widget.isDevelopingMode ? Colors.black54 : Colors.white, //실패
       body: GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 5, mainAxisSpacing: 10),
         children: <Widget>[
@@ -115,7 +114,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               },
               icon: Column(
                 children: [
-                  Transform.scale(scale: 1.8,child: const Icon(Icons.calculate_outlined)),
+                  Transform.scale(scale: 1.8, child: const Icon(Icons.calculate_outlined)),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
@@ -150,7 +149,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               },
               icon: Column(
                 children: [
-                  Transform.scale(scale: 1.8,child: const Icon(Icons.code)),
+                  Transform.scale(scale: 1.8, child: const Icon(Icons.code)),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(

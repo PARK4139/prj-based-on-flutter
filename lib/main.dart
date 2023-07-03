@@ -135,9 +135,9 @@ class AppState extends State<App> {
               Builder(
                 builder: (context) {
                   if (isDevelopingMode == false) {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful()));
+                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDevelopingMode: isDevelopingMode,)));
                   } else {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful()));
+                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDevelopingMode: isDevelopingMode,)));
                   }
                   return ghost_wiget;
                 },
