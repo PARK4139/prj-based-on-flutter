@@ -25,7 +25,7 @@ class App extends StatefulWidget {
 
 class AppState extends State<App> {
   LocalStorage storage = LocalStorage('foo.foo');
-  late bool isDevelopingMode; //DEVELOPMENT
+  late bool isDarkMode; //DEVELOPMENT
   late bool isCoolDownMode; //DEVELOPMENT
   late bool isChrismasMode; //DEVELOPMENT
   late bool isHappyBirthDayMode; //DEVELOPMENT
@@ -57,7 +57,7 @@ class AppState extends State<App> {
     print('_______________________________________________________________________ s');
     init_host_platform_info();
     initAppModes();
-    if (isDevelopingMode == false) {
+    if (isDarkMode == false) {
     } else {
       print('_______________________________________________________________________ auth check s');
       if (isAndroid == true) {
@@ -76,7 +76,7 @@ class AppState extends State<App> {
         // return MaterialApp(home: ScreenNetflixHomeSub(movies: movies_dummy));
       } else {
         return MaterialApp(
-          debugShowCheckedModeBanner: isDevelopingMode ? true : false,
+          debugShowCheckedModeBanner: isDarkMode ? true : false,
           title: '나의 플러터 베이스 앱',
           theme: ThemeData(
             primaryColor: Colors.pinkAccent.shade200,
@@ -86,17 +86,17 @@ class AppState extends State<App> {
             cardColor: const Color(0xfff4eddb),
           ),
           home: Scaffold(
-            backgroundColor: isDevelopingMode ? Colors.black.withOpacity(0.9) : color_for_scaffold_background,
+            backgroundColor: isDarkMode ? Colors.black.withOpacity(0.9) : color_for_scaffold_background,
             appBar: AppBar(
               title: Center(
                 child: Column(
                   children: [
-                    IconButton(onPressed: toogleDevelopingMode, icon: isDevelopingMode ? Icon(Icons.change_circle_outlined) : Icon(Icons.change_circle_outlined, color: Colors.lightBlue.shade50)),
+                    IconButton(onPressed: toogleDevelopingMode, icon: isDarkMode ? Icon(Icons.change_circle_outlined) : Icon(Icons.change_circle_outlined, color: Colors.lightBlue.shade50)),
                   ],
                 ),
               ),
-              backgroundColor: isDevelopingMode ? Colors.blueAccent.withOpacity(0.2) : color_for_scaffold_background,
-              foregroundColor: isDevelopingMode ? Colors.blueAccent : color_for_scaffold_background,
+              backgroundColor: isDarkMode ? Colors.blueAccent.withOpacity(0.2) : color_for_scaffold_background,
+              foregroundColor: isDarkMode ? Colors.blueAccent : color_for_scaffold_background,
               elevation: 1,
             ),
             bottomNavigationBar: NavigationBar(
@@ -111,7 +111,7 @@ class AppState extends State<App> {
               destinations: <Widget>[
                 Builder(
                   builder: (context) {
-                    if (isDevelopingMode == false) {
+                    if (isDarkMode == false) {
                       ghost_wiget = Center(child: null);
                     } else {
                       ghost_wiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: Rainbow_icon(iconData: Icons.folder), icon: Icon(Icons.folder));
@@ -121,7 +121,7 @@ class AppState extends State<App> {
                 ),
                 Builder(
                   builder: (context) {
-                    if (isDevelopingMode == false) {
+                    if (isDarkMode == false) {
                       ghost_wiget = Center(child: null);
                     } else {
                       ghost_wiget = NavigationDestination(label: 'INDEX BLUE', selectedIcon: Icon(Icons.folder, color: Colors.blueAccent), icon: Icon(Icons.folder, color: Colors.black));
@@ -134,17 +134,17 @@ class AppState extends State<App> {
             body: <Widget>[
               Builder(
                 builder: (context) {
-                  if (isDevelopingMode == false) {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDevelopingMode: isDevelopingMode,)));
+                  if (isDarkMode == false) {
+                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode,)));
                   } else {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDevelopingMode: isDevelopingMode,)));
+                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode,)));
                   }
                   return ghost_wiget;
                 },
               ),
               Builder(
                 builder: (context) {
-                  if (isDevelopingMode == false) {
+                  if (isDarkMode == false) {
                     ghost_wiget = Center(child: null); //PRODUCTION
                   } else {
                     ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), alignment: Alignment.center, child: Screen_index_blue()));
@@ -152,7 +152,7 @@ class AppState extends State<App> {
                   return ghost_wiget;
                 },
               ),
-            ][isDevelopingMode ? currentPageIndex : currentPageIndex],
+            ][isDarkMode ? currentPageIndex : currentPageIndex],
           ),
         );
       }
@@ -165,18 +165,18 @@ class AppState extends State<App> {
       isCoolDownMode = false; //DEVELOPMENT
       isChrismasMode = false; //DEVELOPMENT
       isHappyBirthDayMode = false; //DEVELOPMENT
-      isDevelopmentConcentrationMode = false; /*false*/ /*true*/
+      isDevelopmentConcentrationMode = true; /*false*/ /*true*/
     });
   }
 
   void initIsDevelopingMode() {
     if (storage.getItem('isChecked') == null) {
-      isDevelopingMode = false;
-      storage.setItem('isChecked', isDevelopingMode);
+      isDarkMode = false;
+      storage.setItem('isChecked', isDarkMode);
     } else {
-      isDevelopingMode = storage.getItem('isChecked');
+      isDarkMode = storage.getItem('isChecked');
     }
-    print("isDevelopingMode:" + isDevelopingMode.toString());
+    print("isDevelopingMode:" + isDarkMode.toString());
   }
 
   void init_host_platform_info() {
@@ -237,13 +237,13 @@ class AppState extends State<App> {
 
   void toogleDevelopingMode() {
     setState(() {
-      if (isDevelopingMode == true) {
-        isDevelopingMode = false;
+      if (isDarkMode == true) {
+        isDarkMode = false;
       } else {
-        isDevelopingMode = true;
+        isDarkMode = true;
       }
-      storage.setItem('isChecked', isDevelopingMode);
-      print("isDevelopingMode:" + isDevelopingMode.toString());
+      storage.setItem('isChecked', isDarkMode);
+      print("isDevelopingMode:" + isDarkMode.toString());
 
       //debug mode 로 전환시 새로 Screen_first_take 로 라우팅하기 위함.
     });

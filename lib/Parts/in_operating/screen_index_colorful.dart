@@ -8,9 +8,9 @@ import 'screen_pomodo_version_pink.dart';
 import 'screen_samples.dart';
 
 class Screen_index_colorful extends StatefulWidget {
-  bool isDevelopingMode;
+  bool isDarkMode;
 
-  Screen_index_colorful({super.key, required this.isDevelopingMode});
+  Screen_index_colorful({super.key, required this.isDarkMode});
 
   @override
   State<Screen_index_colorful> createState() => _Screen_index_colorfulState();
@@ -52,7 +52,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
 
     return Scaffold(
       // backgroundColor: Colors.white,
-      backgroundColor: widget.isDevelopingMode ? Colors.black54 : Colors.white, //실패
+      backgroundColor: widget.isDarkMode ? Colors.black54 : Colors.white, //실패
       body: GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 5, mainAxisSpacing: 10),
         children: <Widget>[

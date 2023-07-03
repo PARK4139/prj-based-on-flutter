@@ -28,7 +28,7 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,mkr
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;

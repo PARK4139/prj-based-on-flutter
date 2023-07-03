@@ -29,7 +29,7 @@ class _Screen_to_control_textState extends State<Screen_to_control_text> {
   @override
   void initState() {
     super.initState();
-    isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDevelopingMode;
+    isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
   }
 
   @override
