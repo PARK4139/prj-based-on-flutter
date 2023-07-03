@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_carrot_market.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_digital_clock.dart';
 
+import '../../Index.dart';
 import 'screen_area_calculation_ver_orange.dart';
 import 'screen_netflix.dart';
 import 'screen_pomodo_version_pink.dart';
@@ -25,6 +26,8 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   String index_name_flutter_samples = '플러터 샘플';
   String index_name_ = '';
 
+  late bool isDevelopingMode;
+
   String indexNameCutter(String indexName) {
     String result = '';
     if (indexName.length >= 10) {
@@ -40,12 +43,13 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   void initState() {
     super.initState();
     initItems();
+    isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDevelopingMode;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDevelopingMode?Colors.white:Colors.blue,
       body: GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 5, mainAxisSpacing: 10),
         children: <Widget>[
