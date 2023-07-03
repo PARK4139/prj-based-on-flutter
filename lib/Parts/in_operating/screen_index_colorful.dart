@@ -19,10 +19,10 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
 
   String index_name_netflixx = '넷플리쓰';
   String index_name_carrot_markket = '당근마껫';
-  String index_name_pomodoro = 'pomodoro';
-  String index_name_digital_clock = 'digital clocks';
-  String index_name_area_calculator = 'area calculator';
-  String index_name_flutter_samples = 'flutter sample';
+  String index_name_pomodoro = '포모도로';
+  String index_name_digital_clock = '디지털 시계';
+  String index_name_area_calculator = '평 계산기';
+  String index_name_flutter_samples = '플러터 샘플';
   String index_name_ = '';
 
   String indexNameCutter(String indexName) {
@@ -72,11 +72,11 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               },
               icon: Column(
                 children: [
-                  const Icon(Icons.timer_outlined),
+                  Transform.scale(scale: 1.8, child: const Icon(Icons.timer_outlined)),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 5),
+                      offset: Offset(0, 9),
                       child: Text(
                         indexNameCutter(index_name_pomodoro),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
@@ -107,11 +107,11 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               },
               icon: Column(
                 children: [
-                  const Icon(Icons.calculate_outlined),
+                  Transform.scale(scale: 1.8,child: const Icon(Icons.calculate_outlined)),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 5),
+                      offset: Offset(0, 9),
                       child: Text(
                         indexNameCutter(index_name_area_calculator),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
@@ -142,11 +142,11 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               },
               icon: Column(
                 children: [
-                  const Icon(Icons.code),
+                  Transform.scale(scale: 1.8,child: const Icon(Icons.code)),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 5),
+                      offset: Offset(0, 9),
                       child: Text(
                         indexNameCutter(index_name_flutter_samples),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
@@ -177,13 +177,13 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               },
               icon: Column(
                 children: [
-                  const Icon(Icons.access_time_filled_rounded),
+                  Transform.scale(scale: 1.8, child: const Icon(Icons.access_time_filled_rounded)),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 5),
+                      offset: Offset(0, 9),
                       child: Text(
-                        indexNameCutter(index_name_digital_clock),
+                        indexNameCutter(index_name_digital_clock).toUpperCase(),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -213,13 +213,13 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               icon: Column(
                 children: [
                   Transform.scale(
-                    scale: 2.2,
+                    scale: 1.8,
                     child: Image.asset('assets/app_carrot_market_logo.png', height: 25),
                   ),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 5),
+                      offset: Offset(0, 9),
                       child: Text(
                         indexNameCutter(index_name_carrot_markket),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
@@ -251,13 +251,13 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               icon: Column(
                 children: [
                   Transform.scale(
-                    scale: 1.1,
+                    scale: 1.8,
                     child: Image.asset('assets/app_netflix_logo.png', height: 25),
                   ),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 5),
+                      offset: Offset(0, 9),
                       child: Text(indexNameCutter(index_name_netflixx), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
                     ),
                   ),
