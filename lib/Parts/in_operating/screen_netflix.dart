@@ -28,7 +28,7 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.white,mkr
+        backgroundColor: Colors.black,
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
@@ -39,23 +39,47 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
         destinations: <Widget>[
           NavigationDestination(
             label: '',
-            selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.home, size: 18), Text('홈', style: TextStyle(fontSize: 9))]),
-            icon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.home, size: 18), Text('홈', style: TextStyle(fontSize: 9))]),
+            selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.home, size: 18, color: Colors.white),
+              Text('홈', style: TextStyle(fontSize: 9, color: Colors.white)),
+            ]),
+            icon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.home, size: 18, color: Colors.white),
+              Text('홈', style: TextStyle(fontSize: 9, color: Colors.white)),
+            ]),
           ),
           NavigationDestination(
             label: '',
-            selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.search, size: 18), Text('검색', style: TextStyle(fontSize: 9))]),
-            icon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.search, size: 18), Text('검색', style: TextStyle(fontSize: 9))]),
+            selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.search, size: 18, color: Colors.white),
+              Text('검색', style: TextStyle(fontSize: 9, color: Colors.white)),
+            ]),
+            icon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.search, size: 18, color: Colors.white),
+              Text('검색', style: TextStyle(fontSize: 9, color: Colors.white)),
+            ]),
           ),
           NavigationDestination(
             label: '',
-            selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.save_alt, size: 18), Text('저장한 콘텐츠 목록', style: TextStyle(fontSize: 9))]),
-            icon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.save_alt, size: 18), Text('저장한 콘텐츠 목록', style: TextStyle(fontSize: 9))]),
+            selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.save_alt, size: 18, color: Colors.white),
+              Text('저장한 콘텐츠 목록', style: TextStyle(fontSize: 9, color: Colors.white)),
+            ]),
+            icon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.save_alt, size: 18, color: Colors.white),
+              Text('저장한 콘텐츠 목록', style: TextStyle(fontSize: 9, color: Colors.white)),
+            ]),
           ),
           NavigationDestination(
             label: '',
-            selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.list, size: 18), Text('더보기', style: TextStyle(fontSize: 9))]),
-            icon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.list, size: 18), Text('더보기', style: TextStyle(fontSize: 9))]),
+            selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.list, size: 18, color: Colors.white),
+              Text('더보기', style: TextStyle(fontSize: 9, color: Colors.white)),
+            ]),
+            icon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.list, size: 18, color: Colors.white),
+              Text('더보기', style: TextStyle(fontSize: 9, color: Colors.white)),
+            ]),
           ),
         ],
       ),
