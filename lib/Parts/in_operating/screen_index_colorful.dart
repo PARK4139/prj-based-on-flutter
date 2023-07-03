@@ -21,7 +21,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   String index_name_netflixx = '넷플리쓰';
   String index_name_carrot_markket = '당근마껫';
   String index_name_pomodoro = '포모도로';
-  String index_name_digital_clock = '디지털 시계';
+  String index_name_digital_clock = '시계';
   String index_name_area_calculator = '평 계산기';
   String index_name_flutter_samples = '플러터 샘플';
   String index_name_ = '';
