@@ -213,7 +213,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               icon: Column(
                 children: [
                   Transform.scale(
-                    scale: 1.1,
+                    scale: 2.2,
                     child: Image.asset('assets/app_carrot_market_logo.png', height: 25),
                   ),
                   Transform.scale(
