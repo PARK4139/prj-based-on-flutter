@@ -1708,12 +1708,17 @@ def push_to_remote_repository():
         print('auto git add fail')
         os.system('color 04')
     print('__________________________________________________________ auto git add.log ' + to_time_style('0') + ' e')
+    #commit_ment = to_time_style('0')
+    #commit_ment = "auto pushed"
+    # commit_ment = "auto pushed at " + to_time_style('0')
     # commit_ment = to_time_style('0')
     # commit_ment = "auto pushed"
     # commit_ment = "auto pushed at " + to_time_style('0')
     # commit_ment = "테스트 커밋"
     # commit_ment = "프로젝트 이니셜 커밋"
     commit_ment = "플러터 안드로이드 앱들 업데이트 PHASE 1"
+    # commit_ment = "플러터 안드로이드 앱들 업데이트 PHASE 2"
+    # commit_ment = "플러터 안드로이드 앱들 업데이트 PHASE 3"
     # commit_ment = "당근마껫 UI 업데이트"#월
     # commit_ment = "당근마껫 페이지 추가제작"#화
     # commit_ment = "당근마껫 페이지 추가제작"#수
@@ -1761,12 +1766,20 @@ print("__________________________________________________________ opening log e"
 print("__________________________________________________________ s")
 import random
 while True:
-    push_to_remote_repository()
-    # tmp = random.randint(0, 5) # FOR 확신하고 빠르게 GIT PUSH
-    tmp = random.randint(400, 600) # FOR GIT HUB CONTRIBUTION COUNT INCREASEMENT
-    print("RPA works again in "+str(tmp)+" seconds...")
+    try:
+        push_to_remote_repository()
+    except Exception as e:
+        print('______________________________________________________  trouble shooting info s')
+        traceback.print_exc(file=sys.stdout)
+        print(e)
+        print('______________________________________________________  trouble shooting info e')
+        AI_speak('깃허브에 푸쉬를 시도 중 익셉션이 발생하였습니다')
+        AI_speak('잠시 뒤에 깃허브에 푸쉬를 재시도합니다.')
+    # random_seconds = random.randint(0, 5) # FOR 확신하고 빠르게 GIT PUSH
+    random_seconds = random.randint(400, 600) # FOR GIT HUB CONTRIBUTION COUNT INCREASEMENT
+    print("RPA works again in " + str(random_seconds) + " seconds...")
     os.system("echo .>> foo.txt")
-    time.sleep(tmp)
+    time.sleep(random_seconds)
 
 
 # color_codes=[
