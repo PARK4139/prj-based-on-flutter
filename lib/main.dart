@@ -73,7 +73,6 @@ class AppState extends State<App> {
     return Builder(builder: (context) {
       if (/*개발 집중 모드*/ isDevelopmentConcentrationMode == true) {
         return MaterialApp(home: ScreenNetFlix());
-        // return MaterialApp(home: ScreenNetflixHomeSub(movies: movies_dummy));
       } else {
         return MaterialApp(
           debugShowCheckedModeBanner: isDarkMode ? true : false,
@@ -135,9 +134,9 @@ class AppState extends State<App> {
               Builder(
                 builder: (context) {
                   if (isDarkMode == false) {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode,)));
+                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
                   } else {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode,)));
+                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode:  isDarkMode)));
                   }
                   return ghost_wiget;
                 },
@@ -165,7 +164,7 @@ class AppState extends State<App> {
       isCoolDownMode = false; //DEVELOPMENT
       isChrismasMode = false; //DEVELOPMENT
       isHappyBirthDayMode = false; //DEVELOPMENT
-      isDevelopmentConcentrationMode = true; /*false*/ /*true*/
+      isDevelopmentConcentrationMode = false; /*false*/ /*true*/
     });
   }
 

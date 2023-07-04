@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_area_calculator.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_carrot_market.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_checklist.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_digital_clock.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_pomodo.dart';
 
 import 'screen_area_calculation_ver_orange.dart';
 import 'screen_netflix.dart';
@@ -10,7 +13,7 @@ import 'screen_samples.dart';
 class Screen_index_colorful extends StatefulWidget {
   bool isDarkMode;
 
-  Screen_index_colorful({super.key, required this.isDarkMode});
+  Screen_index_colorful({Key? key, required this.isDarkMode}) : super(key: key);
 
   @override
   State<Screen_index_colorful> createState() => _Screen_index_colorfulState();
@@ -21,11 +24,11 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
 
   String index_name_netflixx = '넷플리쓰';
   String index_name_carrot_markket = '당근마껫';
-  String index_name_pomodoro = '포모도로';
+  String index_name_pomodoro = '프로모도';
   String index_name_digital_clock = '시계';
-  String index_name_area_calculator = '평 계산기';
+  String index_name_area_calculator = '평형 계산기';
   String index_name_flutter_samples = '플러터 샘플';
-  String index_name_ = '';
+  String index_name_plan_excuter='계획집행기';
 
   String indexNameCutter(String indexName) {
     String result = '';
@@ -46,13 +49,8 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
 
   @override
   Widget build(BuildContext context) {
-    // bool isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDevelopingMode;
-    // print(isDevelopingMode.toString());
-    // .. 왜 부모인 main 에서 isDevelopingMode 를 못가져오는지 모르겠다..
-
     return Scaffold(
-      // backgroundColor: Colors.white,
-      backgroundColor: widget.isDarkMode ? Colors.black54 : Colors.white, //실패
+      backgroundColor: widget.isDarkMode ? Colors.black87 : Colors.white,
       body: GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 5, mainAxisSpacing: 10),
         children: <Widget>[
@@ -73,17 +71,17 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Screen_pomodo_ver_pink(),
+                    builder: (context) => const Screen_pomodo(),
                   ),
                 );
               },
               icon: Column(
                 children: [
-                  Transform.scale(scale: 1.8, child: const Icon(Icons.timer_outlined)),
+                  Transform.scale(scale: 1.8, child: Transform.scale( scale: 0.9, child: const Icon(Icons.timer_outlined))),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 9),
+                      offset: Offset(0, 10),
                       child: Text(
                         indexNameCutter(index_name_pomodoro),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
@@ -92,7 +90,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                   ),
                 ],
               ),
-              color: Colors.pinkAccent,
+              color: Colors.blueAccent,
               tooltip: index_name_pomodoro.toUpperCase(),
               splashColor: Colors.blue,
               focusColor: Colors.pinkAccent,
@@ -108,7 +106,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Screen_area_calculation_ver_orange_android(),
+                    builder: (context) => const Screen_area_calculator(),
                   ),
                 );
               },
@@ -118,7 +116,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 9),
+                      offset: Offset(0, 10),
                       child: Text(
                         indexNameCutter(index_name_area_calculator),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
@@ -127,7 +125,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                   ),
                 ],
               ),
-              color: Colors.orangeAccent,
+              color: Colors.blueAccent,
               tooltip: index_name_area_calculator.toUpperCase(),
               splashColor: Colors.blue,
               focusColor: Colors.pinkAccent,
@@ -153,7 +151,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 9),
+                      offset: Offset(0, 10),
                       child: Text(
                         indexNameCutter(index_name_flutter_samples),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
@@ -188,9 +186,9 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 9),
+                      offset: Offset(0, 10),
                       child: Text(
-                        indexNameCutter(index_name_digital_clock).toUpperCase(),
+                        indexNameCutter(index_name_digital_clock),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -220,13 +218,21 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               icon: Column(
                 children: [
                   Transform.scale(
-                    scale: 1.8,
-                    child: Image.asset('assets/app_carrot_market_logo.png', height: 25),
+                    scale: 2.2,
+                    child: Container(
+                      width: 20,
+                      clipBehavior: Clip.hardEdge,//borderRadius: BorderRadius.circular(100), 에 의존적이다.
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),//clipBehavior: Clip.hardEdge, 에 의존적이다.
+                        color: Colors.white,
+                      ),
+                      child: Transform.scale(scale: 0.8,child: Image.asset('assets/app_carrot_market_logo.png', height: 20)),
+                    ),
                   ),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 9),
+                      offset: Offset(0, 10),
                       child: Text(
                         indexNameCutter(index_name_carrot_markket),
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
@@ -243,7 +249,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             ),
           ],
         ),
-        Column(
+        /*넷플릿쓰*/Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
@@ -258,13 +264,19 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               icon: Column(
                 children: [
                   Transform.scale(
-                    scale: 1.8,
-                    child: Image.asset('assets/app_netflix_logo.png', height: 25),
+                    scale: 2.2,
+                    child: Container(
+                        clipBehavior: Clip.hardEdge,//borderRadius: BorderRadius.circular(100), 에 의존적이다.
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),//clipBehavior: Clip.hardEdge, 에 의존적이다.
+                          color: Colors.black,
+                        ),
+                        child: Transform.scale(scale: 1.3, child: Image.asset('assets/app_netflix_logo.png', height: 20,width: 20))),
                   ),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
-                      offset: Offset(0, 9),
+                      offset: Offset(0, 10),
                       child: Text(indexNameCutter(index_name_netflixx), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
                     ),
                   ),
@@ -272,6 +284,47 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               ),
               color: Colors.purpleAccent,
               tooltip: index_name_netflixx.toUpperCase(),
+              splashColor: Colors.blue,
+              focusColor: Colors.pinkAccent,
+              disabledColor: Colors.purpleAccent,
+            ),
+          ],
+        ),
+        /*계획집행기*/Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Screen_plan_excuter(),
+                  ),
+                );
+              },
+              icon: Column(
+                children: [
+                  Transform.scale(
+                    scale: 2.2,
+                    child: Container(
+                        clipBehavior: Clip.hardEdge,//borderRadius: BorderRadius.circular(100), 에 의존적이다.
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),//clipBehavior: Clip.hardEdge, 에 의존적이다.
+                          color: Colors.white,
+                        ),
+                        child: Transform.scale(scale: 0.8, child: Icon(Icons.rule_outlined))),
+                  ),
+                  Transform.scale(
+                    scale: 2.2,
+                    child: Transform.translate(
+                      offset: Offset(0, 10),
+                      child: Text(indexNameCutter(index_name_plan_excuter), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
+                    ),
+                  ),
+                ],
+              ),
+              color: Colors.blueAccent,
+              tooltip: index_name_plan_excuter.toUpperCase(),
               splashColor: Colors.blue,
               focusColor: Colors.pinkAccent,
               disabledColor: Colors.purpleAccent,

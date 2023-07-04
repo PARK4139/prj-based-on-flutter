@@ -88,7 +88,7 @@ class _Screen_area_calculatorState extends State<Screen_area_calculator> {
                           controller: textEditingController,
                           //initialValue: '', // TextFormField에서 initialValue 설정하면 textEditingController 사용불가.
                           cursorColor: Colors.blueAccent,
-                          style: TextStyle(color: Rainbow_color),
+                          style: TextStyle(color: Rainbow_color,fontSize: 30),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               labelText: isUnitSquaredMeter ? '㎡' : '평',
@@ -96,8 +96,8 @@ class _Screen_area_calculatorState extends State<Screen_area_calculator> {
                               labelStyle: TextStyle(
                                 color: isUnitSquaredMeter ? Colors.deepOrangeAccent : Colors.lightGreenAccent,
                               ),
-                              hintText: isUnitSquaredMeter ? 'ex )  3.3 / 58' : 'ex )  1 / 5 / 17 / 32 / 48',
-                              hintStyle: TextStyle(color: Colors.blue.shade50),
+                              hintText: isUnitSquaredMeter ? 'ex )  3.3 / 58' : 'ex )  1 / 5 / 17 / 32',
+                              hintStyle: TextStyle(color: Colors.grey),
                               fillColor: Colors.blueGrey,
                               focusColor: Colors.blueAccent,
                               hoverColor: Colors.blueAccent,
