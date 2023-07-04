@@ -73,7 +73,7 @@ class _Button_to_playState extends State<Button_to_play> {
                   widget.onPressed();
                 },
                 icon: Container(
-                  child: Column(
+                  child: const Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,7 +109,7 @@ List<Widget> IndicatorMaker(List list, int _currentPage) {
       Container(
         width: 8,
         height: 8,
-        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
         decoration: BoxDecoration(shape: BoxShape.circle, color: _currentPage == i ? Color.fromRGBO(255, 255, 255, 0.9) : Color.fromRGBO(255, 255, 255, 0.4)),
       ),
     );

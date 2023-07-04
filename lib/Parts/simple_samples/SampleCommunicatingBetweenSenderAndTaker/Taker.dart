@@ -8,7 +8,6 @@ class Taker extends StatefulWidget {
 }
 
 class _TakerState extends State<Taker> {
-  // GlobalKey<_GiverState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {

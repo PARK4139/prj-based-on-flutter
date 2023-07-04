@@ -19,7 +19,7 @@ class WebToon {
 }
 
 /*api & model connection*/
-class ApiService {
+class webtoonApiService {
   static final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
   static final String today = "today";
 

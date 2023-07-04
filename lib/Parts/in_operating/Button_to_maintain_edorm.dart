@@ -1,7 +1,7 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
-import '../in_operating/my_functions.dart';
+import '../in_operating/my_superworkers.dart';
 import 'button_to_move_button_name_into_clipboard.dart';
 import 'iterable_structure_maker.dart';
 
@@ -35,7 +35,7 @@ class Button_to_maintain_dorm extends StatefulWidget {
 class _Button_to_maintain_dormState extends State<Button_to_maintain_dorm> {
   String items_to_copy = '-';
   late Map<String, dynamic> Stamps;
-  var helper = MyFunctions();
+  var helper = My_superworkers();
   int ClickCounter = 0;
   late List<String> items;
 

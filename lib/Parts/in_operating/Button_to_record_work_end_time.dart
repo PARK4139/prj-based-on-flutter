@@ -3,18 +3,19 @@ import 'dart:async';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../in_operating/my_functions.dart';
+import '../in_operating/my_superworkers.dart';
 import 'button_to_move_button_name_into_clipboard.dart';
 import 'iterable_structure_maker.dart';
 
 class Button_to_record_work_end_time extends StatefulWidget {
   String text;
-  final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
+  final Color color;
+  final FontWeight font_weight;
+  final double font_size;
+  final Color background_color;
   final double padding_vertical;
   final double padding_horizontal;
   final BorderRadius? border_radius;
@@ -38,7 +39,7 @@ class Button_to_record_work_end_time extends StatefulWidget {
 class _Button_to_record_work_end_timeState extends State<Button_to_record_work_end_time> {
   String items_to_copy = '-';
   late Map<String, dynamic> Stamps;
-  var helper = MyFunctions();
+  var helper = My_superworkers();
   int ClickCounter = 0;
   late List<String> items;
 
@@ -48,7 +49,14 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
 
   var button_title;
 
-  var isCheckBoxIconPressed = false;
+
+
+ 
+  final LocalStorage storage = LocalStorage('foo.foo');
+
+ 
+  late bool isChecked;
+
 
   var items_length;
 
@@ -57,6 +65,8 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
     super.initState();
     button_title = widget.text;
     init_states_of_this_button();
+   
+    initIsChecked();
     //currentWindow  vs   newTab  vs  newWindow
 
     //currentWindow  vs   newTab
@@ -109,6 +119,7 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
                 ),
                 onPressed: () {
                   process_by_special_ordered_by_me();
+
                 }),
           ),
           Container(
@@ -155,16 +166,8 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
             ),
           ),
           IconButton(
-            onPressed: () {
-              setState(() {
-                if (isCheckBoxIconPressed == true) {
-                  isCheckBoxIconPressed = false;
-                } else {
-                  isCheckBoxIconPressed = true;
-                }
-              });
-            },
-            icon: isCheckBoxIconPressed == true
+            onPressed: onToogleIsChecked,
+            icon: isChecked == true
                 ? Icon(
                     // Icons.check,
                     Icons.check_box_outlined,
@@ -223,49 +226,6 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
     });
   }
 
-  Future<void> runUrl({
-    required String url,
-    String? mode,
-  }) async {
-    if (!await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication)) {
-      throw 'Could not launch $url';
-    }
-  }
-
-  bool _onKey(KeyEvent event, [bool isCtrlPressed = false, bool isVPressed = false, bool isCtrlVPressed = false]) {
-    //keyboard infinite loop  입니다.  ctrl v 를 눌러야만 나갈 수 있습니다.
-    var key = event.logicalKey.keyLabel;
-    if (event is KeyDownEvent) {
-      // print("Key down: $key");
-    } else if (event is KeyUpEvent) {
-      // print("Key up: $key");
-    } else if (event is KeyRepeatEvent) {
-      // print("Key repeat: $key");
-    }
-    print(event.logicalKey.keyLabel);
-    if (event.logicalKey.keyLabel.contains('Control Left')) {
-      isCtrlPressed = true;
-    }
-    print(event.logicalKey.keyLabel);
-    if (event.logicalKey.keyLabel.contains('V')) {
-      isVPressed = true;
-    }
-    print(event.logicalKey.keyLabel);
-    if (isCtrlPressed == true && isVPressed == true) {
-      isCtrlVPressed = true;
-    } else {
-      // isCtrlVPressed = false;
-      // isCtrlPressed = false;
-      // isVPressed = false;
-    }
-    // print(isCtrlVPressed);
-
-    if (isCtrlVPressed == true) {
-      print('조합키로서 ctrl V 눌렸습니다.');
-    }
-
-    return false;
-  }
 
   void init_states_of_this_button() {
     reload_items();
@@ -287,5 +247,29 @@ class _Button_to_record_work_end_timeState extends State<Button_to_record_work_e
     items_length = items.length;
     items_snapshot_at_start = []..addAll(items); //이것도 items 를 참조하는 것 때문에 문제가 되는 것 같기도함..
     items_iterable = IterableStringListMaker(items: items);
+  }
+
+ 
+  void onToogleIsChecked() {
+    setState(() {
+      if (isChecked == true) {
+        isChecked = false;
+      } else {
+        isChecked = true;
+      }
+      storage.setItem('isChecked202307041310', isChecked);
+    });
+  }
+
+ 
+  void initIsChecked() {
+    setState(() {
+      if (storage.getItem('isChecked202307041310') == null) {
+        isChecked = false;
+        storage.setItem('isChecked202307041310', isChecked);
+      } else {
+        isChecked = storage.getItem('isChecked202307041310');
+      }
+    });
   }
 }

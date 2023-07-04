@@ -7,7 +7,7 @@ import 'button_to_make_multi_case.dart';
 import 'button_to_move_button_name_into_clipboard.dart';
 import 'button_to_snake_case.dart';
 import 'buttons_for_kakaotalk.dart';
-import 'my_functions.dart';
+import 'my_superworkers.dart';
 import 'rainbow_text.dart';
 
 class Screen_to_control_text extends StatefulWidget {

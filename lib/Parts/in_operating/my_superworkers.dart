@@ -15,7 +15,7 @@ enum study_level { begginer, intermediate, advanced }
 
 enum programming_proficiency_level { begginer, intermediate, pro }
 
-class MyFunctions {
+class My_superworkers {
   void pause() {
     exit(0); //이 코드는 앱을 종료하고 시스템으로 돌아갑니다.
     SystemNavigator.pop(); //이 코드는 앱을 백그라운드에서 종료하고 시스템으로 돌아갑니다.
@@ -266,10 +266,10 @@ class MyFunctions {
     //   "1",
     // ];
 
-    List<String> results_removed = MyFunctions().get_lines_that_removed_about_specific_texts(origin: texts_origin, texts_that_i_want_to_contain: texts_to_remove);
+    List<String> results_removed = My_superworkers().get_lines_that_removed_about_specific_texts(origin: texts_origin, texts_that_i_want_to_contain: texts_to_remove);
     // print(results_removed.toString());//DEVELOPMENT
 
-    List<String> results_reindented = MyFunctions().get_texts_that_reindeted_at_specific_text(origin: results_removed, specific_text: texts_to_reindent);
+    List<String> results_reindented = My_superworkers().get_texts_that_reindeted_at_specific_text(origin: results_removed, specific_text: texts_to_reindent);
     // print(results_reindented.toString()); //DEVELOPMENT
 
     // List<String> results_contained = MyFunctions().get_lines_that_contain_about_specific_texts(origin: results_reindented, texts_that_i_want_to_contain: texts_to_contain);

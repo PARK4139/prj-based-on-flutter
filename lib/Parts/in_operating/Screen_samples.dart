@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../simple_samples/SampleButtonGeneral.dart';
-import '../simple_samples/SampleCheckBox.dart';
+import '../simple_samples/SampleCheckBoxLocalStorage.dart';
 import '../simple_samples/SamplePopUpAlert.dart';
 import '../simple_samples/SamplePopUpForm.dart';
 import '../simple_samples/SampleToggle.dart';
-import 'my_functions.dart';
+import 'my_superworkers.dart';
 
 class Screen_samples extends StatefulWidget {
   const Screen_samples({Key? key}) : super(key: key);

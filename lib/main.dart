@@ -136,7 +136,7 @@ class AppState extends State<App> {
                   if (isDarkMode == false) {
                     ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
                   } else {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode:  isDarkMode)));
+                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
                   }
                   return ghost_wiget;
                 },

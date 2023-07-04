@@ -1,7 +1,5 @@
 import 'package:clipboard/clipboard.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:timer_builder/timer_builder.dart';
 
 //처음에 클립보드의 값이 버튼명으로 저장이 되고 그 이후로 클릭을 하면 클립보드로 값이 저장되는 클립보드의 내용을 버튼명에 바인딩하는 버튼
 class Button_that_user_click_save_button_name_into_clipboard_after_saving_cliped_text_as_button_name_by_first_user_click extends StatefulWidget {

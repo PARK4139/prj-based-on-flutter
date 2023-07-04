@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'button_to_move_button_name_into_clipboard.dart';
 import 'iterable_structure_maker.dart';
-import 'my_functions.dart';
+import 'my_superworkers.dart';
 
 class Multi_case_maker extends StatefulWidget {
   String text;
@@ -34,7 +34,7 @@ class Multi_case_maker extends StatefulWidget {
 class _Multi_case_makerState extends State<Multi_case_maker> {
   String items_to_copy = '-';
   late Map<String, dynamic> Stamps;
-  var helper = MyFunctions();
+  var helper = My_superworkers();
   int ClickCounter = 0;
   late List<dynamic> items;
 

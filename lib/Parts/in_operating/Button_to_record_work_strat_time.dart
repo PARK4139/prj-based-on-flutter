@@ -3,21 +3,22 @@ import 'dart:async';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../in_operating/my_functions.dart';
+import '../in_operating/my_superworkers.dart';
 import 'button_to_move_button_name_into_clipboard.dart';
 import 'iterable_structure_maker.dart';
 
 class Button_to_record_work_strat_time extends StatefulWidget {
   String text;
-  final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
+  final Color color;
+  final FontWeight font_weight;
+  final double font_size;
+  final Color background_color;
   final double padding_vertical;
   final double padding_horizontal;
-  final BorderRadius? border_radius;
+  final BorderRadius border_radius;
 
   Button_to_record_work_strat_time({
     Key? key,
@@ -38,7 +39,7 @@ class Button_to_record_work_strat_time extends StatefulWidget {
 class _Button_to_record_work_strat_timeState extends State<Button_to_record_work_strat_time> {
   String items_to_copy = '-';
   late Map<String, dynamic> Stamps;
-  var helper = MyFunctions();
+  var helper = My_superworkers();
   int ClickCounter = 0;
   late List<String> items;
 
@@ -47,8 +48,11 @@ class _Button_to_record_work_strat_timeState extends State<Button_to_record_work
   var items_snapshot_at_start;
 
   var button_title;
+  
+  final LocalStorage storage = LocalStorage('foo.foo');
 
-  var isCheckBoxIconPressed = false;
+  
+  late bool isChecked;
 
   late int items_length;
 
@@ -57,6 +61,8 @@ class _Button_to_record_work_strat_timeState extends State<Button_to_record_work
     super.initState();
     button_title = widget.text;
     init_states_of_this_button();
+    
+    initIsChecked();
     //currentWindow  vs   newTab  vs  newWindow
 
     //currentWindow  vs   newTab
@@ -94,7 +100,16 @@ class _Button_to_record_work_strat_timeState extends State<Button_to_record_work
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: widget.background_color,
+        borderRadius: widget.border_radius,
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.padding_horizontal,
+        vertical: widget.padding_vertical,
+      ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
             // width: 300,
@@ -157,22 +172,14 @@ class _Button_to_record_work_strat_timeState extends State<Button_to_record_work
             ),
           ),
           IconButton(
-            onPressed: () {
-              setState(() {
-                if (isCheckBoxIconPressed == true) {
-                  isCheckBoxIconPressed = false;
-                } else {
-                  isCheckBoxIconPressed = true;
-                }
-              });
-            },
-            icon: isCheckBoxIconPressed == true
-                ? Icon(
+            onPressed:  onToogleIsChecked,
+            icon: isChecked == true
+                ? const Icon(
                     // Icons.check,
                     Icons.check_box_outlined,
                     color: Colors.lightBlueAccent, //상큼
                   )
-                : Icon(
+                : const Icon(
                     Icons.check_box_outline_blank,
                     color: Colors.lightBlueAccent, //상큼
                   ),
@@ -183,15 +190,6 @@ class _Button_to_record_work_strat_timeState extends State<Button_to_record_work
             //         ),
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.end,
-      ),
-      decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
       ),
     );
   }
@@ -289,5 +287,29 @@ class _Button_to_record_work_strat_timeState extends State<Button_to_record_work
     items_length = items.length;
     items_snapshot_at_start = []..addAll(items); //이것도 items 를 참조하는 것 때문에 문제가 되는 것 같기도함..
     items_iterable = IterableStringListMaker(items: items);
+  }
+
+  
+  void onToogleIsChecked() {
+    setState(() {
+      if (isChecked == true) {
+        isChecked = false;
+      } else {
+        isChecked = true;
+      }
+      storage.setItem('isChecked202307041308', isChecked);
+    });
+  }
+
+  
+  void initIsChecked() {
+    setState(() {
+      if (storage.getItem('isChecked202307041308') == null) {
+        isChecked = false;
+        storage.setItem('isChecked202307041308', isChecked);
+      } else {
+        isChecked = storage.getItem('isChecked202307041308');
+      }
+    });
   }
 }

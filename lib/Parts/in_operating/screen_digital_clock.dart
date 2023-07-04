@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'my_functions.dart';
+import 'my_superworkers.dart';
 
 class Screen_digital_clock extends StatefulWidget {
   const Screen_digital_clock({Key? key}) : super(key: key);
@@ -48,6 +48,13 @@ class _Screen_clock_subState extends State<Screen_clock_sub> {
   void initState() {
     super.initState();
     timer = Timer.periodic(Duration(seconds: 1), onTick);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    timer.cancel();
   }
 
   @override

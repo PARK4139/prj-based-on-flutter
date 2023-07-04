@@ -16,7 +16,7 @@ class _Screen_webtoon_v1State extends State<Screen_webtoon_v1> {
 
   void initWebToons() async {
     setState(() async {
-      webtoons = await ApiService.getTodaysToons(); //  ApiService.getTodaysToons() 가 async method 이기 때문에 await 를 붙여야 한다
+      webtoons = await webtoonApiService.getTodaysToons(); //  ApiService.getTodaysToons() 가 async method 이기 때문에 await 를 붙여야 한다
       isLoading = false;
     });
   }
@@ -31,25 +31,21 @@ class _Screen_webtoon_v1State extends State<Screen_webtoon_v1> {
   Widget build(BuildContext context) {
     print(webtoons);
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      // backgroundColor: Colors.blueAccent,
       body: Column(
         children: [
-          Flexible(
-            flex: 1,
-            child: Container(
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [for (var webtoon in webtoons) Text(webtoon.thumb)],
-              ),
+          Container(
+            height: 150,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [for (var webtoon in webtoons) Text(webtoon.thumb,style: TextStyle(color: Colors.black),)],
             ),
           ),
-          Flexible(
-            flex: 3,
-            child: Container(
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [for (var webtoon in webtoons) Text(webtoon.title)],
-              ),
+          Container(
+            height: 150,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [for (var webtoon in webtoons) Text(webtoon.title,style: TextStyle(color: Colors.black),)],
             ),
           ),
         ],

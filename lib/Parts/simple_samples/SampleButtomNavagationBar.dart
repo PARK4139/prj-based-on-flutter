@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'SampleCheckBox.dart';
+import 'SampleCheckBoxLocalStorage.dart';
 
 ///  [NavigationBar] with nested [Navigator] destinations.
 class SampleButtomNavagationBar extends StatefulWidget {

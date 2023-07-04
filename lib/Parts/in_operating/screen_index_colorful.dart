@@ -4,10 +4,10 @@ import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_carrot_m
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_checklist.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_digital_clock.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_pomodo.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_webtoon_v1.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_webtoon_v2.dart';
 
-import 'screen_area_calculation_ver_orange.dart';
 import 'screen_netflix.dart';
-import 'screen_pomodo_version_pink.dart';
 import 'screen_samples.dart';
 
 class Screen_index_colorful extends StatefulWidget {
@@ -28,7 +28,8 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   String index_name_digital_clock = '시계';
   String index_name_area_calculator = '평형 계산기';
   String index_name_flutter_samples = '플러터 샘플';
-  String index_name_plan_excuter='계획집행기';
+  String index_name_plan_excuter = '계획집행기';
+  String index_name_today_webtoon = '오늘의 웹툰';
 
   String indexNameCutter(String indexName) {
     String result = '';
@@ -77,7 +78,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               },
               icon: Column(
                 children: [
-                  Transform.scale(scale: 1.8, child: Transform.scale( scale: 0.9, child: const Icon(Icons.timer_outlined))),
+                  Transform.scale(scale: 1.8, child: Transform.scale(scale: 0.9, child: const Icon(Icons.timer_outlined))),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
@@ -168,7 +169,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             ),
           ],
         ),
-        Column(
+        /*시계*/ Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
@@ -203,7 +204,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             ),
           ],
         ),
-        Column(
+        /*당근마껫*/ Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
@@ -221,12 +222,12 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                     scale: 2.2,
                     child: Container(
                       width: 20,
-                      clipBehavior: Clip.hardEdge,//borderRadius: BorderRadius.circular(100), 에 의존적이다.
+                      clipBehavior: Clip.hardEdge, //borderRadius: BorderRadius.circular(100), 에 의존적이다.
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),//clipBehavior: Clip.hardEdge, 에 의존적이다.
+                        borderRadius: BorderRadius.circular(5), //clipBehavior: Clip.hardEdge, 에 의존적이다.
                         color: Colors.white,
                       ),
-                      child: Transform.scale(scale: 0.8,child: Image.asset('assets/app_carrot_market_logo.png', height: 20)),
+                      child: Transform.scale(scale: 0.8, child: Image.asset('assets/app_carrot_market_logo.png', height: 20)),
                     ),
                   ),
                   Transform.scale(
@@ -249,7 +250,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             ),
           ],
         ),
-        /*넷플릿쓰*/Column(
+        /*넷플릿쓰*/ Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
@@ -266,12 +267,12 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                   Transform.scale(
                     scale: 2.2,
                     child: Container(
-                        clipBehavior: Clip.hardEdge,//borderRadius: BorderRadius.circular(100), 에 의존적이다.
+                        clipBehavior: Clip.hardEdge, //borderRadius: BorderRadius.circular(100), 에 의존적이다.
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),//clipBehavior: Clip.hardEdge, 에 의존적이다.
+                          borderRadius: BorderRadius.circular(5), //clipBehavior: Clip.hardEdge, 에 의존적이다.
                           color: Colors.black,
                         ),
-                        child: Transform.scale(scale: 1.3, child: Image.asset('assets/app_netflix_logo.png', height: 20,width: 20))),
+                        child: Transform.scale(scale: 1.3, child: Image.asset('assets/app_netflix_logo.png', height: 20, width: 20))),
                   ),
                   Transform.scale(
                     scale: 2.2,
@@ -290,7 +291,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             ),
           ],
         ),
-        /*계획집행기*/Column(
+        /*계획집행기*/ Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
@@ -305,11 +306,11 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               icon: Column(
                 children: [
                   Transform.scale(
-                    scale: 2.2,
+                    scale: 1.8,
                     child: Container(
-                        clipBehavior: Clip.hardEdge,//borderRadius: BorderRadius.circular(100), 에 의존적이다.
+                        clipBehavior: Clip.hardEdge, //borderRadius: BorderRadius.circular(100), 에 의존적이다.
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),//clipBehavior: Clip.hardEdge, 에 의존적이다.
+                          borderRadius: BorderRadius.circular(5), //clipBehavior: Clip.hardEdge, 에 의존적이다.
                           color: Colors.white,
                         ),
                         child: Transform.scale(scale: 0.8, child: Icon(Icons.rule_outlined))),
@@ -319,6 +320,48 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                     child: Transform.translate(
                       offset: Offset(0, 10),
                       child: Text(indexNameCutter(index_name_plan_excuter), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
+                    ),
+                  ),
+                ],
+              ),
+              color: Colors.blueAccent,
+              tooltip: index_name_plan_excuter.toUpperCase(),
+              splashColor: Colors.blue,
+              focusColor: Colors.pinkAccent,
+              disabledColor: Colors.purpleAccent,
+            ),
+          ],
+        ),/*오늘의 웹툰*/ Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>  Screen_webtoon_v2(),
+                  ),
+                );
+              },
+              icon: Column(
+                children: [
+                  Transform.scale(
+                    scale: 2.1,
+                    child: Container(
+                        clipBehavior: Clip.hardEdge, //borderRadius: BorderRadius.circular(100), 에 의존적이다.
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5), //clipBehavior: Clip.hardEdge, 에 의존적이다.
+                          color: Colors.white,
+                        ),
+                      child: Transform.scale(scale: 0.8, child: Image.asset('assets/app_webtoon_logo.jpg', height: 20)),
+                  ),
+                  ),
+                  Transform.scale(
+                    scale: 2.2,
+                    child: Transform.translate(
+                      offset: Offset(0, 10),
+                      child: Text(indexNameCutter(index_name_today_webtoon  ), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
+
                     ),
                   ),
                 ],

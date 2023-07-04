@@ -4,21 +4,22 @@ import 'package:clipboard/clipboard.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../in_operating/my_functions.dart';
+import '../in_operating/my_superworkers.dart';
 import 'button_to_move_button_name_into_clipboard.dart';
 import 'iterable_structure_maker.dart';
 
 class Button_to_submit_daily_report_at_bizmeka extends StatefulWidget {
   String text;
-  final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
+  final Color color;
+  final FontWeight font_weight;
+  final double font_size;
+  final Color background_color;
   final double padding_vertical;
   final double padding_horizontal;
-  final BorderRadius? border_radius;
+  final BorderRadius border_radius;
 
   Button_to_submit_daily_report_at_bizmeka({
     Key? key,
@@ -39,17 +40,18 @@ class Button_to_submit_daily_report_at_bizmeka extends StatefulWidget {
 class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_submit_daily_report_at_bizmeka> {
   String items_to_copy = '-';
   late Map<String, dynamic> Stamps;
-  var helper = MyFunctions();
+  var helper = My_superworkers();
   int ClickCounter = 0;
   late List<String> items;
 
-  // late var naturalNumbers;
   late var items_iterable;
   var items_snapshot_at_start;
 
   var button_title;
 
-  var isCheckBoxIconPressed = false;
+  final LocalStorage storage = LocalStorage('foo.foo');
+
+  late bool isChecked;
 
   late var items_length;
 
@@ -58,38 +60,8 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
     super.initState();
     button_title = widget.text;
     init_states_of_this_button();
-    //currentWindow  vs   newTab  vs  newWindow
 
-    //currentWindow  vs   newTab
-    //way1
-    // String option_blank_or_self = '_blank'; // _self
-    // js.context.callMethod('open', [url.toString(), option_blank_or_self]);
-    //way2
-    // html.window.open(url.toString(), 'new tab');
-    //way2-1
-    // html.window.location.href = url.toString();
-    //way3
-    // launch(url.toString(), isNewTab: true);
-
-    //newTab
-    // runUrl(url:URL); //이것도 안되네...기존 login 정보 접근 불가.
-
-    //newWindow
-
-    // html.window.onKeyPress.listen((html.KeyboardEvent e) {
-    //   print(e.charCode.toString() + " " + new String.fromCharCode(e.charCode));
-    // });
-
-    // ServicesBinding.instance.keyboard.addHandler(_onKey);
-
-    // naturalNumbers = NaturalNumbers(EndLimit: 100);
-
-    // print(items_iterable.All().toString());
-    // items_iterable.next();
-    // items_iterable.next();
-    // items_iterable.next();
-    // print(items_iterable.first_at_born().toString());
-    // print(items_iterable.first_at_born());
+    initIsChecked();
   }
 
   @override
@@ -98,7 +70,6 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
       child: Row(
         children: [
           Container(
-            // width: 300,
             child: TextButton(
                 child: Text(
                   widget.text.length <= 60 ? widget.text + ' ' + ClickCounter.toString() + '/' + items_length.toString() : widget.text.substring(0, 60) + ' ' + ClickCounter.toString() + '/' + items_length.toString(),
@@ -115,11 +86,12 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
           Container(
             width: 40,
             child: IconButton(
-              icon: Icon(Icons.announcement_rounded), color: Colors.lightBlueAccent, //상큼
+              icon: Icon(Icons.announcement_rounded),
+              color: Colors.lightBlueAccent,
               onPressed: () {
                 showDialog<void>(
                   context: context,
-                  barrierDismissible: false, // user must tap button!
+                  barrierDismissible: false,
                   builder: (BuildContext context) {
                     return AlertDialog(
                       backgroundColor: Colors.black,
@@ -148,37 +120,20 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
                     );
                   },
                 );
-                // if (_formKey.currentState.validate()) {
-                //   _formKey.currentState.save();
-                // }
               },
             ),
           ),
           IconButton(
-            onPressed: () {
-              setState(() {
-                if (isCheckBoxIconPressed == true) {
-                  isCheckBoxIconPressed = false;
-                } else {
-                  isCheckBoxIconPressed = true;
-                }
-              });
-            },
-            icon: isCheckBoxIconPressed == true
+            onPressed: onToogleIsChecked,
+            icon: isChecked == true
                 ? Icon(
-                    // Icons.check,
                     Icons.check_box_outlined,
-                    color: Colors.lightBlueAccent, //상큼
+                    color: Colors.lightBlueAccent,
                   )
                 : Icon(
                     Icons.check_box_outline_blank,
-                    color: Colors.lightBlueAccent, //상큼
+                    color: Colors.lightBlueAccent,
                   ),
-            //check_box_outline_blank
-            //         Icon(
-            //           Icons.check_box_outline_blank,
-            //           color: Colors.lightBlueAccent, //상큼
-            //         ),
           ),
         ],
         mainAxisAlignment: MainAxisAlignment.end,
@@ -195,20 +150,18 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
   }
 
   void process_by_special_ordered_by_me({
-    String? hostOperatingEnvironment, //아무래도 언젠가 이게 꼭 필요하지않을까 생각된다
+    String? hostOperatingEnvironment,
   }) {
     setState(() {
-      // print("items_iterable.length:"+items_iterable.length_at_born.toString());//DEVELOPMENT
       int i = -1;
       while (true) {
         if (ClickCounter == i) {
-          print("ClickCounter:" + ClickCounter.toString()); //DEVELOPMENT
-          print('copied : ' + items_to_copy); //DEVELOPMENT
+          print("ClickCounter:" + ClickCounter.toString());
+          print('copied : ' + items_to_copy);
           FlutterClipboard.copy(items_to_copy).then((value) {});
           try {
             items_to_copy = items_iterable.next();
           } catch (e) {
-            // print(e);//DEVELOPMENT
             init_states_of_this_button();
             items_to_copy = items_iterable.next();
           }
@@ -233,15 +186,10 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
   }
 
   bool _onKey(KeyEvent event, [bool isCtrlPressed = false, bool isVPressed = false, bool isCtrlVPressed = false]) {
-    //keyboard infinite loop  입니다.  ctrl v 를 눌러야만 나갈 수 있습니다.
     var key = event.logicalKey.keyLabel;
     if (event is KeyDownEvent) {
-      // print("Key down: $key");
     } else if (event is KeyUpEvent) {
-      // print("Key up: $key");
-    } else if (event is KeyRepeatEvent) {
-      // print("Key repeat: $key");
-    }
+    } else if (event is KeyRepeatEvent) {}
     print(event.logicalKey.keyLabel);
     if (event.logicalKey.keyLabel.contains('Control Left')) {
       isCtrlPressed = true;
@@ -253,12 +201,7 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
     print(event.logicalKey.keyLabel);
     if (isCtrlPressed == true && isVPressed == true) {
       isCtrlVPressed = true;
-    } else {
-      // isCtrlVPressed = false;
-      // isCtrlPressed = false;
-      // isVPressed = false;
-    }
-    // print(isCtrlVPressed);
+    } else {}
 
     if (isCtrlVPressed == true) {
       print('조합키로서 ctrl V 눌렸습니다.');
@@ -273,13 +216,12 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
   }
 
   void reload_items() {
-    // Stamps = COMMON_TEXT_DATA().STAMPS;
     items = [
-      button_title + '[시작]', //DEVELOPMENT
-      'https://ezgroupware.bizmeka.com/groupware/todo/listMenuStoredTaskView.do?folderId=1263453&folderName=&#37;EC&#37;9D&#37;BC&#37;EC&#37;9D&#37;BC&#37;EC&#37;97&#37;85&#37;EB&#37;AC&#37;B4&#37;EB&#37;B3&#37;B4&#37;EA&#37;B3&#37;A0&#37;EC&#37;84&#37;9C_&#37;EC&#37;86&#37;94&#37;EB&#37;A3&#37;A8&#37;EC&#37;85&#37;98&#37;ED&#37;8C&#37;80',
+      button_title + '[시작]',
+      'https:',
       'pjh*****',
       's2*******s2@',
-      '//업무 등록',
+      '',
       "일일업무보고_박정훈_" + formatDate(DateTime.now(), [yyyy, '', mm, '', dd]),
       '이규',
       '김주',
@@ -307,13 +249,33 @@ class _Button_to_submit_daily_report_at_bizmekaState extends State<Button_to_sub
       '[완료]',
       '100 %',
       '0 %',
-      // '_______',
-      // button_title+'[완료]',
       button_title,
     ];
     items_length = items.length;
-    items_snapshot_at_start = []..addAll(items); //이것도 items 를 참조하는 것 때문에 문제가 되는 것 같기도함..
+    items_snapshot_at_start = []..addAll(items);
     items_iterable = IterableStringListMaker(items: items);
     setState(() {});
+  }
+
+  void onToogleIsChecked() {
+    setState(() {
+      if (isChecked == true) {
+        isChecked = false;
+      } else {
+        isChecked = true;
+      }
+      storage.setItem('isChecked202307041309', isChecked);
+    });
+  }
+
+  void initIsChecked() {
+    setState(() {
+      if (storage.getItem('isChecked202307041309') == null) {
+        isChecked = false;
+        storage.setItem('isChecked202307041309', isChecked);
+      } else {
+        isChecked = storage.getItem('isChecked202307041309');
+      }
+    });
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../in_developing/common.dart';
-import '../in_operating/my_functions.dart';
+import '../in_operating/my_superworkers.dart';
 import 'iterable_structure_maker.dart';
 
 class Button_to_login_to_kul extends StatefulWidget {
@@ -37,7 +37,7 @@ class Button_to_login_to_kul extends StatefulWidget {
 class _ButtonMoveToBizmekaDailyReportState extends State<Button_to_login_to_kul> {
   String text_to_copy = '';
   late Map<String, dynamic> Stamps;
-  var helper = MyFunctions();
+  var helper = My_superworkers();
   int ClickCounter = 0;
   late List<String> items_to_copy;
 
@@ -72,12 +72,12 @@ class _ButtonMoveToBizmekaDailyReportState extends State<Button_to_login_to_kul>
           ),
           onPressed: () {
             final Uri url = Uri.parse("https://naver.com");
-            doMultiProcess(url);
+            doSpecialCopyProcess(url);
           }),
     );
   }
 
-  void doMultiProcess(
+  void doSpecialCopyProcess(
     Uri url, {
     String? hostOperatingEnvironment, //아무래도 이게 꼭 필요하다
   }) {

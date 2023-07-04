@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../in_operating/my_functions.dart';
+import '../in_operating/my_superworkers.dart';
 import 'button_to_move_button_name_into_clipboard.dart';
 import 'iterable_structure_maker.dart';
 import 'rainbow_text.dart';
@@ -39,7 +39,7 @@ class Buttons_for_kakaotalk extends StatefulWidget {
 class _Buttons_for_kakaotalkState extends State<Buttons_for_kakaotalk> {
   String items_to_copy = '-';
   late Map<String, dynamic> Stamps;
-  var helper = MyFunctions();
+  var helper = My_superworkers();
   int ClickCounter = 0;
   late List<String> items;
 

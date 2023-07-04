@@ -2,22 +2,22 @@ import 'dart:async';
 
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../in_operating/my_functions.dart';
+import '../in_operating/my_superworkers.dart';
 import 'button_to_move_button_name_into_clipboard.dart';
 import 'iterable_structure_maker.dart';
 
 class Button_to_login_bizmeka extends StatefulWidget {
   String text;
-  final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
+  final Color color;
+  final FontWeight font_weight;
+  final double font_size;
+  final Color background_color;
   final double padding_vertical;
   final double padding_horizontal;
-  final BorderRadius? border_radius;
+  final BorderRadius border_radius;
 
   Button_to_login_bizmeka({
     Key? key,
@@ -38,7 +38,7 @@ class Button_to_login_bizmeka extends StatefulWidget {
 class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
   String items_to_copy = '-';
   late Map<String, dynamic> Stamps;
-  var helper = MyFunctions();
+  var helper = My_superworkers();
   int ClickCounter = 0;
   late List<String> items;
 
@@ -48,9 +48,11 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
 
   var button_title;
 
-  // final LocalStorage storage = new LocalStorage('foo.json');
-  // late String check_box_state;
-  var isCheckboxChecked = false;
+  /*2*/
+  final LocalStorage storage = LocalStorage('foo.foo');
+
+  /*1*/
+  late bool isChecked;
 
   late var items_length;
 
@@ -59,55 +61,25 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
     super.initState();
     button_title = widget.text;
     init_states_of_this_button();
-    init_check_box_state();
-
-    //currentWindow  vs   newTab  vs  newWindow
-
-    //currentWindow  vs   newTab
-    //way1
-    // String option_blank_or_self = '_blank'; // _self
-    // js.context.callMethod('open', [url.toString(), option_blank_or_self]);
-    //way2
-    // html.window.open(url.toString(), 'new tab');
-    //way2-1
-    // html.window.location.href = url.toString();
-
-    //newWindow
-
-    // html.window.onKeyPress.listen((html.KeyboardEvent e) {
-    //   print(e.charCode.toString() + " " + new String.fromCharCode(e.charCode));
-    // });
-
-    // ServicesBinding.instance.keyboard.addHandler(_onKey);
-
-    // naturalNumbers = NaturalNumbers(EndLimit: 100);
-
-    // print(items_iterable.All().toString());
-    // items_iterable.next();
-    // items_iterable.next();
-    // items_iterable.next();
-    // print(items_iterable.first_at_born().toString());
-    // print(items_iterable.first_at_born());
+    /*6*/
+    initIsChecked();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: widget.background_color,
+        borderRadius: widget.border_radius,
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.padding_horizontal,
+        vertical: widget.padding_vertical,
+      ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          // FutureBuilder(
-          //   future: storage.ready,
-          //   builder: (BuildContext context, AsyncSnapshot snapshot) {
-          //     if (snapshot.data == null) {
-          //       return CircularProgressIndicator();
-          //     } else {
-          //        isCheckboxChecked = storage.getItem('states_during_runtime')[0]['check_box_state'];
-          //       return Text("");
-          //     }
-          //   },
-          // ),
           Container(
-            // width: 300,
             child: TextButton(
                 child: Text(
                   widget.text.length <= 60 ? widget.text + ' ' + ClickCounter.toString() + '/' + items_length.toString() : widget.text.substring(0, 60) + ' ' + ClickCounter.toString() + '/' + items_length.toString(),
@@ -125,7 +97,7 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
             width: 40,
             child: IconButton(
               // icon: Icon(Icons.fact_check),
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
                 // color: MyColors.cautionOrange1,
                 // color: Colors.blue, //어둡
@@ -140,10 +112,7 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       backgroundColor: Colors.black,
-                      title: Text(
-                        button_title,
-                        style: TextStyle(color: Colors.blueAccent),
-                      ),
+                      title: Text(button_title, style: TextStyle(color: Colors.blueAccent)),
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
@@ -165,51 +134,19 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
                     );
                   },
                 );
-                // if (_formKey.currentState.validate()) {
-                //   _formKey.currentState.save();
-                // }
               },
             ),
           ),
           IconButton(
-            onPressed: () {
-              setState(() {
-                if (isCheckboxChecked == true) {
-                  isCheckboxChecked = false;
-                  // storage.setItem('check_box_state', "not_checked");
-                } else {
-                  isCheckboxChecked = true;
-                  // storage.setItem('check_box_state', "checked");
-                }
-                // print(storage);
-              });
-            },
-            icon: isCheckboxChecked == true
-                ? Icon(
+            onPressed: /*5*/ onToogleIsChecked,
+            icon: isChecked == true
+                ? const Icon(
                     // Icons.check,
                     Icons.check_box_outlined,
-                    color: Colors.lightBlueAccent, //상큼
-                  )
-                : Icon(
-                    Icons.check_box_outline_blank,
-                    color: Colors.lightBlueAccent, //상큼
-                  ),
-            //check_box_outline_blank
-            //         Icon(
-            //           Icons.check_box_outline_blank,
-            //           color: Colors.lightBlueAccent, //상큼
-            //         ),
+                    color: Colors.lightBlueAccent)
+                : const Icon(Icons.check_box_outline_blank, color: Colors.lightBlueAccent),
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.end,
-      ),
-      decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
       ),
     );
   }
@@ -252,41 +189,6 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
     }
   }
 
-  bool _onKey(KeyEvent event, [bool isCtrlPressed = false, bool isVPressed = false, bool isCtrlVPressed = false]) {
-    //keyboard infinite loop  입니다.  ctrl v 를 눌러야만 나갈 수 있습니다.
-    var key = event.logicalKey.keyLabel;
-    if (event is KeyDownEvent) {
-      // print("Key down: $key");
-    } else if (event is KeyUpEvent) {
-      // print("Key up: $key");
-    } else if (event is KeyRepeatEvent) {
-      // print("Key repeat: $key");
-    }
-    print(event.logicalKey.keyLabel);
-    if (event.logicalKey.keyLabel.contains('Control Left')) {
-      isCtrlPressed = true;
-    }
-    print(event.logicalKey.keyLabel);
-    if (event.logicalKey.keyLabel.contains('V')) {
-      isVPressed = true;
-    }
-    print(event.logicalKey.keyLabel);
-    if (isCtrlPressed == true && isVPressed == true) {
-      isCtrlVPressed = true;
-    } else {
-      // isCtrlVPressed = false;
-      // isCtrlPressed = false;
-      // isVPressed = false;
-    }
-    // print(isCtrlVPressed);
-
-    if (isCtrlVPressed == true) {
-      print('조합키로서 ctrl V 눌렸습니다.');
-    }
-
-    return false;
-  }
-
   void init_states_of_this_button() {
     reload_items();
     ClickCounter = 0;
@@ -307,12 +209,27 @@ class _Button_to_login_bizmekaState extends State<Button_to_login_bizmeka> {
     items_iterable = IterableStringListMaker(items: items);
   }
 
-  Future<void> init_check_box_state() async {
-//     check_box_state= await storage.getItem('check_box_state');
-// if(check_box_state=='checked'){
-//   isCheckboxChecked=true;
-// }else{
-//   isCheckboxChecked=false;
-// }
+  /*3*/
+  void onToogleIsChecked() {
+    setState(() {
+      if (isChecked == true) {
+        isChecked = false;
+      } else {
+        isChecked = true;
+      }
+      storage.setItem('isChecked202307041300', isChecked);
+    });
+  }
+
+  /*4*/
+  void initIsChecked() {
+    setState(() {
+      if (storage.getItem('isChecked202307041300') == null) {
+        isChecked = false;
+        storage.setItem('isChecked202307041300', isChecked);
+      } else {
+        isChecked = storage.getItem('isChecked202307041300');
+      }
+    });
   }
 }

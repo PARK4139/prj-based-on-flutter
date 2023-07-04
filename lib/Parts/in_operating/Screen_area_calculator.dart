@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'my_functions.dart';
+import 'my_superworkers.dart';
 
 class Screen_area_calculator extends StatefulWidget {
   const Screen_area_calculator({Key? key}) : super(key: key);
@@ -88,7 +88,7 @@ class _Screen_area_calculatorState extends State<Screen_area_calculator> {
                           controller: textEditingController,
                           //initialValue: '', // TextFormField에서 initialValue 설정하면 textEditingController 사용불가.
                           cursorColor: Colors.blueAccent,
-                          style: TextStyle(color: Rainbow_color,fontSize: 30),
+                          style: TextStyle(color: Rainbow_color, fontSize: 30),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               labelText: isUnitSquaredMeter ? '㎡' : '평',
