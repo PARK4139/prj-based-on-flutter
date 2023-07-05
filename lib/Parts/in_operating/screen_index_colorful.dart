@@ -360,14 +360,14 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                     scale: 2.2,
                     child: Transform.translate(
                       offset: Offset(0, 10),
-                      child: Text(indexNameCutter(index_name_today_webtoon  ), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
+                      child: Text(indexNameCutter(index_name_today_webtoon), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
 
                     ),
                   ),
                 ],
               ),
               color: Colors.blueAccent,
-              tooltip: index_name_plan_excuter.toUpperCase(),
+              tooltip: index_name_today_webtoon.toUpperCase(),
               splashColor: Colors.blue,
               focusColor: Colors.pinkAccent,
               disabledColor: Colors.purpleAccent,

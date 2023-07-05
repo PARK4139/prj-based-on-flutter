@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
@@ -126,6 +126,7 @@ class Movie {
   final String kind;
   final String img_url;
   final bool like;
+  // final DocumentReference reference;
 
   /*PRODUCTION*/
   Movie.fromMap(Map<String, dynamic> map)
@@ -133,6 +134,16 @@ class Movie {
         kind = map['kind'],
         img_url = map['img_url'],
         like = map['like'];
+  // Movie.fromMap(Map<String, dynamic> map, {required this.reference})
+  //     : title = map['title'],
+  //       kind = map['kind'],
+  //       img_url = map['img_url'],
+  //       like = map['like'];
+
+  /*firebase 연동 작업 중*/
+  // Movie.fromSnapshot(DocumentSnapshot snapshot) : this.fromMap(snapshot.data, reference: snapshot.reference);
+
+
 
 // @override
 // String toString() => "Movie<$title:$kind>";

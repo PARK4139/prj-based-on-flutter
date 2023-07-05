@@ -1708,15 +1708,12 @@ def push_to_remote_repository():
         print('auto git add fail')
         os.system('color 04')
     print('__________________________________________________________ auto git add.log ' + to_time_style('0') + ' e')
-    #commit_ment = to_time_style('0')
-    #commit_ment = "auto pushed"
-    # commit_ment = "auto pushed at " + to_time_style('0')
     # commit_ment = to_time_style('0')
     # commit_ment = "auto pushed"
     # commit_ment = "auto pushed at " + to_time_style('0')
     # commit_ment = "테스트 커밋"
     # commit_ment = "프로젝트 이니셜 커밋"
-    commit_ment = "플러터 안드로이드 앱들 업데이트 PHASE 1"
+    commit_ment = "플러터 안드로이드 앱 업데이트 PHASE 1"
     # commit_ment = "당근마껫 UI 업데이트"#월
     # commit_ment = "당근마껫 페이지 추가제작"#화
     # commit_ment = "당근마껫 페이지 추가제작"#수
@@ -1763,22 +1760,13 @@ print("__________________________________________________________ opening log e"
 
 print("__________________________________________________________ s")
 import random
-while True:# 예외가 발생해도 계속 도는 무한루프 
-    try:# 예외가 발생할 수 있는 코드
-        push_to_remote_repository()
-    except Exception as e:# 예외가 발생하면 처리하는 코드
-        print('______________________________________________________  trouble shooting info s')
-        traceback.print_exc(file=sys.stdout)
-        print(e)
-        print('______________________________________________________  trouble shooting info e')
-        AI_speak('깃허브에 푸쉬를 시도 중 익셉션이 발생하였습니다')
-        AI_speak('잠시 뒤에 깃허브에 푸쉬를 재시도합니다.')
-    else:# 예외가 발생하지 않으면 실행하는 코드
-        # random_seconds = random.randint(0, 5) # FOR 확신하고 빠르게 GIT PUSH
-        random_seconds = random.randint(400, 600) # FOR GIT HUB CONTRIBUTION COUNT INCREASEMENT
-        print("RPA works again in " + str(random_seconds) + " seconds...")
-        os.system("echo .>> foo.txt")
-        time.sleep(random_seconds)
+while True:
+    push_to_remote_repository()
+    # tmp = random.randint(0, 5) # FOR 확신하고 빠르게 GIT PUSH
+    tmp = random.randint(400, 600) # FOR GIT HUB CONTRIBUTION COUNT INCREASEMENT
+    print("RPA works again in "+str(tmp)+" seconds...")
+    os.system("echo .>> foo.txt")
+    time.sleep(tmp)
 
 
 # color_codes=[

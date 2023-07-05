@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
@@ -13,6 +14,14 @@ import 'Parts/in_operating/screen_netflix.dart';
 //apk 빌드 시 파일명은 grammer.dart 여야한다?.
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // FirebaseApp.initializeApp();
+  // final database = FirebaseDatabase.instance;
+  // final ref = database.ref('users/me');
+  // ref.set({
+  //   'name': 'John Doe',
+  //   'email': 'johndoe@example.com',
+  // });
+
   runApp(const App());
 }
 
