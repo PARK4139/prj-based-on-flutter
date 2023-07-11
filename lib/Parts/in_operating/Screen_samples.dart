@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../simple_samples/SampleButtonGeneral.dart';
-import '../simple_samples/SampleCheckBoxLocalStorage.dart';
-import '../simple_samples/SamplePopUpAlert.dart';
-import '../simple_samples/SamplePopUpForm.dart';
-import '../simple_samples/SampleToggle.dart';
+
+import '../samples/sample_button_general.dart';
+import '../samples/sample_check_box_local_storage.dart';
+import '../samples/sample_pop_up_alert.dart';
+import '../samples/sample_pop_up_form.dart';
+import '../samples/sample_toggle.dart';
 import 'my_superworkers.dart';
 
 class Screen_samples extends StatefulWidget {

@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'my_superworkers.dart';
 
-class Button_to_move_button_name_into_clipboard extends StatefulWidget {
+
+// typedef operand = void;
+// operand myNavigatorPop(var context) {
+//   Navigator.of(context).pop();
+// }
+
+class StampIntoClipboard extends StatefulWidget {
   final String text;
   Color? color;
   final FontWeight font_weight;
@@ -14,7 +20,11 @@ class Button_to_move_button_name_into_clipboard extends StatefulWidget {
   late BorderRadius? border_radius;
   late TextAlign? text_align;
 
-  Button_to_move_button_name_into_clipboard({
+  bool doYouWantPopAfterClicking;
+
+  // operand myNavigatorPop;
+
+  StampIntoClipboard({
     Key? key,
     required this.text,
     this.font_size = 10,
@@ -24,13 +34,15 @@ class Button_to_move_button_name_into_clipboard extends StatefulWidget {
     this.border_radius,
     this.background_color,
     this.color,
+    // this.myNavigatorPop,
+    this.doYouWantPopAfterClicking = false,
   }) : super(key: key);
 
   @override
-  State<Button_to_move_button_name_into_clipboard> createState() => _Button_to_move_button_name_into_clipboardState();
+  State<StampIntoClipboard> createState() => _StampIntoClipboardState();
 }
 
-class _Button_to_move_button_name_into_clipboardState extends State<Button_to_move_button_name_into_clipboard> {
+class _StampIntoClipboardState extends State<StampIntoClipboard> {
   @override
   void initState() {
     // TODO: implement initState
@@ -44,10 +56,10 @@ class _Button_to_move_button_name_into_clipboardState extends State<Button_to_mo
     if (widget.border_radius == null) {
       widget.border_radius = BorderRadius.circular(5);
     }
-
     // widget.text_align = null;
     widget.text_align = TextAlign.center;
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,5 +91,13 @@ class _Button_to_move_button_name_into_clipboardState extends State<Button_to_mo
     FlutterClipboard.copy(widget.text).then((value) {
       print('copied : ' + widget.text);
     });
+
+    /*2023 07 07 10 31 StampIntoClipboard :  copy 클릭 시 창닫기 기능 추가 s*/
+    if(widget.doYouWantPopAfterClicking==true){
+      Navigator.of(context).pop();
+    }
+    /*2023 07 07 10 31 StampIntoClipboard :  copy 클릭 시 창닫기 기능 추가 e*/
+
+
   }
 }

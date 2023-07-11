@@ -156,21 +156,21 @@ class _User_card_for_homeState extends State<User_card_for_home> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(carrot_user_card_infos[0].item_category, style: TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w400)),
-              Text(carrot_user_card_infos[0].user_location + ' * ' + carrot_user_card_infos[0].user_uploading_time, style: TextStyle(color: Colors.grey, fontSize: 11, fontWeight: FontWeight.w400)),
-              Text(carrot_user_card_infos[0].item_price.toString() + '원', style: TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w600)),
+              Text(carrot_user_card_infos[0].item_category, style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w400)),
+              Text('${carrot_user_card_infos[0].user_location} * ${carrot_user_card_infos[0].user_uploading_time}', style: TextStyle(color: Colors.grey, fontSize: 11, fontWeight: FontWeight.w400)),
+              Text('${carrot_user_card_infos[0].item_price}원', style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w600)),
               const SizedBox(height: 40),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const SizedBox(height: 1, width: 200),
-                  Icon(Icons.question_answer_outlined, size: 15, color: Colors.black38),
+                  const Icon(Icons.question_answer_outlined, size: 15, color: Colors.black38),
                   const SizedBox(height: 1, width: 1),
-                  Text(carrot_user_card_infos[0].chatting_request_count.toString(), style: TextStyle(color: Colors.black38, fontSize: 10)),
+                  Text(carrot_user_card_infos[0].chatting_request_count.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
                   const SizedBox(height: 2, width: 2),
-                  Icon(Icons.favorite_border, size: 15, color: Colors.black38),
+                  const Icon(Icons.favorite_border, size: 15, color: Colors.black38),
                   const SizedBox(height: 1, width: 1),
-                  Text(carrot_user_card_infos[0].heart_count.toString(), style: TextStyle(color: Colors.black38, fontSize: 10)),
+                  Text(carrot_user_card_infos[0].heart_count.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
                 ],
               ),
             ],

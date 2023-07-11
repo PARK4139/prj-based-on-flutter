@@ -1,10 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 
 import '../in_operating/my_superworkers.dart';
 import 'button_to_move_button_name_into_clipboard.dart';
 
-class Button_to_excute_schedule_planed extends StatefulWidget {
+class ButtonToExcuteSchedulePlaned extends StatefulWidget {
   String text;
   late var color;
   final FontWeight font_weight;
@@ -16,7 +18,7 @@ class Button_to_excute_schedule_planed extends StatefulWidget {
 
   List<String> items;
 
-  Button_to_excute_schedule_planed({
+  ButtonToExcuteSchedulePlaned({
     required this.text,
     required this.items,
     this.color = Colors.white38,
@@ -29,10 +31,10 @@ class Button_to_excute_schedule_planed extends StatefulWidget {
   });
 
   @override
-  State<Button_to_excute_schedule_planed> createState() => _Button_to_excute_schedule_planedState();
+  State<ButtonToExcuteSchedulePlaned> createState() => _ButtonToExcuteSchedulePlanedState();
 }
 
-class _Button_to_excute_schedule_planedState extends State<Button_to_excute_schedule_planed> {
+class _ButtonToExcuteSchedulePlanedState extends State<ButtonToExcuteSchedulePlaned> {
   late Map<String, dynamic> Stamps;
   int ClickCounter = 0;
   late List<String> items;
@@ -62,6 +64,7 @@ class _Button_to_excute_schedule_planedState extends State<Button_to_excute_sche
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,7 +82,7 @@ class _Button_to_excute_schedule_planedState extends State<Button_to_excute_sche
           /*주제목 버튼*/ Container(
             child: TextButton(
                 child: Text(
-                  widget.text.length <= 60 ? widget.text + ' ' + ClickCounter.toString() + '/' + items_length.toString() : widget.text.substring(0, 60) + ' ' + ClickCounter.toString() + '/' + items_length.toString(),
+                  widget.text.length <= 60 ? widget.text + ' 0/' + items_length.toString() : widget.text.substring(0, 60) + ' 0/' + items_length.toString(),
                   style: TextStyle(
                     color: widget.color,
                     fontSize: widget.font_size,
@@ -93,7 +96,7 @@ class _Button_to_excute_schedule_planedState extends State<Button_to_excute_sche
           Container(
             width: 40,
             child: IconButton(
-              icon: Icon(Icons.all_inclusive),
+              icon: const Icon(Icons.all_inclusive),
               color: Colors.lightBlueAccent,
               onPressed: () {
                 showDialog<void>(
@@ -106,7 +109,13 @@ class _Button_to_excute_schedule_planedState extends State<Button_to_excute_sche
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
-                            for (var items in items_snapshot_at_start) Button_to_move_button_name_into_clipboard(text: items, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                            for (var item in items_snapshot_at_start)
+                              Row(
+                                children: [
+                                  Text('${items_snapshot_at_start.indexOf(item)} ', style: const TextStyle(color: Colors.lightGreenAccent)),
+                                  StampIntoClipboard(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                                ],
+                              ),
                           ],
                         ),
                       ),

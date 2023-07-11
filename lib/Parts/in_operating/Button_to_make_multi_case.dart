@@ -5,7 +5,7 @@ import 'button_to_move_button_name_into_clipboard.dart';
 import 'iterable_structure_maker.dart';
 import 'my_superworkers.dart';
 
-class Multi_case_maker extends StatefulWidget {
+class MultiCaseMaker extends StatefulWidget {
   String text;
   final Color? color;
   final FontWeight? font_weight;
@@ -15,7 +15,7 @@ class Multi_case_maker extends StatefulWidget {
   final double padding_horizontal;
   final BorderRadius? border_radius;
 
-  Multi_case_maker({
+  MultiCaseMaker({
     Key? key,
     required this.text,
     required this.background_color,
@@ -28,10 +28,10 @@ class Multi_case_maker extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<Multi_case_maker> createState() => _Multi_case_makerState();
+  State<MultiCaseMaker> createState() => _MultiCaseMakerState();
 }
 
-class _Multi_case_makerState extends State<Multi_case_maker> {
+class _MultiCaseMakerState extends State<MultiCaseMaker> {
   String items_to_copy = '-';
   late Map<String, dynamic> Stamps;
   var helper = My_superworkers();
@@ -62,7 +62,16 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: widget.background_color,
+        borderRadius: widget.border_radius,
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.padding_horizontal,
+        vertical: widget.padding_vertical,
+      ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
             // width: 300,
@@ -111,29 +120,28 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
             icon: isCheckboxChecked == true ? Icon(Icons.check_box_outlined, color: Colors.lightGreenAccent) : Icon(Icons.check_box_outline_blank, color: Colors.lightGreenAccent),
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.end,
-      ),
-      decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
       ),
     );
   }
 
   void onTextButtonPressed() {
-    setState(() {
-      // onAddIconPressed();
       if (isFirstClick == true) {
         FlutterClipboard.paste().then((value) {
-          widget.text = value;
+          labelText = value.length <= 60 ? value + '  ' : value.substring(0, 60);
+          setState(() {
+            widget.text = labelText;
+          });
         });
+
+        /*100 milliseconds 후 실행할 코드 s*/
+        Future.delayed(const Duration(milliseconds: 100), () {
+          onAddIconPressed();
+        });
+        /*100 milliseconds 후 실행할 코드 e*/
         isFirstClick == false;
+      } else {
+        onAddIconPressed();
       }
-    });
   }
 
   void init_states_of_this_button() {
@@ -250,23 +258,22 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: Colors.black,
-          title: Text(
-            button_title,
-            style: TextStyle(color: Colors.blueAccent),
-          ),
+          title: Text(button_title, style: const TextStyle(color: Colors.blueAccent)),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                for (var item in items) Button_to_move_button_name_into_clipboard(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                for (var item in items) Row(
+                  children: [
+                    Text('${items.indexOf(item)}', style: const TextStyle(color: Colors.lightGreenAccent)),
+                    StampIntoClipboard(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5),doYouWantPopAfterClicking: true),
+                  ],
+                ),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text(
-                '닫기',
-                style: TextStyle(color: Colors.lightBlueAccent),
-              ),
+              child: const Text('닫기', style: TextStyle(color: Colors.lightBlueAccent)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -279,16 +286,16 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
 
   void reload_items() {
     items = [
-      case_1_maker(value: widget.text),
-      case_2_maker(value: widget.text),
-      case_3_maker(value: widget.text),
-      case_4_maker(value: widget.text),
-      case_5_maker(value: widget.text),
-      Calmel_case_maker(value: widget.text),
-      Snake_case_maker(value: widget.text),
-      Upper_calmel_case_maker(value: widget.text),
-      Capitalized_case_maker(value: widget.text),
-      pascal_case(value: widget.text),
+      case_1_maker(value: widget.text.trim()),
+      case_2_maker(value: widget.text.trim()),
+      case_3_maker(value: widget.text.trim()),
+      case_4_maker(value: widget.text.trim()),
+      case_5_maker(value: widget.text.trim()),
+      Calmel_case_maker(value: widget.text.trim()),
+      Snake_case_maker(value: widget.text.trim()),
+      Upper_calmel_case_maker(value: widget.text.trim()),
+      Capitalized_case_maker(value: widget.text.trim()),
+      pascal_case(value: widget.text.trim()),
     ];
     items_iterable = IterableStringListMaker(items: items);
     button_title = widget.text;
@@ -297,7 +304,7 @@ class _Multi_case_makerState extends State<Multi_case_maker> {
   void init_label_text() {
     setState(() {
       titleText = widget.text;
-      labelText = '멀티 케이스 메이커에 클립보드로 부터 바인딩';
+      labelText = '.to_multi_case()';
     });
   }
 }

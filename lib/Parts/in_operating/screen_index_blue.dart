@@ -4,7 +4,7 @@ import '../../main.dart';
 import 'screen_area_calculator.dart';
 import 'screen_checklist.dart';
 import 'screen_pomodo.dart';
-import 'screen_to_control_text.dart';
+import 'screen_super_stamp.dart';
 import 'screen_to_maintain_edorm.dart';
 import 'screen_to_tts.dart';
 
@@ -152,7 +152,7 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Screen_to_control_text()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenToHelpDeveloper()));
               },
               icon: Icon(Icons.folder),
               tooltip: folder_development,

@@ -10,16 +10,14 @@ class Screen_carrot_market_Chatting extends StatefulWidget {
 class _Screen_carrot_market_ChattingState extends State<Screen_carrot_market_Chatting> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Placeholder(fallbackHeight: 140),
-            Placeholder(fallbackHeight: 140),
-            Placeholder(fallbackHeight: 140),
-            Placeholder(fallbackHeight: 140),
-          ],
-        ),
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          Placeholder(fallbackHeight: 140),
+          Placeholder(fallbackHeight: 140),
+          Placeholder(fallbackHeight: 140),
+          Placeholder(fallbackHeight: 140),
+        ],
       ),
     );
   }

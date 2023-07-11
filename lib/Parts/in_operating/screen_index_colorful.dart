@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_icon.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_area_calculator.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_carrot_market.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_checklist.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_digital_clock.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_pomodo.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_super_stamp.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_webtoon_v1.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_webtoon_v2.dart';
 
@@ -30,6 +32,8 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   String index_name_flutter_samples = '플러터 샘플';
   String index_name_plan_excuter = '계획집행기';
   String index_name_today_webtoon = '오늘의 웹툰';
+
+  var index_name_super_stamp='슈퍼 스탬프';
 
   String indexNameCutter(String indexName) {
     String result = '';
@@ -374,6 +378,26 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             ),
           ],
         ),
+
+        Column(
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenToHelpDeveloper()));
+              },
+              icon: Rainbow_icon(iconData: Icons.stars_outlined),
+              tooltip: index_name_super_stamp,
+              splashColor: Colors.blue,
+              // hoverColor: Colors.red,
+              focusColor: Colors.orange,
+              color: Colors.blueAccent,
+              disabledColor: Colors.purpleAccent,
+            ),
+            Text(index_name_super_stamp, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
+          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+        ),
+
       ];
     });
   }

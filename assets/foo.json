@@ -1,0 +1,253 @@
+//dev
+{
+  "id_no": "2023040000044",
+  "file_pic": "2023040000044.jpg",
+"std_no": "20230030",
+  "db_recruit_year": "2023",
+  "db_recruit_code": "2601000",
+  "position_lcd": "2001000",
+  "position_scd": "",
+  "sex": "여",
+  "addr_area": "",
+  "user_nm": "%ED%85%8C0030",
+  "move_form": "2701000",
+  "std_code": "2302000",
+  "acl_cd2": "1905001",
+  "zip": "14049",
+  "addr1": "%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%8F%99%EC%95%88%EA%B5%AC%20%ED%95%99%EC%9D%98%EB%A1%9C%20120%20(%EA%B4%80%EC%96%91%EB%8F%99%2C%20%ED%95%9C%EA%B0%80%EB%9E%8C%ED%95%9C%EC%96%91%EC%95%84%ED%8C%8C%ED%8A%B8)",
+  "addr2": "foo%EB%8F%99%20foo%ED%98%B8",
+  "del_yn": "",
+  "room_change": "",
+  "procType": "TYPE1",
+  "apply_unit": "6111000",
+  "radio_search": "student",
+  "etc_memo": "",
+  "pswd": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+  "religion": "",
+  "er_addr11": "%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%8F%99%EC%95%88%EA%B5%AC%20%ED%95%99%EC%9D%98%EB%A1%9C%20120%20(%EA%B4%80%EC%96%91%EB%8F%99%2C%20%ED%95%9C%EA%B0%80%EB%9E%8C%ED%95%9C%EC%96%91%EC%95%84%ED%8C%8C%ED%8A%B8)",
+  "er_addr21": "foo%EB%8F%99%20foo%ED%98%B8",
+  "er_cel11": "010",
+  "er_cel12": "9999",
+  "er_cel13": "9999",
+  "cash_receipt_nm": "0",
+  "first_name": "test",
+  "last_name": "test",
+  "room_kind": "2801000",
+  "sleep_time": "7101001",
+  "fav_nation": "7106002",
+  "email_1": "foo",
+  "email_2": "foo.co.kr",
+  "cel1": "010",
+  "cel2": "9999",
+  "cel3": "9999",
+  "tel1": "02",
+  "tel2": "4445",
+  "tel3": "5666",
+"cash1": "010",
+"cash2": "",
+"cash3": "",
+  "bank_nm": "6008000",
+  "bank_account": "999999444444",
+  "bank_deposit": "%ED%85%8C0030",
+  "er_nm1": "%EB%8D%94%EB%AF%B8%EC%95%84%EB%B9%A0",
+  "er_rel1": "%EB%B6%80",
+  "er_tel11": "02",
+  "er_tel12": "4445",
+  "er_tel13": "5666",
+  "gubun_v": ""
+}
+//eclpise
+,
+{
+  "body": {
+    "sleep_time_list": [
+      {
+        "sleep_time": "7101001",
+        "sleep_time_nm": "새벽 2시 이전 취침"
+      },
+      {
+        "sleep_time": "7101002",
+        "sleep_time_nm": "새벽 2시 이후 취침"
+      }
+    ],
+    "fav_nation": "",
+    "gubun": "new",
+    "er_addr21": "",
+    "religion": "",
+    "tel1": "031",
+    "first_name": "Jung Hoon",
+    "tel2": "9999",
+    "recruit": [
+      {
+        "move_form_nm": "4개월",
+        "move_form": "2706000",
+        "move_form_date": "2023-02-20 ~ 2023-06-16"
+      },
+      {
+        "move_form_nm": "Full Semester",
+        "move_form": "2701000",
+        "move_form_date": "2023-02-20 ~ 2023-11-30"
+      }
+    ],
+    "acl_cd2": "1901001",
+    "std_code_nm": "신규입주생",
+    "tel3": "9999",
+    "er_tel11": "",
+    "fav_nation_list": [
+      {
+        "fav_nation": "7106001",
+        "fav_nation_nm": "비희망"
+      },
+      {
+        "fav_nation": "7106002",
+        "fav_nation_nm": "희망"
+      },
+      {
+        "fav_nation": "7106003",
+        "fav_nation_nm": "상관없음"
+      }
+    ],
+    "er_tel13": "",
+    "er_tel12": "",
+    "er_cel12": "",
+    "er_cel11": "",
+    "er_cel13": "",
+    "bank_cd_list": [
+      {
+        "bank_cd_nm": "기업은행",
+        "bank_cd": "6001000"
+      },
+      {
+        "bank_cd_nm": "한국산업은행",
+        "bank_cd": "6002000"
+      },
+      {
+        "bank_cd_nm": "농업협동조합중앙회",
+        "bank_cd": "6003000"
+      },
+      {
+        "bank_cd_nm": "수산업협동조합중앙회",
+        "bank_cd": "6004000"
+      },
+      {
+        "bank_cd_nm": "한국수출입은행",
+        "bank_cd": "6005000"
+      },
+      {
+        "bank_cd_nm": "제주은행",
+        "bank_cd": "6006000"
+      },
+      {
+        "bank_cd_nm": "전북은행",
+        "bank_cd": "6007000"
+      },
+      {
+        "bank_cd_nm": "신한은행",
+        "bank_cd": "6008000"
+      },
+      {
+        "bank_cd_nm": "하나은행",
+        "bank_cd": "6009000"
+      },
+      {
+        "bank_cd_nm": "한국외환은행",
+        "bank_cd": "6010000"
+      },
+      {
+        "bank_cd_nm": "한국스탠다드차타드제일은행",
+        "bank_cd": "6011000"
+      },
+      {
+        "bank_cd_nm": "국민은행",
+        "bank_cd": "6012000"
+      },
+      {
+        "bank_cd_nm": "우리은행",
+        "bank_cd": "6013000"
+      },
+      {
+        "bank_cd_nm": "부산은행",
+        "bank_cd": "6014000"
+      },
+      {
+        "bank_cd_nm": "대구은행",
+        "bank_cd": "6015000"
+      },
+      {
+        "bank_cd_nm": "경남은행",
+        "bank_cd": "6016000"
+      },
+      {
+        "bank_cd_nm": "광주은행",
+        "bank_cd": "6017000"
+      },
+      {
+        "bank_cd_nm": "한국씨티은행",
+        "bank_cd": "6018000"
+      },
+      {
+        "bank_cd_nm": "우체국",
+        "bank_cd": "6019000"
+      },
+      {
+        "bank_cd_nm": "새마을금고",
+        "bank_cd": "6020000"
+      }
+    ],
+    "email_1": "",
+    "email_2": "",
+    "addr_area": "5501020",
+    "er_zip1": "",
+    "addr1": "경기도 안양시 학의로 120",
+    "addr2": "foo동 foo호",
+    "move_form": "",
+    "std_no": "2023001",
+    "last_name": "Park",
+    "radio_search": "student",
+    "pswd": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "curriculum": "7803000",
+    "pass_flag": "",
+    "id_no": "2023020000001",
+    "bank_nm": "",
+    "db_recruit_year": "2023",
+    "roomkind": [
+      {
+        "room_kind": "",
+        "room_kind_nm": "--선택--"
+      }
+    ],
+    "sex": "남",
+    "std_code": "2302000",
+    "cash3": "",
+    "sleep_time": "",
+    "del_yn": "",
+    "file_pic": "",
+    "sust": "2002301",
+    "room_change": "",
+    "bank_account": "",
+    "zip": "14049",
+    "er_nm1": "",
+    "er_addr11": "",
+    "db_recruit_code": "2601000",
+    "acl_cd": "2001000",
+    "cel1": "010",
+    "cel3": "9999",
+    "cel2": "9999",
+    "user_nm": "박_정_훈",
+    "etc_memo": "",
+    "db_recruit_code_nm": "1학기(Spring semester)",
+    "room_kind": "",
+    "apply_unit": "6111000",
+    "bank_deposit": "박_정_훈",
+    "cash1": "",
+    "er_rel1": "",
+    "cash2": "",
+    "procType": "TYPE1"
+  },
+  "header": {
+    "result_message": "정상처리되었습니다.",
+    "result_code": "0"
+  }
+}
+
+

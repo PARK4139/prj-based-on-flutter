@@ -1,5 +1,6 @@
 import 'package:date_format/date_format.dart';
 
+
 class COMMON_TEXT_DATA {
   static const String CODE0000 = "CODE_COMMON";
   static const String CODE1000 = "CODE_BIZMEKA";

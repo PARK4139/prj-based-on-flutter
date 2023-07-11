@@ -39,7 +39,7 @@ class _Screen_carrot_marketState extends State<Screen_carrot_market> {
         },
         selectedIndex: currentPageIndex,
         labelBehavior: labelBehavior,
-        destinations: <Widget>[
+        destinations: const <Widget>[
           NavigationDestination(
             label: '',
             selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.home, size: 18), Text('홈', style: TextStyle(fontSize: 9))]),

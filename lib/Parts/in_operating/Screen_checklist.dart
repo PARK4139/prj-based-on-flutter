@@ -46,7 +46,7 @@ class _Screen_plan_excuterState extends State<Screen_plan_excuter> {
             // Button_to_save_button_name_into_clipboard(text: 'ㆍ' + request_school_name + ' ' + requester_name + '\n' + request_year + ' ' + request_code + ' ' + std_no + ' ' + std_name + ' ' + request_context + '\n-->요청대로 처리[완료]', background_color:  MyColors.darkBlack2, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_to_submit_daily_report_at_bizmeka(text: '비즈메카 일일업무보고', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
             Button_to_record_work_end_time(text: '비즈메카 퇴근보고', background_color: MyColors.black_background, color: Colors.white38, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-            Button_to_excute_schedule_planed(text: "나의 운동 계획스케쥴", items: const [
+            ButtonToExcuteSchedulePlaned(text: "나의 운동 계획스케쥴", items: const [
               '팔 약간 벌려 높이뛰기//위에서 볼때 w 가 되도록',
               '박스 스쿼트 9회 1set//박기량이 하던 운동',
               '데드리프트 9회 1set',
@@ -56,7 +56,7 @@ class _Screen_plan_excuterState extends State<Screen_plan_excuter> {
               '철봉 9회 1set',//9회 10set 가 되면 어느정도 몸이 될지 궁금하다.
               '푸쉬 업  9회 1set',// 기회가 되면 2회/7일 정도는 필라테스 다니기
             ]),
-            Button_to_excute_schedule_planed(text: "나의 운동 랜덤스케쥴", items: const [
+            ButtonToExcuteSchedulePlaned(text: "나의 운동 랜덤스케쥴", items: const [
               '팔 약간 벌려 높이뛰기//위에서 볼때 w 가 되도록',
               '박스 스쿼트 9회 1set//박기량이 하던 운동',
               '데드리프트 9회 1set',

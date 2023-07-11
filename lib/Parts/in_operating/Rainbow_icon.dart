@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-//내가 수집한 텍스트들
+
 class Rainbow_icon extends StatefulWidget {
   IconData iconData;
   final Color? color;
@@ -42,6 +42,8 @@ class _Rainbow_iconState extends State<Rainbow_icon> {
   late Timer? timer;
   late bool isUpperCaseMode;
 
+  late int RainbowdimmingMilliSeconds;
+
   // Future<void> changeTextColor (Timer timer) async {
   void changeTextColor(Timer timer) {
     if (buildMethodCounter == colors.length) {
@@ -56,15 +58,15 @@ class _Rainbow_iconState extends State<Rainbow_icon> {
   void initState() {
     super.initState();
     color = widget.color!;
+    // RainbowdimmingMilliSeconds = 1000;
+    // RainbowdimmingMilliSeconds = 500;
+    // RainbowdimmingMilliSeconds = 250;
+    RainbowdimmingMilliSeconds = 100;
     if (widget.isRainbowMode == false) {
       timer = null;
+
     } else {
-      // timer = Timer.periodic(Duration(milliseconds: 1000), changeTextColor);//답답한
-      // timer = Timer.periodic(Duration(milliseconds: 100), changeTextColor); //느린
-      // timer = Timer.periodic(Duration(milliseconds: 80), changeTextColor); //
-      timer = Timer.periodic(Duration(milliseconds: 50), changeTextColor); //크리스마스
-      // timer = Timer.periodic(Duration(milliseconds: 25), changeTextColor);  // 정신없는
-      // timer = Timer.periodic(Duration(milliseconds: 20), changeTextColor);  // 광고용
+      timer = Timer.periodic(Duration(milliseconds: RainbowdimmingMilliSeconds), changeTextColor);
     }
   }
 

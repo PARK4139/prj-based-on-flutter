@@ -1,4 +1,3 @@
-
 title %~n0
 echo "__________________________________________________________________________________________________________________________________________ minimized window s
 if not "%minimized%"=="" goto :minimized
@@ -17,10 +16,10 @@ echo "__________________________________________________________________________
 
 
 ::set commit_ment=%yyyyMMddHHmmss%
-::set commit_ment=테스트 커밋.
+set commit_ment=테스트 커밋.
 ::set commit_ment=프로젝트 이니셜 커밋.
 ::set commit_ment=플러터 안드로이드 앱 업데이트 PHASE 1
-set commit_ment=오늘의 웹툰 추가
+set commit_ment=개발환경 이동 및 프로젝트 작동 테스트 완료
 
 
 git add *  

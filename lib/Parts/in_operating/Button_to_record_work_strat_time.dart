@@ -147,7 +147,7 @@ class _Button_to_record_work_strat_timeState extends State<Button_to_record_work
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
-                            for (var item in items_snapshot_at_start) Button_to_move_button_name_into_clipboard(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                            for (var item in items_snapshot_at_start) StampIntoClipboard(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
                           ],
                         ),
                       ),
