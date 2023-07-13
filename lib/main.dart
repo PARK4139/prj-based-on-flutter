@@ -9,8 +9,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'Parts/in_operating/rainbow_icon.dart';
 import 'Parts/in_operating/screen_index_blue.dart';
 import 'Parts/in_operating/screen_index_colorful.dart';
-import 'Parts/in_operating/screen_netflix.dart';
-import 'Parts/in_operating/screen_netflix_search.dart';
 
 //apk 빌드 시 파일명은 grammer.dart 여야한다?.
 void main() {
@@ -75,96 +73,91 @@ class AppState extends State<App> {
       }
       print('_______________________________________________________________________ auth check e');
     }
-    init_scaffold_background_color();
   }
 
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
-      if (/*개발 집중 모드*/ isDevelopmentConcentrationMode == true) {
-        return const MaterialApp(home: ScreenNetflixSearch());
-      } else {
-        return MaterialApp(
-          debugShowCheckedModeBanner: isDarkMode ? true : false,
-          title: '나의 플러터 베이스 앱',
-          theme: ThemeData(
-            primaryColor: Colors.pinkAccent.shade200,
-            textTheme: const TextTheme(
-              titleLarge: TextStyle(color: Color(0xFF232b55), fontSize: 18),
-            ),
-            cardColor: const Color(0xfff4eddb),
+      return MaterialApp(
+        debugShowCheckedModeBanner: isDarkMode ? true : false,
+        title: '나의 플러터 베이스 앱',
+        theme: ThemeData(
+          primaryColor: Colors.pinkAccent.shade200,
+          textTheme: const TextTheme(
+            titleLarge: TextStyle(color: Color(0xFF232b55), fontSize: 18),
           ),
-          home: Scaffold(
-            backgroundColor: isDarkMode ? Colors.black.withOpacity(0.9) : color_for_scaffold_background,
-            appBar: AppBar(
-              title: Center(
-                child: Column(
-                  children: [
-                    IconButton(onPressed: toogleDevelopingMode, icon: isDarkMode ? Icon(Icons.change_circle_outlined) : Icon(Icons.change_circle_outlined, color: Colors.lightBlue.shade50)),
-                  ],
-                ),
+          cardColor: const Color(0xfff4eddb),
+        ),
+        home: Scaffold(
+          backgroundColor: isDarkMode ? Colors.black.withOpacity(0.9) : color_for_scaffold_background,
+          appBar: AppBar(
+            title: Center(
+              child: Column(
+                children: [
+                  IconButton(onPressed: toogleDevelopingMode, icon: isDarkMode ? Icon(Icons.change_circle_outlined) : Icon(Icons.change_circle_outlined, color: Colors.lightBlue.shade50)),
+                ],
               ),
-              backgroundColor: isDarkMode ? Colors.blueAccent.withOpacity(0.2) : color_for_scaffold_background,
-              foregroundColor: isDarkMode ? Colors.blueAccent : color_for_scaffold_background,
-              elevation: 1,
             ),
-            bottomNavigationBar: NavigationBar(
-              backgroundColor: Colors.blueAccent.withOpacity(0.2),
-              onDestinationSelected: (int index) {
-                setState(() {
-                  currentPageIndex = index;
-                });
+            backgroundColor: isDarkMode ? Colors.blueAccent.withOpacity(0.2) : color_for_scaffold_background,
+            foregroundColor: isDarkMode ? Colors.blueAccent : color_for_scaffold_background,
+            elevation: 1,
+          ),
+          bottomNavigationBar: NavigationBar(
+            backgroundColor: Colors.blueAccent.withOpacity(0.2),
+            onDestinationSelected: (int index) {
+              setState(() {
+                currentPageIndex = index;
+              });
+            },
+            selectedIndex: currentPageIndex,
+            labelBehavior: labelBehavior,
+            destinations: <Widget>[
+              Builder(
+                builder: (context) {
+                  if (isDarkMode == false) {
+                    ghost_wiget = Center(child: null);
+                  } else {
+                    ghost_wiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: Rainbow_icon(iconData: Icons.folder), icon: Icon(Icons.folder));
+                  }
+                  return ghost_wiget;
+                },
+              ),
+              Builder(
+                builder: (context) {
+                  if (isDarkMode == false) {
+                    ghost_wiget = Center(child: null);
+                  } else {
+                    ghost_wiget = NavigationDestination(label: 'INDEX BLUE', selectedIcon: Icon(Icons.folder, color: Colors.blueAccent), icon: Icon(Icons.folder, color: Colors.black));
+                  }
+                  return ghost_wiget;
+                },
+              ),
+            ],
+          ),
+          body: <Widget>[
+            Builder(
+              builder: (context) {
+                if (isDarkMode == false) {
+                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
+                } else {
+                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
+                }
+                return ghost_wiget;
               },
-              selectedIndex: currentPageIndex,
-              labelBehavior: labelBehavior,
-              destinations: <Widget>[
-                Builder(
-                  builder: (context) {
-                    if (isDarkMode == false) {
-                      ghost_wiget = Center(child: null);
-                    } else {
-                      ghost_wiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: Rainbow_icon(iconData: Icons.folder), icon: Icon(Icons.folder));
-                    }
-                    return ghost_wiget;
-                  },
-                ),
-                Builder(
-                  builder: (context) {
-                    if (isDarkMode == false) {
-                      ghost_wiget = Center(child: null);
-                    } else {
-                      ghost_wiget = NavigationDestination(label: 'INDEX BLUE', selectedIcon: Icon(Icons.folder, color: Colors.blueAccent), icon: Icon(Icons.folder, color: Colors.black));
-                    }
-                    return ghost_wiget;
-                  },
-                ),
-              ],
             ),
-            body: <Widget>[
-              Builder(
-                builder: (context) {
-                  if (isDarkMode == false) {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
-                  } else {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
-                  }
-                  return ghost_wiget;
-                },
-              ),
-              Builder(
-                builder: (context) {
-                  if (isDarkMode == false) {
-                    ghost_wiget = Center(child: null); //PRODUCTION
-                  } else {
-                    ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), alignment: Alignment.center, child: Screen_index_blue()));
-                  }
-                  return ghost_wiget;
-                },
-              ),
-            ][isDarkMode ? currentPageIndex : currentPageIndex],
-          ),
-        );
-      }
+            Builder(
+              builder: (context) {
+                if (isDarkMode == false) {
+                  ghost_wiget = Center(child: null); //PRODUCTION
+                } else {
+                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), alignment: Alignment.center, child: Screen_index_blue()));
+                }
+                return ghost_wiget;
+              },
+            ),
+          ][isDarkMode ? currentPageIndex : currentPageIndex],
+        ),
+      );
     });
   }
 
@@ -174,7 +167,7 @@ class AppState extends State<App> {
       isCoolDownMode = false; //DEVELOPMENT
       isChrismasMode = false; //DEVELOPMENT
       isHappyBirthDayMode = false; //DEVELOPMENT
-      isDevelopmentConcentrationMode = false; /*false*/ /*true*/
+      isDevelopmentConcentrationMode = true; /*false*/ /*true*/
     });
   }
 
@@ -257,8 +250,6 @@ class AppState extends State<App> {
       //debug mode 로 전환시 새로 Screen_first_take 로 라우팅하기 위함.
     });
   }
-
-  void init_scaffold_background_color() {}
 }
 
 enum Platforms {

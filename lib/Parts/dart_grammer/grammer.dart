@@ -19,7 +19,7 @@ class FooFoo {
   String foo3(String foo, String foofoo, [String? foofoofoo = 'foo']) => ' ' + foo + ' ' + foofoo + ' ' + foofoofoo!; //optional arguments
 
   String? dataTypePrinter(String? foo) {
-    if (foo is! String) {
+    if (foo is String) {
       print('$foo\'s data type : String');
     } else if (foo is int) {
       print('$foo\'s data type : int');
@@ -39,7 +39,7 @@ class FooFoo {
     if (foo! is! String) {
       print('$foo\'s data type : String');
     } else if (foo == null) {
-      foo ??= 'it was null'; //foo 가 null 이면 'it was null' 를 넣는다.
+      foo ??= 'it was null'; //foo 가 null 이면 'it was null' 로서 초기화.
       print('$foo');
     }
     return foo;

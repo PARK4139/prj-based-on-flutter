@@ -18,13 +18,13 @@ class ScreenToHelpDeveloper extends StatefulWidget {
 class _ScreenToHelpDeveloperState extends State<ScreenToHelpDeveloper> {
   final ment = '해당 스크린에서는 개발하는데 도움이 되는 기능들을 제공해주는 서비스를 제공합니다 \n\n'
       '＊"" : .';
-  late bool isDevelopingMode;
+  late bool isDarkMode;
 
   @override
   void initState() {
     super.initState();
 
-    isDevelopingMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
+    isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
   }
 
   @override
@@ -43,7 +43,7 @@ class _ScreenToHelpDeveloperState extends State<ScreenToHelpDeveloper> {
                   minimumSize: MaterialStateProperty.all(const Size(100, 50)),
                   maximumSize: MaterialStateProperty.all(const Size(100, 50)),
                 ),
-                child: isDevelopingMode ? const Text('') : Text('go to index'.toUpperCase(), style: const TextStyle(color: Colors.blueAccent)),
+                child: isDarkMode ? const Text('') : Text('go to index'.toUpperCase(), style: const TextStyle(color: Colors.blueAccent)),
                 onPressed: () {
                   Navigator.pop(context);
                 },
