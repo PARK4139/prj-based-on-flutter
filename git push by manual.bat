@@ -16,11 +16,11 @@ echo "__________________________________________________________________________
 
 
 ::set commit_ment=%yyyyMMddHHmmss%
-::set commit_ment=테스트 커밋.
+set commit_ment=테스트 커밋.
 ::set commit_ment=프로젝트 이니셜 커밋.
 ::set commit_ment=플러터 안드로이드 앱 업데이트 PHASE 1
 ::set commit_ment=개발환경 이동 및 프로젝트 작동 테스트 완료
-set commit_ment=넷플리쓰 서치 탭의 서치 바 UI 구현
+::set commit_ment=넷플리쓰 서치 탭의 서치 바 UI 구현
 
 
 git add *  
@@ -49,6 +49,6 @@ ECHO %OPENING_DIRECTORY%
 explorer https://github.com/PARK4139/%OPENING_DIRECTORY%
 del /f "git push by auto.py"
 REM echo %~n0.log
-REM timeout 5
+timeout 5
 
 

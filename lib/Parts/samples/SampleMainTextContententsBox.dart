@@ -23,7 +23,7 @@ class _SampleMainTextContententsBoxState extends State<SampleMainTextContentents
       child: Container(
         // width: 400,//폭을 설정하면 유용하다!
         padding: EdgeInsets.all(10),
-        color: Colors.redAccent.withOpacity(0.5),
+        color: Colors.black38.withOpacity(0.5),
         child: Row(
           // mainAxisAlignment: MainAxisAlignment.start,
           children: [
