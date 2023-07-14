@@ -152,7 +152,7 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenToHelpDeveloper()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenDeveloperHelper()));
               },
               icon: Icon(Icons.folder),
               tooltip: folder_development,

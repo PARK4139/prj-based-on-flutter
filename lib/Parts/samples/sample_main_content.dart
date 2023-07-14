@@ -4,16 +4,16 @@ import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_icon.da
 
 import '../../main.dart';
 import '../in_operating/screen_index_colorful.dart';
-import 'SampleAccodionMenu.dart';
-import 'SampleMainTextContententsBox.dart';
+import 'sample_accodion_menu.dart';
+import 'sample_main_text_contentents_box.dart';
 
 class SampleMainContent extends StatefulWidget {
   String level1text;
   Widget level1widget;
 
-  List<String> level2texts;
+  List<dynamic> level2items;
 
-   SampleMainContent({required this.level1widget, required this.level1text, required this.level2texts});
+   SampleMainContent({required this.level1widget, required this.level1text, required this.level2items});
 
 
   @override
@@ -50,11 +50,15 @@ class _SampleMainContentState extends State<SampleMainContent> {
         ),
         for (int i = 1; i < 2; i++) const SizedBox(height: 3),
           isMainContentClicked ?  Column(
-            children: <Widget>[
-              for (var text in widget.level2texts) Column(
+            children: [
+              for (dynamic item in widget.level2items) Column(
                 children: [
-                  /*텍스트가 길어서 화면의 폭을 넘어가면 자동으로 줄바꿈해주는 텍스트상자 버튼*/ SampleMainTextContententsBox(text: text, isMainContentClicked:isMainContentClicked ),
-                  for (int i = 1; i < 2; i++) const SizedBox(height: 3),
+                  if (item is String)
+                  /*텍스트가 길어서 화면의 폭을 넘어가면 자동으로 줄바꿈해주는 텍스트상자 버튼*/ SampleMainTextContententsBox(text: item, isMainContentClicked: isMainContentClicked)
+                  else if (item is Widget)
+                    item
+                  else
+                    for (int i = 1; i < 2; i++) const SizedBox(height: 3)
                 ],
               ),
             ],

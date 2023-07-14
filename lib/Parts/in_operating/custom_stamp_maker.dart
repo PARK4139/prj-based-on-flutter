@@ -3,7 +3,7 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 /*처음에 클립보드의 값이 버튼명으로 저장이 되고 그 이후로 클릭을 하면 클립보드로 값이 저장되는 클립보드의 내용을 버튼명에 바인딩하는 버튼*/
-class CustomStampMaker extends StatefulWidget {
+class DisposalStampMaker extends StatefulWidget {
   String text;
   final Color? color;
   final FontWeight? font_weight;
@@ -13,7 +13,7 @@ class CustomStampMaker extends StatefulWidget {
   final double padding_horizontal;
   final BorderRadius? border_radius;
 
-  CustomStampMaker({
+  DisposalStampMaker({
     Key? key,
     required this.text,
     required this.background_color,
@@ -26,10 +26,10 @@ class CustomStampMaker extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CustomStampMaker> createState() => _CustomStampMakerState();
+  State<DisposalStampMaker> createState() => _DisposalStampMakerState();
 }
 
-class _CustomStampMakerState extends State<CustomStampMaker> {
+class _DisposalStampMakerState extends State<DisposalStampMaker> {
   bool isFirstClick = true;
 
   @override

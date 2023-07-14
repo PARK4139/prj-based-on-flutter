@@ -19,9 +19,9 @@ class Rainbow_text extends StatefulWidget {
   Rainbow_text({
     Key? key,
     required this.text,
-    required this.color,
-    required this.font_size,
-    required this.font_weight,
+    this.color=Colors.blueAccent,
+     this.font_size=18,
+     this.font_weight=FontWeight.w800,
     this.isRainbowMode,
     this.isUpperCaseMode = false,
     // this.isUpperCaseMode = true,

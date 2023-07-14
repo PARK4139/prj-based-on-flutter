@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_icon.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_text.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_area_calculator.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_carrot_market.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_checklist.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_digital_clock.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_pomodo.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_super_stamp.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_webtoon_v1.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_webtoon_v2.dart';
 
-import '../samples/ScreenFlutterStudyNote.dart';
+import '../samples/screen_weired_my_note.dart';
 import 'screen_netflix.dart';
-import 'screen_samples.dart';
 
 class Screen_index_colorful extends StatefulWidget {
   bool isDarkMode;
@@ -25,16 +23,16 @@ class Screen_index_colorful extends StatefulWidget {
 class _Screen_index_colorfulState extends State<Screen_index_colorful> {
   late List<Widget> items_as_icon_only;
 
-  String index_name_netflixx = '넷플리쓰';
+  String indexNameNetflixx = '넷플리쓰';
   String index_name_carrot_markket = '당근마껫';
   String index_name_pomodoro = '프로모도';
   String index_name_digital_clock = '시계';
   String index_name_area_calculator = '평형 계산기';
-  String index_name_flutter_samples = '플러터 샘플';
   String index_name_plan_excuter = '계획집행기';
   String index_name_today_webtoon = '오늘의 웹툰';
-  String index_name_super_stamp='슈퍼 스탬프';
-  String index_name_screen_in_developing='XXXXXXXX';
+  String indexNameDeveloperHelper = '개발자 도우미';
+  String index_name_in_developing = 'xxxxxxxxx';
+  String index_name_fancy_memo = '참 펜시한 메모장';
 
   String indexNameCutter(String indexName) {
     String result = '';
@@ -139,41 +137,6 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             ),
           ],
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Screen_samples(),
-                  ),
-                );
-              },
-              icon: Column(
-                children: [
-                  Transform.scale(scale: 1.8, child: const Icon(Icons.code)),
-                  Transform.scale(
-                    scale: 2.2,
-                    child: Transform.translate(
-                      offset: Offset(0, 10),
-                      child: Text(
-                        indexNameCutter(index_name_flutter_samples),
-                        style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              color: Colors.lightBlueAccent,
-              tooltip: index_name_flutter_samples.toUpperCase(),
-              splashColor: Colors.blue,
-              focusColor: Colors.pinkAccent,
-              disabledColor: Colors.purpleAccent,
-            ),
-          ],
-        ),
         /*시계*/ Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -205,7 +168,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               tooltip: index_name_digital_clock.toUpperCase(),
               splashColor: Colors.blue,
               focusColor: Colors.pinkAccent,
-              disabledColor: Colors.purpleAccent,
+              disabledColor: Colors.pinkAccent,
             ),
           ],
         ),
@@ -283,13 +246,13 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                     scale: 2.2,
                     child: Transform.translate(
                       offset: Offset(0, 10),
-                      child: Text(indexNameCutter(index_name_netflixx), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
+                      child: Text(indexNameCutter(indexNameNetflixx), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
                     ),
                   ),
                 ],
               ),
               color: Colors.purpleAccent,
-              tooltip: index_name_netflixx.toUpperCase(),
+              tooltip: indexNameNetflixx.toUpperCase(),
               splashColor: Colors.blue,
               focusColor: Colors.pinkAccent,
               disabledColor: Colors.purpleAccent,
@@ -336,7 +299,8 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
               disabledColor: Colors.purpleAccent,
             ),
           ],
-        ),/*오늘의 웹툰*/ Column(
+        ),
+        /*오늘의 웹툰*/ Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
@@ -344,7 +308,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  Screen_webtoon_v2(),
+                    builder: (context) => Screen_webtoon_v2(),
                   ),
                 );
               },
@@ -353,20 +317,19 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
                   Transform.scale(
                     scale: 2.1,
                     child: Container(
-                        clipBehavior: Clip.hardEdge, //borderRadius: BorderRadius.circular(100), 에 의존적이다.
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5), //clipBehavior: Clip.hardEdge, 에 의존적이다.
-                          color: Colors.white,
-                        ),
+                      clipBehavior: Clip.hardEdge, //borderRadius: BorderRadius.circular(100), 에 의존적이다.
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5), //clipBehavior: Clip.hardEdge, 에 의존적이다.
+                        color: Colors.white,
+                      ),
                       child: Transform.scale(scale: 0.8, child: Image.asset('assets/app_webtoon_logo.jpg', height: 20)),
-                  ),
+                    ),
                   ),
                   Transform.scale(
                     scale: 2.2,
                     child: Transform.translate(
                       offset: Offset(0, 10),
                       child: Text(indexNameCutter(index_name_today_webtoon), style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 5, fontWeight: FontWeight.w600)),
-
                     ),
                   ),
                 ],
@@ -379,40 +342,79 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             ),
           ],
         ),
-        Column(
+        /*개발자 도우미*/ Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenToHelpDeveloper()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenDeveloperHelper()));
               },
-              icon: Rainbow_icon(iconData: Icons.stars_outlined),
-              tooltip: index_name_super_stamp,
+              icon: const Icon(Icons.bug_report_outlined, color: Colors.blueAccent),
+              tooltip: indexNameDeveloperHelper,
               splashColor: Colors.blue,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(index_name_super_stamp, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
+            Text(indexNameDeveloperHelper, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
           ],
         ),
-        Column(
+        /*참 펜시한 메모장*/ Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenWeiredMyNote()));
+              },
+              child: Container(
+                height: 50,
+                child: Column(
+                  children: [
+                    Transform.translate(offset: const Offset(0, 0+5), child: const Text("📋", style: TextStyle(fontSize: 28))),
+                    Transform.translate(offset: const Offset(0, 0-10-10+5), child: Transform.rotate(angle: 0.1,child: Rainbow_text(text: "FANCY",font_size: 9))),
+                  ],
+                ),
+              ),
+            ),
+            Text(index_name_fancy_memo, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
+          ],
+        ),
+        /*xxxxxxxx*/ Container(
+          height: 50,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenWeiredMyNote()));
+                },
+                child: const Column(
+                  children: [
+                    Placeholder(fallbackHeight: 50,fallbackWidth: 50),
+                  ],
+                ),
+              ),
+              Text(index_name_fancy_memo, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
+            ],
+          ),
+        ),
+        /*xxxxxxxx*/ Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenFlutterStudyNote()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenWeiredMyNote()));
               },
               icon: Placeholder(),
-              tooltip: index_name_screen_in_developing,
+              tooltip: index_name_in_developing,
               splashColor: Colors.blue,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(index_name_screen_in_developing, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
+            Text(index_name_in_developing, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
           ],
         ),
       ];
