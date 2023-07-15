@@ -16,12 +16,12 @@ echo "__________________________________________________________________________
 
 
 ::set commit_ment=%yyyyMMddHHmmss%
-set commit_ment=테스트 커밋.
+::set commit_ment=테스트 커밋.
 ::set commit_ment=프로젝트 이니셜 커밋.
 ::set commit_ment=플러터 안드로이드 앱 업데이트 PHASE 1
 ::set commit_ment=개발환경 이동 및 프로젝트 작동 테스트 완료
 ::set commit_ment=넷플리쓰 서치 탭의 서치 바 UI 구현
-
+set commit_ment=#프로젝트 중간 중간 정리정돈 및 #중간 리펙토링 (const 키워드 부여, 공통부분 묶음처리) # UI 구현 연습 # 로딩 바 기능 추가
 
 git add *  
 git commit -m "%commit_ment%" 
