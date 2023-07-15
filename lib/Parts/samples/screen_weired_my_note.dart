@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_icon.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_text.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_button_general.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_check_box_local_storage.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_pop_up_alert.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_pop_up_form.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_toggle.dart';
 
 import '../../main.dart';
+import '../../screen_index_colorful.dart';
 import '../in_operating/my_superworkers.dart';
-import '../in_operating/screen_index_colorful.dart';
 import 'sample_main_content.dart';
 
 class ScreenWeiredMyNote extends StatefulWidget {
@@ -53,7 +52,6 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
     // SampleWeiredItems = [];
@@ -73,7 +71,7 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
           children: [
             Column(
               children: [
-                /*닫기 버튼*/ Container(
+                /*닫기 버튼*/ SizedBox(
                   height: 60,
                   // width:  60,
                   child: Stack(
@@ -96,7 +94,7 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
-                                      tooltip: "GO TO HOME",
+                                      tooltip: "",
                                     ),
                                   ),
                                 ),
@@ -111,24 +109,24 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
                 for (int i = 1; i < 7; i++) const SizedBox(height: 3),
                 /*참 펜시한 메모장 : 타이틀*/ Center(
                   child: InkWell(
-                    onTap: (){print("참 펜시한 메모장:");},
-                    child: Container(
-                      child: Column(
-                        children: [
-                          /*메인타이틀*/ Transform.translate(
-                              offset: const Offset(80 - 50, 0 + 20),
-                              child: Row(
-                                children: [
-                                  Text('참 ', style: textStyle2),
-                                  Text('이상한 ', style: textStyle2CanceledLine),
-                                  Rainbow_text(text: '펜시', color: Colors.white, font_size: 27, font_weight: FontWeight.w900),
-                                  Text('한 ', style: textStyle2),
-                                  Container(color: Colors.yellowAccent, child: Text('메모장', style: textStyle2underLine)),
-                                ],
-                              )),
-                          /*메인타이틀꾸미기*/ Transform.translate(offset: const Offset(80 + 20 + 10 + 10 + 10 + 6, -60 + 10 + 10 + 10 + 10), child: Transform.rotate(angle: -0.11, child: TextButton(onPressed: () {}, child: Text('📋', style: textStyle1)))),
-                        ],
-                      ),
+                    onTap: () {
+                      print("참 펜시한 메모장:");
+                    },
+                    child: Column(
+                      children: [
+                        /*메인타이틀*/ Transform.translate(
+                            offset: const Offset(80 - 50, 0 + 20),
+                            child: Row(
+                              children: [
+                                Text('참 ', style: textStyle2),
+                                Text('이상한 ', style: textStyle2CanceledLine),
+                                Rainbow_text(text: '펜시', color: Colors.white, font_size: 27, font_weight: FontWeight.w900),
+                                Text('한 ', style: textStyle2),
+                                Container(color: Colors.yellowAccent, child: Text('메모장', style: textStyle2underLine)),
+                              ],
+                            )),
+                        /*메인타이틀꾸미기*/ Transform.translate(offset: const Offset(80 + 20 + 10 + 10 + 10 + 6, -60 + 10 + 10 + 10 + 10), child: Transform.rotate(angle: -0.11, child: TextButton(onPressed: () {}, child: Text('📋', style: textStyle1)))),
+                      ],
                     ),
                   ),
                 ),
@@ -152,10 +150,12 @@ TO DO
                 ]),
                 SampleMainContent(level1widget: const Icon(Icons.phone_android, color: Colors.grey), level1text: 'App 요약정리', level2items: [
                   /*Flutter 핵심 요약:타이틀*/ InkWell(
-                    onTap: (){print("/*Flutter 핵심 요약:타이틀*/");},
+                    onTap: () {
+                      print("/*Flutter 핵심 요약:타이틀*/");
+                    },
                     child: Column(
                       children: [
-                        /*메인타이틀*/ Container(child: Transform.translate(offset: const Offset(10, 0 + 20), child: Text('Flutter 핵심 요약', style: textStyle2))),
+                        /*메인타이틀*/ Transform.translate(offset: const Offset(10, 0 + 20), child: Text('Flutter 핵심 요약', style: textStyle2)),
                         /*메인타이틀꾸미기*/ Transform.translate(offset: const Offset(-80 - 5, -40 - 5), child: Transform.rotate(angle: 0.22, child: Text('위젯 ?', style: textStyle1))),
                         /*메인타이틀꾸미기*/ Transform.translate(offset: const Offset(100 + 4, -60 - 8), child: Transform.rotate(angle: -0.11, child: Text('상태관리 ?', style: textStyle1))),
                       ],
@@ -266,7 +266,7 @@ Firebase 는 serverless 의 실제 서비스 중의 구현체 중의 하나이�
 ?
 """,
                 ]),
-                SampleMainContent(level1widget: Text('📑', style: textStyle5), level1text: '잡동사니 메모장', level2items: const [
+                SampleMainContent(level1widget: Text('📑', style: textStyle5), level1text: '잡동사니', level2items: [
                   """
 BaaS 연동?  
 
@@ -281,24 +281,79 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 고객 데이터 소실에 대한 책임은 누가?
 고객 데이터 소실에 대한 책임에 대한 문제는 있어보인다.
 """,
-                ]),
-                SampleMainContent(level1widget: Text('🥴🤐🤡🤢', style: textStyle5), level1text: '웃자', level2items: const [
-                  """
+                  SampleMainContent(level1widget: Text('🥴🤐🤡🤢', style: textStyle5), level1text: '웃자', level2items: [
+                    """
 오늘도 수고했어!
 
 언젠가 빛을 보리라.
 이번에 좀 슬펐지만 다음에 더 잘하면 되지. 
 """,
+                    SampleMainContent(level1widget: const Text('☘', style: TextStyle(color: Colors.green)), level1text: '행운이 그대에게 가득하기를', level2items: const []),
+                  ]),
                 ]),
-                SampleMainContent(level1widget: const Text('☘', style: TextStyle(color: Colors.green)), level1text: '행운이 그대에게 가득하기를', level2items: const []),
-                SampleMainContent(level1widget: const Icon(Icons.code,color: Colors.lightBlueAccent,
-                ), level1text: '플러터 샘플 모음', level2items: [
-                  SampleToggle(),
-                  SampleCheckBox(),
-                  SamplePopUpAlert(text: 'SamplePopUpAlert', background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-                  SamplePopUpForm(text: 'SamplePopUpForm', background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-                  SampleButtonGeneral(text: "SampleButtonGeneral", color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, background_color: MyColors.black_background, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
-                ]),
+                SampleMainContent(
+                    level1widget: const Icon(
+                      Icons.code,
+                      color: Colors.lightBlueAccent,
+                    ),
+                    level1text: '플러터 샘플 위젯 모음',
+                    level2items: [
+                      SampleToggle(),
+                      SampleCheckBox(),
+                      SamplePopUpAlert(text: '경고알림', background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                      SamplePopUpForm(text: '양식제출', background_color: MyColors.black_background, color: Colors.lightBlueAccent, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 4, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                      /*버튼스타일*/ FloatingActionButton(
+                        mini: false,
+                        backgroundColor: Colors.blue.shade900,
+                        splashColor: Colors.black,
+                        onPressed: () {},
+                        hoverElevation: 1.5,
+                        shape: const StadiumBorder(side: BorderSide(color: Colors.blue, width: 4)),
+                        elevation: 1.5,
+                        child: const Icon(
+                          Icons.message,
+                          color: Colors.red,
+                        ),
+                      ),
+                      const Text("______________________________"),
+                      /*버튼스타일*/ Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue, width: 4),
+                          color: Colors.yellow,
+                          shape: BoxShape.circle,
+                        ),
+                        child: IconButton(
+                          iconSize: 56,
+                          icon: const Icon(Icons.message),
+                          onPressed: () {},
+                        ),
+                      ),
+                      const Text("______________________________"),
+                      /*버튼스타일*/ Material(
+                        type: MaterialType.transparency, //Makes it usable on any background color, thanks @IanSmith
+                        child: Ink(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.indigoAccent, width: 4.0),
+                            color: Colors.indigo[900],
+                            shape: BoxShape.circle,
+                          ),
+                          child: InkWell(
+                            //This keeps the splash effect within the circle
+                            borderRadius: BorderRadius.circular(1000.0), //Something large to ensure a circle
+                            onTap: () {},
+                            child: const Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Icon(
+                                Icons.message,
+                                size: 30.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Text("______________________________"),
+                    ]),
                 SampleMainContent(level1widget: Text('📂', style: textStyle5), level1text: '아이콘텍스트 모음', level2items: const [
                   """
 💻💼🖱🕐🕑🕒🕓🕔🕕🕖🕗🕘🕙🕚🕛🕜🕝🕞🕟🕠🕡🕢🕣🕤🕥🕦🕧
@@ -816,35 +871,10 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🥑
 🥒
 🥓
-🥔
-🥕
-🥖
-🥗
-🥘
-🥙
-🥚
-🥛
-🥜
-🥝
-🥞
-🥟
+🥔🥕🥖🥗🥘🥙🥚🥛🥜🥝🥞🥟
 🥠
-🥡
-🥢
-🥣
-🥤
-🥥
-🥦
-🥧
-🥨
-🥩
-🥪
-🥫
-🥬
-🥬
-🥭
-🥮
-🥯
+🥡🥢🥣🥤
+🥥🥦🥧🥨🥩🥪🥫🥬🥬🥭🥮🥯
 🥵🥶🥺
 🥻
 🥼
@@ -1044,21 +1074,14 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🟥🟦🟧🟨🟩🟪🟫
 """,
                 ]),
-                SampleMainContent(level1widget: Text('?', style: textStyle5), level1text: '?', level2items: const [
-                  """
-?
-""",
-                ]),
                 for (int i = 1; i < 2; i++) const SizedBox(height: 3),
-                // SampleAccodionMenu(),
-                // SampleButtonSamples(),
               ],
             ),
             /*움직이는 벌레 버튼*/ Stack(
               children: [
                 Opacity(
                   opacity: 1,
-                  child: Container(
+                  child: SizedBox(
                     height: 30,
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width,
@@ -1066,7 +1089,7 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                       child: Stack(
                         children: [
                           Transform.translate(
-                            offset: const Offset(300, -55+50-50-50),
+                            offset: const Offset(300, -55 + 50 - 50 - 50),
                             child: IconButton(
                               onPressed: () {},
                               icon: Stack(

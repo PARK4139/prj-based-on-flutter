@@ -27,7 +27,7 @@ class _Screen_webtoon_v2State extends State<Screen_webtoon_v2> {
             child: Row(
           children: [
             SizedBox(width: 85),
-            Text("오늘의 웹툰", style: TextStyle(color: Colors.green, fontSize: 16)),
+            Text("오늘도 웹툰", style: TextStyle(color: Colors.green, fontSize: 16)),
           ],
         )),
         backgroundColor: Colors.white,

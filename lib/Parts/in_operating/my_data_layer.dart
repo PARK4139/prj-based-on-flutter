@@ -79,7 +79,7 @@ class User {
   }
 }
 
-class Carrot_user_card_infos {
+class CarrotUserCardInfos {
   final String user_item_img_url;
   final String item_category;
   final String user_location;
@@ -88,7 +88,7 @@ class Carrot_user_card_infos {
   final int heart_count;
   final int chatting_request_count;
 
-  Carrot_user_card_infos.fromMap(Map<String, dynamic> map)
+  CarrotUserCardInfos.fromMap(Map<String, dynamic> map)
       : user_item_img_url = map['user_item_img_url'],
         item_category = map['item_category'],
         user_location = map['user_location'],
@@ -101,13 +101,13 @@ class Carrot_user_card_infos {
   String toString() => "Carrot_user_card_datasets<$user_item_img_url:$item_category>";
 }
 
-class Carrot_user_card_for_activity_notification_infos {
+class CarrotUserCardForActivityNotificationInfos {
   final String notification_img_url;
   final String notification_description1;
   final String notification_description2;
   final String notification_uploading_time;
 
-  Carrot_user_card_for_activity_notification_infos.fromMap(Map<String, dynamic> map)
+  CarrotUserCardForActivityNotificationInfos.fromMap(Map<String, dynamic> map)
       : notification_img_url = map['notification_img_url'],
         notification_description1 = map['notification_description1'],
         notification_description2 = map['notification_description2'],

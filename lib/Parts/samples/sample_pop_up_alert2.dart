@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 class SamplePopUpAlert extends StatefulWidget {
   final String text;
   final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
-  final double padding_vertical;
-  final double padding_horizontal;
-  final BorderRadius? border_radius;
+  final FontWeight? fontWeight;
+  final double? fontSize;
+  final Color? backgroundColor;
+  final double paddingVertical;
+  final double paddingHorizontal;
+  final BorderRadius? borderRadius;
 
   const SamplePopUpAlert({
     Key? key,
     required this.text,
-    required this.background_color,
+    required this.backgroundColor,
     required this.color,
-    required this.font_size,
-    required this.font_weight,
-    required this.padding_vertical,
-    required this.padding_horizontal,
-    required this.border_radius,
+    required this.fontSize,
+    required this.fontWeight,
+    required this.paddingVertical,
+    required this.paddingHorizontal,
+    required this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -31,20 +31,20 @@ class _SamplePopUpAlertState extends State<SamplePopUpAlert> {
   Widget build(BuildContext context) {
     return /*경고팝업버튼*/ Container(
       decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
+        color: widget.backgroundColor,
+        borderRadius: widget.borderRadius,
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
+        horizontal: widget.paddingHorizontal,
+        vertical: widget.paddingVertical,
       ),
       child: TextButton(
         child: Text(
           widget.text,
           style: TextStyle(
             color: widget.color,
-            fontSize: widget.font_size,
-            fontWeight: widget.font_weight,
+            fontSize: widget.fontSize,
+            fontWeight: widget.fontWeight,
           ),
         ),
         onPressed: () {
@@ -54,11 +54,11 @@ class _SamplePopUpAlertState extends State<SamplePopUpAlert> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   backgroundColor: Colors.white,
-                  title: Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                  content: Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
+                  title: const Icon(Icons.warning_outlined, color: Colors.orangeAccent),
+                  content: const Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
                   actions: <Widget>[
                     TextButton(
-                      child: Text("알겠어요!"),
+                      child: const Text("알겠어요!"),
                       onPressed: () {
                         Navigator.pop(context);
                       },

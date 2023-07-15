@@ -34,7 +34,7 @@ class _Screen_ttsState extends State<Screen_tts> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     initTTS();
   }

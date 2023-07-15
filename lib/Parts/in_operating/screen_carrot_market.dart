@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'button_to_write_for_carrot_market.dart';
-import 'screen_carrot_market_arroundme.dart';
+import 'screen_carrot_market_arround_me.dart';
 import 'screen_carrot_market_chatting.dart';
 import 'screen_carrot_market_home.dart';
 import 'screen_carrot_market_mycarrot.dart';
@@ -9,27 +9,27 @@ import 'screen_carrot_market_townliving.dart';
 
 // physics: NeverScrollableScrollPhysics(),
 // ,
-class Screen_carrot_market extends StatefulWidget {
-  const Screen_carrot_market({Key? key}) : super(key: key);
+class ScreenCarrotMarket extends StatefulWidget {
+  const ScreenCarrotMarket({Key? key}) : super(key: key);
 
   @override
-  State<Screen_carrot_market> createState() => _Screen_carrot_marketState();
+  State<ScreenCarrotMarket> createState() => _ScreenCarrotMarketState();
 }
 
-class _Screen_carrot_marketState extends State<Screen_carrot_market> {
+class _ScreenCarrotMarketState extends State<ScreenCarrotMarket> {
   int currentPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysShow;
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Button_to_write_for_carrot_market(),
+      floatingActionButton: const ButtonToWriteForCarrotMarket(),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white,
         onDestinationSelected: (int index) {
@@ -70,27 +70,28 @@ class _Screen_carrot_marketState extends State<Screen_carrot_market> {
       body: <Widget>[
         Builder(
           builder: (context) {
-            return Screen_carrot_market_home();
+            return const ScreenCarrotMarketHome();
           },
         ),
         Builder(
           builder: (context) {
-            return Screen_carrot_market_TownLiving();
+            return const ScreenCarrotMarketTownLiving();
+
           },
         ),
         Builder(
           builder: (context) {
-            return Screen_carrot_market_ArroundMe();
+            return const ScreenCarrotMarketArroundMe();
           },
         ),
         Builder(
           builder: (context) {
-            return Screen_carrot_market_Chatting();
+            return const ScreenCarrotMarketChatting();
           },
         ),
         Builder(
           builder: (context) {
-            return Screen_carrot_market_MyCarrot();
+            return const ScreenCarrotMarketMyCarrot();
           },
         ),
         // Container(

@@ -17,7 +17,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     initMovies();
     initImageSliderCurrentPage();
@@ -43,54 +43,16 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  /*넷플릭쓰 로고*/ Container(child: Image.asset('assets/app_netflix_logo.png', fit: BoxFit.contain, width: 30), padding: const EdgeInsets.fromLTRB(0, 7, 0, 7), margin: const EdgeInsets.fromLTRB(0, 0, 0, 0)),
+                  /*넷플릭쓰 로고*/ Container(padding: const EdgeInsets.fromLTRB(0, 7, 0, 7), margin: const EdgeInsets.fromLTRB(0, 0, 0, 0), child: Image.asset('assets/app_netflix_logo.png', fit: BoxFit.contain, width: 30)),
                   /*TV 프로그램 버튼*/ InkWell(
                     onTap: () {
-                      setState(() {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              backgroundColor: Colors.white,
-                              title: Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                              content: Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: Text("네! 알겠어요!"),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(seconds: 1),content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!'))); // setState(() {
                     },
                     child: Container(padding: const EdgeInsets.fromLTRB(0, 7, 0, 7), margin: const EdgeInsets.fromLTRB(0, 0, 0, 0), child: const Text('TV 프로그램', style: TextStyle(fontSize: 14, color: Colors.white38))),
                   ),
                   /*영화 버튼*/ InkWell(
                     onTap: () {
-                      setState(() {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              backgroundColor: Colors.white,
-                              title: Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                              content: Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: Text("네! 알겠어요!"),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(seconds: 1),content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!'))); // setState(() {
                     },
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
@@ -98,28 +60,9 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                       child: const Text('영화', style: TextStyle(fontSize: 14, color: Colors.white38)),
                     ),
                   ),
-                  InkWell(
+          /*내가 찜한 콘텐츠*/InkWell(
                     onTap: () {
-                      setState(() {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              backgroundColor: Colors.white,
-                              title: Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                              content: Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: Text("네! 알겠어요!"),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(seconds: 1),content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!'))); // setState(() {
                     },
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
@@ -139,7 +82,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
           children: [
             Center(
               child: SizedBox(
-                height: 420 + 48 + 5.6,
+                height: 475,
                 child: CarouselSlider(
                   items: [
                     for (Movie movie in movies)
@@ -159,10 +102,10 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                             ),
                           ),
                           Transform.translate(
-                            offset: Offset(0, -20 - 2 - 2 - 2),
+                            offset: const Offset(0, -20 - 2 - 2 - 2),
                             child: Text(
                               movie.title,
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                              style: const TextStyle(color: Colors.white, fontSize: 20),
                             ),
                           ),
                         ],
@@ -205,26 +148,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                   ),
                   child: InkWell(
                     onTap: () {
-                      setState(() {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              backgroundColor: Colors.white,
-                              title: Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                              content: Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: Text("네! 알겠어요!"),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(seconds: 1),content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!'))); // setState(() {
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -242,28 +166,9 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                   width: 80,
                   child: InkWell(
                     onTap: () {
-                      setState(() {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              backgroundColor: Colors.white,
-                              title: Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                              content: Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: Text("네! 알겠어요!"),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(seconds: 1),content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!'))); // setState(() {
                     },
-                    child: Column(
+                    child: const Column(
                       children: [
                         Icon(Icons.info, color: Colors.white, size: 23),
                         SizedBox(height: 6),
@@ -322,7 +227,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
               ),
               /*오프셋된 영화 타이틀*/ Transform.translate(
                 offset: const Offset(-0, 30),
-                child: Text(movie.title, style: TextStyle(color: Colors.white, fontSize: 20)),
+                child: Text(movie.title, style: const TextStyle(color: Colors.white, fontSize: 20)),
               ),
             ],
           ),
@@ -359,7 +264,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
   List<Widget> TitleSliderMaker(List<Movie> movies) {
     String seperator = '    ';
     List<Widget> lists = [
-      for (Movie movie in movies) Text(movie.title + seperator, style: TextStyle(fontSize: 14, color: Colors.white38)),
+      for (Movie movie in movies) Text(movie.title + seperator, style: const TextStyle(fontSize: 14, color: Colors.white38)),
     ];
     return lists;
   }

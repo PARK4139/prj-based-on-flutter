@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 
-class Screen_carrot_market_Chatting extends StatefulWidget {
-  const Screen_carrot_market_Chatting({Key? key}) : super(key: key);
+class ScreenCarrotMarketChatting extends StatefulWidget {
+  const ScreenCarrotMarketChatting({Key? key}) : super(key: key);
 
   @override
-  State<Screen_carrot_market_Chatting> createState() => _Screen_carrot_market_ChattingState();
+  State<ScreenCarrotMarketChatting> createState() => _ScreenCarrotMarketChattingState();
 }
 
-class _Screen_carrot_market_ChattingState extends State<Screen_carrot_market_Chatting> {
+class _ScreenCarrotMarketChattingState extends State<ScreenCarrotMarketChatting> {
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        children: [
-          Placeholder(fallbackHeight: 140),
-          Placeholder(fallbackHeight: 140),
-          Placeholder(fallbackHeight: 140),
-          Placeholder(fallbackHeight: 140),
-        ],
+    return const SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Placeholder(fallbackHeight: 140),
+            Placeholder(fallbackHeight: 140),
+            Placeholder(fallbackHeight: 140),
+            Placeholder(fallbackHeight: 140),
+          ],
+        ),
       ),
     );
   }

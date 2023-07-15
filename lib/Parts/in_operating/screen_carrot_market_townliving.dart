@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Screen_carrot_market_TownLiving extends StatefulWidget {
-  const Screen_carrot_market_TownLiving({Key? key}) : super(key: key);
+class ScreenCarrotMarketTownLiving extends StatefulWidget {
+  const ScreenCarrotMarketTownLiving({Key? key}) : super(key: key);
 
   @override
-  State<Screen_carrot_market_TownLiving> createState() => _Screen_carrot_market_TownLivingState();
+  State<ScreenCarrotMarketTownLiving> createState() => _ScreenCarrotMarketTownLivingState();
 }
 
-class _Screen_carrot_market_TownLivingState extends State<Screen_carrot_market_TownLiving> {
+class _ScreenCarrotMarketTownLivingState extends State<ScreenCarrotMarketTownLiving> {
   @override
   void initState() {
     super.initState();

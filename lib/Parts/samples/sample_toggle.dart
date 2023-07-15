@@ -25,10 +25,7 @@ class _SampleToggleState extends State<SampleToggle> {
   Widget build(BuildContext context) {
     return Center(
       child: TextButton(
-        child: Text('${isChecked.toString() ?? '아직 로컬스토리지에서 값을 가져오지 못했습니다.'}'),
-        // 혹시 ?? 하기 싫으면 futureBuilder 사용하면 되는게 아닌가 싶다.
-        //future에 Build되기 전까지는 rotary indicator 시현되도록 할수 있는 기능이 있는 futureBuilder.
-        //테스트 해보자.
+        child: Text(isChecked.toString()),
         onPressed: () {
           setState(() {
             onToogleIsChecked();

@@ -28,7 +28,6 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 
 
-
 android {
     namespace "com.example.prj_app_feat_nomadcoder_class"
     compileSdkVersion flutter.compileSdkVersion
@@ -56,6 +55,7 @@ android {
         // code for solve trouble when building for Flutter_tts, flutter sdk version Compatibility s
 //        minSdkVersion flutter.minSdkVersion
         minSdkVersion 21
+//        minSdkVersion 19
         // code for solve trouble when building for Flutter_tts, flutter sdk version Compatibility e
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

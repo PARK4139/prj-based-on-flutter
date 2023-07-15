@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'screen_carrot_market_home.dart';
 
-class Screen_carrot_market_home_sub_to_notificate_info extends StatefulWidget {
-  const Screen_carrot_market_home_sub_to_notificate_info({Key? key}) : super(key: key);
+class ScreenCarrotMarketHomeSubToNotificateInfo extends StatefulWidget {
+  const ScreenCarrotMarketHomeSubToNotificateInfo({Key? key}) : super(key: key);
 
   @override
-  State<Screen_carrot_market_home_sub_to_notificate_info> createState() => _Screen_carrot_market_home_sub_to_notificate_infoState();
+  State<ScreenCarrotMarketHomeSubToNotificateInfo> createState() => _ScreenCarrotMarketHomeSubToNotificateInfoState();
 }
 
-class _Screen_carrot_market_home_sub_to_notificate_infoState extends State<Screen_carrot_market_home_sub_to_notificate_info> {
-  int _selectedIndex = 0;
+class _ScreenCarrotMarketHomeSubToNotificateInfoState extends State<ScreenCarrotMarketHomeSubToNotificateInfo> {
 
   late bool isTargetText1AsEdit;
 
@@ -32,33 +31,31 @@ class _Screen_carrot_market_home_sub_to_notificate_infoState extends State<Scree
                 Navigator.pop(context);
               },
             ),
-            title: Container(
-              child: Row(
-                children: [
-                  Text('알림', style: TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w700)),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        SizedBox(
-                          child: TextButton(
-                            child: isTargetText1AsEdit ? Text('편집', style: TextStyle(fontSize: 14, color: Colors.grey)) : Text('완료', style: TextStyle(fontSize: 14, color: Colors.grey)),
-                            onPressed: () {
-                              Navigator.pop(context);
-                              toogleTargetText1();
-                            },
-                          ),
+            title: Row(
+              children: [
+                const Text('알림', style: TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w700)),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(
+                        child: TextButton(
+                          child: isTargetText1AsEdit ? const Text('편집', style: TextStyle(fontSize: 14, color: Colors.grey)) : const Text('완료', style: TextStyle(fontSize: 14, color: Colors.grey)),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            toogleTargetText1();
+                          },
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             elevation: 1,
             foregroundColor: Colors.grey,
             backgroundColor: Colors.white,
-            bottom: TabBar(
+            bottom: const TabBar(
               tabs: [
                 Tab(child: Text('활동 알림', style: TextStyle(fontSize: 14, color: Colors.grey))),
                 Tab(child: Text('키워드 알림', style: TextStyle(fontSize: 14, color: Colors.grey))),
@@ -71,14 +68,14 @@ class _Screen_carrot_market_home_sub_to_notificate_infoState extends State<Scree
               ListView.builder(
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return User_card_for_activity_notification();
+                  return const UserCardForActivityNotification();
                 },
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('받은 알림이 없어요.\n키워드를 등록하고 알림을 받아보세요.', textAlign: TextAlign.center),
-                  SizedBox(height: 15),
+                  const Text('받은 알림이 없어요.\n키워드를 등록하고 알림을 받아보세요.', textAlign: TextAlign.center),
+                  const SizedBox(height: 15),
                   Container(
                     height: 45,
                     width: 150,
@@ -87,7 +84,7 @@ class _Screen_carrot_market_home_sub_to_notificate_infoState extends State<Scree
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Column(
+                      icon: const Column(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,

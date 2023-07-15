@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
-import '../in_developing/in_developing.dart';
+
 import 'custom_stamp_maker.dart';
 import 'button_to_make_multi_case.dart';
 import 'button_to_manage_schedule.dart';

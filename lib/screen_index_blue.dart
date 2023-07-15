@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
-import 'screen_area_calculator.dart';
-import 'screen_checklist.dart';
-import 'screen_pomodo.dart';
-import 'screen_super_stamp.dart';
-import 'screen_to_maintain_edorm.dart';
-import 'screen_to_tts.dart';
+import 'main.dart';
+import 'Parts/in_operating/screen_area_calculator.dart';
+import 'Parts/in_operating/screen_checklist.dart';
+import 'Parts/in_operating/screen_pomodo.dart';
+import 'Parts/in_operating/screen_super_stamp.dart';
+import 'Parts/in_operating/screen_to_maintain_edorm.dart';
+import 'Parts/in_operating/screen_tts.dart';
 
 class Screen_index_blue extends StatefulWidget {
   const Screen_index_blue({Key? key}) : super(key: key);
@@ -96,7 +96,7 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
               },
               icon: Icon(Icons.folder),
               tooltip: folder_checklist,
-              splashColor: Colors.blue,
+              splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
@@ -114,7 +114,7 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
               },
               icon: Icon(Icons.folder),
               tooltip: folder_area_calculator,
-              splashColor: Colors.blue,
+              splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
@@ -138,7 +138,7 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
               },
               icon: Icon(Icons.folder),
               tooltip: folder_pomodoro,
-              splashColor: Colors.blue,
+              splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
@@ -156,7 +156,7 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
               },
               icon: Icon(Icons.folder),
               tooltip: folder_development,
-              splashColor: Colors.blue,
+              splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
@@ -175,7 +175,7 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
               },
               icon: Icon(Icons.folder),
               tooltip: folder_dorm_maintennace,
-              splashColor: Colors.blue,
+              splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
@@ -193,7 +193,7 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
               },
               icon: Icon(Icons.folder),
               tooltip: folder_tts,
-              splashColor: Colors.blue,
+              splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,

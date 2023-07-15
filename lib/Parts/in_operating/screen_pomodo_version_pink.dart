@@ -42,7 +42,7 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
 
     getParentWigetState();

@@ -38,6 +38,8 @@ dependencies:
   flutter_tts: 
   flutter_provider: ^2.1.0 #위젯간 데이터 통신용
   linkify: ^5.0.0
+#  webview_flutter: ^4.2.2
+  webview_flutter:
 #  firebase_core:
 #  cloud_firestore: #firebase 의 DB
 
@@ -55,17 +57,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/foo.jpeg
-    - assets/foo.mp3
-    - assets/foo.txt
-    - assets/foo.json
-    - assets/app_netflix_movie_poster_1.png
-    - assets/app_netflix_logo.png
-    - assets/app_carrot_market_logo.png
-    - assets/placeholder.jpg
-    - assets/error.jpg
-    - assets/app_webtoon_logo.jpg
-
+#    - assets/foo.jpeg
+#    - assets/foo.mp3
+#    - assets/foo.txt
+#    - assets/foo.json
+#    - assets/app_netflix_movie_poster_1.png
+#    - assets/app_netflix_logo.png
+#    - assets/app_carrot_market_logo.png
+#    - assets/placeholder.jpg
+#    - assets/error.jpg
+#    - assets/app_webtoon_logo.jpg
+    - assets/
 
 
   # For details regarding adding assets from package dependencies, see

@@ -3,7 +3,6 @@ import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/my_superworkers
 import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_icon.dart';
 
 import '../../main.dart';
-import '../in_operating/screen_index_colorful.dart';
 import 'sample_accodion_menu.dart';
 import 'sample_main_text_contentents_box.dart';
 
@@ -30,7 +29,7 @@ class _SampleMainContentState extends State<SampleMainContent> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
       super.initState();
       isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
   }

@@ -20,7 +20,7 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
   }
 
@@ -36,7 +36,7 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
         },
         selectedIndex: currentPageIndex,
         labelBehavior: labelBehavior,
-        destinations: <Widget>[
+        destinations: const <Widget>[
           /*홈*/ NavigationDestination(
             label: '',
             selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.home, size: 18, color: Colors.white), Text('홈', style: TextStyle(fontSize: 9, color: Colors.white))]),

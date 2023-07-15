@@ -50,7 +50,7 @@ class FooFoo {
   String printMapInfo(Map<String, String> info) => '${info['name']}\n${info['age']}\n${info['address']}';
 }
 
-class Player {
+class ChattingRoomMember {
   //class 의 property. 즉, field 는 var 를 사용할 수 없다. explict vairable 을 사용해야한다.
   String name = 'foo';
   int lv = 1;
@@ -66,7 +66,7 @@ class Player {
   String login_ok;
 
   // all args constructor method
-  Player({
+  ChattingRoomMember({
     required this.name,
     required this.lv,
     required this.xp,
@@ -84,7 +84,7 @@ class Player {
   }
 
   //
-  // Player.create_worrior_player({
+  // ChattingRoomMember.create_worrior_player({
   //     required this.name,
   //     required this.age
   // }):
@@ -94,7 +94,7 @@ class Player {
   //     this.xp=100,
   //     this.hp=4000;
   //
-  // Player.create_magitian_player({
+  // ChattingRoomMember.create_magitian_player({
   //   required this.name, required this.age
   // }) :
   //     this.name = name,
@@ -103,12 +103,12 @@ class Player {
   //     this.xp=4000,
   //     this.hp=100,
 
-  // Player.fromJson(Map<String, dynamic> playerJson):
+  // ChattingRoomMember.fromJson(Map<String, dynamic> playerJson):
   //       name = playerJson['name'],
   //       name = playerJson['xp'],
   //       name = playerJson['job'];
 
-  String convertPlayerInfo(Map<String, String> info) => '${info['name']}\n${info['age']}\n${info['address']}\n${info['lv']}\n${info['xp']}\n${info['mp']}\n${info['hp']}\n${info['exp']}';
+  String convertChattingRoomMemberInfo(Map<String, String> info) => '${info['name']}\n${info['age']}\n${info['address']}\n${info['lv']}\n${info['xp']}\n${info['mp']}\n${info['hp']}\n${info['exp']}';
 
   String login({
     required String login_accound_user_id,
@@ -116,10 +116,10 @@ class Player {
   }) =>
       'foo';
 
-  // String getPlayerInfo() => '$name\n$lv\n$xp\n$hp\n$mp\n$exp\n$age\n$address';
+  // String getChattingRoomMemberInfo() => '$name\n$lv\n$xp\n$hp\n$mp\n$exp\n$age\n$address';
 
   @override
-  String toString() => 'Player{name: $name, lv: $lv, xp: $xp, mp: $mp, hp: $hp, exp: $exp, age: $age, address: $address, job: $job, login_accound_user_id: $login_accound_user_id, login_accound_user_pw: $login_accound_user_pw, login_ok: $login_ok}';
+  String toString() => 'ChattingRoomMember{name: $name, lv: $lv, xp: $xp, mp: $mp, hp: $hp, exp: $exp, age: $age, address: $address, job: $job, login_accound_user_id: $login_accound_user_id, login_accound_user_pw: $login_accound_user_pw, login_ok: $login_ok}';
 }
 
 //abstract class
@@ -201,7 +201,7 @@ mixin MagitianDefaultMethod {
   }
 }
 
-class Player_mixined with MagitianDefaultProperties, MagitianDefaultMethod {}
+class ChattingRoomMember_mixined with MagitianDefaultProperties, MagitianDefaultMethod {}
 
 //java 와 유사하게 코드의 entry point 는 main 이라는 이름을 가진 method 에서 시작된다.
 void main() {
@@ -218,10 +218,21 @@ void main() {
   foo = foofoo.printMapInfo({'character_name': 'Jung Hoon Park'});
   foo = foofoo.printMapInfo({'name': 'Jung Hoon Park'});
 
-  // Player player = new Player(); // flutter 스타일 가이드에서는 에서는 사용 비추천
+  // ChattingRoomMember player = new ChattingRoomMember(); // flutter 스타일 가이드에서는 에서는 사용 비추천
   dynamic player;
-  player = Player(name: 'pjh4139', lv: 0, xp: 0, mp: 0, hp: 100000, exp: 0, age: 30, address: 'foo', login_accound_user_id: 'Or가리튜닝', job: '어쌔신', login_accound_user_pw: '0000', login_ok: 'ok'); // no argument constructor method + instance
-  print(player.getPlayerInfo());
+  player = ChattingRoomMember(name: 'pjh4139',
+      lv: 0,
+      xp: 0,
+      mp: 0,
+      hp: 100000,
+      exp: 0,
+      age: 30,
+      address: 'foo',
+      login_accound_user_id: 'Or가리튜닝',
+      job: '어쌔신',
+      login_accound_user_pw: '0000',
+      login_ok: 'ok'); // no argument constructor method + instance
+  print(player.getChattingRoomMemberInfo());
   print(player.toString());
 
   dynamic director;
@@ -229,9 +240,168 @@ void main() {
   director.sleep();
   print(director.name);
 
-  player = Player_mixined();
+  player = ChattingRoomMember_mixined();
   print(player.ExpDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
   print(player.StrongDefault);
   print(player.IntelligenceDefault);
   print(player.Training());
-}
+
+  //
+  // // typedef : define s
+  // typedef Operation = int Function(int x, int y, int z);
+  // int add(int x, int y, int z) => x + y + z;
+  // int subtract(int x, int y, int z) => x - y - z;
+  // int complexCalculate(int x, int y, int z, Operation operation) => operation(x, y, z);
+  // // typedef : define e
+  //
+  //
+  // // typedef : call s
+  // Opreation operation;
+  // int result;
+  //
+  //
+  // operation = add;
+  // result = operation(10, 20, 30);
+  // print(result);
+  //
+  //
+  // operation = subtract;
+  // result = operation(10, 20, 30);
+  // print(result);
+  //
+  //
+  // operation = complexCalculate;
+  // result = operation(10, 20, 30, add);
+  // print(result);
+  //
+  //
+  // operation = complexCalculate;
+  // int result = operation(10, 20, 30, subtract);
+  // print(result)
+  // // typedef : call e
+  //
+  //
+  // // const constructorr 의 특징
+  // 위에서 내가
+  // ChattingRoomMember() 로 instance 들을 만들었을 때는
+  // instance 들은 서로 모두 다른데
+  // const ChattingRoomMember() 로 instance 들을 만들었을 때는
+  // instance 들은 서로 같다.(혹쉬 싱글턴 패턴?)
+  //
+  //
+  // //getter(내가 알던 방식)
+  // String getChattingRoomFirstMemberName() => this.members[0].name;
+  //
+  // print(player.getChattingRoomFirstMemberName());
+  //
+  //
+  // //getter(dart 방식?)
+  // String get ChattingRoomFirstMemberName{ // 소괄호 없음.
+  // return this.members[0].name;
+  // }
+  //
+  // print(player.ChattingRoomFirstMemberName);
+  //
+  //
+  // //setter(내가 알던 방식)
+  // void setChattingRoomFirstMemberName(String FirstMemberName){
+  //   this.members[0].name = FirstMemberName;
+  // }
+  //
+  //
+  // player.setChattingRoomFirstMemberName("박정훈");
+  //
+  //
+  // //setter(dart 방식?)
+  // set ChattingRoomFirstMemberName(){
+  //  this.members[0].name = FirstMemberName;
+  // }
+  //
+  // player.ChattingRoomFirstMemberName("박정훈");
+  // player.ChattingRoomFirstMemberName = "박정훈";
+  //
+  //
+  //
+  //
+  // //immutable programming concept
+  // // final 과 const 를 많이 쓰는 것.
+  // // 성능에도 좋으니까
+  //
+  //
+  // // 필드에 final const 를 넣은 것은 한편으로는 해당 필드에 대한 setter 를 사용하지 않겠다는 뉘앙스가 풍긴다. 해당 필드에  final const 가 붙어 있다면 만들지 말자
+  // // final 과 const 를 붙이게 된다면 setter 를 지우자. constructor 에서 받겠지 뭐.
+  //
+  //
+  //
+  // // 해당 파일에서만 private 컨셉 을 붙이면 다른 파일해서는 import 해서 호출 할 수 없다.
+  // // class / constructor / method / field 모두 private 를 붙이면 되는데
+  // // dart 에서는 간단하게 underscore 를 앞에 붙이면 끝이다.
+  // // _뭐시기  이렇게 된건 모두 다른 파일에서 불러 올 수 없다.
+  //
+  //
+  //
+  //
+  // //inheritance
+  // //제대로 모르고 쓴 듯 하다.
+  // //일단 부모의 기능을 쓰는 것은 맞다.
+  // //부모의 기능을 호출하기 위해 constructor 와 super() 를 연계하는 법
+  //
+  // class grandParent{
+  //   String name;
+  //   grandParent({this.name});
+  // }
+  //
+  // class parent extends grandParent{
+  //   parent(String name):
+  //     super(name : name);
+  // }
+  //
+  // class child extends parent{
+  //   child(String name):
+  //     super(name : name);
+  //
+  // }
+  //
+  //
+  // var me = child('박정훈');
+  // print(me.name);
+  //
+  //
+  // print(me is grandParent);
+  // print(me is parent);
+  // print(me is child);
+  // print(me is me);
+  //
+  //
+  //
+  //
+  // //method override
+  // //메소드 덮어쓰기
+  // parent 의 method 가 아닌 변화된 메소드를 사요할 수 있다!
+  //
+  //
+  // //암시적인 method override
+  // bool isSleep(){
+  // return isSleepState;
+  // }
+  //
+  //
+  // //위의 메소드와 동일하다 //명시적인 method override
+  // @override // @override 없어도 무방
+  // bool isSleep(){
+  // return super.isSleepState; // super 없어도 무방
+  // }
+  //
+  //
+  //
+  // enum State {
+  //   approved,
+  //   rejected,
+  //
+  // }
+  //
+  // chattingRoomUsingPermission = State.approved;
+  // chattingRoomUsingPermission = State.rejected;
+  //
+
+  }

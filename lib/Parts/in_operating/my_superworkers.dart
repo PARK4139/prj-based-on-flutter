@@ -15,6 +15,242 @@ enum study_level { begginer, intermediate, advanced }
 
 enum programming_proficiency_level { begginer, intermediate, pro }
 
+
+
+class MyIcons {
+  static Icon icon_1 = Icon(Icons.adb, color: Colors.yellowAccent);
+  static Icon icon_2 = Icon(Icons.check_box, color: Colors.yellowAccent);
+  static Icon icon_3 = Icon(Icons.checklist_outlined, color: Colors.yellowAccent);
+  static Icon icon_4 = Icon(Icons.checklist_rtl, color: Colors.yellowAccent);
+  static Icon icon_5 = Icon(Icons.check, color: Colors.yellowAccent);
+  static Icon icon_6 = Icon(Icons.fact_check, color: Colors.yellowAccent);
+  static Icon icon_7 = Icon(Icons.library_add_check_outlined, color: Colors.yellowAccent);
+  static Icon icon_8 = Icon(Icons.adb);
+  static Icon icon_9 = Icon(Icons.all_inclusive);
+  static Icon icon_10 = Icon(Icons.add_reaction);
+  static Icon icon_11 = Icon(Icons.add_reaction);
+  static Icon icon_12 = Icon(Icons.airplay);
+  static Icon icon_13 = Icon(Icons.animation);
+  static Icon icon_14 = Icon(Icons.announcement_rounded);
+  static Icon icon_15 = Icon(Icons.radio_button_on);
+  static Icon icon_16 = Icon(Icons.radio_button_off);
+  static Icon icon_17 = Icon(Icons.arrow_drop_down);
+  static Icon icon_18 = Icon(Icons.arrow_downward);
+  static Icon icon_23 = Icon(Icons.dark_mode);
+  static Icon icon_19 = Icon(Icons.laptop_windows);
+  static Icon icon_20 = Icon(Icons.laptop_mac);
+  static Icon icon_21 = Icon(Icons.monitor_heart);
+  static Icon icon_22 = Icon(Icons.favorite);
+  static Icon icon_24 = Icon(Icons.set_meal_outlined);
+  static Icon icon_25 = Icon(Icons.settings_ethernet);
+}
+
+class MyColors {
+  static Color black_undefined = Color(0xFF181818);
+  static Color black_background = Colors.black12;
+  static Color black_clear = Colors.black.withOpacity(0.5);
+  static Color grey_clear = Colors.grey.withOpacity(0.9);
+  static Color white_clear = Colors.white.withOpacity(0.6);
+  static Color whilte_general = Colors.white;
+  static Color red_warning = Colors.red;
+  static Color orange_caution = Colors.orange;
+}
+
+class MyTextStyles {
+  static TextStyle textStyle1 = const TextStyle(fontSize: 18, color: Colors.lightBlueAccent, fontWeight: FontWeight.w900);
+  static TextStyle textStyle2 = const TextStyle(fontSize: 27, color: Colors.white, fontWeight: FontWeight.w900);
+  static TextStyle textStyle3 = const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w100);
+  static TextStyle textStyle4 = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w100, fontFamily: 'NanumSquareRegular');
+  static TextStyle textStyle5 = const TextStyle(fontSize: 18, color: Colors.red, fontWeight: FontWeight.w100);
+}
+class IteralbleNatureNumber {
+  List<int> itemsHistory = [];
+  List<int> itemsCurrent = [];
+  int index = 1;
+
+  IteralbleNatureNumber({required int EndLimit}) {
+    while (index != EndLimit + 1) {
+      itemsCurrent.add(index);
+      itemsHistory.add(index);
+      index++;
+    }
+  }
+
+  // void push(int item) {
+  //   items.add(item);
+  // }
+  //
+  // int pop() {
+  //   return items.removeLast();
+  // }
+  //
+  // bool isEmpty() {
+  //   return items.isEmpty;
+  // }
+  //
+  // int get size {
+  //   return items.length;
+  // }
+
+  int first() => itemsHistory.first;
+
+  int last() => itemsHistory.last;
+
+  int next() {
+    var firstThing = itemsCurrent.first;
+    itemsCurrent.removeAt(0);
+    return firstThing;
+  }
+
+  List<int> All() => itemsCurrent;
+
+  List<int> All_History() => itemsHistory;
+}
+
+class IterableAlphabets {
+  final List<String> Alpabets_snapshot_at_first_initialization = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+  late List<String> Alpabets;
+  late int length;
+
+  IterableAlphabets() {
+    reload();
+    length = Alpabets_snapshot_at_first_initialization.length;
+  }
+
+  // void push(int item) {
+  //   items.add(item);
+  // }
+  //
+  // String pop() {
+  //   return items.removeLast();
+  // }
+  //
+  // bool isEmpty() {
+  //   return items.isEmpty;
+  // }
+  //
+  // String get size {
+  //   return items.length;
+  // }
+
+  String first() => Alpabets.first;
+
+  String last() => Alpabets.last;
+
+  String next() {
+    var firstThing = Alpabets.first;
+    Alpabets.removeAt(0);
+    return firstThing;
+  }
+
+  List<String> current_alphabets() => Alpabets;
+
+  List<String> alphabet_snapshot_at_first_initialization() => Alpabets_snapshot_at_first_initialization;
+
+  void reload() {
+    Alpabets = Alpabets_snapshot_at_first_initialization;
+  }
+}
+
+class RainbowContainerMaker extends StatefulWidget {
+  String text;
+  final Color? color;
+  final FontWeight? font_weight;
+  final double? font_size;
+  bool? isRainbow;
+  var alignment;
+  var width;
+  var height;
+  var decoration;
+  var clipBehavior;
+  var padding;
+  var margin;
+  var child;
+
+  RainbowContainerMaker({
+    Key? key,
+    required this.text,
+    required this.color,
+    this.font_size,
+    this.font_weight,
+    this.alignment,
+    this.width,
+    this.height,
+    this.decoration,
+    this.clipBehavior,
+    this.padding,
+    this.margin,
+    this.isRainbow,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  State<RainbowContainerMaker> createState() => _RainbowContainerMakerState();
+}
+
+class _RainbowContainerMakerState extends State<RainbowContainerMaker> {
+  int buildMethodCounter = 0;
+  late Color color;
+  List<Color> colors = [Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.purple];
+
+  late Timer timer;
+
+  var alignment;
+  var width;
+  var height;
+  var decoration;
+  var clipBehavior;
+  var padding;
+  var margin;
+
+  var child;
+
+  void changeTextColor(Timer timer) {
+    if (buildMethodCounter == colors.length) {
+      buildMethodCounter = 0;
+    }
+    color = colors[buildMethodCounter];
+    buildMethodCounter = buildMethodCounter + 1;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    color = widget.color!;
+    if (widget.isRainbow == false) {
+    } else {
+      // timer = Timer.periodic(Duration(milliseconds: 1000), changeTextColor);
+      // timer = Timer.periodic(Duration(milliseconds: 100), changeTextColor);
+      // timer = Timer.periodic(Duration(milliseconds: 50), changeTextColor);
+      // timer = Timer.periodic(Duration(milliseconds: 25), changeTextColor);
+      timer = Timer.periodic(Duration(milliseconds: 20), changeTextColor);
+    }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    timer.cancel();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: color,
+      alignment: alignment,
+      width: width,
+      height: height,
+      decoration: decoration,
+      clipBehavior: clipBehavior,
+      padding: padding,
+      margin: margin,
+      child: child,
+    );
+  }
+}
+
 class My_superworkers {
   void pause() {
     exit(0); //이 코드는 앱을 종료하고 시스템으로 돌아갑니다.
@@ -340,243 +576,14 @@ class My_superworkers {
 //replaceAll 을 활용하면 될듯.
 }
 
-class MyIcons {
-  static Icon icon_1 = Icon(Icons.adb, color: Colors.yellowAccent);
-  static Icon icon_2 = Icon(Icons.check_box, color: Colors.yellowAccent);
-  static Icon icon_3 = Icon(Icons.checklist_outlined, color: Colors.yellowAccent);
-  static Icon icon_4 = Icon(Icons.checklist_rtl, color: Colors.yellowAccent);
-  static Icon icon_5 = Icon(Icons.check, color: Colors.yellowAccent);
-  static Icon icon_6 = Icon(Icons.fact_check, color: Colors.yellowAccent);
-  static Icon icon_7 = Icon(Icons.library_add_check_outlined, color: Colors.yellowAccent);
-  static Icon icon_8 = Icon(Icons.adb);
-  static Icon icon_9 = Icon(Icons.all_inclusive);
-  static Icon icon_10 = Icon(Icons.add_reaction);
-  static Icon icon_11 = Icon(Icons.add_reaction);
-  static Icon icon_12 = Icon(Icons.airplay);
-  static Icon icon_13 = Icon(Icons.animation);
-  static Icon icon_14 = Icon(Icons.announcement_rounded);
-  static Icon icon_15 = Icon(Icons.radio_button_on);
-  static Icon icon_16 = Icon(Icons.radio_button_off);
-  static Icon icon_17 = Icon(Icons.arrow_drop_down);
-  static Icon icon_18 = Icon(Icons.arrow_downward);
-  static Icon icon_23 = Icon(Icons.dark_mode);
-  static Icon icon_19 = Icon(Icons.laptop_windows);
-  static Icon icon_20 = Icon(Icons.laptop_mac);
-  static Icon icon_21 = Icon(Icons.monitor_heart);
-  static Icon icon_22 = Icon(Icons.favorite);
-  static Icon icon_24 = Icon(Icons.set_meal_outlined);
-  static Icon icon_25 = Icon(Icons.settings_ethernet);
+
+void debug({required List<dynamic> items}){
+
+  print("__________________________________________________________________________ debug s");
+  for (dynamic item in items){
+    print(item.toString());
+  }
+  print("__________________________________________________________________________ debug e");
+
 }
 
-class MyColors {
-  static Color black_undefined = Color(0xFF181818);
-  static Color black_background = Colors.black12;
-  static Color black_clear = Colors.black.withOpacity(0.5);
-  static Color grey_clear = Colors.grey.withOpacity(0.9);
-  static Color white_clear = Colors.white.withOpacity(0.6);
-  static Color whilte_general = Colors.white;
-  static Color red_warning = Colors.red;
-  static Color orange_caution = Colors.orange;
-}
-
-class MyTextStyles {
-  static TextStyle textStyle1 = const TextStyle(fontSize: 18, color: Colors.lightBlueAccent, fontWeight: FontWeight.w900);
-  static TextStyle textStyle2 = const TextStyle(fontSize: 27, color: Colors.white, fontWeight: FontWeight.w900);
-  static TextStyle textStyle3 = const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w100);
-  static TextStyle textStyle4 = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w100, fontFamily: 'NanumSquareRegular');
-  static TextStyle textStyle5 = const TextStyle(fontSize: 18, color: Colors.red, fontWeight: FontWeight.w100);
-}
-class IteralbleNatureNumber {
-  List<int> itemsHistory = [];
-  List<int> itemsCurrent = [];
-  int index = 1;
-
-  IteralbleNatureNumber({required int EndLimit}) {
-    while (index != EndLimit + 1) {
-      itemsCurrent.add(index);
-      itemsHistory.add(index);
-      index++;
-    }
-  }
-
-  // void push(int item) {
-  //   items.add(item);
-  // }
-  //
-  // int pop() {
-  //   return items.removeLast();
-  // }
-  //
-  // bool isEmpty() {
-  //   return items.isEmpty;
-  // }
-  //
-  // int get size {
-  //   return items.length;
-  // }
-
-  int first() => itemsHistory.first;
-
-  int last() => itemsHistory.last;
-
-  int next() {
-    var firstThing = itemsCurrent.first;
-    itemsCurrent.removeAt(0);
-    return firstThing;
-  }
-
-  List<int> All() => itemsCurrent;
-
-  List<int> All_History() => itemsHistory;
-}
-
-class IterableAlphabets {
-  final List<String> Alpabets_snapshot_at_first_initialization = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-  late List<String> Alpabets;
-  late int length;
-
-  IterableAlphabets() {
-    reload();
-    length = Alpabets_snapshot_at_first_initialization.length;
-  }
-
-  // void push(int item) {
-  //   items.add(item);
-  // }
-  //
-  // String pop() {
-  //   return items.removeLast();
-  // }
-  //
-  // bool isEmpty() {
-  //   return items.isEmpty;
-  // }
-  //
-  // String get size {
-  //   return items.length;
-  // }
-
-  String first() => Alpabets.first;
-
-  String last() => Alpabets.last;
-
-  String next() {
-    var firstThing = Alpabets.first;
-    Alpabets.removeAt(0);
-    return firstThing;
-  }
-
-  List<String> current_alphabets() => Alpabets;
-
-  List<String> alphabet_snapshot_at_first_initialization() => Alpabets_snapshot_at_first_initialization;
-
-  void reload() {
-    Alpabets = Alpabets_snapshot_at_first_initialization;
-  }
-}
-
-class RainbowContainerMaker extends StatefulWidget {
-  String text;
-  final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  bool? isRainbow;
-  var alignment;
-  var width;
-  var height;
-  var decoration;
-  var clipBehavior;
-  var padding;
-  var margin;
-  var child;
-
-  RainbowContainerMaker({
-    Key? key,
-    required this.text,
-    required this.color,
-    this.font_size,
-    this.font_weight,
-    this.alignment,
-    this.width,
-    this.height,
-    this.decoration,
-    this.clipBehavior,
-    this.padding,
-    this.margin,
-    this.isRainbow,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  State<RainbowContainerMaker> createState() => _RainbowContainerMakerState();
-}
-
-class _RainbowContainerMakerState extends State<RainbowContainerMaker> {
-  int buildMethodCounter = 0;
-  late Color color;
-  List<Color> colors = [Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.purple];
-
-  late Timer timer;
-
-  var alignment;
-  var width;
-  var height;
-  var decoration;
-  var clipBehavior;
-  var padding;
-  var margin;
-
-  var child;
-
-  void changeTextColor(Timer timer) {
-    if (buildMethodCounter == colors.length) {
-      buildMethodCounter = 0;
-    }
-    color = colors[buildMethodCounter];
-    buildMethodCounter = buildMethodCounter + 1;
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    color = widget.color!;
-    if (widget.isRainbow == false) {
-    } else {
-      // timer = Timer.periodic(Duration(milliseconds: 1000), changeTextColor);
-      // timer = Timer.periodic(Duration(milliseconds: 100), changeTextColor);
-      // timer = Timer.periodic(Duration(milliseconds: 50), changeTextColor);
-      // timer = Timer.periodic(Duration(milliseconds: 25), changeTextColor);
-      timer = Timer.periodic(Duration(milliseconds: 20), changeTextColor);
-    }
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    timer.cancel();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
-      alignment: alignment,
-      width: width,
-      height: height,
-      decoration: decoration,
-      clipBehavior: clipBehavior,
-      padding: padding,
-      margin: margin,
-      child: child,
-    );
-  }
-}
-
-// Text blackTextMaker1({required String text}) {
-//   return Text(
-//     text,
-//     style: TextStyle(color: Colors.black, fontSize: 5, fontWeight: FontWeight.w400),
-//   );
-// }

@@ -242,6 +242,17 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     return Capitalized_case_maker(value: result.join('').replaceFirst("_", "").replaceAll("__", "_"));
   }
 
+
+
+  String case_6_maker({required String value}) {
+    var result = value.split('_');
+    for (int i = 0; i < result.length; i++) {
+      result[i] = result[i].substring(0, 1).toUpperCase() + result[i].substring(1);
+    }
+    return result.join('')[0].toLowerCase() + result.join('').substring(1);
+  }
+
+
   bool isThisDigitUpperCase(String one_digit) {
     var codeUnit = one_digit.codeUnitAt(0);
     bool result = false;
@@ -292,12 +303,13 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
 
   void reload_items() {
     items = [
+      case_4_maker(value: widget.text.trim()),
+      case_6_maker(value: widget.text.trim()),
+      Calmel_case_maker(value: widget.text.trim()),
       case_1_maker(value: widget.text.trim()),
       case_2_maker(value: widget.text.trim()),
       case_3_maker(value: widget.text.trim()),
-      case_4_maker(value: widget.text.trim()),
       case_5_maker(value: widget.text.trim()),
-      Calmel_case_maker(value: widget.text.trim()),
       Snake_case_maker(value: widget.text.trim()),
       Upper_calmel_case_maker(value: widget.text.trim()),
       Capitalized_case_maker(value: widget.text.trim()),

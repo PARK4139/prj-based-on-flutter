@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Screen_carrot_market_home_sub_to_write extends StatefulWidget {
-  const Screen_carrot_market_home_sub_to_write({Key? key}) : super(key: key);
+class ScreenCarrotMarketHomeSubToWrite extends StatefulWidget {
+  const ScreenCarrotMarketHomeSubToWrite({Key? key}) : super(key: key);
 
   @override
-  State<Screen_carrot_market_home_sub_to_write> createState() => _Screen_carrot_market_home_sub_to_writeState();
+  State<ScreenCarrotMarketHomeSubToWrite> createState() => _ScreenCarrotMarketHomeSubToWriteState();
 }
 
-class _Screen_carrot_market_home_sub_to_writeState extends State<Screen_carrot_market_home_sub_to_write> {
+class _ScreenCarrotMarketHomeSubToWriteState extends State<ScreenCarrotMarketHomeSubToWrite> {
   @override
   void initState() {
     super.initState();
@@ -18,10 +18,10 @@ class _Screen_carrot_market_home_sub_to_writeState extends State<Screen_carrot_m
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text('writing', style: TextStyle(fontSize: 14, color: Colors.grey)),
+          title: const Text('writing', style: TextStyle(fontSize: 14, color: Colors.grey)),
           elevation: 1,
           foregroundColor: Colors.grey,
         ),
-        body: Placeholder());
+        body: const SafeArea(child: Placeholder()));
   }
 }

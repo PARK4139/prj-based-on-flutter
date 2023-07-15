@@ -45,7 +45,7 @@ class StampIntoClipboard extends StatefulWidget {
 class _StampIntoClipboardState extends State<StampIntoClipboard> {
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     if (widget.background_color == null) {
       widget.background_color = MyColors.black_undefined;

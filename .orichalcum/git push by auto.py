@@ -1335,11 +1335,11 @@ def AI_respon(usr_input_txt):
 
 
     elif usr_input_txt == '_________':
-        AI_speak('해당 기능은 아직 준비되지 않았습니다')
+        AI_speak('해당 기능은 아직 준비되지 않은 서비스입니다.')
 
     else:
         # AI_speak('입력하신 내용이 usr_input_txt 는 oooo 과 유사합니다') #[to do]
-        # AI_speak('해당 기능은 아직 준비되지 않았습니다')
+        # AI_speak('해당 기능은 아직 준비되지 않은 서비스입니다.')
         available_no_cmd_list = []
         try:
             for i in range(0, len(AI_available_cmd_code_list)):

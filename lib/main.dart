@@ -5,10 +5,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:prj_app_feat_nomadcoder_class/screen_index_colorful.dart';
 
 import 'Parts/in_operating/rainbow_icon.dart';
-import 'Parts/in_operating/screen_index_blue.dart';
-import 'Parts/in_operating/screen_index_colorful.dart';
+import 'screen_index_blue.dart';
 
 //apk 빌드 시 파일명은 grammer.dart 여야한다?.
 void main() {

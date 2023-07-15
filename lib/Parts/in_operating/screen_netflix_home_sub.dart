@@ -18,7 +18,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     initMovies();
   }
