@@ -8,6 +8,11 @@ class SampleMethodOperationAfterSeconds extends StatefulWidget {
 }
 
 class _SampleMethodOperationAfterSecondsState extends State<SampleMethodOperationAfterSeconds> {
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +25,10 @@ class _SampleMethodOperationAfterSecondsState extends State<SampleMethodOperatio
             ],
           ),
           onTap: () {
-            /*1000 milliseconds 후 실행할 코드 s*/
+            /*미래에 실행할 코드*/
             Future.delayed(const Duration(milliseconds: 1000), () {
-              print("foo");
+              /*1000 milliseconds 후 실행할 코드*/print("foo");
             });
-            /*1000 milliseconds 후 실행할 코드 e*/
           },
         ),
       ),

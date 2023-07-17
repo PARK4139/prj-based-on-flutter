@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'Parts/screens/screen_area_calculator.dart';
+import 'Parts/screens/screen_checklist.dart';
+import 'Parts/screens/screen_pomodoro.dart';
+import 'Parts/screens/screen_developer_helper.dart';
+import 'Parts/screens/screen_to_maintain_edorm.dart';
+import 'Parts/screens/screen_tts.dart';
 import 'main.dart';
-import 'Parts/in_operating/screen_area_calculator.dart';
-import 'Parts/in_operating/screen_checklist.dart';
-import 'Parts/in_operating/screen_pomodo.dart';
-import 'Parts/in_operating/screen_super_stamp.dart';
-import 'Parts/in_operating/screen_to_maintain_edorm.dart';
-import 'Parts/in_operating/screen_tts.dart';
 
 class Screen_index_blue extends StatefulWidget {
   const Screen_index_blue({Key? key}) : super(key: key);
@@ -131,10 +131,11 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Screen_pomodo()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenPomodoro()));
               },
               icon: Icon(Icons.folder),
               tooltip: folder_pomodoro,
@@ -146,7 +147,6 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
             ),
             Text(folder_pomodoro, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
           ],
-          mainAxisAlignment: MainAxisAlignment.center,
         ),
         Column(
           children: [

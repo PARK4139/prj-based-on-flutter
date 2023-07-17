@@ -1,53 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/circle_box_maker.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/practice_screen2.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/rainbow_text.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_area_calculator.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_carrot_market.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_digital_clock.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_pomodo.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_super_stamp.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_operating/screen_webtoon_v2.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/screen_animated_position.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/screen_lateral_bars.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/screen_national_flag.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/screen_vertical_bars.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/screen_zebra_stripe.dart';
+import 'package:flutter/services.dart';
 
-import 'Parts/in_operating/ScreenJungHoonParkProfile.dart';
-import 'Parts/in_operating/practice_screen1.dart';
-import 'Parts/in_operating/screen_google.dart';
-import 'Parts/in_operating/screen_hello_world.dart';
-import 'Parts/in_operating/screen_netflix.dart';
-import 'Parts/in_operating/screen_splash.dart';
-import 'Parts/in_operating/striped_box_maker.dart';
-import 'Parts/samples/screen_animated_align.dart';
-import 'Parts/samples/screen_germany.dart';
-import 'Parts/samples/screen_snack_bar.dart';
-import 'Parts/samples/screen_weired_my_note.dart';
+import 'Parts/helpers/circle_box_maker.dart';
+import 'Parts/helpers/rainbow_text_maker.dart';
+import 'Parts/helpers/striped_box_maker.dart';
 
-class Screen_index_colorful extends StatefulWidget {
+import 'Parts/in_developing/ScreenPracticeApiConnection2.dart';
+import 'Parts/screens/screen_digital_photo_frame.dart';
+import 'Parts/screens/screen_practice_row_and_column.dart';
+import 'Parts/screens/screen_practice_webview.dart';
+import 'Parts/screens/screen_practice_flutter_life_cycle.dart';
+import 'Parts/screens/screen_ui_component_samples.dart';
+import 'Parts/screens/screen_animated_align.dart';
+import 'Parts/screens/screen_animated_position.dart';
+import 'Parts/screens/screen_area_calculator.dart';
+import 'Parts/screens/screen_carrot_market.dart';
+import 'Parts/screens/screen_developer_helper.dart';
+import 'Parts/screens/screen_digital_clock.dart';
+import 'Parts/screens/screen_germany.dart';
+import 'Parts/screens/screen_google.dart';
+import 'Parts/screens/screen_hello_world.dart';
+import 'Parts/screens/screen_jung_hoon_park_profile.dart';
+import 'Parts/screens/screen_lateral_bars.dart';
+import 'Parts/screens/screen_national_flag.dart';
+import 'Parts/screens/screen_netflix.dart';
+import 'Parts/screens/screen_page_view.dart';
+import 'Parts/screens/screen_pomodoro.dart';
+import 'Parts/screens/screen_splash.dart';
+import 'Parts/screens/screen_vertical_bars.dart';
+import 'Parts/screens/ScreenPracticeApiConnection.dart';
+import 'Parts/screens/screen_webtoon_v2.dart';
+import 'Parts/screens/screen_weired_my_note.dart';
+import 'Parts/screens/screen_zebra_stripe.dart';
+
+class ScreenIndexColorful extends StatefulWidget {
   bool isDarkMode;
 
-  Screen_index_colorful({Key? key, required this.isDarkMode}) : super(key: key);
+  ScreenIndexColorful({Key? key, required this.isDarkMode}) : super(key: key);
 
   @override
-  State<Screen_index_colorful> createState() => _Screen_index_colorfulState();
+  State<ScreenIndexColorful> createState() => _ScreenIndexColorfulState();
 }
 
-class _Screen_index_colorfulState extends State<Screen_index_colorful> {
-  late List<Widget> items_as_icon_only;
+class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
+  late List<Widget> itemsAsIconOnly;
 
-
-  String indexNameCutter(String indexName) {
+  String nameCutter(String indexName) {
     String result = '';
     if (indexName.length >= 10) {
-      result = indexName.substring(0, 9) + "...";
+      result = "${indexName.substring(0, 9)}...";
     } else {
       result = indexName;
     }
     return result;
-    // return indexName;
   }
 
   @override
@@ -63,26 +68,30 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
       body: GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 5, mainAxisSpacing: 10),
         children: <Widget>[
-          for (var item in items_as_icon_only) item,
+          for (var item in itemsAsIconOnly) item,
         ],
       ),
     );
   }
 
   void initItems() {
-    items_as_icon_only = [
-      /*helloWorld*/ _RefactoringModule202307152216(txt: 'helloWorld', destination: ScreenHelloWorld()),
-      /*splash*/ _RefactoringModule202307152216(txt: 'splash', destination: ScreenSplash()),
-      /*ZebraStripe*/ _RefactoringModule202307152216(txt: 'ZebraStripe', destination: ScreenZebraStripe()),
-      /*NationalFlags*/ _RefactoringModule202307152216(txt: 'NationalFlags', destination: ScreenNationalFlag()),
-      /*Germany*/ _RefactoringModule202307152216(txt: 'Germany', destination: ScreenGermany()),
-      /*AnimatedAlign*/ _RefactoringModule202307152216(txt: 'AnimatedAlign', destination: ScreenAnimatedAlign()),
-      /*PositionAndScale*/ _RefactoringModule202307152216(txt: 'PositionAndScale', destination: ScreenAnimatedPositionAndScale()),
-      /*VerticalBars*/ _RefactoringModule202307152216(txt: 'VerticalBars', destination: ScreenVerticalBarSniffets()),
-      /*LateralBars*/ _RefactoringModule202307152216(txt: 'LateralBars', destination: ScreenLateralBars()),
-      /*SnackBar*/ _RefactoringModule202307152216(txt: 'SnackBar', destination: ScreenSnackBar()),
-      /*practice1*/ _RefactoringModule202307152216(txt: 'practice1', destination: PracticeScreen1()),
-      /*practice2*/ _RefactoringModule202307152216(txt: 'practice2', destination: PracticeScreen2()),
+    itemsAsIconOnly = [
+      /*\nHello World*/ _RefactoringModule202307152216(txt: '\nHello World', destination: const ScreenHelloWorld()),
+      /*\nsplash*/ _RefactoringModule202307152216(txt: '\nsplash', destination: ScreenSplash()),
+      /*\nVertical Bars*/ _RefactoringModule202307152216(txt: '\nVertical Bars', destination: const ScreenVerticalBarSniffets()),
+      /*\nLateral Bars*/ _RefactoringModule202307152216(txt: '\nLateral Bars', destination: const ScreenLateralBars()),
+      /*\nRow and Column*/ _RefactoringModule202307152216(txt: '\nRow and Column', destination: const ScreenPracticeRowAndColumn()),
+      /*\nZebra Stripe*/ _RefactoringModule202307152216(txt: '\nZebra Stripe', destination: const ScreenZebraStripe()),
+      /*\nNational Flags*/ _RefactoringModule202307152216(txt: '\nNational Flags', destination: const ScreenNationalFlag()),
+      /*\nGermany screen*/ _RefactoringModule202307152216(txt: '\nGermany screen', destination: const ScreenGermany()),
+      /*\nAlign animation*/ _RefactoringModule202307152216(txt: '\nAlign animation', destination: ScreenAnimatedAlign()),
+      /*\nPosition & Scale*/ _RefactoringModule202307152216(txt: '\nPosition & Scale', destination: const ScreenAnimatedPositionAndScale()),
+      /*\nUI samples*/ _RefactoringModule202307152216(txt: '\nUI samples', destination: const ScreenUiComponentSamples()),
+      /*\nstful wiget\nlife cycle*/ _RefactoringModule202307152216(txt: '\nstful wiget\nlife cycle', destination: ScreenPracticeFlutterStfulWigetLifeCycle()),
+      /*\nweb view*/ _RefactoringModule202307152216(txt: '\nweb view', destination: const ScreenPracticeWebview()),
+      /*\npage view*/ _RefactoringModule202307152216(txt: '\npage view', destination: const screen_page_view()),
+      /*\nAPI connection*/ _RefactoringModule202307152216(txt: '\nAPI connection', destination: const ScreenPracticeApiConnection()),
+      /*\nAPI connection2*/ _RefactoringModule202307152216(txt: '\nAPI connection2', destination: ScreenPracticeApiConnection2()),
 
       /*계획집행기*/ /*개발자도우미*/ _RefactoringModule202307152217(
         txt: '개발자도우미',
@@ -92,7 +101,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             Transform.translate(offset: const Offset(5, 0), child: const Icon(Icons.bug_report_outlined, color: Colors.blueAccent)),
           ],
         ),
-        destination: ScreenDeveloperHelper(),
+        destination: const ScreenDeveloperHelper(),
       ),
 
       _RefactoringModule202307152217(
@@ -103,7 +112,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             Transform.translate(offset: const Offset(5, 0), child: const Icon(Icons.rule_outlined, color: Colors.blueAccent)),
           ],
         ),
-        destination: ScreenDeveloperHelper(),
+        destination: const ScreenDeveloperHelper(),
       ),
 
       /*시계*/ _RefactoringModule202307152217(
@@ -114,7 +123,7 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             Transform.translate(offset: const Offset(5, 0), child: const Icon(Icons.watch_later_outlined, color: Colors.blueAccent)),
           ],
         ),
-        destination: Screen_digital_clock(),
+        destination: const Screen_digital_clock(),
       ),
 
       /*평당 계산기*/ _RefactoringModule202307152217(
@@ -125,41 +134,44 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
             Transform.translate(offset: const Offset(5, 0), child: const Icon(Icons.calculate_outlined, color: Colors.blueAccent)),
           ],
         ),
-        destination: Screen_area_calculator(),
+        destination: const Screen_area_calculator(),
       ),
 
-      /*pomodoro*/ _RefactoringModule202307152217(
-        txt: 'pomodoro',
+      /*포모도로*/ _RefactoringModule202307152217(
+        txt: '포모도로',
         item: Row(
           children: [
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.grey.shade200], ratioX: 0.01, ratioY: 0.01)))),
             Transform.translate(offset: const Offset(5, 0), child: const Icon(Icons.timer_outlined, color: Colors.blueAccent)),
           ],
         ),
-        destination: Screen_pomodo(),
+        destination: const ScreenPomodoro(),
       ),
-
       /*참 펜시한 메모장*/ _RefactoringModule202307152217(
         txt: '참 펜시한 메모장',
         item: Row(
           children: [
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.grey.shade200], ratioX: 0.01, ratioY: 0.01)))),
-            Transform.translate(offset: const Offset(6.5, 0), child: Transform.scale(scale: 2,child: const Text("📋", style: TextStyle(fontSize: 16)))),
-            Transform.translate(offset: const Offset(-5, 2), child: Transform.rotate(angle: 0.1, child: Transform.scale(scale: 3,child: Rainbow_text(text: "FANCY", font_size: 2)))),
+            Transform.translate(offset: const Offset(6.5, 0), child: Transform.scale(scale: 2, child: const Text("📋", style: TextStyle(fontSize: 16)))),
+            Transform.translate(offset: const Offset(-5, 2), child: Transform.rotate(angle: 0.1, child: Transform.scale(scale: 3, child: RainbowTextMaker(text: "FANCY", font_size: 2)))),
           ],
         ),
-        destination: ScreenWeiredMyNote(),
+        destination: const ScreenWeiredMyNote(),
       ),
 
-      // const SizedBox(height: 30, width: 30),
-      /*오늘도 웹툰*/ _RefactoringModule202307152217(
-        txt: '오늘도 웹툰',
+
+
+
+
+      /*오늘도 웹툰_v2*/ _RefactoringModule202307152217(
+        txt: '오늘도 웹툰_v2',
         item: Row(children: [
           Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.grey.shade200], ratioX: 0.01, ratioY: 0.01)))),
           Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 300, child: Image.asset('assets/app_webtoon_logo.jpg', height: 0.1))),
         ]),
         destination: Screen_webtoon_v2(),
       ),
+
       /*당근마껫*/ _RefactoringModule202307152217(
         txt: '당근마껫',
         item: Row(children: [
@@ -183,19 +195,31 @@ class _Screen_index_colorfulState extends State<Screen_index_colorful> {
         item: Row(
           children: [
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.grey.shade200], ratioX: 0.01, ratioY: 0.01)))),
-            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 9, child: Rainbow_text(text: 'Googoole', font_size: 1, isRainbowMode: false))),
+            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 9, child: RainbowTextMaker(text: 'Googoole', font_size: 1, isRainbowMode: false))),
           ],
         ),
-        destination: ScreenGoogle(),
+        destination: const ScreenGoogoole(),
       ),
       /*내 프로필*/ _RefactoringModule202307152217(
         txt: '내 프로필',
         item: Row(
           children: [
-            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.grey.shade200], ratioX: 0.01, ratioY: 0.01)))),
+            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.black], ratioX: 0.01, ratioY: 0.01)))),
+            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 300, child: Image.asset('assets/my_lovely_dog_sky.jpg', height: 0.1))),
           ],
         ),
-        destination: ScreenJungHoonParkProfile(),
+        destination: const ScreenJungHoonParkProfile(),
+      ),
+
+      /*디지털포토프레임*/ _RefactoringModule202307152217(
+        txt: '디지털포토프레임',
+        item: Row(
+          children: [
+            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.black], ratioX: 0.01, ratioY: 0.01)))),
+            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 300, child: Image.asset('assets/my_lovely_dog_sky.jpg', height: 0.1))),
+          ],
+        ),
+        destination: const ScreenDigitalPhotoFrame(),
       ),
     ];
   }
@@ -215,6 +239,8 @@ class _RefactoringModule202307152216 extends StatefulWidget {
 class _RefactoringModule202307152216State extends State<_RefactoringModule202307152216> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -266,7 +292,7 @@ class _RefactoringModule202307152217State extends State<_RefactoringModule202307
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => widget.destination));
             },
-            child: Container(
+            child: SizedBox(
               height: 50 - 17,
               child: widget.item,
             ),

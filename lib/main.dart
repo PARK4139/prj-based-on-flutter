@@ -3,14 +3,15 @@ import 'dart:async';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prj_app_feat_nomadcoder_class/screen_index_colorful.dart';
 
-import 'Parts/in_operating/rainbow_icon.dart';
+import 'Parts/helpers/rainbow_icon_maker.dart';
 import 'screen_index_blue.dart';
 
-//apk 빌드 시 파일명은 grammer.dart 여야한다?.
+//apk 빌드 시 파일명은 1.dart 여야한다?.
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // FirebaseApp.initializeApp();
@@ -117,7 +118,7 @@ class AppState extends State<App> {
                   if (isDarkMode == false) {
                     ghost_wiget = Center(child: null);
                   } else {
-                    ghost_wiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: Rainbow_icon(iconData: Icons.folder), icon: Icon(Icons.folder));
+                    ghost_wiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: RainbowIconMaker(iconData: Icons.folder), icon: Icon(Icons.folder));
                   }
                   return ghost_wiget;
                 },
@@ -138,9 +139,9 @@ class AppState extends State<App> {
             Builder(
               builder: (context) {
                 if (isDarkMode == false) {
-                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
+                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
                 } else {
-                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: Screen_index_colorful(isDarkMode: isDarkMode)));
+                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
                 }
                 return ghost_wiget;
               },
