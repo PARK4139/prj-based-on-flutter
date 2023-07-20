@@ -3,7 +3,7 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
-import 'super_worker.dart';
+import 'super_helper.dart';
 
 class TextShirikableStampMaker extends StatefulWidget {
   String text;

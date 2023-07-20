@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_worker.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/toggle_maker.dart';
 
 import '../../main.dart';
@@ -1207,7 +1207,7 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                     level2items: [
                       /*플러터문법스탬프*/ PlanedScheduleManagementHelper(text: "플러터문법스탬프", items: const [
                         "/*컬렉션포문법(collection for)코드샘플*/for (String element in <String>['String1','String2','String3']) Text(element),",
-                        "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/$i.png'),",
+                        "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/\$i.png'),",
                         '/*상위위젯테마컬러참조코드샘플*/color: Theme.of(context).cardColor,',
                         '/*빈박스코드샘플*/const SizedBox(height: 50),',
                         '/*빈박스코드샘플*/Container(),',

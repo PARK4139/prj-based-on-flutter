@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_worker.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 
 import '../helpers/rainbow_text_maker.dart';
 

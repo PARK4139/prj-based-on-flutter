@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'iterable_structure_maker.dart';
 import 'stamp_maker.dart';
-import 'super_worker.dart';
+import 'super_helper.dart';
 
 class BizmekaDailyReportSubmitHelper extends StatefulWidget {
   String text;

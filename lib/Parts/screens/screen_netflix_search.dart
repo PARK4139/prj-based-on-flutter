@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/super_worker.dart';
+import '../helpers/super_helper.dart';
 
 class ScreenNetflixSearch extends StatefulWidget {
   const ScreenNetflixSearch({Key? key}) : super(key: key);

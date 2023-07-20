@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/flutter_provider.dart';
 
-import '../../helpers/super_worker.dart';
+import '../../helpers/super_helper.dart';
 
 class Foo {
   Foo() {}

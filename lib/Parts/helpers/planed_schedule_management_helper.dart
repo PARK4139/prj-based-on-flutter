@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 
 import 'stamp_maker.dart';
-import 'super_worker.dart';
+import 'super_helper.dart';
 
 class PlanedScheduleManagementHelper extends StatefulWidget {
   String text;

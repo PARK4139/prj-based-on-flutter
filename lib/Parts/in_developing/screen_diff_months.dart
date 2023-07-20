@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 
-class ScreenDrontalSupplyDate extends StatefulWidget {
-  const ScreenDrontalSupplyDate({super.key});
+class ScreenDiffMonths extends StatefulWidget {
+  DateTime startingDateTime;
+
+  DateTime endingDateTime;
+
+  ScreenDiffMonths({super.key, required this.startingDateTime, required this.endingDateTime});
 
   @override
-  State<ScreenDrontalSupplyDate> createState() => _ScreenDrontalSupplyDateState();
+  State<ScreenDiffMonths> createState() => _ScreenDiffMonthsState();
 }
 
-class _ScreenDrontalSupplyDateState extends State<ScreenDrontalSupplyDate> {
-  late final int leftDaysFromNowToNextFeedingDate;
+class _ScreenDiffMonthsState extends State<ScreenDiffMonths> {
+  late final double diffMonthsFromStartingDateToNow;
   late final DateTime selectedDate;
 
-  late final DateTime futureFeedingPromisedDate;
+  late final DateTime workingEndDate;
 
-  late final DateTime now;
-
-  late DateTime feedingStartingDate;
+  late DateTime workingStartingDate;
 
   late List<DateTime> futureFeedingPromisedDates;
 
@@ -25,23 +26,14 @@ class _ScreenDrontalSupplyDateState extends State<ScreenDrontalSupplyDate> {
   void initState() {
     super.initState();
 
-    now = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+    workingEndDate = widget.endingDateTime;
     /*급여시작기준일*/
-    feedingStartingDate = DateTime(2023, 07, 19);
+    workingStartingDate = widget.startingDateTime;
 
     /*매3개월마다 드론탈 구충제 하늘이 먹여야 한다.*/
     /*미래에 급여할 날짜 10개까지 출력*/
-    futureFeedingPromisedDates = [
-      for (int i = 1; i <= 10; i++) DateTime(feedingStartingDate.year, feedingStartingDate.month + i * 3, feedingStartingDate.day),
-    ];
-    debugDynamic(   futureFeedingPromisedDates);
 
-    /*미래에 급여할 날짜 10개 중 가장 근래에 급여할 날짜*/
-    futureFeedingPromisedDate = futureFeedingPromisedDates[0];
-    printWithoutErrorOrPrintWithError("________________________________________________$futureFeedingPromisedDate");
-
-
-    leftDaysFromNowToNextFeedingDate = now.difference(futureFeedingPromisedDate).inDays;
+    diffMonthsFromStartingDateToNow = workingEndDate.difference(workingStartingDate).inDays / 30; //월을 약 30 으로 가정한건대 정확하지 않음.
   }
 
   @override
@@ -72,7 +64,7 @@ class _ScreenDrontalSupplyDateState extends State<ScreenDrontalSupplyDate> {
                 child: Center(
                   child: SizedBox(
                     child: Text(
-                      "D$leftDaysFromNowToNextFeedingDate",
+                      "$diffMonthsFromStartingDateToNow 개월",
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 19,

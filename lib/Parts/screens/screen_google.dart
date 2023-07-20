@@ -6,54 +6,50 @@ import 'package:webview_flutter_android/webview_flutter_android.dart';
 // Import for iOS features.
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
-import '../helpers/super_worker.dart';
+import '../helpers/super_helper.dart';
+
+
+
+
 
 class ScreenGoogoole extends StatefulWidget {
+  String startingUrl;
 
 
-  // const ScreenGoogoole({
-  //   super.key,
-  // })
-
-//  위의 constructor 와 뭐가 다른거지?  key 는 뭐지?, 부모에게 꼭 줘야 하나?
-  const ScreenGoogoole({
-    Key? key,
-  }) : super(key: key);
-
-  // ScreenGoogoole({
-  //   Key? key,
-  // }) : super(key: key){
-  //   print("wiget constructor");
-  // }
-
-
-
+  ScreenGoogoole({super.key, required this.startingUrl});
 
   @override
   State<ScreenGoogoole> createState() => _ScreenGoogooleState();
 }
 
 class _ScreenGoogooleState extends State<ScreenGoogoole> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return Scaffold(
       backgroundColor: Colors.black.withOpacity(0.9),
-      body: const SafeArea(
-        child: WebViewExample(),
+      body: SafeArea(
+        child: _WebViewExample(startingUrl: widget.startingUrl),
       ),
     );
   }
 }
 
-class WebViewExample extends StatefulWidget {
-  const WebViewExample({super.key});
+class _WebViewExample extends StatefulWidget {
+  String startingUrl;
+
+
+  _WebViewExample({required this.startingUrl});
 
   @override
-  State<WebViewExample> createState() => _WebViewExampleState();
+  State<_WebViewExample> createState() => _WebViewExampleState();
 }
 
-class _WebViewExampleState extends State<WebViewExample> {
+class _WebViewExampleState extends State<_WebViewExample> {
   late final WebViewController _controller;
 
   @override
@@ -116,7 +112,7 @@ Page resource error:
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message.message)));
         },
       )
-      ..loadRequest(Uri.parse(indexUrl));
+      ..loadRequest(Uri.parse(widget.startingUrl));
 
     // #docregion platform_features
     if (webViewController.platform is AndroidWebViewController) {
@@ -211,7 +207,7 @@ class NavigationControlBar extends StatelessWidget {
           ),
           /*도움말버튼*/ InkWell(
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 1000), content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!')));
+              ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000), content: Text(MyMent.notReadyYet)));
             },
             child: const Icon(Icons.question_mark, size: 20),
           )
@@ -276,13 +272,6 @@ const String kTransparentBackgroundPage = '''
   </html>
 ''';
 
-// String indexUrl='https://flutter.dev';
-// String indexUrl='https://github.com/PARK4139';
-// String indexUrl='https://www.naver.com';
-// String indexUrl='https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiguL3Zy5CAAxVKGYgKHWOFDb0QPAgJ';
-String indexUrl = 'https://www.google.com';
-// String indexUrl='https://www.youtube.com/';
 
-String naverUrl = 'https://www.naver.com';
-String startingUrl = 'https://www.naver.com';
-String openingUrl = 'https://www.naver.com';
+
+

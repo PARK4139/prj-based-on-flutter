@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/super_worker.dart';
+import '../helpers/super_helper.dart';
 
 class ScreenPracticeLogin extends StatefulWidget {
   const ScreenPracticeLogin({super.key});

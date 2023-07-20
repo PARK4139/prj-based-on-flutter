@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data_layer/my_data_layer.dart';
-import '../helpers/super_worker.dart';
+import '../helpers/super_helper.dart';
 
 
 class ScreenJungHoonParkProfile extends StatefulWidget {
@@ -67,7 +67,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
               offset: const Offset(0, 0),
               child: GestureDetector(
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 2000), content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!')));
+                  ScaffoldMessenger.of(context).showSnackBar(  SnackBar(duration: Duration(milliseconds: 2000), content: Text(MyMent.notReadyYet)));
                 },
                 child: Center(
                   child: Container(

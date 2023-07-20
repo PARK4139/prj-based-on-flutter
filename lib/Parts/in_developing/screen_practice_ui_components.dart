@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/toggle_maker.dart';
 
 import '../helpers/CheckBoxMaker.dart';
-import '../helpers/super_worker.dart';
+import '../helpers/super_helper.dart';
 
 class ScreenPracticeUiComponents extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
           backgroundColor: Colors.black.withOpacity(0.9),
           appBar: AppBar(
             backgroundColor: Colors.black,
-            title: const Text(''),
+            title: const Text('',style: TextStyle(color: Colors.blueGrey)),
             leading: /*뒤로가기 버튼*/ InkWell(
               child: const Icon(Icons.chevron_left),
               onTap: () {
@@ -129,20 +129,20 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              const Text('경고팝업버튼'),
+                              const Text('경고팝업버튼',style: TextStyle(color: Colors.blueGrey)),
                               const SizedBox(height: 15),
                               TextButton(
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: const Text('Close'),
+                                child: const Text('Close',style: TextStyle(color: Colors.blueGrey)),
                               ),
                             ],
                           ),
                         ),
                       ),
                     ),
-                    child: const Text('Show Dialog'),
+                    child: const Text('Show Dialog',style: TextStyle(color: Colors.blueGrey)),
                   ),
                   /*버튼*/ TextButton(
                     onPressed: () => showDialog<String>(
@@ -152,19 +152,19 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            const Text('경고팝업버튼'),
+                            const Text('경고팝업버튼',style: TextStyle(color: Colors.blueGrey)),
                             const SizedBox(height: 15),
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: const Text('Close'),
+                              child: const Text('Close',style: TextStyle(color: Colors.blueGrey)),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    child: const Text('버튼(풀스크린다이얼로그)'),
+                    child: const Text('버튼(풀스크린다이얼로그)',style: TextStyle(color: Colors.blueGrey)),
                   ),
                   /*버튼*/ ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -183,10 +183,10 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                             return AlertDialog(
                               backgroundColor: Colors.white,
                               title: const Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                              content: const Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
+                              content: const Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!",style: TextStyle(color: Colors.blueGrey)),
                               actions: <Widget>[
                                 TextButton(
-                                  child: const Text("알겠어요!"),
+                                  child: const Text("알겠어요!",style: TextStyle(color: Colors.blueGrey)),
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
@@ -197,7 +197,7 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                         );
                       });
                     },
-                    child: const Text('버튼(풀스크린다이얼로그)'),
+                    child: const Text('버튼(풀스크린다이얼로그)',style: TextStyle(color: Colors.blueGrey)),
                   ),
                   /*버튼*/ Container(
                     decoration: BoxDecoration(
@@ -205,7 +205,7 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextButton(
-                      child: const Text('GO TO INDEX', style: TextStyle(color: Colors.white)),
+                      child: const Text('GO TO INDEX',style: TextStyle(color: Colors.blueGrey)),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -221,7 +221,7 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(textAlign: TextAlign.center, '생성하기', style: TextStyle(color: Colors.white)),
+                        Text(textAlign: TextAlign.center, '생성하기',style: TextStyle(color: Colors.blueGrey)),
                       ],
                     ),
                   ),
@@ -238,6 +238,19 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                   ),
                   /*빈컨테이너*/ Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 180,
+                        width: (MediaQuery.of(context).size.width - 30) / 2,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(0),
+                        ),
+                      ),
+                    ],
+                  ),
+                  /*빈컨테이너*/ Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
                         height: 180,
@@ -274,28 +287,28 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                     child: Container(
                       height: 180,
                       color: Colors.red,
-                      child: const Text("익스펜디드컨테이너"),
+                      child: const Text("익스펜디드컨테이너",style: TextStyle(color: Colors.blueGrey)),
                     ),
                   ),
                   /*경고팝업버튼*/ TextButton(
                     onPressed: () => showDialog<String>(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
-                        title: const Text('AlertDialog Title'),
-                        content: const Text('AlertDialog description'),
+                        title: const Text('AlertDialog Title',style: TextStyle(color: Colors.blueGrey)),
+                        content: const Text('AlertDialog description',style: TextStyle(color: Colors.blueGrey)),
                         actions: <Widget>[
                           TextButton(
                             onPressed: () => Navigator.pop(context, 'Cancel'),
-                            child: const Text('Cancel'),
+                            child: const Text('Cancel',style: TextStyle(color: Colors.blueGrey)),
                           ),
                           TextButton(
                             onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text('OK'),
+                            child: const Text('OK',style: TextStyle(color: Colors.blueGrey)),
                           ),
                         ],
                       ),
                     ),
-                    child: const Text('Show Dialog'),
+                    child: const Text('Show Dialog',style: TextStyle(color: Colors.blueGrey)),
                   ),
                   /*경고팝업버튼*/ Container(
                     decoration: BoxDecoration(
@@ -323,10 +336,10 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                               return AlertDialog(
                                 backgroundColor: Colors.white,
                                 title: const Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                                content: const Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
+                                content: const Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!",style: TextStyle(color: Colors.blueGrey)),
                                 actions: <Widget>[
                                   TextButton(
-                                    child: const Text("알겠어요!"),
+                                    child: const Text("알겠어요!",style: TextStyle(color: Colors.blueGrey)),
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
@@ -365,11 +378,11 @@ class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents>
                             useRootNavigator: false,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                content: const Text('foo'),
+                                content: const Text('foo',style: TextStyle(color: Colors.blueGrey)),
                                 insetPadding: const EdgeInsets.fromLTRB(0, 80, 0, 80),
                                 actions: [
                                   TextButton(
-                                    child: const Text('확인'),
+                                    child: const Text('확인',style: TextStyle(color: Colors.blueGrey)),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },

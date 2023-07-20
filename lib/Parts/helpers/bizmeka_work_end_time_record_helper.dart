@@ -4,7 +4,7 @@ import 'package:localstorage/localstorage.dart';
 
 import 'iterable_structure_maker.dart';
 import 'stamp_maker.dart';
-import 'super_worker.dart';
+import 'super_helper.dart';
 
 class BizmekaWorkEndTimeRecordHelper extends StatefulWidget {
   String text;

@@ -7,7 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:prj_app_feat_nomadcoder_class/screen_index_colorful.dart';
 
 import 'Parts/helpers/rainbow_icon_maker.dart';
-import 'Parts/helpers/super_worker.dart';
+import 'Parts/helpers/super_helper.dart';
 import 'screen_index_blue.dart';
 
 //apk 빌드 시 파일명은 1.dart 여야한다?.

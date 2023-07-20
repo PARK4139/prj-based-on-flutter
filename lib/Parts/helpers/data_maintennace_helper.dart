@@ -1,7 +1,7 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
-import 'super_worker.dart';
+import 'super_helper.dart';
 
 //회사 시스템 DB 유지보수용 쿼리 작성에 도움을 주는 버튼
 class DataMaintennaceHelper extends StatefulWidget {

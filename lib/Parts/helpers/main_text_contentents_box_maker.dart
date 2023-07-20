@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'super_worker.dart';
+import 'super_helper.dart';
 
 class MainTextContententsBoxMaker extends StatefulWidget {
   String text;

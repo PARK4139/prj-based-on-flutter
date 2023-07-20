@@ -7,7 +7,7 @@ import '../helpers/custom_stamp_maker.dart';
 import '../helpers/multi_case_maker.dart';
 import '../helpers/planed_schedule_management_helper.dart';
 import '../helpers/planed_schedule_management_helper2.dart';
-import '../helpers/super_worker.dart';
+import '../helpers/super_helper.dart';
 
 class ScreenDeveloperHelper extends StatefulWidget {
   const ScreenDeveloperHelper({Key? key}) : super(key: key);
@@ -65,7 +65,7 @@ class _ScreenDeveloperHelperState extends State<ScreenDeveloperHelper> {
             PlanedScheduleManagementHelper2(text: "플러터코드스탬프", items: const [
               '/*임시텍스트*/Text("임시텍스트", style: TextStyle(color: Colors.red, fontSize: 10, fontWeight: FontWeight.w600)',
               "/*컬렉션포문법(collection for)코드샘플*/for (String element in <String>['String1','String2','String3']) Text(element),",
-              "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/$i.png'),",
+              "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/\$i.png'),",
               '/*상위위젯테마컬러참조코드샘플*/color: Theme.of(context).headline1,',
               '/*빈박스코드샘플*/const SizedBox(height: 50),',
               '/*빈박스코드샘플*/Container(),',

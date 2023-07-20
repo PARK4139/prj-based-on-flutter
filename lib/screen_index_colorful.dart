@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'Parts/helpers/circle_box_maker.dart';
 import 'Parts/helpers/rainbow_text_maker.dart';
 import 'Parts/helpers/striped_box_maker.dart';
-import 'Parts/in_developing/ScreenDiffMonths.dart';
+import 'Parts/helpers/super_helper.dart';
+import 'Parts/in_developing/screen_diff_months.dart';
 import 'Parts/in_developing/screen_practice_api_connection2.dart';
 import 'Parts/in_developing/screen_practice_ui_components.dart';
 import 'Parts/in_developing/screen_random_number.dart';
@@ -183,7 +184,7 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 9, child: RainbowTextMaker(text: 'Googoole', fontSize: 1, isRainbowMode: false))),
           ],
         ),
-        destination: const ScreenGoogoole(),
+        destination:   ScreenGoogoole(startingUrl: MyUrls.google2),
       ),
       /*내 프로필*/ _RefactoringModule202307152217(
         txt: '내 프로필',
@@ -344,6 +345,9 @@ class _RefactoringModule202307152216State extends State<_RefactoringModule202307
     );
   }
 }
+
+
+
 
 class _RefactoringModule202307152217 extends StatefulWidget {
   late String txt;

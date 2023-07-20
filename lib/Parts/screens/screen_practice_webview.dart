@@ -11,7 +11,7 @@ import 'package:webview_flutter_android/webview_flutter_android.dart';
 // Import for iOS features.
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
-import '../helpers/super_worker.dart';
+import '../helpers/super_helper.dart';
 
 class ScreenPracticeWebview extends StatefulWidget {
   const ScreenPracticeWebview({super.key});

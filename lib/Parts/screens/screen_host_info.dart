@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../helpers/super_worker.dart';
+import '../helpers/super_helper.dart';
 
 class ScreenHostInfo extends StatefulWidget {
   const ScreenHostInfo({Key? key}) : super(key: key);
