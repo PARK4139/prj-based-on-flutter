@@ -21,7 +21,9 @@ echo "__________________________________________________________________________
 ::set commit_ment=플러터 안드로이드 앱 업데이트 PHASE 1
 ::set commit_ment=개발환경 이동 및 프로젝트 작동 테스트 완료
 ::set commit_ment=넷플리쓰 서치 탭의 서치 바 UI 구현
-set commit_ment=const 리펙토링 진행
+::set commit_ment=const 리펙토링 진행
+set commit_ment=README.md 참조
+
 
 git add *  
 git commit -m "%commit_ment%" 
