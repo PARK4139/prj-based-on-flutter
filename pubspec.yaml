@@ -32,7 +32,7 @@ dependencies:
   shared_preferences:  # web 불가
   localstorage: # Web 가능 # 로컬 데이터를 저장용
   flutter_session_manager: # Web 가능 # 로컬 데이터를 저장용
-  #  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
+#  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
 #  dio_cookie_manager: ^3.1.0
   #  flutter_tts: ^3.7.0
   flutter_tts: 
@@ -57,19 +57,21 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-#    - assets/foo.jpeg
-#    - assets/foo.mp3
-#    - assets/foo.txt
-#    - assets/foo.json
-#    - assets/app_netflix_movie_poster_1.png
-#    - assets/app_netflix_logo.png
-#    - assets/app_carrot_market_logo.png
-#    - assets/placeholder.jpg
-#    - assets/error.jpg
-#    - assets/app_webtoon_logo.jpg
-    - assets/
-
-
+#    - asset/images/app_webtoon_logo.jpg
+    - asset/images/
+    - asset/images/random_numbers
+  fonts:
+    - family: sunFlower
+      fonts:
+        - asset: asset/fonts/Sunflower-Light.ttf
+#          weight: 100
+        - asset: asset/fonts/Sunflower-Medium.ttf
+          weight: 500
+        - asset: asset/fonts/Sunflower-Bold.ttf
+          weight: 700
+    - family: Parisienne
+      fonts:
+        - asset: asset/fonts/Parisienne-Regular.ttf
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 

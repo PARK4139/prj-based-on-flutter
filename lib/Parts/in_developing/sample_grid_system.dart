@@ -5,7 +5,7 @@ class SampleGridSystem extends StatefulWidget {
   @override
   State<SampleGridSystem> createState() => _SampleGridSystemState();
 
-  SampleGridSystem();
+  const SampleGridSystem({super.key});
 }
 
 class _SampleGridSystemState extends State<SampleGridSystem> {

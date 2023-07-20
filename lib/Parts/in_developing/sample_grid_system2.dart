@@ -13,7 +13,7 @@ class _SampleGridSystem2State extends State<SampleGridSystem2> {
   @override
   Widget build(BuildContext context) {
     return GridView(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
       ),
       children: <Widget>[

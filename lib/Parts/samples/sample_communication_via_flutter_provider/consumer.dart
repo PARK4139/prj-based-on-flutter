@@ -3,12 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/flutter_provider.dart';
 
+import '../../helpers/super_worker.dart';
+
 class Foo {
   Foo() {}
 
   String foo() => 'Hello';
 
-  void dispose() => print('$this::dispose');
+  void dispose() => printWithoutErrorOrPrintWithError('$this::dispose');
 }
 
 class Bar1 {
@@ -16,7 +18,7 @@ class Bar1 {
 
   String bar1() => 'Hello everyone';
 
-  void dispose() => print('$this::dispose');
+  void dispose() => printWithoutErrorOrPrintWithError('$this::dispose');
 }
 
 class Bar2 {
@@ -24,7 +26,7 @@ class Bar2 {
 
   String bar2() => 'Fall in love with Flutter';
 
-  void dispose() => print('$this::dispose');
+  void dispose() => printWithoutErrorOrPrintWithError('$this::dispose');
 }
 
 class ProvidingPage extends StatelessWidget {

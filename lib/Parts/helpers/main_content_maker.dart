@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../main.dart';
 import 'main_text_contentents_box_maker.dart';
-import 'my_superworkers.dart';
+import 'super_worker.dart';
 
 
 class MainContentMaker extends StatefulWidget {
@@ -11,16 +11,17 @@ class MainContentMaker extends StatefulWidget {
 
   List<dynamic> level2items;
 
-   MainContentMaker({required this.level1widget, required this.level1text, required this.level2items});
-
+   MainContentMaker({super.key, required this.level1widget, required this.level1text, required this.level2items});
 
   @override
-  _MainContentMakerState createState() => _MainContentMakerState();
+  State<MainContentMaker> createState() => _MainContentMakerState();
+
+
 }
 
 class _MainContentMakerState extends State<MainContentMaker> {
 
-  late var isDarkMode;
+  late bool isDarkMode;
 
   bool isMainContentClicked = false;
 

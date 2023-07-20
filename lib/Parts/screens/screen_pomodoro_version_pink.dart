@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../../main.dart';
 
-class Screen_pomodo_ver_pink extends StatefulWidget {
-  const Screen_pomodo_ver_pink({Key? key}) : super(key: key);
+class ScreenPomodoVerPink extends StatefulWidget {
+  const ScreenPomodoVerPink({Key? key}) : super(key: key);
 
   @override
-  State<Screen_pomodo_ver_pink> createState() => _Screen_pomodo_ver_pinkState();
+  State<ScreenPomodoVerPink> createState() => _ScreenPomodoVerPinkState();
 }
 
-class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
+class _ScreenPomodoVerPinkState extends State<ScreenPomodoVerPink> {
   int foo = 100000000;
   final ment = '해당 스크린에서는 pomodoro를 서비스를 제공합니다 \n\n'
       '＊"pomodoro" : 포모도로 기법은 프란체스코 시릴로가 고안한 시간 관리 기법입니다.\n 25분 동안 집중해서 일을 한 다음 5분간 휴식을 취하는 것을 반복하는 방식입니다.\n 이 기법은 25분을 토마토 모양의 요리용 타이머로 측정한 데서 이름이 유래했습니다.\n 포모도로 기법은 집중력 향상과 생산성 향상에 도움이 될 수 있습니다.';
@@ -29,8 +29,8 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
 // static const defaultSeconds = 3600; // OPERATION   1 hour
 // static const defaultSeconds = 1200; // OPERATION   30 MIN
 // static const defaultSeconds = 600; // OPERATION   10 MIN
-  int Count = 0;
-  int ScreenSeconds = defaultSeconds;
+  int count = 0;
+  int screenSeconds = defaultSeconds;
   bool isRunning = false;
   bool isPaused = false;
   int pomodoros = 0;
@@ -65,60 +65,49 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
                 },
               ),
             ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Icon(Icons.android, color: Colors.pinkAccent.shade100),
-                  Text("$ment", style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w500)),
-                ],
-              ),
+            Column(
+              children: <Widget>[
+                Icon(Icons.android, color: Colors.pinkAccent.shade100),
+                Text(ment, style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w500)),
+              ],
             ),
-            SizedBox(height: 30),
-            SizedBox(height: 30),
-            SizedBox(height: 30),
-            SizedBox(height: 30),
+            const SizedBox(height: 120),
             Flexible(
               flex: 1,
               child: Container(
-                child: Text(FormattingToMinuite(ScreenSeconds), style: TextStyle(color: Theme.of(context).cardColor, fontSize: 89, fontWeight: FontWeight.w600)),
                 alignment: Alignment.bottomCenter,
+                child: Text(formattingToMinuite(screenSeconds), style: TextStyle(color: Theme.of(context).cardColor, fontSize: 89, fontWeight: FontWeight.w600)),
               ),
             ),
             Flexible(
               flex: 3,
               child: Center(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        child: TextButton(
-                          onPressed: resetAllPomodoro,
-                          child: Text(
-                            'ALL RESET',
-                            style: TextStyle(color: Theme.of(context).cardColor, fontSize: 20),
-                          ),
+                      TextButton(
+                        onPressed: resetAllPomodoro,
+                        child: Text(
+                          'ALL RESET',
+                          style: TextStyle(color: Theme.of(context).cardColor, fontSize: 20),
                         ),
                       ),
-                      Container(
-                        child: IconButton(
-                          color: Theme.of(context).cardColor,
-                          onPressed: togglePlayAndPause,
-                          iconSize: 120,
-                          icon: Icon(isRunning ? Icons.pause_circle_outline : Icons.play_circle_outline, size: 60),
-                        ),
+                      IconButton(
+                        color: Theme.of(context).cardColor,
+                        onPressed: togglePlayAndPause,
+                        iconSize: 120,
+                        icon: Icon(isRunning ? Icons.pause_circle_outline : Icons.play_circle_outline, size: 60),
                       ),
-                      Container(
-                        child: TextButton(
-                          onPressed: resetStatus,
-                          child: Text(
-                            'CURRENT\nLAP\nRESET',
-                            style: TextStyle(color: Theme.of(context).cardColor, fontSize: 20),
-                          ),
+                      TextButton(
+                        onPressed: resetStatus,
+                        child: Text(
+                          'CURRENT\nLAP\nRESET',
+                          style: TextStyle(color: Theme.of(context).cardColor, fontSize: 20),
                         ),
                       ),
                     ],
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
                 ),
               ),
@@ -132,13 +121,13 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Pomodoro',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Theme.of(context).textTheme.headline1!.color),
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
                         ),
                         Text(
                           '$pomodoros',
-                          style: TextStyle(fontSize: 58, fontWeight: FontWeight.w600, color: Theme.of(context).textTheme.headline1!.color),
+                          style: const TextStyle(fontSize: 58, fontWeight: FontWeight.w600, color:Colors.white),
                         ),
                       ],
                     ),
@@ -153,7 +142,7 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
     );
   }
 
-  String FormattingToMinuite(int seconds) {
+  String formattingToMinuite(int seconds) {
     var duration = Duration(seconds: seconds); // duration.toString()  ==  '0:00:02.000000'
     // return duration.toString().split(".")[0];  // DEPRECATED FOR first IS MORE EXPLICTED EXPRESSION THAN [0].
     // print(duration.toString().split(".").first.split(":").first);
@@ -171,7 +160,7 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
         timer.cancel();
       } else {
         isRunning = true;
-        timer = Timer.periodic(Duration(seconds: 1), onTick); // onTick(); (x)   vs   onTick (o)
+        timer = Timer.periodic(const Duration(seconds: 1), onTick); // onTick(); (x)   vs   onTick (o)
       }
     });
   }
@@ -179,7 +168,7 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
   resetAllPomodoro() {
     setState(() {
       timer.cancel();
-      ScreenSeconds = defaultSeconds;
+      screenSeconds = defaultSeconds;
       pomodoros = 0;
       isRunning = false;
     });
@@ -187,7 +176,7 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
 
   void getParentWigetState() {
     parent = context.findAncestorStateOfType<AppState>()!;
-    if (parent.platform == Platforms.Android) {
+    if (parent.platform == Platforms.android) {
       isAndroid = true;
     } else {
       isAndroid = false;
@@ -196,11 +185,11 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
 
   void onTick(Timer timer) {
     setState(() {
-      ScreenSeconds = ScreenSeconds - 1;
-      if (ScreenSeconds == 0) {
+      screenSeconds = screenSeconds - 1;
+      if (screenSeconds == 0) {
         pomodoros = pomodoros + 1;
         isRunning = true;
-        ScreenSeconds = defaultSeconds;
+        screenSeconds = defaultSeconds;
       }
     });
   }
@@ -208,7 +197,7 @@ class _Screen_pomodo_ver_pinkState extends State<Screen_pomodo_ver_pink> {
   void resetStatus() {
     setState(() {
       timer.cancel();
-      ScreenSeconds = defaultSeconds;
+      screenSeconds = defaultSeconds;
       isRunning = false;
     });
   }

@@ -4,14 +4,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class screen_page_view extends StatefulWidget {
-  const screen_page_view({super.key});
+class ScreenPracticePageView extends StatefulWidget {
+  const ScreenPracticePageView({super.key});
 
   @override
-  State<screen_page_view> createState() => _screen_page_viewState();
+  State<ScreenPracticePageView> createState() => _ScreenPracticePageViewState();
 }
 
-class _screen_page_viewState extends State<screen_page_view> {
+class _ScreenPracticePageViewState extends State<ScreenPracticePageView> {
   late List<Widget> items;
 
   late Timer timer;
@@ -20,20 +20,20 @@ class _screen_page_viewState extends State<screen_page_view> {
 
   int currentPage = 0;
 
-  late var nextPage;
+  late int nextPage;
 
   @override
   void initState() {
     super.initState();
     items = [
-      // Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.cover),
-      Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      // Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.fill),
-      // Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.fitHeight),
-      // Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.fitWidth),
+      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.cover),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fill),
+      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitHeight),
+      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitWidth),
     ];
     pageController = PageController(viewportFraction: 0.8, initialPage: currentPage);
     timer = Timer.periodic(const Duration(milliseconds: 3000), (timer) {
@@ -53,9 +53,7 @@ class _screen_page_viewState extends State<screen_page_view> {
 
   @override
   void dispose() {
-    if (timer != null) {
-      timer.cancel();
-    }
+    timer.cancel();
     pageController.dispose();
 
     super.dispose();

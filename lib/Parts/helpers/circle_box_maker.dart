@@ -4,7 +4,7 @@ class CircleBoxMaker extends StatefulWidget {
   late Widget item;
 
 
-  CircleBoxMaker({required this.item});
+  CircleBoxMaker({super.key, required this.item});
 
   @override
   State<CircleBoxMaker> createState() => _StripedBoxMakerState();

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_check_box_local_storage.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_toggle.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_worker.dart';
+
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/toggle_maker.dart';
 
 import '../../main.dart';
 import '../../screen_index_colorful.dart';
+import '../helpers/CheckBoxMaker.dart';
 import '../helpers/planed_schedule_management_helper.dart';
 import '../helpers/main_content_maker.dart';
 import '../helpers/rainbow_icon_maker.dart';
@@ -15,8 +17,12 @@ import '../helpers/rainbow_text_maker.dart';
 class ScreenWeiredMyNote extends StatefulWidget {
   const ScreenWeiredMyNote({super.key});
 
+ 
+
   @override
-  _ScreenWeiredMyNoteState createState() => _ScreenWeiredMyNoteState();
+  State<ScreenWeiredMyNote> createState() => _ScreenWeiredMyNoteState();
+
+
 }
 
 class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
@@ -39,10 +45,10 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
     decorationThickness: 2,
   );
   TextStyle textStyle3 = const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w100);
-  TextStyle textStyle4 = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w100, fontFamily: 'NanumSquareRegular');
+  TextStyle textStyle4 = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w100);
   TextStyle textStyle5 = const TextStyle(fontSize: 18, color: Colors.red, fontWeight: FontWeight.w100);
 
-  late var isDarkMode;
+  late bool isDarkMode;
 
   bool isMainTextContentBoxClicked = false;
 
@@ -117,7 +123,7 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
                 /*참 펜시한 메모장 : 타이틀*/ Center(
                   child: InkWell(
                     onTap: () {
-                      print("참 펜시한 메모장:");
+                      printWithoutErrorOrPrintWithError("참 펜시한 메모장:");
                     },
                     child: Column(
                       children: [
@@ -127,7 +133,7 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
                               children: [
                                 Text('참 ', style: textStyle2),
                                 Text('이상한 ', style: textStyle2CanceledLine),
-                                RainbowTextMaker(text: '펜시', color: Colors.white, font_size: 27, font_weight: FontWeight.w900),
+                                RainbowTextMaker(text: '펜시', color: Colors.white, fontSize: 27, fontWeight: FontWeight.w900),
                                 Text('한 ', style: textStyle2),
                                 Container(color: Colors.yellowAccent, child: Text('메모장', style: textStyle2underLine)),
                               ],
@@ -184,7 +190,7 @@ flutter 로 만들어야 할 기능들.
                 MainContentMaker(level1widget: const Icon(Icons.phone_android, color: Colors.grey), level1text: 'App 요약정리', level2items: [
                   /*Flutter 핵심 요약:타이틀*/ InkWell(
                     onTap: () {
-                      print("/*Flutter 핵심 요약:타이틀*/");
+                      printWithoutErrorOrPrintWithError("/*Flutter 핵심 요약:타이틀*/");
                     },
                     child: Column(
                       children: [
@@ -504,6 +510,8 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                   ),
                   MainContentMaker(level1widget: Text('📂', style: textStyle5), level1text: '아이콘텍스트 모음', level2items: const [
                     """
+✔️ CORRECT  
+❌ INCORRECT
 💻💼🖱🕐🕑🕒🕓🕔🕕🕖🕗🕘🕙🕚🕛🕜🕝🕞🕟🕠🕡🕢🕣🕤🕥🕦🕧
 🔅🔆
 🔈🔉🔊 
@@ -554,7 +562,8 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 ✴
 ❄
 ❇ 
-❓❔❕❗  
+❓❔
+❕❗  
 🐀🐀🐁🐂🐃🐄🐅🐆🐇🐈🐉🐊🐋🐌🐍🐍🐎🐏🐐🐑🐒🐓🐓🐔🐕🐕‍
 🦺
 🐖🐗🐘
@@ -647,7 +656,6 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🌍🌍🌎🌏
 🌐
 🌑🌒🌓🌔🌕🌖🌗🌘🌙🌚
-🌛🌜
 🌝🌞
 🌟
 🌠
@@ -655,27 +663,13 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🌮
 🌯
 🌰
-🌱
-🌲
-🌳
-🌴
-🌴
-🌵
+🌱🌲🌳🌴🌴🌵
 🌶
-🌷
-🌸
-🌹
-🌹
-🌺
-🌻
-🌼
-🌽
-🌾
+🌷🌸🌹🌹🌺🌻🌼
+🌽🌾
 🌿
 🍀
-🍁
-🍂
-🍃
+🍁🍂🍃
 🍄
 🍅🍅🍆🍇🍈🍉🍊🍋🍌🍍🍎🍏🍐🍑🍒🍓🍓🍓🍔🍕🍕
 🍖🍗
@@ -880,18 +874,7 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🕌
 🕍
 🕎
-🕺
-🕺🏻
-🕺🏼
-🕺🏽
-🕺🏾
-🕺🏿 
-🖕
-🖕🏻
-🖕🏼
-🖕🏽
-🖕🏾
-🖕🏿
+🖕🖕🏻🖕🏼🖕🏽🖕🏾🖕🏿
 🖖
 🖖🏻
 🖖🏼
@@ -958,18 +941,6 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🤟🏽
 🤟🏾
 🤟🏿
-🤰
-🤰🏻
-🤰🏼
-🤰🏽
-🤰🏾
-🤰🏿
-🤱
-🤱🏻
-🤱🏼
-🤱🏽
-🤱🏾
-🤱🏿
 🤲
 🤲🏻
 🤲🏼
@@ -982,12 +953,6 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🤳🏽
 🤳🏾
 🤳🏿
-🤴
-🤴🏻
-🤴🏼
-🤴🏽
-🤴🏾
-🤴🏿
 🤵 
 🤶
 🤶🏻
@@ -1131,7 +1096,6 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🪓
 🪔
 🪕 
-
 🚀
 🚁
 🚂
@@ -1250,8 +1214,8 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                         '/*빈박스코드샘플*/Container(),',
                         '/*빈박스코드샘플*/PloaceHolder(),',
                       ]),
-                      /*토글버튼*/ SampleToggle(),
-                      /*체크박스*/ SampleCheckBox(),
+                      /*토글버튼*/ ToggleMaker(),
+                      /*체크박스*/ const CheckBoxMaker(),
                       /*버튼*/ FloatingActionButton(
                         mini: false,
                         backgroundColor: Colors.blue.shade900,

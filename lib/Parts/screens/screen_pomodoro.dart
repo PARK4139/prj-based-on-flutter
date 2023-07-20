@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../helpers/my_superworkers.dart';
+import '../helpers/super_worker.dart';
 
 class ScreenPomodoro extends StatefulWidget {
   const ScreenPomodoro({Key? key}) : super(key: key);
@@ -82,10 +82,10 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
       screenSeconds = screenSeconds - 1;
       if (screenSeconds == 0) {
         pomodoros = pomodoros + 1;
-        print("pomodoros" + pomodoros.toString());
+        printWithoutErrorOrPrintWithError("pomodoros$pomodoros");
         isRunning = true;
         screenSeconds = defaultSeconds;
-        print("ScreenSeconds$screenSeconds");
+        printWithoutErrorOrPrintWithError("ScreenSeconds$screenSeconds");
         // print("___________"+___________.toString());
       }
     });
@@ -110,7 +110,7 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.black_undefined,
+      backgroundColor: MyColors.blackUndefined,
       body: ListView(
         children: [
           ElevatedButton(

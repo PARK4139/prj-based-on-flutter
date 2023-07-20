@@ -6,29 +6,29 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../in_developing/common.dart';
 import 'iterable_structure_maker.dart';
-import 'my_superworkers.dart';
+import 'super_worker.dart';
 
 
 class WithvKulLoginHelper extends StatefulWidget {
   String text;
   final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
-  final double padding_vertical;
-  final double padding_horizontal;
-  final BorderRadius? border_radius;
+  final FontWeight? fontWeight;
+  final double? fontSize;
+  final Color? backgroundColor;
+  final double paddingVertical;
+  final double paddingHorizontal;
+  final BorderRadius? borderRadius;
 
   WithvKulLoginHelper({
     Key? key,
     required this.text,
-    required this.background_color,
+    required this.backgroundColor,
     required this.color,
-    required this.font_size,
-    required this.font_weight,
-    required this.padding_vertical,
-    required this.padding_horizontal,
-    required this.border_radius,
+    required this.fontSize,
+    required this.fontWeight,
+    required this.paddingVertical,
+    required this.paddingHorizontal,
+    required this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -36,39 +36,38 @@ class WithvKulLoginHelper extends StatefulWidget {
 }
 
 class _ButtonMoveToBizmekaDailyReportState extends State<WithvKulLoginHelper> {
-  String text_to_copy = '';
-  late Map<String, dynamic> Stamps;
+  String textToCopy = '';
+  late Map<String, dynamic> stamps;
   var helper = MySuperworkers();
-  int ClickCounter = 0;
-  late List<String> items_to_copy;
+  int clickCounter = 0;
+  late List<String> itemsToCopy;
 
-  // late var naturalNumbers;
-  late var items_iterable;
+  late var itemsIterable;
 
   @override
   void initState() {
     super.initState();
-    init_this_buton();
+    initThisButon();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
+        color: widget.backgroundColor,
+        borderRadius: widget.borderRadius,
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
+        horizontal: widget.paddingHorizontal,
+        vertical: widget.paddingVertical,
       ),
       child: TextButton(
           child: Text(
             widget.text.substring(10, 40),
             style: TextStyle(
               color: widget.color,
-              fontSize: widget.font_size,
-              fontWeight: widget.font_weight,
+              fontSize: widget.fontSize,
+              fontWeight: widget.fontWeight,
             ),
           ),
           onPressed: () {
@@ -83,33 +82,33 @@ class _ButtonMoveToBizmekaDailyReportState extends State<WithvKulLoginHelper> {
     String? hostOperatingEnvironment, //아무래도 이게 꼭 필요하다
   }) {
     setState(() {
-      if (ClickCounter == 0) {
-        print("ClickCounter:" + ClickCounter.toString()); //DEVELOPMENT
-        print('copied : ' + text_to_copy); //DEVELOPMENT
-        text_to_copy = items_iterable.next();
-        widget.text = text_to_copy;
+      if (clickCounter == 0) {
+        printWithoutErrorOrPrintWithError("ClickCounter:$clickCounter"); //DEVELOPMENT
+        printWithoutErrorOrPrintWithError('copied : $textToCopy'); //DEVELOPMENT
+        textToCopy = itemsIterable.next();
+        widget.text = textToCopy;
       }
       int i = 1;
       while (true) {
-        if (ClickCounter == i) {
-          print("ClickCounter:" + ClickCounter.toString()); //DEVELOPMENT
-          print('copied : ' + text_to_copy); //DEVELOPMENT
-          FlutterClipboard.copy(text_to_copy).then((value) {});
+        if (clickCounter == i) {
+          printWithoutErrorOrPrintWithError("ClickCounter:$clickCounter"); //DEVELOPMENT
+          printWithoutErrorOrPrintWithError('copied : $textToCopy'); //DEVELOPMENT
+          FlutterClipboard.copy(textToCopy).then((value) {});
           try {
-            text_to_copy = items_iterable.next();
+            textToCopy = itemsIterable.next();
           } catch (e) {
             // print(e);//DEVELOPMENT
-            init_this_buton();
-            text_to_copy = items_iterable.next();
+            initThisButon();
+            textToCopy = itemsIterable.next();
           }
-          widget.text = text_to_copy;
+          widget.text = textToCopy;
         }
         i++;
-        if (i == items_iterable.item_length_snapshot_at_born + 1) {
+        if (i == itemsIterable.itemLengthSnapshotAtBorn + 1) {
           break;
         }
       }
-      ClickCounter = ClickCounter + 1;
+      clickCounter = clickCounter + 1;
     });
   }
 
@@ -122,17 +121,17 @@ class _ButtonMoveToBizmekaDailyReportState extends State<WithvKulLoginHelper> {
     }
   }
 
-  void init_this_buton() {
-    Stamps = COMMON_TEXT_DATA().STAMPS;
-    items_to_copy = <String>[
-      Stamps['시작'], //DEVELOPMENT
-      Stamps['1001'],
-      Stamps['1002'],
-      Stamps['1003'],
-      Stamps['종료'], //DEVELOPMENT
+  void initThisButon() {
+    stamps = CommonTextData().stamps;
+    itemsToCopy = <String>[
+      stamps['시작'], //DEVELOPMENT
+      stamps['1001'],
+      stamps['1002'],
+      stamps['1003'],
+      stamps['종료'], //DEVELOPMENT
       widget.text,
     ];
-    items_iterable = IterableStringListMaker(items: items_to_copy);
-    ClickCounter = 0;
+    itemsIterable = IterableStringListMaker(items: itemsToCopy);
+    clickCounter = 0;
   }
 }

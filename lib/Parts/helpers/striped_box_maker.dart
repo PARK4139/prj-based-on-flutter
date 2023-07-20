@@ -11,7 +11,7 @@ class StripedBoxMaker extends StatefulWidget {
 
   bool isOppositeDirection;
 
-  StripedBoxMaker({
+  StripedBoxMaker({super.key,
     required this.ratioY,
     required this.ratioX,
     this.stripeCount = 1,
@@ -26,8 +26,8 @@ class _StripedBoxMakerState extends State<StripedBoxMaker> {
   late int stripeCount;
   late int colorCount;
   late double calibrationValue;
-  late double FlagHeight;
-  late double FlagWidth;
+  late double flagHeight;
+  late double titleSliderMaker;
 
   @override
   Widget build(BuildContext context) {
@@ -36,15 +36,15 @@ class _StripedBoxMakerState extends State<StripedBoxMaker> {
       var coreWidget;
       colorCount = widget.colors.length;
       stripeCount = widget.stripeCount;
-      FlagHeight = widget.ratioY;
-      FlagWidth = widget.ratioX;
+      flagHeight = widget.ratioY;
+      titleSliderMaker = widget.ratioX;
 
 
       coreWidget = Center(
         child: Container(
           color: Colors.black,
-          width: FlagHeight,
-          height: FlagWidth,
+          width: flagHeight,
+          height: titleSliderMaker,
           child: widget.isOppositeDirection?Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             // mainAxisAlignment: MainAxisAlignment.end,

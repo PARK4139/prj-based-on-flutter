@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 class RainbowIconMaker extends StatefulWidget {
   IconData iconData;
   final Color? color;
-  final FontWeight? font_weight;
-  TextAlign? text_align;
-  var text_decoration;
-  var icon_text_decoration;
-  var font_style;
-  final double? icon_size;
-  var icon_weight;
+  final FontWeight? fontWeight;
+  TextAlign? textAlign;
+  var textDecoration;
+  var textDirection;
+  var fontStyle;
+  final double? iconSize;
+  var iconWeight;
   bool? isRainbowMode;
   bool? isUpperCaseMode;
 
@@ -20,14 +20,14 @@ class RainbowIconMaker extends StatefulWidget {
     Key? key,
     required this.iconData,
     this.color = Colors.lightGreenAccent,
-    this.icon_size,
-    this.font_weight,
+    this.iconSize,
+    this.fontWeight,
     this.isRainbowMode,
     this.isUpperCaseMode = true,
-    this.text_align = null,
-    this.text_decoration,
-    this.icon_text_decoration,
-    this.font_style,
+    this.textAlign,
+    this.textDecoration,
+    this.textDirection,
+    this.fontStyle,
   }) : super(key: key);
 
   @override
@@ -82,9 +82,9 @@ class _RainbowIconMakerState extends State<RainbowIconMaker> {
     return Icon(
       widget.iconData,
       color: color,
-      size: widget.icon_size,
-      weight: widget.icon_weight,
-      textDirection: widget.icon_text_decoration,
+      size: widget.iconSize,
+      weight: widget.iconWeight,
+      textDirection: widget.textDirection,
     );
   }
 }

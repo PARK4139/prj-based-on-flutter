@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'SampleRoutingScreenSecond.dart';
+import 'sample_routing_screen_second.dart';
 
 class SampleRoutingScreenFirst extends StatefulWidget {
   const SampleRoutingScreenFirst({Key? key}) : super(key: key);

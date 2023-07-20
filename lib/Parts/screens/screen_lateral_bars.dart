@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenLateralBars extends StatefulWidget {
-  const ScreenLateralBars({super.key});
+class ScreenPracticeLateralBars extends StatefulWidget {
+  const ScreenPracticeLateralBars({super.key});
 
   @override
-  State<ScreenLateralBars> createState() => _ScreenLateralBarsState();
+  State<ScreenPracticeLateralBars> createState() => _ScreenPracticeLateralBarsState();
 }
 
-class _ScreenLateralBarsState extends State<ScreenLateralBars> {
+class _ScreenPracticeLateralBarsState extends State<ScreenPracticeLateralBars> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

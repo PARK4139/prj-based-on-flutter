@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 class RainbowTextMaker extends StatefulWidget {
   String text;
   final Color? color;
-  final FontWeight? font_weight;
-  TextAlign? text_align;
-  var text_decoration;
-  var font_family;
-  var font_style;
-  final double? font_size;
+  final FontWeight? fontWeight;
+  TextAlign? textAlign;
+  var textDecoration;
+  var fontFamily;
+  var fontStyle;
+  final double? fontSize;
 
   bool? isRainbowMode;
   bool? isUpperCaseMode;
@@ -20,15 +20,15 @@ class RainbowTextMaker extends StatefulWidget {
     Key? key,
     required this.text,
     this.color=Colors.blueAccent,
-     this.font_size=18,
-     this.font_weight=FontWeight.w800,
+     this.fontSize=18,
+     this.fontWeight=FontWeight.w800,
     this.isRainbowMode,
     this.isUpperCaseMode = false,
     // this.isUpperCaseMode = true,
-    this.text_align = null,
-    this.text_decoration,
-    this.font_family,
-    this.font_style,
+    this.textAlign,
+    this.textDecoration,
+    this.fontFamily,
+    this.fontStyle,
   }) : super(key: key);
 
   @override
@@ -63,7 +63,7 @@ class _RainbowTextMakerState extends State<RainbowTextMaker> {
       // timer = Timer.periodic(Duration(milliseconds: 1000), changeTextColor);//답답한
       // timer = Timer.periodic(Duration(milliseconds: 100), changeTextColor); //느린
       // timer = Timer.periodic(Duration(milliseconds: 80), changeTextColor); //
-      timer = Timer.periodic(Duration(milliseconds: 50), changeTextColor); //크리스마스
+      timer = Timer.periodic(const Duration(milliseconds: 50), changeTextColor); //크리스마스
       // timer = Timer.periodic(Duration(milliseconds: 25), changeTextColor);  // 정신없는
       // timer = Timer.periodic(Duration(milliseconds: 20), changeTextColor);  // 광고용
     }
@@ -85,8 +85,8 @@ class _RainbowTextMakerState extends State<RainbowTextMaker> {
   Widget build(BuildContext context) {
     return Text(
       isUpperCaseMode ? widget.text.toUpperCase() : widget.text,
-      style: TextStyle(color: color, fontSize: widget.font_size, fontWeight: widget.font_weight, decoration: widget.text_decoration, fontFamily: widget.font_family, fontStyle: widget.font_style),
-      textAlign: widget.text_align,
+      style: TextStyle(color: color, fontSize: widget.fontSize, fontWeight: widget.fontWeight, decoration: widget.textDecoration, fontFamily: widget.fontFamily, fontStyle: widget.fontStyle),
+      textAlign: widget.textAlign,
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/my_superworkers.dart';
+import '../helpers/super_worker.dart';
 
 class ScreenPracticeFlutterStfulWigetLifeCycle extends StatefulWidget {
   // ScreenPracticeFlutterLifeCycle();
@@ -16,10 +16,12 @@ class ScreenPracticeFlutterStfulWigetLifeCycle extends StatefulWidget {
   }
 
   @override
+  // ignore: no_logic_in_create_state
   State<ScreenPracticeFlutterStfulWigetLifeCycle> createState() {
-    printWithoutMkr(txt: "createState()");
+    printWithoutMkr(txt: "createState()"); //원래 createState() 안에는 return 문 외에는 작성이 되어 있어서는 안된다. 그러나 테스트르 위해서 예외처리
     return _ScreenPracticeFlutterStfulWigetLifeCycleState();
   }
+
 }
 
 class _ScreenPracticeFlutterStfulWigetLifeCycleState extends State<ScreenPracticeFlutterStfulWigetLifeCycle> {

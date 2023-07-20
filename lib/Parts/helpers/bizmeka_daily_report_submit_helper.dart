@@ -1,36 +1,34 @@
 import 'dart:async';
 
 import 'package:clipboard/clipboard.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'stamp_maker.dart';
 import 'iterable_structure_maker.dart';
-import 'my_superworkers.dart';
+import 'super_worker.dart';
+import 'stamp_maker.dart';
 
 class BizmekaDailyReportSubmitHelper extends StatefulWidget {
   String text;
   final Color color;
-  final FontWeight font_weight;
-  final double font_size;
-  final Color background_color;
-  final double padding_vertical;
-  final double padding_horizontal;
-  final BorderRadius border_radius;
+  final FontWeight fontWeight;
+  final double fontSize;
+  final Color backgroundColor;
+  final double paddingVertical;
+  final double paddingHorizontal;
+  final BorderRadius borderRadius;
 
   BizmekaDailyReportSubmitHelper({
     Key? key,
     required this.text,
-    required this.background_color,
+    required this.backgroundColor,
     required this.color,
-    required this.font_size,
-    required this.font_weight,
-    required this.padding_vertical,
-    required this.padding_horizontal,
-    required this.border_radius,
+    required this.fontSize,
+    required this.fontWeight,
+    required this.paddingVertical,
+    required this.paddingHorizontal,
+    required this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -38,28 +36,28 @@ class BizmekaDailyReportSubmitHelper extends StatefulWidget {
 }
 
 class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmitHelper> {
-  String items_to_copy = '-';
-  late Map<String, dynamic> Stamps;
+  String itemsToCopy = '-';
+  late Map<String, dynamic> stamps;
   var helper = MySuperworkers();
-  int ClickCounter = 0;
+  int clickCounter = 0;
   late List<String> items;
 
-  late var items_iterable;
-  var items_snapshot_at_start;
+  late var itemsIterable;
+  var itemsSnapshotAtStart;
 
-  var button_title;
+  var buttonTitle;
 
   final LocalStorage storage = LocalStorage('foo.foo');
 
   late bool isChecked;
 
-  late var items_length;
+  late var itemsLength;
 
   @override
   void initState() {
     super.initState();
-    button_title = widget.text;
-    init_states_of_this_button();
+    buttonTitle = widget.text;
+    initStatesOfThisButton();
 
     initIsChecked();
   }
@@ -67,26 +65,33 @@ class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmi
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: widget.backgroundColor,
+        borderRadius: widget.borderRadius,
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.paddingHorizontal,
+        vertical: widget.paddingVertical,
+      ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            child: TextButton(
-                child: Text(
-                  widget.text.length <= 60 ? widget.text + ' ' + ClickCounter.toString() + '/' + items_length.toString() : widget.text.substring(0, 60) + ' ' + ClickCounter.toString() + '/' + items_length.toString(),
-                  style: TextStyle(
-                    color: widget.color,
-                    fontSize: widget.font_size,
-                    fontWeight: widget.font_weight,
-                  ),
+          TextButton(
+              child: Text(
+                widget.text.length <= 60 ? '${widget.text} $clickCounter/$itemsLength' : '${widget.text.substring(0, 60)} $clickCounter/$itemsLength',
+                style: TextStyle(
+                  color: widget.color,
+                  fontSize: widget.fontSize,
+                  fontWeight: widget.fontWeight,
                 ),
-                onPressed: () {
-                  process_by_special_ordered_by_me();
-                }),
-          ),
-          Container(
+              ),
+              onPressed: () {
+                processBySpecialOrderedByMe();
+              }),
+          SizedBox(
             width: 40,
             child: IconButton(
-              icon: Icon(Icons.announcement_rounded),
+              icon: const Icon(Icons.announcement_rounded),
               color: Colors.lightBlueAccent,
               onPressed: () {
                 showDialog<void>(
@@ -96,13 +101,13 @@ class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmi
                     return AlertDialog(
                       backgroundColor: Colors.black,
                       title: Text(
-                        button_title,
-                        style: TextStyle(color: Colors.blueAccent),
+                        buttonTitle,
+                        style: const TextStyle(color: Colors.blueAccent),
                       ),
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
-                            for (var item in items_snapshot_at_start) StampMaker(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                            for (var item in itemsSnapshotAtStart) StampMaker(text: item, backgroundColor: MyColors.blackUndefined, color: MyColors.whiteClear, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
                           ],
                         ),
                       ),
@@ -126,53 +131,44 @@ class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmi
           IconButton(
             onPressed: onToogleIsChecked,
             icon: isChecked == true
-                ? Icon(
+                ? const Icon(
                     Icons.check_box_outlined,
                     color: Colors.lightBlueAccent,
                   )
-                : Icon(
+                : const Icon(
                     Icons.check_box_outline_blank,
                     color: Colors.lightBlueAccent,
                   ),
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.end,
-      ),
-      decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
       ),
     );
   }
 
-  void process_by_special_ordered_by_me({
+  void processBySpecialOrderedByMe({
     String? hostOperatingEnvironment,
   }) {
     setState(() {
       int i = -1;
       while (true) {
-        if (ClickCounter == i) {
-          print("ClickCounter:" + ClickCounter.toString());
-          print('copied : ' + items_to_copy);
-          FlutterClipboard.copy(items_to_copy).then((value) {});
+        if (clickCounter == i) {
+          printWithoutErrorOrPrintWithError("ClickCounter:$clickCounter");
+          printWithoutErrorOrPrintWithError('copied : $itemsToCopy');
+          FlutterClipboard.copy(itemsToCopy).then((value) {});
           try {
-            items_to_copy = items_iterable.next();
+            itemsToCopy = itemsIterable.next();
           } catch (e) {
-            init_states_of_this_button();
-            items_to_copy = items_iterable.next();
+            initStatesOfThisButton();
+            itemsToCopy = itemsIterable.next();
           }
-          widget.text = items_to_copy;
+          widget.text = itemsToCopy;
         }
         i++;
-        if (i == items_iterable.item_length_snapshot_at_born + 1) {
+        if (i == itemsIterable.itemLengthSnapshotAtBorn + 1) {
           break;
         }
       }
-      ClickCounter = ClickCounter + 1;
+      clickCounter = clickCounter + 1;
     });
   }
 
@@ -185,47 +181,44 @@ class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmi
     }
   }
 
-  bool _onKey(KeyEvent event, [bool isCtrlPressed = false, bool isVPressed = false, bool isCtrlVPressed = false]) {
-    var key = event.logicalKey.keyLabel;
-    if (event is KeyDownEvent) {
-    } else if (event is KeyUpEvent) {
-    } else if (event is KeyRepeatEvent) {}
-    print(event.logicalKey.keyLabel);
-    if (event.logicalKey.keyLabel.contains('Control Left')) {
-      isCtrlPressed = true;
-    }
-    print(event.logicalKey.keyLabel);
-    if (event.logicalKey.keyLabel.contains('V')) {
-      isVPressed = true;
-    }
-    print(event.logicalKey.keyLabel);
-    if (isCtrlPressed == true && isVPressed == true) {
-      isCtrlVPressed = true;
-    } else {}
+  // bool _onKey(KeyEvent event, [bool isCtrlPressed = false, bool isVPressed = false, bool isCtrlVPressed = false]) {
+  //   var key = event.logicalKey.keyLabel;
+  //   if (event is KeyDownEvent) {
+  //   } else if (event is KeyUpEvent) {
+  //   } else if (event is KeyRepeatEvent) {}
+  //   print(event.logicalKey.keyLabel);
+  //   if (event.logicalKey.keyLabel.contains('Control Left')) {
+  //     isCtrlPressed = true;
+  //   }
+  //   print(event.logicalKey.keyLabel);
+  //   if (event.logicalKey.keyLabel.contains('V')) {
+  //     isVPressed = true;
+  //   }
+  //   print(event.logicalKey.keyLabel);
+  //   if (isCtrlPressed == true && isVPressed == true) {
+  //     isCtrlVPressed = true;
+  //   } else {}
+  //
+  //   if (isCtrlVPressed == true) {
+  //     printWithoutErrorOrPrintWithError('조합키로서 ctrl V 눌렸습니다.');
+  //   }
+  //
+  //   return false;
+  // }
 
-    if (isCtrlVPressed == true) {
-      print('조합키로서 ctrl V 눌렸습니다.');
-    }
-
-    return false;
+  void initStatesOfThisButton() {
+    reloadItems();
+    clickCounter = 0;
   }
 
-  void init_states_of_this_button() {
-    reload_items();
-    ClickCounter = 0;
-  }
-
-  void reload_items() {
+  void reloadItems() {
     items = [
-      button_title + '[시작]',
+      buttonTitle + '[시작]',
       'https:',
       'pjh*****',
       's2*******s2@',
       '',
-      "일일업무보고_박정훈_" + formatDate(DateTime.now(), [yyyy, '', mm, '', dd]),
-      '이규',
-      '김주',
-      "(" + formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]) + ")",
+
       '유지보수',
       '로직확인',
       'SVN 백업',
@@ -249,11 +242,11 @@ class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmi
       '[완료]',
       '100 %',
       '0 %',
-      button_title,
+      buttonTitle,
     ];
-    items_length = items.length;
-    items_snapshot_at_start = []..addAll(items);
-    items_iterable = IterableStringListMaker(items: items);
+    itemsLength = items.length;
+    itemsSnapshotAtStart = [...items];
+    itemsIterable = IterableStringListMaker(items: items);
     setState(() {});
   }
 

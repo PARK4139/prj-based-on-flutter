@@ -62,22 +62,22 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
       body: <Widget>[
         Builder(
           builder: (context) {
-            return ScreenNetflixHome();
+            return const ScreenNetflixHome();
           },
         ),
         Builder(
           builder: (context) {
-            return ScreenNetflixSearch();
+            return const ScreenNetflixSearch();
           },
         ),
         Builder(
           builder: (context) {
-            return ScreenNetflixSavedContentsList();
+            return const ScreenNetflixSavedContentsList();
           },
         ),
         Builder(
           builder: (context) {
-            return Screen_netflix_more();
+            return const ScreenNetflixMore();
           },
         ),
       ][currentPageIndex],

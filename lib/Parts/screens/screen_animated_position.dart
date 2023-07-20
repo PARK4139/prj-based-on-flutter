@@ -18,7 +18,7 @@ class ScreenAnimatedPositionAndScale extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.black.withOpacity(0.9),
-        body: Center(
+        body: const Center(
           child: ModuleVerticalAnimated(),
         ),
       ),

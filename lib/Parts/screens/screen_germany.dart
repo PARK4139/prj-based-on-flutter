@@ -2,30 +2,30 @@ import 'package:flutter/material.dart';
 
 import '../helpers/rainbow_text_maker.dart';
 
-class ScreenGermany extends StatefulWidget {
-  const ScreenGermany({super.key});
+class ScreenPracticeGermany extends StatefulWidget {
+  const ScreenPracticeGermany({super.key});
 
   @override
-  State<ScreenGermany> createState() => _ScreenGermanyState();
+  State<ScreenPracticeGermany> createState() => _ScreenPracticeGermanyState();
 }
 
-class _ScreenGermanyState extends State<ScreenGermany> {
+class _ScreenPracticeGermanyState extends State<ScreenPracticeGermany> {
   late int repeatCount;
   late int colorCount;
   late int calibrationValue;
-  late double FlagHeight;
-  late double FlagWidth;
+  late double flagHeight;
+  late double titleSliderMaker;
   late bool isRowMode;
 
   late NATION nationMode;
 
-  late Color FirstColor;
-  late Color SecondColor;
-  late Color ThirdColor;
+  late Color firstColor;
+  late Color secondColor;
+  late Color thirdColor;
 
   @override
   Widget build(BuildContext context) {
-    setStripeSetting(); //FlagHeight 를  MediaQuery.of(context).size.height 로 초기화하니 에러가 나타났다. MediaQuery.of(context).size.height 이 값이 build() 시에 초기화 되는 값이기 때문에 initState() 시에 초기화 하면 아마 null과 같은 유효하지 않은 값인 것 같다. 이를 참조하면 에러
+    setStripeSetting(); //flagHeight 를  MediaQuery.of(context).size.height 로 초기화하니 에러가 나타났다. MediaQuery.of(context).size.height 이 값이 build() 시에 초기화 되는 값이기 때문에 initState() 시에 초기화 하면 아마 null과 같은 유효하지 않은 값인 것 같다. 이를 참조하면 에러
     return Scaffold(
        floatingActionButton:  /*뒤로가기 버튼*/ InkWell(
          child: RainbowTextMaker(text: "뒤로가기"),
@@ -41,7 +41,7 @@ class _ScreenGermanyState extends State<ScreenGermany> {
             color: Colors.black,
             // width: 50,
             // width: MediaQuery.of(context).size.width,
-            height: FlagHeight,
+            height: flagHeight,
             child: isRowMode
                 ? Row(
                     // mainAxisAlignment: MainAxisAlignment.start,
@@ -59,16 +59,16 @@ class _ScreenGermanyState extends State<ScreenGermany> {
                     children: [
                       for (int i = 0; i < repeatCount; i++)
                         Container(
-                          width: FlagWidth /( repeatCount * 3)- calibrationValue ,
-                          color: FirstColor,
+                          width: titleSliderMaker /( repeatCount * 3)- calibrationValue ,
+                          color: firstColor,
                         ) ,
                       Container(
-                        width: FlagWidth /( repeatCount * 3)- calibrationValue ,
-                        color: SecondColor,
+                        width: titleSliderMaker /( repeatCount * 3)- calibrationValue ,
+                        color: secondColor,
                       ),
                       Container(
-                        width: FlagWidth /( repeatCount * 3)- calibrationValue ,
-                        color: ThirdColor,
+                        width: titleSliderMaker /( repeatCount * 3)- calibrationValue ,
+                        color: thirdColor,
                       ),
 
                     ],
@@ -89,16 +89,16 @@ class _ScreenGermanyState extends State<ScreenGermany> {
                     children: [
                         for (int i = 0; i < repeatCount; i++)
                             Container(
-                              height: FlagHeight / (repeatCount * 3)- calibrationValue/3,
-                              color: FirstColor,
+                              height: flagHeight / (repeatCount * 3)- calibrationValue/3,
+                              color: firstColor,
                             ) ,
                             Container(
-                              height: FlagHeight / (repeatCount * 3)- calibrationValue/3,
-                              color: SecondColor,
+                              height: flagHeight / (repeatCount * 3)- calibrationValue/3,
+                              color: secondColor,
                             ),
                             Container(
-                              height: FlagHeight / (repeatCount * 3)- calibrationValue/3,
-                              color: ThirdColor,
+                              height: flagHeight / (repeatCount * 3)- calibrationValue/3,
+                              color: thirdColor,
                             ),
                     ],
                   )),
@@ -108,9 +108,9 @@ class _ScreenGermanyState extends State<ScreenGermany> {
 
   void setStripeSetting() {
     isRowMode = false;
-    FirstColor = Colors.black;
-    SecondColor = Colors.red;
-    ThirdColor = Colors.yellow;
+    firstColor = Colors.black;
+    secondColor = Colors.red;
+    thirdColor = Colors.yellow;
     if (isRowMode == true) {
       repeatCount = 1;
       calibrationValue = 0;
@@ -118,10 +118,10 @@ class _ScreenGermanyState extends State<ScreenGermany> {
       repeatCount = 1;
       calibrationValue = 24;
     }
-    FlagHeight = MediaQuery.of(context).size.height;
-    FlagWidth = MediaQuery.of(context).size.width;
+    flagHeight = MediaQuery.of(context).size.height;
+    titleSliderMaker = MediaQuery.of(context).size.width;
 
   }
 }
 
-enum NATION { GERMANY, MONACO, INDONESIA, ITALIA, FRANCE, KOREA, JAPAN, USA, SWEDEN }
+enum NATION { germany, monaco, indonesia, italia, france, korea, japan, usa, sweden }

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data_layer/my_data_layer.dart';
-import '../helpers/my_superworkers.dart';
+import '../helpers/super_worker.dart';
 
 
 class ScreenJungHoonParkProfile extends StatefulWidget {
@@ -28,21 +28,19 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
         child: ListView(
           // shrinkWrap: true,
           children: [
-            /*커스텀 앱바*/ Container(
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  /*뒤로가기 버튼*/ InkWell(
-                    child: const Icon(Icons.chevron_left, size: 40, color: Colors.redAccent),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
+            /*커스텀 앱바*/ Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                /*뒤로가기 버튼*/ InkWell(
+                  child: const Icon(Icons.chevron_left, size: 40, color: Colors.redAccent),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
             ),
             const SizedBox(height: 50),
-            CircleMaker(img_url: 'assets/my_lovely_dog_sky.jpg'),
+            circleMaker(imgUrl: 'asset/images/my_lovely_dog_sky.jpg'),
             const Center(
                 child: Text(
               'JungHoonPark',
@@ -172,7 +170,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
     );
   }
 
-  Widget CircleMaker({required String img_url}) {
+  Widget circleMaker({required String imgUrl}) {
     Widget widget = Container(
       padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
       child: Stack(
@@ -187,7 +185,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
                 // borderRadius: BorderRadius.circular(100),
                 shape: BoxShape.circle,
               ),
-              child: Image.asset(img_url, height: 140 + 20),
+              child: Image.asset(imgUrl, height: 140 + 20),
             ),
           ),
         ],
@@ -196,7 +194,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
     return widget;
   }
 
-  List<Widget> PosterListMaker(List<Movie> movies) {
+  List<Widget> posterListMaker(List<Movie> movies) {
     List<Widget> lists = [
       for (Movie movie in movies)
         /* 영화 포스터*/ Container(
@@ -211,7 +209,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
                     color: Colors.amberAccent,
                     // borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Image.asset(movie.img_url, height: 180),
+                  child: Image.asset(movie.imgUrl, height: 180),
                 ),
               ),
             ],
@@ -221,7 +219,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
     return lists;
   }
 
-  List<Widget> TitleSliderMaker(List<Movie> movies) {
+  List<Widget> titleSliderMaker(List<Movie> movies) {
     String seperator = '    ';
     List<Widget> lists = [
       for (Movie movie in movies) Text(movie.title + seperator, style: const TextStyle(fontSize: 14, color: Colors.white38)),

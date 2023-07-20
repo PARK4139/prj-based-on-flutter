@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_worker.dart';
 
 import '../data_layer/my_data_layer.dart';
 
@@ -35,14 +36,14 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
             /*블러 배경*/ Center(
               child: ImageFiltered(
                 imageFilter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                child: Transform.scale(scale: 2.2, child: Container(child: Image.asset(movies[0].img_url, fit: BoxFit.contain))),
+                child: Transform.scale(scale: 2.2, child: Image.asset(movies[0].imgUrl, fit: BoxFit.contain)),
               ),
             ),
             /*닫기 버튼*/ Stack(
               children: [
                 Opacity(
                   opacity: 1,
-                  child: Container(
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                     child: Stack(
@@ -53,13 +54,13 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                             angle: 40.05,
                             child: IconButton(
                               onPressed: () {
-                                print("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다X.");
+                                printWithoutErrorOrPrintWithError("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다X.");
                                 Navigator.pop(context);
                               },
                               icon: IconButton(
                                 icon: Icon(Icons.add_circle_outlined, color: Colors.black.withOpacity(0.6)),
                                 onPressed: () {
-                                  print("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다O.");
+                                  printWithoutErrorOrPrintWithError("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다O.");
                                   Navigator.pop(context);
                                 },
                                 tooltip: "GO TO HOME",
@@ -76,7 +77,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
             /*메인 영화 포스터*/ Transform.translate(
               offset: const Offset(0, 40),
               child: Center(
-                child: SizedBox(height: 300, child: Image.asset(movies[0].img_url, fit: BoxFit.contain)),
+                child: SizedBox(height: 300, child: Image.asset(movies[0].imgUrl, fit: BoxFit.contain)),
               ),
             ),
             /*메인 영화 포스터 유사도 및 출시년도 연령가 시즌개수 등 추가묘사정보*/ Transform.translate(
@@ -130,14 +131,14 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                 child: Container(
                   padding: const EdgeInsets.all(3),
                   height: 60,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.black45,
                   ),
-                  child: Row(
+                  child: const Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      /*내가 찜한 콘텐츠 버튼*/ const SizedBox(
+                      /*내가 찜한 콘텐츠 버튼*/ SizedBox(
                         width: 80,
                         child: Column(
                           children: [
@@ -149,7 +150,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                         ),
                       ),
                       SizedBox(width: 3),
-                      /*평가 버튼*/ const SizedBox(
+                      /*평가 버튼*/ SizedBox(
                         width: 80,
                         child: Column(
                           children: [
@@ -161,7 +162,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                         ),
                       ),
                       SizedBox(width: 3),
-                      /*공유 버튼*/ const SizedBox(
+                      /*공유 버튼*/ SizedBox(
                         width: 80,
                         child: Column(
                           children: [
@@ -172,7 +173,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                           ],
                         ),
                       ),
-                      /*더보기 버튼*/ const SizedBox(
+                      /*더보기 버튼*/ SizedBox(
                         width: 80,
                         child: Column(
                           children: [
@@ -198,7 +199,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
     /*movies dummy data*/ movies = widget.movies;
   }
 
-  List<Widget> CirclesAndTitleListMaker(List<Movie> movies) {
+  List<Widget> circlesAndTitleListMaker(List<Movie> movies) {
     List<Widget> lists = [
       for (Movie movie in movies)
         /*미리보기 원형 영화 포스터*/ Container(
@@ -215,12 +216,12 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                     // borderRadius: BorderRadius.circular(100),
                     shape: BoxShape.circle,
                   ),
-                  child: Image.asset(movie.img_url, height: 140 + 20),
+                  child: Image.asset(movie.imgUrl, height: 140 + 20),
                 ),
               ),
               /*오프셋된 영화 타이틀*/ Transform.translate(
                 offset: const Offset(-0, 30),
-                child: Text(movie.title, style: TextStyle(color: Colors.white, fontSize: 20)),
+                child: Text(movie.title, style: const TextStyle(color: Colors.white, fontSize: 20)),
               ),
             ],
           ),
@@ -229,7 +230,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
     return lists;
   }
 
-  List<Widget> PosterListMaker(List<Movie> movies) {
+  List<Widget> posterListMaker(List<Movie> movies) {
     List<Widget> lists = [
       for (Movie movie in movies)
         /* 영화 포스터*/ Container(
@@ -244,7 +245,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                     color: Colors.amberAccent,
                     // borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Image.asset(movie.img_url, height: 180),
+                  child: Image.asset(movie.imgUrl, height: 180),
                 ),
               ),
             ],
@@ -254,10 +255,10 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
     return lists;
   }
 
-  List<Widget> TitleSliderMaker(List<Movie> movies) {
+  List<Widget> titleSliderMaker(List<Movie> movies) {
     String seperator = '    ';
     List<Widget> lists = [
-      for (Movie movie in movies) Text(movie.title + seperator, style: TextStyle(fontSize: 14, color: Colors.white38)),
+      for (Movie movie in movies) Text(movie.title + seperator, style: const TextStyle(fontSize: 14, color: Colors.white38)),
     ];
     return lists;
   }

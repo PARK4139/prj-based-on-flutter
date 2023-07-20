@@ -1,13 +1,11 @@
 import 'dart:async';
-
-// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:prj_app_feat_nomadcoder_class/screen_index_colorful.dart';
 
+import 'Parts/helpers/super_worker.dart';
 import 'Parts/helpers/rainbow_icon_maker.dart';
 import 'screen_index_blue.dart';
 
@@ -42,37 +40,39 @@ class AppState extends State<App> {
 
   int currentPageIndex = 0;
 
+
+  /*네비게이션 labelBehavior 옵션*/
   // NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysShow;
   // NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysHide;
   NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.onlyShowSelected;
-  int Counter = 0;
-  List<int> inputs = [];
-  bool show_decision = true;
-  dynamic foo = 0;
-  String app_head_title = '안녕하세요 개발 지원 서비스입니다';
 
-  late Widget ghost_wiget;
+  int counter = 0;
+  List<int> inputs = [];
+  bool showDecision = true;
+  dynamic foo = 0;
+  String appHeadTitle = '안녕하세요 개발 지원 서비스입니다';
+
+  late Widget ghostWiget;
   late Platforms? platform;
   late bool isAndroid;
   late bool isWeb;
 
-  // Color Scaffold_background_color = Colors.white54;
-  // Color color_for_scaffold_background = Colors.lightGreen.shade300;
-  Color color_for_scaffold_background = Colors.white;
+
+  Color colorForScaffoldBackground = Colors.white;
 
   @override
   void initState() {
     super.initState();
-    print('_______________________________________________________________________ s');
-    init_host_platform_info();
+    printWithoutErrorOrPrintWithError('_______________________________________________________________________ s');
+    initHostPlatformInfo();
     initAppModes();
     if (isDarkMode == false) {
     } else {
-      print('_______________________________________________________________________ auth check s');
+      printWithoutErrorOrPrintWithError('_______________________________________________________________________ auth check s');
       if (isAndroid == true) {
-        check_permission_for_android();
+        checkPermissionForAndroid();
       }
-      print('_______________________________________________________________________ auth check e');
+      printWithoutErrorOrPrintWithError('_______________________________________________________________________ auth check e');
     }
   }
 
@@ -81,26 +81,28 @@ class AppState extends State<App> {
     return Builder(builder: (context) {
       return MaterialApp(
         debugShowCheckedModeBanner: isDarkMode ? true : false,
-        title: '나의 플러터 베이스 앱',
+        title: '나의 앱들',
         theme: ThemeData(
           primaryColor: Colors.pinkAccent.shade200,
-          textTheme: const TextTheme(
-            titleLarge: TextStyle(color: Color(0xFF232b55), fontSize: 18),
-          ),
-          cardColor: const Color(0xfff4eddb),
+          // textTheme: const TextTheme(
+          //   titleLarge: TextStyle(color: Color(0xFF232b55), fontSize: 18),
+          // ),
+          // cardColor: const Color(0xfff4eddb),
         ),
         home: Scaffold(
-          backgroundColor: isDarkMode ? Colors.black.withOpacity(0.9) : color_for_scaffold_background,
-          appBar: AppBar(
+          backgroundColor: isDarkMode ? Colors.black.withOpacity(0.9) : colorForScaffoldBackground,
+          appBar: /*제어바*/ AppBar(
             title: Center(
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(onPressed: toogleDevelopingMode, icon: isDarkMode ? Icon(Icons.change_circle_outlined) : Icon(Icons.change_circle_outlined, color: Colors.lightBlue.shade50)),
+                  IconButton(onPressed: toogleDevelopingMode, icon: isDarkMode ? const Icon(Icons.change_circle_outlined) : Icon(Icons.change_circle_outlined, color: Colors.lightBlue.shade50)),
                 ],
               ),
             ),
-            backgroundColor: isDarkMode ? Colors.blueAccent.withOpacity(0.2) : color_for_scaffold_background,
-            foregroundColor: isDarkMode ? Colors.blueAccent : color_for_scaffold_background,
+            toolbarHeight: 45,
+            backgroundColor: isDarkMode ? Colors.blueAccent.withOpacity(0.2) : colorForScaffoldBackground,
+            foregroundColor: isDarkMode ? Colors.blueAccent : colorForScaffoldBackground,
             elevation: 1,
           ),
           bottomNavigationBar: NavigationBar(
@@ -116,21 +118,21 @@ class AppState extends State<App> {
               Builder(
                 builder: (context) {
                   if (isDarkMode == false) {
-                    ghost_wiget = Center(child: null);
+                    ghostWiget = const Center(child: null);
                   } else {
-                    ghost_wiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: RainbowIconMaker(iconData: Icons.folder), icon: Icon(Icons.folder));
+                    ghostWiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: RainbowIconMaker(iconData: Icons.folder), icon: const Icon(Icons.folder));
                   }
-                  return ghost_wiget;
+                  return ghostWiget;
                 },
               ),
               Builder(
                 builder: (context) {
                   if (isDarkMode == false) {
-                    ghost_wiget = Center(child: null);
+                    ghostWiget = const Center(child: null);
                   } else {
-                    ghost_wiget = NavigationDestination(label: 'INDEX BLUE', selectedIcon: Icon(Icons.folder, color: Colors.blueAccent), icon: Icon(Icons.folder, color: Colors.black));
+                    ghostWiget = const NavigationDestination(label: 'INDEX BLUE', selectedIcon: Icon(Icons.folder, color: Colors.blueAccent), icon: Icon(Icons.folder, color: Colors.black));
                   }
-                  return ghost_wiget;
+                  return ghostWiget;
                 },
               ),
             ],
@@ -139,21 +141,21 @@ class AppState extends State<App> {
             Builder(
               builder: (context) {
                 if (isDarkMode == false) {
-                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
+                  ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
                 } else {
-                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
+                  ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
                 }
-                return ghost_wiget;
+                return ghostWiget;
               },
             ),
             Builder(
               builder: (context) {
                 if (isDarkMode == false) {
-                  ghost_wiget = Center(child: null); //PRODUCTION
+                  ghostWiget = const Center(child: null); //PRODUCTION
                 } else {
-                  ghost_wiget = Center(child: Container(color: Colors.black.withOpacity(0.5), alignment: Alignment.center, child: Screen_index_blue()));
+                  ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), alignment: Alignment.center, child: const ScreenIndexBlue()));
                 }
-                return ghost_wiget;
+                return ghostWiget;
               },
             ),
           ][isDarkMode ? currentPageIndex : currentPageIndex],
@@ -179,10 +181,10 @@ class AppState extends State<App> {
     } else {
       isDarkMode = storage.getItem('isChecked');
     }
-    print("isDevelopingMode:" + isDarkMode.toString());
+    printWithoutErrorOrPrintWithError("isDevelopingMode:$isDarkMode");
   }
 
-  void init_host_platform_info() {
+  void initHostPlatformInfo() {
     isAndroid = false;
     platform = _getPlatformInfoUsingFlutterFoundation()!;
   }
@@ -198,16 +200,16 @@ class AppState extends State<App> {
       platform = Platforms.web;
       isWeb = true;
     } else if (defaultTargetPlatform == TargetPlatform.android) {
-      platform = Platforms.Android;
+      platform = Platforms.android;
       isAndroid = true;
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = Platforms.iOS;
     } else if (defaultTargetPlatform == TargetPlatform.fuchsia) {
-      platform = Platforms.Fuchsia;
+      platform = Platforms.fuchsia;
     } else if (defaultTargetPlatform == TargetPlatform.linux) {
-      platform = Platforms.Linux;
+      platform = Platforms.linux;
     } else if (defaultTargetPlatform == TargetPlatform.windows) {
-      platform = Platforms.Windows;
+      platform = Platforms.windows;
     } else if (defaultTargetPlatform == TargetPlatform.macOS) {
       platform = Platforms.macOS;
     }
@@ -216,26 +218,26 @@ class AppState extends State<App> {
 
   void onClicked() {
     setState(() {
-      Counter = Counter + 1;
-      inputs.add(Counter);
+      counter = counter + 1;
+      inputs.add(counter);
     });
   }
 
-  Future<void> check_permission_for_android() async {
-    print('_______________________________________________________________________ permission_handler works s');
+  Future<void> checkPermissionForAndroid() async {
+    printWithoutErrorOrPrintWithError('_______________________________________________________________________ permission_handler works s');
     if (await Permission.location.isGranted) {
-      print('권한이 부여되었습니다');
+      printWithoutErrorOrPrintWithError('권한이 부여되었습니다');
     }
     if (await Permission.location.isDenied) {
-      print('권한 부여가 거부되었습니다');
+      printWithoutErrorOrPrintWithError('권한 부여가 거부되었습니다');
     }
     if (await Permission.location.isPermanentlyDenied) {
-      print('권한 부여가 영구적으로 거부되었습니다');
+      printWithoutErrorOrPrintWithError('권한 부여가 영구적으로 거부되었습니다');
     }
     if (await Permission.location.isRestricted) {
-      print('권한이 제한되었습니다.');
+      printWithoutErrorOrPrintWithError('권한이 제한되었습니다.');
     }
-    print('_______________________________________________________________________ permission_handler works e');
+    printWithoutErrorOrPrintWithError('_______________________________________________________________________ permission_handler works e');
   }
 
   void toogleDevelopingMode() {
@@ -246,7 +248,7 @@ class AppState extends State<App> {
         isDarkMode = true;
       }
       storage.setItem('isChecked', isDarkMode);
-      print("isDevelopingMode:" + isDarkMode.toString());
+      printWithoutErrorOrPrintWithError("isDevelopingMode:$isDarkMode");
 
       //debug mode 로 전환시 새로 Screen_first_take 로 라우팅하기 위함.
     });
@@ -255,10 +257,10 @@ class AppState extends State<App> {
 
 enum Platforms {
   web,
-  Android,
-  Fuchsia,
+  android,
+  fuchsia,
   iOS,
-  Linux,
+  linux,
   macOS,
-  Windows,
+  windows,
 }

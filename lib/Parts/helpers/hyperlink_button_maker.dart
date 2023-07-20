@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SampleHyperlink extends StatefulWidget {
+class HyperlinkButtonMaker extends StatefulWidget {
+  const HyperlinkButtonMaker({super.key});
+
   @override
-  State<SampleHyperlink> createState() => _SampleHyperlinkState();
+  State<HyperlinkButtonMaker> createState() => _HyperlinkButtonMakerState();
 }
 
-class _SampleHyperlinkState extends State<SampleHyperlink> {
+class _HyperlinkButtonMakerState extends State<HyperlinkButtonMaker> {
   @override
   void initState() {
     super.initState();
@@ -18,7 +20,7 @@ class _SampleHyperlinkState extends State<SampleHyperlink> {
       onPressed: () {
         launchUrl(Uri.parse('https://www.google.com')); //Uri 인수는 텍스트 URL 인수보다 더 안전하고 신뢰할 수 있습니다.
       },
-      child: Text('google'),
+      child: const Text('google'),
     );
   }
 }

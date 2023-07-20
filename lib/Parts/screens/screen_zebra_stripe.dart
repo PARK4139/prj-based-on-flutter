@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenZebraStripe extends StatefulWidget {
-  const ScreenZebraStripe({super.key});
+class ScreenPracticeZebraStripe extends StatefulWidget {
+  const ScreenPracticeZebraStripe({super.key});
 
   @override
-  State<ScreenZebraStripe> createState() => _ScreenZebraStripeState();
+  State<ScreenPracticeZebraStripe> createState() => _ScreenPracticeZebraStripeState();
 }
 
-class _ScreenZebraStripeState extends State<ScreenZebraStripe> {
+class _ScreenPracticeZebraStripeState extends State<ScreenPracticeZebraStripe> {
   int zebraStripeCount=12;
 
   @override

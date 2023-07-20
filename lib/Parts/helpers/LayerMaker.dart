@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SampleLayer extends StatefulWidget {
-  const SampleLayer({super.key});
+class StackLayerMaker extends StatefulWidget {
+  const StackLayerMaker({super.key});
 
   @override
-  State<SampleLayer> createState() => _SampleLayerState();
+  State<StackLayerMaker> createState() => _StackLayerMakerState();
 }
 
-class _SampleLayerState extends State<SampleLayer> {
+class _StackLayerMakerState extends State<StackLayerMaker> {
   @override
   Widget build(BuildContext context) {
     return Stack(

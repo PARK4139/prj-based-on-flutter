@@ -19,20 +19,20 @@ class _ScreenDigitalPhotoFrameState extends State<ScreenDigitalPhotoFrame> {
 
   int currentPage = 0;
 
-  late var nextPage;
+  late int nextPage;
 
   @override
   void initState() {
     super.initState();
     items = [
-      // Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.cover),
-      Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      // Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.fill),
-      // Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.fitHeight),
-      // Image.asset('assets/my_lovely_dog_sky.jpg', fit: BoxFit.fitWidth),
+      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.cover),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fill),
+      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitHeight),
+      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitWidth),
     ];
     pageController = PageController(viewportFraction: 0.8, initialPage: currentPage);
     timer = Timer.periodic(const Duration(milliseconds: 2000), (timer) {
@@ -52,13 +52,10 @@ class _ScreenDigitalPhotoFrameState extends State<ScreenDigitalPhotoFrame> {
 
   @override
   void dispose() {
-    if (timer != null) {
       timer.cancel();
-    }
     pageController.dispose();
 
-    super.dispose();
-    // timer.cancel();   // <--이렇게 아래에 있으면 안된다,
+    super.dispose(); //super.dispose() 는 일반적으로 아래에 작성해야하는 것 같음.
   }
 
   @override
@@ -83,7 +80,7 @@ class _ScreenDigitalPhotoFrameState extends State<ScreenDigitalPhotoFrame> {
                 ],
               ),
             ),
-            SizedBox(
+            /*포토프레임*/SizedBox(
               height: 650,
               child: PageView.builder(
                 dragStartBehavior: DragStartBehavior.start,

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_worker.dart';
 
-class Screen_area_calculation_ver_orange_android extends StatefulWidget {
-  const Screen_area_calculation_ver_orange_android({Key? key}) : super(key: key);
+class ScreenAreaCalculationVerOrangeAndroid extends StatefulWidget {
+  const ScreenAreaCalculationVerOrangeAndroid({Key? key}) : super(key: key);
 
   @override
-  State<Screen_area_calculation_ver_orange_android> createState() => _Screen_area_calculation_ver_orange_androidState();
+  State<ScreenAreaCalculationVerOrangeAndroid> createState() => _ScreenAreaCalculationVerOrangeAndroidState();
 }
 
-class _Screen_area_calculation_ver_orange_androidState extends State<Screen_area_calculation_ver_orange_android> {
-  final Title = '평형 계산기';
+class _ScreenAreaCalculationVerOrangeAndroidState extends State<ScreenAreaCalculationVerOrangeAndroid> {
+  final title = '평형 계산기';
   final ment = '평형 계산기는 *"평" 과 ㎡(제곱미터) 간 단위변환 한 결과를 제공해주는 서비스를 제공합니다 \n\n'
       '＊"평" : 한국에서 사용하는 집의 면적에 대한 단위입니다.';
-  String user_input = '';
+  String userInput = '';
   String result = '';
   late TextEditingController textEditingController;
 
@@ -34,7 +35,7 @@ class _Screen_area_calculation_ver_orange_androidState extends State<Screen_area
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: Title,
+      title: title,
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.orange,
@@ -47,82 +48,78 @@ class _Screen_area_calculation_ver_orange_androidState extends State<Screen_area
           child: ListView(
             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      color: Colors.white,
-                      child: TextButton(
-                        child: const Text('GO TO INDEX', style: TextStyle(color: Colors.greenAccent)),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                    const Icon(Icons.android, color: Colors.amber),
-                    Text("$ment", style: TextStyle(color: Colors.greenAccent, fontSize: 12.5)),
-                    IconButton(
+              Column(
+                children: <Widget>[
+                  Container(
+                    color: Colors.white,
+                    child: TextButton(
+                      child: const Text('GO TO INDEX', style: TextStyle(color: Colors.greenAccent)),
                       onPressed: () {
-                        toogleIsUnitSquaredMeterState();
+                        Navigator.pop(context);
                       },
-                      icon: Icon(Icons.published_with_changes),
-                      tooltip: "㎡ <-> 평",
                     ),
-                    Form(
-                      //하위 TextFormField에 대한 상태를 관리할 수 있는 위젯
-                      child: TextFormField(
-                        controller: null,
-                        initialValue: '',
-                        cursorColor: Colors.orangeAccent,
-                        style: TextStyle(color: Colors.orangeAccent),
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          labelText: isUnitSquaredMeter ? '㎡' : '평',
-                          floatingLabelAlignment: FloatingLabelAlignment.center,
-                          labelStyle: TextStyle(
-                            color: Colors.orangeAccent,
-                          ),
-                          hintText: isUnitSquaredMeter ? 'ex )  3.3 / 58' : 'ex )  1 / 5 / 17 / 32 / 48',
-                          hintStyle: TextStyle(
-                            color: Colors.orangeAccent,
-                          ),
-                          fillColor: Colors.blueGrey,
-                          focusColor: Colors.orangeAccent,
-                          hoverColor: Colors.orangeAccent,
-                          iconColor: Colors.orangeAccent,
-                          prefixIconColor: Colors.orangeAccent,
-                          suffixIconColor: Colors.orangeAccent,
+                  ),
+                  const Icon(Icons.android, color: Colors.amber),
+                  Text(ment, style: const TextStyle(color: Colors.greenAccent, fontSize: 12.5)),
+                  IconButton(
+                    onPressed: () {
+                      toogleIsUnitSquaredMeterState();
+                    },
+                    icon: const Icon(Icons.published_with_changes),
+                    tooltip: "㎡ <-> 평",
+                  ),
+                  Form(
+                    //하위 TextFormField에 대한 상태를 관리할 수 있는 위젯
+                    child: TextFormField(
+                      controller: null,
+                      initialValue: '',
+                      cursorColor: Colors.orangeAccent,
+                      style: const TextStyle(color: Colors.orangeAccent),
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: isUnitSquaredMeter ? '㎡' : '평',
+                        floatingLabelAlignment: FloatingLabelAlignment.center,
+                        labelStyle: const TextStyle(
+                          color: Colors.orangeAccent,
                         ),
-                        onChanged: (text) {
-                          setState(() {
-                            serveCalculatingLogic(text);
-                          });
-                        },
+                        hintText: isUnitSquaredMeter ? 'ex )  3.3 / 58' : 'ex )  1 / 5 / 17 / 32 / 48',
+                        hintStyle: const TextStyle(
+                          color: Colors.orangeAccent,
+                        ),
+                        fillColor: Colors.blueGrey,
+                        focusColor: Colors.orangeAccent,
+                        hoverColor: Colors.orangeAccent,
+                        iconColor: Colors.orangeAccent,
+                        prefixIconColor: Colors.orangeAccent,
+                        suffixIconColor: Colors.orangeAccent,
                       ),
+                      onChanged: (text) {
+                        setState(() {
+                          serveCalculatingLogic(text);
+                        });
+                      },
                     ),
-                    Container(
-                      child: Column(
-                        children: <Widget>[
-                          const SizedBox(height: 40),
-                          // Icon(Icons.read_more),
-                          const Icon(Icons.arrow_downward_outlined, color: Colors.amberAccent),
-                          const Icon(Icons.calculate_rounded, color: Colors.amberAccent),
-                          const Icon(Icons.arrow_downward_outlined, color: Colors.amberAccent),
-                          const SizedBox(height: 40),
-                          Text(
-                            "$result",
-                            style: const TextStyle(
-                              // color: Colors.cyanAccent,
-                              color: Colors.amber,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w100,
-                            ),
-                          ),
-                        ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      const SizedBox(height: 40),
+                      // Icon(Icons.read_more),
+                      const Icon(Icons.arrow_downward_outlined, color: Colors.amberAccent),
+                      const Icon(Icons.calculate_rounded, color: Colors.amberAccent),
+                      const Icon(Icons.arrow_downward_outlined, color: Colors.amberAccent),
+                      const SizedBox(height: 40),
+                      Text(
+                        result,
+                        style: const TextStyle(
+                          // color: Colors.cyanAccent,
+                          color: Colors.amber,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w100,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
@@ -152,13 +149,13 @@ class _Screen_area_calculation_ver_orange_androidState extends State<Screen_area
 
   void serveCalculatingLogic(var text) {
     if (isUnitSquaredMeter == true) {
-      user_input = text;
-      result = (double.parse(text) / 3.3).toStringAsFixed(2) + ' ' + '평';
-      print("onChanged: ${result}");
+      userInput = text;
+      result = '${(double.parse(text) / 3.3).toStringAsFixed(2)} 평';
+      printWithoutErrorOrPrintWithError("onChanged: $result");
     } else {
-      user_input = text;
-      result = (double.parse(text) * 3.3).toStringAsFixed(2) + ' ' + '㎡';
-      print("onChanged: ${result}");
+      userInput = text;
+      result = '${(double.parse(text) * 3.3).toStringAsFixed(2)} ㎡';
+      printWithoutErrorOrPrintWithError("onChanged: $result");
     }
   }
 }

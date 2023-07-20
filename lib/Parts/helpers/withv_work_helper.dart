@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'stamp_maker.dart';
 import 'iterable_structure_maker.dart';
-import 'my_superworkers.dart';
+import 'super_worker.dart';
 // late String requester_date;
 // late String requester_summary;
 // late String requester_ment;
@@ -18,24 +18,24 @@ import 'my_superworkers.dart';
 
 class WithvedormMaintainanceHelper extends StatefulWidget {
   final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
-  final double padding_vertical;
-  final double padding_horizontal;
-  final BorderRadius? border_radius;
+  final FontWeight? fontWeight;
+  final double? fontSize;
+  final Color? backgroundColor;
+  final double paddingVertical;
+  final double paddingHorizontal;
+  final BorderRadius? borderRadius;
 
   List<String> texts;
 
   WithvedormMaintainanceHelper({
     Key? key,
-    required this.background_color,
+    required this.backgroundColor,
     required this.color,
-    required this.font_size,
-    required this.font_weight,
-    required this.padding_vertical,
-    required this.padding_horizontal,
-    required this.border_radius,
+    required this.fontSize,
+    required this.fontWeight,
+    required this.paddingVertical,
+    required this.paddingHorizontal,
+    required this.borderRadius,
     required this.texts,
   }) : super(key: key);
 
@@ -44,51 +44,58 @@ class WithvedormMaintainanceHelper extends StatefulWidget {
 }
 
 class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHelper> {
-  String items_to_copy = '-';
-  late Map<String, dynamic> Stamps;
+  String itemsToCopy = '-';
+  late Map<String, dynamic> stamps;
   var helper = MySuperworkers();
-  int ClickCounter = 0;
+  int clickCounter = 0;
   late List<String> items;
 
-  late var items_iterable;
-  var items_snapshot_at_start;
+  late var itemsIterable;
+  var itemsSnapshotAtStart;
 
-  var button_title;
+  var buttonTitle;
 
   var isCheckBoxIconPressed = false;
 
-  late var items_length;
+  late var itemsLength;
 
   @override
   void initState() {
     super.initState();
-    button_title = widget.texts[0];
-    init_states_of_this_button();
+    buttonTitle = widget.texts[0];
+    initStatesOfThisButton();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: widget.backgroundColor,
+        borderRadius: widget.borderRadius,
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.paddingHorizontal,
+        vertical: widget.paddingVertical,
+      ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            child: TextButton(
-                child: Text(
-                  widget.texts.length <= 60 ? widget.texts[0] + ' ' : widget.texts[0].substring(0, 60) + ' ',
-                  style: TextStyle(
-                    color: widget.color,
-                    fontSize: widget.font_size,
-                    fontWeight: widget.font_weight,
-                  ),
+          TextButton(
+              child: Text(
+                widget.texts.length <= 60 ? '${widget.texts[0]} ' : '${widget.texts[0].substring(0, 60)} ',
+                style: TextStyle(
+                  color: widget.color,
+                  fontSize: widget.fontSize,
+                  fontWeight: widget.fontWeight,
                 ),
-                onPressed: () {
-                  onClickThisButton();
-                }),
-          ),
-          Container(
+              ),
+              onPressed: () {
+                onClickThisButton();
+              }),
+          SizedBox(
             width: 40,
             child: IconButton(
-              icon: Icon(Icons.adb), color: Colors.lightBlueAccent, //상큼
+              icon: const Icon(Icons.adb), color: Colors.lightBlueAccent, //상큼
               onPressed: () {
                 showDialog<void>(
                   context: context,
@@ -97,13 +104,13 @@ class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHel
                     return AlertDialog(
                       backgroundColor: Colors.black,
                       title: Text(
-                        button_title,
-                        style: TextStyle(color: Colors.blueAccent),
+                        buttonTitle,
+                        style: const TextStyle(color: Colors.blueAccent),
                       ),
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
-                            for (var item in items_snapshot_at_start) StampMaker(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                            for (var item in itemsSnapshotAtStart) StampMaker(text: item, backgroundColor: MyColors.blackUndefined, color: MyColors.whiteClear, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
                           ],
                         ),
                       ),
@@ -129,56 +136,47 @@ class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHel
           //   icon: isCheckBoxIconPressed == true ? Icon(Icons.check_box_outlined, color: Colors.lightBlueAccent) : Icon(Icons.check_box_outline_blank, color: Colors.lightBlueAccent),
           // ),
         ],
-        mainAxisAlignment: MainAxisAlignment.end,
-      ),
-      decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
       ),
     );
   }
 
   void onClickThisButton() {
     setState(() {
-      // print("items_iterable.length:"+items_iterable.length_at_born.toString());//DEVELOPMENT
+      // print("itemsIterable.length:"+itemsIterable.length_at_born.toString());//DEVELOPMENT
       int i = -1;
       while (true) {
-        if (ClickCounter == i) {
-          print("ClickCounter:" + ClickCounter.toString()); //DEVELOPMENT
-          print('copied : ' + items_to_copy); //DEVELOPMENT
-          FlutterClipboard.copy(items_to_copy).then((value) {});
+        if (clickCounter == i) {
+          printWithoutErrorOrPrintWithError("ClickCounter:$clickCounter"); //DEVELOPMENT
+          printWithoutErrorOrPrintWithError('copied : $itemsToCopy'); //DEVELOPMENT
+          FlutterClipboard.copy(itemsToCopy).then((value) {});
           try {
-            items_to_copy = items_iterable.next();
+            itemsToCopy = itemsIterable.next();
           } catch (e) {
             // print(e);//DEVELOPMENT
-            init_states_of_this_button();
-            items_to_copy = items_iterable.next();
+            initStatesOfThisButton();
+            itemsToCopy = itemsIterable.next();
           }
-          widget.texts[0] = items_to_copy;
+          widget.texts[0] = itemsToCopy;
         }
         i++;
-        if (i == items_iterable.item_length_snapshot_at_born + 1) {
+        if (i == itemsIterable.itemLengthSnapshotAtBorn + 1) {
           break;
         }
       }
-      ClickCounter = ClickCounter + 1;
+      clickCounter = clickCounter + 1;
     });
   }
 
-  void init_states_of_this_button() {
-    reload_items();
-    ClickCounter = 0;
+  void initStatesOfThisButton() {
+    reloadItems();
+    clickCounter = 0;
   }
 
-  void reload_items() {
+  void reloadItems() {
     setState(() {
-      items_length = widget.texts.length;
-      items_snapshot_at_start = []..addAll(widget.texts);
-      items_iterable = IterableStringListMaker(items: widget.texts);
+      itemsLength = widget.texts.length;
+      itemsSnapshotAtStart = [...widget.texts];
+      itemsIterable = IterableStringListMaker(items: widget.texts);
     });
   }
 

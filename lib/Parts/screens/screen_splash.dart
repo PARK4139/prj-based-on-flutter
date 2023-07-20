@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenSplash extends StatefulWidget {
-  const ScreenSplash({Key? key}) : super(key: key);
+class ScreenPracticeSplash extends StatefulWidget {
+  const ScreenPracticeSplash({Key? key}) : super(key: key);
 
   @override
-  State<ScreenSplash> createState() => _ScreenSplashState();
+  State<ScreenPracticeSplash> createState() => _ScreenPracticeSplashState();
 }
 
-class _ScreenSplashState extends State<ScreenSplash> {
+class _ScreenPracticeSplashState extends State<ScreenPracticeSplash> {
   bool uiDebugMode = /*false*/ /*true*/ false;
 
   bool selected = false;
@@ -38,29 +38,27 @@ class _ScreenSplashState extends State<ScreenSplash> {
             const SizedBox(height: 20),
             const SizedBox(height: 20),
             const SizedBox(height: 20),
-            /*수직으로 움직이는 안드로이드 머리*/ Container(
-              child: SizedBox(
-                height: 240,
-                width: 240,
-                child: AnimatedPositioned(
-                  width: selected ? 50.50 : 50.50,
-                  height: selected ? 50.50 : 50.50,
-                  curve: Curves.fastOutSlowIn,
-                  top: selected ? 0 + 50 + 50 + 50 : 0 + 50 + 50 + 50 + 50 + 50 + 50,
-                  left: selected ? 0 + 50 + 50 + 50 : 0 + 50 + 50 + 50,
-                  duration: const Duration(seconds: 2),
-                  child: Container(
-                    height: 200 + 20 + 20,
-                    width: 200 + 20 + 20,
-                    clipBehavior: Clip.hardEdge,
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: Transform.translate(
-                      offset: const Offset(0, 100 + 20),
-                      child: const Icon(Icons.adb, color: Colors.lightBlueAccent, size: 200),
-                    ),
+            /*수직으로 움직이는 안드로이드 머리*/ SizedBox(
+              height: 240,
+              width: 240,
+              child: AnimatedPositioned(
+                width: selected ? 50.50 : 50.50,
+                height: selected ? 50.50 : 50.50,
+                curve: Curves.fastOutSlowIn,
+                top: selected ? 0 + 50 + 50 + 50 : 0 + 50 + 50 + 50 + 50 + 50 + 50,
+                left: selected ? 0 + 50 + 50 + 50 : 0 + 50 + 50 + 50,
+                duration: const Duration(seconds: 2),
+                child: Container(
+                  height: 200 + 20 + 20,
+                  width: 200 + 20 + 20,
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Transform.translate(
+                    offset: const Offset(0, 100 + 20),
+                    child: const Icon(Icons.adb, color: Colors.lightBlueAccent, size: 200),
                   ),
                 ),
               ),

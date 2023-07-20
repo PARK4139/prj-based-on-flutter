@@ -1,19 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_check_box_local_storage.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/samples/sample_toggle.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/toggle_maker.dart';
 
-import '../helpers/my_superworkers.dart';
+import '../helpers/CheckBoxMaker.dart';
+import '../helpers/super_worker.dart';
 
-
-
-class ScreenUiComponentSamples extends StatefulWidget {
+class ScreenPracticeUiComponents extends StatefulWidget {
   @override
-  State<ScreenUiComponentSamples> createState() => _ScreenUiComponentSamplesState();
+  State<ScreenPracticeUiComponents> createState() => _ScreenPracticeUiComponentsState();
 
-  const ScreenUiComponentSamples({super.key});
+  const ScreenPracticeUiComponents({super.key});
 }
 
-class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
+class _ScreenPracticeUiComponentsState extends State<ScreenPracticeUiComponents> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,9 +34,9 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  /*토글버튼*/SampleToggle(),
-                  /*체크박스*/SampleCheckBox(),
-                  /*닫기 버튼*/ SizedBox(
+                  /*버튼(토글)*/ ToggleMaker(),
+                  /*체크박스*/ const CheckBoxMaker(),
+                  /*버튼*/ SizedBox(
                     height: 60,
                     // width:  60,
                     child: Stack(
@@ -120,10 +119,188 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                       ),
                     ),
                   ),
+                  /*버튼*/ TextButton(
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => Dialog(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const Text('경고팝업버튼'),
+                              const SizedBox(height: 15),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Close'),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    child: const Text('Show Dialog'),
+                  ),
+                  /*버튼*/ TextButton(
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => Dialog.fullscreen(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text('경고팝업버튼'),
+                            const SizedBox(height: 15),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Close'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    child: const Text('버튼(풀스크린다이얼로그)'),
+                  ),
+                  /*버튼*/ ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      disabledBackgroundColor:Colors.red,
+                      disabledForegroundColor: Colors.orange,
+                      foregroundColor: Colors.green,
+                      shadowColor: Colors.blue,
+                      surfaceTintColor: Colors.purple,
+                    ),
+                    onPressed: (){
+                      setState(() {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              backgroundColor: Colors.white,
+                              title: const Icon(Icons.warning_outlined, color: Colors.orangeAccent),
+                              content: const Text("아직 준비되지 않은 서비스입니다!\n준비해서 다시 만나요!"),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: const Text("알겠어요!"),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      });
+                    },
+                    child: const Text('버튼(풀스크린다이얼로그)'),
+                  ),
+                  /*버튼*/ Container(
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextButton(
+                      child: const Text('GO TO INDEX', style: TextStyle(color: Colors.white)),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  /*빈버튼*/ Container(
+                    height: 30,
+                    width: MediaQuery.of(context).size.width - 30,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(textAlign: TextAlign.center, '생성하기', style: TextStyle(color: Colors.white)),
+                      ],
+                    ),
+                  ),
+                  /*투명컨테이너*/ const SizedBox(
+                    height: 60,
+                  ),
+                  /*빈컨테이너*/ Container(
+                    height: 180,
+                    width: (MediaQuery.of(context).size.width - 30) / 2,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                  ),
+                  /*빈컨테이너*/ Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 180,
+                        width: (MediaQuery.of(context).size.width - 30) / 2,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(0),
+                        ),
+                      ),
+                    ],
+                  ),
+                  /*빈컨테이너*/ Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        height: 180,
+                        width: (MediaQuery.of(context).size.width - 30) / 2,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(0),
+                        ),
+                      ),
+                    ],
+                  ),
+                  /*더블피니트 컨테이너*/ Container(
+                    color: Colors.red,
+                    child: const SizedBox(
+                      height: 180,
+                      width: double.infinity,
+                      child: Text("더블피니트 컨테이너"),
+                    ),
+                  ),
+                  /*익스펜디드컨테이너*/ Expanded(
+                    child: Container(
+                      height: 180,
+                      color: Colors.red,
+                      child: const Text("익스펜디드컨테이너"),
+                    ),
+                  ),
+                  /*경고팝업버튼*/ TextButton(
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('AlertDialog Title'),
+                        content: const Text('AlertDialog description'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    child: const Text('Show Dialog'),
+                  ),
                   /*경고팝업버튼*/ Container(
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
@@ -158,14 +335,14 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                               );
                             },
                           );
-                        }); // setState(() {
+                        });
                       },
                     ),
                   ),
                   /*경고팝업버튼*/ Container(
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
@@ -208,7 +385,7 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                   /*경고팝업버튼*/ Container(
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
@@ -252,7 +429,7 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                   /*경고팝업버튼*/ Container(
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
@@ -296,7 +473,7 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                   /*양식제출팝업*/ Container(
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
@@ -342,7 +519,7 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                                           child: TextFormField(),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: TextFormField(),
                                         ),
                                         Padding(
@@ -397,10 +574,10 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                       },
                     ),
                   ),
-                  /*양식제출팝업*/Container(
+                  /*양식제출팝업*/ Container(
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
@@ -424,7 +601,7 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                               width: 10.0,
                               color: Colors.white,
                               child: const Center(
-                                 child: Text("?"),
+                                child: Text("?"),
                               ),
                             );
                           },
@@ -432,23 +609,231 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
                       },
                     ),
                   ),
-                  /*메테리얼배너*/ InkWell(
+                  /*메테리얼배너 버튼*/ InkWell(
                     onTap: () {
                       ScaffoldMessenger.of(context).showMaterialBanner(
-                        const MaterialBanner(
-                          content: Text('이것은 배너 입니다. 첫 번째 페이지로 이동 합니다.'),
+                        MaterialBanner(
+                          content: const Text('이것은 배너 입니다. 첫 번째 페이지로 이동 합니다.'),
                           actions: [
                             TextButton(
-                              onPressed: null,
-                              child: Text('확인'),
+                              onPressed: () {
+                                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                              },
+                              child: const Text('확인'),
                             ),
                           ],
                         ),
                       );
                     },
-                    child: Text("메테리얼배너 테스트"),
+                    child: const Text("메테리얼배너 테스트"),
                   ),
-                  /*스낵바*/ const Center(child: SnackBarTestButton()),
+                  /*스낵바 버튼*/ const Center(child: SnackBarTestButton()),
+                  /*팝업스타일 다이얼로그 버튼*/ TextButton(
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => Dialog(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const Text('pop screen size dialog'),
+                              const SizedBox(height: 15),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('확인'),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    child: const Text('Show Dialog'),
+                  ),
+                  /*풀스크린 다이얼로그 버튼*/ TextButton(
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => Dialog.fullscreen(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text('This is a fullscreen dialog.'),
+                            const SizedBox(height: 15),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('닫기'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    child: const Text('Full screen size Dialog'),
+                  ),
+                  /*메테리얼배너 버튼*/ IconButton(
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showMaterialBanner(
+                          MaterialBanner(
+                            content: const Text('사랑해'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                                },
+                                child: const Text('확인'),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.favorite, size: 30, color: Colors.red)),
+                  /*팝업*/ GestureDetector(
+                    child: const Icon(Icons.ads_click),
+                    onTap: () {
+                      showDialog<void>(
+                        context: context,
+                        barrierDismissible: false, // user must tap button!
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            backgroundColor: Colors.black,
+                            title: const Text(
+                              '사랑해',
+                              style: TextStyle(color: Colors.blueAccent),
+                            ),
+                            content: const SingleChildScrollView(
+                              child: Text('사랑해', style: TextStyle(color: Colors.blueAccent)),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text(
+                                  '닫기',
+                                  style: TextStyle(color: Colors.lightBlueAccent),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  /*버텀시트*/ TextButton(
+                    //IOS showCupertinoDialog 랑 비슷한듯 강의참고.
+
+                    child: const Text('showModalBottomSheet'),
+                    onPressed: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: 200,
+                            color: Colors.amber,
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  const Text('Modal BottomSheet'),
+                                  TextButton(
+                                    child: const Text('Close BottomSheet'),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  /*2엣지라운디드버텀시트*/ TextButton(
+                    child: const Text('showModalBottomSheet'),
+                    onPressed: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SizedBox(
+                            height: 200,
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  const Text('Modal BottomSheet'),
+                                  TextButton(
+                                    child: const Text('Close BottomSheet'),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  /*데이트피커*/ TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => DatePickerDialog(
+                          restorationId: 'date_picker_dialog',
+                          initialEntryMode: DatePickerEntryMode.calendarOnly,
+                          initialDate: DateTime(2021, 12, 25),
+                          firstDate: DateTime(2021),
+                          lastDate: DateTime(2022),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      "0000.00.00",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 19,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  /*데이트피커*/ TextButton(
+                    onPressed: () {
+                      showCupertinoDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              color: Colors.white,
+                              height: 300.0,
+                              child: CupertinoDatePicker(
+                                mode: CupertinoDatePickerMode.date,
+                                // mode: CupertinoDatePickerMode.dateAndTime,
+                                // mode: CupertinoDatePickerMode.time,
+                                onDateTimeChanged: (DateTime date) {
+                                  printWithoutErrorOrPrintWithError(date);
+                                },
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: const Text(
+                      "2019.08.10",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 19,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -458,7 +843,6 @@ class _ScreenUiComponentSamplesState extends State<ScreenUiComponentSamples> {
     );
   }
 }
-
 
 class SnackBarTestButton extends StatefulWidget {
   const SnackBarTestButton({super.key});
@@ -471,9 +855,9 @@ class _SnackBarTestButtonState extends State<SnackBarTestButton> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
+      child: TextButton(
         onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.NotReadySnackBar);
+          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
           ScaffoldMessenger.of(context).showSnackBar(MySnackBars.basicSnackBar());
           ScaffoldMessenger.of(context).showSnackBar(MySnackBars.alertSnackBar());
           ScaffoldMessenger.of(context).showSnackBar(MySnackBars.loadingSnackBar());
@@ -482,13 +866,4 @@ class _SnackBarTestButtonState extends State<SnackBarTestButton> {
       ),
     );
   }
-}
-
-Widget RefactoringModule202307152126(var context) {
-  return InkWell(
-    child: const Icon(Icons.chevron_left),
-    onTap: () {
-      Navigator.pop(context);
-    },
-  );
 }

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'my_superworkers.dart';
+import 'super_worker.dart';
 
 class MainTextContententsBoxMaker extends StatefulWidget {
   String text;
   bool isMainContentClicked;
 
-  @override
-  _MainTextContententsBoxMakerState createState() => _MainTextContententsBoxMakerState();
 
-  MainTextContententsBoxMaker({this.text = '코드는 세상을 바꾼다. 코드는 사람의 실수를 줄여준다. 코드는 생산성을 높여준다. 나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.', required this.isMainContentClicked});
+
+
+
+  MainTextContententsBoxMaker({super.key, this.text = '코드는 세상을 바꾼다. 코드는 사람의 실수를 줄여준다. 코드는 생산성을 높여준다. 나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.', required this.isMainContentClicked});
+
+  @override
+  State<MainTextContententsBoxMaker> createState() =>  _MainTextContententsBoxMakerState();
 }
 
 class _MainTextContententsBoxMakerState extends State<MainTextContententsBoxMaker> {
@@ -23,7 +27,7 @@ class _MainTextContententsBoxMakerState extends State<MainTextContententsBoxMake
       },
       child: /*줄길이에 따라 변하도록 할 수있는 유용한 텍스트박스*/Container(
         // width: 400,//폭을 설정하면 유용하다!
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         color: Colors.black38.withOpacity(0.5),
         child: Row(
           // mainAxisAlignment: MainAxisAlignment.start,

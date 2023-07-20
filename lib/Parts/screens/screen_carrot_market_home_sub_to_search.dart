@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Screen_carrot_market_home_sub_to_search extends StatefulWidget {
-  const Screen_carrot_market_home_sub_to_search({Key? key}) : super(key: key);
+class ScreenCarrotMarketHomeSubToSearch extends StatefulWidget {
+  const ScreenCarrotMarketHomeSubToSearch({Key? key}) : super(key: key);
 
   @override
-  State<Screen_carrot_market_home_sub_to_search> createState() => _Screen_carrot_market_home_sub_to_searchState();
+  State<ScreenCarrotMarketHomeSubToSearch> createState() => _ScreenCarrotMarketHomeSubToSearchState();
 }
 
-class _Screen_carrot_market_home_sub_to_searchState extends State<Screen_carrot_market_home_sub_to_search> {
+class _ScreenCarrotMarketHomeSubToSearchState extends State<ScreenCarrotMarketHomeSubToSearch> {
   @override
   void initState() {
     super.initState();
@@ -18,10 +18,10 @@ class _Screen_carrot_market_home_sub_to_searchState extends State<Screen_carrot_
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text('search', style: TextStyle(fontSize: 14, color: Colors.grey)),
+          title: const Text('search', style: TextStyle(fontSize: 14, color: Colors.grey)),
           elevation: 1,
           foregroundColor: Colors.grey,
         ),
-        body: Placeholder());
+        body: const Placeholder());
   }
 }

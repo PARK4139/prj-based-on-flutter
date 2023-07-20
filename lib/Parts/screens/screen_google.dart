@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
 // Import for Android features.
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 // Import for iOS features.
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+
+import '../helpers/super_worker.dart';
 
 class ScreenGoogoole extends StatefulWidget {
 
@@ -78,16 +81,16 @@ class _WebViewExampleState extends State<WebViewExample> {
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
-            debugPrint('WebView is loading (progress : $progress%)');
+            printWithoutErrorOrPrintWithError('WebView is loading (progress : $progress%)');
           },
           onPageStarted: (String url) {
-            debugPrint('Page started loading: $url');
+            printWithoutErrorOrPrintWithError('Page started loading: $url');
           },
           onPageFinished: (String url) {
-            debugPrint('Page finished loading: $url');
+            printWithoutErrorOrPrintWithError('Page finished loading: $url');
           },
           onWebResourceError: (WebResourceError error) {
-            debugPrint('''
+            printWithoutErrorOrPrintWithError('''
 Page resource error:
   code: ${error.errorCode}
   description: ${error.description}
@@ -97,14 +100,14 @@ Page resource error:
           },
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.startsWith('https://www.youtube.com/')) {
-              debugPrint('blocking navigation to ${request.url}');
+              printWithoutErrorOrPrintWithError('blocking navigation to ${request.url}');
               return NavigationDecision.prevent;
             }
-            debugPrint('allowing navigation to ${request.url}');
+            printWithoutErrorOrPrintWithError('allowing navigation to ${request.url}');
             return NavigationDecision.navigate;
           },
           onUrlChange: (UrlChange change) {
-            debugPrint('url change to ${change.url}');
+            printWithoutErrorOrPrintWithError('url change to ${change.url}');
           },
         ),
       )
@@ -211,7 +214,7 @@ class NavigationControlBar extends StatelessWidget {
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 1000), content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!')));
             },
-            child: Icon(Icons.question_mark, size: 20),
+            child: const Icon(Icons.question_mark, size: 20),
           )
         ],
       ),
@@ -281,6 +284,6 @@ const String kTransparentBackgroundPage = '''
 String indexUrl = 'https://www.google.com';
 // String indexUrl='https://www.youtube.com/';
 
-String NaverUrl = 'https://www.naver.com';
-String StartingUrl = 'https://www.naver.com';
-String OpeningUrl = 'https://www.naver.com';
+String naverUrl = 'https://www.naver.com';
+String startingUrl = 'https://www.naver.com';
+String openingUrl = 'https://www.naver.com';

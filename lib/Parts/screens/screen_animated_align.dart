@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ScreenAnimatedAlign extends StatefulWidget {
+class ScreenPracticeAnimatedAlign extends StatefulWidget {
+  const ScreenPracticeAnimatedAlign({super.key});
+
   @override
-  _ScreenAnimatedAlignState createState() => _ScreenAnimatedAlignState();
+  State<ScreenPracticeAnimatedAlign> createState() =>  _ScreenPracticeAnimatedAlignState();
+
+
 }
 
-class _ScreenAnimatedAlignState extends State<ScreenAnimatedAlign> {
+class _ScreenPracticeAnimatedAlignState extends State<ScreenPracticeAnimatedAlign> {
   var alignment = Alignment.bottomLeft;
 
   @override
@@ -24,18 +28,18 @@ class _ScreenAnimatedAlignState extends State<ScreenAnimatedAlign> {
       backgroundColor: Colors.black.withOpacity(0.9),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             children: <Widget>[
               Expanded(
                 child: AnimatedAlign(
                   alignment: alignment,
-                  duration: Duration(milliseconds: 100),
-                  child: FlutterLogo(size: 100),
+                  duration: const Duration(milliseconds: 100),
+                  child: const FlutterLogo(size: 100),
                 ),
               ),
               InkWell(
-                child: Text('위젯배열토글',style: TextStyle(color: Colors.blueAccent)),
+                child: const Text('위젯배열토글',style: TextStyle(color: Colors.blueAccent)),
                 onTap: () {
                   setState(() {
                     alignment = alignment == Alignment.bottomLeft

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
  
-class Screen_webtoon_detail extends StatefulWidget {
-  String item_id;
+class ScreenWebtoonDetail extends StatefulWidget {
+  String itemId;
 
-  Screen_webtoon_detail({Key? key, required this.item_id}) : super(key: key);
+  ScreenWebtoonDetail({Key? key, required this.itemId}) : super(key: key);
 
   @override
-  State<Screen_webtoon_detail> createState() => _Screen_webtoon_detailState();
+  State<ScreenWebtoonDetail> createState() => _ScreenWebtoonDetailState();
 }
 
-class _Screen_webtoon_detailState extends State<Screen_webtoon_detail> {
+class _ScreenWebtoonDetailState extends State<ScreenWebtoonDetail> {
 
   // Future<List<WebToon>> webtoons = webtoonApiService.getTodaysToons();  //이거말고 에피소드 webtoonDetailApiService
 
@@ -34,7 +34,7 @@ class _Screen_webtoon_detailState extends State<Screen_webtoon_detail> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text(widget.item_id)),
+          Center(child: Text(widget.itemId)),
         ],
       ),
     );

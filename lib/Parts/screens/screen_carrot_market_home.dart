@@ -62,7 +62,7 @@ class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
                 ),
                 IconButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const Screen_carrot_market_home_sub_to_set_category()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenCarrotMarketHomeSubToSetCategory()));
                     },
                     icon: const Icon(Icons.menu),
                     iconSize: 25,
@@ -73,7 +73,7 @@ class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Screen_carrot_market_home_sub_to_search(),
+                          builder: (context) => const ScreenCarrotMarketHomeSubToSearch(),
                         ),
                       );
                     },
@@ -120,7 +120,7 @@ class _UserCardForHomeState extends State<UserCardForHome> {
   // dummy data
   List<CarrotUserCardInfos> carrotUserCardInfos = [
     CarrotUserCardInfos.fromMap({
-      'user_item_img_url': 'assets/app_carrot_market_logo.png',
+      'user_item_imgUrl': 'asset/images/app_carrot_market_logo.png',
       'item_category': '반려식물',
       'user_location': '안양시 동안구 석수동',
       'user_uploading_time': '6분 전',
@@ -141,16 +141,16 @@ class _UserCardForHomeState extends State<UserCardForHome> {
             height: 130,
             width: 130,
             child: FadeInImage(
-              // image: NetworkImage(carrot_user_card_infos[0].user_item_img_url),//외부 주소로 img 받아 올때
-              image: AssetImage(carrotUserCardInfos[0].user_item_img_url),
+              // image: NetworkImage(carrot_user_card_infos[0].user_item_imgUrl),//외부 주소로 img 받아 올때
+              image: AssetImage(carrotUserCardInfos[0].user_item_imgUrl),
               placeholder: const AssetImage("assets/placeholder.jpg"),
               imageErrorBuilder: (context, error, stackTrace) {
-                return Image.asset('assets/error.jpg', fit: BoxFit.fitWidth);
+                return Image.asset('asset/images/error.jpg', fit: BoxFit.fitWidth);
               },
               fit: BoxFit.fitWidth,
             ),
           ),
-          // Image.network(carrot_user_card_infos[0].user_item_img_url, fit: BoxFit.contain)),
+          // Image.network(carrot_user_card_infos[0].user_item_imgUrl, fit: BoxFit.contain)),
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,7 +191,7 @@ class _UserCardForActivityNotificationState extends State<UserCardForActivityNot
   // dummy data
   List<CarrotUserCardForActivityNotificationInfos> cardInfos = [
     CarrotUserCardForActivityNotificationInfos.fromMap({
-      'notification_img_url': 'assets/app_carrot_market_logo.png',
+      'notification_imgUrl': 'asset/images/app_carrot_market_logo.png',
       'notification_description1': '♨♨달안동 이웃을 사로잡은 금주의 인기매물,지금 만나보세요!',
       'notification_description2': '정훈94님께 소중한 나눔으로 환경보호 실천한 사연 전해요.',
       'notification_uploading_time': '6분 전',
@@ -209,11 +209,11 @@ class _UserCardForActivityNotificationState extends State<UserCardForActivityNot
             height: 90,
             width: 90,
             child: FadeInImage(
-              // image: NetworkImage(carrot_user_card_infos[0].user_item_img_url),//외부 주소로 img 받아 올때
-              image: AssetImage(cardInfos[0].notification_img_url),
+              // image: NetworkImage(carrot_user_card_infos[0].user_item_imgUrl),//외부 주소로 img 받아 올때
+              image: AssetImage(cardInfos[0].notification_imgUrl),
               placeholder: const AssetImage("assets/placeholder.jpg"),
               imageErrorBuilder: (context, error, stackTrace) {
-                return Image.asset('assets/error.jpg', fit: BoxFit.fitWidth);
+                return Image.asset('asset/images/error.jpg', fit: BoxFit.fitWidth);
               },
               fit: BoxFit.fitWidth,
             ),

@@ -2,41 +2,41 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../helpers/my_superworkers.dart';
+import '../helpers/super_worker.dart';
 
-class Screen_digital_clock extends StatefulWidget {
-  const Screen_digital_clock({Key? key}) : super(key: key);
+class ScreenDigitalClock extends StatefulWidget {
+  const ScreenDigitalClock({Key? key}) : super(key: key);
 
   @override
-  State<Screen_digital_clock> createState() => _Screen_digital_clockState();
+  State<ScreenDigitalClock> createState() => _ScreenDigitalClockState();
 }
 
-class _Screen_digital_clockState extends State<Screen_digital_clock> {
+class _ScreenDigitalClockState extends State<ScreenDigitalClock> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Screen_clock_sub(),
+    return const Scaffold(
+      body: ScreenClockSub(),
     );
   }
 }
 
-class Screen_clock_sub extends StatefulWidget {
-  const Screen_clock_sub({Key? key}) : super(key: key);
+class ScreenClockSub extends StatefulWidget {
+  const ScreenClockSub({Key? key}) : super(key: key);
 
   @override
-  State<Screen_clock_sub> createState() => _Screen_clock_subState();
+  State<ScreenClockSub> createState() => _ScreenClockSubState();
 }
 
-class _Screen_clock_subState extends State<Screen_clock_sub> {
+class _ScreenClockSubState extends State<ScreenClockSub> {
   final ment = '해당 스크린에서는 오늘 날짜와 현재 시간을 제공하는 서비스를 제공합니다. \n\n'
       '＊"" : .';
   late Timer timer; //Dart 의 표준 built in library 중의 하나
 
   late final String? platform;
 
-  late final String? current_operating_environment;
+  late final String? currentOperatingEnvironment;
 
-  late DateTime CurrentTime = DateTime.now();
+  late DateTime currentTime = DateTime.now();
 
   void onTick(Timer timer) {
     setState(() {
@@ -47,7 +47,7 @@ class _Screen_clock_subState extends State<Screen_clock_sub> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 1), onTick);
+    timer = Timer.periodic(const Duration(seconds: 1), onTick);
   }
 
   @override
@@ -59,7 +59,7 @@ class _Screen_clock_subState extends State<Screen_clock_sub> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.black_undefined,
+      backgroundColor: MyColors.blackUndefined,
       body: ListView(
         children: [
           Container(
@@ -71,13 +71,11 @@ class _Screen_clock_subState extends State<Screen_clock_sub> {
               },
             ),
           ),
-          Container(
-            child: Column(
-              children: <Widget>[
-                Icon(Icons.android, color: Colors.pinkAccent.shade100),
-                Text("$ment", style: TextStyle(color: Colors.pinkAccent.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w500)),
-              ],
-            ),
+          Column(
+            children: <Widget>[
+              Icon(Icons.android, color: Colors.pinkAccent.shade100),
+              Text(ment, style: TextStyle(color: Colors.pinkAccent.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w500)),
+            ],
           ),
           const SizedBox(height: 30),
           const SizedBox(height: 30),
@@ -96,7 +94,7 @@ class _Screen_clock_subState extends State<Screen_clock_sub> {
                   children: [
                     Center(
                         child: Text(
-                      '$CurrentTime',
+                      '$currentTime',
                       style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 40, fontWeight: FontWeight.w100),
                       textAlign: TextAlign.center,
                     )),
@@ -111,6 +109,6 @@ class _Screen_clock_subState extends State<Screen_clock_sub> {
   }
 
   Future<void> initCurrentTime() async {
-    CurrentTime = await DateTime.now();
+    currentTime = DateTime.now();
   }
 }

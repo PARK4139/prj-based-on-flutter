@@ -4,15 +4,17 @@ import 'package:flutter/material.dart';
 //dio
 const List<String> list = <String>['좋아써', '이거지', '그래', '잘했어'];
 
-class SampleButtonToDropDown extends StatefulWidget {
+class DropDownButtonMaker extends StatefulWidget {
   // List<String> items;
-  String selected_value = list.first;
+  String selectedValue = list.first;
+
+  DropDownButtonMaker({super.key});
 
   @override
-  State<SampleButtonToDropDown> createState() => _SampleButtonToDropDownState();
+  State<DropDownButtonMaker> createState() => _DropDownButtonMakerState();
 }
 
-class _SampleButtonToDropDownState extends State<SampleButtonToDropDown> {
+class _DropDownButtonMakerState extends State<DropDownButtonMaker> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
@@ -20,7 +22,7 @@ class _SampleButtonToDropDownState extends State<SampleButtonToDropDown> {
       focusColor: Colors.redAccent,
       iconDisabledColor: Colors.orangeAccent,
       iconEnabledColor: Colors.purpleAccent,
-      value: widget.selected_value,
+      value: widget.selectedValue,
       icon: const Icon(Icons.arrow_downward),
       // elevation: 16,
       elevation: 1,
@@ -39,7 +41,7 @@ class _SampleButtonToDropDownState extends State<SampleButtonToDropDown> {
           value: value,
           child: Text(
             value,
-            style: TextStyle(fontSize: 10),
+            style: const TextStyle(fontSize: 10),
           ),
         );
       }).toList(),

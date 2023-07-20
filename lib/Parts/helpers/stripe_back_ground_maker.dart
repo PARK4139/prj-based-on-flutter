@@ -11,24 +11,24 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
   late int stripeCount;
   late int colorCount;
   late double calibrationValue;
-  late double FlagHeight;
-  late double FlagWidth;
+  late double flagHeight;
+  late double titleSliderMaker;
   late MODE boxMode;
 
-  late Color FirstColor;
-  late Color SecondColor;
-  late Color ThirdColor;
+  late Color firstColor;
+  late Color secondColor;
+  late Color thirdColor;
 
   @override
   Widget build(BuildContext context) {
-    setStripeSetting(); //FlagHeight 를  MediaQuery.of(context).size.height 로 초기화하니 에러가 나타났다. MediaQuery.of(context).size.height 이 값이 build() 시에 초기화 되는 값이기 때문에 initState() 시에 초기화 하면 아마 null과 같은 유효하지 않은 값인 것 같다. 이를 참조하면 당연
+    setStripeSetting(); //flagHeight 를  MediaQuery.of(context).size.height 로 초기화하니 에러가 나타났다. MediaQuery.of(context).size.height 이 값이 build() 시에 초기화 되는 값이기 때문에 initState() 시에 초기화 하면 아마 null과 같은 유효하지 않은 값인 것 같다. 이를 참조하면 당연
 
     return Builder(builder: (context) {
       var coreWidget;
-      if (boxMode == MODE.ROW) {
+      if (boxMode == MODE.row) {
         colorCount = 2;
-        FirstColor = Colors.white;
-        SecondColor = Colors.red;
+        firstColor = Colors.white;
+        secondColor = Colors.red;
         stripeCount = 2;
         // stripeCount = 100;
         // stripeCount = 200;
@@ -46,15 +46,15 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
         // stripeCount = 10000;//이제는 화면처럼 보임
         // calibrationValue = 24;
         calibrationValue = 0;
-        FlagHeight = MediaQuery.of(context).size.height;
-        // FlagHeight = 50;
-        FlagWidth = MediaQuery.of(context).size.width;
-        // FlagWidth = 50;
+        flagHeight = MediaQuery.of(context).size.height;
+        // flagHeight = 50;
+        titleSliderMaker = MediaQuery.of(context).size.width;
+        // titleSliderMaker = 50;
         coreWidget = Container(
           color: Colors.black,
           // width: 50,
           // width: MediaQuery.of(context).size.width,
-          height: FlagHeight,
+          height: flagHeight,
           child: Row(
             // mainAxisAlignment: MainAxisAlignment.start,
             // mainAxisAlignment: MainAxisAlignment.end,
@@ -72,22 +72,22 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
               for (int i = 0; i < stripeCount; i++)
                 if (i % 2 == 0)
                   Container(
-                    width: FlagWidth / stripeCount - calibrationValue / stripeCount,
-                    color: SecondColor,
+                    width: titleSliderMaker / stripeCount - calibrationValue / stripeCount,
+                    color: secondColor,
                   )
                 else
                   Container(
-                    width: FlagWidth / stripeCount - calibrationValue / stripeCount,
-                    color: FirstColor,
+                    width: titleSliderMaker / stripeCount - calibrationValue / stripeCount,
+                    color: firstColor,
                   )
             ],
           ),
         );
       }
-      if (boxMode == MODE.COLUMN) {
+      if (boxMode == MODE.column) {
         colorCount = 2;
-        FirstColor = Colors.white;
-        SecondColor = Colors.red;
+        firstColor = Colors.white;
+        secondColor = Colors.red;
         stripeCount = 2;
         // stripeCount = 100;
         // stripeCount = 200;
@@ -105,15 +105,15 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
         // stripeCount = 10000;//이제는 화면처럼 보임
         calibrationValue = 24;
         // calibrationValue = 0;
-        FlagHeight = MediaQuery.of(context).size.height;
-        // FlagHeight = 50;
-        FlagWidth = MediaQuery.of(context).size.width;
-        // FlagWidth = 50;
+        flagHeight = MediaQuery.of(context).size.height;
+        // flagHeight = 50;
+        titleSliderMaker = MediaQuery.of(context).size.width;
+        // titleSliderMaker = 50;
         coreWidget = Container(
           color: Colors.black,
           // width: 50,
           // width: MediaQuery.of(context).size.width,
-          height: FlagHeight,
+          height: flagHeight,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             // mainAxisAlignment: MainAxisAlignment.end,
@@ -131,24 +131,24 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
               for (int i = 0; i < stripeCount; i++)
                 if (i % 2 == 0)
                   Container(
-                    height: FlagHeight / stripeCount - calibrationValue / stripeCount,
-                    color: FirstColor,
+                    height: flagHeight / stripeCount - calibrationValue / stripeCount,
+                    color: firstColor,
                   )
                 else
                   Container(
-                    height: FlagHeight / stripeCount - calibrationValue / stripeCount,
-                    color: SecondColor,
+                    height: flagHeight / stripeCount - calibrationValue / stripeCount,
+                    color: secondColor,
                   ),
             ],
           ),
         );
       }
 
-      if (boxMode == MODE.BOX) {
+      if (boxMode == MODE.box) {
         colorCount = 2;
-        FirstColor = Colors.white;
-        SecondColor = Colors.red;
-        ThirdColor = Colors.yellow;
+        firstColor = Colors.white;
+        secondColor = Colors.red;
+        thirdColor = Colors.yellow;
         stripeCount = 2;
         stripeCount = 3;
         stripeCount = 4;
@@ -166,13 +166,13 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
         // stripeCount = 3000; //뭔가 아트같다.
         // stripeCount = 4000; // 지지직 오래된 TV 같어
         // stripeCount = 10000;//이제는 화면처럼 보임
-        FlagHeight = 4;
-        FlagWidth = 3;
+        flagHeight = 4;
+        titleSliderMaker = 3;
         coreWidget = Center(
           child: Container(
             color: Colors.black,
-            width: FlagHeight,
-            height: FlagWidth,
+            width: flagHeight,
+            height: titleSliderMaker,
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.start,
               // mainAxisAlignment: MainAxisAlignment.end,
@@ -192,7 +192,7 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
                     if (n % 2 == 0)
                       Expanded(
                         child: Container(
-                          color: FirstColor,
+                          color: firstColor,
                           // height: 0.1,
                           // width: 0.1,
                         ),
@@ -200,7 +200,7 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
                     else
                       Expanded(
                         child: Container(
-                          color: SecondColor,
+                          color: secondColor,
                           // height: 0.1,
                           // width: 0.1,
                         ),
@@ -211,7 +211,7 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
                     if (n == 1 + (n - 1) * 3)
                       Expanded(
                         child: Container(
-                          color: FirstColor,
+                          color: firstColor,
                           // height: 0.1,
                           // width: 0.1,
                         ),
@@ -219,7 +219,7 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
                     else if (n == 2 + (n - 1) * 3)
                       Expanded(
                         child: Container(
-                          color: SecondColor,
+                          color: secondColor,
                           // height: 0.1,
                           // width: 0.1,
                         ),
@@ -227,7 +227,7 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
                     else if (n == 3 + (n - 1) * 3)
                       Expanded(
                         child: Container(
-                          color: ThirdColor,
+                          color: thirdColor,
                           // height: 0.1,
                           // width: 0.1,
                         ),
@@ -244,8 +244,8 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
   void setStripeSetting() {
     // boxMode = MODE.ROW;
     // boxMode = MODE.COLUMN;
-    boxMode = MODE.BOX;
+    boxMode = MODE.box;
   }
 }
 
-enum MODE { ROW, COLUMN, BOX }
+enum MODE { row, column, box }

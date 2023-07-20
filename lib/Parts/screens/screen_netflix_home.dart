@@ -6,7 +6,7 @@ import 'screen_netflix_home_sub.dart';
 import 'screen_netflix_util.dart';
 
 class ScreenNetflixHome extends StatefulWidget {
-  ScreenNetflixHome({Key? key}) : super(key: key);
+  const ScreenNetflixHome({Key? key}) : super(key: key);
 
   @override
   State<ScreenNetflixHome> createState() => _ScreenNetflixHomeState();
@@ -45,7 +45,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  /*넷플릭쓰 로고*/ Container(padding: const EdgeInsets.fromLTRB(0, 7, 0, 7), margin: const EdgeInsets.fromLTRB(0, 0, 0, 0), child: Image.asset('assets/app_netflix_logo.png', fit: BoxFit.contain, width: 30)),
+                  /*넷플릭쓰 로고*/ Container(padding: const EdgeInsets.fromLTRB(0, 7, 0, 7), margin: const EdgeInsets.fromLTRB(0, 0, 0, 0), child: Image.asset('asset/images/app_netflix_logo.png', fit: BoxFit.contain, width: 30)),
                   /*TV 프로그램 버튼*/ InkWell(
                     onTap: () {
                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 1000),content: Text('해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!'))); // setState(() {
@@ -99,7 +99,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                               offset: const Offset(0, 0),
                               child: Transform.scale(
                                 scale: 0.8,
-                                child: Image.asset(movie.img_url),
+                                child: Image.asset(movie.imgUrl),
                               ),
                             ),
                           ),
@@ -183,16 +183,16 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: IndicatorMaker(movies, _imageSliderCurrentPage),
+              children: indicatorMaker(movies, _imageSliderCurrentPage),
             ),
             const Text('미리보기', style: TextStyle(color: Colors.grey, fontSize: 15)),
-            LateralSlideBuilder(items: CirclesAndTitleListMaker(movies)),
+            LateralSlideBuilder(items: circlesAndTitleListMaker(movies)),
             const Text('TV+코미디+가슴 뭉클', style: TextStyle(color: Colors.grey, fontSize: 15)),
-            LateralSlideBuilder(items: PosterListMaker(movies)),
+            LateralSlideBuilder(items: posterListMaker(movies)),
             const Text('지금 뜨는 콘텐츠', style: TextStyle(color: Colors.grey, fontSize: 15)),
-            LateralSlideBuilder(items: PosterListMaker(movies)),
+            LateralSlideBuilder(items: posterListMaker(movies)),
             const Text('절찬 스트리밍 중+시즌 3', style: TextStyle(color: Colors.grey, fontSize: 15)),
-            LateralSlideBuilder(items: PosterListMaker(movies)),
+            LateralSlideBuilder(items: posterListMaker(movies)),
           ],
         ),
       ),
@@ -207,7 +207,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
     _imageSliderCurrentPage = 0;
   }
 
-  List<Widget> CirclesAndTitleListMaker(List<Movie> movies) {
+  List<Widget> circlesAndTitleListMaker(List<Movie> movies) {
     List<Widget> lists = [
       for (Movie movie in movies)
         /*미리보기 원형 영화 포스터*/ Container(
@@ -224,7 +224,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                     // borderRadius: BorderRadius.circular(100),
                     shape: BoxShape.circle,
                   ),
-                  child: Image.asset(movie.img_url, height: 140 + 20),
+                  child: Image.asset(movie.imgUrl, height: 140 + 20),
                 ),
               ),
               /*오프셋된 영화 타이틀*/ Transform.translate(
@@ -238,7 +238,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
     return lists;
   }
 
-  List<Widget> PosterListMaker(List<Movie> movies) {
+  List<Widget> posterListMaker(List<Movie> movies) {
     List<Widget> lists = [
       for (Movie movie in movies)
         /* 영화 포스터*/ Container(
@@ -253,7 +253,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                     color: Colors.amberAccent,
                     // borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Image.asset(movie.img_url, height: 180),
+                  child: Image.asset(movie.imgUrl, height: 180),
                 ),
               ),
             ],
@@ -263,7 +263,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
     return lists;
   }
 
-  List<Widget> TitleSliderMaker(List<Movie> movies) {
+  List<Widget> titleSliderMaker(List<Movie> movies) {
     String seperator = '    ';
     List<Widget> lists = [
       for (Movie movie in movies) Text(movie.title + seperator, style: const TextStyle(fontSize: 14, color: Colors.white38)),

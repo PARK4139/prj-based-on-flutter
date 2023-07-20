@@ -1,10 +1,10 @@
 import 'package:date_format/date_format.dart';
 
 
-class COMMON_TEXT_DATA {
-  static const String CODE0000 = "CODE_COMMON";
-  static const String CODE1000 = "CODE_BIZMEKA";
-  final Map<String, dynamic> STAMPS = {
+class CommonTextData {
+  static const String code0000 = "CODE_COMMON";
+  static const String code1000 = "CODE_BIZMEKA";
+  final Map<String, dynamic> stamps = {
     "0000": 'CODE_COMMON',
     "0001": '',
     "0100": "CODE_TIME_DATE",
@@ -32,6 +32,6 @@ class COMMON_TEXT_DATA {
   };
 
   Map<String, dynamic> getStamps() {
-    return STAMPS;
+    return stamps;
   }
 }

@@ -1,51 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Button_to_route_to_naver extends StatefulWidget {
+class NaverRoutingButtonMaker extends StatefulWidget {
   final String text;
   final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
-  final double padding_vertical;
-  final double padding_horizontal;
-  final BorderRadius? border_radius;
+  final FontWeight? fontWeight;
+  final double? fontSize;
+  final Color? backgroundColor;
+  final double paddingVertical;
+  final double paddingHorizontal;
+  final BorderRadius? borderRadius;
 
-  const Button_to_route_to_naver({
+  const NaverRoutingButtonMaker({
     Key? key,
     required this.text,
-    required this.background_color,
+    required this.backgroundColor,
     required this.color,
-    required this.font_size,
-    required this.font_weight,
-    required this.padding_vertical,
-    required this.padding_horizontal,
-    required this.border_radius,
+    required this.fontSize,
+    required this.fontWeight,
+    required this.paddingVertical,
+    required this.paddingHorizontal,
+    required this.borderRadius,
   }) : super(key: key);
 
   @override
-  State<Button_to_route_to_naver> createState() => _Button_to_route_to_naverState();
+  State<NaverRoutingButtonMaker> createState() => _NaverRoutingButtonMakerState();
 }
 
-class _Button_to_route_to_naverState extends State<Button_to_route_to_naver> {
+class _NaverRoutingButtonMakerState extends State<NaverRoutingButtonMaker> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
+        color: widget.backgroundColor,
+        borderRadius: widget.borderRadius,
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
+        horizontal: widget.paddingHorizontal,
+        vertical: widget.paddingVertical,
       ),
       child: TextButton(
           child: Text(
             widget.text,
             style: TextStyle(
               color: widget.color,
-              fontSize: widget.font_size,
-              fontWeight: widget.font_weight,
+              fontSize: widget.fontSize,
+              fontWeight: widget.fontWeight,
             ),
           ),
           onPressed: () {

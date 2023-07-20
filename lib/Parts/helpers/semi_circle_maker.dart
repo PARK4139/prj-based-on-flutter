@@ -2,17 +2,17 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-class SemiCircleMaker extends StatelessWidget {
+class SemicircleMaker extends StatelessWidget {
   final double diameter;
 
-  var color;
+  Color color;
 
-  SemiCircleMaker({super.key, this.diameter = 200,required this.color});
+  SemicircleMaker({super.key, this.diameter = 200,required this.color});
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: SemiCircleMakerComponent(color: color),
+      painter: SemicircleMakerComponent(color: color),
       size: Size(diameter, diameter),
     );
   }
@@ -20,12 +20,12 @@ class SemiCircleMaker extends StatelessWidget {
 
 
 // This is the Painter class
-class SemiCircleMakerComponent extends CustomPainter {
+class SemicircleMakerComponent extends CustomPainter {
   Color color;
 
 
 
-  SemiCircleMakerComponent({required this.color});
+  SemicircleMakerComponent({required this.color});
 
 
   @override

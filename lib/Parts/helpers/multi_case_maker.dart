@@ -3,28 +3,28 @@ import 'package:flutter/material.dart';
 
 import 'stamp_maker.dart';
 import 'iterable_structure_maker.dart';
-import 'my_superworkers.dart';
+import 'super_worker.dart';
 
 class MultiCaseMaker extends StatefulWidget {
   String text;
   final Color? color;
-  final FontWeight? font_weight;
-  final double? font_size;
-  final Color? background_color;
-  final double padding_vertical;
-  final double padding_horizontal;
-  final BorderRadius? border_radius;
+  final FontWeight? fontWeight;
+  final double? fontSize;
+  final Color? backgroundColor;
+  final double paddingVertical;
+  final double paddingHorizontal;
+  final BorderRadius? borderRadius;
 
   MultiCaseMaker({
     Key? key,
     required this.text,
-    required this.background_color,
+    required this.backgroundColor,
     required this.color,
-    required this.font_size,
-    required this.font_weight,
-    required this.padding_vertical,
-    required this.padding_horizontal,
-    required this.border_radius,
+    required this.fontSize,
+    required this.fontWeight,
+    required this.paddingVertical,
+    required this.paddingHorizontal,
+    required this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -32,16 +32,16 @@ class MultiCaseMaker extends StatefulWidget {
 }
 
 class _MultiCaseMakerState extends State<MultiCaseMaker> {
-  String items_to_copy = '-';
-  late Map<String, dynamic> Stamps;
+  String itemsToCopy = '-';
+  late Map<String, dynamic> stamps;
   var helper = MySuperworkers();
-  int ClickCounter = 0;
+  int clickCounter = 0;
   late List<dynamic> items;
 
   // late var naturalNumbers;
-  late var items_iterable;
+  late IterableStringListMaker itemsIterable;
 
-  var button_title;
+  late String buttonTitle;
 
   var isCheckboxChecked = false;
 
@@ -51,65 +51,61 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
 
   late String titleText;
 
-  late var items_snapshot_at_start;
+  late List<dynamic> itemsSnapshotAtStart;
 
   late int subItemIndex;
 
   @override
   void initState() {
     super.initState();
-    button_title = widget.text;
-    init_states_of_this_button();
-    init_label_text();
-
-    items_snapshot_at_start = []..addAll(items);
+    buttonTitle = widget.text;
+    initStatesOfThisButton();
+    initLabelTextAndTitleText();
+    itemsSnapshotAtStart = [...items];
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
+        color: widget.backgroundColor,
+        borderRadius: widget.borderRadius,
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
+        horizontal: widget.paddingHorizontal,
+        vertical: widget.paddingVertical,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            // width: 300,
-            child: TextButton(
-              child: Text(
-                labelText,
-                style: TextStyle(
-                  color: widget.color,
-                  fontSize: widget.font_size,
-                  fontWeight: widget.font_weight,
-                ),
+          TextButton(
+            child: Text(
+              labelText,
+              style: TextStyle(
+                color: widget.color,
+                fontSize: widget.fontSize,
+                fontWeight: widget.fontWeight,
               ),
-              onPressed: () {
-                onTextButtonPressed();
-              },
-              onHover: (isHovered) {
-                if (isHovered) {
-                  setState(() {
-                    init_label_text();
-                  });
-                } else {
-                  setState(() {
-                    labelText = widget.text.length <= 60 ? widget.text + '  ' : widget.text.substring(0, 60);
-                  });
-                }
-              },
             ),
+            onPressed: () {
+              onTextButtonPressed();
+            },
+            onHover: (isHovered) {
+              if (isHovered) {
+                setState(() {
+                  initLabelTextAndTitleText();
+                });
+              } else {
+                setState(() {
+                  labelText = widget.text.length <= 60 ? '${widget.text}  ' : widget.text.substring(0, 60);
+                });
+              }
+            },
           ),
-          Container(
+          SizedBox(
             width: 40,
             child: IconButton(
-              icon: Icon(Icons.add, color: Colors.lightGreenAccent),
+              icon: const Icon(Icons.add, color: Colors.lightGreenAccent),
               onPressed: onAddIconPressed,
             ),
           ),
@@ -123,7 +119,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
                 }
               });
             },
-            icon: isCheckboxChecked == true ? Icon(Icons.check_box_outlined, color: Colors.lightGreenAccent) : Icon(Icons.check_box_outline_blank, color: Colors.lightGreenAccent),
+            icon: isCheckboxChecked == true ? const Icon(Icons.check_box_outlined, color: Colors.lightGreenAccent) : const Icon(Icons.check_box_outline_blank, color: Colors.lightGreenAccent),
           ),
         ],
       ),
@@ -133,7 +129,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
   void onTextButtonPressed() {
       if (isFirstClick == true) {
         FlutterClipboard.paste().then((value) {
-          labelText = value.length <= 60 ? value + '  ' : value.substring(0, 60);
+          labelText = value.length <= 60 ? '$value  ' : value.substring(0, 60);
           setState(() {
             widget.text = labelText;
           });
@@ -150,12 +146,12 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
       }
   }
 
-  void init_states_of_this_button() {
-    reload_items();
-    ClickCounter = 0;
+  void initStatesOfThisButton() {
+    reloadItems();
+    clickCounter = 0;
   }
 
-  String Calmel_case_maker({required String value}) {
+  String calmelCaseMaker({required String value}) {
     var result = value.split('_');
     for (int i = 0; i < result.length; i++) {
       result[i] = result[i].substring(0, 1).toUpperCase() + result[i].substring(1);
@@ -163,39 +159,39 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     return result.join('');
   }
 
-  String Upper_calmel_case_maker({required String value}) {
+  String upperCalmelCaseMaker({required String value}) {
     var result = value.split('_');
     for (int i = 0; i < result.length; i++) {
       result[i] = result[i].substring(0, 1).toUpperCase() + result[i].substring(1);
     }
-    return Capitalized_case_maker(value: result.join(''));
+    return capitalizedCaseMaker(value: result.join(''));
   }
 
-  String Snake_case_maker({required String value}) {
+  String snakeCaseMaker({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
-        result[i] = '_' + result[i].toLowerCase();
+        result[i] = '_${result[i].toLowerCase()}';
       }
     }
     return result.join('');
   }
 
-  String Capitalized_case_maker({required String value}) {
+  String capitalizedCaseMaker({required String value}) {
     if (value.isEmpty) {
       return value;
     }
     return value[0].toUpperCase() + value.substring(1);
   }
 
-  String pascal_case({required String value}) {
+  String pascalCase({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
-        result[i] = '_' + result[i].toLowerCase();
+        result[i] = '_${result[i].toLowerCase()}';
       }
     }
-    return Capitalized_case_maker(value: result.join(''));
+    return capitalizedCaseMaker(value: result.join(''));
   }
 
   String case_1_maker({required String value}) {
@@ -206,7 +202,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
-        result[i] = '_' + result[i].toLowerCase();
+        result[i] = '_${result[i].toLowerCase()}';
       }
     }
     return result.join('').replaceFirst("_", "");
@@ -216,7 +212,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
-        result[i] = '_' + result[i].toLowerCase();
+        result[i] = '_${result[i].toLowerCase()}';
       }
     }
     return result.join('').replaceFirst("_", "").replaceAll("__", "_");
@@ -226,20 +222,20 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
-        result[i] = '_' + result[i].toLowerCase();
+        result[i] = '_${result[i].toLowerCase()}';
       }
     }
-    return Capitalized_case_maker(value: result.join('').replaceFirst("_", ""));
+    return capitalizedCaseMaker(value: result.join('').replaceFirst("_", ""));
   }
 
   String case_5_maker({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
-        result[i] = '_' + result[i].toLowerCase();
+        result[i] = '_${result[i].toLowerCase()}';
       }
     }
-    return Capitalized_case_maker(value: result.join('').replaceFirst("_", "").replaceAll("__", "_"));
+    return capitalizedCaseMaker(value: result.join('').replaceFirst("_", "").replaceAll("__", "_"));
   }
 
 
@@ -253,36 +249,37 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
   }
 
 
-  bool isThisDigitUpperCase(String one_digit) {
-    var codeUnit = one_digit.codeUnitAt(0);
+  bool isThisDigitUpperCase(String oneDigit) {
+    var codeUnit = oneDigit.codeUnitAt(0);
     bool result = false;
     if (codeUnit >= 65 && codeUnit <= 90) {
-      // print('문자열이 대문자입니다.');
+      // printWithoutProblem('문자열이 대문자입니다.');
       result = true;
     } else if (codeUnit >= 97 && codeUnit <= 122) {
-      // print('문자열이 소문자입니다.');
+      // printWithoutProblem('문자열이 소문자입니다.');
     } else {
-      // print('문자열이 대소문자가 아닙니다.'); //특수문자?
+      // printWithoutProblem('문자열이 대소문자가 아닙니다.'); //특수문자?
     }
     return result;
   }
 
   void onAddIconPressed() {
-    reload_items();
+    reloadItems();
     showDialog<void>(
       context: context,
-      barrierDismissible: false, // user must tap button!
+      barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: Colors.black,
-          title: Text(button_title, style: const TextStyle(color: Colors.blueAccent)),
+          title: Text(buttonTitle, style: const TextStyle(color: Colors.blueAccent)),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 for (var item in items) Row(
                   children: [
                     Text('${subItemIndex = subItemIndex+1}', style: const TextStyle(color: Colors.lightGreenAccent)),
-                    StampMaker(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5),doYouWantPopAfterClicking: true),
+                    StampMaker(text: item, backgroundColor: Colors.black, color: MyColors.whiteClear, fontSize: 9),
+
                   ],
                 ),
               ],
@@ -301,30 +298,28 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     );
   }
 
-  void reload_items() {
+  void reloadItems() {
     items = [
       case_4_maker(value: widget.text.trim()),
-      Calmel_case_maker(value: widget.text.trim()),
+      calmelCaseMaker(value: widget.text.trim()),
       case_6_maker(value: widget.text.trim()),
       case_1_maker(value: widget.text.trim()),
       case_2_maker(value: widget.text.trim()),
       case_3_maker(value: widget.text.trim()),
       case_5_maker(value: widget.text.trim()),
-      Snake_case_maker(value: widget.text.trim()),
-      Upper_calmel_case_maker(value: widget.text.trim()),
-      Capitalized_case_maker(value: widget.text.trim()),
-      pascal_case(value: widget.text.trim()),
+      snakeCaseMaker(value: widget.text.trim()),
+      upperCalmelCaseMaker(value: widget.text.trim()),
+      capitalizedCaseMaker(value: widget.text.trim()),
+      pascalCase(value: widget.text.trim()),
     ];
-    items_iterable = IterableStringListMaker(items: items);
-    button_title = widget.text;
+    itemsIterable = IterableStringListMaker(items: items);
+    buttonTitle = widget.text;
 
     subItemIndex=0;
   }
 
-  void init_label_text() {
-    setState(() {
+  void initLabelTextAndTitleText() {
       titleText = widget.text;
       labelText = '멀티케이스스탬프 생성';
-    });
   }
 }

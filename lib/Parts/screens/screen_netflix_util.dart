@@ -7,7 +7,7 @@ class LateralSlideBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 150,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -25,7 +25,7 @@ class CarouselSlider extends StatelessWidget {
   final int activeIndex;
   final Function(int) onPageChanged;
 
-  CarouselSlider({
+  const CarouselSlider({super.key,
     required this.items,
     this.activeIndex = 0,
     required this.onPageChanged,
@@ -47,52 +47,48 @@ class CarouselSlider extends StatelessWidget {
   }
 }
 
-class Button_to_play extends StatefulWidget {
+class ButtonToPlay extends StatefulWidget {
   late Function onPressed;
 
-  Button_to_play({Key? key, required this.onPressed}) : super(key: key);
+  ButtonToPlay({Key? key, required this.onPressed}) : super(key: key);
 
   @override
-  State<Button_to_play> createState() => _Button_to_playState();
+  State<ButtonToPlay> createState() => _ButtonToPlayState();
 }
 
-class _Button_to_playState extends State<Button_to_play> {
+class _ButtonToPlayState extends State<ButtonToPlay> {
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          child: Transform.translate(
-            offset: const Offset(300, -20),
-            child: Container(
-              height: 45,
-              width: 80,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: Colors.deepOrange),
-              child: IconButton(
-                onPressed: () {
-                  widget.onPressed();
-                },
-                icon: Container(
-                  child: const Column(
+        Transform.translate(
+          offset: const Offset(300, -20),
+          child: Container(
+            height: 45,
+            width: 80,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: Colors.deepOrange),
+            child: IconButton(
+              onPressed: () {
+                widget.onPressed();
+              },
+              icon: const Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(width: 3),
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.black,
-                            size: 15,
-                          ),
-                          SizedBox(width: 3),
-                          Text('재생', style: TextStyle(color: Colors.white, fontSize: 15)),
-                          SizedBox(width: 3),
-                          // SizedBox(width: 3),
-                        ],
-                      )
+                      SizedBox(width: 3),
+                      Icon(
+                        Icons.play_arrow,
+                        color: Colors.black,
+                        size: 15,
+                      ),
+                      SizedBox(width: 3),
+                      Text('재생', style: TextStyle(color: Colors.white, fontSize: 15)),
+                      SizedBox(width: 3),
+                      // SizedBox(width: 3),
                     ],
-                  ),
-                ),
+                  )
+                ],
               ),
             ),
           ),
@@ -102,7 +98,7 @@ class _Button_to_playState extends State<Button_to_play> {
   }
 }
 
-List<Widget> IndicatorMaker(List list, int _currentPage) {
+List<Widget> indicatorMaker(List list, int currentPage) {
   List<Widget> results = [];
   for (var i = 0; i < list.length; i++) {
     results.add(
@@ -110,7 +106,7 @@ List<Widget> IndicatorMaker(List list, int _currentPage) {
         width: 8,
         height: 8,
         margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-        decoration: BoxDecoration(shape: BoxShape.circle, color: _currentPage == i ? Color.fromRGBO(255, 255, 255, 0.9) : Color.fromRGBO(255, 255, 255, 0.4)),
+        decoration: BoxDecoration(shape: BoxShape.circle, color: currentPage == i ? const Color.fromRGBO(255, 255, 255, 0.9) : const Color.fromRGBO(255, 255, 255, 0.4)),
       ),
     );
   }

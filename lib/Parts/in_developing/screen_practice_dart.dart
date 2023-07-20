@@ -1,4 +1,7 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+
+import '../helpers/super_worker.dart';
 
 class ScreenUndefined0000 extends StatefulWidget {
   const ScreenUndefined0000({super.key});
@@ -10,7 +13,6 @@ class ScreenUndefined0000 extends StatefulWidget {
 class _ScreenUndefined0000State extends State<ScreenUndefined0000> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: ListView(
         children: [
@@ -19,8 +21,8 @@ class _ScreenUndefined0000State extends State<ScreenUndefined0000> {
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                /*뒤로가기 버튼*/InkWell(
-                  child: const Icon(Icons.chevron_left,size: 40,color: Colors.redAccent),
+                /*뒤로가기 버튼*/ InkWell(
+                  child: const Icon(Icons.chevron_left, size: 40, color: Colors.redAccent),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -45,37 +47,27 @@ class _ScreenUndefined0000State extends State<ScreenUndefined0000> {
   }
 }
 
-
-
-
-
 class FooFoo {
   // const vs final
   // 재초기화 제한 기능.
 
-  DateTime now = DateTime.now();
-
-  /*const vs final*/
-  // const DateTime now__ = DateTime.now();//const 는 build time 에 초기화되는데 DateTime.now() 는 run time 에 초기화되도록 만들어진 값을 만들어낸다. 따라서 const 를 붙일 수 없다.
-  final DateTime now_ = DateTime.now(); //final 는 run time 에 초기화되는 값.
+  final DateTime now_ = DateTime.now();
 
   List<int> integers = [1, 2, 3]; //int list
 
   List<String> strings = ['1', '2', '3']; //String list
 
-  String foo(String foo, String foofoo) => ' ' + foo + ' ' + foofoo + ' '; //positional arguments
+  String foo(String foo, String foofoo) => ' $foo $foofoo '; //positional arguments
 
-  String foo2({required String foo, required String foofoo}) => ' ' + foo + ' ' + foofoo + ' '; //named arguments
+  String foo2({required String foo, required String foofoo}) => ' $foo $foofoo '; //named arguments
 
-  String foo3(String foo, String foofoo, [String? foofoofoo = 'foo']) => ' ' + foo + ' ' + foofoo + ' ' + foofoofoo!; //optional arguments
+  String foo3(String foo, String foofoo, [String? foofoofoo = 'foo']) => ' $foo $foofoo ${foofoofoo!}'; //optional arguments
 
   String? dataTypePrinter(String? foo) {
     if (foo is String) {
       print('$foo\'s data type : String');
     } else if (foo is int) {
       print('$foo\'s data type : int');
-    } else if (foo is dynamic) {
-      print('$foo\'s data type : dynamic');
     } else if (foo is double) {
       print('$foo\'s data type : double');
     } else if (foo is List<String>) {
@@ -86,7 +78,7 @@ class FooFoo {
     return foo;
   }
 
-  String? think(String? foo) {
+  String? think(dynamic foo) {
     if (foo! is! String) {
       print('$foo\'s data type : String');
     } else if (foo == null) {
@@ -112,9 +104,9 @@ class ChattingRoomMember {
   int age = 0;
   String address = 'foo';
   String job = '';
-  String login_accound_user_id;
-  String login_accound_user_pw;
-  String login_ok;
+  String loginAccoundUserId;
+  String loginAccoundUserPw;
+  String loginOk;
 
   // all args constructor method
   ChattingRoomMember({
@@ -126,12 +118,12 @@ class ChattingRoomMember {
     required this.exp,
     required this.age,
     required this.address,
-    required this.login_accound_user_id,
+    required this.loginAccoundUserId,
     required this.job,
-    required this.login_accound_user_pw,
-    required this.login_ok,
+    required this.loginAccoundUserPw,
+    required this.loginOk,
   }) {
-    login(login_accound_user_id: login_accound_user_id, login_accound_user_pw: login_accound_user_pw);
+    login(loginAccoundUserId: loginAccoundUserId, loginAccoundUserPw: loginAccoundUserPw);
   }
 
   //
@@ -162,15 +154,15 @@ class ChattingRoomMember {
   String convertChattingRoomMemberInfo(Map<String, String> info) => '${info['name']}\n${info['age']}\n${info['address']}\n${info['lv']}\n${info['xp']}\n${info['mp']}\n${info['hp']}\n${info['exp']}';
 
   String login({
-    required String login_accound_user_id,
-    required String login_accound_user_pw,
+    required String loginAccoundUserId,
+    required String loginAccoundUserPw,
   }) =>
       'foo';
 
   // String getChattingRoomMemberInfo() => '$name\n$lv\n$xp\n$hp\n$mp\n$exp\n$age\n$address';
 
   @override
-  String toString() => 'ChattingRoomMember{name: $name, lv: $lv, xp: $xp, mp: $mp, hp: $hp, exp: $exp, age: $age, address: $address, job: $job, login_accound_user_id: $login_accound_user_id, login_accound_user_pw: $login_accound_user_pw, login_ok: $login_ok}';
+  String toString() => 'ChattingRoomMember{name: $name, lv: $lv, xp: $xp, mp: $mp, hp: $hp, exp: $exp, age: $age, address: $address, job: $job, login_accound_user_id: $loginAccoundUserId, login_accound_user_pw: $loginAccoundUserPw, login_ok: $loginOk}';
 }
 
 //abstract class
@@ -182,12 +174,12 @@ abstract class Creature {
   //abstract method
   void sleep() {}
 
-  void walk(String place_from, String place_to) {}
+  void walk(String placeFrom, String placeTo) {}
 
   void eat(String food) {}
 }
 
-class cameleon extends Creature {
+class Cameleon extends Creature {
   // void walk() {}
   // void walk(String place_from) {}
   // void walk(String place_from, String place_to) {}
@@ -198,18 +190,19 @@ class Coach extends Creature {
   //constructor 에서 field 에 대해서 초기화하는 것을 권고하는 것으로 보인다.
   late String name;
 
-  Coach({required String name}) {
-    this.name = name;
-  }
+  Coach({required this.name});
 
+  @override
   void sleep() {
     print('caach is sleeping now');
   }
 
-  void walk(String departure, String destination) {
-    print('caach is walking now from $departure to $destination');
+  @override
+  void walk(String placeFrom, String placeTo) {
+    print('caach is walking now from $placeFrom to $placeTo');
   }
 
+  @override
   void eat(String food) {
     print('caach is eating now');
   }
@@ -223,8 +216,9 @@ class Director extends Coach {
 
   //부모 변수 사용 + 내 변수 사용
   //부모 변수에 저장 + 내 변수에도 저장
-  String name; //내 변수를 선언
-  Director({required super.name}) : this.name = name; //내 변수를 초기화
+  @override
+  String name; //내 변수는 @override 변수로서 선언 // 왜 안될까? 아직모르겠다 누구한테 물어보자.
+  Director({required super.name}) : name = name; //내 변수를 초기화
 
   //부모 함수 사용
   //함수를 선언하지 않음
@@ -242,17 +236,17 @@ class Director extends Coach {
 //collaboration mixin and with
 //부모 관계를 만들지 않고 mixin 의 field 나 method 를 가져와서 사용할 수 있다
 mixin MagitianDefaultProperties {
-  final int ExpDefault = 0;
-  final int StrongDefault = 5;
-  final int IntelligenceDefault = 100;
+  final int expDefault = 0;
+  final int strongDefault = 5;
+  final int intelligenceDefault = 100;
 }
 mixin MagitianDefaultMethod {
-  void Training() {
+  void training() {
     print('in training...');
   }
 }
 
-class ChattingRoomMember_mixined with MagitianDefaultProperties, MagitianDefaultMethod {}
+class ChattingRoomMemberMixined with MagitianDefaultProperties, MagitianDefaultMethod {}
 
 //java 와 유사하게 코드의 entry point 는 main 이라는 이름을 가진 method 에서 시작된다.
 void main() {
@@ -271,18 +265,7 @@ void main() {
 
   // ChattingRoomMember player = new ChattingRoomMember(); // flutter 스타일 가이드에서는 에서는 사용 비추천
   dynamic player;
-  player = ChattingRoomMember(name: 'pjh4139',
-      lv: 0,
-      xp: 0,
-      mp: 0,
-      hp: 100000,
-      exp: 0,
-      age: 30,
-      address: 'foo',
-      login_accound_user_id: 'Or가리튜닝',
-      job: '어쌔신',
-      login_accound_user_pw: '0000',
-      login_ok: 'ok'); // no argument constructor method + instance
+  player = ChattingRoomMember(name: 'pjh4139', lv: 0, xp: 0, mp: 0, hp: 100000, exp: 0, age: 30, address: 'foo', loginAccoundUserId: 'Or가리튜닝', job: '어쌔신', loginAccoundUserPw: '0000', loginOk: 'ok'); // no argument constructor method + instance
   print(player.getChattingRoomMemberInfo());
   print(player.toString());
 
@@ -291,11 +274,11 @@ void main() {
   director.sleep();
   print(director.name);
 
-  player = ChattingRoomMember_mixined();
-  print(player.ExpDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
-  print(player.StrongDefault);
-  print(player.IntelligenceDefault);
-  print(player.Training());
+  player = ChattingRoomMemberMixined();
+  print(player.expDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
+  print(player.strongDefault);
+  print(player.intelligenceDefault);
+  print(player.training());
 
   //
   // // typedef : define s
@@ -454,5 +437,92 @@ void main() {
   // chattingRoomUsingPermission = State.approved;
   // chattingRoomUsingPermission = State.rejected;
   //
+
+  /*const vs final*/
+  // const DateTime now_ = DateTime.now();//const 는 build time 에 초기화되는데 DateTime.now() 는 run time 에 초기화되도록 만들어진 값을 만들어낸다. 따라서 const 를 붙일 수 없다.
+  final DateTime now_ = DateTime.now(); //final 는 run time 에 초기화되는 값.
+  print(now_);
+
+  print('-------------------------------------- 지금시간을 출력');
+  DateTime now = DateTime.now();
+  print(now);
+
+  print('-------------------------------------- 특정시간을 출력');
+  DateTime specificDay = DateTime(
+    2017,
+    11,
+    23,
+  );
+
+  print(specificDay);
+
+  print('-------------------------------------- 지금시간을 적당하게 출력');
+  print(now);
+  print(now.year);
+  print(now.month);
+  print(now.day);
+  print(now.hour);
+  print(now.minute);
+  print(now.second);
+  print(now.millisecond);
+  print(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
+  print(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
+  print(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
+  print(formatDate(DateTime.now(), [yyyy, ' ', mm, ' ', dd, ' ', HH, ' ', nn, ' ', ss, ' ', SSS]));
+  print(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));
+  print(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss, '.', SSS]));
+  print(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
+
+  Duration duration = const Duration(seconds: 60);
+
+  print(duration);
+  print(duration.inDays);
+  print(duration.inHours);
+  print(duration.inMinutes);
+  print(duration.inSeconds);
+  print(duration.inMilliseconds);
+
+  print('-------------------------------------- now 와 specificDay 날짜 차이 비교');
+  print(specificDay);
+
+  final difference = now.difference(specificDay);
+  print(difference);
+  print(difference.inDays);
+  print(difference.inHours);
+  print(difference.inMinutes);
+
+
+
+
+  print('-------------------------------------- 지금으로 부터 특정날짜 전인지 후인지 확인');
+  print(now.isAfter(specificDay));
+  print(now.isBefore(specificDay));
+
+  print('-------------------------------------- 지금으로 부터 10시간 뒤 시간');
+  print(now);
+  print(now.add(const Duration(hours: 10)));
+
+  print('-------------------------------------- 지금으로 부터 10시간 전 시간');
+  print(now);
+  print(now.subtract(const Duration(hours: 10)));
+
+
+
+
+
+
+  print('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환');//쪼개서 suffix 붙이기
+  foo = "123";
+  print(foo.toString().split(""));//[1, 2, 3]
+  print(foo.toString().split("").map((x)=>'${x}_suffix'));//요까지하면 iteralble 일것임. 실험 해보자
+  print(foo.toString().split("").map((x)=>'${x}_suffix').toList());//[1_suffix, 2_suffix, 3_suffix]
+
+  print('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환');//쪼개서 prefix 붙이기
+  foo = "foo.jpg,foo.png,foo.gif";
+  print(foo.toString().split(","));//[foo.jpg,foo.png,foo.gif]
+  print(foo.toString().split("").map((x)=>'prefix_${x}').toList());//[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
+
+
+
 
 }

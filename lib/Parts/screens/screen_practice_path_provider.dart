@@ -5,16 +5,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
-class SampleUsingPathProvider extends StatefulWidget {
-  const SampleUsingPathProvider({super.key, required this.title});
+class ScreenPracticePathProvider extends StatefulWidget {
+  const ScreenPracticePathProvider({super.key, required this.title});
 
   final String title;
 
   @override
-  State<SampleUsingPathProvider> createState() => _SampleUsingPathProviderState();
+  State<ScreenPracticePathProvider> createState() => _ScreenPracticePathProviderState();
 }
 
-class _SampleUsingPathProviderState extends State<SampleUsingPathProvider> {
+class _ScreenPracticePathProviderState extends State<ScreenPracticePathProvider> {
   Future<Directory?>? _tempDirectory;
   Future<Directory?>? _appSupportDirectory;
   Future<Directory?>? _appLibraryDirectory;

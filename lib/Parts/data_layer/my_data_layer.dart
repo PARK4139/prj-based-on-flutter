@@ -6,15 +6,15 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 /*model class & json connection*/
-class ApiHelper{
+class SerializationHelper{
   late final String title;
   late final String thumb;
   late final String id;
 
-  ApiHelper({required Map<String, dynamic> responseBodyModel}){
-    title = responseBodyModel['title'];
-    thumb = responseBodyModel['thumb'];
-    id = responseBodyModel['id'];
+  SerializationHelper({required Map<String, dynamic> model}){
+    title = model['title'];
+    thumb = model['thumb'];
+    id = model['id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -31,33 +31,23 @@ class ApiServiceHelper {
   static const String apiBaseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
   static const String uniqueSuffix = "today";
 
-  static Future<List<ApiHelper>> getTodaysToons() async {
+  static Future<List<SerializationHelper>> getTodaysToons() async {
     final Uri url = Uri.parse('$apiBaseUrl/$uniqueSuffix');
     final Response response = await http.get(url); // 동기처리로 url로 요청을 보내고 response 를 가져와 response 인스턴스에 저장
-    List<ApiHelper> models = [];//initialization null->[]
+    List<SerializationHelper> modelSerialized = [];//initialization null->[]
     /*API RESPONSE TEST*/
     // print(response.statusCode);
     // print(response.body);//response.body 의 data type 은 String 이고  jsonString 을 의미
     if (response.statusCode == 200) {
-      final List<dynamic> responseBodyModels = jsonDecode(response.body);
-      for (var model in responseBodyModels) {  //responseBody 에는 models 가 들어있다.
-        models.add(ApiHelper(responseBodyModel: model));
+      final List<dynamic> responseBody = jsonDecode(response.body);
+      for (var model in responseBody) {  //responseBody 에는 models 가 들어있다.
+        modelSerialized.add(SerializationHelper(model: model));
       }
-      return models;
+      return modelSerialized;
     }
     throw Error();
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -141,7 +131,7 @@ class User {
 }
 
 class CarrotUserCardInfos {
-  final String user_item_img_url;
+  final String user_item_imgUrl;
   final String item_category;
   final String user_location;
   final String user_uploading_time;
@@ -150,7 +140,7 @@ class CarrotUserCardInfos {
   final int chatting_request_count;
 
   CarrotUserCardInfos.fromMap(Map<String, dynamic> map)
-      : user_item_img_url = map['user_item_img_url'],
+      : user_item_imgUrl = map['user_item_imgUrl'],
         item_category = map['item_category'],
         user_location = map['user_location'],
         item_price = map['item_price'],
@@ -159,17 +149,17 @@ class CarrotUserCardInfos {
         chatting_request_count = map['chatting_request_count'];
 
   @override
-  String toString() => "Carrot_user_card_datasets<$user_item_img_url:$item_category>";
+  String toString() => "Carrot_user_card_datasets<$user_item_imgUrl:$item_category>";
 }
 
 class CarrotUserCardForActivityNotificationInfos {
-  final String notification_img_url;
+  final String notification_imgUrl;
   final String notification_description1;
   final String notification_description2;
   final String notification_uploading_time;
 
   CarrotUserCardForActivityNotificationInfos.fromMap(Map<String, dynamic> map)
-      : notification_img_url = map['notification_img_url'],
+      : notification_imgUrl = map['notification_imgUrl'],
         notification_description1 = map['notification_description1'],
         notification_description2 = map['notification_description2'],
         notification_uploading_time = map['notification_uploading_time'];
@@ -185,7 +175,7 @@ class Movie {
   /*PRODUCTION*/
   final String title;
   final String kind;
-  final String img_url;
+  final String imgUrl;
   final bool like;
   // final DocumentReference reference;
 
@@ -193,12 +183,12 @@ class Movie {
   Movie.fromMap(Map<String, dynamic> map)
       : title = map['title'],
         kind = map['kind'],
-        img_url = map['img_url'],
+        imgUrl = map['imgUrl'],
         like = map['like'];
   // Movie.fromMap(Map<String, dynamic> map, {required this.reference})
   //     : title = map['title'],
   //       kind = map['kind'],
-  //       img_url = map['img_url'],
+  //       imgUrl = map['imgUrl'],
   //       like = map['like'];
 
   /*firebase 연동 작업 중*/
@@ -215,49 +205,49 @@ List<Movie> movies_dummy = [
   // Movie.fromMap({
   //   'title': '????',
   //   'kind': '????',
-  //   'img_url': 'assets/app_netflix_movie_poster_1.png',
+  //   'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
   //   'like': false,
   // }),
   Movie.fromMap({
     'title': 'Ozark',
     'kind': '스릴러/공포/판타지',
-    'img_url': 'assets/app_netflix_movie_poster_1.png',
+    'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
     'like': false,
   }),
   Movie.fromMap({
     'title': '사랑의 불시착',
     'kind': '사랑/로맨스/판타지',
-    'img_url': 'assets/app_netflix_movie_poster_1.png',
+    'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
     'like': false,
   }),
   Movie.fromMap({
     'title': '보헤미안 랩소디',
     'kind': '음악/드라마/인물',
-    'img_url': 'assets/app_netflix_movie_poster_1.png',
+    'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
     'like': false,
   }),
   Movie.fromMap({
-    'title': '사랑의 불시착',
+    'title': '안녕, 모니카',
     'kind': '가슴 뭉클/로맨스/코미디/금지된 사랑/정반대 캐릭터',
-    'img_url': 'assets/app_netflix_movie_poster_1.png',
+    'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
     'like': false,
   }),
   Movie.fromMap({
     'title': '포레스트 검프',
     'kind': '드라마/외국',
-    'img_url': 'assets/app_netflix_movie_poster_1.png',
+    'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
     'like': false,
   }),
   Movie.fromMap({
     'title': '쇼생크 탈출',
     'kind': '추리/반전/서스펜스',
-    'img_url': 'assets/app_netflix_movie_poster_1.png',
+    'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
     'like': false,
   }),
   Movie.fromMap({
     'title': '라이언 일병 구하기',
     'kind': '드라마/전쟁/역사',
-    'img_url': 'assets/app_netflix_movie_poster_1.png',
+    'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
     'like': false,
   }),
 ];

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-class SampleScreenLogin extends StatefulWidget {
+import '../helpers/super_worker.dart';
+
+class ScreenPracticeLogin extends StatefulWidget {
+  const ScreenPracticeLogin({super.key});
+
   @override
-  _SampleScreenLoginState createState() => _SampleScreenLoginState();
+  State<ScreenPracticeLogin> createState() =>  _ScreenPracticeLoginState();
+
+
+
 }
 
-class _SampleScreenLoginState extends State<SampleScreenLogin> {
+class _ScreenPracticeLoginState extends State<ScreenPracticeLogin> {
   final formKey = GlobalKey<FormState>();
 
   late String _email;
@@ -49,10 +56,10 @@ class _SampleScreenLoginState extends State<SampleScreenLogin> {
   void validateAndSave() {
     final FormState? form = formKey.currentState;
     if (form!.validate()) {
-      print('Form is valid Email: $_email, password: $_password');
+      printWithoutErrorOrPrintWithError('Form is valid Email: $_email, password: $_password');
       form.save();
     } else {
-      print('Form is invalid Email: $_email, password: $_password');
+      printWithoutErrorOrPrintWithError('Form is invalid Email: $_email, password: $_password');
     }
   }
 }

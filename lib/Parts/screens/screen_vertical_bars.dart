@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenVerticalBarSniffets extends StatefulWidget {
-  const ScreenVerticalBarSniffets({super.key});
+class ScreenPracticeVerticalBar extends StatefulWidget {
+  const ScreenPracticeVerticalBar({super.key});
 
   @override
-  State<ScreenVerticalBarSniffets> createState() => _ScreenVerticalBarSniffetsState();
+  State<ScreenPracticeVerticalBar> createState() => _ScreenPracticeVerticalBarState();
 }
 
-class _ScreenVerticalBarSniffetsState extends State<ScreenVerticalBarSniffets> {
+class _ScreenPracticeVerticalBarState extends State<ScreenPracticeVerticalBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -3,15 +3,15 @@ import 'package:localstorage/localstorage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(SampleToggle());
+  runApp(ToggleMaker());
 }
 
-class SampleToggle extends StatefulWidget {
+class ToggleMaker extends StatefulWidget {
   @override
-  State<SampleToggle> createState() => _SampleToggleState();
+  State<ToggleMaker> createState() => _ToggleMakerState();
 }
 
-class _SampleToggleState extends State<SampleToggle> {
+class _ToggleMakerState extends State<ToggleMaker> {
   final LocalStorage storage = LocalStorage('foo.foo');
   late bool isChecked;
 

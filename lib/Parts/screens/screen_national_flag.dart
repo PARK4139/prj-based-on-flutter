@@ -8,14 +8,14 @@ import '../helpers/threelines_box_maker.dart';
 
 
 
-class ScreenNationalFlag extends StatefulWidget {
-  const ScreenNationalFlag({super.key});
+class ScreenPracticeNationalFlag extends StatefulWidget {
+  const ScreenPracticeNationalFlag({super.key});
 
   @override
-  State<ScreenNationalFlag> createState() => _ScreenNationalFlagState();
+  State<ScreenPracticeNationalFlag> createState() => _ScreenPracticeNationalFlagState();
 }
 
-class _ScreenNationalFlagState extends State<ScreenNationalFlag> {
+class _ScreenPracticeNationalFlagState extends State<ScreenPracticeNationalFlag> {
   late NATION nationMode;
 
   late List<dynamic> items;
@@ -48,14 +48,14 @@ class _ScreenNationalFlagState extends State<ScreenNationalFlag> {
           children: [
             StripedBoxMaker(colors: const [Colors.white], ratioX: 3, ratioY: 4),
              /*태극문양*/Column(
-               children: [ Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 0.3 + 0.3, child: SemiCircleMaker(diameter: 0.01, color: Colors.red)))),
-                 Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 3.15 + 0.3 + 0.3, child: SemiCircleMaker(diameter: 0.01, color: Colors.blue.shade900)))),
-                 Transform.translate(offset: const Offset(-0.31, -1.65), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
+               children: [ Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 0.3 + 0.3, child: SemicircleMaker(diameter: 0.01, color: Colors.red)))),
+                 Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 3.15 + 0.3 + 0.3, child: SemicircleMaker(diameter: 0.01, color: Colors.blue.shade900)))),
+                 Transform.translate(offset: const Offset(-0.31, -1.65), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxMaker(item: StripedBoxMaker(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
                  Transform.translate(offset: const Offset(0.31, -1.25), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.blue.shade900], ratioX: 0.01, ratioY: 0.01)))),
                ],
              ),
              /*건곤감이*/Transform.translate(
-              offset: Offset(0.16, -1.36),
+              offset: const Offset(0.16, -1.36),
               child: Transform.rotate(
                 angle: -0.95,
                 child: Column(
@@ -76,7 +76,7 @@ class _ScreenNationalFlagState extends State<ScreenNationalFlag> {
         item: Column(
           children: [
             StripedBoxMaker(colors: const [Colors.white], ratioX: 3, ratioY: 4),
-            Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
+            Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: CircleBoxMaker(item: StripedBoxMaker(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
           ],
         ),
       ),
@@ -86,7 +86,7 @@ class _ScreenNationalFlagState extends State<ScreenNationalFlag> {
         item: Column(
           children: [
             StripedBoxMaker(colors: const [Colors.green], ratioX: 3, ratioY: 4),
-            Transform.translate(offset: const Offset(-0.3, -1.4), child: Transform.scale(scale: 150, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
+            Transform.translate(offset: const Offset(-0.3, -1.4), child: Transform.scale(scale: 150, child: CircleBoxMaker(item: StripedBoxMaker(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
           ],
         ),
       ),
@@ -119,14 +119,14 @@ class _ScreenNationalFlagState extends State<ScreenNationalFlag> {
   }
 }
 
-enum NATION { POLAND, GERMANY, MONACO, INDONESIA, ITALIA, FRANCE, KOREA, JAPAN, USA, SWEDEN }
+enum NATION { poland, germany, monaco, indonesia, italia, france, korea, japan, usa, sweden }
 
 class ScreenNationalFlagModule extends StatefulWidget {
   late String text;
 
-  late var item;
+  late Widget item;
 
-  ScreenNationalFlagModule({
+  ScreenNationalFlagModule({super.key,
     required this.text,
     required this.item,
   });
@@ -143,7 +143,7 @@ class _ScreenNationalFlagModuleState extends State<ScreenNationalFlagModule> {
       children: [
         IconButton(
           onPressed: () {},
-          icon: Container(
+          icon: SizedBox(
             height: 33,
             width: 44,
             child: Column(

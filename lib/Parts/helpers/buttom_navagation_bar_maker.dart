@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'sample_check_box_local_storage.dart';
+import 'CheckBoxMaker.dart';
 
-///  [NavigationBar] with nested [Navigator] destinations.
-class SampleButtomNavagationBar extends StatefulWidget {
-  const SampleButtomNavagationBar({super.key});
+class ButtomNavagationBarMaker extends StatefulWidget {
+  const ButtomNavagationBarMaker({super.key});
 
   @override
-  State<SampleButtomNavagationBar> createState() => _SampleButtomNavagationBarState();
+  State<ButtomNavagationBarMaker> createState() => _ButtomNavagationBarMakerState();
 }
 
-class _SampleButtomNavagationBarState extends State<SampleButtomNavagationBar> with TickerProviderStateMixin<SampleButtomNavagationBar> {
+class _ButtomNavagationBarMakerState extends State<ButtomNavagationBarMaker> with TickerProviderStateMixin<ButtomNavagationBarMaker> {
   static const List<Destination> destinations = <Destination>[
     Destination(0, 'Teal', Icons.home, Colors.teal),
     Destination(1, 'Cyan', Icons.business, Colors.cyan),
@@ -124,19 +123,7 @@ class RootPage extends StatelessWidget {
 
   final Destination destination;
 
-  Widget _buildDialog(BuildContext context) {
-    return AlertDialog(
-      title: Text('${destination.title} AlertDialog'),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('OK'),
-        ),
-      ],
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +135,7 @@ class RootPage extends StatelessWidget {
       textStyle: headlineSmall,
     );
 
-    return SampleCheckBox();
+    return const CheckBoxMaker();
   }
 }
 

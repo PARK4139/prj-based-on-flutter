@@ -11,6 +11,8 @@ import 'package:webview_flutter_android/webview_flutter_android.dart';
 // Import for iOS features.
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
+import '../helpers/super_worker.dart';
+
 class ScreenPracticeWebview extends StatefulWidget {
   const ScreenPracticeWebview({super.key});
 
@@ -42,21 +44,21 @@ class _ScreenPracticeWebviewState extends State<ScreenPracticeWebview> {
     // #enddocregion platform_features
 
     controller
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setJavaScriptMode(JavaScriptMode.unrestricted) //해당 코드를 사용해야 web view 에서 javascript 를 사용할 수 있다.
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
-            debugPrint('WebView is loading (progress : $progress%)');
+            printWithoutErrorOrPrintWithError('WebView is loading (progress : $progress%)');
           },
           onPageStarted: (String url) {
-            debugPrint('Page started loading: $url');
+            printWithoutErrorOrPrintWithError('Page started loading: $url');
           },
           onPageFinished: (String url) {
-            debugPrint('Page finished loading: $url');
+            printWithoutErrorOrPrintWithError('Page finished loading: $url');
           },
           onWebResourceError: (WebResourceError error) {
-            debugPrint('''
+            printWithoutErrorOrPrintWithError('''
 Page resource error:
   code: ${error.errorCode}
   description: ${error.description}
@@ -66,14 +68,15 @@ Page resource error:
           },
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.startsWith('https://www.youtube.com/')) {
-              debugPrint('blocking navigation to ${request.url}');
+              printWithoutErrorOrPrintWithError('blocking navigation to ${request.url}');
               return NavigationDecision.prevent;
             }
-            debugPrint('allowing navigation to ${request.url}');
+            printWithoutErrorOrPrintWithError('allowing navigation to ${request.url}');
             return NavigationDecision.navigate;
           },
           onUrlChange: (UrlChange change) {
-            debugPrint('url change to ${change.url}');
+
+            printWithoutErrorOrPrintWithError('url change to ${change.url}');
           },
         ),
       )
@@ -375,7 +378,7 @@ class SampleMenu extends StatelessWidget {
   }
 
   Future<void> _onLoadFlutterAssetExample() {
-    return webViewController.loadFlutterAsset('assets/www/index.html');
+    return webViewController.loadFlutterAsset('asset/images/www/index.html');
   }
 
   Future<void> _onLoadHtmlStringExample() {

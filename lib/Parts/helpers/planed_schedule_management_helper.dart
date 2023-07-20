@@ -4,30 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 
 import 'stamp_maker.dart';
-import 'my_superworkers.dart';
+import 'super_worker.dart';
 
 class PlanedScheduleManagementHelper extends StatefulWidget {
   String text;
   late var color;
-  final FontWeight font_weight;
-  final double font_size;
-  final double padding_vertical;
-  final double padding_horizontal;
-  late BorderRadius? border_radius;
-  late Color? background_color;
+  final FontWeight fontWeight;
+  final double fontSize;
+  final double paddingVertical;
+  final double paddingHorizontal;
+  late BorderRadius? borderRadius;
+  late Color? backgroundColor;
 
   List<String> items;
 
-  PlanedScheduleManagementHelper({
+  PlanedScheduleManagementHelper({super.key,
     required this.text,
     required this.items,
     this.color = Colors.white38,
-    this.font_weight = FontWeight.w200,
-    this.font_size = 10,
-    this.padding_vertical = 4,
-    this.padding_horizontal = 4,
-    this.border_radius,
-    this.background_color,
+    this.fontWeight = FontWeight.w200,
+    this.fontSize = 10,
+    this.paddingVertical = 4,
+    this.paddingHorizontal = 4,
+    this.borderRadius,
+    this.backgroundColor,
   });
 
   @override
@@ -39,23 +39,23 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   int ClickCounter = 0;
   late List<String> items;
 
-  var items_snapshot_at_start;
-  var button_title;
+  var itemsSnapshotAtStart;
+  var buttonTitle;
   final LocalStorage storage = LocalStorage('foo.foo');
   late bool isChecked;
 
-  late int items_length;
+  late int itemsLength;
 
   @override
   void initState() {
     super.initState();
-    button_title = widget.text;
+    buttonTitle = widget.text;
 
-    widget.border_radius ??= BorderRadius.circular(5);
-    widget.background_color ??= MyColors.black_background;
+    widget.borderRadius ??= BorderRadius.circular(5);
+    widget.backgroundColor ??= MyColors.blackBackground;
 
     initClickCounter();
-    reload_items();
+    reloadItems();
     initIsChecked();
   }
   //
@@ -69,23 +69,23 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
+        color: widget.backgroundColor,
+        borderRadius: widget.borderRadius,
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
+        horizontal: widget.paddingHorizontal,
+        vertical: widget.paddingVertical,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           /*주제목 버튼*/ TextButton(
               child: Text(
-                widget.text.length <= 60 ? '${widget.text} 0/$items_length' : '${widget.text.substring(0, 60)} 0/$items_length',
+                widget.text.length <= 60 ? '${widget.text} 0/$itemsLength' : '${widget.text.substring(0, 60)} 0/$itemsLength',
                 style: TextStyle(
                   color: widget.color,
-                  fontSize: widget.font_size,
-                  fontWeight: widget.font_weight,
+                  fontSize: widget.fontSize,
+                  fontWeight: widget.fontWeight,
                 ),
               ),
               onPressed: () {
@@ -103,15 +103,15 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
                   builder: (BuildContext context) {
                     return AlertDialog(
                       backgroundColor: Colors.black,
-                      /*제목 버튼*/ title: Text(button_title, style: const TextStyle(color: Colors.blueAccent)),
+                      /*제목 버튼*/ title: Text(buttonTitle, style: const TextStyle(color: Colors.blueAccent)),
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
-                            for (var item in items_snapshot_at_start)
+                            for (var item in itemsSnapshotAtStart)
                               Row(
                                 children: [
-                                  Text('${items_snapshot_at_start.indexOf(item)}', style: const TextStyle(color: Colors.lightGreenAccent)),
-                                  StampMaker(text: item, background_color: MyColors.black_undefined, color: MyColors.white_clear, font_size: 10, font_weight: FontWeight.w200, padding_vertical: 5, padding_horizontal: 4, border_radius: BorderRadius.circular(5)),
+                                  Text('${itemsSnapshotAtStart.indexOf(item)}', style: const TextStyle(color: Colors.lightGreenAccent)),
+                                  StampMaker(text: item, backgroundColor: Colors.black, color: MyColors.whiteClear, fontSize: 9),
                                 ],
                               ),
                           ],
@@ -145,7 +145,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   void add_click_counter() {
     setState(() {
       ClickCounter = ClickCounter + 1;
-      print('ClickCounter:' + ClickCounter.toString());
+      printWithoutErrorOrPrintWithError('ClickCounter:$ClickCounter');
     });
   }
 
@@ -153,10 +153,10 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
     ClickCounter = 0;
   }
 
-  void reload_items() {
+  void reloadItems() {
     items = widget.items;
-    items_length = items.length;
-    items_snapshot_at_start = []..addAll(items);
+    itemsLength = items.length;
+    itemsSnapshotAtStart = [...items];
   }
 
   void onToogleIsChecked() {

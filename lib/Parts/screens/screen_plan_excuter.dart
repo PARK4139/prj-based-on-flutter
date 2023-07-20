@@ -9,14 +9,14 @@ import 'screen_carrot_market_townliving.dart';
 
 // physics: NeverScrollableScrollPhysics(),
 // ,
-class Screen_life_checklist extends StatefulWidget {
-  const Screen_life_checklist({Key? key}) : super(key: key);
+class ScreenLifeChecklist extends StatefulWidget {
+  const ScreenLifeChecklist({Key? key}) : super(key: key);
 
   @override
-  State<Screen_life_checklist> createState() => _Screen_life_checklistState();
+  State<ScreenLifeChecklist> createState() => _ScreenLifeChecklistState();
 }
 
-class _Screen_life_checklistState extends State<Screen_life_checklist> {
+class _ScreenLifeChecklistState extends State<ScreenLifeChecklist> {
   int currentPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysShow;
 
@@ -29,7 +29,7 @@ class _Screen_life_checklistState extends State<Screen_life_checklist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: CarrotMarketFloatingWritingButtonMaker(),
+      floatingActionButton: const CarrotMarketFloatingWritingButtonMaker(),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white,
         onDestinationSelected: (int index) {
@@ -39,7 +39,7 @@ class _Screen_life_checklistState extends State<Screen_life_checklist> {
         },
         selectedIndex: currentPageIndex,
         labelBehavior: labelBehavior,
-        destinations: <Widget>[
+        destinations: const <Widget>[
           NavigationDestination(
             label: '',
             selectedIcon: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.home, size: 18), Text('홈', style: TextStyle(fontSize: 9))]),
@@ -70,27 +70,27 @@ class _Screen_life_checklistState extends State<Screen_life_checklist> {
       body: <Widget>[
         Builder(
           builder: (context) {
-            return ScreenCarrotMarketHome();
+            return const ScreenCarrotMarketHome();
           },
         ),
         Builder(
           builder: (context) {
-            return ScreenCarrotMarketTownLiving();
+            return const ScreenCarrotMarketTownLiving();
           },
         ),
         Builder(
           builder: (context) {
-            return ScreenCarrotMarketArroundMe();
+            return const ScreenCarrotMarketArroundMe();
           },
         ),
         Builder(
           builder: (context) {
-            return ScreenCarrotMarketChatting();
+            return const ScreenCarrotMarketChatting();
           },
         ),
         Builder(
           builder: (context) {
-            return ScreenCarrotMarketMyCarrot();
+            return const ScreenCarrotMarketMyCarrot();
           },
         ),
         // Container(

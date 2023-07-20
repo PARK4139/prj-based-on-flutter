@@ -8,44 +8,33 @@ import 'Parts/screens/screen_to_maintain_edorm.dart';
 import 'Parts/screens/screen_tts.dart';
 import 'main.dart';
 
-class Screen_index_blue extends StatefulWidget {
-  const Screen_index_blue({Key? key}) : super(key: key);
+class ScreenIndexBlue extends StatefulWidget {
+  const ScreenIndexBlue({Key? key}) : super(key: key);
 
   @override
-  State<Screen_index_blue> createState() => _Screen_index_blueState();
+  State<ScreenIndexBlue> createState() => _ScreenIndexBlueState();
 }
 
-class _Screen_index_blueState extends State<Screen_index_blue> {
-  late String requester_date;
-  late String requester_summary;
-  late String requester_ment;
-  late String request_school_name;
-  late String dgist_dorms_type;
-  late String requester_name;
-  late String request_year;
-  late String request_code;
-  late String std_no;
-  late String std_name;
-  late String request_context;
+class _ScreenIndexBlueState extends State<ScreenIndexBlue> {
 
-  late String folder_development;
 
-  late String folder_text_customization;
+  late String folderDevelopment;
 
-  late String folder_dorm_maintennace;
+  late String folderTextCustomization;
 
-  late String folder_pomodoro;
+  late String folderDormMaintennace;
 
-  late String folder_area_calculator;
+  late String folderPomodoro;
 
-  late String folder_checklist;
+  late String folderAreaCalculator;
 
-  late String folder_tts;
+  late String folderChecklist;
 
-  late List<Widget> items_as_folder;
-  late List<Widget> items_as_icon_only;
-  late List<Widget> items_as_text_only;
-  late List<Widget> column_4_items;
+  late String folderTts;
+
+  late List<Widget> itemsAsFolder;
+  late List<Widget> itemsAsIcon;
+  late List<Widget> itemsAsText;
 
   late bool isDevelopingMode;
 
@@ -59,68 +48,68 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
   }
 
   void initFolderNames() {
-    folder_development = 'DEVELOPMENT'.toUpperCase();
-    folder_text_customization = 'text customization'.toUpperCase();
-    folder_dorm_maintennace = 'dorm'.toUpperCase();
-    folder_pomodoro = 'pomodoro'.toUpperCase();
-    folder_area_calculator = 'area calculator'.toUpperCase();
-    folder_tts = 'TTS'.toUpperCase();
-    folder_checklist = 'check list'.toUpperCase();
+    folderDevelopment = 'DEVELOPMENT'.toUpperCase();
+    folderTextCustomization = 'text customization'.toUpperCase();
+    folderDormMaintennace = 'dorm'.toUpperCase();
+    folderPomodoro = 'pomodoro'.toUpperCase();
+    folderAreaCalculator = 'area calculator'.toUpperCase();
+    folderTts = 'TTS'.toUpperCase();
+    folderChecklist = 'check list'.toUpperCase();
   }
 
   @override
   Widget build(BuildContext context) {
     return GridView(
-      children: <Widget>[
-        for (var column_1_item in items_as_folder) column_1_item,
-        for (var column_2_item in items_as_icon_only) column_2_item,
-        for (var column_3_item in items_as_text_only) column_3_item,
-      ],
-      // scrollDirection: Axis.horizontal,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 5,
         crossAxisSpacing: 5,
         mainAxisSpacing: 0,
       ),
+      children: <Widget>[
+        for (var itemOfColumn1 in itemsAsFolder) itemOfColumn1,
+        for (var itemOfColumn2 in itemsAsIcon) itemOfColumn2,
+        for (var itemOfColumn3 in itemsAsText) itemOfColumn3,
+      ],
     );
   }
 
   void initItems() {
     setState(() {
-      items_as_folder = [
+      itemsAsFolder = [
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Screen_plan_excuter()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenPlanExcuter()));
               },
-              icon: Icon(Icons.folder),
-              tooltip: folder_checklist,
+              icon: const Icon(Icons.folder),
+              tooltip: folderChecklist,
               splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(folder_checklist, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600))
+            Text(folderChecklist, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600))
           ],
-          mainAxisAlignment: MainAxisAlignment.center,
         ),
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Screen_area_calculator()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenAreaCalculator()));
               },
-              icon: Icon(Icons.folder),
-              tooltip: folder_area_calculator,
+              icon: const Icon(Icons.folder),
+              tooltip: folderAreaCalculator,
               splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(folder_area_calculator,
+            Text(folderAreaCalculator,
                 style: TextStyle(
                   color: Colors.grey.withOpacity(0.9),
                   fontSize: 10,
@@ -128,7 +117,6 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
                 ),
                 textAlign: TextAlign.center),
           ],
-          mainAxisAlignment: MainAxisAlignment.center,
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -137,112 +125,96 @@ class _Screen_index_blueState extends State<Screen_index_blue> {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenPomodoro()));
               },
-              icon: Icon(Icons.folder),
-              tooltip: folder_pomodoro,
+              icon: const Icon(Icons.folder),
+              tooltip: folderPomodoro,
               splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(folder_pomodoro, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
+            Text(folderPomodoro, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
           ],
         ),
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenDeveloperHelper()));
               },
-              icon: Icon(Icons.folder),
-              tooltip: folder_development,
+              icon: const Icon(Icons.folder),
+              tooltip: folderDevelopment,
               splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(folder_development, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
+            Text(folderDevelopment, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600)),
           ],
-          mainAxisAlignment: MainAxisAlignment.center,
         ),
 
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Screen_to_maintain_dorm()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenToMaintainDorm()));
               },
-              icon: Icon(Icons.folder),
-              tooltip: folder_dorm_maintennace,
+              icon: const Icon(Icons.folder),
+              tooltip: folderDormMaintennace,
               splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(folder_dorm_maintennace, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600))
+            Text(folderDormMaintennace, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600))
           ],
-          mainAxisAlignment: MainAxisAlignment.center,
         ),
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Screen_tts()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenTts()));
               },
-              icon: Icon(Icons.folder),
-              tooltip: folder_tts,
+              icon: const Icon(Icons.folder),
+              tooltip: folderTts,
               splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(folder_tts, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600))
+            Text(folderTts, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600))
           ],
-          mainAxisAlignment: MainAxisAlignment.center,
         ),
         Container(), //PRODUCTION
         Container(), //PRODUCTION
         Container(), //PRODUCTION
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
-        Placeholder(), //DEVELOPMENT
+        const Placeholder(), //DEVELOPMENT
+        const Placeholder(), //DEVELOPMENT
+        const Placeholder(), //DEVELOPMENT
+        const Placeholder(), //DEVELOPMENT OPMENT
       ];
       // Container(),
-      items_as_icon_only = [
-        Placeholder(),
-        Placeholder(),
-        Placeholder(),
-        Placeholder(),
-        Placeholder(),
+      itemsAsIcon = [
+        const Placeholder(),
+        const Placeholder(),
+        const Placeholder(),
+        const Placeholder(),
+        const Placeholder(),
       ];
-      items_as_text_only = [
-        Placeholder(),
-        Placeholder(),
-        Placeholder(),
-        Placeholder(),
-        Placeholder(),
+      itemsAsText = [
+        const Placeholder(),
+        const Placeholder(),
+        const Placeholder(),
+        const Placeholder(),
+        const Placeholder(),
       ];
-      column_4_items = [];
+
     });
   }
 }

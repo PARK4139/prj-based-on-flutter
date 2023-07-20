@@ -1,7 +1,7 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
-import 'my_superworkers.dart';
+import 'super_worker.dart';
 
 
 // typedef operand = void;
@@ -12,13 +12,13 @@ import 'my_superworkers.dart';
 class StampMaker extends StatefulWidget {
   final String text;
   Color? color;
-  final FontWeight font_weight;
-  final double font_size;
-  late Color? background_color;
-  final double padding_vertical;
-  final double padding_horizontal;
-  late BorderRadius? border_radius;
-  late TextAlign? text_align;
+  final FontWeight fontWeight;
+  final double fontSize;
+  late Color? backgroundColor;
+  final double paddingVertical;
+  final double paddingHorizontal;
+  late BorderRadius? borderRadius;
+  late TextAlign? textAlign;
 
   bool doYouWantPopAfterClicking;
 
@@ -27,12 +27,12 @@ class StampMaker extends StatefulWidget {
   StampMaker({
     Key? key,
     required this.text,
-    this.font_size = 10,
-    this.font_weight = FontWeight.w200,
-    this.padding_vertical = 5,
-    this.padding_horizontal = 4,
-    this.border_radius,
-    this.background_color,
+    this.fontSize = 10,
+    this.fontWeight = FontWeight.w200,
+    this.paddingVertical = 0,//5
+    this.paddingHorizontal = 0,//4
+    this.borderRadius,
+    this.backgroundColor,
     this.color,
     // this.myNavigatorPop,
     this.doYouWantPopAfterClicking = false,
@@ -47,17 +47,11 @@ class _StampMakerState extends State<StampMaker> {
   void initState() {
     
     super.initState();
-    if (widget.background_color == null) {
-      widget.background_color = MyColors.black_undefined;
-    }
-    if (widget.color == null) {
-      widget.color = MyColors.white_clear;
-    }
-    if (widget.border_radius == null) {
-      widget.border_radius = BorderRadius.circular(5);
-    }
+    widget.backgroundColor ??= MyColors.blackUndefined;
+    widget.color ??= MyColors.whiteClear;
+    widget.borderRadius ??= BorderRadius.circular(5);
     // widget.text_align = null;
-    widget.text_align = TextAlign.center;
+    widget.textAlign = TextAlign.center;
   }
 
 
@@ -65,12 +59,12 @@ class _StampMakerState extends State<StampMaker> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.background_color,
-        borderRadius: widget.border_radius,
+        color: widget.backgroundColor,
+        borderRadius: widget.borderRadius,
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: widget.padding_horizontal,
-        vertical: widget.padding_vertical,
+        horizontal: widget.paddingHorizontal,
+        vertical: widget.paddingVertical,
       ),
       child: TextButton(
         onPressed: copyToClipboard,
@@ -78,10 +72,10 @@ class _StampMakerState extends State<StampMaker> {
           widget.text,
           style: TextStyle(
             color: widget.color,
-            fontSize: widget.font_size,
-            fontWeight: widget.font_weight,
+            fontSize: widget.fontSize,
+            fontWeight: widget.fontWeight,
           ),
-          textAlign: widget.text_align,
+          textAlign: widget.textAlign,
         ),
       ),
     );
@@ -89,7 +83,7 @@ class _StampMakerState extends State<StampMaker> {
 
   void copyToClipboard() {
     FlutterClipboard.copy(widget.text).then((value) {
-      print('copied : ' + widget.text);
+      printWithoutErrorOrPrintWithError('copied : ${widget.text}');
     });
 
     /*2023 07 07 10 31 StampIntoClipboard :  copy 클릭 시 창닫기 기능 추가 s*/
@@ -97,7 +91,5 @@ class _StampMakerState extends State<StampMaker> {
       Navigator.of(context).pop();
     }
     /*2023 07 07 10 31 StampIntoClipboard :  copy 클릭 시 창닫기 기능 추가 e*/
-
-
   }
 }

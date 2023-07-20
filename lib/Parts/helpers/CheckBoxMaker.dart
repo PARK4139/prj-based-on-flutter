@@ -3,15 +3,17 @@ import 'package:localstorage/localstorage.dart';
 
 void main() {
   /*5*/ WidgetsFlutterBinding.ensureInitialized();
-  runApp(SampleCheckBox());
+  runApp(const CheckBoxMaker());
 }
 
-class SampleCheckBox extends StatefulWidget {
+class CheckBoxMaker extends StatefulWidget {
+  const CheckBoxMaker({super.key});
+
   @override
-  State<SampleCheckBox> createState() => _SampleCheckBoxState();
+  State<CheckBoxMaker> createState() => _CheckBoxMakerState();
 }
 
-class _SampleCheckBoxState extends State<SampleCheckBox> {
+class _CheckBoxMakerState extends State<CheckBoxMaker> {
   /*1*/
   final LocalStorage storage = LocalStorage('foo.foo');
 
@@ -29,7 +31,7 @@ class _SampleCheckBoxState extends State<SampleCheckBox> {
   Widget build(BuildContext context) {
     return Center(
       child: IconButton(
-        icon: isChecked ? Icon(Icons.check_box_outlined, color: Colors.lightBlueAccent) : Icon(Icons.check_box_outline_blank, color: Colors.lightBlueAccent),
+        icon: isChecked ? const Icon(Icons.check_box_outlined, color: Colors.lightBlueAccent) : const Icon(Icons.check_box_outline_blank, color: Colors.lightBlueAccent),
         onPressed: /*4*/ onToogleIsChecked,
       ),
     );
