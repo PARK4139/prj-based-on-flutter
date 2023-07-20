@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_worker.dart';
 
 class ScreenRandomNumber extends StatefulWidget {
   const ScreenRandomNumber({super.key});
@@ -8,6 +11,16 @@ class ScreenRandomNumber extends StatefulWidget {
 }
 
 class _ScreenRandomNumberState extends State<ScreenRandomNumber> {
+  late List<int> threeDigitsRanDomNumbers = [000, 000, 000];
+  List<dynamic> listThatHave3ints = [ Image.asset(''), Image.asset(''), Image.asset(''), ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    initRandomNumbers();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +54,7 @@ class _ScreenRandomNumberState extends State<ScreenRandomNumber> {
                       /*랜덤숫자 생성기*/ const Padding(
                         padding: EdgeInsets.only(left: 8),
                         child: Text("랜덤숫자 생성기", style: TextStyle(color: Colors.white, fontSize: 19 * 2, fontWeight: FontWeight.w500)),
-                      ),
-                      /*설정버튼*/ Padding(
+                      ),                      /*설정버튼*/ Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: InkWell(
                           child: const Icon(Icons.settings, size: 20, color: Colors.red),
@@ -63,14 +75,21 @@ class _ScreenRandomNumberState extends State<ScreenRandomNumber> {
                           height: 180,
                           width: (MediaQuery.of(context).size.width - 30) / 2,
                           decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(0),
                           ),
-                          child: const Column(
+                          child: Column(
                             children: [
-                              Text("data"),
-                              Text("data"),
-                              Text("data"),
+                              // for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/$i.png'),
+                              Row(
+                                children: listThatHave3ints[0],
+                              ),
+                              Row(
+                                children: listThatHave3ints[1],
+                              ),
+                              Row(
+                                children: listThatHave3ints[2],
+                              ),
                             ],
                           ),
                         ),
@@ -93,6 +112,9 @@ class _ScreenRandomNumberState extends State<ScreenRandomNumber> {
                       ),
                     ),
                     onTap: () {
+                      setState(() {
+                        initRandomNumbers();
+                      });
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 1000), content: Text('테스트 스크린이 시현중입니다.')));
                     },
                   ),
@@ -112,5 +134,17 @@ class _ScreenRandomNumberState extends State<ScreenRandomNumber> {
         ],
       ),
     );
+  }
+
+  void initRandomNumbers() {
+    for (int i = 0; i <= 2; i++) {
+      threeDigitsRanDomNumbers[i] = Random().nextInt(1000);
+    }
+
+
+    for (int i = 0; i <= 2; i++) {
+      listThatHave3ints[0] = threeDigitsRanDomNumbers[i].toString().split("").map((e) => Image.asset('asset/images/random_numbers/$e.png', height: 70.0, width: 50.0)).toList();
+    }
+    debugDynamic(listThatHave3ints);
   }
 }

@@ -3,9 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 
-
-import 'main_content_maker.dart';
-import 'stamp_maker.dart';
 import 'super_worker.dart';
 import 'text_shirikable_stamp_maker.dart';
 

@@ -59,7 +59,8 @@ flutter:
   assets:
 #    - asset/images/app_webtoon_logo.jpg
     - asset/images/
-    - asset/images/random_numbers
+    - asset/images/random_numbers/
+
   fonts:
     - family: sunFlower
       fonts:

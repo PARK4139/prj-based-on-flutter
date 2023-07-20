@@ -1,8 +1,8 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
-import 'stamp_maker.dart';
 import 'iterable_structure_maker.dart';
+import 'stamp_maker.dart';
 import 'super_worker.dart';
 
 class MultiCaseMaker extends StatefulWidget {

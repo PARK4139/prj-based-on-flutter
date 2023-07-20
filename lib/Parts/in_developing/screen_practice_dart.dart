@@ -1,8 +1,6 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 
-import '../helpers/super_worker.dart';
-
 class ScreenUndefined0000 extends StatefulWidget {
   const ScreenUndefined0000({super.key});
 
@@ -506,21 +504,36 @@ void main() {
   print(now);
   print(now.subtract(const Duration(hours: 10)));
 
-
-
-
-
-
-  print('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환');//쪼개서 suffix 붙이기
-  foo = "123";
-  print(foo.toString().split(""));//[1, 2, 3]
-  print(foo.toString().split("").map((x)=>'${x}_suffix'));//요까지하면 iteralble 일것임. 실험 해보자
-  print(foo.toString().split("").map((x)=>'${x}_suffix').toList());//[1_suffix, 2_suffix, 3_suffix]
+  print('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환'); //쪼개서 suffix 붙이기
+  print("123");
+  print("123".toString().split("")); //[1, 2, 3]
+  print("123".toString().split("").map((x) => '${x}_suffix')); //요까지하면 iteralble 일것임. 실험 해보자
+  print("123".toString().split("").map((x) => '${x}_suffix').toList()); //[1_suffix, 2_suffix, 3_suffix]
 
   print('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환');//쪼개서 prefix 붙이기
-  foo = "foo.jpg,foo.png,foo.gif";
-  print(foo.toString().split(","));//[foo.jpg,foo.png,foo.gif]
-  print(foo.toString().split("").map((x)=>'prefix_${x}').toList());//[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
+  print("foo.jpg,foo.png,foo.gif");
+  print("foo.jpg,foo.png,foo.gif".toString().split(","));//[foo.jpg,foo.png,foo.gif]
+  print("foo.jpg,foo.png,foo.gif".toString().split("").map((x)=>'prefix_${x}').toList());//[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
+
+  print(123.toString().split("").map((e) => 'asset/images/random_numbers/$e.png').toList());
+
+
+
+
+  /*entries 아주 유용하다 key, value 로 값을 받을 수 있게 해준다.*/
+  print([123,456,789].asMap().entries.toList()[1].key);
+  print([123,456,789].asMap().entries.toList()[1].value);
+
+  /*이건 테스트해보자*/
+  print([123,456,789].asMap().entries.first.key);
+  print([123,456,789].asMap().entries.first.key);
+
+
+  /*인덱스 붙여서 출력*/ //굳이 필요할까 싶긴한데
+  print([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',));
+  print([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',).toList());
+
+
 
 
 

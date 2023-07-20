@@ -4,37 +4,36 @@ import 'package:flutter/services.dart';
 import 'Parts/helpers/circle_box_maker.dart';
 import 'Parts/helpers/rainbow_text_maker.dart';
 import 'Parts/helpers/striped_box_maker.dart';
-import 'Parts/screens/screen_arbor_day.dart';
-import 'Parts/screens/screen_drontal_supply_date.dart';
-import 'Parts/screens/screen_next_parasiticide_supply_date.dart';
+import 'Parts/in_developing/ScreenDiffMonths.dart';
 import 'Parts/in_developing/screen_practice_api_connection2.dart';
-
+import 'Parts/in_developing/screen_practice_ui_components.dart';
 import 'Parts/in_developing/screen_random_number.dart';
-import 'Parts/screens/screen_day_that_we_meet.dart';
-import 'Parts/screens/screen_left_days_by_2024.dart';
-import 'Parts/screens/screen_practice_api_connection.dart';
 import 'Parts/screens/screen_animated_align.dart';
 import 'Parts/screens/screen_animated_position.dart';
+import 'Parts/screens/screen_arbor_day.dart';
 import 'Parts/screens/screen_area_calculator.dart';
 import 'Parts/screens/screen_carrot_market.dart';
+import 'Parts/screens/screen_day_that_we_meet.dart';
 import 'Parts/screens/screen_developer_helper.dart';
 import 'Parts/screens/screen_digital_clock.dart';
 import 'Parts/screens/screen_digital_photo_frame.dart';
+import 'Parts/screens/screen_drontal_supply_date.dart';
 import 'Parts/screens/screen_germany.dart';
 import 'Parts/screens/screen_google.dart';
 import 'Parts/screens/screen_hello_world.dart';
 import 'Parts/screens/screen_jung_hoon_park_profile.dart';
 import 'Parts/screens/screen_lateral_bars.dart';
+import 'Parts/screens/screen_left_days_by_2024.dart';
 import 'Parts/screens/screen_national_flag.dart';
 import 'Parts/screens/screen_netflix.dart';
+import 'Parts/screens/screen_next_parasiticide_supply_date.dart';
 import 'Parts/screens/screen_page_view.dart';
 import 'Parts/screens/screen_pomodoro.dart';
+import 'Parts/screens/screen_practice_api_connection.dart';
 import 'Parts/screens/screen_practice_flutter_life_cycle.dart';
 import 'Parts/screens/screen_practice_row_and_column.dart';
 import 'Parts/screens/screen_practice_webview.dart';
 import 'Parts/screens/screen_splash.dart';
-import 'Parts/in_developing/screen_practice_ui_components.dart';
-
 import 'Parts/screens/screen_vertical_bars.dart';
 import 'Parts/screens/screen_webtoon_v2.dart';
 import 'Parts/screens/screen_weired_my_note.dart';
@@ -51,8 +50,6 @@ class ScreenIndexColorful extends StatefulWidget {
 
 class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
   late List<Widget> itemsAsIconOnly;
-
-
 
   @override
   void initState() {
@@ -156,7 +153,7 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
         txt: '오늘도 웹툰',
         item: Row(children: [
           Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.green], ratioX: 0.01, ratioY: 0.01)))),
-          Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 9, child: RainbowTextMaker(text: '오늘도 웹툰', color: Colors.white,fontSize: 1,fontFamily: 'sunFlower', isRainbowMode: false))),
+          Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 9, child: RainbowTextMaker(text: '오늘도 웹툰', color: Colors.white, fontSize: 1, fontFamily: 'sunFlower', isRainbowMode: false))),
         ]),
         destination: const ScreenWebtoon(),
       ),
@@ -215,7 +212,6 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
           children: [
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.pinkAccent.shade100], ratioX: 0.01, ratioY: 0.01)))),
             Transform.translate(offset: const Offset(17 + 10, -5), child: Transform.scale(scale: 30, child: RainbowTextMaker(text: '❤️‍', color: Colors.pink.shade50, fontSize: 1, isRainbowMode: false))),
-
           ],
         ),
         destination: const ScreenDayThatWeMeet(),
@@ -232,69 +228,64 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
         destination: const ScreenLeftDaysBy2024(),
       ),
 
-
       /*식목일*/ _RefactoringModule202307152217(
         txt: '식목일',
         item: Row(
           children: [
-            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors:  [Colors.green.shade200], ratioX: 0.01, ratioY: 0.01)))),
-            Transform.translate(offset: const Offset(13+13-2, -4), child: Transform.scale(scale: 20, child: RainbowTextMaker(text: '🌲', color: Colors.white, fontSize: 1, isRainbowMode: false))),
-
+            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.green.shade200], ratioX: 0.01, ratioY: 0.01)))),
+            Transform.translate(offset: const Offset(13 + 13 - 2, -4), child: Transform.scale(scale: 20, child: RainbowTextMaker(text: '🌲', color: Colors.white, fontSize: 1, isRainbowMode: false))),
           ],
         ),
         destination: const ScreenArborDay(),
       ),
-
 
       /*넥스가드급여일*/ _RefactoringModule202307152217(
         txt: '넥스가드급여일',
         item: Row(
           children: [
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.brown.shade50], ratioX: 0.01, ratioY: 0.01)))),
-            Transform.translate(offset: const Offset(27-1-1, -6), child: Transform.scale(scale: 25, child: RainbowTextMaker(text: '📆', color: Colors.white, fontSize: 1, isRainbowMode: false))),
-            Transform.translate(offset: const Offset(27-6-3,  16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '넥스가드💊', color: Colors.grey.shade600, fontSize: 1, isRainbowMode: false))),
+            Transform.translate(offset: const Offset(25, -6), child: Transform.scale(scale: 25, child: RainbowTextMaker(text: '📆', color: Colors.white, fontSize: 1, isRainbowMode: false))),
+            Transform.translate(offset: const Offset(27 - 6 - 3, 16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '넥스가드💊', color: Colors.grey.shade600, fontSize: 1, isRainbowMode: false))),
           ],
         ),
         destination: const ScreenNextNexguardSupplyDate(),
       ),
-
-
-
 
       /*드론탈급여일*/ _RefactoringModule202307152217(
         txt: '드론탈급여일',
         item: Row(
           children: [
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.brown.shade50], ratioX: 0.01, ratioY: 0.01)))),
-            Transform.translate(offset: const Offset(27-1-1, -5), child: Transform.scale(scale: 25, child: RainbowTextMaker(text: '📆', color: Colors.white, fontSize: 1, isRainbowMode: false))),
-            Transform.translate(offset: const Offset(27-6-2, 16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '드론탈💊', color: Colors.grey.shade600, fontSize: 1, isRainbowMode: false))),
+            Transform.translate(offset: const Offset(25, -5), child: Transform.scale(scale: 25, child: RainbowTextMaker(text: '📆', color: Colors.white, fontSize: 1, isRainbowMode: false))),
+            Transform.translate(offset: const Offset(27 - 8, 16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '드론탈💊', color: Colors.grey.shade600, fontSize: 1, isRainbowMode: false))),
           ],
         ),
         destination: const ScreenDrontalSupplyDate(),
       ),
 
-
-
+      /*개발자년차*/ _RefactoringModule202307152217(
+        txt: '개발자년차', //추후 근무년수 하나더 만들고   개월수는 1년 미만의 어떤기간을 표현할때로 변경.삭제는 말기
+        item: Row(
+          children: [
+            Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.brown.shade50], ratioX: 0.01, ratioY: 0.01)))),
+            Transform.translate(offset: const Offset(25, -5), child: Transform.scale(scale: 25, child: RainbowTextMaker(text: '📆', color: Colors.white, fontSize: 1, isRainbowMode: false))),
+            Transform.translate(offset: const Offset(27 - 8 -5, 16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '위드비전시스템', color: Colors.grey.shade600, fontSize: 1, isRainbowMode: false))),
+          ],
+        ),
+        destination: ScreenDiffMonths(startingDateTime: DateTime(2022, 10, 26), endingDateTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)),
+      ),
 
       /*난수생성기*/ _RefactoringModule202307152217(
         txt: '난수생성기',
         item: Row(
           children: [
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxMaker(item: StripedBoxMaker(colors: const [Colors.yellow], ratioX: 0.01, ratioY: 0.01)))),
-            Transform.translate(offset: const Offset(27-1, -5), child: Transform.scale(scale: 25, child: RainbowTextMaker(text: '❔', color: Colors.white, fontSize: 1, isRainbowMode: false))),
-            Transform.translate(offset: const Offset(27-6-6, 16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '정수', color: Colors.grey.shade500, fontSize: 1, isRainbowMode: false))),
-
+            Transform.translate(offset: const Offset(27 - 1, -5), child: Transform.scale(scale: 25, child: RainbowTextMaker(text: '❔', color: Colors.white, fontSize: 1, isRainbowMode: false))),
+            Transform.translate(offset: const Offset(27 - 6 - 6, 16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '정수', color: Colors.grey.shade500, fontSize: 1, isRainbowMode: false))),
           ],
         ),
         destination: const ScreenRandomNumber(),
       ),
-
-
-
-
-
-
-
 
       // 🦴  🎀🎁🎂🎉🎊🐶📅📆
       // /*하늘이관리*/ _RefactoringModule202307152217(
@@ -308,9 +299,6 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       //   destination: const ScreenNextParasiticideSupplyDate(),
       // ),
       //
-
-
-
     ];
   }
 }
