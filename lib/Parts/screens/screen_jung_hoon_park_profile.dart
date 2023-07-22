@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../data_layer/my_data_layer.dart';
+import '../helpers/api_helper.dart';
 import '../helpers/super_helper.dart';
 
 
@@ -67,7 +67,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
               offset: const Offset(0, 0),
               child: GestureDetector(
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(  SnackBar(duration: Duration(milliseconds: 2000), content: Text(MyMent.notReadyYet)));
+                  ScaffoldMessenger.of(context).showSnackBar(  SnackBar(duration: Duration(milliseconds: 2000), content: Text(MyMents.notReadyYet)));
                 },
                 child: Center(
                   child: Container(
@@ -94,7 +94,10 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
                 setState(() {
                   toogleIsMainContentClicked();
                   if (isTextBoxButtonFirstClick == false) {
-                    ScaffoldMessenger.of(context).showSnackBar(MySnackBars.greetingSnackBar);
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      duration: Duration(milliseconds: 4000),
+                      content: Text('\n\n오늘도 좋은 하루가 되시길 바래요!\n\n'),
+                    ));
                     isTextBoxButtonFirstClick = true;
                   }
                 });

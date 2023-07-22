@@ -1,7 +1,7 @@
  import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_carrot_market_home_sub_to_notificate_info.dart';
 
-import '../data_layer/my_data_layer.dart';
+import '../helpers/api_helper.dart';
 import '../helpers/super_helper.dart';
 import 'screen_carrot_market_home_sub_to_search.dart';
 import 'screen_carrot_market_home_sub_to_set_category.dart';
@@ -48,7 +48,7 @@ class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
                   padding: const EdgeInsets.fromLTRB(0, 0, 1, 0),
                   child:  InkWell(
                     onTap: (){
-                      ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: Duration(milliseconds: 1000),content: Text(MyMent.notReadyYet)));
+                      ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet)));
                     },
                     child: const Row(
                       children: [

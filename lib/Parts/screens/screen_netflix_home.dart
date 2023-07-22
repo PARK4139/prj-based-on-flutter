@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../data_layer/my_data_layer.dart';
+import '../helpers/api_helper.dart';
 import '../helpers/super_helper.dart';
 import 'screen_netflix_home_sub.dart';
 import 'screen_netflix_util.dart';
@@ -49,13 +49,13 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                   /*넷플릭쓰 로고*/ Container(padding: const EdgeInsets.fromLTRB(0, 7, 0, 7), margin: const EdgeInsets.fromLTRB(0, 0, 0, 0), child: Image.asset('asset/images/app_netflix_logo.png', fit: BoxFit.contain, width: 30)),
                   /*TV 프로그램 버튼*/ InkWell(
                     onTap: () {
-                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMent.notReadyYet))); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet))); // setState(() {
                     },
                     child: Container(padding: const EdgeInsets.fromLTRB(0, 7, 0, 7), margin: const EdgeInsets.fromLTRB(0, 0, 0, 0), child: const Text('TV 프로그램', style: TextStyle(fontSize: 14, color: Colors.white38))),
                   ),
                   /*영화 버튼*/ InkWell(
                     onTap: () {
-                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMent.notReadyYet))); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet))); // setState(() {
                     },
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
@@ -65,7 +65,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                   ),
           /*내가 찜한 콘텐츠*/InkWell(
                     onTap: () {
-                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMent.notReadyYet))); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet))); // setState(() {
                     },
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
@@ -151,7 +151,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                   ),
                   child: InkWell(
                     onTap: () {
-                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMent.notReadyYet))); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet))); // setState(() {
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -169,7 +169,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                   width: 80,
                   child: InkWell(
                     onTap: () {
-                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMent.notReadyYet))); // setState(() {
+                     ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet))); // setState(() {
                     },
                     child: const Column(
                       children: [

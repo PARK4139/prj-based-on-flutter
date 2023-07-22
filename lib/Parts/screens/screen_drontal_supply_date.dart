@@ -34,7 +34,7 @@ class _ScreenDrontalSupplyDateState extends State<ScreenDrontalSupplyDate> {
     futureFeedingPromisedDates = [
       for (int i = 1; i <= 10; i++) DateTime(feedingStartingDate.year, feedingStartingDate.month + i * 3, feedingStartingDate.day),
     ];
-    debugDynamic(   futureFeedingPromisedDates);
+    debugSomething(   futureFeedingPromisedDates);
 
     /*미래에 급여할 날짜 10개 중 가장 근래에 급여할 날짜*/
     futureFeedingPromisedDate = futureFeedingPromisedDates[0];

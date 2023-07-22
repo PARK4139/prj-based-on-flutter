@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'CheckBoxMaker.dart';
+import 'check_box_maker.dart';
 
 class ButtomNavagationBarMaker extends StatefulWidget {
   const ButtomNavagationBarMaker({super.key});

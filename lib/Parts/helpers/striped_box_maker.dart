@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class StripedBoxMaker extends StatefulWidget {
+class StripedBoxHelper extends StatefulWidget {
   int stripeCount;
 
   double ratioY;
@@ -11,7 +11,7 @@ class StripedBoxMaker extends StatefulWidget {
 
   bool isOppositeDirection;
 
-  StripedBoxMaker({super.key,
+  StripedBoxHelper({super.key,
     required this.ratioY,
     required this.ratioX,
     this.stripeCount = 1,
@@ -19,10 +19,10 @@ class StripedBoxMaker extends StatefulWidget {
   });
 
   @override
-  State<StripedBoxMaker> createState() => _StripedBoxMakerState();
+  State<StripedBoxHelper> createState() => _StripedBoxHelperState();
 }
 
-class _StripedBoxMakerState extends State<StripedBoxMaker> {
+class _StripedBoxHelperState extends State<StripedBoxHelper> {
   late int stripeCount;
   late int colorCount;
   late double calibrationValue;

@@ -46,7 +46,7 @@ class WithvedormMaintainanceHelper extends StatefulWidget {
 class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHelper> {
   String itemsToCopy = '-';
   late Map<String, dynamic> stamps;
-  var helper = MySuperworkers();
+  var helper = MySuperHelpers();
   int clickCounter = 0;
   late List<String> items;
 

@@ -23,7 +23,8 @@ echo "__________________________________________________________________________
 ::set commit_ment=넷플리쓰 서치 탭의 서치 바 UI 구현
 ::set commit_ment=const 리펙토링 진행
 ::set commit_ment=리펙토링 일부 진행, README.md 참조
-set commit_ment=랜덤 앱 기능 추가, README.md 참조
+::set commit_ment=랜덤 앱 기능 추가, README.md 참조
+set commit_ment=Videeo Player 앱 UI 추가, README.md 참조
 
 git add *  
 git commit -m "%commit_ment%" 

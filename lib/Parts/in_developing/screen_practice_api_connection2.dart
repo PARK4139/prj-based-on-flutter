@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_netflix_util.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_webtoon_detail.dart';
 
-import '../data_layer/my_data_layer.dart';
+import '../helpers/api_helper.dart';
 
 class ScreenPracticeApiConnection2 extends StatefulWidget {
   const ScreenPracticeApiConnection2({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class ScreenPracticeApiConnection2 extends StatefulWidget {
 }
 
 class _ScreenPracticeApiConnection2State extends State<ScreenPracticeApiConnection2> {
-  Future<List<Webtoon>> webtoons = webtoonApiService.getTodaysToons();
+  Future<List<Webtoon>> webtoons = WebtoonApiService.getTodaysToons();
 
   int _imageSliderCurrentPage = 0;
 

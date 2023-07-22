@@ -30,9 +30,9 @@ class _ScreenPracticeNationalFlagState extends State<ScreenPracticeNationalFlag>
   Widget build(BuildContext context) {
     items = [
       /*POLAND*/
-      ScreenNationalFlagModule(text: 'POLAND', item: StripedBoxMaker(colors: const [Colors.red, Colors.white], ratioX: 3, ratioY: 4, stripeCount: 2, isOppositeDirection: true)),
+      ScreenNationalFlagModule(text: 'POLAND', item: StripedBoxHelper(colors: const [Colors.red, Colors.white], ratioX: 3, ratioY: 4, stripeCount: 2, isOppositeDirection: true)),
       /*인도네시아*/
-      ScreenNationalFlagModule(text: '인도네시아', item: StripedBoxMaker(colors: const [Colors.white, Colors.red], ratioX: 3, ratioY: 4, stripeCount: 2, isOppositeDirection: true)),
+      ScreenNationalFlagModule(text: '인도네시아', item: StripedBoxHelper(colors: const [Colors.white, Colors.red], ratioX: 3, ratioY: 4, stripeCount: 2, isOppositeDirection: true)),
       /*GERMANY*/
       ScreenNationalFlagModule(text: 'GERMANY', item: ThreelinesBoxMaker(colors: const [Colors.black, Colors.red, Colors.yellow], ratioX: 3, ratioY: 4, isOppositeDirection: true)),
       /*오스트리아*/
@@ -46,12 +46,12 @@ class _ScreenPracticeNationalFlagState extends State<ScreenPracticeNationalFlag>
         text: 'KOREA',
         item: Column(
           children: [
-            StripedBoxMaker(colors: const [Colors.white], ratioX: 3, ratioY: 4),
+            StripedBoxHelper(colors: const [Colors.white], ratioX: 3, ratioY: 4),
              /*태극문양*/Column(
                children: [ Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 0.3 + 0.3, child: SemicircleMaker(diameter: 0.01, color: Colors.red)))),
                  Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 3.15 + 0.3 + 0.3, child: SemicircleMaker(diameter: 0.01, color: Colors.blue.shade900)))),
-                 Transform.translate(offset: const Offset(-0.31, -1.65), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxMaker(item: StripedBoxMaker(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
-                 Transform.translate(offset: const Offset(0.31, -1.25), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxMaker(item: StripedBoxMaker(colors: [Colors.blue.shade900], ratioX: 0.01, ratioY: 0.01)))),
+                 Transform.translate(offset: const Offset(-0.31, -1.65), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxHelper(item: StripedBoxHelper(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
+                 Transform.translate(offset: const Offset(0.31, -1.25), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxHelper(item: StripedBoxHelper(colors: [Colors.blue.shade900], ratioX: 0.01, ratioY: 0.01)))),
                ],
              ),
              /*건곤감이*/Transform.translate(
@@ -60,9 +60,9 @@ class _ScreenPracticeNationalFlagState extends State<ScreenPracticeNationalFlag>
                 angle: -0.95,
                 child: Column(
                   children: [
-                    Transform.translate(offset: const Offset(0, -1.3), child: Transform.scale(scale: 15, child: StripedBoxMaker(colors: const [Colors.black], ratioX: 0.008, ratioY: 0.05))),
-                    Transform.translate(offset: const Offset(0, -1.5), child: Transform.scale(scale: 15, child: StripedBoxMaker(colors: const [Colors.black], ratioX: 0.008, ratioY: 0.05))),
-                    Transform.translate(offset: const Offset(0, -1.7), child: Transform.scale(scale: 15, child: StripedBoxMaker(colors: const [Colors.black], ratioX: 0.008, ratioY: 0.05))),
+                    Transform.translate(offset: const Offset(0, -1.3), child: Transform.scale(scale: 15, child: StripedBoxHelper(colors: const [Colors.black], ratioX: 0.008, ratioY: 0.05))),
+                    Transform.translate(offset: const Offset(0, -1.5), child: Transform.scale(scale: 15, child: StripedBoxHelper(colors: const [Colors.black], ratioX: 0.008, ratioY: 0.05))),
+                    Transform.translate(offset: const Offset(0, -1.7), child: Transform.scale(scale: 15, child: StripedBoxHelper(colors: const [Colors.black], ratioX: 0.008, ratioY: 0.05))),
                   ],
                 ),
               ),
@@ -75,8 +75,8 @@ class _ScreenPracticeNationalFlagState extends State<ScreenPracticeNationalFlag>
         text: 'JAPAN',
         item: Column(
           children: [
-            StripedBoxMaker(colors: const [Colors.white], ratioX: 3, ratioY: 4),
-            Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: CircleBoxMaker(item: StripedBoxMaker(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
+            StripedBoxHelper(colors: const [Colors.white], ratioX: 3, ratioY: 4),
+            Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: CircleBoxHelper(item: StripedBoxHelper(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
           ],
         ),
       ),
@@ -85,8 +85,8 @@ class _ScreenPracticeNationalFlagState extends State<ScreenPracticeNationalFlag>
         text: '방글라데시',
         item: Column(
           children: [
-            StripedBoxMaker(colors: const [Colors.green], ratioX: 3, ratioY: 4),
-            Transform.translate(offset: const Offset(-0.3, -1.4), child: Transform.scale(scale: 150, child: CircleBoxMaker(item: StripedBoxMaker(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
+            StripedBoxHelper(colors: const [Colors.green], ratioX: 3, ratioY: 4),
+            Transform.translate(offset: const Offset(-0.3, -1.4), child: Transform.scale(scale: 150, child: CircleBoxHelper(item: StripedBoxHelper(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
           ],
         ),
       ),

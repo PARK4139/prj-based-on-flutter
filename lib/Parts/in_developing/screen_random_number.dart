@@ -57,7 +57,7 @@ class _ScreenRandomNumberState extends State<ScreenRandomNumber> {
       }
       // debugDynamic(choosenRandomNumbers);
     }
-    debugDynamic(choosenRandomNumbers);
+    debugSomething(choosenRandomNumbers);
   }
 }
 

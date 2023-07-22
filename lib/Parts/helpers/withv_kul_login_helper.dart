@@ -38,7 +38,7 @@ class WithvKulLoginHelper extends StatefulWidget {
 class _ButtonMoveToBizmekaDailyReportState extends State<WithvKulLoginHelper> {
   String textToCopy = '';
   late Map<String, dynamic> stamps;
-  var helper = MySuperworkers();
+  var helper = MySuperHelpers();
   int clickCounter = 0;
   late List<String> itemsToCopy;
 

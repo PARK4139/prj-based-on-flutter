@@ -38,7 +38,7 @@ class BizmekaDailyReportSubmitHelper extends StatefulWidget {
 class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmitHelper> {
   String itemsToCopy = '-';
   late Map<String, dynamic> stamps;
-  var helper = MySuperworkers();
+  var helper = MySuperHelpers();
   int clickCounter = 0;
   late List<String> items;
 

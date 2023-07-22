@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CircleBoxMaker extends StatefulWidget {
+class CircleBoxHelper extends StatefulWidget {
   late Widget item;
 
 
-  CircleBoxMaker({super.key, required this.item});
+  CircleBoxHelper({super.key, required this.item});
 
   @override
-  State<CircleBoxMaker> createState() => _StripedBoxMakerState();
+  State<CircleBoxHelper> createState() => _StripedBoxMakerState();
 }
 
-class _StripedBoxMakerState extends State<CircleBoxMaker> {
+class _StripedBoxMakerState extends State<CircleBoxHelper> {
   @override
   Widget build(BuildContext context) {
     return Container(

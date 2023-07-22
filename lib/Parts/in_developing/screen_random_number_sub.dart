@@ -18,7 +18,7 @@ class _ScreenRandomNumberSubState extends State<ScreenRandomNumberSub> {
         child: Container(
           color: Colors.black,
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height-64,
+          height: MediaQuery.of(context).size.height - 64,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -72,13 +72,13 @@ class _ScreenRandomNumberSubState extends State<ScreenRandomNumberSub> {
                   shadowColor: Colors.red,
                 ),
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(  SnackBar(duration: Duration(milliseconds: 1000), content: Text(MyMent.notReadyYet)));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text(MyMents.notReadyYet)));
 
                   /*위젯트리에 상태로 값이 저장이 되도록 추후에 수행*/
                   // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 1000), content: Text('저장 버튼이 눌렸습니다.')));
-
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text(MyMents.notReadyYet)));
                 },
-                child: const Text('저장',style: TextStyle(color: Colors.blueGrey)),
+                child: const Text('저장', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),

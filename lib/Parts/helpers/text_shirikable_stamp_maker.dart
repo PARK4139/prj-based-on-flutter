@@ -44,7 +44,7 @@ class _TextShirikableStampMakerState extends State<TextShirikableStampMaker> {
                 // overflow: TextOverflow.visible,//오버플로우 텍스트를 보이도록 렌더링
                 maxLines: widget.isMainContentClicked ? 3 : 100, //100 줄까지만 보이도록
                 // strutStyle: const StrutStyle(fontSize: 9.0),//이거 어디에 쓰이는지?..
-                text: TextSpan(text: widget.text, style: MyTextStyles.textStyle202307191452),
+                text: TextSpan(text: widget.text, style: MyTextStyles.textStyle20230719),
               ),
             ),
           ],

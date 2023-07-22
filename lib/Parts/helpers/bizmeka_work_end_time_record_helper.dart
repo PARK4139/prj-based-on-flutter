@@ -35,7 +35,7 @@ class BizmekaWorkEndTimeRecordHelper extends StatefulWidget {
 class _BizmekaWorkEndTimeRecordHelperState extends State<BizmekaWorkEndTimeRecordHelper> {
   String itemsToCopy = '-';
   late Map<String, dynamic> stamps;
-  var helper = MySuperworkers();
+  var helper = MySuperHelpers();
   int clickCounter = 0;
   late List<String> items;
 

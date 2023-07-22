@@ -71,7 +71,7 @@ class Webtoon {
    }
 }
 /*api service class & model class connection*/
-class webtoonApiService {
+class WebtoonApiService {
   static const String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
   static const String today = "today";
 
@@ -80,11 +80,11 @@ class webtoonApiService {
     final Response response = await http.get(url); // 동기처리로 url로 요청을 보내고 결과를 받아온다.
     List<Webtoon> webtoons_ = [];//initialization null->[]
     if (response.statusCode == 200) {
-      // print(response.body);  // API RESPONSE TEST
+      print(response.body);  // API RESPONSE TEST
       final List<dynamic> responseBody = jsonDecode(response.body); //decode 'body data from API' as json
       // for (Map<String,dynamic> webtoons in responseBody) {
       for (var webtoons in responseBody) {
-        // print(webtoons); //DEVELOPMENT // DECODED FROM JSON STRING TO ________ TEST
+        print(webtoons); //DEVELOPMENT // DECODED FROM JSON STRING TO ________ TEST
         // final webtoons_ = ModelWebToon.fromJson(webtoons); // response.body 에 있는 data 를 modelWebToon 에 matching
         // print(webtoons_); //DEVELOPMENT // MODEL AND CLASS BINDED TEST
         // print(webtoons_.id); //DEVELOPMENT // MODEL AND CLASS BINDED TEST

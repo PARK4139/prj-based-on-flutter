@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data_layer/my_data_layer.dart';
+import '../helpers/api_helper.dart';
 
 // data fetch for beginners
 class ScreenPracticeApiConnection extends StatefulWidget {
@@ -16,7 +16,7 @@ class _ScreenPracticeApiConnectionState extends State<ScreenPracticeApiConnectio
 
   void initWebToons() async {
     setState(() async {
-      webtoons = await webtoonApiService.getTodaysToons(); //  ApiService.getTodaysToons() 가 async method 이기 때문에 await 를 붙여야 한다
+      webtoons = await WebtoonApiService.getTodaysToons(); //  ApiService.getTodaysToons() 가 async method 이기 때문에 await 를 붙여야 한다
       isLoading = false;
     });
   }

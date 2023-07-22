@@ -4,7 +4,7 @@ import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/toggle_maker.dart';
 
 import '../../main.dart';
 import '../../screen_index_colorful.dart';
-import '../helpers/CheckBoxMaker.dart';
+import '../helpers/check_box_maker.dart';
 import '../helpers/main_content_maker.dart';
 import '../helpers/planed_schedule_management_helper.dart';
 import '../helpers/rainbow_icon_maker.dart';

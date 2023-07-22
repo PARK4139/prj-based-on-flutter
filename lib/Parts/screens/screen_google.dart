@@ -207,7 +207,7 @@ class NavigationControlBar extends StatelessWidget {
           ),
           /*도움말버튼*/ InkWell(
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000), content: Text(MyMent.notReadyYet)));
+              ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000), content: Text(MyMents.notReadyYet)));
             },
             child: const Icon(Icons.question_mark, size: 20),
           )

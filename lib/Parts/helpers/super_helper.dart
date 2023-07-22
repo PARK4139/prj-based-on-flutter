@@ -7,9 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:http/http.dart';
 
-import '../data_layer/my_data_layer.dart';
-
-
+import 'api_helper.dart';
 
 enum Job { paladin, worrior, magitian }
 
@@ -106,47 +104,143 @@ class IterableAlphabetsMaker {
   }
 }
 
-
 void printWithoutErrorOrPrintWithError(var txt) {
-  /*배포 시 내부 주석처리*/
+  /*배포 시 : Don't invoke 'print' in production code. 에러 제거를 위해 내부 주석처리*/
   print(txt.toString());
 }
 
-void debugDynamic(dynamic subjectToAnalize) {
+void debugSomething(dynamic something) {
   /*배포 시 내부 주석처리*/
-  if(subjectToAnalize is String){
-    print("__________________________________________________________________________ debug s");
-    print(subjectToAnalize.toString());
-    print("__________________________________________________________________________ debug e");
-  }
-  if(subjectToAnalize is List<dynamic>){
-    print("__________________________________________________________________________ debug s");
-    for (dynamic item in subjectToAnalize) {
-      print(item.toString());
+  if (something == null) {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug s");
+    printWithoutErrorOrPrintWithError("this is null");
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug e");
+  } else if (something is String) {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug s");
+    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    printWithoutErrorOrPrintWithError(something.toString());
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug e");
+  } else if (something is List<dynamic>) {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug s");
+    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    for (dynamic item in something) {
+      printWithoutErrorOrPrintWithError(item.toString());
     }
-    print("__________________________________________________________________________ debug e");
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug e");
+  } else if (something is int) {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug s");
+    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    printWithoutErrorOrPrintWithError(something.toString());
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug e");
+  } else if (something is Set<dynamic>) {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug s");
+    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    for (dynamic element in something) {
+      printWithoutErrorOrPrintWithError(element);
+    }
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug e");
+    // } else if (something is Map<String, Map<String, dynamic>>) {
+    //   printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug s");
+    //   printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    //   for (var key in something.keys) {
+    //     printWithoutErrorOrPrintWithError("$key: ${something[key]}");
+    //   }
+    //   printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug e");
+  } else if (something is Map<String, dynamic>) {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug s");
+    if (something is Map<String, Map<String, dynamic>>) {
+      printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+      for (var key in something.keys) {
+        printWithoutErrorOrPrintWithError("$key: {");
+        debugSomethingWithoutMent(something[key]);
+        String properIndentation = "";
+        for (int i = 0; i <= key.toString().length + 1; i++) {
+          properIndentation = "$properIndentation ";
+        }
+        printWithoutErrorOrPrintWithError("$properIndentation{");
+      }
+    } else {
+      printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+      for (var key in something.keys) {
+        printWithoutErrorOrPrintWithError("$key: ${something[key]}");
+      }
+    }
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug e");
+  } else {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debugDynamic exception s");
+    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    // for (var key in something.keys) {
+    //   printWithoutErrorOrPrintWithError(key);
+    // }
+    // something.forEach((key, value) {
+    //   printWithoutErrorOrPrintWithError("$key: $value");
+    // });
+    for (var entry in something.entries) {
+      printWithoutErrorOrPrintWithError("$entry.key: $entry.value");
+    }
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debugDynamic exception e");
   }
 }
 
+void debugSomethingWithoutMent(dynamic something) {
+  /*배포 시 성능을 위해 해당메소드 내부 주석처리*/
+  if (something == null) {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug s");
+    printWithoutErrorOrPrintWithError("this is null");
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debug e");
+  } else if (something is String) {
+    printWithoutErrorOrPrintWithError(something.toString());
+  } else if (something is List<dynamic>) {
+    for (dynamic item in something) {
+      printWithoutErrorOrPrintWithError(item.toString());
+    }
+  } else if (something is int) {
+    printWithoutErrorOrPrintWithError(something.toString());
+  } else if (something is Set<dynamic>) {
+    for (dynamic element in something) {
+      printWithoutErrorOrPrintWithError(element);
+    }
+  } else if (something is Map<String, Map<String, dynamic>>) {
+    for (var key in something.keys) {
+      printWithoutErrorOrPrintWithError("$key: ${something[key]}");
+    }
+  } else if (something is Map<String, dynamic>) {
+    if (something is Map<String, Map<String, dynamic>>) {
+      for (var key in something.keys) {
+        printWithoutErrorOrPrintWithError("$key: {");
+        debugSomethingWithoutMent(something[key]);
+        String properIndentation = "";
+        for (int i = 0; i <= key.toString().length + 1; i++) {
+          properIndentation = "$properIndentation ";
+        }
+        printWithoutErrorOrPrintWithError("$properIndentation{");
+      }
+    } else {
+      for (var key in something.keys) {
+        printWithoutErrorOrPrintWithError("        $key: ${something[key]}");
+      }
+    }
+  } else {
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debugDynamic exception s");
+    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    printWithoutErrorOrPrintWithError("__________________________________________________________________________ debugDynamic exception e");
+  }
+}
 
 void printWithMkr({String txt = ''}) {
-  /*배포 시 내부 주석처리*/
-  // print("_____________________________________________________________ $txt mkr");
+  printWithoutErrorOrPrintWithError("_____________________________________________________________ $txt mkr");
 }
 
 void printWithoutMkr({String txt = ''}) {
-  /*배포 시 내부 주석처리*/
-  // print("_____________________________________________________________ $txt ");
+  printWithoutErrorOrPrintWithError("_____________________________________________________________ $txt ");
 }
 
 void printWithS(String txt) {
-  /*배포 시 내부 주석처리*/
-  // print("_____________________________________________________________ $txt s");
+  printWithoutErrorOrPrintWithError("_____________________________________________________________ $txt s");
 }
 
 void printWithE(String txt) {
-  /*배포 시 내부 주석처리*/
-  // print("_____________________________________________________________ $txt e");
+  printWithoutErrorOrPrintWithError("_____________________________________________________________ $txt e");
 }
 
 String textCutter(String text, {int cuttingPosition = 10}) {
@@ -160,13 +254,13 @@ String textCutter(String text, {int cuttingPosition = 10}) {
 }
 
 class MyIcons {
-  static Icon icon_1 = const Icon(Icons.adb, color: Colors.yellowAccent);
-  static Icon icon_2 = const Icon(Icons.check_box, color: Colors.yellowAccent);
-  static Icon icon_3 = const Icon(Icons.checklist_outlined, color: Colors.yellowAccent);
-  static Icon icon_4 = const Icon(Icons.checklist_rtl, color: Colors.yellowAccent);
-  static Icon icon_5 = const Icon(Icons.check, color: Colors.yellowAccent);
-  static Icon icon_6 = const Icon(Icons.fact_check, color: Colors.yellowAccent);
-  static Icon icon_7 = const Icon(Icons.library_add_check_outlined, color: Colors.yellowAccent);
+  static Icon icon_1 = const Icon(Icons.adb, color: Colors.red);
+  static Icon icon_2 = const Icon(Icons.check_box, color: Colors.red);
+  static Icon icon_3 = const Icon(Icons.checklist_outlined, color: Colors.red);
+  static Icon icon_4 = const Icon(Icons.checklist_rtl, color: Colors.red);
+  static Icon icon_5 = const Icon(Icons.check, color: Colors.red);
+  static Icon icon_6 = const Icon(Icons.fact_check, color: Colors.red);
+  static Icon icon_7 = const Icon(Icons.library_add_check_outlined, color: Colors.red);
   static Icon icon_8 = const Icon(Icons.adb);
   static Icon icon_9 = const Icon(Icons.all_inclusive);
   static Icon icon_10 = const Icon(Icons.add_reaction);
@@ -199,83 +293,78 @@ class MyColors {
 }
 
 class MyTextStyles {
+  //추후에 리펙토링을 진행할 수 있을 것 같다. 정렬우선순위=[fontSize,fontWeight,color]
   static TextStyle textStyle1 = const TextStyle(fontSize: 18, color: Colors.lightBlueAccent, fontWeight: FontWeight.w900);
   static TextStyle textStyle2 = const TextStyle(fontSize: 27, color: Colors.white, fontWeight: FontWeight.w900);
   static TextStyle textStyle3 = const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w100);
   static TextStyle textStyle4 = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w100);
   static TextStyle textStyle5 = const TextStyle(fontSize: 18, color: Colors.red, fontWeight: FontWeight.w100);
-  static TextStyle textStyle202307191452 = TextStyle(fontSize: 9, color: Colors.grey.shade600, fontWeight: FontWeight.w500);
+  static TextStyle textStyle20230719 = TextStyle(fontSize: 9, color: Colors.grey.shade600, fontWeight: FontWeight.w500);
+  static TextStyle textStyle20230722_1842 = textStyle1.copyWith(fontWeight: FontWeight.w900); //copyWith()를 사용하여 파라미터를 overwrite 해서 쓸 수있다.
+  static TextStyle textStyle20230722_1841 = const TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w300);
+}
+
+class MySeperators {
+  static Widget withChildLess({double height = 50}) {
+    return SizedBox(height: height);
+  }
+  static Widget withId({required String positionId}) {
+    return  SizedBox(height: 50, child: Text(positionId, style: const TextStyle(color: Colors.grey)));
+  }
 }
 
 class MySnackBars {
   static SnackBar notReadySnackBar = SnackBar(
     duration: const Duration(seconds: 1),
-    content: Text(MyMent.notReadyYet),
+    content: Text(MyMents.notReadyYet),
     action: SnackBarAction(
-      label: '네',
+      label: MyMents.yes,
       onPressed: () {},
     ),
   );
 
-  static SnackBar basicSnackBar() {
+  static SnackBar MySnackBar({required String ment, int seconds=1}) {
     return SnackBar(
-      duration: const Duration(seconds: 1),
-      content: const Text("안녕하세요! 반갑습니다!"),
+      duration: Duration(seconds: seconds),
+      content: Text(ment),
       action: SnackBarAction(
-        label: '네',
+        label: MyMents.yes,
         textColor: Colors.white,
         onPressed: () {},
       ),
     );
   }
 
-  static SnackBar alertSnackBar() {
-    return SnackBar(
-      backgroundColor: Colors.red[400],
-      duration: const Duration(seconds: 1),
-      content: const Text("에러가 발생했습니다"),
-      action: SnackBarAction(
-        label: '네',
-        textColor: Colors.white,
-        onPressed: () {},
-      ),
-    );
-  }
 
-  static SnackBar loadingSnackBar() {
-    return SnackBar(
-      duration: const Duration(seconds: 2),
-      content: Row(
-        children: [
-          const Text("SnackBar 공부 중"),
-          Expanded(child: Container(height: 0)),
-          const CircularProgressIndicator(),
-        ],
-      ),
-    );
-  }
-
-  static SnackBar greetingSnackBar = const SnackBar(
-    duration: Duration(milliseconds: 4000),
-    content: Text('\n\n눌러주셔서 감사합니다.\n오늘도 좋은 하루가 되시길 바랍니다.^^\n\n'),
-  );
+   
+}
+class MyUris {
+  //Uri 여기에 넣자
 }
 
-
-class MyUrls{
-  static String flutterOfficial='https://flutter.dev';
-  static String flutterLibraryOfficial='https://pub.dev';
-  static String myGithub='https://github.com/PARK4139';
-  static String naver='https://www.naver.com';
-  static String google2='https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiguL3Zy5CAAxVKGYgKHWOFDb0QPAgJ';
+class MyUrls {
+  static String flutterOfficial = 'https://flutter.dev';
+  static String flutterLibraryOfficial = 'https://pub.dev';
+  static String myGithub = 'https://github.com/PARK4139';
+  static String naver = 'https://www.naver.com';
+  static String google2 = 'https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiguL3Zy5CAAxVKGYgKHWOFDb0QPAgJ';
   static String google = 'https://www.google.com';
-  static String youtube='https://www.youtube.com/';
-}
-class MyMent {
-  static String notReadyYet='해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!';
+  static String youtube = 'https://www.youtube.com/';
 }
 
-class MySuperworkers {
+class MyMents {
+  static String notReadyYet = '해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!';
+  static String inTesting = '테스트중입니다.';
+  static String informPop = '뒤로가기 되었습니다.';
+  static String sorry='죄송합니다.';
+  static String yes='네';
+  static String no='아니요';
+  static String occuredError="에러가 발생했습니다";
+  static String hello="안녕하세요! 반갑습니다!";
+  static String inLoading({String title="해당기능"}) =>"$title 을(를) 로딩 중입니다";
+}
+
+class MySuperHelpers {
   void pause() {
     exit(0); //이 코드는 앱을 종료하고 시스템으로 돌아갑니다.
     SystemNavigator.pop(); //이 코드는 앱을 백그라운드에서 종료하고 시스템으로 돌아갑니다.
@@ -526,10 +615,10 @@ class MySuperworkers {
     //   "1",
     // ];
 
-    List<String> resultsRemoved = MySuperworkers().getLinesThatRemovedAboutSpecificTexts(origin: textsOrigin, textsThatIWantToContain: textsToRemove);
+    List<String> resultsRemoved = MySuperHelpers().getLinesThatRemovedAboutSpecificTexts(origin: textsOrigin, textsThatIWantToContain: textsToRemove);
     // print(results_removed.toString());//DEVELOPMENT
 
-    List<String> resultsReindented = MySuperworkers().getTextsThatReindetedAtSpecificText(origin: resultsRemoved, specificText: textsToReindent);
+    List<String> resultsReindented = MySuperHelpers().getTextsThatReindetedAtSpecificText(origin: resultsRemoved, specificText: textsToReindent);
     // print(results_reindented.toString()); //DEVELOPMENT
 
     // List<String> results_contained = MyFunctions().get_lines_that_contain_about_specific_texts(origin: results_reindented, texts_that_i_want_to_contain: texts_to_contain);

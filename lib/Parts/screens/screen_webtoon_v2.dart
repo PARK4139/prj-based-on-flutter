@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_netflix_util.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_webtoon_detail.dart';
 
-import '../data_layer/my_data_layer.dart';
+import '../helpers/api_helper.dart';
 
 class ScreenWebtoon extends StatefulWidget {
   const ScreenWebtoon({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class ScreenWebtoon extends StatefulWidget {
 }
 
 class _ScreenWebtoonState extends State<ScreenWebtoon> {
-  Future<List<Webtoon>> webtoons = webtoonApiService.getTodaysToons();
+  Future<List<Webtoon>> webtoons = WebtoonApiService.getTodaysToons();
 
   int _imageSliderCurrentPage = 0;
 
@@ -42,6 +43,12 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
               future: webtoons,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+
+                  for (Webtoon webtoon in snapshot.data!)
+                    {
+                      debugSomething(webtoon);
+                    }
+
                   return CarouselSlider(
                     items: [
                       for (Webtoon webtoon in snapshot.data!)
