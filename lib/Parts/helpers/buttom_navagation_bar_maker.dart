@@ -127,13 +127,13 @@ class RootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle headlineSmall = Theme.of(context).textTheme.headlineSmall!;
-    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-      backgroundColor: destination.color,
-      visualDensity: VisualDensity.comfortable,
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      textStyle: headlineSmall,
-    );
+    // final TextStyle headlineSmall = Theme.of(context).textTheme.headlineSmall!;
+    // final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+    //   backgroundColor: destination.color,
+    //   visualDensity: VisualDensity.comfortable,
+    //   padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+    //   textStyle: headlineSmall,
+    // );
 
     return const CheckBoxMaker();
   }

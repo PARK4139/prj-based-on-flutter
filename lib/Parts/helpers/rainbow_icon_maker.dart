@@ -8,13 +8,14 @@ class RainbowIconMaker extends StatefulWidget {
   final Color? color;
   final FontWeight? fontWeight;
   TextAlign? textAlign;
-  var textDecoration;
-  var textDirection;
-  var fontStyle;
+  TextDirection textDirection;
   final double? iconSize;
-  var iconWeight;
+  double iconWeight;
   bool? isRainbowMode;
   bool? isUpperCaseMode;
+
+  @override
+  State<RainbowIconMaker> createState() => _RainbowIconMakerState();
 
   RainbowIconMaker({
     Key? key,
@@ -25,13 +26,11 @@ class RainbowIconMaker extends StatefulWidget {
     this.isRainbowMode,
     this.isUpperCaseMode = true,
     this.textAlign,
-    this.textDecoration,
-    this.textDirection,
-    this.fontStyle,
+    this.iconWeight=5.0,
+    // this.textDecoration,
+    this.textDirection=TextDirection.ltr,
+    // this.fontStyle,
   }) : super(key: key);
-
-  @override
-  State<RainbowIconMaker> createState() => _RainbowIconMakerState();
 }
 
 class _RainbowIconMakerState extends State<RainbowIconMaker> {
@@ -42,7 +41,7 @@ class _RainbowIconMakerState extends State<RainbowIconMaker> {
   late Timer? timer;
   late bool isUpperCaseMode;
 
-  late int RainbowdimmingMilliSeconds;
+  late int rainbowdimmingMilliSeconds;
 
   // Future<void> changeTextColor (Timer timer) async {
   void changeTextColor(Timer timer) {
@@ -61,12 +60,12 @@ class _RainbowIconMakerState extends State<RainbowIconMaker> {
     // RainbowdimmingMilliSeconds = 1000;
     // RainbowdimmingMilliSeconds = 500;
     // RainbowdimmingMilliSeconds = 250;
-    RainbowdimmingMilliSeconds = 100;
+    rainbowdimmingMilliSeconds = 100;
     if (widget.isRainbowMode == false) {
       timer = null;
 
     } else {
-      timer = Timer.periodic(Duration(milliseconds: RainbowdimmingMilliSeconds), changeTextColor);
+      timer = Timer.periodic(Duration(milliseconds: rainbowdimmingMilliSeconds), changeTextColor);
     }
   }
 
@@ -85,6 +84,7 @@ class _RainbowIconMakerState extends State<RainbowIconMaker> {
       size: widget.iconSize,
       weight: widget.iconWeight,
       textDirection: widget.textDirection,
+
     );
   }
 }

@@ -9,6 +9,7 @@ import 'iterable_structure_maker.dart';
 import 'stamp_maker.dart';
 import 'super_helper.dart';
 
+
 class BizmekaDailyReportSubmitHelper extends StatefulWidget {
   String text;
   final Color color;
@@ -42,16 +43,16 @@ class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmi
   int clickCounter = 0;
   late List<String> items;
 
-  late var itemsIterable;
-  var itemsSnapshotAtStart;
+  late IterableStringListMaker itemsIterable;
+  late List<dynamic> itemsSnapshotAtStart;
 
-  var buttonTitle;
+  late String buttonTitle;
 
   final LocalStorage storage = LocalStorage('foo.foo');
 
   late bool isChecked;
 
-  late var itemsLength;
+  late int itemsLength;
 
   @override
   void initState() {
@@ -213,7 +214,7 @@ class _BizmekaDailyReportSubmitHelperState extends State<BizmekaDailyReportSubmi
 
   void reloadItems() {
     items = [
-      buttonTitle + '[시작]',
+      '$buttonTitle[시작]',
       'https:',
       'pjh*****',
       's2*******s2@',

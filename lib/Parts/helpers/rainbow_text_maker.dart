@@ -8,9 +8,9 @@ class RainbowTextMaker extends StatefulWidget {
   final Color? color;
   final FontWeight? fontWeight;
   TextAlign? textAlign;
-  var textDecoration;
-  var fontFamily;
-  var fontStyle;
+  TextDecoration textDecoration;
+   String fontFamily;
+  FontStyle fontStyle;
   final double? fontSize;
 
   bool? isRainbowMode;
@@ -26,9 +26,9 @@ class RainbowTextMaker extends StatefulWidget {
     this.isUpperCaseMode = false,
     // this.isUpperCaseMode = true,
     this.textAlign,
-    this.textDecoration,
-    this.fontFamily,
-    this.fontStyle,
+    this.textDecoration=TextDecoration.none,
+    this.fontFamily= '',
+    this.fontStyle=FontStyle.normal,
   }) : super(key: key);
 
   @override

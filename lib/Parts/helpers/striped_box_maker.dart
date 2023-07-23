@@ -33,7 +33,7 @@ class _StripedBoxHelperState extends State<StripedBoxHelper> {
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
 
-      var coreWidget;
+      Widget coreWidget;
       colorCount = widget.colors.length;
       stripeCount = widget.stripeCount;
       flagHeight = widget.ratioY;

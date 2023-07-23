@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class __________Helper extends StatefulWidget {
-  const __________Helper({super.key});
-
   @override
   State<__________Helper> createState() => __________HelperState();
+
+  const __________Helper();
 }
 
 class __________HelperState extends State<__________Helper> {
@@ -14,14 +14,12 @@ class __________HelperState extends State<__________Helper> {
       body: Center(
         child: InkWell(
           child: const Row(
-            children:
-            [
+            children: [
               Icon(Icons.question_mark),
               Text("______________________________"),
             ],
           ),
-          onTap: () {
-          },
+          onTap: () {},
         ),
       ),
     );

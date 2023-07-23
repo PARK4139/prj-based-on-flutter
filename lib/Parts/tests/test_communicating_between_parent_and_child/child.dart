@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'parent.dart'; //  (4/4).
 
 class Child extends StatefulWidget {
+  const Child({super.key});
+
   @override
   ChildState createState() => ChildState();
 }
@@ -19,7 +21,7 @@ class ChildState extends State<Child> {
   @override
   Widget build(BuildContext context) {
     parent.getParentFoo(foo: "foo"); //   (1/4).
-    return Placeholder();
+    return const Placeholder();
   }
 }
 

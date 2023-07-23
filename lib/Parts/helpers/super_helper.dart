@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:http/http.dart';
 
 import 'api_helper.dart';
 
@@ -323,7 +322,7 @@ class MySnackBars {
     ),
   );
 
-  static SnackBar MySnackBar({required String ment, int seconds=1}) {
+  static SnackBar mySnackBar({required String ment, int seconds=1}) {
     return SnackBar(
       duration: Duration(seconds: seconds),
       content: Text(ment),
@@ -354,8 +353,8 @@ class MyUrls {
 
 class MyMents {
   static String notReadyYet = '해당 기능은 아직 준비되지 않은 서비스입니다.\n다음에 만나요!';
-  static String inTesting = '테스트중입니다.';
-  static String informPop = '뒤로가기 되었습니다.';
+  static String inTesting = '테스트 중 입니다.';
+  static String inPop = '이전화면으로 이동합니다.';
   static String sorry='죄송합니다.';
   static String yes='네';
   static String no='아니요';
@@ -365,6 +364,8 @@ class MyMents {
 }
 
 class MySuperHelpers {
+  late bool isCounterZero;
+
   void pause() {
     exit(0); //이 코드는 앱을 종료하고 시스템으로 돌아갑니다.
     SystemNavigator.pop(); //이 코드는 앱을 백그라운드에서 종료하고 시스템으로 돌아갑니다.
@@ -400,7 +401,7 @@ class MySuperHelpers {
     printWithoutErrorOrPrintWithError(url_.toString());
 
     // // Download the MP3 file.
-    Response response = await get(url_);
+    // Response response = await get(url_);
 
     // pause();//DEVELOPMENT
 
@@ -530,7 +531,7 @@ class MySuperHelpers {
   }
 
   Future<void> countdown(int couter) async {
-    bool isCounterZero = false;
+    isCounterZero = false;
     while (true) {
       printWithoutErrorOrPrintWithError('$couter 초...');
       sleep(const Duration(seconds: 1));
@@ -655,15 +656,16 @@ class MySuperHelpers {
     // await sessionManager.set("user", new Data_package_user());
 
     //set
-    User user = User(id: 1, name: "박정훈", date_join: "2023-06-05", date_login: "2023-06-05");
-    Map<String, dynamic> json = {
-      //DEVELOPMENT
-      'user': user, //DEVELOPMENT'
-    }; //DEVELOPMENT
+    User user = User(id: "1", name: "박정훈", dateJoin: DateTime(2023,06,05), dateLogin: DateTime(2023,06,05));
+    /*DEVELOPMENT*/
+    // Map<String, dynamic> json = {
+
+    //   'user': user,
+    // };
     await SessionManager().set('user', user);
 
     //set
-    User user2 = User(id: 2, name: "박정훈", date_join: "2023-06-05", date_login: "2023-06-05");
+    User user2 = User(id: "2", name: "박정훈", dateJoin: DateTime(2023,06,05), dateLogin: DateTime(2023,06,05));
     await SessionManager().set('user', user2);
   }
 

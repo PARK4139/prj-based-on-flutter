@@ -16,7 +16,7 @@ class ScreenPracticeApiConnection2 extends StatefulWidget {
 class _ScreenPracticeApiConnection2State extends State<ScreenPracticeApiConnection2> {
   Future<List<Webtoon>> webtoons = WebtoonApiService.getTodaysToons();
 
-  int _imageSliderCurrentPage = 0;
+  int imageSliderCurrentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class _ScreenPracticeApiConnection2State extends State<ScreenPracticeApiConnecti
                     onPageChanged: (index) {
                       setState(
                         () {
-                          _imageSliderCurrentPage = index;
+                          imageSliderCurrentPage = index;
                         },
                       );
                     },

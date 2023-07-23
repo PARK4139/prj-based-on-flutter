@@ -43,10 +43,10 @@ class _BizmekaLoginHelperState extends State<BizmekaLoginHelper> {
   late List<String> items;
 
   // late var naturalNumbers;
-  late var itemsIterable;
-  var itemsSnapshotAtStart;
+  late IterableStringListMaker itemsIterable;
+  late List<dynamic> itemsSnapshotAtStart;
 
-  var buttonTitle;
+  late String  buttonTitle;
 
   /*2*/
   final LocalStorage storage = LocalStorage('foo.foo');
@@ -54,7 +54,7 @@ class _BizmekaLoginHelperState extends State<BizmekaLoginHelper> {
   /*1*/
   late bool isChecked;
 
-  late var itemsLength;
+  late int itemsLength;
 
   @override
   void initState() {

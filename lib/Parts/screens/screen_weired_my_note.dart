@@ -1213,7 +1213,7 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                         '/*빈박스코드샘플*/Container(),',
                         '/*빈박스코드샘플*/PloaceHolder(),',
                       ]),
-                      /*토글버튼*/ ToggleMaker(),
+                      /*토글버튼*/ const ToggleMaker(),
                       /*체크박스*/ const CheckBoxMaker(),
                       /*버튼*/ FloatingActionButton(
                         mini: false,

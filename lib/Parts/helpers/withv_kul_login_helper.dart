@@ -42,7 +42,7 @@ class _ButtonMoveToBizmekaDailyReportState extends State<WithvKulLoginHelper> {
   int clickCounter = 0;
   late List<String> itemsToCopy;
 
-  late var itemsIterable;
+  late IterableStringListMaker itemsIterable;
 
   @override
   void initState() {

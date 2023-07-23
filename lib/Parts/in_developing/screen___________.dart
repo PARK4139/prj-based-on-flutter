@@ -274,7 +274,7 @@ class _Screen___________State extends State<Screen___________> {
                       //   ),
                       // ),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*버튼(토글)*/ ToggleMaker(),
+                      /*버튼(토글)*/ const ToggleMaker(),
                       MySeperators.withId(positionId: "202307221656"),
                       /*체크박스*/ const CheckBoxMaker(),
                       MySeperators.withId(positionId: "202307221656"),
@@ -1077,10 +1077,12 @@ class _Screen___________State extends State<Screen___________> {
 }
 
 class _SnackBarTestButton extends StatefulWidget {
-  const _SnackBarTestButton({super.key});
+
 
   @override
   State<_SnackBarTestButton> createState() => _SnackBarTestButtonState();
+
+  const _SnackBarTestButton();
 }
 
 class _SnackBarTestButtonState extends State<_SnackBarTestButton> {
@@ -1090,9 +1092,9 @@ class _SnackBarTestButtonState extends State<_SnackBarTestButton> {
       child: TextButton(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
-          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.MySnackBar(ment: MyMents.hello));
-          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.MySnackBar(ment: MyMents.occuredError));
-          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.MySnackBar(ment: MyMents.inLoading()));
+          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.mySnackBar(ment: MyMents.hello));
+          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.mySnackBar(ment: MyMents.occuredError));
+          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.mySnackBar(ment: MyMents.inLoading()));
         },
         child: const Text('스낵바'),
       ),

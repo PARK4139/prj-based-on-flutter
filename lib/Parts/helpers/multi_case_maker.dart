@@ -194,11 +194,11 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     return capitalizedCaseMaker(value: result.join(''));
   }
 
-  String case_1_maker({required String value}) {
+  String case1Maker({required String value}) {
     return value;
   }
 
-  String case_2_maker({required String value}) {
+  String case2Maker({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
@@ -208,7 +208,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     return result.join('').replaceFirst("_", "");
   }
 
-  String case_4_maker({required String value}) {
+  String case4Maker({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
@@ -218,7 +218,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     return result.join('').replaceFirst("_", "").replaceAll("__", "_");
   }
 
-  String case_3_maker({required String value}) {
+  String case3Maker({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
@@ -228,7 +228,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
     return capitalizedCaseMaker(value: result.join('').replaceFirst("_", ""));
   }
 
-  String case_5_maker({required String value}) {
+  String case5Maker({required String value}) {
     var result = value.split('');
     for (int i = 0; i < result.length; i++) {
       if (isThisDigitUpperCase(result[i])) {
@@ -240,7 +240,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
 
 
 
-  String case_6_maker({required String value}) {
+  String case6Maker({required String value}) {
     var result = value.split('_');
     for (int i = 0; i < result.length; i++) {
       result[i] = result[i].substring(0, 1).toUpperCase() + result[i].substring(1);
@@ -300,13 +300,13 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
 
   void reloadItems() {
     items = [
-      case_4_maker(value: widget.text.trim()),
+      case4Maker(value: widget.text.trim()),
       calmelCaseMaker(value: widget.text.trim()),
-      case_6_maker(value: widget.text.trim()),
-      case_1_maker(value: widget.text.trim()),
-      case_2_maker(value: widget.text.trim()),
-      case_3_maker(value: widget.text.trim()),
-      case_5_maker(value: widget.text.trim()),
+      case6Maker(value: widget.text.trim()),
+      case1Maker(value: widget.text.trim()),
+      case2Maker(value: widget.text.trim()),
+      case3Maker(value: widget.text.trim()),
+      case5Maker(value: widget.text.trim()),
       snakeCaseMaker(value: widget.text.trim()),
       upperCalmelCaseMaker(value: widget.text.trim()),
       capitalizedCaseMaker(value: widget.text.trim()),

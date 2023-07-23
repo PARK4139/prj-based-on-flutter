@@ -67,7 +67,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
               offset: const Offset(0, 0),
               child: GestureDetector(
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(  SnackBar(duration: Duration(milliseconds: 2000), content: Text(MyMents.notReadyYet)));
+                  ScaffoldMessenger.of(context).showSnackBar(  SnackBar(duration: const Duration(milliseconds: 2000), content: Text(MyMents.notReadyYet)));
                 },
                 child: Center(
                   child: Container(

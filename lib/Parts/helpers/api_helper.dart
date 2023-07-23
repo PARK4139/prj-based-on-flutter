@@ -4,6 +4,7 @@ import 'dart:convert';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 
 /*model class & json connection*/
 class SerializationHelper{
@@ -80,11 +81,11 @@ class WebtoonApiService {
     final Response response = await http.get(url); // 동기처리로 url로 요청을 보내고 결과를 받아온다.
     List<Webtoon> webtoons_ = [];//initialization null->[]
     if (response.statusCode == 200) {
-      print(response.body);  // API RESPONSE TEST
+      printWithoutErrorOrPrintWithError(response.body);  // API RESPONSE TEST
       final List<dynamic> responseBody = jsonDecode(response.body); //decode 'body data from API' as json
       // for (Map<String,dynamic> webtoons in responseBody) {
       for (var webtoons in responseBody) {
-        print(webtoons); //DEVELOPMENT // DECODED FROM JSON STRING TO ________ TEST
+        printWithoutErrorOrPrintWithError(webtoons); //DEVELOPMENT // DECODED FROM JSON STRING TO ________ TEST
         // final webtoons_ = ModelWebToon.fromJson(webtoons); // response.body 에 있는 data 를 modelWebToon 에 matching
         // print(webtoons_); //DEVELOPMENT // MODEL AND CLASS BINDED TEST
         // print(webtoons_.id); //DEVELOPMENT // MODEL AND CLASS BINDED TEST
@@ -99,24 +100,24 @@ class WebtoonApiService {
 }
 
 class User {
-  var id;
-  var name;
-  var date_join;
-  var date_login;
+  String id;
+  String name;
+  DateTime dateJoin;
+  DateTime dateLogin;
 
   User({
     required this.id,
     required this.name,
-    required this.date_join,
-    required this.date_login,
+    required this.dateJoin,
+    required this.dateLogin,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],
       name: json['name'],
-      date_join: json['date_join'],
-      date_login: json['date_login'],
+      dateJoin: json['date_join'],
+      dateLogin: json['date_login'],
     );
   }
 
@@ -124,45 +125,45 @@ class User {
     final Map<String, dynamic> user = <String, dynamic>{};  //빈 맵 초기화 ..?   final 붙였는데 ?... 되나?
     user["id"] = id;
     user["name"] = name;
-    user["date_join"] = date_join;
-    user["date_login"] = date_login;
+    user["date_join"] = dateJoin;
+    user["date_login"] = dateLogin;
     return user;
   }
 }
 
 class CarrotUserCardInfos {
-  final String user_item_imgUrl;
-  final String item_category;
-  final String user_location;
-  final String user_uploading_time;
-  final int item_price;
-  final int heart_count;
-  final int chatting_request_count;
+  final String userItemImgUrl;
+  final String itemCategory;
+  final String userLocation;
+  final String userUploadingTime;
+  final int itemPrice;
+  final int heartCount;
+  final int chattingRequestCount;
 
   CarrotUserCardInfos.fromMap(Map<String, dynamic> map)
-      : user_item_imgUrl = map['user_item_imgUrl'],
-        item_category = map['item_category'],
-        user_location = map['user_location'],
-        item_price = map['item_price'],
-        user_uploading_time = map['user_uploading_time'],
-        heart_count = map['heart_count'],
-        chatting_request_count = map['chatting_request_count'];
+      : userItemImgUrl = map['userItemImgUrl'],
+        itemCategory = map['itemCategory'],
+        userLocation = map['userLocation'],
+        itemPrice = map['itemPrice'],
+        userUploadingTime = map['userUploadingTime'],
+        heartCount = map['heartCount'],
+        chattingRequestCount = map['chattingRequestCount'];
 
   @override
-  String toString() => "Carrot_user_card_datasets<$user_item_imgUrl:$item_category>";
+  String toString() => "CarrotUserCardDatasets<$userItemImgUrl:$itemCategory>";
 }
 
 class CarrotUserCardForActivityNotificationInfos {
-  final String notification_imgUrl;
-  final String notification_description1;
-  final String notification_description2;
-  final String notification_uploading_time;
+  final String notificationImgUrl;
+  final String notificationDescription1;
+  final String notificationDescription2;
+  final String notificationUploadingTime;
 
   CarrotUserCardForActivityNotificationInfos.fromMap(Map<String, dynamic> map)
-      : notification_imgUrl = map['notification_imgUrl'],
-        notification_description1 = map['notification_description1'],
-        notification_description2 = map['notification_description2'],
-        notification_uploading_time = map['notification_uploading_time'];
+      : notificationImgUrl = map['notificationImgUrl'],
+        notificationDescription1 = map['notificationDescription1'],
+        notificationDescription2 = map['notificationDescription2'],
+        notificationUploadingTime = map['notificationUploadingTime'];
 
   @override
   String toString() {
@@ -201,7 +202,7 @@ class Movie {
 }
 
 /*DEVELOPMENT*/
-List<Movie> movies_dummy = [
+List<Movie> moviesDummy = [
   // Movie.fromMap({
   //   'title': '????',
   //   'kind': '????',

@@ -201,7 +201,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
   }
 
   void initMovies() {
-    movies = movies_dummy;
+    movies = moviesDummy;
   }
 
   void initImageSliderCurrentPage() {

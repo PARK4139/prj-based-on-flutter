@@ -48,7 +48,7 @@ class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
                   padding: const EdgeInsets.fromLTRB(0, 0, 1, 0),
                   child:  InkWell(
                     onTap: (){
-                      ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet)));
+                      ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet)));
                     },
                     child: const Row(
                       children: [
@@ -121,13 +121,13 @@ class _UserCardForHomeState extends State<UserCardForHome> {
   // dummy data
   List<CarrotUserCardInfos> carrotUserCardInfos = [
     CarrotUserCardInfos.fromMap({
-      'user_item_imgUrl': 'asset/images/app_carrot_market_logo.png',
-      'item_category': '반려식물',
-      'user_location': '안양시 동안구 석수동',
-      'user_uploading_time': '6분 전',
-      'item_price': 180000,
-      'heart_count': 1,
-      'chatting_request_count': 2,
+      'userItemImgUrl': 'asset/images/app_carrot_market_logo.png',
+      'itemCategory': '반려식물',
+      'userLocation': '안양시 동안구 석수동',
+      'userUploadingTime': '6분 전',
+      'itemPrice': 180000,
+      'heartCount': 1,
+      'chattingRequestCount': 2,
     })
   ];
 
@@ -142,8 +142,8 @@ class _UserCardForHomeState extends State<UserCardForHome> {
             height: 130,
             width: 130,
             child: FadeInImage(
-              // image: NetworkImage(carrot_user_card_infos[0].user_item_imgUrl),//외부 주소로 img 받아 올때
-              image: AssetImage(carrotUserCardInfos[0].user_item_imgUrl),
+              // image: NetworkImage(carrot_user_card_infos[0].userItemImgUrl),//외부 주소로 img 받아 올때
+              image: AssetImage(carrotUserCardInfos[0].userItemImgUrl),
               placeholder: const AssetImage("assets/placeholder.jpg"),
               imageErrorBuilder: (context, error, stackTrace) {
                 return Image.asset('asset/images/error.jpg', fit: BoxFit.fitWidth);
@@ -151,14 +151,14 @@ class _UserCardForHomeState extends State<UserCardForHome> {
               fit: BoxFit.fitWidth,
             ),
           ),
-          // Image.network(carrot_user_card_infos[0].user_item_imgUrl, fit: BoxFit.contain)),
+          // Image.network(carrot_user_card_infos[0].userItemImgUrl, fit: BoxFit.contain)),
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(carrotUserCardInfos[0].item_category, style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w400)),
-              Text('${carrotUserCardInfos[0].user_location} * ${carrotUserCardInfos[0].user_uploading_time}', style: const TextStyle(color: Colors.grey, fontSize: 11, fontWeight: FontWeight.w400)),
-              Text('${carrotUserCardInfos[0].item_price}원', style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w600)),
+              Text(carrotUserCardInfos[0].itemCategory, style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w400)),
+              Text('${carrotUserCardInfos[0].userLocation} * ${carrotUserCardInfos[0].userUploadingTime}', style: const TextStyle(color: Colors.grey, fontSize: 11, fontWeight: FontWeight.w400)),
+              Text('${carrotUserCardInfos[0].itemPrice}원', style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w600)),
               const SizedBox(height: 40),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -166,11 +166,11 @@ class _UserCardForHomeState extends State<UserCardForHome> {
                   const SizedBox(height: 1, width: 200),
                   const Icon(Icons.question_answer_outlined, size: 15, color: Colors.black38),
                   const SizedBox(height: 1, width: 1),
-                  Text(carrotUserCardInfos[0].chatting_request_count.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
+                  Text(carrotUserCardInfos[0].chattingRequestCount.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
                   const SizedBox(height: 2, width: 2),
                   const Icon(Icons.favorite_border, size: 15, color: Colors.black38),
                   const SizedBox(height: 1, width: 1),
-                  Text(carrotUserCardInfos[0].heart_count.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
+                  Text(carrotUserCardInfos[0].heartCount.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
                 ],
               ),
             ],
@@ -192,10 +192,10 @@ class _UserCardForActivityNotificationState extends State<UserCardForActivityNot
   // dummy data
   List<CarrotUserCardForActivityNotificationInfos> cardInfos = [
     CarrotUserCardForActivityNotificationInfos.fromMap({
-      'notification_imgUrl': 'asset/images/app_carrot_market_logo.png',
-      'notification_description1': '♨♨달안동 이웃을 사로잡은 금주의 인기매물,지금 만나보세요!',
-      'notification_description2': '정훈94님께 소중한 나눔으로 환경보호 실천한 사연 전해요.',
-      'notification_uploading_time': '6분 전',
+      'notificationImgUrl': 'asset/images/app_carrot_market_logo.png',
+      'notificationDescription1': '♨♨달안동 이웃을 사로잡은 금주의 인기매물,지금 만나보세요!',
+      'notificationDescription2': '정훈94님께 소중한 나눔으로 환경보호 실천한 사연 전해요.',
+      'notificationUploadingTime': '6분 전',
     })
   ];
 
@@ -210,8 +210,8 @@ class _UserCardForActivityNotificationState extends State<UserCardForActivityNot
             height: 90,
             width: 90,
             child: FadeInImage(
-              // image: NetworkImage(carrot_user_card_infos[0].user_item_imgUrl),//외부 주소로 img 받아 올때
-              image: AssetImage(cardInfos[0].notification_imgUrl),
+              // image: NetworkImage(carrot_user_card_infos[0].userItemImgUrl),//외부 주소로 img 받아 올때
+              image: AssetImage(cardInfos[0].notificationImgUrl),
               placeholder: const AssetImage("assets/placeholder.jpg"),
               imageErrorBuilder: (context, error, stackTrace) {
                 return Image.asset('asset/images/error.jpg', fit: BoxFit.fitWidth);
@@ -222,11 +222,11 @@ class _UserCardForActivityNotificationState extends State<UserCardForActivityNot
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(cardInfos[0].notification_description1, style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w400)),
+              Text(cardInfos[0].notificationDescription1, style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w400)),
               const SizedBox(height: 3),
-              Text(cardInfos[0].notification_description2.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
+              Text(cardInfos[0].notificationDescription2.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
               const SizedBox(height: 3),
-              Text(cardInfos[0].notification_uploading_time.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
+              Text(cardInfos[0].notificationUploadingTime.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
             ],
           ),
         ],

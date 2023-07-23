@@ -28,7 +28,7 @@ class _ScreenNextNexguardSupplyDateState extends State<ScreenNextNexguardSupplyD
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
 
-    final DateTime now = DateTime.now();
+    // final DateTime now = DateTime.now();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,

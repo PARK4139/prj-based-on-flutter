@@ -8,7 +8,7 @@ import 'super_helper.dart';
 
 class PlanedScheduleManagementHelper extends StatefulWidget {
   String text;
-  late var color;
+  late Color color;
   final FontWeight fontWeight;
   final double fontSize;
   final double paddingVertical;
@@ -35,12 +35,12 @@ class PlanedScheduleManagementHelper extends StatefulWidget {
 }
 
 class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagementHelper> {
-  late Map<String, dynamic> Stamps;
-  int ClickCounter = 0;
+  late Map<String, dynamic> stamps;
+  int clickCounter = 0;
   late List<String> items;
 
-  var itemsSnapshotAtStart;
-  var buttonTitle;
+  late List<dynamic> itemsSnapshotAtStart;
+  late String buttonTitle;
   final LocalStorage storage = LocalStorage('foo.foo');
   late bool isChecked;
 
@@ -89,7 +89,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
                 ),
               ),
               onPressed: () {
-                add_click_counter();
+                addClickCounter();
               }),
           SizedBox(
             width: 40,
@@ -142,15 +142,15 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
     );
   }
 
-  void add_click_counter() {
+  void addClickCounter() {
     setState(() {
-      ClickCounter = ClickCounter + 1;
-      printWithoutErrorOrPrintWithError('ClickCounter:$ClickCounter');
+      clickCounter = clickCounter + 1;
+      printWithoutErrorOrPrintWithError('ClickCounter:$clickCounter');
     });
   }
 
   void initClickCounter() {
-    ClickCounter = 0;
+    clickCounter = 0;
   }
 
   void reloadItems() {

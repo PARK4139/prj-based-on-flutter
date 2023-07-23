@@ -17,7 +17,7 @@ class ScreenWebtoon extends StatefulWidget {
 class _ScreenWebtoonState extends State<ScreenWebtoon> {
   Future<List<Webtoon>> webtoons = WebtoonApiService.getTodaysToons();
 
-  int _imageSliderCurrentPage = 0;
+  int imageSliderCurrentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
                     onPageChanged: (index) {
                       setState(
                         () {
-                          _imageSliderCurrentPage = index;
+                          imageSliderCurrentPage = index;
                         },
                       );
                     },

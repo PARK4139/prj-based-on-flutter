@@ -5,7 +5,7 @@ import 'Parts/helpers/circle_box_maker.dart';
 import 'Parts/helpers/rainbow_text_maker.dart';
 import 'Parts/helpers/striped_box_maker.dart';
 import 'Parts/helpers/super_helper.dart';
-import 'Parts/in_developing/ScreenVideoPlayer.dart';
+import 'Parts/in_developing/screen_video_player.dart';
 import 'Parts/in_developing/screen___________.dart';
 import 'Parts/in_developing/screen_diff_months.dart';
 import 'Parts/in_developing/screen_practice_api_connection2.dart';

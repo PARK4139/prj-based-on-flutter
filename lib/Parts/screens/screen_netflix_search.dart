@@ -13,13 +13,13 @@ class _ScreenNetflixSearchState extends State<ScreenNetflixSearch> {
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
-  String _serchText = "";
+  String serchText = "";
 
   _ScreenNetflixSearchState() {
     //상태위젯의 생성자를 이용한 방법
     _searchController.addListener(() {
       setState(() {
-        _serchText = _searchController.text;
+        serchText = _searchController.text;
         printWithoutErrorOrPrintWithError('focusNode.hasFocus:${_focusNode.hasFocus}');
       });
     });
@@ -53,7 +53,7 @@ class _ScreenNetflixSearchState extends State<ScreenNetflixSearch> {
                       onPressed: () {
                         setState(() {
                           _searchController.clear();
-                          _serchText = "";
+                          serchText = "";
                         });
                       }),
                   hintText: '검색',
@@ -81,7 +81,7 @@ class _ScreenNetflixSearchState extends State<ScreenNetflixSearch> {
                       onPressed: () {
                         setState(() {
                           _searchController.clear();
-                          _serchText = "";
+                          serchText = "";
                           _focusNode.unfocus();
                         });
                       },

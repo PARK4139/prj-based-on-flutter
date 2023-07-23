@@ -73,11 +73,18 @@
 ### flutter 앱 랜덤 앱 추가
 - 랜덤버튼을 눌러 4자리 정수를 랜덤으로 생성하는 기능
 
-
-# 작업중(ING)
-- Video Player 앱 추가
+### Video Player 앱 추가
 - Video Player 앱 UI 생성
 - Video Player 앱 관련 비디오 재생 지원 라이브러리 추가.
+- Video Player 앱 관련 이미지 asset 추가.
+- Video Player 앱 관련 font family 추가.
+
+
+# 작업중(ING)
+- Video Player 앱 실행하여 화면 로고를 클릭하여 영상 갤러리 화면으로 전환 후 특정 영상 클릭 시 의도와는 다르게 Video Player 앱 홈화면으로 돌아가는 문제 발견.
+플러그인에 문제가 있을 수 있다는 내용을 알게 되어서, 내용 확인 중.
+
+
 
 
 

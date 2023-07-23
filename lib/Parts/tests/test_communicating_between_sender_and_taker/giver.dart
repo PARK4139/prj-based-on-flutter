@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 class Giver extends StatefulWidget {
   const Giver({super.key});
-
-  @override
-  _GiverState createState() => _GiverState();
+@override
+  State<Giver> createState() =>_GiverState();
 }
 
 class _GiverState extends State<Giver> {
@@ -12,7 +11,7 @@ class _GiverState extends State<Giver> {
 
   @override
   Widget build(BuildContext context) {
-    return Text('The counter is ${_counter}');
+    return Text('The counter is $_counter');
   }
 }
 
@@ -21,7 +20,7 @@ class Taker extends StatefulWidget {
   const Taker({super.key});
 
   @override
-  _TakerState createState() => _TakerState();
+  State<Taker> createState() =>_TakerState();
 }
 
 class _TakerState extends State<Taker> {

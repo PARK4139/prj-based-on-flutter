@@ -65,7 +65,7 @@ class _ScreenRandomNumberState extends State<ScreenRandomNumber> {
 /*Head Section 과 Main section 으로 코드정리*/
 //Head Section 과 Main section 로 코드정리를 수행해 보았는데 이게 가독성이 좋은 건지는 잘 모르겠으나..일단 정리방법은 연습이 되었다..
 class _HeadSection extends StatelessWidget {
-  const _HeadSection({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +84,8 @@ class _HeadSection extends StatelessWidget {
       ),
     );
   }
+
+  const _HeadSection();
 }
 
 class _MainSection extends StatelessWidget {

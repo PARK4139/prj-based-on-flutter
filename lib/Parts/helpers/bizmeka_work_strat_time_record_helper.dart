@@ -42,11 +42,11 @@ class _BizmekaWorkStratTimeRecordHelperState extends State<BizmekaWorkStratTimeR
   int clickCounter = 0;
   late List<String> items;
 
-  // late var naturalNumbers;
-  late var itemsIterable;
-  var itemsSnapshotAtStart;
 
-  var buttonTitle;
+  late IterableStringListMaker itemsIterable;
+  late List<dynamic> itemsSnapshotAtStart;
+
+  late String buttonTitle;
   
   final LocalStorage storage = LocalStorage('foo.foo');
 

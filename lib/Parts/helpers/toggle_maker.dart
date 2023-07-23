@@ -3,10 +3,12 @@ import 'package:localstorage/localstorage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(ToggleMaker());
+  runApp(const ToggleMaker());
 }
 
 class ToggleMaker extends StatefulWidget {
+  const ToggleMaker({super.key});
+
   @override
   State<ToggleMaker> createState() => _ToggleMakerState();
 }

@@ -40,10 +40,10 @@ class _BizmekaWorkEndTimeRecordHelperState extends State<BizmekaWorkEndTimeRecor
   late List<String> items;
 
   // late var naturalNumbers;
-  late var itemsIterable;
-  var itemsSnapshotAtStart;
+  late IterableStringListMaker itemsIterable;
+  late List<dynamic> itemsSnapshotAtStart;
 
-  var buttonTitle;
+  late String buttonTitle;
 
 
 
@@ -54,7 +54,7 @@ class _BizmekaWorkEndTimeRecordHelperState extends State<BizmekaWorkEndTimeRecor
   late bool isChecked;
 
 
-  var itemsLength;
+  late int itemsLength;
 
   @override
   void initState() {
@@ -194,7 +194,7 @@ class _BizmekaWorkEndTimeRecordHelperState extends State<BizmekaWorkEndTimeRecor
     String? hostOperatingEnvironment, //아무래도 언젠가 이게 꼭 필요하지않을까 생각된다
   }) {
     setState(() {
-      // print("itemsIterable.length:"+itemsIterable.length_at_born.toString());//DEVELOPMENT
+
       int i = -1;
       while (true) {
         if (clickCounter == i) {

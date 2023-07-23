@@ -70,7 +70,7 @@ class _ScreenDayThatWeMeetState extends State<ScreenDayThatWeMeet> {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(statusBarIconBrightness: Brightness.dark, statusBarColor: Colors.transparent /*상태바 투명하게*/));
 
-    final DateTime now = DateTime.now();
+    // final DateTime now = DateTime.now();
     return Scaffold(
       body: ListView(
         children: [

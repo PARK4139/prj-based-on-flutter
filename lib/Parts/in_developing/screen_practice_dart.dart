@@ -1,5 +1,6 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 
 class ScreenUndefined0000 extends StatefulWidget {
   const ScreenUndefined0000({super.key});
@@ -63,25 +64,25 @@ class FooFoo {
 
   String? dataTypePrinter(String? foo) {
     if (foo is String) {
-      print('$foo\'s data type : String');
+      printWithoutErrorOrPrintWithError('$foo\'s data type : String');
     } else if (foo is int) {
-      print('$foo\'s data type : int');
+      printWithoutErrorOrPrintWithError('$foo\'s data type : int');
     } else if (foo is double) {
-      print('$foo\'s data type : double');
+      printWithoutErrorOrPrintWithError('$foo\'s data type : double');
     } else if (foo is List<String>) {
-      print('$foo\'s data type : List<String>');
+      printWithoutErrorOrPrintWithError('$foo\'s data type : List<String>');
     } else if (foo is List<int>) {
-      print('$foo\'s data type : List<int>');
+      printWithoutErrorOrPrintWithError('$foo\'s data type : List<int>');
     }
     return foo;
   }
 
   String? think(dynamic foo) {
     if (foo! is! String) {
-      print('$foo\'s data type : String');
+      printWithoutErrorOrPrintWithError('$foo\'s data type : String');
     } else if (foo == null) {
       foo ??= 'it was null'; //foo 가 null 이면 'it was null' 로서 초기화.
-      print('$foo');
+      printWithoutErrorOrPrintWithError('$foo');
     }
     return foo;
   }
@@ -192,34 +193,40 @@ class Coach extends Creature {
 
   @override
   void sleep() {
-    print('caach is sleeping now');
+    printWithoutErrorOrPrintWithError('caach is sleeping now');
   }
 
   @override
   void walk(String placeFrom, String placeTo) {
-    print('caach is walking now from $placeFrom to $placeTo');
+    printWithoutErrorOrPrintWithError('caach is walking now from $placeFrom to $placeTo');
   }
 
   @override
   void eat(String food) {
-    print('caach is eating now');
+    printWithoutErrorOrPrintWithError('caach is eating now');
   }
 }
 
 class Director extends Coach {
+  Director({required super.name});
   //부모 변수 사용
-  //부모 변수에 저장
-  // Director({required super.name});
+  //부모 변수에
   //변수를 선언 초기화하지 않음
+
+
+
 
   //부모 변수 사용 + 내 변수 사용
   //부모 변수에 저장 + 내 변수에도 저장
-  @override
-  String name; //내 변수는 @override 변수로서 선언 // 왜 안될까? 아직모르겠다 누구한테 물어보자.
-  Director({required super.name}) : name = name; //내 변수를 초기화
+  // Director({required super.name}) : name = name; //내 변수를 초기화
+
+
+
+
 
   //부모 함수 사용
   //함수를 선언하지 않음
+
 
   //부모 함수 사용 + 내 함수 사용
   //부모 함수 사용 + overrided 함수 사용
@@ -227,8 +234,10 @@ class Director extends Coach {
   void sleep() {
     // TODO: implement sleep
     super.sleep();
-    print('it is important thing thiat human sleep');
+    printWithoutErrorOrPrintWithError('it is important thing thiat human sleep');
   }
+
+
 }
 
 //collaboration mixin and with
@@ -240,7 +249,7 @@ mixin MagitianDefaultProperties {
 }
 mixin MagitianDefaultMethod {
   void training() {
-    print('in training...');
+    printWithoutErrorOrPrintWithError('in training...');
   }
 }
 
@@ -264,19 +273,19 @@ void main() {
   // ChattingRoomMember player = new ChattingRoomMember(); // flutter 스타일 가이드에서는 에서는 사용 비추천
   dynamic player;
   player = ChattingRoomMember(name: 'pjh4139', lv: 0, xp: 0, mp: 0, hp: 100000, exp: 0, age: 30, address: 'foo', loginAccoundUserId: 'Or가리튜닝', job: '어쌔신', loginAccoundUserPw: '0000', loginOk: 'ok'); // no argument constructor method + instance
-  print(player.getChattingRoomMemberInfo());
-  print(player.toString());
+  printWithoutErrorOrPrintWithError(player.getChattingRoomMemberInfo());
+  printWithoutErrorOrPrintWithError(player.toString());
 
   dynamic director;
   director = Director(name: '박정훈 감독');
   director.sleep();
-  print(director.name);
+  printWithoutErrorOrPrintWithError(director.name);
 
   player = ChattingRoomMemberMixined();
-  print(player.expDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
-  print(player.strongDefault);
-  print(player.intelligenceDefault);
-  print(player.training());
+  printWithoutErrorOrPrintWithError(player.expDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
+  printWithoutErrorOrPrintWithError(player.strongDefault);
+  printWithoutErrorOrPrintWithError(player.intelligenceDefault);
+  printWithoutErrorOrPrintWithError(player.training());
 
   //
   // // typedef : define s
@@ -294,22 +303,22 @@ void main() {
   //
   // operation = add;
   // result = operation(10, 20, 30);
-  // print(result);
+  // printWithoutErrorOrPrintWithError(result);
   //
   //
   // operation = subtract;
   // result = operation(10, 20, 30);
-  // print(result);
+  // printWithoutErrorOrPrintWithError(result);
   //
   //
   // operation = complexCalculate;
   // result = operation(10, 20, 30, add);
-  // print(result);
+  // printWithoutErrorOrPrintWithError(result);
   //
   //
   // operation = complexCalculate;
   // int result = operation(10, 20, 30, subtract);
-  // print(result)
+  // printWithoutErrorOrPrintWithError(result)
   // // typedef : call e
   //
   //
@@ -324,7 +333,7 @@ void main() {
   // //getter(내가 알던 방식)
   // String getChattingRoomFirstMemberName() => this.members[0].name;
   //
-  // print(player.getChattingRoomFirstMemberName());
+  // printWithoutErrorOrPrintWithError(player.getChattingRoomFirstMemberName());
   //
   //
   // //getter(dart 방식?)
@@ -332,7 +341,7 @@ void main() {
   // return this.members[0].name;
   // }
   //
-  // print(player.ChattingRoomFirstMemberName);
+  // printWithoutErrorOrPrintWithError(player.ChattingRoomFirstMemberName);
   //
   //
   // //setter(내가 알던 방식)
@@ -396,13 +405,13 @@ void main() {
   //
   //
   // var me = child('박정훈');
-  // print(me.name);
+  // printWithoutErrorOrPrintWithError(me.name);
   //
   //
-  // print(me is grandParent);
-  // print(me is parent);
-  // print(me is child);
-  // print(me is me);
+  // printWithoutErrorOrPrintWithError(me is grandParent);
+  // printWithoutErrorOrPrintWithError(me is parent);
+  // printWithoutErrorOrPrintWithError(me is child);
+  // printWithoutErrorOrPrintWithError(me is me);
   //
   //
   //
@@ -439,99 +448,99 @@ void main() {
   /*const vs final*/
   // const DateTime now_ = DateTime.now();//const 는 build time 에 초기화되는데 DateTime.now() 는 run time 에 초기화되도록 만들어진 값을 만들어낸다. 따라서 const 를 붙일 수 없다.
   final DateTime now_ = DateTime.now(); //final 는 run time 에 초기화되는 값.
-  print(now_);
+  printWithoutErrorOrPrintWithError(now_);
 
-  print('-------------------------------------- 지금시간을 출력');
+  printWithoutErrorOrPrintWithError('-------------------------------------- 지금시간을 출력');
   DateTime now = DateTime.now();
-  print(now);
+  printWithoutErrorOrPrintWithError(now);
 
-  print('-------------------------------------- 특정시간을 출력');
+  printWithoutErrorOrPrintWithError('-------------------------------------- 특정시간을 출력');
   DateTime specificDay = DateTime(
     2017,
     11,
     23,
   );
 
-  print(specificDay);
+  printWithoutErrorOrPrintWithError(specificDay);
 
-  print('-------------------------------------- 지금시간을 적당하게 출력');
-  print(now);
-  print(now.year);
-  print(now.month);
-  print(now.day);
-  print(now.hour);
-  print(now.minute);
-  print(now.second);
-  print(now.millisecond);
-  print(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
-  print(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
-  print(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
-  print(formatDate(DateTime.now(), [yyyy, ' ', mm, ' ', dd, ' ', HH, ' ', nn, ' ', ss, ' ', SSS]));
-  print(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));
-  print(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss, '.', SSS]));
-  print(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
+  printWithoutErrorOrPrintWithError('-------------------------------------- 지금시간을 적당하게 출력');
+  printWithoutErrorOrPrintWithError(now);
+  printWithoutErrorOrPrintWithError(now.year);
+  printWithoutErrorOrPrintWithError(now.month);
+  printWithoutErrorOrPrintWithError(now.day);
+  printWithoutErrorOrPrintWithError(now.hour);
+  printWithoutErrorOrPrintWithError(now.minute);
+  printWithoutErrorOrPrintWithError(now.second);
+  printWithoutErrorOrPrintWithError(now.millisecond);
+  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
+  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
+  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
+  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, ' ', mm, ' ', dd, ' ', HH, ' ', nn, ' ', ss, ' ', SSS]));
+  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));
+  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss, '.', SSS]));
+  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
 
   Duration duration = const Duration(seconds: 60);
 
-  print(duration);
-  print(duration.inDays);
-  print(duration.inHours);
-  print(duration.inMinutes);
-  print(duration.inSeconds);
-  print(duration.inMilliseconds);
+  printWithoutErrorOrPrintWithError(duration);
+  printWithoutErrorOrPrintWithError(duration.inDays);
+  printWithoutErrorOrPrintWithError(duration.inHours);
+  printWithoutErrorOrPrintWithError(duration.inMinutes);
+  printWithoutErrorOrPrintWithError(duration.inSeconds);
+  printWithoutErrorOrPrintWithError(duration.inMilliseconds);
 
-  print('-------------------------------------- now 와 specificDay 날짜 차이 비교');
-  print(specificDay);
+  printWithoutErrorOrPrintWithError('-------------------------------------- now 와 specificDay 날짜 차이 비교');
+  printWithoutErrorOrPrintWithError(specificDay);
 
   final difference = now.difference(specificDay);
-  print(difference);
-  print(difference.inDays);
-  print(difference.inHours);
-  print(difference.inMinutes);
+  printWithoutErrorOrPrintWithError(difference);
+  printWithoutErrorOrPrintWithError(difference.inDays);
+  printWithoutErrorOrPrintWithError(difference.inHours);
+  printWithoutErrorOrPrintWithError(difference.inMinutes);
 
 
 
 
-  print('-------------------------------------- 지금으로 부터 특정날짜 전인지 후인지 확인');
-  print(now.isAfter(specificDay));
-  print(now.isBefore(specificDay));
+  printWithoutErrorOrPrintWithError('-------------------------------------- 지금으로 부터 특정날짜 전인지 후인지 확인');
+  printWithoutErrorOrPrintWithError(now.isAfter(specificDay));
+  printWithoutErrorOrPrintWithError(now.isBefore(specificDay));
 
-  print('-------------------------------------- 지금으로 부터 10시간 뒤 시간');
-  print(now);
-  print(now.add(const Duration(hours: 10)));
+  printWithoutErrorOrPrintWithError('-------------------------------------- 지금으로 부터 10시간 뒤 시간');
+  printWithoutErrorOrPrintWithError(now);
+  printWithoutErrorOrPrintWithError(now.add(const Duration(hours: 10)));
 
-  print('-------------------------------------- 지금으로 부터 10시간 전 시간');
-  print(now);
-  print(now.subtract(const Duration(hours: 10)));
+  printWithoutErrorOrPrintWithError('-------------------------------------- 지금으로 부터 10시간 전 시간');
+  printWithoutErrorOrPrintWithError(now);
+  printWithoutErrorOrPrintWithError(now.subtract(const Duration(hours: 10)));
 
-  print('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환'); //쪼개서 suffix 붙이기
-  print("123");
-  print("123".toString().split("")); //[1, 2, 3]
-  print("123".toString().split("").map((x) => '${x}_suffix')); //요까지하면 iteralble 일것임. 실험 해보자
-  print("123".toString().split("").map((x) => '${x}_suffix').toList()); //[1_suffix, 2_suffix, 3_suffix]
+  printWithoutErrorOrPrintWithError('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환'); //쪼개서 suffix 붙이기
+  printWithoutErrorOrPrintWithError("123");
+  printWithoutErrorOrPrintWithError("123".toString().split("")); //[1, 2, 3]
+  printWithoutErrorOrPrintWithError("123".toString().split("").map((x) => '${x}_suffix')); //요까지하면 iteralble 일것임. 실험 해보자
+  printWithoutErrorOrPrintWithError("123".toString().split("").map((x) => '${x}_suffix').toList()); //[1_suffix, 2_suffix, 3_suffix]
 
-  print('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환');//쪼개서 prefix 붙이기
-  print("foo.jpg,foo.png,foo.gif");
-  print("foo.jpg,foo.png,foo.gif".toString().split(","));//[foo.jpg,foo.png,foo.gif]
-  print("foo.jpg,foo.png,foo.gif".toString().split("").map((x)=>'prefix_${x}').toList());//[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
+  printWithoutErrorOrPrintWithError('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환');//쪼개서 prefix 붙이기
+  printWithoutErrorOrPrintWithError("foo.jpg,foo.png,foo.gif");
+  printWithoutErrorOrPrintWithError("foo.jpg,foo.png,foo.gif".toString().split(","));//[foo.jpg,foo.png,foo.gif]
+  printWithoutErrorOrPrintWithError("foo.jpg,foo.png,foo.gif".toString().split("").map((x)=>'prefix_$x').toList());//[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
 
-  print(123.toString().split("").map((e) => 'asset/images/random_numbers/$e.png').toList());
+  printWithoutErrorOrPrintWithError(123.toString().split("").map((e) => 'asset/images/random_numbers/$e.png').toList());
 
 
 
 
   /*entries 아주 유용하다 key, value 로 값을 받을 수 있게 해준다.*/
-  print([123,456,789].asMap().entries.toList()[1].key);
-  print([123,456,789].asMap().entries.toList()[1].value);
+  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.toList()[1].key);
+  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.toList()[1].value);
 
   /*이건 테스트해보자*/
-  print([123,456,789].asMap().entries.first.key);
-  print([123,456,789].asMap().entries.first.key);
+  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.first.key);
+  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.first.key);
 
 
   /*인덱스 붙여서 출력*/ //굳이 필요할까 싶긴한데
-  print([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',));
-  print([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',).toList());
+  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',));
+  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',).toList());
 
 
 

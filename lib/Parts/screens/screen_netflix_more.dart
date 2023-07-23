@@ -37,7 +37,7 @@ class _ScreenNetflixMoreState extends State<ScreenNetflixMore> {
   }
 
   void initMovies() {
-    movies = movies_dummy;
+    movies = moviesDummy;
   }
 
   Widget circleMaker({required String imgUrl}) {

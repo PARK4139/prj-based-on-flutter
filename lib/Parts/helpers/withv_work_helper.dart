@@ -50,14 +50,14 @@ class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHel
   int clickCounter = 0;
   late List<String> items;
 
-  late var itemsIterable;
-  var itemsSnapshotAtStart;
+  late IterableStringListMaker itemsIterable;
+  late List<dynamic> itemsSnapshotAtStart;
 
-  var buttonTitle;
+  late String buttonTitle;
 
   var isCheckBoxIconPressed = false;
 
-  late var itemsLength;
+  late int itemsLength;
 
   @override
   void initState() {
@@ -142,7 +142,7 @@ class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHel
 
   void onClickThisButton() {
     setState(() {
-      // print("itemsIterable.length:"+itemsIterable.length_at_born.toString());//DEVELOPMENT
+
       int i = -1;
       while (true) {
         if (clickCounter == i) {

@@ -34,7 +34,7 @@ class _ThreelinesBoxMakerState extends State<ThreelinesBoxMaker> {
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
-      var coreWidget;
+      Widget coreWidget;
       colorCount = widget.colors.length;
       stripeCount = widget.stripeCount;
       flagHeight = widget.ratioY;

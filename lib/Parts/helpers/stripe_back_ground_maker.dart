@@ -24,7 +24,7 @@ class _StripeBackGroundMakerState extends State<StripeBackGroundMaker> {
     setStripeSetting(); //flagHeight 를  MediaQuery.of(context).size.height 로 초기화하니 에러가 나타났다. MediaQuery.of(context).size.height 이 값이 build() 시에 초기화 되는 값이기 때문에 initState() 시에 초기화 하면 아마 null과 같은 유효하지 않은 값인 것 같다. 이를 참조하면 당연
 
     return Builder(builder: (context) {
-      var coreWidget;
+      dynamic coreWidget;
       if (boxMode == MODE.row) {
         colorCount = 2;
         firstColor = Colors.white;

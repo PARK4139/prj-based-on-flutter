@@ -10,7 +10,7 @@ import 'text_shirikable_stamp_maker.dart';
 
 class PlanedScheduleManagementHelper2 extends StatefulWidget {
   String text;
-  late var color;
+  late Color color;
   final FontWeight fontWeight;
   final double fontSize;
   final double paddingVertical;
@@ -37,12 +37,12 @@ class PlanedScheduleManagementHelper2 extends StatefulWidget {
 }
 
 class _PlanedScheduleManagementHelper2State extends State<PlanedScheduleManagementHelper2> {
-  late Map<String, dynamic> Stamps;
-  int ClickCounter = 0;
+  late Map<String, dynamic> stamps;
+  int clickCounter = 0;
   late List<String> items;
 
-  var itemsSnapshotAtStart;
-  var buttonTitle;
+  late List<dynamic> itemsSnapshotAtStart;
+  late String buttonTitle;
   final LocalStorage storage = LocalStorage('foo.foo');
   late bool isChecked;
 
@@ -86,7 +86,7 @@ class _PlanedScheduleManagementHelper2State extends State<PlanedScheduleManageme
                 ),
               ),
               onPressed: () {
-                add_click_counter();
+                addClickCounter();
               }),
           SizedBox(
             child: IconButton(
@@ -138,15 +138,15 @@ class _PlanedScheduleManagementHelper2State extends State<PlanedScheduleManageme
     );
   }
 
-  void add_click_counter() {
+  void addClickCounter() {
     setState(() {
-      ClickCounter = ClickCounter + 1;
-      printWithoutErrorOrPrintWithError('ClickCounter:$ClickCounter');
+      clickCounter = clickCounter + 1;
+      printWithoutErrorOrPrintWithError('ClickCounter:$clickCounter');
     });
   }
 
   void initClickCounter() {
-    ClickCounter = 0;
+    clickCounter = 0;
   }
 
   void reloadItems() {
