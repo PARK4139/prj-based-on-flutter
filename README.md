@@ -14,7 +14,7 @@
 
 
 
-# 작업완료(DONE) 2023 07 20 12:29:03 까지 작업완료사항
+# 작업완료(DONE) 2023 07 24 00:10 까지 작업완료사항
 ###  Don't invoke 'print' in production code. 에 대한 리펙토링 
 - print() 호출 되는 부분 일괄 printWithoutErrorOrPrintWithError() 로 변경
 - printWithoutErrorOrPrintWithError()는 IDE 에서 제공하는 Don't invoke 'print' in production code. 에 대한 에러를 한번에 처리하기 위해서 만듬.
