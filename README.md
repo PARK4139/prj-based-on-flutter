@@ -83,7 +83,7 @@
 # 작업중(ING)
 - Video Player 앱 실행하여 화면 로고를 클릭하여 영상 갤러리 화면으로 전환 후 특정 영상 클릭 시 의도와는 다르게 Video Player 앱 홈화면으로 돌아가는 문제 발견.
 플러그인에 문제가 있을 수 있다는 내용을 알게 되어서, 내용 확인 중.
-
+- 오늘도 웹툰 디버깅. Class Future<List<Webtoon>> has no instance getter entries. 에러 디버깅. iteralble 을 print() 코드 추가를 해서 생긴 문제 의심스러운 부분을 주석으로 처리하여 디버깅 하여 정상작동확인.
 
 
 

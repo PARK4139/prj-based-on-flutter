@@ -15,7 +15,7 @@ class ScreenWebtoon extends StatefulWidget {
 }
 
 class _ScreenWebtoonState extends State<ScreenWebtoon> {
-  Future<List<Webtoon>> webtoons = WebtoonApiService.getTodaysToons();
+  late Future<List<Webtoon>> webtoons = WebtoonApiService.getTodaysToons();
 
   int imageSliderCurrentPage = 0;
 
@@ -26,11 +26,11 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
         elevation: 1,
         title: const Center(
             child: Row(
-          children: [
-            SizedBox(width: 85),
-            Text("오늘도 웹툰", style: TextStyle(color: Colors.green, fontSize: 16)),
-          ],
-        )),
+              children: [
+                SizedBox(width: 85),
+                Text("오늘도 웹툰", style: TextStyle(color: Colors.green, fontSize: 16)),
+              ],
+            )),
         backgroundColor: Colors.white,
         foregroundColor: Colors.green,
       ),
@@ -42,13 +42,10 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
             child: FutureBuilder(
               future: webtoons,
               builder: (context, snapshot) {
+
+
+
                 if (snapshot.hasData) {
-
-                  for (Webtoon webtoon in snapshot.data!)
-                    {
-                      debugSomething(webtoon);
-                    }
-
                   return CarouselSlider(
                     items: [
                       for (Webtoon webtoon in snapshot.data!)
@@ -62,7 +59,7 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
                                 offset: const Offset(0, 50),
                                 child: Transform.scale(
                                   scale: 1.7,
-                                  // child: Container(height: 30 * 4, width: 30 * 3, child: Image.network(webtoon.thumb, fit: BoxFit.fitWidth)),
+                                  // child: SizedBox(height: 30 * 4, width: 30 * 3, child: Image.network(webtoon.thumb, fit: BoxFit.fitWidth)),
                                   child: SizedBox(height: 30 * 4, width: 30 * 3, child: Image.asset('asset/images/app_webtoon_logo.jpg')),
                                 ),
                               ),
@@ -83,7 +80,7 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
                     aspectRatio: 16 / 9,
                     onPageChanged: (index) {
                       setState(
-                        () {
+                            () {
                           imageSliderCurrentPage = index;
                         },
                       );
@@ -101,3 +98,4 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
     );
   }
 }
+

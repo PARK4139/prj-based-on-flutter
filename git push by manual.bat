@@ -25,7 +25,8 @@ echo "__________________________________________________________________________
 ::set commit_ment=리펙토링 일부 진행, README.md 참조
 ::set commit_ment=랜덤 앱 기능 추가, README.md 참조
 ::set commit_ment=Video Player 앱 UI 추가, README.md 참조
-set commit_ment=Video Player 앱 플러그인 문제 발견 및 해결 시도 중, README.md 참조
+::set commit_ment=Video Player 앱 플러그인 문제 발견 및 해결 시도 중, README.md 참조
+set commit_ment=오늘도 웹툰 문제 발견/디버깅/문제해결완료 , README.md 참조
 
 git add *  
 git commit -m "%commit_ment%" 

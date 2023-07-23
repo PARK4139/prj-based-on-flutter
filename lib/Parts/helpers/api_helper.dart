@@ -29,8 +29,8 @@ class SerializationHelper{
 
 /*api service class & model class connection*/
 class ApiServiceHelper {
-  static const String apiBaseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
-  static const String uniqueSuffix = "today";
+   static const String apiBaseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
+   static const String uniqueSuffix = "today";
 
   static Future<List<SerializationHelper>> getTodaysToons() async {
     final Uri url = Uri.parse('$apiBaseUrl/$uniqueSuffix');
@@ -64,7 +64,7 @@ class Webtoon {
         id = webtoons['id'];
 
    Map<String, dynamic> toJson() {
-     final Map<String, dynamic> user = <String, dynamic>{};  //빈 맵 초기화 ..?   final 붙였는데 ?... 되나?
+     final Map<String, dynamic> user = <String, dynamic>{};
      user["id"] = id;
      user["title"] = title;
      user["thumb"] = thumb;
@@ -79,20 +79,15 @@ class WebtoonApiService {
   static Future<List<Webtoon>> getTodaysToons() async {
     final Uri url = Uri.parse('$baseUrl/$today');
     final Response response = await http.get(url); // 동기처리로 url로 요청을 보내고 결과를 받아온다.
-    List<Webtoon> webtoons_ = [];//initialization null->[]
+    List<Webtoon> webtoons_ = [];
     if (response.statusCode == 200) {
-      printWithoutErrorOrPrintWithError(response.body);  // API RESPONSE TEST
+      // debugSomething(response.body);
       final List<dynamic> responseBody = jsonDecode(response.body); //decode 'body data from API' as json
-      // for (Map<String,dynamic> webtoons in responseBody) {
-      for (var webtoons in responseBody) {
-        printWithoutErrorOrPrintWithError(webtoons); //DEVELOPMENT // DECODED FROM JSON STRING TO ________ TEST
-        // final webtoons_ = ModelWebToon.fromJson(webtoons); // response.body 에 있는 data 를 modelWebToon 에 matching
-        // print(webtoons_); //DEVELOPMENT // MODEL AND CLASS BINDED TEST
-        // print(webtoons_.id); //DEVELOPMENT // MODEL AND CLASS BINDED TEST
-        // print(webtoons_.title); //DEVELOPMENT // MODEL AND CLASS BINDED TEST
-        // print(webtoons_.thumb); //DEVELOPMENT // MODEL AND CLASS BINDED TEST
-        webtoons_.add(Webtoon.fromJson(webtoons)); //이거 맞나?  responsebody 가 webtoons 를 의미하고 webtoons 에서 webtoon 을 가져오는 거 아니고? 나중에 테스트 해보자
+      for (Map<String,dynamic> webtoon in responseBody) {
+        // debugSomething(webtoon);
+        webtoons_.add(Webtoon.fromJson(webtoon));
       }
+      // debugSomething(webtoons_);
       return webtoons_;
     }
     throw Error();
