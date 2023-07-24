@@ -9,7 +9,7 @@ import 'Parts/in_developing/screen_video_player.dart';
 import 'Parts/in_developing/screen___________.dart';
 import 'Parts/in_developing/screen_diff_months.dart';
 import 'Parts/in_developing/screen_practice_api_connection2.dart';
-import 'Parts/in_developing/screen_random_number.dart';
+import 'Parts/screens/screen_random_number.dart';
 import 'Parts/screens/screen_animated_align.dart';
 import 'Parts/screens/screen_animated_position.dart';
 import 'Parts/screens/screen_arbor_day.dart';
@@ -85,9 +85,9 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
   void initItems() {
     itemsAsIconOnly = [
       /*\nHello World*/ _RefactoringModule202307152216(txt: '\nHello World', destination: const ScreenPracticeHelloWorld()),
-      //_______________________________________________________________________________________________________________________________________ show items s
+      //__________________________________________________________________________________________________________________________ show items s
       /*\nVertical Bars*/ _RefactoringModule202307152216(txt: '\nVertical Bars', destination: const ScreenPracticeVerticalBar()),
-      //_______________________________________________________________________________________________________________________________________ show items e
+      //__________________________________________________________________________________________________________________________ show items e
       /*\nLateral Bars*/ _RefactoringModule202307152216(txt: '\nLateral Bars', destination: const ScreenPracticeLateralBars()),
       /*\nRow and Column*/ _RefactoringModule202307152216(txt: '\nRow and Column', destination: const ScreenPracticeRowAndColumn()),
       /*\nsplash*/ _RefactoringModule202307152216(txt: '\nsplash', destination: const ScreenPracticeSplash()),

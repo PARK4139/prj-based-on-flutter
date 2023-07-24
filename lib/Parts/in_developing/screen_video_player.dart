@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../helpers/circle_box_maker.dart';
 import '../helpers/super_helper.dart';
+import 'screen_video_player_sub.dart';
 
 class ScreenVideoPlayer extends StatefulWidget {
   const ScreenVideoPlayer({super.key});
@@ -16,33 +17,34 @@ class _ScreenVideoPlayerState extends State<ScreenVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    debugSomething(xfile);
+    // debugSomething(xfile == null);
     return Scaffold(
-      //특정 바디오 선택했다면 재생화면 으로 라우팅 아니면 Gallery() 화면으로 라우팅
-      body: xfile==null?screenGallery():screenVideoControl(),
+      //특정 바디오 선택했다면 재생화면 으로 렌더링 아니면 Gallery() 화면으로 렌더링
+      body: xfile == null ? renderScreenGallery() : ScreenVideoPlayerSub(xfile: xfile!),
     );
   }
 
-  Future<void> openGallery() async {
-    //바디오 갤러리 열기
+  Future<void> renderScreenGalleryChoosen() async {
+    //바디오 갤러리로 이동
     final video = await ImagePicker().pickVideo(
       source: ImageSource.gallery,
     );
 
     //사용자가 선택한 특정 비디오를 Xfile 객체에 저장
-    if(video !=null){
-      xfile=video;
+    if (video != null) {
+      setState(() {
+        xfile = video;
+      });
     }
   }
 
-  Future<void> getMyCamera() async {
+  Future<void> renderScreenCamera() async {
     final video = await ImagePicker().pickVideo(
       source: ImageSource.camera,
     );
   }
 
-  Widget screenGallery() {
-    debugSomething("screenGallery");
+  Widget renderScreenGallery() {
     return ListView(
       children: [
         /*임시메인컨테이너*/ Container(
@@ -72,7 +74,6 @@ class _ScreenVideoPlayerState extends State<ScreenVideoPlayer> {
                               ],
                             ),
                             onTap: () {
-                              
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text(MyMents.inPop, style: const TextStyle(color: Colors.white))));
                               Navigator.pop(context);
                             },
@@ -91,10 +92,8 @@ class _ScreenVideoPlayerState extends State<ScreenVideoPlayer> {
                     ),
                     child: GestureDetector(
                       onTap: () {
-                        openGallery();
-                        ScaffoldMessenger.of(context).showSnackBar(MySnackBars.mySnackBar(ment: "갤러리 화면으로 이동했습니다."));
-
-
+                        // ScaffoldMessenger.of(context).showSnackBar(MySnackBars.mySnackBar(ment: "갤러리 화면으로 이동합니다."));
+                        renderScreenGalleryChoosen();
                         // getMyCamera();
                       },
                       child: Column(
@@ -156,9 +155,5 @@ class _ScreenVideoPlayerState extends State<ScreenVideoPlayer> {
         ),
       ],
     );
-  }
-  Widget screenVideoControl() {
-    debugSomething("screenVideoControl");
-    return const Text("screenVideoControl");
   }
 }

@@ -25,20 +25,13 @@ class _ScreenDayThatWeMeetState extends State<ScreenDayThatWeMeet> {
 
   int currentPage = 0;
 
-  late DateTime selectedDate;//이것을 위젯트리 상태관리에 넣거나 DB에 저장하도록 추후 수정하기
+  late DateTime selectedDate; //이것을 위젯트리 상태관리에 넣거나 DB에 저장하도록 추후 수정하기
 
   @override
   void initState() {
     super.initState();
     items = [
-      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.cover),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fill),
-      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitHeight),
-      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitWidth),
+      for (int i = 1; i <= 80; i=i+3) Image.asset('asset/images/sky_best ($i).jpg', fit: BoxFit.contain),
     ];
     pageController = PageController(viewportFraction: 0.8, initialPage: currentPage);
     scheduler = Timer.periodic(const Duration(milliseconds: 2000), (timer) {
@@ -54,8 +47,9 @@ class _ScreenDayThatWeMeetState extends State<ScreenDayThatWeMeet> {
         curve: Curves.linear,
       );
     });
-    selectedDate = DateTime(DateTime.now().year,01,01 );
-    diffDayCount=DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day  ).difference(selectedDate).inDays;
+    // selectedDate = DateTime(DateTime.now().year, 01, 01);/*OPERATION*/
+    selectedDate = DateTime(2019, 08 , 10);
+    diffDayCount = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day).difference(selectedDate).inDays;
   }
 
   @override
@@ -156,12 +150,12 @@ class _ScreenDayThatWeMeetState extends State<ScreenDayThatWeMeet> {
                                       printWithoutErrorOrPrintWithError(date);
                                       setState(() {
                                         selectedDate = date;
-                                        diffDayCount=DateTime(DateTime.now().year, DateTime.now().month,DateTime.now().day  ).difference(selectedDate).inDays;
+                                        diffDayCount = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day).difference(selectedDate).inDays;
                                       });
                                     },
                                     initialDateTime: selectedDate,
                                     maximumYear: DateTime.now().year,
-                                    minimumDate: DateTime(DateTime.now().year-50, 01,01),//50년 전까지 가능
+                                    minimumDate: DateTime(DateTime.now().year - 50, 01, 01), //50년 전까지 가능
                                   ),
                                 ),
                               );

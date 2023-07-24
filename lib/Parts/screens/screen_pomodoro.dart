@@ -52,8 +52,6 @@ class ScreenPomodoroHome extends StatefulWidget {
 }
 
 class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
-  final ment = '해당 스크린에서는 pomodoro를 서비스를 제공합니다 \n\n'
-      '＊"pomodoro" : 포모도로 기법은 프란체스코 시릴로가 고안한 시간 관리 기법입니다.\n 25분 동안 집중해서 일을 한 다음 5분간 휴식을 취하는 것을 반복하는 방식입니다.\n 이 기법은 25분을 토마토 모양의 요리용 타이머로 측정한 데서 이름이 유래했습니다.\n 포모도로 기법은 집중력 향상과 생산성 향상에 도움이 될 수 있습니다.';
 
   // static const defaultSeconds = 10; // DEVELOPMENT
   // static const defaultSeconds = 5; // DEVELOPMENT
@@ -75,17 +73,17 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
   int pomodoros = 0;
 
   late Timer timer; //Dart 의 표준 built in library 중의 하나
-  late Timer timer2;
+
 
   void onTick(Timer timer) {
     setState(() {
       screenSeconds = screenSeconds - 1;
       if (screenSeconds == 0) {
         pomodoros = pomodoros + 1;
-        printWithoutErrorOrPrintWithError("pomodoros$pomodoros");
+        debugSomething("pomodoros$pomodoros");
         isRunning = true;
         screenSeconds = defaultSeconds;
-        printWithoutErrorOrPrintWithError("ScreenSeconds$screenSeconds");
+        debugSomething("ScreenSeconds$screenSeconds");
         // print("___________"+___________.toString());
       }
     });
@@ -124,7 +122,7 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
           Column(
             children: <Widget>[
               const Icon(Icons.android, color: Colors.lightBlueAccent),
-              Text(ment, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w500)),
+              Text(MyMents.pomodoroServiceDescription, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w500)),
             ],
           ),
           const SizedBox(height: 30),
@@ -132,7 +130,7 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
           Container(
             alignment: Alignment.bottomCenter,
             child: Text(
-              formattingToMinuite(screenSeconds),
+              timeFormattingHelper(screenSeconds),
               style: const TextStyle(color: Colors.lightBlueAccent, fontSize: 70, fontWeight: FontWeight.w100),
             ),
           ),
@@ -172,16 +170,7 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
     );
   }
 
-  String formattingToMinuite(int seconds) {
-    var duration = Duration(seconds: seconds); // duration.toString()  ==  '0:00:02.000000'
-    // return duration.toString().split(".")[0];  // DEPRECATED FOR first IS MORE EXPLICTED EXPRESSION THAN [0].
-    // print(duration.toString().split(".").first.split(":").first);
-    if (duration.toString().split(".").first.split(":").first == '0') {
-      return duration.toString().split(".").first.substring(2, 7);
-    } else {
-      return duration.toString().split(".").first; //PRODUCTION
-    }
-  }
+
 
   void togglePlayAndPause() {
     setState(() {

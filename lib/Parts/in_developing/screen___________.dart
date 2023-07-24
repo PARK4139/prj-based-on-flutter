@@ -19,7 +19,7 @@ class _Screen___________State extends State<Screen___________> {
     return Scaffold(
       body: ListView(
         children: [
-          //_________________________________________________________________________ tmp s
+          //__________________________________________________________________________________________________________________________ tmp s
           /*임시메인컨테이너*/ Container(
               color: Colors.black,
               width: MediaQuery.of(context).size.width,
@@ -151,7 +151,7 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                       ),
                       /*리니어그라데이션 컨테이너*/ Transform.translate(
-                        offset: const Offset(0+20, 0 - 20),
+                        offset: const Offset(0 + 20, 0 - 20),
                         child: Transform.scale(
                           scale: 9000,
                           child: Container(
@@ -209,7 +209,7 @@ class _Screen___________State extends State<Screen___________> {
                         ],
                       ),
                       /*리니어그라데이션 컨테이너*/ Transform.translate(
-                        offset: const Offset(0+20, 0 - 20),
+                        offset: const Offset(0 + 20, 0 - 20),
                         child: Transform.scale(
                           scale: 9000,
                           child: Container(
@@ -273,6 +273,7 @@ class _Screen___________State extends State<Screen___________> {
                       //     child: const Text("익스펜디드컨테이너",style: TextStyle(color: Colors.white)),
                       //   ),
                       // ),
+
                       MySeperators.withId(positionId: "202307221656"),
                       /*버튼(토글)*/ const ToggleMaker(),
                       MySeperators.withId(positionId: "202307221656"),
@@ -416,6 +417,110 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                         child: const Text('풀스크린다이얼로그', style: TextStyle(color: Colors.white)),
                       ),
+
+                      MySeperators.withId(positionId: "202307221656"),
+                      /*빈버튼*/ Container(
+                        height: 30,
+                        width: MediaQuery.of(context).size.width - 30,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(textAlign: TextAlign.center, '빈버튼', style: TextStyle(color: Colors.white)),
+                          ],
+                        ),
+                      ),
+                      /*버튼(토글)*/ OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          disabledBackgroundColor: Colors.red,
+                          disabledForegroundColor: Colors.orange,
+                          foregroundColor: Colors.green,
+                          shadowColor: Colors.blue,
+                          surfaceTintColor: Colors.purple,
+                          elevation: 2.2,
+                          textStyle: const TextStyle(color: Colors.white, fontSize: 18),
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          side: const BorderSide(
+                            color: Colors.greenAccent,
+                            width: 10,
+                          ),
+                        ),
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
+                        },
+                        child: const Text(""),
+                      ),
+                      MySeperators.withId(positionId: "202307221656"),
+                      /*버튼*/ Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            disabledBackgroundColor: Colors.red,
+                            disabledForegroundColor: Colors.orange,
+                            foregroundColor: Colors.green,
+                            shadowColor: Colors.blue,
+                            surfaceTintColor: Colors.purple,
+                            elevation: 2.2,
+                            textStyle: const TextStyle(color: Colors.white, fontSize: 18),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            side: const BorderSide(
+                              color: Colors.greenAccent,
+                              width: 10,
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.pop(context);
+                          },
+                          child: const Text('일반버튼'),
+                        ),
+                      ),
+                      MySeperators.withId(positionId: "202307221656"),
+                      /*비활성화 버튼*/ Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: TextButton(
+                          style: ButtonStyle(
+                            textStyle: MaterialStateProperty.all(
+                              const TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                            backgroundColor: MaterialStateProperty.resolveWith(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.pressed)) {
+                                  return Colors.red;
+                                } else if (states.contains(MaterialState.hovered)) {
+                                  return Colors.orange;
+                                } else if (states.contains(MaterialState.dragged)) {
+                                  return Colors.yellow;
+                                } else if (states.contains(MaterialState.focused)) {
+                                  return Colors.green;
+                                } else if (states.contains(MaterialState.error)) {
+                                  return Colors.blue.shade800;
+                                } else if (states.contains(MaterialState.selected)) {
+                                  return Colors.blue.shade900;
+                                } else if (states.contains(MaterialState.scrolledUnder)) {
+                                  return Colors.purple.shade900;
+                                } else if (states.contains(MaterialState.disabled)) {
+                                  return Colors.grey;
+                                }
+                                return null; //기본은 버튼 배경이 투명하도록
+                              },
+                            ),
+                          ),
+                          onPressed: null, //비활성화 버튼
+
+                          child: Text('비활성화 버튼'),
+                        ),
+                      ),
                       MySeperators.withId(positionId: "202307221656"),
                       /*버튼*/ ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -425,7 +530,23 @@ class _Screen___________State extends State<Screen___________> {
                           foregroundColor: Colors.green,
                           shadowColor: Colors.blue,
                           surfaceTintColor: Colors.purple,
+                          elevation: 2.2,
+                          textStyle: const TextStyle(color: Colors.white, fontSize: 18),
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          side: const BorderSide(
+                            color: Colors.greenAccent,
+                            width: 10,
+                          ),
                         ),
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
+                        },
+                        child: const Text('버튼'),
+                      ),
+
+                      MySeperators.withId(positionId: "202307221656"),
+                      /*경고팝업*/ OutlinedButton(
+                        child: const Text("풀스크린다이얼로그"),
                         onPressed: () {
                           setState(() {
                             showDialog(
@@ -448,35 +569,6 @@ class _Screen___________State extends State<Screen___________> {
                             );
                           });
                         },
-                        child: const Text('풀스크린다이얼로그', style: TextStyle(color: Colors.white)),
-                      ),
-                      MySeperators.withId(positionId: "202307221656"),
-                      /*버튼*/ Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: TextButton(
-                          child: const Text('일반버튼', style: TextStyle(color: Colors.white)),
-                          onPressed: () {
-                            // Navigator.pop(context);
-                          },
-                        ),
-                      ),
-                      MySeperators.withId(positionId: "202307221656"),
-                      /*빈버튼*/ Container(
-                        height: 30,
-                        width: MediaQuery.of(context).size.width - 30,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(textAlign: TextAlign.center, '빈버튼', style: TextStyle(color: Colors.white)),
-                          ],
-                        ),
                       ),
                       MySeperators.withId(positionId: "202307221656"),
                       /*경고팝업*/ TextButton(
@@ -1053,11 +1145,14 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                       ),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*임시텍스트*/ Text("?", style: TextStyle(color: Colors.pink.shade50, fontSize: 19, fontWeight: FontWeight.w100)),
+                      /*텍스트버튼*/ TextButton(
+                        child: Text("?", style: TextStyle(color: Colors.pink.shade50, fontSize: 19, fontWeight: FontWeight.w100)),
+                        onPressed: () {  ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);},
+                      ),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*임시이미지*/ Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 300, child: SizedBox(height: 0.1, width: 0.1, child: Image.asset('asset/images/app_webtoon_logo.jpg')))),
+                      /*이미지버튼*/ GestureDetector(                  onTap: () {  ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);},child: Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 300, child: SizedBox(height: 0.1, width: 0.1, child: Image.asset('asset/images/app_webtoon_logo.jpg'))))),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*임시버튼*/ GestureDetector(
+                      /*아이콘버튼*/ GestureDetector(
                         child: const Icon(Icons.question_mark, size: 40, color: Colors.pink),
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
@@ -1069,7 +1164,7 @@ class _Screen___________State extends State<Screen___________> {
                 ],
               )),
 
-          //_________________________________________________________________________ tmp e
+          //__________________________________________________________________________________________________________________________ tmp e
         ],
       ),
     );
@@ -1077,8 +1172,6 @@ class _Screen___________State extends State<Screen___________> {
 }
 
 class _SnackBarTestButton extends StatefulWidget {
-
-
   @override
   State<_SnackBarTestButton> createState() => _SnackBarTestButtonState();
 

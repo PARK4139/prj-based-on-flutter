@@ -64,16 +64,16 @@ class AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    printWithoutErrorOrPrintWithError('_______________________________________________________________________ s');
+    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ s');
     initHostPlatformInfo();
     initAppModes();
     if (isDarkMode == false) {
     } else {
-      printWithoutErrorOrPrintWithError('_______________________________________________________________________ auth check s');
+      printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ auth check s');
       if (isAndroid == true) {
         checkPermissionForAndroid();
       }
-      printWithoutErrorOrPrintWithError('_______________________________________________________________________ auth check e');
+      printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ auth check e');
     }
   }
 
@@ -225,7 +225,7 @@ class AppState extends State<App> {
   }
 
   Future<void> checkPermissionForAndroid() async {
-    printWithoutErrorOrPrintWithError('_______________________________________________________________________ permission_handler works s');
+    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ permission_handler works s');
     if (await Permission.location.isGranted) {
       printWithoutErrorOrPrintWithError('권한이 부여되었습니다');
     }
@@ -238,7 +238,7 @@ class AppState extends State<App> {
     if (await Permission.location.isRestricted) {
       printWithoutErrorOrPrintWithError('권한이 제한되었습니다.');
     }
-    printWithoutErrorOrPrintWithError('_______________________________________________________________________ permission_handler works e');
+    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ permission_handler works e');
   }
 
   void toogleDevelopingMode() {

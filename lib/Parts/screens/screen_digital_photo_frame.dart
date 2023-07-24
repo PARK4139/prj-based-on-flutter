@@ -27,14 +27,13 @@ class _ScreenDigitalPhotoFrameState extends State<ScreenDigitalPhotoFrame> {
     super.initState();
     items = [
       // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.cover),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
       // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fill),
       // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitHeight),
       // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitWidth),
-    ];
+      for (int i=1;i<=87;i++)    Image.asset('asset/images/sky_best ($i).jpg', fit: BoxFit.contain),
+      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
+      Image.asset('asset/images/sky_best (1).png', fit: BoxFit.contain),
+     ];
     pageController = PageController(viewportFraction: 0.8, initialPage: currentPage);
     timer = Timer.periodic(const Duration(milliseconds: 2000), (timer) {
       if (currentPage < items.length) {

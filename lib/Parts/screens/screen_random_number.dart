@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/in_developing/screen_random_number_sub.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_random_number_sub.dart';
 
 class ScreenRandomNumber extends StatefulWidget {
   const ScreenRandomNumber({super.key});
@@ -115,7 +115,7 @@ class _MainSection extends StatelessWidget {
                 child: InkWell(
                   child: const Icon(Icons.settings, size: 20, color: Colors.red),
                   onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 1000), content: Text('setting icon 이 눌렸습니다.')));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 1000), content: Text('설정 버튼 이 눌렸습니다.')));
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenRandomNumberSub()));
                   },
                 ),
