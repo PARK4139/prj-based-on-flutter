@@ -160,11 +160,11 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
       if (isUnitSquaredMeter == true) {
         userInput = text;
         result = '${(double.parse(text) / 3.3).toStringAsFixed(2)} 평';
-        printWithoutErrorOrPrintWithError("onChanged: $result");
+        printWithoutError("onChanged: $result");
       } else {
         userInput = text;
         result = '${(double.parse(text) * 3.3).toStringAsFixed(2)} ㎡';
-        printWithoutErrorOrPrintWithError("onChanged: $result");
+        printWithoutError("onChanged: $result");
       }
     });
   }
@@ -179,7 +179,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
     setState(() {
       textEditingController = TextEditingController(text: "");
       if (textEditingController.text.isEmpty) {
-        printWithoutErrorOrPrintWithError('textEditingController is empty');
+        printWithoutError('textEditingController is empty');
       }
 
     });

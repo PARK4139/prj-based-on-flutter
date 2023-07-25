@@ -25,7 +25,6 @@ class _ScreenPracticeApiConnectionState extends State<ScreenPracticeApiConnectio
   void initState() {
     super.initState();
 
-
     // ScaffoldMessenger.of(context).showSnackBar();
     // SnackBar(content: Text("웹툰 정보를 가져오는 중입니다. 잠시만 기다려 주세요."));
     // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("웹툰 정보를 가져오는 중입니다. 잠시만 기다려 주세요.")));
@@ -37,18 +36,16 @@ class _ScreenPracticeApiConnectionState extends State<ScreenPracticeApiConnectio
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(''),
         leading: /*뒤로가기 버튼*/ InkWell(
-          child: const Icon(Icons.chevron_left,color: Colors.green),
+          child: const Icon(Icons.chevron_left, color: Colors.green),
           onTap: () {
             Navigator.pop(context);
           },
         ),
       ),
-
       backgroundColor: Colors.black,
       body: SizedBox(
         height: 800,
@@ -59,14 +56,18 @@ class _ScreenPracticeApiConnectionState extends State<ScreenPracticeApiConnectio
               height: 150,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [for (var webtoon in webtoons) Text(webtoon.thumb, style: const TextStyle(color: Colors.white))],
+                children: [
+                  for (var webtoon in webtoons) Text(webtoon.thumb, style: const TextStyle(color: Colors.white)),
+                ],
               ),
             ),
             SizedBox(
               height: 150,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [for (var webtoon in webtoons) Text(webtoon.title, style: const TextStyle(color: Colors.white))],
+                children: [
+                  for (var webtoon in webtoons) Text(webtoon.title, style: const TextStyle(color: Colors.white)),
+                ],
               ),
             ),
           ],

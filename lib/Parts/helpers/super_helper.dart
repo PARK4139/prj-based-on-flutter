@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/stamp_maker.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/hardcoding_stamp_maker.dart';
 
 import 'api_helper.dart';
 
@@ -104,7 +104,7 @@ class IterableAlphabetsMaker {
   }
 }
 
-void printWithoutErrorOrPrintWithError(var txt) {
+void printWithoutError(var txt) {
   /*배포 시 : Don't invoke 'print' in production code. 에러 제거를 위해 내부 주석처리*/
   print(txt.toString());
 }
@@ -112,68 +112,84 @@ void printWithoutErrorOrPrintWithError(var txt) {
 void debugSomething(dynamic something, {String troubleShootingId = "Not Assigned"}) {
   /*배포 시 내부 주석처리*/
   if (something == null) {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutErrorOrPrintWithError("this is null");
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : null");
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is bool) {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
-    printWithoutErrorOrPrintWithError(something.toString());
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : ${something.runtimeType}");
+    printWithoutError(something.toString());
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is String) {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
-    printWithoutErrorOrPrintWithError(something.toString());
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : ${something.runtimeType}");
+    printWithoutError(something.toString());
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is List<dynamic>) {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : ${something.runtimeType}");
     for (dynamic item in something) {
-      printWithoutErrorOrPrintWithError(item.toString());
+      printWithoutError(item.toString());
     }
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is int) {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
-    printWithoutErrorOrPrintWithError(something.toString());
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : ${something.runtimeType}");
+    printWithoutError(something.toString());
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is Set<dynamic>) {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : ${something.runtimeType}");
     for (dynamic element in something) {
-      printWithoutErrorOrPrintWithError(element);
+      printWithoutError(element);
     }
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
     // } else if (something is Map<String, Map<String, dynamic>>) {
     //   printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
-    //   printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    //   printWithoutErrorOrPrintWithError("data type : ${something.runtimeType}");
     //   for (var key in something.keys) {
     //     printWithoutErrorOrPrintWithError("$key: ${something[key]}");
     //   }
     //   printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is Map<String, dynamic>) {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
     if (something is Map<String, Map<String, dynamic>>) {
-      printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+      printWithoutError("troubleShootingId : $troubleShootingId");
+      printWithoutError("data type : ${something.runtimeType}");
       for (var key in something.keys) {
-        printWithoutErrorOrPrintWithError("$key: {");
+        printWithoutError("$key: {");
         debugSomethingWithoutMent(something[key]);
         String properIndentation = "";
         for (int i = 0; i <= key.toString().length + 1; i++) {
           properIndentation = "$properIndentation ";
         }
-        printWithoutErrorOrPrintWithError("$properIndentation{");
+        printWithoutError("$properIndentation{");
       }
     } else {
-      printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+      printWithoutError("troubleShootingId : $troubleShootingId");
+      printWithoutError("data type : ${something.runtimeType}");
       for (var key in something.keys) {
-        printWithoutErrorOrPrintWithError("$key: ${something[key]}");
+        printWithoutError("$key: ${something[key]}");
       }
     }
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debugDynamic exception s");
-    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
+    printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception s");
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : ${something.runtimeType}");
     // for (var key in something.keys) {
     //   printWithoutErrorOrPrintWithError(key);
     // }
@@ -181,72 +197,77 @@ void debugSomething(dynamic something, {String troubleShootingId = "Not Assigned
     //   printWithoutErrorOrPrintWithError("$key: $value");
     // });
     for (var entry in something.entries) {
-      printWithoutErrorOrPrintWithError("$entry.key: $entry.value");
+      printWithoutError("$entry.key: $entry.value");
     }
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debugDynamic exception e");
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception e");
   }
-  printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ troubleShootingId : $troubleShootingId s");
 }
 
-void debugSomethingWithoutMent(dynamic something) {
+void debugSomethingWithoutMent(dynamic something, {String troubleShootingId = "Not Assigned"}) {
   /*배포 시 성능을 위해 해당메소드 내부 주석처리*/
   if (something == null) {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutErrorOrPrintWithError("this is null");
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : null");
+    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is String) {
-    printWithoutErrorOrPrintWithError(something.toString());
+    printWithoutError(something.toString());
   } else if (something is List<dynamic>) {
     for (dynamic item in something) {
-      printWithoutErrorOrPrintWithError(item.toString());
+      printWithoutError(item.toString());
     }
   } else if (something is int) {
-    printWithoutErrorOrPrintWithError(something.toString());
+    printWithoutError(something.toString());
   } else if (something is Set<dynamic>) {
     for (dynamic element in something) {
-      printWithoutErrorOrPrintWithError(element);
+      printWithoutError(element);
     }
   } else if (something is Map<String, Map<String, dynamic>>) {
     for (var key in something.keys) {
-      printWithoutErrorOrPrintWithError("$key: ${something[key]}");
+      printWithoutError("$key: ${something[key]}");
     }
   } else if (something is Map<String, dynamic>) {
     if (something is Map<String, Map<String, dynamic>>) {
       for (var key in something.keys) {
-        printWithoutErrorOrPrintWithError("$key: {");
+        printWithoutError("$key: {");
         debugSomethingWithoutMent(something[key]);
         String properIndentation = "";
         for (int i = 0; i <= key.toString().length + 1; i++) {
           properIndentation = "$properIndentation ";
         }
-        printWithoutErrorOrPrintWithError("$properIndentation{");
+        printWithoutError("$properIndentation{");
       }
     } else {
       for (var key in something.keys) {
-        printWithoutErrorOrPrintWithError("        $key: ${something[key]}");
+        printWithoutError("        $key: ${something[key]}");
       }
     }
   } else {
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debugDynamic exception s");
-    printWithoutErrorOrPrintWithError("this is ${something.runtimeType}");
-    printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debugDynamic exception e");
+    printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception s");
+
+    printWithoutError("troubleShootingId : $troubleShootingId");
+    printWithoutError("data type : ${something.runtimeType}");
+
+    printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception e");
   }
 }
 
 void printWithMkr({String txt = ''}) {
-  printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ $txt mkr");
+  printWithoutError("__________________________________________________________________________________________________________________________ $txt mkr");
 }
 
 void printWithoutMkr({String txt = ''}) {
-  printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ $txt ");
+  printWithoutError("__________________________________________________________________________________________________________________________ $txt ");
 }
 
 void printWithS(String txt) {
-  printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ $txt s");
+  printWithoutError("__________________________________________________________________________________________________________________________ $txt s");
 }
 
 void printWithE(String txt) {
-  printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ $txt e");
+  printWithoutError("__________________________________________________________________________________________________________________________ $txt e");
 }
 
 String textCuttingHelper(String text, {int cuttingPosition = 10}) {
@@ -327,8 +348,8 @@ class MySeperators {
   static Widget withId({required String positionId}) {
     return SizedBox(
         height: 50,
-        child: StampMaker(
-          text: positionId,
+        child: hardCodingStampMaker(
+          txt: positionId,
           color: Colors.grey,
           backgroundColor: Colors.black,
         ));
@@ -338,11 +359,7 @@ class MySeperators {
 class MySnackBars {
   static SnackBar notReadySnackBar = SnackBar(
     duration: const Duration(seconds: 1),
-    content: Text(MyMents.notReadyYet),
-    action: SnackBarAction(
-      label: MyMents.yes,
-      onPressed: () {},
-    ),
+    content: Text(MyMents.notReadyYet), 
   );
 
   static SnackBar mySnackBar({required String ment, int seconds = 1}) {
@@ -382,8 +399,10 @@ class MyMents {
   static String occuredError = "에러가 발생했습니다";
   static String hello = "안녕하세요! 반갑습니다!";
 
-  static String pomodoroServiceDescription = '해당 스크린에서는 pomodoro를 서비스를 제공합니다 \n\n'
+  static String descriptionAboutPomodoroService = '해당 스크린에서는 pomodoro를 서비스를 제공합니다 \n\n'
       '＊"pomodoro" : 포모도로 기법은 프란체스코 시릴로가 고안한 시간 관리 기법입니다.\n 25분 동안 집중해서 일을 한 다음 5분간 휴식을 취하는 것을 반복하는 방식입니다.\n 이 기법은 25분을 토마토 모양의 요리용 타이머로 측정한 데서 이름이 유래했습니다.\n 포모도로 기법은 집중력 향상과 생산성 향상에 도움이 될 수 있습니다.';
+
+  static String descriptionAboutScreenDeveloperHelper = '해당 스크린에서는 개발하는데 도움이 되는 기능들을 제공해주는 서비스를 제공합니다 \n';
 
   static String inLoading({String title = "해당기능"}) => "$title 을(를) 로딩 중입니다";
 }
@@ -412,7 +431,7 @@ class MySuperHelpers {
   Future<void> downloadMp3File({required String path}) async {
     // Get the URL of the MP3 file.
     String url = path;
-    printWithoutErrorOrPrintWithError(url);
+    printWithoutError(url);
 
     // final Uri url_ = Uri.parse(path);//Create a URI with encryption
     Uri url_ = Uri(
@@ -423,7 +442,7 @@ class MySuperHelpers {
       path: 'test.mp3',
       query: '',
     );
-    printWithoutErrorOrPrintWithError(url_.toString());
+    printWithoutError(url_.toString());
 
     // // Download the MP3 file.
     // Response response = await get(url_);
@@ -558,7 +577,7 @@ class MySuperHelpers {
   Future<void> countdown(int couter) async {
     isCounterZero = false;
     while (true) {
-      printWithoutErrorOrPrintWithError('$couter 초...');
+      printWithoutError('$couter 초...');
       sleep(const Duration(seconds: 1));
       couter = couter - 1;
       if (couter == 0) {
@@ -625,7 +644,7 @@ class MySuperHelpers {
 
   /*테스트*/
   void testListStringHandlingFunctions() {
-    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ text control s');
+    printWithoutError('__________________________________________________________________________________________________________________________ text control s');
     List<String> textsOrigin = [
       "!",
       "2",
@@ -655,20 +674,20 @@ class MySuperHelpers {
     // List<String> results_final= results_contained;
 
     for (String result in resultsFinal) {
-      printWithoutErrorOrPrintWithError(result); //DEVELOPMENT
+      printWithoutError(result); //DEVELOPMENT
     }
-    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ text control e');
+    printWithoutError('__________________________________________________________________________________________________________________________ text control e');
 
-    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ iterable nature number s');
-    printWithoutErrorOrPrintWithError('naturalNumbers 사용 s');
+    printWithoutError('__________________________________________________________________________________________________________________________ iterable nature number s');
+    printWithoutError('naturalNumbers 사용 s');
     var naturalNumbers = IteralbleNatureNumbersMaker(endLimit: 100);
-    printWithoutErrorOrPrintWithError(naturalNumbers.next());
-    printWithoutErrorOrPrintWithError(naturalNumbers.next());
-    printWithoutErrorOrPrintWithError(naturalNumbers.next());
-    printWithoutErrorOrPrintWithError(naturalNumbers.next());
-    printWithoutErrorOrPrintWithError(naturalNumbers.next());
-    printWithoutErrorOrPrintWithError('naturalNumbers 사용 e');
-    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ iterable nature number e');
+    printWithoutError(naturalNumbers.next());
+    printWithoutError(naturalNumbers.next());
+    printWithoutError(naturalNumbers.next());
+    printWithoutError(naturalNumbers.next());
+    printWithoutError(naturalNumbers.next());
+    printWithoutError('naturalNumbers 사용 e');
+    printWithoutError('__________________________________________________________________________________________________________________________ iterable nature number e');
   }
 
   Future<void> setMySession() async {
@@ -697,8 +716,8 @@ class MySuperHelpers {
   Future<void> getMySession(String sessionKey) async {
     //get
     final User user = User.fromJson(await SessionManager().get('user'));
-    printWithoutErrorOrPrintWithError(user.name); // John Doe
-    printWithoutErrorOrPrintWithError(user.id); // 30
+    printWithoutError(user.name); // John Doe
+    printWithoutError(user.id); // 30
   }
 
   Future<void> setMyCookie() async {
@@ -714,4 +733,30 @@ class MySuperHelpers {
 
 //줄간격을 일정하게 만들어 주는 기능
 //replaceAll 을 활용하면 될듯.
+}
+
+class CommonTextData {
+  static const String code0000 = "CODE_COMMON";
+  static const String code1000 = "CODE_BIZMEKA";
+  static const Map<String, dynamic> stamps = {
+    "0000": 'CODE_COMMON',
+    "0001": '',
+    "0100": "CODE_TIME_DATE",
+    "1000": 'CODE_BIZMEKA',
+    "1001": '비즈메카 일일업무보고로 이동',
+    "1002": "https://ezgroupware.bizmeka.com/groupware/todo/listMenuStoredTaskView.do?folderId=1263453&folderName=&#37;EC&#37;9D&#37;BC&#37;EC&#37;9D&#37;BC&#37;EC&#37;97&#37;85&#37;EB&#37;AC&#37;B4&#37;EB&#37;B3&#37;B4&#37;EA&#37;B3&#37;A0&#37;EC&#37;84&#37;9C_&#37;EC&#37;86&#37;94&#37;EB&#37;A3&#37;A8&#37;EC&#37;85&#37;98&#37;ED&#37;8C&#37;80",
+    "1003": "pjh*****",
+    "1004": "s2*******s2@",
+    "2000": "CODE_KUL",
+    "3000": "CODE_DGI",
+    "4000": "CODE_SG",
+    "5000": "CODE_GON",
+    "6000": "CODE_ITC",
+    "7000": "CODE_ID",
+    "8000": "CODE_PW",
+    "X000": "CODE_Y",
+    "00000": "CODE_ETC",
+    "시작": "시작",
+    "종료": '종료',
+  };
 }

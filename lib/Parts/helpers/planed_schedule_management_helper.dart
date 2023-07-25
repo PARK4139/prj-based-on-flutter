@@ -1,13 +1,14 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 
-import 'stamp_maker.dart';
 import 'super_helper.dart';
 
 class PlanedScheduleManagementHelper extends StatefulWidget {
-  String text;
+  String title;
   late Color color;
   final FontWeight fontWeight;
   final double fontSize;
@@ -16,10 +17,11 @@ class PlanedScheduleManagementHelper extends StatefulWidget {
   late BorderRadius? borderRadius;
   late Color? backgroundColor;
 
-  List<String> items;
+  List<dynamic> items;
 
-  PlanedScheduleManagementHelper({super.key,
-    required this.text,
+  PlanedScheduleManagementHelper({
+    super.key,
+    required this.title,
     required this.items,
     this.color = Colors.white38,
     this.fontWeight = FontWeight.w200,
@@ -35,9 +37,8 @@ class PlanedScheduleManagementHelper extends StatefulWidget {
 }
 
 class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagementHelper> {
-  late Map<String, dynamic> stamps;
   int clickCounter = 0;
-  late List<String> items;
+  late List<dynamic> items;
 
   late List<dynamic> itemsSnapshotAtStart;
   late String buttonTitle;
@@ -49,7 +50,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   @override
   void initState() {
     super.initState();
-    buttonTitle = widget.text;
+    buttonTitle = widget.title;
 
     widget.borderRadius ??= BorderRadius.circular(5);
     widget.backgroundColor ??= MyColors.blackBackground;
@@ -58,15 +59,11 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
     reloadItems();
     initIsChecked();
   }
-  //
-  // @override
-  // void dispose() {
-  //   // TODO: implement dispose
-  //   super.dispose();
-  // }
+
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: BoxDecoration(
         color: widget.backgroundColor,
@@ -81,7 +78,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
         children: [
           /*주제목 버튼*/ TextButton(
               child: Text(
-                widget.text.length <= 60 ? '${widget.text} 0/$itemsLength' : '${widget.text.substring(0, 60)} 0/$itemsLength',
+                widget.title.length <= 60 ? '${widget.title} i/$itemsLength' : '${widget.title.substring(0, 60)} i/$itemsLength',
                 style: TextStyle(
                   color: widget.color,
                   fontSize: widget.fontSize,
@@ -92,7 +89,6 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
                 addClickCounter();
               }),
           SizedBox(
-            width: 40,
             child: IconButton(
               icon: const Icon(Icons.all_inclusive),
               color: Colors.lightBlueAccent,
@@ -104,17 +100,22 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
                     return AlertDialog(
                       backgroundColor: Colors.black,
                       /*제목 버튼*/ title: Text(buttonTitle, style: const TextStyle(color: Colors.blueAccent)),
-                      content: SingleChildScrollView(
-                        child: ListBody(
-                          children: <Widget>[
-                            for (var item in itemsSnapshotAtStart)
-                              Row(
-                                children: [
-                                  Text('${itemsSnapshotAtStart.indexOf(item)}', style: const TextStyle(color: Colors.lightGreenAccent)),
-                                  StampMaker(text: item, backgroundColor: Colors.black, color: MyColors.whiteClear, fontSize: 9),
-                                ],
-                              ),
-                          ],
+                      /*스탬프들*/ content: SingleChildScrollView(
+                        child: Builder(
+                          builder: (context) {
+
+                            return ListBody(
+                              children: <Widget>[
+                                for (var item in itemsSnapshotAtStart)
+                                  Row(
+                                    children: [
+                                      Text(itemsSnapshotAtStart.indexOf(item).toString().padLeft(2, " "), style: const TextStyle(color: Colors.lightGreenAccent)),
+                                      SizedBox(child: item),
+                                    ],
+                                  ),
+                              ],
+                            );
+                          }
                         ),
                       ),
                       actions: <Widget>[
@@ -145,7 +146,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   void addClickCounter() {
     setState(() {
       clickCounter = clickCounter + 1;
-      printWithoutErrorOrPrintWithError('ClickCounter:$clickCounter');
+      printWithoutError('ClickCounter:$clickCounter');
     });
   }
 

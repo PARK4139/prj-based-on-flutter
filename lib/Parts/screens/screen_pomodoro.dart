@@ -32,7 +32,7 @@ class _ScreenPomodoroState extends State<ScreenPomodoro> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
   }
 
@@ -122,7 +122,7 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
           Column(
             children: <Widget>[
               const Icon(Icons.android, color: Colors.lightBlueAccent),
-              Text(MyMents.pomodoroServiceDescription, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w500)),
+              Text(MyMents.descriptionAboutPomodoroService, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w500)),
             ],
           ),
           const SizedBox(height: 30),

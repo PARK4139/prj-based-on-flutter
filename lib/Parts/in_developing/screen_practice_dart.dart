@@ -64,25 +64,25 @@ class FooFoo {
 
   String? dataTypePrinter(String? foo) {
     if (foo is String) {
-      printWithoutErrorOrPrintWithError('$foo\'s data type : String');
+      printWithoutError('$foo\'s data type : String');
     } else if (foo is int) {
-      printWithoutErrorOrPrintWithError('$foo\'s data type : int');
+      printWithoutError('$foo\'s data type : int');
     } else if (foo is double) {
-      printWithoutErrorOrPrintWithError('$foo\'s data type : double');
+      printWithoutError('$foo\'s data type : double');
     } else if (foo is List<String>) {
-      printWithoutErrorOrPrintWithError('$foo\'s data type : List<String>');
+      printWithoutError('$foo\'s data type : List<String>');
     } else if (foo is List<int>) {
-      printWithoutErrorOrPrintWithError('$foo\'s data type : List<int>');
+      printWithoutError('$foo\'s data type : List<int>');
     }
     return foo;
   }
 
   String? think(dynamic foo) {
     if (foo! is! String) {
-      printWithoutErrorOrPrintWithError('$foo\'s data type : String');
+      printWithoutError('$foo\'s data type : String');
     } else if (foo == null) {
       foo ??= 'it was null'; //foo 가 null 이면 'it was null' 로서 초기화.
-      printWithoutErrorOrPrintWithError('$foo');
+      printWithoutError('$foo');
     }
     return foo;
   }
@@ -193,17 +193,17 @@ class Coach extends Creature {
 
   @override
   void sleep() {
-    printWithoutErrorOrPrintWithError('caach is sleeping now');
+    printWithoutError('caach is sleeping now');
   }
 
   @override
   void walk(String placeFrom, String placeTo) {
-    printWithoutErrorOrPrintWithError('caach is walking now from $placeFrom to $placeTo');
+    printWithoutError('caach is walking now from $placeFrom to $placeTo');
   }
 
   @override
   void eat(String food) {
-    printWithoutErrorOrPrintWithError('caach is eating now');
+    printWithoutError('caach is eating now');
   }
 }
 
@@ -234,7 +234,7 @@ class Director extends Coach {
   void sleep() {
     // TODO: implement sleep
     super.sleep();
-    printWithoutErrorOrPrintWithError('it is important thing thiat human sleep');
+    printWithoutError('it is important thing thiat human sleep');
   }
 
 
@@ -249,7 +249,7 @@ mixin MagitianDefaultProperties {
 }
 mixin MagitianDefaultMethod {
   void training() {
-    printWithoutErrorOrPrintWithError('in training...');
+    printWithoutError('in training...');
   }
 }
 
@@ -273,19 +273,19 @@ void main() {
   // ChattingRoomMember player = new ChattingRoomMember(); // flutter 스타일 가이드에서는 에서는 사용 비추천
   dynamic player;
   player = ChattingRoomMember(name: 'pjh4139', lv: 0, xp: 0, mp: 0, hp: 100000, exp: 0, age: 30, address: 'foo', loginAccoundUserId: 'Or가리튜닝', job: '어쌔신', loginAccoundUserPw: '0000', loginOk: 'ok'); // no argument constructor method + instance
-  printWithoutErrorOrPrintWithError(player.getChattingRoomMemberInfo());
-  printWithoutErrorOrPrintWithError(player.toString());
+  printWithoutError(player.getChattingRoomMemberInfo());
+  printWithoutError(player.toString());
 
   dynamic director;
   director = Director(name: '박정훈 감독');
   director.sleep();
-  printWithoutErrorOrPrintWithError(director.name);
+  printWithoutError(director.name);
 
   player = ChattingRoomMemberMixined();
-  printWithoutErrorOrPrintWithError(player.expDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
-  printWithoutErrorOrPrintWithError(player.strongDefault);
-  printWithoutErrorOrPrintWithError(player.intelligenceDefault);
-  printWithoutErrorOrPrintWithError(player.training());
+  printWithoutError(player.expDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
+  printWithoutError(player.strongDefault);
+  printWithoutError(player.intelligenceDefault);
+  printWithoutError(player.training());
 
   //
   // // typedef : define s
@@ -448,99 +448,99 @@ void main() {
   /*const vs final*/
   // const DateTime now_ = DateTime.now();//const 는 build time 에 초기화되는데 DateTime.now() 는 run time 에 초기화되도록 만들어진 값을 만들어낸다. 따라서 const 를 붙일 수 없다.
   final DateTime now_ = DateTime.now(); //final 는 run time 에 초기화되는 값.
-  printWithoutErrorOrPrintWithError(now_);
+  printWithoutError(now_);
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- 지금시간을 출력');
+  printWithoutError('-------------------------------------- 지금시간을 출력');
   DateTime now = DateTime.now();
-  printWithoutErrorOrPrintWithError(now);
+  printWithoutError(now);
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- 특정시간을 출력');
+  printWithoutError('-------------------------------------- 특정시간을 출력');
   DateTime specificDay = DateTime(
     2017,
     11,
     23,
   );
 
-  printWithoutErrorOrPrintWithError(specificDay);
+  printWithoutError(specificDay);
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- 지금시간을 적당하게 출력');
-  printWithoutErrorOrPrintWithError(now);
-  printWithoutErrorOrPrintWithError(now.year);
-  printWithoutErrorOrPrintWithError(now.month);
-  printWithoutErrorOrPrintWithError(now.day);
-  printWithoutErrorOrPrintWithError(now.hour);
-  printWithoutErrorOrPrintWithError(now.minute);
-  printWithoutErrorOrPrintWithError(now.second);
-  printWithoutErrorOrPrintWithError(now.millisecond);
-  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
-  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
-  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
-  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, ' ', mm, ' ', dd, ' ', HH, ' ', nn, ' ', ss, ' ', SSS]));
-  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));
-  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss, '.', SSS]));
-  printWithoutErrorOrPrintWithError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
+  printWithoutError('-------------------------------------- 지금시간을 적당하게 출력');
+  printWithoutError(now);
+  printWithoutError(now.year);
+  printWithoutError(now.month);
+  printWithoutError(now.day);
+  printWithoutError(now.hour);
+  printWithoutError(now.minute);
+  printWithoutError(now.second);
+  printWithoutError(now.millisecond);
+  printWithoutError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
+  printWithoutError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
+  printWithoutError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
+  printWithoutError(formatDate(DateTime.now(), [yyyy, ' ', mm, ' ', dd, ' ', HH, ' ', nn, ' ', ss, ' ', SSS]));
+  printWithoutError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));
+  printWithoutError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss, '.', SSS]));
+  printWithoutError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
 
   Duration duration = const Duration(seconds: 60);
 
-  printWithoutErrorOrPrintWithError(duration);
-  printWithoutErrorOrPrintWithError(duration.inDays);
-  printWithoutErrorOrPrintWithError(duration.inHours);
-  printWithoutErrorOrPrintWithError(duration.inMinutes);
-  printWithoutErrorOrPrintWithError(duration.inSeconds);
-  printWithoutErrorOrPrintWithError(duration.inMilliseconds);
+  printWithoutError(duration);
+  printWithoutError(duration.inDays);
+  printWithoutError(duration.inHours);
+  printWithoutError(duration.inMinutes);
+  printWithoutError(duration.inSeconds);
+  printWithoutError(duration.inMilliseconds);
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- now 와 specificDay 날짜 차이 비교');
-  printWithoutErrorOrPrintWithError(specificDay);
+  printWithoutError('-------------------------------------- now 와 specificDay 날짜 차이 비교');
+  printWithoutError(specificDay);
 
   final difference = now.difference(specificDay);
-  printWithoutErrorOrPrintWithError(difference);
-  printWithoutErrorOrPrintWithError(difference.inDays);
-  printWithoutErrorOrPrintWithError(difference.inHours);
-  printWithoutErrorOrPrintWithError(difference.inMinutes);
+  printWithoutError(difference);
+  printWithoutError(difference.inDays);
+  printWithoutError(difference.inHours);
+  printWithoutError(difference.inMinutes);
 
 
 
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- 지금으로 부터 특정날짜 전인지 후인지 확인');
-  printWithoutErrorOrPrintWithError(now.isAfter(specificDay));
-  printWithoutErrorOrPrintWithError(now.isBefore(specificDay));
+  printWithoutError('-------------------------------------- 지금으로 부터 특정날짜 전인지 후인지 확인');
+  printWithoutError(now.isAfter(specificDay));
+  printWithoutError(now.isBefore(specificDay));
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- 지금으로 부터 10시간 뒤 시간');
-  printWithoutErrorOrPrintWithError(now);
-  printWithoutErrorOrPrintWithError(now.add(const Duration(hours: 10)));
+  printWithoutError('-------------------------------------- 지금으로 부터 10시간 뒤 시간');
+  printWithoutError(now);
+  printWithoutError(now.add(const Duration(hours: 10)));
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- 지금으로 부터 10시간 전 시간');
-  printWithoutErrorOrPrintWithError(now);
-  printWithoutErrorOrPrintWithError(now.subtract(const Duration(hours: 10)));
+  printWithoutError('-------------------------------------- 지금으로 부터 10시간 전 시간');
+  printWithoutError(now);
+  printWithoutError(now.subtract(const Duration(hours: 10)));
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환'); //쪼개서 suffix 붙이기
-  printWithoutErrorOrPrintWithError("123");
-  printWithoutErrorOrPrintWithError("123".toString().split("")); //[1, 2, 3]
-  printWithoutErrorOrPrintWithError("123".toString().split("").map((x) => '${x}_suffix')); //요까지하면 iteralble 일것임. 실험 해보자
-  printWithoutErrorOrPrintWithError("123".toString().split("").map((x) => '${x}_suffix').toList()); //[1_suffix, 2_suffix, 3_suffix]
+  printWithoutError('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환'); //쪼개서 suffix 붙이기
+  printWithoutError("123");
+  printWithoutError("123".toString().split("")); //[1, 2, 3]
+  printWithoutError("123".toString().split("").map((x) => '${x}_suffix')); //요까지하면 iteralble 일것임. 실험 해보자
+  printWithoutError("123".toString().split("").map((x) => '${x}_suffix').toList()); //[1_suffix, 2_suffix, 3_suffix]
 
-  printWithoutErrorOrPrintWithError('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환');//쪼개서 prefix 붙이기
-  printWithoutErrorOrPrintWithError("foo.jpg,foo.png,foo.gif");
-  printWithoutErrorOrPrintWithError("foo.jpg,foo.png,foo.gif".toString().split(","));//[foo.jpg,foo.png,foo.gif]
-  printWithoutErrorOrPrintWithError("foo.jpg,foo.png,foo.gif".toString().split("").map((x)=>'prefix_$x').toList());//[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
+  printWithoutError('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환');//쪼개서 prefix 붙이기
+  printWithoutError("foo.jpg,foo.png,foo.gif");
+  printWithoutError("foo.jpg,foo.png,foo.gif".toString().split(","));//[foo.jpg,foo.png,foo.gif]
+  printWithoutError("foo.jpg,foo.png,foo.gif".toString().split("").map((x)=>'prefix_$x').toList());//[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
 
-  printWithoutErrorOrPrintWithError(123.toString().split("").map((e) => 'asset/images/random_numbers/$e.png').toList());
+  printWithoutError(123.toString().split("").map((e) => 'asset/images/random_numbers/$e.png').toList());
 
 
 
 
   /*entries 아주 유용하다 key, value 로 값을 받을 수 있게 해준다.*/
-  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.toList()[1].key);
-  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.toList()[1].value);
+  printWithoutError([123,456,789].asMap().entries.toList()[1].key);
+  printWithoutError([123,456,789].asMap().entries.toList()[1].value);
 
   /*이건 테스트해보자*/
-  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.first.key);
-  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.first.key);
+  printWithoutError([123,456,789].asMap().entries.first.key);
+  printWithoutError([123,456,789].asMap().entries.first.key);
 
 
   /*인덱스 붙여서 출력*/ //굳이 필요할까 싶긴한데
-  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',));
-  printWithoutErrorOrPrintWithError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',).toList());
+  printWithoutError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',));
+  printWithoutError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',).toList());
 
 
 

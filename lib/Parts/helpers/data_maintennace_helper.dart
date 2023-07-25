@@ -67,7 +67,9 @@ class _DataMaintennaceHelperState extends State<DataMaintennaceHelper> {
         });
       } else {
         FlutterClipboard.copy(widget.text).then((value) {
-          printWithoutErrorOrPrintWithError('copied : ${widget.text}');
+          debugSomethingWithoutMent('copied : ${widget.text}');
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.text}')));
+
         });
       }
     });

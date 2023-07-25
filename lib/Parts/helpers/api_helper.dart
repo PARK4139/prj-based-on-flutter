@@ -4,7 +4,6 @@ import 'dart:convert';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 
 /*model class & json connection*/
 class SerializationHelper{

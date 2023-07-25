@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_netflix_util.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_webtoon_detail.dart';
 

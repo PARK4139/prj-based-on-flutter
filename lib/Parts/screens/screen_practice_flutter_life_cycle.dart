@@ -48,7 +48,7 @@ class _ScreenPracticeFlutterStfulWigetLifeCycleState extends State<ScreenPractic
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     printWithoutMkr(txt: "dispose()");
   }
@@ -79,7 +79,7 @@ class _ScreenPracticeFlutterStfulWigetLifeCycleState extends State<ScreenPractic
         child: InkWell(
           child: const Center(
             child: Text(
-              "라이프 사이클을 테스트하기 위해\n콘솔을 변화를 확인하세요",
+              "라이프 사이클을 테스트하기 위해\n콘솔의 변화를 확인하세요",
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white),
             ),

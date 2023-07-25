@@ -94,7 +94,7 @@ class _ScreenTtsState extends State<ScreenTts> {
                       return null;
                     },
                     onChanged: (value) {
-                      printWithoutErrorOrPrintWithError("onChanged: $value");
+                      printWithoutError("onChanged: $value");
                     },
                     onFieldSubmitted: (value) {},
                   ),

@@ -54,13 +54,13 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                             angle: 40.05,
                             child: IconButton(
                               onPressed: () {
-                                printWithoutErrorOrPrintWithError("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다X.");
+                                printWithoutError("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다X.");
                                 Navigator.pop(context);
                               },
                               icon: IconButton(
                                 icon: Icon(Icons.add_circle_outlined, color: Colors.black.withOpacity(0.6)),
                                 onPressed: () {
-                                  printWithoutErrorOrPrintWithError("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다O.");
+                                  printWithoutError("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다O.");
                                   Navigator.pop(context);
                                 },
                                 tooltip: "GO TO HOME",

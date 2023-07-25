@@ -45,8 +45,9 @@ class _Screen___________State extends State<Screen___________> {
                           ],
                         ),
                       ),
-                      /*Expanded 가 있으면 발생하는 문제가 있다 Contaner() 로 감싸서 시도해보자*/
+
                       // MySeperators.withId(id: "202307221656"),
+                      /*Expanded 가 있으면 발생하는 문제가 있다 Contaner() 로 감싸서 시도해보자*/
                       // /*커스텀 앱바*/ Expanded(
                       //   child: Container(
                       //     color: Colors.red,
@@ -64,6 +65,7 @@ class _Screen___________State extends State<Screen___________> {
                       //     ),
                       //   ),
                       // ),
+                      MySeperators.withId(positionId: "202307221656"),
                       /*커스텀 앱바*/ GestureDetector(
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
@@ -94,7 +96,8 @@ class _Screen___________State extends State<Screen___________> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 50, child: Text("202307221655")),
+                      /*가로형 컨테이너*/
+                      MySeperators.withId(positionId: "202307221656"),
                       /*가로형 컨테이너*/ Container(
                         color: Colors.black,
                         height: 50,
@@ -113,6 +116,7 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                       ),
 
+                      /*가로형 컨테이너*/
                       MySeperators.withId(positionId: "202307221656"),
                       /*투명컨테이너*/ const SizedBox(
                         height: 50,
@@ -121,6 +125,7 @@ class _Screen___________State extends State<Screen___________> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
+                      MySeperators.withId(positionId: "202307221656"),
                       /*배경컨테이너*/ Container(
                         height: 50,
                         decoration: const BoxDecoration(
@@ -136,6 +141,7 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                         child: const Text("배경컨테이너", style: TextStyle(color: Colors.white)),
                       ),
+                      MySeperators.withId(positionId: "202307221656"),
                       /*무지개 그라데이션 컨테이너*/ Transform.translate(
                         offset: const Offset(0, 0),
                         child: Transform.scale(
@@ -150,6 +156,7 @@ class _Screen___________State extends State<Screen___________> {
                           ),
                         ),
                       ),
+                      MySeperators.withId(positionId: "202307221656"),
                       /*리니어그라데이션 컨테이너*/ Transform.translate(
                         offset: const Offset(0 + 20, 0 - 20),
                         child: Transform.scale(
@@ -167,6 +174,7 @@ class _Screen___________State extends State<Screen___________> {
                           ),
                         ),
                       ),
+                      MySeperators.withId(positionId: "202307221656"),
                       /*무지개원형 컨테이너*/ Transform.translate(
                         offset: const Offset(17, 0),
                         child: Transform.scale(
@@ -182,7 +190,6 @@ class _Screen___________State extends State<Screen___________> {
                           ),
                         ),
                       ),
-
                       MySeperators.withId(positionId: "202307221656"),
                       /*빈컨테이너*/ Container(
                         height: 180,
@@ -273,11 +280,47 @@ class _Screen___________State extends State<Screen___________> {
                       //     child: const Text("익스펜디드컨테이너",style: TextStyle(color: Colors.white)),
                       //   ),
                       // ),
-
                       MySeperators.withId(positionId: "202307221656"),
                       /*버튼(토글)*/ const ToggleMaker(),
                       MySeperators.withId(positionId: "202307221656"),
                       /*체크박스*/ const CheckBoxMaker(),
+                      MySeperators.withId(positionId: "202307221656"),
+                      /*버튼(2초 뒤에 연결된 함수를 실행)*/ InkWell(
+                        child: const Row(
+                          children: [
+                            Icon(Icons.question_mark),
+                            Text("버튼을 클릭하면 2초 뒤에 연결된 함수를 실행하는 버튼"),
+                          ],
+                        ),
+                        onTap: () {
+                          /*미래에 실행할 코드*/
+                          Future.delayed(const Duration(milliseconds: 2000), () {
+                            /*1000 milliseconds 후 실행할 코드*/ printWithoutError("foo");
+                          });
+                        },
+                      ),
+                      MySeperators.withId(positionId: "202307221656"),
+                      /*버튼(버튼 클릭 시 5초 뒤 사라질 팝업 실행)*/ InkWell(
+                        child: const Row(
+                          children: [
+                            Icon(Icons.question_mark),
+                            Text("버튼을 클릭하면 2초 뒤에 연결된 함수를 실행하는 버튼"),
+                          ],
+                        ),
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              Future.delayed(const Duration(seconds: 5), () {
+                                Navigator.of(context).pop(true);
+                              });
+                              return const AlertDialog(
+                                title: Text('foo'),
+                              );
+                            },
+                          );
+                        },
+                      ),
                       MySeperators.withId(positionId: "202307221656"),
                       /*버튼*/ SizedBox(
                         height: 60,
@@ -417,7 +460,6 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                         child: const Text('풀스크린다이얼로그', style: TextStyle(color: Colors.white)),
                       ),
-
                       MySeperators.withId(positionId: "202307221656"),
                       /*빈버튼*/ Container(
                         height: 30,
@@ -433,6 +475,7 @@ class _Screen___________State extends State<Screen___________> {
                           ],
                         ),
                       ),
+                      MySeperators.withId(positionId: "202307221656"),
                       /*버튼(토글)*/ OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           backgroundColor: Colors.black,
@@ -518,7 +561,7 @@ class _Screen___________State extends State<Screen___________> {
                           ),
                           onPressed: null, //비활성화 버튼
 
-                          child: Text('비활성화 버튼'),
+                          child: const Text('비활성화 버튼'),
                         ),
                       ),
                       MySeperators.withId(positionId: "202307221656"),
@@ -543,7 +586,6 @@ class _Screen___________State extends State<Screen___________> {
                         },
                         child: const Text('버튼'),
                       ),
-
                       MySeperators.withId(positionId: "202307221656"),
                       /*경고팝업*/ OutlinedButton(
                         child: const Text("풀스크린다이얼로그"),
@@ -1127,7 +1169,7 @@ class _Screen___________State extends State<Screen___________> {
                                     // mode: CupertinoDatePickerMode.dateAndTime,
                                     // mode: CupertinoDatePickerMode.time,
                                     onDateTimeChanged: (DateTime date) {
-                                      printWithoutErrorOrPrintWithError(date);
+                                      printWithoutError(date);
                                     },
                                   ),
                                 ),
@@ -1147,10 +1189,16 @@ class _Screen___________State extends State<Screen___________> {
                       MySeperators.withId(positionId: "202307221656"),
                       /*텍스트버튼*/ TextButton(
                         child: Text("?", style: TextStyle(color: Colors.pink.shade50, fontSize: 19, fontWeight: FontWeight.w100)),
-                        onPressed: () {  ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);},
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
+                        },
                       ),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*이미지버튼*/ GestureDetector(                  onTap: () {  ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);},child: Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 300, child: SizedBox(height: 0.1, width: 0.1, child: Image.asset('asset/images/app_webtoon_logo.jpg'))))),
+                      /*이미지버튼*/ GestureDetector(
+                          onTap: () {
+                            ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
+                          },
+                          child: Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 300, child: SizedBox(height: 0.1, width: 0.1, child: Image.asset('asset/images/app_webtoon_logo.jpg'))))),
                       MySeperators.withId(positionId: "202307221656"),
                       /*아이콘버튼*/ GestureDetector(
                         child: const Icon(Icons.question_mark, size: 40, color: Colors.pink),
@@ -1159,6 +1207,35 @@ class _Screen___________State extends State<Screen___________> {
                         },
                       ),
                       MySeperators.withId(positionId: "202307221656"),
+                      /*사진컨테이너*/
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Center(child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover)),
+                      ),
+                      MySeperators.withId(positionId: "202307221656"),
+                      /*사진컨테이너*/ Center(child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover)),
+                      MySeperators.withId(positionId: "202307221656"),
+                      /*사진컨테이너*/ Center(
+                        child: Container(
+                          // height:Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.contain).height!*0.7,
+                          // width: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.contain).width!*0.7,
+                          height: 300,
+                          width: 200,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('asset/images/sky_best (1).jpg'),
+                              fit: BoxFit.cover,
+                              // fit: BoxFit.contain,
+                              // fit: BoxFit.fitHeight,
+                              // fit: BoxFit.fill,
+                              // fit: BoxFit.none,
+                              // fit: BoxFit.scaleDown, //scaleDown 이 마음에 든다 //디지털 액자에도 이걸 적용하면 될것 같음
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],

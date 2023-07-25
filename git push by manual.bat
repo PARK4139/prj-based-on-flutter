@@ -27,7 +27,8 @@ echo "__________________________________________________________________________
 ::set commit_ment=Video Player 앱 UI 추가, README.md 참조
 ::set commit_ment=Video Player 앱 플러그인 문제 발견 및 해결 시도 중, README.md 참조
 ::set commit_ment=오늘도 웹툰 문제 발견/디버깅/문제해결완료 , README.md 참조
-set commit_ment=Video Player 앱 플러그인 문제 발견 및 해결완료. 하늘이 디지털 사진첩 사진 에셋 적용. README.md 참조
+::set commit_ment=Video Player 앱 플러그인 문제 발견 및 해결완료. 하늘이 디지털 사진첩 사진 에셋 적용. README.md 참조
+set commit_ment=Video Player 앱 서브 화면 추가.하늘이 디지털 사진첩 서브 화면 추가
 
 git add *  
 git commit -m "%commit_ment%" 

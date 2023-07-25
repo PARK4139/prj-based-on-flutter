@@ -76,7 +76,7 @@ class _RainbowTextMakerState extends State<RainbowTextMaker> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     timer?.cancel();
   }

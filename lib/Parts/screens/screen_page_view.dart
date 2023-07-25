@@ -26,14 +26,7 @@ class _ScreenPracticePageViewState extends State<ScreenPracticePageView> {
   void initState() {
     super.initState();
     items = [
-      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.cover),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
-      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fill),
-      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitHeight),
-      // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitWidth),
+      for (int i = 1; i <= 80; i=i+3) Image.asset('asset/images/sky_best ($i).jpg', fit: BoxFit.contain),
     ];
     pageController = PageController(viewportFraction: 0.8, initialPage: currentPage);
     timer = Timer.periodic(const Duration(milliseconds: 3000), (timer) {

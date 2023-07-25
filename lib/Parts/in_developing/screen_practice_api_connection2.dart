@@ -43,8 +43,7 @@ class _ScreenPracticeApiConnection2State extends State<ScreenPracticeApiConnecti
                                 offset: const Offset(0, 50),
                                 child: Transform.scale(
                                   scale: 1.7,
-                                  // child: Container(height: 30 * 4, width: 30 * 3, child: Image.network(webtoon.thumb, fit: BoxFit.fitWidth)),
-                                  child: SizedBox(height: 30 * 4, width: 30 * 3, child: Image.asset('asset/images/app_webtoon_logo.jpg')),
+                                  child: SizedBox(height: 30 * 4, width: 30 * 3, child: Image.network(webtoon.thumb, fit: BoxFit.fitWidth)),
                                 ),
                               ),
                               /*포스터 제목*/ Transform.translate(offset: const Offset(0, 20 + 20 + 20 + 20 + 20 + 20), child: Text(webtoon.title, style: const TextStyle(color: Colors.black54, fontSize: 20))),

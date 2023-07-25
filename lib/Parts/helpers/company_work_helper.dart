@@ -2,7 +2,7 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
 import 'iterable_structure_maker.dart';
-import 'stamp_maker.dart';
+import 'hardcoding_stamp_maker.dart';
 import 'super_helper.dart';
 // late String requester_date;
 // late String requester_summary;
@@ -16,7 +16,7 @@ import 'super_helper.dart';
 // late String std_name;
 // late String request_context;
 
-class WithvedormMaintainanceHelper extends StatefulWidget {
+class CompanyWorkHelper extends StatefulWidget {
   final Color? color;
   final FontWeight? fontWeight;
   final double? fontSize;
@@ -27,7 +27,7 @@ class WithvedormMaintainanceHelper extends StatefulWidget {
 
   List<String> texts;
 
-  WithvedormMaintainanceHelper({
+  CompanyWorkHelper({
     Key? key,
     required this.backgroundColor,
     required this.color,
@@ -40,10 +40,10 @@ class WithvedormMaintainanceHelper extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<WithvedormMaintainanceHelper> createState() => _WithvedormMaintainanceHelperState();
+  State<CompanyWorkHelper> createState() => _CompanyWorkHelperState();
 }
 
-class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHelper> {
+class _CompanyWorkHelperState extends State<CompanyWorkHelper> {
   String itemsToCopy = '-';
   late Map<String, dynamic> stamps;
   var helper = MySuperHelpers();
@@ -110,7 +110,7 @@ class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHel
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
-                            for (var item in itemsSnapshotAtStart) StampMaker(text: item, backgroundColor: MyColors.blackUndefined, color: MyColors.whiteClear, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
+                            for (var item in itemsSnapshotAtStart) hardCodingStampMaker(txt: item, backgroundColor: MyColors.blackUndefined, color: MyColors.whiteClear, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
                           ],
                         ),
                       ),
@@ -146,8 +146,8 @@ class _WithvedormMaintainanceHelperState extends State<WithvedormMaintainanceHel
       int i = -1;
       while (true) {
         if (clickCounter == i) {
-          printWithoutErrorOrPrintWithError("ClickCounter:$clickCounter"); //DEVELOPMENT
-          printWithoutErrorOrPrintWithError('copied : $itemsToCopy'); //DEVELOPMENT
+          printWithoutError("ClickCounter:$clickCounter"); //DEVELOPMENT
+          printWithoutError('copied : $itemsToCopy'); //DEVELOPMENT
           FlutterClipboard.copy(itemsToCopy).then((value) {});
           try {
             itemsToCopy = itemsIterable.next();

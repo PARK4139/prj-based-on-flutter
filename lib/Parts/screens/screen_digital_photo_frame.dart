@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
+
+import '../in_developing/screen_digital_photo_frame_sub.dart';
 
 class ScreenDigitalPhotoFrame extends StatefulWidget {
   const ScreenDigitalPhotoFrame({super.key});
@@ -30,10 +33,13 @@ class _ScreenDigitalPhotoFrameState extends State<ScreenDigitalPhotoFrame> {
       // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fill),
       // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitHeight),
       // Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.fitWidth),
-      for (int i=1;i<=87;i++)    Image.asset('asset/images/sky_best ($i).jpg', fit: BoxFit.contain),
+      for (int i = 1; i <= 87; i++) Image.asset('asset/images/sky_best ($i).jpg', fit: BoxFit.contain),
       Image.asset('asset/images/my_lovely_dog_sky.jpg', fit: BoxFit.contain),
       Image.asset('asset/images/sky_best (1).png', fit: BoxFit.contain),
-     ];
+    ];
+
+
+
     pageController = PageController(viewportFraction: 0.8, initialPage: currentPage);
     timer = Timer.periodic(const Duration(milliseconds: 2000), (timer) {
       if (currentPage < items.length) {
@@ -52,15 +58,19 @@ class _ScreenDigitalPhotoFrameState extends State<ScreenDigitalPhotoFrame> {
 
   @override
   void dispose() {
-      timer.cancel();
+    timer.cancel();
     pageController.dispose();
-
-    super.dispose(); //super.dispose() 는 일반적으로 아래에 작성해야하는 것 같음.
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
+
+
+
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -80,7 +90,7 @@ class _ScreenDigitalPhotoFrameState extends State<ScreenDigitalPhotoFrame> {
                 ],
               ),
             ),
-            /*포토프레임*/SizedBox(
+            /*포토프레임*/ SizedBox(
               height: 650,
               child: PageView.builder(
                 dragStartBehavior: DragStartBehavior.start,
@@ -89,7 +99,13 @@ class _ScreenDigitalPhotoFrameState extends State<ScreenDigitalPhotoFrame> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   // return Transform.scale(scale: 3,child: Container(padding: const EdgeInsets.all(50),child: items[index]));
-                  return items[index];
+                  return GestureDetector(
+                      onTap: () {
+
+                        String item_url =items[index].toString().split(", name: ")[1].split("),")[0].replaceAll("\"", "");
+                           Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenDigitalPhotoFrameSub(itemUrl: item_url)));
+                      },
+                      child: items[index]);
                 },
               ),
             ),

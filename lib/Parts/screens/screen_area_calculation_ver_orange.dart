@@ -27,7 +27,7 @@ class _ScreenAreaCalculationVerOrangeAndroidState extends State<ScreenAreaCalcul
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     textEditingController.dispose();
   }
@@ -151,11 +151,11 @@ class _ScreenAreaCalculationVerOrangeAndroidState extends State<ScreenAreaCalcul
     if (isUnitSquaredMeter == true) {
       userInput = text;
       result = '${(double.parse(text) / 3.3).toStringAsFixed(2)} 평';
-      printWithoutErrorOrPrintWithError("onChanged: $result");
+      printWithoutError("onChanged: $result");
     } else {
       userInput = text;
       result = '${(double.parse(text) * 3.3).toStringAsFixed(2)} ㎡';
-      printWithoutErrorOrPrintWithError("onChanged: $result");
+      printWithoutError("onChanged: $result");
     }
   }
 }

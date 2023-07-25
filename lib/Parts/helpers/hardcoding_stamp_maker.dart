@@ -1,16 +1,19 @@
-import 'package:clipboard/clipboard.dart';
-import 'package:flutter/material.dart';
-
-import 'super_helper.dart';
-
 
 // typedef operand = void;
 // operand myNavigatorPop(var context) {
 //   Navigator.of(context).pop();
 // }
 
-class StampMaker extends StatefulWidget {
-  final String text;
+
+
+
+ import 'package:clipboard/clipboard.dart';
+import 'package:flutter/material.dart';
+
+import 'super_helper.dart';
+
+class hardCodingStampMaker extends StatefulWidget {
+  final String txt;
   Color? color;
   final FontWeight fontWeight;
   final double fontSize;
@@ -22,15 +25,16 @@ class StampMaker extends StatefulWidget {
 
   bool doYouWantPopAfterClicking;
 
+
   // operand myNavigatorPop;
 
-  StampMaker({
+  hardCodingStampMaker({
     Key? key,
-    required this.text,
+    required this.txt,
     this.fontSize = 10,
     this.fontWeight = FontWeight.w200,
-    this.paddingVertical = 0,//5
-    this.paddingHorizontal = 0,//4
+    this.paddingVertical = 0, //5
+    this.paddingHorizontal = 0, //4
     this.borderRadius,
     this.backgroundColor,
     this.color,
@@ -39,13 +43,12 @@ class StampMaker extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<StampMaker> createState() => _StampMakerState();
+  State<hardCodingStampMaker> createState() => _hardCodingStampMakerState();
 }
 
-class _StampMakerState extends State<StampMaker> {
+class _hardCodingStampMakerState extends State<hardCodingStampMaker> {
   @override
   void initState() {
-    
     super.initState();
     widget.backgroundColor ??= MyColors.blackUndefined;
     widget.color ??= MyColors.whiteClear;
@@ -53,7 +56,6 @@ class _StampMakerState extends State<StampMaker> {
     // widget.text_align = null;
     widget.textAlign = TextAlign.center;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,7 @@ class _StampMakerState extends State<StampMaker> {
       child: TextButton(
         onPressed: copyToClipboard,
         child: Text(
-          widget.text,
+           widget.txt,
           style: TextStyle(
             color: widget.color,
             fontSize: widget.fontSize,
@@ -82,12 +84,13 @@ class _StampMakerState extends State<StampMaker> {
   }
 
   void copyToClipboard() {
-    FlutterClipboard.copy(widget.text).then((value) {
-      printWithoutErrorOrPrintWithError('copied : ${widget.text}');
+    FlutterClipboard.copy( widget.txt).then((value) {
+      debugSomethingWithoutMent('copied : ${ widget.txt}');
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${ widget.txt}')));
     });
 
     /*2023 07 07 10 31 StampIntoClipboard :  copy 클릭 시 창닫기 기능 추가 s*/
-    if(widget.doYouWantPopAfterClicking==true){
+    if (widget.doYouWantPopAfterClicking == true) {
       Navigator.of(context).pop();
     }
     /*2023 07 07 10 31 StampIntoClipboard :  copy 클릭 시 창닫기 기능 추가 e*/

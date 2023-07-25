@@ -20,7 +20,7 @@ class _ScreenNetflixSearchState extends State<ScreenNetflixSearch> {
     _searchController.addListener(() {
       setState(() {
         serchText = _searchController.text;
-        printWithoutErrorOrPrintWithError('focusNode.hasFocus:${_focusNode.hasFocus}');
+        printWithoutError('focusNode.hasFocus:${_focusNode.hasFocus}');
       });
     });
   }

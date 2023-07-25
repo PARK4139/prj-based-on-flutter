@@ -284,7 +284,7 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
           children: [
             Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 5000, child: CircleBoxHelper(item: StripedBoxHelper(colors: [Colors.brown.shade50], ratioX: 0.01, ratioY: 0.01)))),
             Transform.translate(offset: const Offset(25, -5), child: Transform.scale(scale: 25, child: RainbowTextMaker(text: '📆', color: Colors.white, fontSize: 1, isRainbowMode: false))),
-            Transform.translate(offset: const Offset(27 - 8 - 5, 16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '위드비전시스템', color: Colors.grey.shade600, fontSize: 1, isRainbowMode: false))),
+            Transform.translate(offset: const Offset(27 - 8 - 5, 16), child: Transform.scale(scale: 7, child: RainbowTextMaker(text: '개발자된지', color: Colors.grey.shade600, fontSize: 1, isRainbowMode: false))),
           ],
         ),
         destination: ScreenDiffMonths(startingDateTime: DateTime(2022, 10, 26), endingDateTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)),

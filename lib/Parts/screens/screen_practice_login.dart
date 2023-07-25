@@ -56,10 +56,10 @@ class _ScreenPracticeLoginState extends State<ScreenPracticeLogin> {
   void validateAndSave() {
     final FormState? form = formKey.currentState;
     if (form!.validate()) {
-      printWithoutErrorOrPrintWithError('Form is valid Email: $_email, password: $_password');
+      printWithoutError('Form is valid Email: $_email, password: $_password');
       form.save();
     } else {
-      printWithoutErrorOrPrintWithError('Form is invalid Email: $_email, password: $_password');
+      printWithoutError('Form is invalid Email: $_email, password: $_password');
     }
   }
 }

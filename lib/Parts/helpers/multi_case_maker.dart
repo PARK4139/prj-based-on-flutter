@@ -2,7 +2,7 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
 import 'iterable_structure_maker.dart';
-import 'stamp_maker.dart';
+import 'hardcoding_stamp_maker.dart';
 import 'super_helper.dart';
 
 class MultiCaseMaker extends StatefulWidget {
@@ -278,7 +278,7 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
                 for (var item in items) Row(
                   children: [
                     Text('${subItemIndex = subItemIndex+1}', style: const TextStyle(color: Colors.lightGreenAccent)),
-                    StampMaker(text: item, backgroundColor: Colors.black, color: MyColors.whiteClear, fontSize: 9),
+                    hardCodingStampMaker(txt: item, backgroundColor: Colors.black, color: MyColors.whiteClear, fontSize: 9),
 
                   ],
                 ),
@@ -320,6 +320,6 @@ class _MultiCaseMakerState extends State<MultiCaseMaker> {
 
   void initLabelTextAndTitleText() {
       titleText = widget.text;
-      labelText = '멀티케이스스탬프 생성';
+      labelText = '레이블텍스트';
   }
 }

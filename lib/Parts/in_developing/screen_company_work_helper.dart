@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenUndefined0000 extends StatefulWidget {
-  const ScreenUndefined0000({super.key});
+class ScreenCompanyWorkHelper extends StatefulWidget {
+  const ScreenCompanyWorkHelper({super.key});
 
   @override
-  State<ScreenUndefined0000> createState() => _ScreenUndefined0000State();
+  State<ScreenCompanyWorkHelper> createState() => _ScreenCompanyWorkHelperState();
 }
 
-class _ScreenUndefined0000State extends State<ScreenUndefined0000> {
+class _ScreenCompanyWorkHelperState extends State<ScreenCompanyWorkHelper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

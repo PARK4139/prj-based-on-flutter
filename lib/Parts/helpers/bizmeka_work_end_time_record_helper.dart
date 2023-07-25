@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 
 import 'iterable_structure_maker.dart';
-import 'stamp_maker.dart';
+import 'hardcoding_stamp_maker.dart';
 import 'super_helper.dart';
 
 class BizmekaWorkEndTimeRecordHelper extends StatefulWidget {
@@ -143,7 +143,7 @@ class _BizmekaWorkEndTimeRecordHelperState extends State<BizmekaWorkEndTimeRecor
                       content: SingleChildScrollView(
                         child: ListBody(
                           children: <Widget>[
-                            for (var item in itemsSnapshotAtStart) StampMaker(text: item, backgroundColor: MyColors.blackUndefined, color: MyColors.whiteClear, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
+                            for (var item in itemsSnapshotAtStart) hardCodingStampMaker(txt: item, backgroundColor: MyColors.blackUndefined, color: MyColors.whiteClear, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
                           ],
                         ),
                       ),
@@ -198,8 +198,8 @@ class _BizmekaWorkEndTimeRecordHelperState extends State<BizmekaWorkEndTimeRecor
       int i = -1;
       while (true) {
         if (clickCounter == i) {
-          printWithoutErrorOrPrintWithError("ClickCounter:$clickCounter"); //DEVELOPMENT
-          printWithoutErrorOrPrintWithError('copied : $itemsToCopy'); //DEVELOPMENT
+          printWithoutError("ClickCounter:$clickCounter"); //DEVELOPMENT
+          printWithoutError('copied : $itemsToCopy'); //DEVELOPMENT
           FlutterClipboard.copy(itemsToCopy).then((value) {});
           try {
             itemsToCopy = itemsIterable.next();

@@ -9,6 +9,7 @@ import '../helpers/main_content_maker.dart';
 import '../helpers/planed_schedule_management_helper.dart';
 import '../helpers/rainbow_icon_maker.dart';
 import '../helpers/rainbow_text_maker.dart';
+import '../helpers/hardcoding_stamp_maker.dart';
 
 
 
@@ -122,7 +123,7 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
                 /*참 펜시한 메모장 : 타이틀*/ Center(
                   child: InkWell(
                     onTap: () {
-                      printWithoutErrorOrPrintWithError("참 펜시한 메모장:");
+                      printWithoutError("참 펜시한 메모장:");
                     },
                     child: Column(
                       children: [
@@ -189,7 +190,7 @@ flutter 로 만들어야 할 기능들.
                 MainContentMaker(level1widget: const Icon(Icons.phone_android, color: Colors.grey), level1text: 'App 요약정리', level2items: [
                   /*Flutter 핵심 요약:타이틀*/ InkWell(
                     onTap: () {
-                      printWithoutErrorOrPrintWithError("/*Flutter 핵심 요약:타이틀*/");
+                      printWithoutError("/*Flutter 핵심 요약:타이틀*/");
                     },
                     child: Column(
                       children: [
@@ -1205,13 +1206,13 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                     ),
                     level1text: '플러터 샘플 위젯 모음',
                     level2items: [
-                      /*플러터문법스탬프*/ PlanedScheduleManagementHelper(text: "플러터문법스탬프", items: const [
-                        "/*컬렉션포문법(collection for)코드샘플*/for (String element in <String>['String1','String2','String3']) Text(element),",
-                        "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/\$i.png'),",
-                        '/*상위위젯테마컬러참조코드샘플*/color: Theme.of(context).cardColor,',
-                        '/*빈박스코드샘플*/const SizedBox(height: 50),',
-                        '/*빈박스코드샘플*/Container(),',
-                        '/*빈박스코드샘플*/PloaceHolder(),',
+                      /*플러터문법스탬프*/ PlanedScheduleManagementHelper(title: "플러터문법스탬프", items:   [
+                        hardCodingStampMaker(txt: "/*컬렉션포문법(collection for)코드샘플*/for (String element in <String>['String1','String2','String3']) Text(element),"),
+                        hardCodingStampMaker(txt: "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/\$i.png'),"),
+                        hardCodingStampMaker(txt: '/*상위위젯테마컬러참조코드샘플*/color: Theme.of(context).cardColor,'),
+                        hardCodingStampMaker(txt: '/*빈박스코드샘플*/const SizedBox(height: 50),'),
+                        hardCodingStampMaker(txt: '/*빈박스코드샘플*/Container(),'),
+                        hardCodingStampMaker(txt: '/*빈박스코드샘플*/PloaceHolder(),'),
                       ]),
                       /*토글버튼*/ const ToggleMaker(),
                       /*체크박스*/ const CheckBoxMaker(),

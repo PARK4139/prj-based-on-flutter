@@ -64,16 +64,16 @@ class AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ s');
+    printWithoutError('__________________________________________________________________________________________________________________________ s');
     initHostPlatformInfo();
     initAppModes();
     if (isDarkMode == false) {
     } else {
-      printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ auth check s');
+      printWithoutError('__________________________________________________________________________________________________________________________ auth check s');
       if (isAndroid == true) {
         checkPermissionForAndroid();
       }
-      printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ auth check e');
+      printWithoutError('__________________________________________________________________________________________________________________________ auth check e');
     }
   }
 
@@ -182,7 +182,7 @@ class AppState extends State<App> {
     } else {
       isDarkMode = storage.getItem('isChecked');
     }
-    printWithoutErrorOrPrintWithError("isDevelopingMode:$isDarkMode");
+    printWithoutError("isDevelopingMode:$isDarkMode");
   }
 
   void initHostPlatformInfo() {
@@ -192,7 +192,7 @@ class AppState extends State<App> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
   }
 
@@ -225,20 +225,20 @@ class AppState extends State<App> {
   }
 
   Future<void> checkPermissionForAndroid() async {
-    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ permission_handler works s');
+    printWithoutError('__________________________________________________________________________________________________________________________ permission_handler works s');
     if (await Permission.location.isGranted) {
-      printWithoutErrorOrPrintWithError('권한이 부여되었습니다');
+      printWithoutError('권한이 부여되었습니다');
     }
     if (await Permission.location.isDenied) {
-      printWithoutErrorOrPrintWithError('권한 부여가 거부되었습니다');
+      printWithoutError('권한 부여가 거부되었습니다');
     }
     if (await Permission.location.isPermanentlyDenied) {
-      printWithoutErrorOrPrintWithError('권한 부여가 영구적으로 거부되었습니다');
+      printWithoutError('권한 부여가 영구적으로 거부되었습니다');
     }
     if (await Permission.location.isRestricted) {
-      printWithoutErrorOrPrintWithError('권한이 제한되었습니다.');
+      printWithoutError('권한이 제한되었습니다.');
     }
-    printWithoutErrorOrPrintWithError('__________________________________________________________________________________________________________________________ permission_handler works e');
+    printWithoutError('__________________________________________________________________________________________________________________________ permission_handler works e');
   }
 
   void toogleDevelopingMode() {
@@ -249,7 +249,7 @@ class AppState extends State<App> {
         isDarkMode = true;
       }
       storage.setItem('isChecked', isDarkMode);
-      printWithoutErrorOrPrintWithError("isDevelopingMode:$isDarkMode");
+      printWithoutError("isDevelopingMode:$isDarkMode");
 
       //debug mode 로 전환시 새로 Screen_first_take 로 라우팅하기 위함.
     });

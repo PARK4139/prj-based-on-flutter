@@ -5,6 +5,7 @@ import '../helpers/bizmeka_login_helper.dart';
 import '../helpers/bizmeka_work_end_time_record_helper.dart';
 import '../helpers/bizmeka_work_strat_time_record_helper.dart';
 import '../helpers/planed_schedule_management_helper.dart';
+import '../helpers/hardcoding_stamp_maker.dart';
 import '../helpers/super_helper.dart';
 
 class ScreenPlanExcuter extends StatefulWidget {
@@ -44,25 +45,25 @@ class _ScreenPlanExcuterState extends State<ScreenPlanExcuter> {
             // Button_to_save_button_name_into_clipboard(text: 'ㆍ' + request_school_name + ' ' + requester_name + '\n' + request_year + ' ' + request_code + ' ' + std_no + ' ' + std_name + ' ' + request_context + '\n-->요청대로 처리[완료]', backgroundColor:  MyColors.darkBlack2, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
             BizmekaDailyReportSubmitHelper(text: '비즈메카 일일업무보고', backgroundColor: MyColors.blackBackground, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 4, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
             BizmekaWorkEndTimeRecordHelper(text: '비즈메카 퇴근보고', backgroundColor: MyColors.blackBackground, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 4, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
-            PlanedScheduleManagementHelper(text: "나의 운동 계획스케쥴", items: const [
-              '팔 약간 벌려 높이뛰기//위에서 볼때 w 가 되도록',
-              '박스 스쿼트 9회 1set//박기량이 하던 운동',
-              '데드리프트 9회 1set',
-              '벤치프레스 9회 1set',
-              '팔굽혀펴기 9회 1set',
-              '런지 9회 1set',
-              '철봉 9회 1set', //9회 10set 가 되면 어느정도 몸이 될지 궁금하다.
-              '푸쉬 업  9회 1set', // 기회가 되면 2회/7일 정도는 필라테스 다니기
+            PlanedScheduleManagementHelper(title: "나의 운동 계획스케쥴", items:   [
+              hardCodingStampMaker(txt: '팔 약간 벌려 높이뛰기//위에서 볼때 w 가 되도록'),
+              hardCodingStampMaker(txt: '박스 스쿼트 9회 1set//박기량이 하던 운동'),
+              hardCodingStampMaker(txt: '데드리프트 9회 1set'),
+              hardCodingStampMaker(txt: '벤치프레스 9회 1set'),
+              hardCodingStampMaker(txt: '팔굽혀펴기 9회 1set'),
+              hardCodingStampMaker(txt: '런지 9회 1set'),
+              hardCodingStampMaker(txt: '철봉 9회 1set'), //9회 10set 가 되면 어느정도 몸이 될지 궁금하다.
+              hardCodingStampMaker(txt: '푸쉬 업  9회 1set'), // 기회가 되면 2회/7일 정도는 필라테스 다니기
             ]),
-            PlanedScheduleManagementHelper(text: "나의 운동 랜덤스케쥴", items: const [
-              '팔 약간 벌려 높이뛰기//위에서 볼때 w 가 되도록',
-              '박스 스쿼트 9회 1set//박기량이 하던 운동',
-              '데드리프트 9회 1set',
-              '벤치프레스 9회 1set',
-              '팔굽혀펴기 9회 1set',
-              '런지 9회 1set',
-              '철봉 9회 1set',
-              '푸쉬 업  9회 1set', // 기회가 되면 2회/7일 정도는 필라테스 다니기
+            PlanedScheduleManagementHelper(title: "나의 운동 랜덤스케쥴", items:   [
+              hardCodingStampMaker(txt: '팔 약간 벌려 높이뛰기//위에서 볼때 w 가 되도록'),
+              hardCodingStampMaker(txt: '박스 스쿼트 9회 1set//박기량이 하던 운동'),
+              hardCodingStampMaker(txt: '데드리프트 9회 1set'),
+              hardCodingStampMaker(txt: '벤치프레스 9회 1set'),
+              hardCodingStampMaker(txt: '팔굽혀펴기 9회 1set'),
+              hardCodingStampMaker(txt: '런지 9회 1set'),
+              hardCodingStampMaker(txt: '철봉 9회 1set'),
+              hardCodingStampMaker(txt: '푸쉬 업  9회 1set'), // 기회가 되면 2회/7일 정도는 필라테스 다니기
             ]),
             const SizedBox(height: 100),
           ],

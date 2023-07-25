@@ -1,30 +1,35 @@
-
-
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
 import 'super_helper.dart';
+
 /*처음에 클립보드의 값이 버튼명으로 저장이 되고 그 이후로 클릭을 하면 클립보드로 값이 저장되는 클립보드의 내용을 버튼명에 바인딩하는 버튼*/
 class DisposalStampMaker extends StatefulWidget {
-  String text;
-  final Color? color;
-  final FontWeight? fontWeight;
-  final double? fontSize;
-  final Color? backgroundColor;
+  String txt;
+  final Color color;
+  final FontWeight fontWeight;
+  final double fontSize;
+  final Color backgroundColor;
   final double paddingVertical;
   final double paddingHorizontal;
-  final BorderRadius? borderRadius;
+  late  BorderRadius? borderRadius;
+
+  final String  prefix;
+
+  final String  suffix;
 
   DisposalStampMaker({
     Key? key,
-    required this.text,
-    required this.backgroundColor,
-    required this.color,
-    required this.fontSize,
-    required this.fontWeight,
-    required this.paddingVertical,
-    required this.paddingHorizontal,
-    required this.borderRadius,
+    this.prefix = "",
+    required this.txt,
+    this.suffix = "",
+    this.backgroundColor = Colors.black12,
+    this.color = Colors.white38,
+    this.fontSize = 10,
+    this.fontWeight = FontWeight.w200,
+    this.paddingVertical = 5,
+    this.paddingHorizontal = 5,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -33,6 +38,13 @@ class DisposalStampMaker extends StatefulWidget {
 
 class _DisposalStampMakerState extends State<DisposalStampMaker> {
   bool isFirstClick = true;
+
+  @override
+  void initState() {
+    widget.borderRadius ??= BorderRadius.circular(5);
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +60,7 @@ class _DisposalStampMakerState extends State<DisposalStampMaker> {
       child: TextButton(
         onPressed: copyToClipboardAfterPasteButtonName,
         child: Text(
-          widget.text,
+          widget.prefix+widget.txt+widget.suffix,
           style: TextStyle(
             color: widget.color,
             fontSize: widget.fontSize,
@@ -63,16 +75,18 @@ class _DisposalStampMakerState extends State<DisposalStampMaker> {
     if (isFirstClick == true) {
       FlutterClipboard.paste().then((value) {
         setState(() {
-          widget.text = value;
-          FlutterClipboard.copy(widget.text).then((value) {
-            printWithoutErrorOrPrintWithError('copied : ${widget.text}');
+          widget.txt = value;
+          FlutterClipboard.copy(widget.prefix+widget.txt+widget.suffix).then((value) {
+            debugSomethingWithoutMent('copied : ${widget.prefix+widget.txt+widget.suffix}');
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.prefix+widget.txt+widget.suffix}')));
           });
           isFirstClick = false;
         });
       });
     } else {
-      FlutterClipboard.copy(widget.text).then((value) {
-        printWithoutErrorOrPrintWithError('copied : ${widget.text}');
+      FlutterClipboard.copy(widget.prefix+widget.txt+widget.suffix).then((value) {
+        debugSomethingWithoutMent('copied : ${widget.prefix+widget.txt+widget.suffix}');
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.prefix+widget.txt+widget.suffix}')));
       });
     }
   }
