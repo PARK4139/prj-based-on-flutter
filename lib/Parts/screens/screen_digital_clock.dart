@@ -65,7 +65,7 @@ class _ScreenClockSubState extends State<ScreenClockSub> {
           Container(
             color: Colors.pinkAccent.shade100,
             child: TextButton(
-              child: const Text('GO TO INDEX', style: TextStyle(color: Colors.white)),
+              child: const Text('뒤로가기', style: TextStyle(color: Colors.white)),
               onPressed: () {
                 Navigator.pop(context);
               },

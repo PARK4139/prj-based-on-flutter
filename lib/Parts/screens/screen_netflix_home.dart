@@ -36,7 +36,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
         title: Row(
           children: [
             /*뒤로가기 버튼*/ IconButton(
-              tooltip: "GO TO INDEX",
+              tooltip: "뒤로가기",
               icon: const Icon(Icons.chevron_left, color: Colors.redAccent),
               onPressed: () {
                 Navigator.pop(context);

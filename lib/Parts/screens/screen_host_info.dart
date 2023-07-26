@@ -70,7 +70,7 @@ class _ScreenHostInfoSubState extends State<ScreenHostInfoSub> {
       body: ListView(
         children: [
           ElevatedButton(
-            child: Text('go to index'.toUpperCase()),
+            child: Text('뒤로가기'.toUpperCase()),
             onPressed: () {
               Navigator.pop(context);
             },

@@ -30,7 +30,7 @@ class _ScreenCarrotMarketTownLivingState extends State<ScreenCarrotMarketTownLiv
                   children: [
                     IconButton(
                       icon: const Icon(Icons.chevron_left, color: Colors.deepOrangeAccent),
-                      tooltip: "GO TO INDEX",
+                      tooltip: "뒤로가기",
                       onPressed: () {
                         Navigator.pop(context);
                       },

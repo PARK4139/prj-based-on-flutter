@@ -59,7 +59,7 @@ class _ScreenPomodoVerPinkState extends State<ScreenPomodoVerPink> {
             Container(
               color: Colors.pinkAccent.shade100,
               child: TextButton(
-                child: const Text('GO TO INDEX', style: TextStyle(color: Colors.white)),
+                child: const Text('뒤로가기', style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   Navigator.pop(context);
                 },

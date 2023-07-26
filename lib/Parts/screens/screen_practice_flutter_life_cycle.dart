@@ -12,57 +12,51 @@ class ScreenPracticeFlutterStfulWigetLifeCycle extends StatefulWidget {
   // const ScreenPracticeFlutterLifeCycle({Key? key}) : super(key: key);
 
   ScreenPracticeFlutterStfulWigetLifeCycle({Key? key}) : super(key: key) {
-    printWithoutMkr(txt: "ScreenPracticeFlutterLifeCycle()//constructor");
+    debugSomething("", troubleShootingId: "ScreenPracticeFlutterLifeCycle()");
   }
 
   @override
   // ignore: no_logic_in_create_state
   State<ScreenPracticeFlutterStfulWigetLifeCycle> createState() {
-    printWithoutMkr(txt: "createState()"); //원래 createState() 안에는 return 문 외에는 작성이 되어 있어서는 안된다. 그러나 테스트르 위해서 예외처리
+    debugSomething("", troubleShootingId: "createState()"); //원래 createState() 안에는 return 문 외에는 작성이 되어 있어서는 안된다. 그러나 테스트르 위해서 예외처리
     return _ScreenPracticeFlutterStfulWigetLifeCycleState();
   }
-
 }
 
 class _ScreenPracticeFlutterStfulWigetLifeCycleState extends State<ScreenPracticeFlutterStfulWigetLifeCycle> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    printWithoutMkr(txt: "initState()");
+    debugSomething("", troubleShootingId: "initState()");
   }
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    printWithoutMkr(txt: "didChangeDependencies()");
+    debugSomething("", troubleShootingId: "didChangeDependencies()");
   }
 
   @override
   void deactivate() {
-    // TODO: implement deactivate
     super.deactivate();
-    printWithoutMkr(txt: "deactivate()");
+    debugSomething("", troubleShootingId: "deactivate()");
   }
 
   @override
   void dispose() {
-    
     super.dispose();
-    printWithoutMkr(txt: "dispose()");
+    debugSomething("", troubleShootingId: "dispose()");
   }
 
   @override
   void didUpdateWidget(covariant ScreenPracticeFlutterStfulWigetLifeCycle oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
-    printWithoutMkr(txt: "didUpdateWidget()");
+    debugSomething("", troubleShootingId: "didUpdateWidget()");
   }
 
   @override
   Widget build(BuildContext context) {
-    printWithoutMkr(txt: "build()");
+    debugSomething("", troubleShootingId: "build()");
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(

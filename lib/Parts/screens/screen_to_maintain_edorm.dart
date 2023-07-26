@@ -34,7 +34,7 @@ class _ScreenToMaintainDormState extends State<ScreenToMaintainDorm> {
       //         child: Container(
       //           color: Colors.black38,
       //           child: TextButton(
-      //             child: Text('go to index'.toUpperCase(), style: TextStyle(color: Colors.blueAccent)),
+      //             child: Text('뒤로가기'.toUpperCase(), style: TextStyle(color: Colors.blueAccent)),
       //             clipBehavior: Clip.hardEdge,
       //             style: ButtonStyle(minimumSize: MaterialStateProperty.all(Size(100, 50)), maximumSize: MaterialStateProperty.all(Size(100, 50))),
       //             onPressed: () {

@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_carrot_market_home_sub_to_notificate_info.dart';
 
 import '../helpers/api_helper.dart';
@@ -36,7 +36,7 @@ class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
                   children: [
                     IconButton(
                       icon: const Icon(Icons.chevron_left, color: Colors.deepOrangeAccent),
-                      tooltip: "GO TO INDEX",
+                      tooltip: "뒤로가기",
                       onPressed: () {
                         // Navigator.push(context, MaterialPageRoute(builder: (context) => const App()));
                         Navigator.pop(context);
@@ -46,9 +46,9 @@ class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
                 ),
                 Container(
                   padding: const EdgeInsets.fromLTRB(0, 0, 1, 0),
-                  child:  InkWell(
-                    onTap: (){
-                      ScaffoldMessenger.of(context).showSnackBar( SnackBar(duration: const Duration(milliseconds: 1000),content: Text(MyMents.notReadyYet)));
+                  child: InkWell(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text(MyMents.notReadyYet)));
                     },
                     child: const Row(
                       children: [
@@ -141,15 +141,17 @@ class _UserCardForHomeState extends State<UserCardForHome> {
             padding: const EdgeInsets.all(10),
             height: 130,
             width: 130,
-            child: FadeInImage(
-              // image: NetworkImage(carrot_user_card_infos[0].userItemImgUrl),//외부 주소로 img 받아 올때
-              image: AssetImage(carrotUserCardInfos[0].userItemImgUrl),
-              placeholder: const AssetImage("assets/placeholder.jpg"),
-              imageErrorBuilder: (context, error, stackTrace) {
-                return Image.asset('asset/images/error.jpg', fit: BoxFit.fitWidth);
-              },
-              fit: BoxFit.fitWidth,
-            ),
+            child: Image.asset(carrotUserCardInfos[0].userItemImgUrl ,fit: BoxFit.fitWidth),
+            // child: FadeInImage(
+            //   // image: NetworkImage(carrot_user_card_infos[0].userItemImgUrl),//외부 주소로 img 받아 올때
+            //   image: AssetImage(carrotUserCardInfos[0].userItemImgUrl),
+            //   placeholder: const AssetImage("assets/notReadyYet.jpg"),
+            //   imageErrorBuilder: (context, error, stackTrace) {
+            //     // return Image.asset('asset/images/error.jpg', fit: BoxFit.fitWidth);
+            //     return const Center(child: CircularProgressIndicator());
+            //   },
+            //   fit: BoxFit.fitWidth,
+            // ),
           ),
           // Image.network(carrot_user_card_infos[0].userItemImgUrl, fit: BoxFit.contain)),
 

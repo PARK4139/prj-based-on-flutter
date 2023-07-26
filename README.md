@@ -23,7 +23,7 @@
 
 
 
-# 작업완료(DONE) (최신일 2023 07 24 19:29:47)
+# 작업완료(DONE) (최신일 2023 07 26 18:26:10)
 ## 프로모도 앱
 ## 참 펜시한 메모장
 ## 오늘도 웹툰
@@ -80,16 +80,14 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 - Video Player 앱 관련 font family 추가. 
 - 오늘도 웹툰 디버깅. Class Future<List<Webtoon>> has no instance getter entries. 에러 디버깅. iteralble 을 print() 코드 추가를 해서 생긴 문제 의심스러운 부분을 주석으로 처리하여 디버깅 하여 정상작동확인.
 - Video Player 앱 실행하여 화면 로고를 클릭하여 영상 갤러리 화면으로 전환 후 특정 영상 클릭 시 의도와는 다르게 Video Player 앱 홈화면으로 돌아가는 문제 발견.
-- 플러그인에 문제가 있을 수 있다는 내용을 알게 되어서, 내용 확인 중.
-- 플러그인에 문제를 해결할 수 있도록 android/app/build.gradle 수정
+- 플러그인에 문제가 있을 수 있다는 내용을 알게 되어서, 내용 확인 후 플러그인에 문제를 해결할 수 있도록 android/app/build.gradle 수정
 - Video Player 앱 서브화면 기능 추가
 - Video Player 앱 기능 추가
 - 갤러리로 이동 버튼 추가
 - 영상 5초 간격 뒤로 버튼
 - 영상 재생 멈춤 토글 버튼
-- 영상 5초 간격 앞으로 버튼
-- 2023 07 24 19:29:47
-
+- 영상 5초 간격 앞으로 버튼 
+- 2023 07 26 18:26:00
 
 
 
@@ -98,7 +96,7 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 
 # 작업중(ING)
 - Video Player 앱
-
+video 가 새로운 video 를 선택 했을 때 새로 선택한 비디오로 초기화 되지 않고 기존의 비디오로 초기화 되는 이슈발견
 
 
 

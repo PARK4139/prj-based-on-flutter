@@ -1214,8 +1214,16 @@ class _Screen___________State extends State<Screen___________> {
                         },
                         child: Center(child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover)),
                       ),
-                      MySeperators.withId(positionId: "202307221656"),
-                      /*사진컨테이너*/ Center(child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover)),
+                      /*사진컨테이너*/
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: SizedBox(
+                            height: 300,
+                            width: 200,
+                            child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover)),
+                      ),
                       MySeperators.withId(positionId: "202307221656"),
                       /*사진컨테이너*/ Center(
                         child: Container(

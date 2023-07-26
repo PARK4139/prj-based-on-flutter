@@ -52,7 +52,7 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
                           children: [
                             /*메인 포스터 버튼*/ GestureDetector(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenWebtoonDetail(itemId: webtoon.id)));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenWebtoonDetail(webtoon: webtoon)));
                               },
                               child: Transform.translate(
                                 offset: const Offset(0, 50),

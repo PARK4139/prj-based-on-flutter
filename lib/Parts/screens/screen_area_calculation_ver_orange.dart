@@ -53,7 +53,7 @@ class _ScreenAreaCalculationVerOrangeAndroidState extends State<ScreenAreaCalcul
                   Container(
                     color: Colors.white,
                     child: TextButton(
-                      child: const Text('GO TO INDEX', style: TextStyle(color: Colors.greenAccent)),
+                      child: const Text('뒤로가기', style: TextStyle(color: Colors.greenAccent)),
                       onPressed: () {
                         Navigator.pop(context);
                       },

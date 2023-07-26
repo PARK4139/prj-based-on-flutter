@@ -35,7 +35,7 @@ class _ScreenPracticeApiConnection2State extends State<ScreenPracticeApiConnecti
                       for (Webtoon webtoon in snapshot.data!)
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenWebtoonDetail(itemId: webtoon.id)));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenWebtoonDetail(webtoon: webtoon)));
                           },
                           child: Column(
                             children: [

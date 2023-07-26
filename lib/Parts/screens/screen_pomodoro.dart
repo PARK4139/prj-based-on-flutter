@@ -113,7 +113,7 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
         children: [
           ElevatedButton(
             child: Text(
-              'go to index'.toUpperCase(),
+              '뒤로가기'.toUpperCase(),
             ),
             onPressed: () {
               Navigator.pop(context);

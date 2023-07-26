@@ -64,7 +64,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
               children: <Widget>[
                 ElevatedButton(
                   child: Text(
-                    'go to index'.toUpperCase(),
+                    '뒤로가기'.toUpperCase(),
                   ),
                   onPressed: () {
                     Navigator.pop(context);

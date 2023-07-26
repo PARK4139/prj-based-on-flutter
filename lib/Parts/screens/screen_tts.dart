@@ -51,7 +51,7 @@ class _ScreenTtsState extends State<ScreenTts> {
         child: ListView(
           children: [
             ElevatedButton(
-              child: Text('go to index'.toUpperCase()),
+              child: Text('뒤로가기'.toUpperCase()),
               onPressed: () {
                 Navigator.pop(context);
               },

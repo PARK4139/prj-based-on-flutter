@@ -246,29 +246,20 @@ void debugSomethingWithoutMent(dynamic something, {String troubleShootingId = "N
     }
   } else {
     printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception s");
-
     printWithoutError("troubleShootingId : $troubleShootingId");
     printWithoutError("data type : ${something.runtimeType}");
-
     printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception e");
   }
 }
 
-void printWithMkr({String txt = ''}) {
-  printWithoutError("__________________________________________________________________________________________________________________________ $txt mkr");
-}
 
-void printWithoutMkr({String txt = ''}) {
-  printWithoutError("__________________________________________________________________________________________________________________________ $txt ");
-}
+void printSeparatorWithMkr({String txt = ''}) => printWithoutError("__________________________________________________________________________________________________________________________ $txt mkr");
 
-void printWithS(String txt) {
-  printWithoutError("__________________________________________________________________________________________________________________________ $txt s");
-}
+void printSeperatorWithoutMkr({String txt = ''}) => printWithoutError("__________________________________________________________________________________________________________________________ $txt ");
 
-void printWithE(String txt) {
-  printWithoutError("__________________________________________________________________________________________________________________________ $txt e");
-}
+void printSeperatorWithS({String txt = ''}) => printWithoutError("__________________________________________________________________________________________________________________________ $txt s");
+
+void printSeperatorWithE({String txt = ''}) => printWithoutError("__________________________________________________________________________________________________________________________ $txt e");
 
 String textCuttingHelper(String text, {int cuttingPosition = 10}) {
   String result = '';
@@ -377,6 +368,7 @@ class MySnackBars {
 
 class MyUris {
   //Uri 여기에 넣자
+  Uri testuri = Uri(host: "localhost",port: 9090,path: "/test/test");
 }
 
 class MyUrls {

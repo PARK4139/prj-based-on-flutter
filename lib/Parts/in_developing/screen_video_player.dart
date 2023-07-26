@@ -15,13 +15,12 @@ class ScreenVideoPlayer extends StatefulWidget {
 class _ScreenVideoPlayerState extends State<ScreenVideoPlayer> {
   XFile? xfile;
 
-
   @override
   Widget build(BuildContext context) {
     // debugSomething(xfile == null);
     return Scaffold(
       //특정 바디오 선택했다면 재생화면 으로 렌더링 아니면 Gallery() 화면으로 렌더링
-      body: xfile == null ? renderScreenGallery() : ScreenVideoPlayerSub(xfile: xfile!),
+      body: xfile == null ? renderScreenGallery() : ScreenVideoPlayerSub(xfile: xfile!, renderScreenGalleryChoosen: renderScreenGalleryChoosen),
     );
   }
 
@@ -81,7 +80,7 @@ class _ScreenVideoPlayerState extends State<ScreenVideoPlayer> {
                   ],
                 ),
               ),
-              MySeperators.withChildLess(height: MediaQuery.of(context).size.height/3),
+              MySeperators.withChildLess(height: MediaQuery.of(context).size.height / 3),
               /*메인아이콘 컨테이너*/ Container(
                 height: 180,
                 width: (MediaQuery.of(context).size.width - 30) / 2,
@@ -92,7 +91,6 @@ class _ScreenVideoPlayerState extends State<ScreenVideoPlayer> {
                 child: GestureDetector(
                   onTap: () {
                     ScaffoldMessenger.of(context).showSnackBar(MySnackBars.mySnackBar(ment: "갤러리 화면으로 이동합니다."));
-
                     renderScreenGalleryChoosen();
                     // getMyCamera();
                   },

@@ -28,7 +28,7 @@ class _ScreenPlanExcuterState extends State<ScreenPlanExcuter> {
         child: ListView(
           children: [
             /*뒤로가기*/ ElevatedButton(
-              child: Text('go to index'.toUpperCase()),
+              child: Text('뒤로가기'.toUpperCase()),
               onPressed: () {
                 Navigator.pop(context);
               },
