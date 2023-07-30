@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_netflix_util.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/screens/screen_webtoon_detail.dart';
 
-import '../helpers/api_helper.dart';
+import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
 
-class ScreenPracticeApiConnection2 extends StatefulWidget {
-  const ScreenPracticeApiConnection2({Key? key}) : super(key: key);
+class ScreenPracticeApiCommunication2 extends StatefulWidget {
+  const ScreenPracticeApiCommunication2({Key? key}) : super(key: key);
 
   @override
-  State<ScreenPracticeApiConnection2> createState() => _ScreenPracticeApiConnection2State();
+  State<ScreenPracticeApiCommunication2> createState() => _ScreenPracticeApiCommunication2State();
 }
 
-class _ScreenPracticeApiConnection2State extends State<ScreenPracticeApiConnection2> {
+class _ScreenPracticeApiCommunication2State extends State<ScreenPracticeApiCommunication2> {
   Future<List<Webtoon>> webtoons = WebtoonApiService.getTodaysToons();
 
   int imageSliderCurrentPage = 0;

@@ -14,7 +14,6 @@ class _ScreenPracticeSplashState extends State<ScreenPracticeSplash> {
 
   @override
   void initState() {
-    
     super.initState();
   }
 
@@ -24,7 +23,7 @@ class _ScreenPracticeSplashState extends State<ScreenPracticeSplash> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(''),
-        leading:  /*뒤로가기 버튼*/ InkWell(
+        leading: /*뒤로가기 버튼*/ InkWell(
           child: const Icon(Icons.chevron_left),
           onTap: () {
             Navigator.pop(context);
@@ -35,9 +34,7 @@ class _ScreenPracticeSplashState extends State<ScreenPracticeSplash> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 20),
-            const SizedBox(height: 20),
-            const SizedBox(height: 20),
+            const SizedBox(height: 20 + 40),
             /*수직으로 움직이는 안드로이드 머리*/ SizedBox(
               height: 240,
               width: 240,
@@ -45,12 +42,12 @@ class _ScreenPracticeSplashState extends State<ScreenPracticeSplash> {
                 width: selected ? 50.50 : 50.50,
                 height: selected ? 50.50 : 50.50,
                 curve: Curves.fastOutSlowIn,
-                top: selected ? 0 + 50 + 50 + 50 : 0 + 50 + 50 + 50 + 50 + 50 + 50,
-                left: selected ? 0 + 50 + 50 + 50 : 0 + 50 + 50 + 50,
+                top: selected ? 150 : 300,
+                left: selected ? 150 : 150,
                 duration: const Duration(seconds: 2),
                 child: Container(
-                  height: 200 + 20 + 20,
-                  width: 200 + 20 + 20,
+                  height: 240,
+                  width: 240,
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                     color: Colors.orange,
@@ -63,10 +60,11 @@ class _ScreenPracticeSplashState extends State<ScreenPracticeSplash> {
                 ),
               ),
             ),
+            const SizedBox(height: 60),
             const CircularProgressIndicator(color: Colors.lightBlueAccent, backgroundColor: Colors.redAccent),
             /*안드로이드 몸통*/ SizedBox(
-              height: 200 + 20 + 20,
-              width: 200 + 20 + 20,
+              height: 240,
+              width: 240,
               child: Transform.translate(
                 offset: const Offset(0, 60),
                 child: Container(

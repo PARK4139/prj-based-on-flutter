@@ -142,25 +142,25 @@ class _Screen___________State extends State<Screen___________> {
                         child: const Text("배경컨테이너", style: TextStyle(color: Colors.white)),
                       ),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*무지개 그라데이션 컨테이너*/ Transform.translate(
-                        offset: const Offset(0, 0),
-                        child: Transform.scale(
-                          scale: 25000,
-                          child: CircleBoxHelper(
-                            item: Container(
-                              height: 0.01,
-                              decoration: BoxDecoration(
-                                gradient: RadialGradient(colors: [Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.blue.shade900, Colors.purple].reversed.toList()),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      // /*레디얼그라데이션 컨테이너*/ Transform.translate(
+                      //   offset: const Offset(0, 0),
+                      //   child: Transform.scale(
+                      //     scale: 12500,
+                      //     child: CircleBoxHelper(
+                      //       item: Container(
+                      //         height: 0.01,
+                      //         decoration: BoxDecoration(
+                      //           gradient: RadialGradient(colors: [Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.blue.shade900, Colors.purple].reversed.toList()),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       MySeperators.withId(positionId: "202307221656"),
                       /*리니어그라데이션 컨테이너*/ Transform.translate(
-                        offset: const Offset(0 + 20, 0 - 20),
+                        offset: const Offset(0, 0),
                         child: Transform.scale(
-                          scale: 9000,
+                          scale: 3000,
                           child: Container(
                             height: 0.01,
                             width: 0.01,
@@ -174,22 +174,22 @@ class _Screen___________State extends State<Screen___________> {
                           ),
                         ),
                       ),
-                      MySeperators.withId(positionId: "202307221656"),
-                      /*무지개원형 컨테이너*/ Transform.translate(
-                        offset: const Offset(17, 0),
-                        child: Transform.scale(
-                          scale: 5,
-                          child: CircleBoxHelper(
-                            item: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                gradient: RadialGradient(colors: [Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.blue.shade900, Colors.purple].reversed.toList()),
-                              ),
-                              child: const Text("무지개원형 컨테이너", style: TextStyle(color: Colors.white)),
-                            ),
-                          ),
-                        ),
-                      ),
+                      // MySeperators.withId(positionId: "202307221656"),
+                      // /*무지개원형 컨테이너*/ Transform.translate(
+                      //   offset: const Offset(17, 0),
+                      //   child: Transform.scale(
+                      //     scale: 250,
+                      //     child: CircleBoxHelper(
+                      //       item: Container(
+                      //         height: 1,
+                      //         decoration: BoxDecoration(
+                      //           gradient: RadialGradient(colors: [Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.blue.shade900, Colors.purple].reversed.toList()),
+                      //         ),
+                      //         child: const Text("무지개원형 컨테이너", style: TextStyle(color: Colors.white)),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       MySeperators.withId(positionId: "202307221656"),
                       /*빈컨테이너*/ Container(
                         height: 180,
@@ -215,8 +215,9 @@ class _Screen___________State extends State<Screen___________> {
                           ),
                         ],
                       ),
+                      MySeperators.withId(positionId: "202307221656"),
                       /*리니어그라데이션 컨테이너*/ Transform.translate(
-                        offset: const Offset(0 + 20, 0 - 20),
+                        offset: const Offset(0, 0),
                         child: Transform.scale(
                           scale: 9000,
                           child: Container(
@@ -476,7 +477,7 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                       ),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*버튼(토글)*/ OutlinedButton(
+                      /*버튼(추천)*/ OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           backgroundColor: Colors.black,
                           disabledBackgroundColor: Colors.red,
@@ -1187,20 +1188,20 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                       ),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*텍스트버튼*/ TextButton(
+                      /*텍스트버튼(추천)*/ TextButton(
                         child: Text("?", style: TextStyle(color: Colors.pink.shade50, fontSize: 19, fontWeight: FontWeight.w100)),
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
                         },
                       ),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*이미지버튼*/ GestureDetector(
+                      /*이미지버튼(추천)*/ GestureDetector(
                           onTap: () {
                             ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
                           },
                           child: Transform.translate(offset: const Offset(17, 0), child: Transform.scale(scale: 300, child: SizedBox(height: 0.1, width: 0.1, child: Image.asset('asset/images/app_webtoon_logo.jpg'))))),
                       MySeperators.withId(positionId: "202307221656"),
-                      /*아이콘버튼*/ GestureDetector(
+                      /*아이콘버튼(추천)*/ GestureDetector(
                         child: const Icon(Icons.question_mark, size: 40, color: Colors.pink),
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
@@ -1244,6 +1245,25 @@ class _Screen___________State extends State<Screen___________> {
                           ),
                         ),
                       ),
+
+                      MySeperators.withId(positionId: "202307221656"),
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: 360,
+                          child: LayoutBuilder(builder: (context, constraint) {
+                            return ListView(
+                              scrollDirection: Axis.vertical,
+                              physics: PageScrollPhysics(),
+                              children: [
+                                for (int i = 0; i <= 23; i++) _MiniRow(time: "$i시", imgPath: "😘", level: '좋은', height: constraint.maxHeight / 10),
+                              ],
+                            );
+                          }),
+                        ),
+                      ),
+                      MySeperators.withId(positionId: "202307221656"),
+
+
                     ],
                   ),
                 ],
@@ -1278,4 +1298,111 @@ class _SnackBarTestButtonState extends State<_SnackBarTestButton> {
       ),
     );
   }
+}
+
+
+class _MiniRow extends StatelessWidget {
+  final String time;
+  final String imgPath;
+
+  /*오염수준*/
+  final String level;
+
+  double height;
+
+  _MiniRow({required this.time, required this.imgPath, required this.level, Key? key, required this.height}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height,
+      child: Container(
+        color: _Colors.lightColor,
+
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 3 - 50,
+                child: Text(
+                  time,
+                  style: _TextStyles.titleTextStyle.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 3 - 50,
+                child: Text(
+                  imgPath,
+                  style: _TextStyles.titleTextStyle.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 3 - 50,
+                child: Text(
+                  level,
+                  style: _TextStyles.titleTextStyle.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),textAlign: TextAlign.right,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _MiniColumn extends StatelessWidget {
+  final String category;
+  final String imgPath;
+
+  /*오염수준*/
+  final String level;
+
+  /*오염수치*/
+  final String stat;
+
+  const _MiniColumn({required this.category, required this.imgPath, required this.level, required this.stat, required this.width, Key? key}) : super(key: key);
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: _Colors.lightColor,
+      child: SizedBox(
+        width: width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(category, style: _TextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
+            Text(imgPath, style: _TextStyles.titleTextStyle.copyWith(fontSize: 40, color: Colors.black, fontWeight: FontWeight.w200)),
+            Text(level, style: _TextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
+            Text(stat, style: _TextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Colors {
+  static const primaryColors = Color(0xff009688);
+  static const darkColor = Color(0xff00675b);
+  static const lightColor = Color(0xff52c7b8);
+  static const white = Colors.white;
+  static const green = Colors.green;
+  static const lightGreenAccent = Colors.lightGreenAccent;
+  static const black = Colors.black;
+}
+
+class _TextStyles {
+  static const TextStyle titleTextStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 40,
+    fontFamily: 'sunFlower',
+    fontWeight: FontWeight.w700,
+  );
 }

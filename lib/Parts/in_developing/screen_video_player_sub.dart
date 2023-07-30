@@ -93,6 +93,10 @@ class _ScreenVideoPlayerSubState extends State<ScreenVideoPlayerSub> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Image.asset(""),
+// AssetGenImage()
+
+
           AspectRatio(
             // aspectRatio: 3 / 2,
             aspectRatio: videoPlayerController!.value.aspectRatio,
@@ -245,3 +249,5 @@ class _ScreenVideoPlayerSubState extends State<ScreenVideoPlayerSub> {
   //   }
   // }
 }
+
+

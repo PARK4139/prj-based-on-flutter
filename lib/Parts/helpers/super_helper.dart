@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/hardcoding_stamp_maker.dart';
 
-import 'api_helper.dart';
+import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
 
 enum Job { paladin, worrior, magitian }
 
@@ -395,6 +395,8 @@ class MyMents {
       '＊"pomodoro" : 포모도로 기법은 프란체스코 시릴로가 고안한 시간 관리 기법입니다.\n 25분 동안 집중해서 일을 한 다음 5분간 휴식을 취하는 것을 반복하는 방식입니다.\n 이 기법은 25분을 토마토 모양의 요리용 타이머로 측정한 데서 이름이 유래했습니다.\n 포모도로 기법은 집중력 향상과 생산성 향상에 도움이 될 수 있습니다.';
 
   static String descriptionAboutScreenDeveloperHelper = '해당 스크린에서는 개발하는데 도움이 되는 기능들을 제공해주는 서비스를 제공합니다 \n';
+
+  static String referToConsoleLog='콘솔에서 출력되는 데이터를 비교하세요';
 
   static String inLoading({String title = "해당기능"}) => "$title 을(를) 로딩 중입니다";
 }

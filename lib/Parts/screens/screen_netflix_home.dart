@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../helpers/api_helper.dart';
+import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
 import '../helpers/super_helper.dart';
 import 'screen_netflix_home_sub.dart';
 import 'screen_netflix_util.dart';

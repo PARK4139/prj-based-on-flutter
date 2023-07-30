@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/api_helper.dart';
+import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
 
 class ScreenNetflixMore extends StatefulWidget {
   const ScreenNetflixMore({Key? key}) : super(key: key);

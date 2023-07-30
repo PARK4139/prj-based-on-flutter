@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/api_helper.dart';
+import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
 
 // data fetch for beginners
-class ScreenPracticeApiConnection extends StatefulWidget {
-  const ScreenPracticeApiConnection({Key? key}) : super(key: key);
+class ScreenPracticeApiCommunication extends StatefulWidget {
+  const ScreenPracticeApiCommunication({Key? key}) : super(key: key);
 
   @override
-  State<ScreenPracticeApiConnection> createState() => _ScreenPracticeApiConnectionState();
+  State<ScreenPracticeApiCommunication> createState() => _ScreenPracticeApiCommunicationState();
 }
 
-class _ScreenPracticeApiConnectionState extends State<ScreenPracticeApiConnection> {
+class _ScreenPracticeApiCommunicationState extends State<ScreenPracticeApiCommunication> {
   List<Webtoon> webtoons = [];
   bool isLoading = true;
 

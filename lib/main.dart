@@ -10,7 +10,7 @@ import 'Parts/helpers/rainbow_icon_maker.dart';
 import 'Parts/helpers/super_helper.dart';
 import 'screen_index_blue.dart';
 
-//apk 빌드 시 파일명은 1.dart 여야한다?.
+//apk 빌드 시 파일명은 main.dart 여야한다?.
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // FirebaseApp.initializeApp();
@@ -32,15 +32,14 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
-  LocalStorage storage = LocalStorage('foo.foo');
-  late bool isDarkMode; //DEVELOPMENT
-  late bool isCoolDownMode; //DEVELOPMENT
-  late bool isChrismasMode; //DEVELOPMENT
-  late bool isHappyBirthDayMode; //DEVELOPMENT
+  late LocalStorage localStorage;
+  late bool isDarkMode;
+  late bool isCoolDownMode;
+  late bool isChrismasMode;
+  late bool isHappyBirthDayMode;
   late bool isDevelopmentConcentrationMode;
 
   int currentPageIndex = 0;
-
 
   /*네비게이션 labelBehavior 옵션*/
   // NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysShow;
@@ -55,9 +54,10 @@ class AppState extends State<App> {
 
   late Widget ghostWiget;
   late Platforms? platform;
-  late bool isAndroid;
-  late bool isWeb;
 
+  // late bool isAndroid;
+  late bool? isAndroid;
+  late bool isWeb;
 
   Color colorForScaffoldBackground = Colors.white;
 
@@ -176,23 +176,23 @@ class AppState extends State<App> {
   }
 
   void initIsDevelopingMode() {
-    if (storage.getItem('isChecked') == null) {
+    localStorage = LocalStorage('foo.foo');
+    if (localStorage.getItem('isChecked') == null) {
       isDarkMode = false;
-      storage.setItem('isChecked', isDarkMode);
+      localStorage.setItem('isChecked', isDarkMode);
     } else {
-      isDarkMode = storage.getItem('isChecked');
+      isDarkMode = localStorage.getItem('isChecked');
     }
-    printWithoutError("isDevelopingMode:$isDarkMode");
+    // debugSomething("isDevelopingMode:$isDarkMode");
   }
 
   void initHostPlatformInfo() {
-    isAndroid = false;
+    // isAndroid = false;
     platform = _getPlatformInfoUsingFlutterFoundation()!;
   }
 
   @override
   void dispose() {
-    
     super.dispose();
   }
 
@@ -248,7 +248,7 @@ class AppState extends State<App> {
       } else {
         isDarkMode = true;
       }
-      storage.setItem('isChecked', isDarkMode);
+      localStorage.setItem('isChecked', isDarkMode);
       printWithoutError("isDevelopingMode:$isDarkMode");
 
       //debug mode 로 전환시 새로 Screen_first_take 로 라우팅하기 위함.

@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 
-import '../helpers/api_helper.dart';
+import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
 
 
 class ScreenNetflixHomeSub extends StatefulWidget {

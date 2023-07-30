@@ -10,17 +10,23 @@ environment:
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 
-# versions available, run `flutter pub outdated`.
+
 dependencies:
   flutter:
     sdk: flutter
   #  flutter_tts: '3.0.0'
   http: ^1.0.0
+#  http_client:
+
+  retrofit: '>=4.0.0 <5.0.0'
+  json_annotation:
+
+  dio:
+  chopper:
   #  audioplayers: ^0.18.3
   #  audioplayers: ^4.1.0
   #  audioplayers: <=0.18.3
   #  audioplayers: ^0.18.3    #   for web
-  #  logger: ^1.3.0
   logger: ^1.4.0
   #  cupertino_icons: ^1.0.2
   clipboard: ^0.1.3
@@ -32,29 +38,48 @@ dependencies:
   shared_preferences:  # web 불가
   localstorage: # Web 가능 # 로컬 데이터를 저장용
   flutter_session_manager: # Web 가능 # 로컬 데이터를 저장용
-#  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
-#  dio_cookie_manager: ^3.1.0
+  #  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
+  #  dio_cookie_manager: ^3.1.0
   #  flutter_tts: ^3.7.0
   flutter_tts: 
   flutter_provider: ^2.1.0 #위젯간 데이터 통신용
   linkify: ^5.0.0
-#  webview_flutter: ^4.2.2
+  #  webview_flutter: ^4.2.2
   webview_flutter:
-#  firebase_core:
-#  cloud_firestore: #firebase 의 DB
-#  video_player: ^2.7.0
+  #  firebase_core:
+  #  cloud_firestore: #firebase 의 DB
+  #  video_player: ^2.7.0
   video_player:
-#  image_picker: ^ 1.0.1
+  #  image_picker: ^ 1.0.1
   image_picker:
+
+  build_runner:
+#  flutter_gen_runner:
+
+  flutter_bloc:
+  bloc:
+  freezed:
+
+  hive:
+  hive_flutter:
+#  dio:
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  retrofit_generator: '>=5.0.0 <6.0.0'
+  build_runner: '>=2.3.0 <4.0.0'
+  json_serializable:
+
+  hive_generator:
+#  build_runner:
 
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+
+# the generic Dart part of this file,
+# https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:

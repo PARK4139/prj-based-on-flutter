@@ -31,7 +31,7 @@ class _ScreenPracticeRowAndColumnState extends State<ScreenPracticeRowAndColumn>
                 color: Colors.black,
                 // width: 25,
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height - 24,
+                height: MediaQuery.of(context).size.height - 24-56,
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.end,

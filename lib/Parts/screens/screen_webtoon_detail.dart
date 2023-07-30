@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/api_helper.dart';
+import 'package:prj_app_feat_nomadcoder_class/Parts/tests/test_communication_between_wigets/via_http/communication_helper.dart';
 
 
 class ScreenWebtoonDetail extends StatefulWidget {

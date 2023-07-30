@@ -13,7 +13,8 @@
 
 
 # 개발정책(작업약속)
-- 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutErrorOrPrintWithError() 를 사용하도록 작업약속.
+- 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutErrorOrPrintWithError()로 대체하던 것을 도태.
+- 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutError()로 대체
 - 추후 묘사용 주석 작성 //대신에 /**/(여러줄 주석용 주석) 로 작업약속.
 - Navigator 의 pop() 추가작성 시 maybePop() 으로 대체 
 
@@ -24,14 +25,14 @@
 
 
 # 작업완료(DONE) (최신일 2023 07 26 18:26:10)
-## 프로모도 앱
-## 참 펜시한 메모장
-## 오늘도 웹툰
-## 당근마껫
-## 넷플릿쓰
-## 구굴
-## 내 프로필
-## 리펙토링
+- 프로모도 앱
+- 참 펜시한 메모장
+- 오늘도 웹툰
+- 당근마껫
+- 넷플릿쓰
+- 구굴
+- 내 프로필
+- 리펙토링
 - Don't invoke 'print' in production code. 
 print() 호출 되는 부분 일괄 printWithoutErrorOrPrintWithError() 로 변경
 printWithoutErrorOrPrintWithError()는 IDE 에서 제공하는 Don't invoke 'print' in production code. 에 대한 에러를 한번에 처리하기 위해서 만듬.
@@ -74,29 +75,30 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 - 랜덤 앱
 랜덤버튼을 눌러 4자리 정수를 랜덤으로 생성하는 기능
 #### Video Player 앱
-- Video Player 앱 UI 생성
-- Video Player 앱 관련 비디오 재생 지원 라이브러리 추가.
-- Video Player 앱 관련 이미지 asset 추가.
-- Video Player 앱 관련 font family 추가. 
-- 오늘도 웹툰 디버깅. Class Future<List<Webtoon>> has no instance getter entries. 에러 디버깅. iteralble 을 print() 코드 추가를 해서 생긴 문제 의심스러운 부분을 주석으로 처리하여 디버깅 하여 정상작동확인.
-- Video Player 앱 실행하여 화면 로고를 클릭하여 영상 갤러리 화면으로 전환 후 특정 영상 클릭 시 의도와는 다르게 Video Player 앱 홈화면으로 돌아가는 문제 발견.
-- 플러그인에 문제가 있을 수 있다는 내용을 알게 되어서, 내용 확인 후 플러그인에 문제를 해결할 수 있도록 android/app/build.gradle 수정
-- Video Player 앱 서브화면 기능 추가
-- Video Player 앱 기능 추가
+- UI 생성
+- 관련 비디오 재생 지원 라이브러리 추가.
+- 관련 이미지 asset 추가.
+- 관련 font family 추가. 
+- 오늘도 웹툰 디버깅. Class Future<List<Webtoon>> has no instance getter entries. 에러 디버깅. iteralble 을 print() 코드 추가를 해서 생긴 문제 의심스러운 부분을 주석으로 처리하여 디버깅/수정/테스트
+- 실행하여 화면 로고를 클릭하여 영상 갤러리 화면으로 전환 후 특정 영상 클릭 시 의도와는 다르게 홈화면으로 돌아가는 문제 디버깅/수정/테스트.
+- 플러그인에 문제가 있을 수 있다는 내용을 알게 되어서, 내용 확인 후 플러그인에 문제를 해결할 수 있도록 android/app/build.gradle 디버깅/수정/테스트
+- 서브화면 기능 추가
+- 기능 추가
 - 갤러리로 이동 버튼 추가
-- 영상 5초 간격 뒤로 버튼
-- 영상 재생 멈춤 토글 버튼
-- 영상 5초 간격 앞으로 버튼 
-- 2023 07 26 18:26:00
-
-
+- 영상 5초 간격 뒤로 버튼 추가
+- 영상 재생 멈춤 토글 버튼 추가
+- 영상 5초 간격 앞으로 버튼 추가  
+<!-- video 가 새로운 video 를 선택 했을 때 새로 선택한 비디오로 초기화 되지 않고 기존의 비디오로 초기화 되는 이슈 디버깅/수정/테스트 -->
+#### 미세먼지 오픈 api 앱
+- UI 생성
 
 
 
 
 # 작업중(ING)
-- Video Player 앱
-video 가 새로운 video 를 선택 했을 때 새로 선택한 비디오로 초기화 되지 않고 기존의 비디오로 초기화 되는 이슈발견
+#### 미세먼지 오픈 api 앱
+- api 연동 작업
+
 
 
 
@@ -121,10 +123,6 @@ video 가 새로운 video 를 선택 했을 때 새로 선택한 비디오로 �
 - flutter 앱 8시 50분에 출근처리 알람
 - flutter 앱 랜덤 스케줄
 - flutter 앱 텔레그램
-- flutter 앱 만나이 계산기
-  52 = 2023-1971(kjh age)
-  생년월일->만나이
-  print(~.inYear);
 - flutter app 5번째주 첫일 계산기
   국가기술표준원 KS X ISO8601 에 의거 약속됨.
   1. 한주는 월요일부터 일요일까지이다.
@@ -132,16 +130,23 @@ video 가 새로운 video 를 선택 했을 때 새로 선택한 비디오로 �
     달을 볼때 첫번째 목요일을 1 한다
     그 목요일을 포함한 주를 1 한다
     그게 첫주다.
-- getBiologicalAge(birthday, refday):			
+- 생물학적 나이 계산기			
   1994 04 05		2023 03 13
-  #생일전		
-  if
-    28=2023-1994-1
-  # 생일후
-  else :  
-    29=2023-1994    except:
-    print(-->'yyyy mm dd' 꼴로 파라미터를 입력해주세요)
-    print(-->'ex 1994 04 05')
+  생일전		
+    if
+      28=2023-1994-1
+  생일후
+    else :  
+      29=2023-1994    except:
+      print(-->'yyyy mm dd' 꼴로 파라미터를 입력해주세요)
+      print(-->'ex 1994 04 05')
+- tech blog
+  https://muhly.tistory.com/26
+  https://tmdfyd0807.tistory.com/89
+
+
+- http 연동 테스트
+  https://tmdfyd0807.tistory.com/107?category=1025772
 
 
 
