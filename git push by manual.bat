@@ -29,7 +29,8 @@ echo "__________________________________________________________________________
 ::set commit_ment=오늘도 웹툰 문제 발견/디버깅/문제해결완료 , README.md 참조
 ::set commit_ment=Video Player 앱 플러그인 문제 발견 및 해결완료. 하늘이 디지털 사진첩 사진 에셋 적용. README.md 참조
 ::set commit_ment=video 가 새로운 video 를 선택 했을 때 새로 선택한 비디오로 초기화 되지 않고 기존의 비디오로 초기화 되는 이슈발견
-set commit_ment=미세먼지 오픈 api 앱 추가
+::set commit_ment=미세먼지 오픈 api 앱 추가
+set commit_ment=생물학적 나이 계산기 앱 추가
 
 
 
@@ -58,7 +59,7 @@ SET OPENING_DIRECTORY=%OPENING_DIRECTORY:*FOO=%
 ECHO %OPENING_DIRECTORY%
 explorer https://github.com/PARK4139/%OPENING_DIRECTORY%
 del /f "git push by auto.py"
-REM echo %~n0.log
-timeout 5
-
+@REM echo %~n0.log
+@REM timeout 15
+pause
 

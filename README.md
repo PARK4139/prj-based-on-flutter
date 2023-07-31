@@ -25,14 +25,14 @@
 
 
 # 작업완료(DONE) (최신일 2023 07 26 18:26:10)
-- 프로모도 앱
-- 참 펜시한 메모장
-- 오늘도 웹툰
-- 당근마껫
-- 넷플릿쓰
-- 구굴
-- 내 프로필
-- 리펙토링
+#### 프로모도 앱
+#### 참 펜시한 메모장
+#### 오늘도 웹툰
+#### 당근마껫
+#### 넷플릿쓰
+#### 구굴
+#### 내 프로필
+#### 리펙토링
 - Don't invoke 'print' in production code. 
 print() 호출 되는 부분 일괄 printWithoutErrorOrPrintWithError() 로 변경
 printWithoutErrorOrPrintWithError()는 IDE 에서 제공하는 Don't invoke 'print' in production code. 에 대한 에러를 한번에 처리하기 위해서 만듬.
@@ -72,10 +72,10 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 -  묘사용 주석은 /**/(여러줄 주석용 주석) 로 일부 변경 
 종종 보이면 추가 수정 계획
 추후 묘사용 주석 작성 //대신에 /**/(여러줄 주석용 주석) 로 작업약속.
-- 랜덤 앱
-랜덤버튼을 눌러 4자리 정수를 랜덤으로 생성하는 기능
+#### 랜덤 앱
+- 랜덤버튼을 눌러 4자리 정수를 랜덤으로 생성하는 기능
 #### Video Player 앱
-- UI 생성
+- UI 구현 
 - 관련 비디오 재생 지원 라이브러리 추가.
 - 관련 이미지 asset 추가.
 - 관련 font family 추가. 
@@ -90,8 +90,10 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 - 영상 5초 간격 앞으로 버튼 추가  
 <!-- video 가 새로운 video 를 선택 했을 때 새로 선택한 비디오로 초기화 되지 않고 기존의 비디오로 초기화 되는 이슈 디버깅/수정/테스트 -->
 #### 미세먼지 오픈 api 앱
-- UI 생성
-
+- UI 구현 
+#### 생물학적 나이 계산기 앱
+- UI 구현 
+- 나이 계산 로직 구현 
 
 
 

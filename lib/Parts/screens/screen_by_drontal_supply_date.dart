@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:prj_app_feat_nomadcoder_class/Parts/helpers/super_helper.dart';
 
-class ScreenDrontalSupplyDate extends StatefulWidget {
-  const ScreenDrontalSupplyDate({super.key});
+class ScreenByNextDrontalSupplyDate extends StatefulWidget {
+  const ScreenByNextDrontalSupplyDate({super.key});
 
   @override
-  State<ScreenDrontalSupplyDate> createState() => _ScreenDrontalSupplyDateState();
+  State<ScreenByNextDrontalSupplyDate> createState() => _ScreenByNextDrontalSupplyDateState();
 }
 
-class _ScreenDrontalSupplyDateState extends State<ScreenDrontalSupplyDate> {
+class _ScreenByNextDrontalSupplyDateState extends State<ScreenByNextDrontalSupplyDate> {
   late final int leftDaysFromNowToNextFeedingDate;
   late final DateTime selectedDate;
 

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class ScreenNextNexguardSupplyDate extends StatefulWidget {
-  const ScreenNextNexguardSupplyDate({super.key});
+class ScreenByNextNexguardSupplyDate extends StatefulWidget {
+  const ScreenByNextNexguardSupplyDate({super.key});
 
   @override
-  State<ScreenNextNexguardSupplyDate> createState() => _ScreenNextNexguardSupplyDateState();
+  State<ScreenByNextNexguardSupplyDate> createState() => _ScreenByNextNexguardSupplyDateState();
 }
 
-class _ScreenNextNexguardSupplyDateState extends State<ScreenNextNexguardSupplyDate> {
+class _ScreenByNextNexguardSupplyDateState extends State<ScreenByNextNexguardSupplyDate> {
   late final int diffDays;
   late final DateTime selectedDate;
 
