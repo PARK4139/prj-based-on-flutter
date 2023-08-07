@@ -243,7 +243,7 @@ def all_info():
     print("__________________________________________________________________________________________________________________________ __________.json JSON Encoding e")
     print("__________________________________________________________________________________________________________________________ __________.json JSON Decoding s")
     # json 파일을 가져와서 python data type[Dictionary, List, Tuple , str] 으로 변환하는 작업
-    data_as_str = '{"name": "강진수", "id": 152352, "history": [{"date": "2015-03-11", "item": "iPhone"}, {"date": "2016-02-23", "item": "Monitor"}]}'
+    data_as_str = '{"name": "강ㅇ수", "id": 152352, "history": [{"date": "2015-03-11", "item": "iPhone"}, {"date": "2016-02-23", "item": "Monitor"}]}'
     data_as_dict = json.loads(data_as_str)
 
     print(json.dumps(data_as_dict, indent=4, sort_keys=True))

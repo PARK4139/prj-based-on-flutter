@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'Parts/screens/screen_area_calculator.dart';
-import 'Parts/screens/screen_checklist.dart';
-import 'Parts/screens/screen_developer_helper.dart';
-import 'Parts/screens/screen_pomodoro.dart';
-import 'Parts/screens/screen_to_maintain_edorm.dart';
-import 'Parts/screens/screen_tts.dart';
+import 'components/screens/screen_area_calculator.dart';
+import 'components/screens/screen_checklist.dart';
+import 'components/screens/screen_developer_helper.dart';
+import 'components/screens/screen_pomodoro.dart';
+import 'components/screens/screen_to_maintain_edorm.dart';
+import 'components/screens/screen_tts.dart';
 import 'main.dart';
 
 class ScreenIndexBlue extends StatefulWidget {
