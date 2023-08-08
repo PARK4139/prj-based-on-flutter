@@ -1,9 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
-import '../helpers/super_helper.dart';
+import '../../data/source/remote/netflixx_api_helper.dart';
+import '../../utils/super_helper.dart';
 
 
 class ScreenJungHoonParkProfile extends StatefulWidget {

@@ -5,7 +5,7 @@ import 'components/screens/screen_checklist.dart';
 import 'components/screens/screen_developer_helper.dart';
 import 'components/screens/screen_pomodoro.dart';
 import 'components/screens/screen_to_maintain_edorm.dart';
-import 'components/screens/screen_tts.dart';
+import 'components/screens/screen_tts_test.dart';
 import 'main.dart';
 
 class ScreenIndexBlue extends StatefulWidget {
@@ -178,7 +178,7 @@ class _ScreenIndexBlueState extends State<ScreenIndexBlue> {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenTts()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenTtsTest()));
               },
               icon: const Icon(Icons.folder),
               tooltip: folderTts,

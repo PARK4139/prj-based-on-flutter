@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/bizmeka_daily_report_submit_helper.dart';
-import '../helpers/bizmeka_login_helper.dart';
-import '../helpers/bizmeka_work_end_time_record_helper.dart';
-import '../helpers/bizmeka_work_strat_time_record_helper.dart';
-import '../helpers/planed_schedule_management_helper.dart';
-import '../helpers/hardcoding_stamp_maker.dart';
-import '../helpers/super_helper.dart';
+import '../../utils/groupware_work_end_time_record_helper.dart';
+import '../../utils/groupware_work_strat_time_record_helper.dart';
+import '../../utils/hardcoding_stamp_maker.dart';
+import '../../utils/planed_schedule_management_helper.dart';
+import '../../utils/super_helper.dart';
+
 
 class ScreenPlanExcuter extends StatefulWidget {
   const ScreenPlanExcuter({Key? key}) : super(key: key);
@@ -40,11 +39,6 @@ class _ScreenPlanExcuterState extends State<ScreenPlanExcuter> {
               ],
             ),
             const SizedBox(height: 10),
-            BizmekaLoginHelper(text: '비즈메카 로그인', backgroundColor: MyColors.blackBackground, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 4, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
-            BizmekaWorkStratTimeRecordHelper(text: '비즈메카 출근보고', backgroundColor: MyColors.blackBackground, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 4, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
-            // Button_to_save_button_name_into_clipboard(text: 'ㆍ' + request_school_name + ' ' + requester_name + '\n' + request_year + ' ' + request_code + ' ' + std_no + ' ' + std_name + ' ' + request_context + '\n-->요청대로 처리[완료]', backgroundColor:  MyColors.darkBlack2, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
-            BizmekaDailyReportSubmitHelper(text: '비즈메카 일일업무보고', backgroundColor: MyColors.blackBackground, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 4, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
-            BizmekaWorkEndTimeRecordHelper(text: '비즈메카 퇴근보고', backgroundColor: MyColors.blackBackground, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 4, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
             PlanedScheduleManagementHelper(title: "나의 운동 계획스케쥴", items:   [
               HardCodingStampMaker(txt: '팔 약간 벌려 높이뛰기//위에서 볼때 w 가 되도록'),
               HardCodingStampMaker(txt: '박스 스쿼트 9회 1set//박기량이 하던 운동'),

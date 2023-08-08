@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_netflix_home.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_netflix_more.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_netflix_search.dart';
+import 'package:prj_app_mvp/components/screens/screen_netflix_home.dart';
+import 'package:prj_app_mvp/components/screens/screen_netflix_more.dart';
+import 'package:prj_app_mvp/components/screens/screen_netflix_search.dart';
 
 import 'screen_netflix_saved_contents_list.dart';
 

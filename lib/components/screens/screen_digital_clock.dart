@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../helpers/super_helper.dart';
+import '../../utils/super_helper.dart';
+
 
 class ScreenClock extends StatefulWidget {
   const ScreenClock({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
   late Timer tickTimer;
   late final String? platform;
 
-  late DateTime currentTime = DateTime.now();
+  late DateTime now = DateTime.now();
 
   final clearButtonKey = GlobalKey();
   late Timer autoClickScheduler;
@@ -104,7 +105,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
                   children: [
                     Center(
                       child: Text(
-                        '$currentTime',
+                        '$now',
                         style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 40, fontWeight: FontWeight.w100),
                         textAlign: TextAlign.center,
                       ),
@@ -121,13 +122,11 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
 
   void onTick(Timer timer) {
     setState(() {
-      initCurrentTime();
+      now = DateTime.now();
+      debugSomething(now.toString(),troubleShootingId: "now20230807090514");
     });
   }
 
-  Future<void> initCurrentTime() async {
-    currentTime = DateTime.now();
-  }
 
   Future<void> autoClick() async {
     RenderBox renderbox = clearButtonKey.currentContext!.findRenderObject() as RenderBox;

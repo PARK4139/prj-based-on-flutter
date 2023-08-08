@@ -4,8 +4,9 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../helpers/super_helper.dart';
-import '../in_developing/pm_api_helper.dart';
+import '../../data/source/remote/pm_api_helper.dart';
+import '../../utils/super_helper.dart';
+
 
 class ScreenParticularMatter extends StatefulWidget {
   const ScreenParticularMatter({super.key});
@@ -126,10 +127,7 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                                     _OurMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 3),
                                     _OurMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 3),
                                     _OurMiniColumn(category: "foo", level: 'foo', stat: 'foo', width: constraint.maxWidth / 3),
-                                    // _OurMiniColumn(category: "foo", imgPath: "😘", level: '좋은', stat: 'foo', width: constraint.maxWidth / 3),
-                                    // _OurMiniColumn(category: "foo", imgPath: "😘", level: '좋은', stat: 'foo', width: constraint.maxWidth / 3),
-                                    // _OurMiniColumn(category: "foo", imgPath: "😘", level: '좋은', stat: 'foo', width: constraint.maxWidth / 3),
-                                  ],
+                                          ],
                                 );
                               });
                             }),

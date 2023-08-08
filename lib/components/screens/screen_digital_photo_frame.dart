@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:prj_app_mvp/components/screens/screen_digital_photo_frame_sub.dart';
 
-import '../in_developing/screen_digital_photo_frame_sub.dart';
+
 
 class ScreenDigitalPhotoFrame extends StatefulWidget {
   const ScreenDigitalPhotoFrame({super.key});

@@ -175,12 +175,18 @@ class _ScreenPomodoVerPinkState extends State<ScreenPomodoVerPink> {
   }
 
   void getParentWigetState() {
-    parent = context.findAncestorStateOfType<AppState>()!;
-    if (parent.platform == Platforms.android) {
-      isAndroid = true;
-    } else {
-      isAndroid = false;
-    }
+    // parent = context.findAncestorStateOfType<AppState>()!;
+    //
+    //
+    // if (parent.platform == Platforms.android) {
+    //   isAndroid = true;
+    // } else {
+    //   isAndroid = false;
+    // }
+    /*여기 손봐야한다.*/
+    isAndroid = true;
+
+
   }
 
   void onTick(Timer timer) {

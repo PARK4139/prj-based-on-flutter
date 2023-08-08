@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/super_helper.dart';
-import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
+import '../../data/source/remote/webtoon_api_helper.dart';
+import '../../utils/super_helper.dart';
+
 
 // data fetch for beginners
 class ScreenWebtoonAPI extends StatefulWidget {

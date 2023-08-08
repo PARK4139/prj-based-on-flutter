@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/helpers/super_helper.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/helpers/toggle_maker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../main.dart';
 import '../../screen_index_colorful.dart';
-import '../helpers/check_box_maker.dart';
-import '../helpers/main_content_maker.dart';
-import '../helpers/planed_schedule_management_helper.dart';
-import '../helpers/rainbow_icon_maker.dart';
-import '../helpers/rainbow_text_maker.dart';
-import '../helpers/hardcoding_stamp_maker.dart';
+import '../../utils/check_box_maker.dart';
+import '../../utils/hardcoding_stamp_maker.dart';
+import '../../utils/main_content_maker.dart';
+import '../../utils/planed_schedule_management_helper.dart';
+import '../../utils/rainbow_icon_maker.dart';
+import '../../utils/rainbow_text_maker.dart';
+import '../../utils/super_helper.dart';
+import '../../utils/toggle_maker.dart';
 
 
 
@@ -60,7 +61,15 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
   @override
   void initState() {
     super.initState();
-    isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
+    // isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
+    BlocBuilder<MyAppStateCubit, MyAppState>(
+      builder: (context, MyAppState state) {
+        isDarkMode= state.isDarkMode ;
+        return Placeholder();
+      },
+    );
+
+
     // SampleWeiredItems = [];
     // SampleWeiredWiget= <Widget>[
     //   for (var item in SampleWeiredItems) Text('${SampleWeiredItems.indexOf(item)}'),

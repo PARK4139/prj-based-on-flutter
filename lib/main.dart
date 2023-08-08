@@ -2,12 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:prj_app_feat_nomadcoder_class/screen_index_colorful.dart';
+import 'package:prj_app_mvp/screen_index_colorful.dart';
+import 'package:prj_app_mvp/utils/rainbow_icon_maker.dart';
+import 'package:prj_app_mvp/utils/super_helper.dart';
 
-import 'components/helpers/rainbow_icon_maker.dart';
-import 'components/helpers/super_helper.dart';
 import 'screen_index_blue.dart';
 
 //apk 빌드 시 파일명은 main.dart 여야한다?.
@@ -32,6 +33,20 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(create: (context) => MyAppStateCubit(), child: AppStateSub());
+  }
+}
+
+class AppStateSub extends StatefulWidget {
+  const AppStateSub({super.key});
+
+  @override
+  State<AppStateSub> createState() => _AppStateSubState();
+}
+
+class _AppStateSubState extends State<AppStateSub> {
   late LocalStorage localStorage;
   late bool isDarkMode;
   late bool isCoolDownMode;
@@ -48,9 +63,6 @@ class AppState extends State<App> {
 
   int counter = 0;
   List<int> inputs = [];
-  bool showDecision = true;
-  dynamic foo = 0;
-  String appHeadTitle = '안녕하세요 개발 지원 서비스입니다';
 
   late Widget ghostWiget;
   late Platforms? platform;
@@ -67,133 +79,157 @@ class AppState extends State<App> {
     printWithoutError('__________________________________________________________________________________________________________________________ s');
     initHostPlatformInfo();
     initAppModes();
-    if (isDarkMode == false) {
-    } else {
-      printWithoutError('__________________________________________________________________________________________________________________________ auth check s');
-      if (isAndroid == true) {
-        checkPermissionForAndroid();
-      }
-      printWithoutError('__________________________________________________________________________________________________________________________ auth check e');
-    }
+    //   printWithoutError('__________________________________________________________________________________________________________________________ auth check s');
+    //   if (isAndroid == true) {
+    //     checkPermissionForAndroid();
+    //   }
+    //   printWithoutError('__________________________________________________________________________________________________________________________ auth check e');
+
   }
 
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (context) {
-      return MaterialApp(
-        debugShowCheckedModeBanner: isDarkMode ? true : false,
-        title: '나의 앱들',
-        theme: ThemeData(
-          primaryColor: Colors.pinkAccent.shade200,
-          // textTheme: const TextTheme(
-          //   titleLarge: TextStyle(color: Color(0xFF232b55), fontSize: 18),
-          // ),
-          // cardColor: const Color(0xfff4eddb),
-        ),
-        home: Scaffold(
-          backgroundColor: isDarkMode ? Colors.black.withOpacity(0.9) : colorForScaffoldBackground,
-          appBar: /*제어바*/ AppBar(
-            title: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(onPressed: toogleDevelopingMode, icon: isDarkMode ? const Icon(Icons.change_circle_outlined) : Icon(Icons.change_circle_outlined, color: Colors.lightBlue.shade50)),
-                ],
-              ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: isDarkMode ? true : false,
+      title: '나의 앱들',
+      theme: ThemeData(
+        primaryColor: Colors.pinkAccent.shade200,
+        // textTheme: const TextTheme(
+        //   titleLarge: TextStyle(color: Color(0xFF232b55), fontSize: 18),
+        // ),
+        // cardColor: const Color(0xfff4eddb),
+      ),
+      home: Scaffold(
+        backgroundColor: isDarkMode ? Colors.black.withOpacity(0.9) : colorForScaffoldBackground,
+        appBar: /*제어바*/ AppBar(
+          title: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(onPressed: toogleDevelopingMode, icon: isDarkMode ? const Icon(Icons.change_circle_outlined) : Icon(Icons.change_circle_outlined, color: Colors.lightBlue.shade50)),
+              ],
             ),
-            toolbarHeight: 45,
-            backgroundColor: isDarkMode ? Colors.blueAccent.withOpacity(0.2) : colorForScaffoldBackground,
-            foregroundColor: isDarkMode ? Colors.blueAccent : colorForScaffoldBackground,
-            elevation: 1,
           ),
-          bottomNavigationBar: NavigationBar(
-            backgroundColor: Colors.blueAccent.withOpacity(0.2),
-            onDestinationSelected: (int index) {
-              setState(() {
-                currentPageIndex = index;
-              });
+          toolbarHeight: 45,
+          backgroundColor: isDarkMode ? Colors.blueAccent.withOpacity(0.2) : colorForScaffoldBackground,
+          foregroundColor: isDarkMode ? Colors.blueAccent : colorForScaffoldBackground,
+          elevation: 1,
+        ),
+        bottomNavigationBar: NavigationBar(
+          backgroundColor: Colors.blueAccent.withOpacity(0.2),
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+          selectedIndex: currentPageIndex,
+          labelBehavior: labelBehavior,
+          destinations: <Widget>[
+            Builder(
+              builder: (context) {
+                if (isDarkMode == false) {
+                  ghostWiget = const Center(child: null);
+                } else {
+                  ghostWiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: RainbowIconMaker(iconData: Icons.folder), icon: const Icon(Icons.folder));
+                }
+                return ghostWiget;
+              },
+            ),
+            Builder(
+              builder: (context) {
+                if (isDarkMode == false) {
+                  ghostWiget = const Center(child: null);
+                } else {
+                  ghostWiget = const NavigationDestination(label: 'INDEX BLUE', selectedIcon: Icon(Icons.folder, color: Colors.blueAccent), icon: Icon(Icons.folder, color: Colors.black));
+                }
+                return ghostWiget;
+              },
+            ),
+          ],
+        ),
+        body: <Widget>[
+          Builder(
+            builder: (context) {
+              if (isDarkMode == false) {
+                ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
+              } else {
+                ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
+              }
+              return ghostWiget;
             },
-            selectedIndex: currentPageIndex,
-            labelBehavior: labelBehavior,
-            destinations: <Widget>[
-              Builder(
-                builder: (context) {
-                  if (isDarkMode == false) {
-                    ghostWiget = const Center(child: null);
-                  } else {
-                    ghostWiget = NavigationDestination(label: 'INDEX COLORFUL', selectedIcon: RainbowIconMaker(iconData: Icons.folder), icon: const Icon(Icons.folder));
-                  }
-                  return ghostWiget;
-                },
-              ),
-              Builder(
-                builder: (context) {
-                  if (isDarkMode == false) {
-                    ghostWiget = const Center(child: null);
-                  } else {
-                    ghostWiget = const NavigationDestination(label: 'INDEX BLUE', selectedIcon: Icon(Icons.folder, color: Colors.blueAccent), icon: Icon(Icons.folder, color: Colors.black));
-                  }
-                  return ghostWiget;
-                },
-              ),
-            ],
           ),
-          body: <Widget>[
-            Builder(
-              builder: (context) {
-                if (isDarkMode == false) {
-                  ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
-                } else {
-                  ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), child: ScreenIndexColorful(isDarkMode: isDarkMode)));
-                }
-                return ghostWiget;
-              },
-            ),
-            Builder(
-              builder: (context) {
-                if (isDarkMode == false) {
-                  ghostWiget = const Center(child: null); //PRODUCTION
-                } else {
-                  ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), alignment: Alignment.center, child: const ScreenIndexBlue()));
-                }
-                return ghostWiget;
-              },
-            ),
-          ][isDarkMode ? currentPageIndex : currentPageIndex],
-        ),
-      );
-    });
+          Builder(
+            builder: (context) {
+              if (isDarkMode == false) {
+                ghostWiget = const Center(child: null); //PRODUCTION
+              } else {
+                ghostWiget = Center(child: Container(color: Colors.black.withOpacity(0.5), alignment: Alignment.center, child: const ScreenIndexBlue()));
+              }
+              return ghostWiget;
+            },
+          ),
+        ][isDarkMode ? currentPageIndex : currentPageIndex],
+      ),
+    );
   }
 
-  void initAppModes() {
-    setState(() {
-      initIsDevelopingMode();
-      isCoolDownMode = false; //DEVELOPMENT
-      isChrismasMode = false; //DEVELOPMENT
-      isHappyBirthDayMode = false; //DEVELOPMENT
-      isDevelopmentConcentrationMode = true; /*false*/ /*true*/
-    });
+  void initAppModes()   {
+    // initIsDevelopingModeIntoLocalStorage();
+
+    /*isDarkMode 를 false 로 저장*/
+    isDarkMode = false;
+    BlocProvider.of<MyAppStateCubit>(context).saveMyAppState(isDarkMode: isDarkMode); //isDarkMode false 로 저장
+    /*bring isDarkMode,  isDarkMode 변수에 저장*/ //원래는 이렇게 쓰고 싶지 않으나 이미 isDarkMode 변수를 너무 많이 쓰고 있어 손이 많이가서 이렇게 하기로..결정
+    BlocProvider.of<MyAppStateCubit>(context).resetMyAppState();//isDarkMode false 로 초기화되도록 작성되어 있음
+
+
+    BlocBuilder<MyAppStateCubit, MyAppState>(
+      builder: (context, MyAppState state) {
+        // isDarkMode = state.isDarkMode;
+        debugSomething(state.isDarkMode, troubleShootingId: "202308071937");
+        return Placeholder();
+      },
+    );
+
+
+    BlocBuilder<MyAppStateCubit, MyAppState>(
+      builder: (context, MyAppState state) {
+        // isDarkMode = state.isDarkMode;
+        debugSomething(state.isDarkMode, troubleShootingId: "202308071938");
+        return Placeholder();
+      },
+    );
+    BlocProvider.of<MyAppStateCubit>(context).toogleMyAppStateIsDarkMode();//isDarkMode false 로 초기화되도록 작성되어 있음
+
+    BlocBuilder<MyAppStateCubit, MyAppState>(
+      builder: (context, MyAppState state) {
+        // isDarkMode = state.isDarkMode;
+        debugSomething(state.isDarkMode, troubleShootingId: "202308071939");
+        return Placeholder();
+      },
+    );
+
+    isCoolDownMode = false; //DEVELOPMENT
+    isChrismasMode = false; //DEVELOPMENT
+    isHappyBirthDayMode = false; //DEVELOPMENT
+    isDevelopmentConcentrationMode = true; /*false*/ /*true*/
   }
 
-  void initIsDevelopingMode() {
-    localStorage = LocalStorage('foo.foo');
-    if (localStorage.getItem('isChecked') == null) {
-      isDarkMode = false;
-      localStorage.setItem('isChecked', isDarkMode);
-    } else {
-      isDarkMode = localStorage.getItem('isChecked');
-    }
-    // debugSomething("isDevelopingMode:$isDarkMode");
-  }
+  // void initIsDevelopingModeIntoLocalStorage() {
+  // localStorage = LocalStorage('foo.foo');
+  // if (localStorage.getItem('isDarkMode') == null) {
+  //   isDarkMode = false;
+  //   localStorage.setItem('isDarkMode', isDarkMode);
+  // } else {
+  //   isDarkMode = localStorage.getItem('isDarkMode');
+  // }
+  // debugSomething("isDevelopingMode:$isDarkMode");
+
+  // }
 
   void initHostPlatformInfo() {
     // isAndroid = false;
     platform = _getPlatformInfoUsingFlutterFoundation()!;
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   Platforms? _getPlatformInfoUsingFlutterFoundation() {
@@ -243,15 +279,15 @@ class AppState extends State<App> {
 
   void toogleDevelopingMode() {
     setState(() {
-      if (isDarkMode == true) {
-        isDarkMode = false;
-      } else {
-        isDarkMode = true;
-      }
-      localStorage.setItem('isChecked', isDarkMode);
-      printWithoutError("isDevelopingMode:$isDarkMode");
+      // if (isDarkMode == true) {
+      //   isDarkMode = false;
+      // } else {
+      //   isDarkMode = true;
+      // }
+      // localStorage.setItem('isDarkMode', isDarkMode);
+      // printWithoutError("isDevelopingMode:$isDarkMode");
 
-      //debug mode 로 전환시 새로 Screen_first_take 로 라우팅하기 위함.
+      BlocProvider.of<MyAppStateCubit>(context).toogleMyAppStateIsDarkMode();
     });
   }
 }
@@ -264,4 +300,35 @@ enum Platforms {
   linux,
   macOS,
   windows,
+}
+
+
+// State
+class MyAppState {
+  final bool isDarkMode;
+
+  MyAppState({this.isDarkMode = false});
+}
+
+// Cubit
+class MyAppStateCubit extends Cubit<MyAppState> {
+  MyAppStateCubit() : super(MyAppState());
+
+  void saveMyAppState({required bool isDarkMode}) {
+    final MyAppState cityState = MyAppState(isDarkMode: isDarkMode);
+    emit(cityState);
+  }
+
+  void toogleMyAppStateIsDarkMode() {
+    final currentState = state;
+    final newState = MyAppState(isDarkMode: !currentState.isDarkMode);
+    debugSomething(state.isDarkMode,troubleShootingId: "toogleMyAppStateIsDarkMode()");
+    emit(newState);
+  }
+
+  void resetMyAppState() {
+    final newState = MyAppState(isDarkMode: false);
+    debugSomething(state.isDarkMode,troubleShootingId: "resetMyAppState()");
+    emit(newState);
+  }
 }

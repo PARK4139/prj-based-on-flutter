@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_netflix_util.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_webtoon_detail.dart';
+import 'package:prj_app_mvp/components/screens/screen_netflix_util.dart';
+import 'package:prj_app_mvp/components/screens/screen_webtoon_detail.dart';
+import 'package:prj_app_mvp/utils/super_helper.dart';
 
-import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
+import '../../data/source/remote/webtoon_api_helper.dart';
+
+
 
 class ScreenWebtoon extends StatefulWidget {
   const ScreenWebtoon({Key? key}) : super(key: key);
@@ -55,8 +58,7 @@ class _ScreenWebtoonState extends State<ScreenWebtoon> {
                                 offset: const Offset(0, 50),
                                 child: Transform.scale(
                                   scale: 1.7,
-                                  // child: SizedBox(height: 30 * 4, width: 30 * 3, child: Image.network(MyUrls.testImageOfFlutterOfiicial, fit: BoxFit.fitWidth)),
-                                  child: SizedBox(height: 30 * 4, width: 30 * 3, child: Image.asset('asset/images/app_webtoon_logo.jpg')),
+                                  child: SizedBox(height: 30 * 4, width: 30 * 3, child: Image.network(MyUrls.networkImageTest)),
                                 ),
                               ),
                             ),

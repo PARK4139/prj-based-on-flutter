@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_carrot_market_arround_me.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_carrot_market_chatting.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_carrot_market_home.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_carrot_market_mycarrot.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_carrot_market_townliving.dart';
+import 'package:prj_app_mvp/components/screens/screen_carrot_market_arround_me.dart';
+import 'package:prj_app_mvp/components/screens/screen_carrot_market_chatting.dart';
+import 'package:prj_app_mvp/components/screens/screen_carrot_market_home.dart';
+import 'package:prj_app_mvp/components/screens/screen_carrot_market_mycarrot.dart';
+import 'package:prj_app_mvp/components/screens/screen_carrot_market_townliving.dart';
 
-import '../helpers/carrot_market_floating_writing_button_maker.dart';
+import '../../utils/carrot_market_floating_writing_button_maker.dart';
+
+
+
+
+
+
 
 
 // physics: NeverScrollableScrollPhysics(),

@@ -1,8 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/helpers/super_helper.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_random_number_sub.dart';
+import 'package:prj_app_mvp/components/screens/screen_random_number_sub.dart';
+
+import '../../utils/super_helper.dart';
+
+
+
+
 
 class ScreenRandomNumber extends StatefulWidget {
   const ScreenRandomNumber({super.key});

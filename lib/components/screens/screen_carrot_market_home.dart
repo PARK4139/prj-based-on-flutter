@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/screens/screen_carrot_market_home_sub_to_notificate_info.dart';
+import 'package:prj_app_mvp/components/screens/screen_carrot_market_home_sub_to_notificate_info.dart';
 
-import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
-import '../helpers/super_helper.dart';
+import '../../data/source/remote/carrot_markket_api_helper.dart';
+import '../../utils/super_helper.dart';
 import 'screen_carrot_market_home_sub_to_search.dart';
 import 'screen_carrot_market_home_sub_to_set_category.dart';
 

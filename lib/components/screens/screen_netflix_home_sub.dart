@@ -1,9 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/helpers/super_helper.dart';
 
-import '../tests/test_communication_between_wigets/via_http/communication_helper.dart';
+import '../../data/source/remote/netflixx_api_helper.dart';
+import '../../utils/super_helper.dart';
+
+
+
 
 
 class ScreenNetflixHomeSub extends StatefulWidget {

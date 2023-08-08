@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/carrot_market_floating_writing_button_maker.dart';
+import '../../utils/carrot_market_floating_writing_button_maker.dart';
 import 'screen_carrot_market_arround_me.dart';
 import 'screen_carrot_market_chatting.dart';
 import 'screen_carrot_market_home.dart';

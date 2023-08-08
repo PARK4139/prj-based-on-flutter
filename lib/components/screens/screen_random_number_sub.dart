@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:prj_app_feat_nomadcoder_class/components/helpers/super_helper.dart';
+
+import '../../utils/super_helper.dart';
+
+
+
 
 class ScreenRandomNumberSub extends StatefulWidget {
   const ScreenRandomNumberSub({super.key});

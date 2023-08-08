@@ -5,7 +5,7 @@
 - 강의 응용 결과물 feat. 노마드 코더 flutter 기초앱 클론코딩 
 - 강의 응용 결과물 feat. 인프런 flutter 넥플릭스 클론코딩 
 - 강의 응용 결과물 feat. 인프런 [코드팩토리] [초급] Flutter 3.0 앱 개발 - 10개의 프로젝트로 오늘 초보 탈출! 
-- android 기반으로 개발
+- android 기반으로 우선 개발, 추후 IOS, 웹 순서로 추가 계획
 
 
 
@@ -97,19 +97,27 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 #### 생물학적 나이 계산기 앱
 - UI 구현 
 - 나이 계산 로직 구현 
-
+#### 미국주식 api 앱
+- UI 구현 
 
 
 # 작업중(ING)
-#### 미세먼지 오픈 api 앱
+#### 미국주식 api 앱
+- 기획
+- UI 수정 
 - api 연동 작업
 
 
+#### 클린 아키텍쳐를 모방한 프로젝트 리펙토링
+- 디렉토리명(패키지명) 수정
+- 파일(다트파일 등)을 분류하여 이동
+- 다트파일 내 import 일괄 수정
+- 생성파일(.g.dart)에서 g. 를 제거하여 이력관리가 되도록.
+- gitignore 에 *.g.dart 등록 
+- api key 가 배포되지 않도록 gitignore 등록
 
 
-
-
-
+ 
 
 
 # 추후할일(TO DO)
