@@ -32,7 +32,8 @@ echo "__________________________________________________________________________
 ::set commit_ment=생물학적 나이 계산기 앱 추가
 ::set commit_ment=미세먼지 오픈 api 앱 추가
 ::set commit_ment=미세먼지 오픈 API 앱 연동 및 중간 일부 리펙토링
-set commit_ment=미국주식 오픈 api 앱 추가, 일부리펙토링, README.md 참조
+::set commit_ment=미국주식 오픈 api 앱 추가, 일부리펙토링, README.md 참조
+set commit_ment=README.md 최신화
 
 
 
