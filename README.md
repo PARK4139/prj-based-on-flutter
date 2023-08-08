@@ -1,6 +1,7 @@
-# Flutter All In One 프로젝트
-- android 기반으로 우선 개발, 추후 IOS, 웹 순서로 추가 계획
-- 스크린 중심 기반으로 만든 통합 앱.
+# ✔️프로젝트 묘사
+- 멀티플랫폼 프로젝트(플러터 프레임워크 기반)
+- Android 기반으로 우선 개발, 추후 IOS, 웹 순서로 추가 계획
+- 스크린 기반으로 만든 통합 All In One 앱.
 - 클론 코딩 응용 결과물 수집(# feat. # 노마드 코더 flutter 기초앱 클론코딩 # 인프런 flutter 넥플릭스 클론코딩 # 인프런 [코드팩토리] [초급] Flutter 3.0 앱 개발) 
 - 플러터 문제 발생 시 시도대안 코드 수집
 - 플러터 샘플 코드 수집
@@ -10,7 +11,7 @@
 
 
 
-# 개발정책(작업약속)
+# ✔️개발정책
 - 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutErrorOrPrintWithError()로 대체하던 것을 도태.
 - 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutError()로 대체
 - 추후 묘사용 주석 작성 //대신에 /**/(여러줄 주석용 주석) 로 작업약속.
@@ -22,7 +23,7 @@
 
 
 
-# 작업완료(DONE)  
+# ✔️DONE  
 #### 랜덤 앱
 - UI 구현 
 - 랜덤버튼을 눌러 4자리 정수를 랜덤으로 생성하는 기능 추가
@@ -34,9 +35,9 @@
 - 프로모도 시간관리 기능 구현  
 #### 참 펜시한 메모장 앱
 - UI 구현 
-#### 웹툰 api 앱
+#### 웹툰 API 앱
 - UI 구현 
-- api 연동
+- API 연동
 - 외부 네트워크 이미지 연동 기능 추가
 #### 당근마껫 앱
 - UI 구현 
@@ -56,7 +57,7 @@
 - 관련 font family 추가. 
 - 오늘도 웹툰 디버깅. Class Future<List<Webtoon>> has no instance getter entries. 에러 디버깅. iteralble 을 print() 코드 추가를 해서 생긴 문제 의심스러운 부분을 주석으로 처리하여 디버깅/수정/테스트
 - 실행하여 화면 로고를 클릭하여 영상 갤러리 화면으로 전환 후 특정 영상 클릭 시 의도와는 다르게 홈화면으로 돌아가는 문제 디버깅/수정/테스트.
-- 플러그인에 문제가 있을 수 있다는 내용을 알게 되어서, 내용 확인 후 플러그인에 문제를 해결할 수 있도록 android/app/build.gradle 디버깅/수정/테스트
+- 플러그인에 문제가 있을 수 있다는 내용을 알게 되어서, 내용 확인 후 플러그인에 문제를 해결할 수 있도록 Android/app/build.gradle 디버깅/수정/테스트
 - 라우팅 버튼 기능 추가
 - 갤러리로 이동 기능 버튼 추가
 - 영상 5초 간격 뒤로/앞으로 이동 기능 버튼 추가
@@ -69,7 +70,7 @@ printWithoutErrorOrPrintWithError()는 IDE 에서 제공하는 Don't invoke 'pri
 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutErrorOrPrintWithError() 를 사용하도록 작업약속.
 - dart 디렉토리명(패키지명?)
 snake case 로 변경
--  The file name 'ScreenPracticeApiConnection2.dart' isn't a snake_case identifier. 
+-  The file name 'ScreenPracticeAPIConnection2.dart' isn't a snake_case identifier. 
 Upper Calmel Case 로 변경
 -  The file name 'SampleRoutingScreenSecond.dart' isn't a snake_case identifier. 
 파일명을 snake case 로 변경
@@ -102,23 +103,23 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 -  묘사용 주석은 /**/(여러줄 주석용 주석) 로 일부 변경 
 종종 보이면 추가 수정 계획
 추후 묘사용 주석 작성 //대신에 /**/(여러줄 주석용 주석) 로 작업약속.
-#### 미세먼지 오픈 api 앱
+#### 미세먼지 오픈 API 앱
 - UI 구현 
 - 공공데이터 포털 미세먼지 API 연동(API 키 신청 및 코드 적용)
 - 미세먼지 시현 카드 구현
 - 초미세먼지 시현 카드 구현
-#### 생물학적 나이 계산기 앱
+#### 나이 계산기 앱
 - UI 구현 
 - 생물학적 나이 계산 로직 구현
-#### 미국주식 api 앱
+#### 미국주식 API 앱
 - UI 구현 
 
 
-# 작업중(ING)
-#### 미국주식 api 앱
+# ✔️ING(작업중)
+#### 미국주식 API 앱
 - 기획
 - UI 수정 
-- api 연동 작업
+- API 연동 작업
 
 
 #### 클린 아키텍쳐를 모방한 프로젝트 리펙토링
@@ -127,13 +128,13 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 - 다트파일 내 import 일괄 수정
 - 생성파일(.g.dart)에서 g. 를 제거하여 이력관리가 되도록.
 - gitignore 에 *.g.dart 등록 
-- api key 가 배포되지 않도록 gitignore 등록
+- API key 가 배포되지 않도록 gitignore 등록
 
 
  
 
 
-# 추후할일(TO DO)
+# ✔️TO DO
 - The value of the field '_imageSliderCurrentPage' isn't used. 에 대한 리펙토링
 아니 분명히 필드가 참조되는데도 불구하고 이 에러가 왜 나타나는지 모르겠다. .. 어딘가 내가 잘못했겠지?...
 - An uninitialized field should have an explicit type annotation. 에 대한 리펙토링
@@ -166,6 +167,11 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 - http 연동 테스트(밑은 참고 자료)
   https://tmdfyd0807.tistory.com/107?category=1025772
 - 사진첩 앱
+타일스프레디드화면에서 사진클릭 시 전체화면 기능
+전체화면에서 손가락을 이용한 zoom in, zoom out 제스쳐 시 사진 zoom in, zoom out 기능
+감상 모드로 전환이 되는 버튼 UI 구현
+감상 모드로 전환이 되는 버튼 클릭 시 감상 모드로 전환
+감상 모드에서는 화면이 자동으로 넘어감.   
 - 동물동감 앱
 - 강아지도감 앱
 - 식물도감 앱
@@ -174,20 +180,20 @@ ex after) widget.borderRadius ??= BorderRadius.circular(5); 로 변경
 
 
   
-# 작업개인회고
+# ✔️작업개인회고
 ### 리펙토링에 대하여
 dart의 코드 작성 스타일을 지금보다 더 숙련되지 않은 상태에서 만든 코드들에 대한 리펙토링이 필요했고 수행했다.
 작은 problems 가 쌓여서 엄청 많아졌지만 IDE 의 도움으로 꽤 빠르게 처리할 수 있었다.
 그럼에도 노란색 지그재그 밑줄은 만들지 중간 중간 미리 리펙토링 해두는 것이 좋겠다 생각을 했고 앞으로 중간중간 리펙토링 할 것이다.
 ### 클린아키텍쳐에 대하여
 프로그래밍을 하면 반복되는 많은 패턴의 일들이 있고 프로그래머들이 선호하는 것들이 생겨나는 것 같다.
-api 를 연동하는 일에서도 객체를 만드는 일도 패턴이 존재한다.
+API 를 연동하는 일에서도 객체를 만드는 일도 패턴이 존재한다.
 프로젝트 트리(디렉토리,패키지)를 만드는 일도 패턴이 존재한다.
 이를 따르는 것이 가독성도 높이고, 협업하기 좋고, 유지보수 까지도 좋게 만들어 주는 것 같다.
 하지만 아직은 모르겠다. 어떤게 모범사례이고 어떻게 따르는 것이 좋은 것인지.
 갈길이 멀어보인다. 이런 것을 가이드해줄 좋은 사수를 만나고 싶다는 생각이 들었다.
-### api 연동에 대하여
-이제 api 연동은 무섭지 않다. 할 수 있다는 자신감이 꽤나 생겼다.
+### API 연동에 대하여
+이제 API 연동은 이제 할 수 있다는 자신감이 꽤나 생겼다.
 하지만 자만은 근물. 실수한 부분이 없는지 확인하고, 어떻게 해야 효율적인지 고민을 늘상하자.
 ### 주석 작성정책에 대하여
 주석작성정책이 필요하다. 중구난방으로 작성된 프로젝트는 시간이 흐른뒤 다시 보아쓸때 보기가 불편했다.
