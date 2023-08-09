@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Sender with ChangeNotifier {
+class ScreenChangeNotifierTest1of2 with ChangeNotifier {
   int _count = 0;
 
   int get count => _count;

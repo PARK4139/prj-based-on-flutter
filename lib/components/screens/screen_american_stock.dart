@@ -104,7 +104,7 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
                     }
                     return CustomScrollView(
                       slivers: [
-                        // slivers: [] 에는 sliver 의 형태인 wiget만 들어갈 수 있는데, 아닌 위젯을 들어가게 하려면 SliverToBoxAdapter() 로 감싸 넣을 수 있다.
+                        // slivers: [] 에는 sliver 의 형태인 wiget만 들어갈 수 있는데, 아닌 위젯을 들어가게 하려면 SliverToBoxAdapter() 로 감싸 넣어야 한다.
                         _OurSliverAppBar(snapshot.data!),
                         _OurCard(
                           title: "종류별 통계",
@@ -144,14 +144,15 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
                                   if (snapshot2.data != null)
                                     for (int i = 0; i < snapshot2.data!.length; i++)
                                       _OurMiniRow(
-                                          columnText2: snapshot2.data![i].name,
-                                          columnText7: snapshot2.data![i].assetType,
-                                          columnText3: snapshot2.data![i].delistingDate,
-                                          columnText4: snapshot2.data![i].exchange,
-                                          columnText5: snapshot2.data![i].ipoDate,
-                                          columnText6: snapshot2.data![i].status,
-                                          columnText1: snapshot2.data![i].symbol,
-                                          height: constraint.maxHeight / 10 + 0.7),
+                                        columnText1: snapshot2.data![i].symbol,
+                                        columnText2: snapshot2.data![i].name,
+                                        columnText3: snapshot2.data![i].delistingDate,
+                                        columnText4: snapshot2.data![i].exchange,
+                                        columnText5: snapshot2.data![i].ipoDate,
+                                        columnText6: snapshot2.data![i].status,
+                                        columnText7: snapshot2.data![i].assetType,
+                                        height: constraint.maxHeight / 10 , // 10 줄씩 볼것이다.
+                                      ),
                                 ],
                               );
                             }),
@@ -458,11 +459,7 @@ Map<Regions, String> ourRegions = {
 
 class _OurMiniColumn extends StatelessWidget {
   final String category;
-
-  /*오염수준*/
   final String level;
-
-  /*오염수치*/
   final String stat;
 
   const _OurMiniColumn({required this.category, required this.level, required this.stat, required this.width, Key? key}) : super(key: key);
@@ -497,13 +494,14 @@ class _OurMiniRow extends StatelessWidget {
   final String columnText5;
   final String columnText6;
   final String columnText7;
-
   double height;
+  late List<String >columnTexts;
 
   _OurMiniRow({required this.columnText1, required this.columnText2, required this.columnText3, required this.columnText4, required this.columnText5, required this.columnText6, Key? key, required this.height, required this.columnText7}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    columnTexts=[columnText1,columnText2,columnText3,columnText4,columnText5,columnText6,columnText7];
     return SizedBox(
       height: height,
       child: Container(
@@ -513,60 +511,14 @@ class _OurMiniRow extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              for(String columnText in columnTexts)
               SizedBox(
-                width: MediaQuery.of(context).size.width / 7 - 50 + 40,
+                // width: MediaQuery.of(context).size.width / 7,
+                width: MediaQuery.of(context).size.width / columnTexts.length,
                 child: Text(
-                  columnText1,
+                  columnText,
                   style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200),
                   textAlign: TextAlign.left,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 7 - 50,
-                child: Text(
-                  columnText2,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 7 - 50,
-                child: Text(
-                  columnText3,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200),
-                  textAlign: TextAlign.right,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 7 - 50,
-                child: Text(
-                  columnText4,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200),
-                  textAlign: TextAlign.right,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 7 - 50,
-                child: Text(
-                  columnText5,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200),
-                  textAlign: TextAlign.right,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 7 - 50,
-                child: Text(
-                  columnText6,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200),
-                  textAlign: TextAlign.right,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 7 - 50,
-                child: Text(
-                  columnText7,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200),
-                  textAlign: TextAlign.right,
                 ),
               ),
             ],

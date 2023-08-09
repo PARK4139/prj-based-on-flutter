@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider/flutter_provider.dart';
 
 import '../../../utils/super_helper.dart';
-import 'taker.dart';
+import 'ScreenFlutterProviderTest2of2.dart';
 
 //flutter_bloc 보다...너무 복잡한데...아닌가?...
 class FooMaker {

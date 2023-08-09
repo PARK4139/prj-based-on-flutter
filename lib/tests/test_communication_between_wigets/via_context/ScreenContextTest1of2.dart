@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 //부모는 기능만 가지고 있으면 되고 특별히 할 일이 없다.
-class Parent extends StatefulWidget {
-  const Parent({super.key});
+class ScreenContextTest1 extends StatefulWidget {
+  const ScreenContextTest1({super.key});
 
   @override
-  ParentState createState() => ParentState();
+  ScreenContextTest1State createState() => ScreenContextTest1State();
 }
 
-class ParentState extends State<Parent> {
+class ScreenContextTest1State extends State<ScreenContextTest1> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

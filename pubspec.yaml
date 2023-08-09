@@ -1,5 +1,5 @@
 name: prj_app_mvp
-description: multi platform framework practice,
+description: Project For MVP(Minimum Viable Product) Based On Multi Platform Framework
 publish_to: 'none'
 
 
@@ -28,6 +28,7 @@ dependencies:
   chopper:
   #  firebase_core:
   #  cloud_firestore: #firebase 의 DB
+  csv:
   # _________________________________________________________________________________________  위젯 간 데이터 통신용(위젯트리 상태관리용)
   flutter_provider: ^2.1.0
   flutter_bloc:

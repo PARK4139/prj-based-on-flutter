@@ -110,65 +110,42 @@ void printWithoutError(var txt) {
   print(txt.toString());
 }
 
-void debugSomething(dynamic something, {String troubleShootingId = "Not Assigned"}) {
+void debugSomething(dynamic something, {String author="Jung hoon park", String troubleShootingId = "Not Assigned"}) {
   /*배포 시 내부 주석처리*/
+  printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+  printWithoutError("author : $author");
+  printWithoutError("trouble Shooting Id : $troubleShootingId");
   if (something == null) {
-    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : null");
-
-    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
-  } else if (something is bool) {
-    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : ${something.runtimeType}");
+    printWithoutError("data runtimeType : null");
+  } else {
+    printWithoutError("data runtimeType : ${something.runtimeType}");
+  }
+  if (something == null) {
     printWithoutError(something.toString());
-
-    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
+  }
+  else if (something is bool) {
+    printWithoutError(something.toString());
   } else if (something is String) {
-    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : ${something.runtimeType}");
     printWithoutError(something.toString());
-
-    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is List<dynamic>) {
-    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : ${something.runtimeType}");
     for (dynamic item in something) {
       printWithoutError(item.toString());
     }
-
-    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is int) {
-    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : ${something.runtimeType}");
     printWithoutError(something.toString());
-
-    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is Set<dynamic>) {
-    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : ${something.runtimeType}");
     for (dynamic element in something) {
       printWithoutError(element);
     }
 
-    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
     // } else if (something is Map<String, Map<String, dynamic>>) {
-    //   printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug s");
+
     //   printWithoutErrorOrPrintWithError("data type : ${something.runtimeType}");
     //   for (var key in something.keys) {
     //     printWithoutErrorOrPrintWithError("$key: ${something[key]}");
     //   }
-    //   printWithoutErrorOrPrintWithError("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is Map<String, dynamic>) {
-    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
     if (something is Map<String, Map<String, dynamic>>) {
-      printWithoutError("troubleShootingId : $troubleShootingId");
-      printWithoutError("data type : ${something.runtimeType}");
       for (var key in something.keys) {
         printWithoutError("$key: {");
         debugSomethingWithoutMent(something[key]);
@@ -180,17 +157,14 @@ void debugSomething(dynamic something, {String troubleShootingId = "Not Assigned
       }
     } else {
       printWithoutError("troubleShootingId : $troubleShootingId");
-      printWithoutError("data type : ${something.runtimeType}");
+
       for (var key in something.keys) {
         printWithoutError("$key: ${something[key]}");
       }
     }
-
-    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
   } else {
-    printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception s");
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : ${something.runtimeType}");
+    printWithoutError("__________________________________________________________________________________________________________________________ debugSomething exception s");
+
     // for (var key in something.keys) {
     //   printWithoutErrorOrPrintWithError(key);
     // }
@@ -198,11 +172,11 @@ void debugSomething(dynamic something, {String troubleShootingId = "Not Assigned
     //   printWithoutErrorOrPrintWithError("$key: $value");
     // });
     for (var entry in something.entries) {
-      printWithoutError("$entry.key: $entry.value");
+      printWithoutError("${entry.key}: ${entry.value}");
     }
-
-    printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception e");
+    printWithoutError("__________________________________________________________________________________________________________________________ debugSomething exception e");
   }
+  printWithoutError("__________________________________________________________________________________________________________________________ debug e");
 }
 
 void debugSomethingWithoutMent(dynamic something, {String troubleShootingId = "Not Assigned"}) {
@@ -405,7 +379,7 @@ class MyMents {
   static String yes = '네';
   static String no = '아니요';
   static String sorry = '죄송합니다.';
-  static String helloWorld="Hello World";
+  static String helloWorld = "Hello World";
   static String hello = "안녕하세요! 반갑습니다!";
 
   static String occuredError = "에러가 발생했습니다";

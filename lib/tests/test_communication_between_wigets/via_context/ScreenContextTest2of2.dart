@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-import 'parent.dart'; //  (4/4).
+import 'ScreenContextTest1of2.dart'; //  (4/4).
 
-class Child extends StatefulWidget {
-  const Child({super.key});
+class ScreenContextTest2 extends StatefulWidget {
+  const ScreenContextTest2({super.key});
 
   @override
-  ChildState createState() => ChildState();
+  ScreenContextTest2State createState() => ScreenContextTest2State();
 }
 
-class ChildState extends State<Child> {
-  late ParentState parent; //  (3/4).
+class ScreenContextTest2State extends State<ScreenContextTest2> {
+  late ScreenContextTest1State parent; //  (3/4).
 
   @override
   void initState() {
     super.initState();
-    parent = context.findAncestorStateOfType<ParentState>()!; //  (2/4).
+    parent = context.findAncestorStateOfType<ScreenContextTest1State>()!; //  (2/4).
   }
 
   @override

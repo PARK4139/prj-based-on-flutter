@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/flutter_provider.dart';
 
-import 'sender.dart';
+import 'ScreenFlutterProviderTest1of2.dart';
 
 class Taker extends StatelessWidget {
   const Taker({Key? key}) : super(key: key);

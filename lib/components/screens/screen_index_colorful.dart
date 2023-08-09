@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_bloc_with_qubit/ScreenCommunicator.dart';
+import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_bloc_with_qubit/ScreenBlocWithQubitTest.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_getx/ScreenGetxTest.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_navigator_push_feat_map/screen_comunicator1.dart';
 import 'package:prj_app_mvp/utils/super_helper.dart';
@@ -89,7 +89,6 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       /*\nHello World*/ _RefactoringModule202307152216(txt: '\nHello World \ntest', destination: const ScreenPracticeHelloWorld()),
       /*\nSplash*/ _RefactoringModule202307152216(txt: '\nSplash \ntest', destination: const ScreenPracticeSplash()),
 
-
       /*\nAlign animation*/ _RefactoringModule202307152216(txt: '\nAlign animation \ntest', destination: const ScreenPracticeAnimatedAlign()),
       /*\nPosition & Scale*/ _RefactoringModule202307152216(txt: '\nPosition & Scale \ntest', destination: const ScreenAnimatedPositionAndScale()),
       /*\nstful wiget\nlife cycle*/ _RefactoringModule202307152216(txt: '\nstful wiget\nlife cycle test', destination: ScreenPracticeFlutterStfulWigetLifeCycle()),
@@ -100,8 +99,8 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       /*\nImage network \ntest*/ _RefactoringModule202307152216(txt: '\nImage network \ntest', destination: const ScreenImageNetworkTest()),
       /*\nFuture Builder test*/ _RefactoringModule202307152216(txt: '\nFuture Builder test', destination: const ScreenFutureBuilder()),
       /*\nStream Builder test*/ _RefactoringModule202307152216(txt: '\nStream Builder test', destination: const ScreenStreamBuilder()),
-      /*\n위젯트리 상태관리 test*/ _RefactoringModule202307152216(txt: '\nGetX \ntest', destination:   ScreenGetxTest()),
-      /*\n위젯트리 상태관리 test*/ _RefactoringModule202307152216(txt: '\nBloC/cubit \ntest', destination:   const ScreenCommunicator()),
+      /*\n위젯트리 상태관리 test*/ _RefactoringModule202307152216(txt: '\nGetX \ntest', destination: ScreenGetxTest()),
+      /*\n위젯트리 상태관리 test*/ _RefactoringModule202307152216(txt: '\nBloC/cubit \ntest', destination: ScreenBlocWithQubitTest()),
 
       /*\n개발자도우미, 계획집행기*/ _RefactoringModule202307152216(txt: '\n개발자도우미\n', destination: const ScreenDeveloperHelper()),
       /*\n계획실행도우미*/ _RefactoringModule202307152216(txt: '\n계획실행도우미', destination: const ScreenPlanExcuter()),
@@ -116,6 +115,7 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       /*\n넥스가드급여일*/ _RefactoringModule202307152216(txt: '\n넥스가드급여일\n', destination: const ScreenByNextNexguardSupplyDate()),
       /*\n드론탈급여일*/ _RefactoringModule202307152216(txt: '\n드론탈급여일\n', destination: const ScreenByNextDrontalSupplyDate()),
       /*\n개발자년차*/ _RefactoringModule202307152216(txt: '\n개발자년차\n', destination: ScreenDiffMonths(startingDateTime: DateTime(2022, 10, 26), endingDateTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))),
+
       /*\n포모도로*/ _RefactoringModule202307152216(txt: '\n포모도로\n', destination: const ScreenPomodoro()),
 
       /*\n참 펜시한 메모장*/ _RefactoringModule202307152216(txt: '\n참 펜시한 메모장\n', destination: const ScreenWeiredMyNote()),
@@ -129,11 +129,11 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       /*\n하늘이디지털액자*/ _RefactoringModule202307152216(txt: '\n하늘이디지털액자\n', destination: const ScreenDigitalPhotoFrame()),
       /*\n우리처음만난날*/ _RefactoringModule202307152216(txt: '\n우리처음만난날\n', destination: const ScreenByNowFromDayThatWeMeet()),
       /*\n다크플레이어*/ _RefactoringModule202307152216(txt: '\n비디오플레이어\n', destination: const ScreenVideoPlayer()),
-      /*\nwebtoon API2*/ _RefactoringModule202307152216(txt: '\n웹툰 API \n', destination: const ScreenWebtoon()),
+      /*\nwebtoon API2*/ _RefactoringModule202307152216(txt: '\n웹툰\n', destination: const ScreenWebtoon()),
       /*\n지도 API*/ _RefactoringModule202307152216(txt: '\n세계지도\n', destination: const ScreenEarthMap()),
       /*\n근태관리*/ _RefactoringModule202307152216(txt: '\n근태관리\n', destination: const ScreenCommutationManagement()),
-      /*\n미세먼지 연동 API 연습*/ _RefactoringModule202307152216(txt: '\n미세먼지 API\n', destination: const ScreenParticularMatter()),
-      /*\n미국주식 연동 API 연습*/ _RefactoringModule202307152216(txt: '\n미국주식 API\n', destination: const ScreenAmericanStock()),
+      /*\n미세먼지 연동 API 연습*/ _RefactoringModule202307152216(txt: '\n미세먼지\n', destination: const ScreenParticularMatter()),
+      /*\n미국주식 연동 API 연습*/ _RefactoringModule202307152216(txt: '\n미국주식\n', destination: const ScreenAmericanStock()),
 
       // /*\n아이보호 시스템*/ _RefactoringModule202307152216(txt: '\n우리아이 횡단보도 지킴이\n', destination: const Placeholder()),
       //   1. splash 화면
@@ -172,7 +172,7 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
 
       // /*다크플레이어*/
 
-       // 🎀🎁🎂🎉🎊🐶🦴📅📆
+      // 🎀🎁🎂🎉🎊🐶🦴📅📆
       // /*하늘이관리*/ _RefactoringModule202307152217(
       //   txt: '하늘이관리',
       //   item: Row(
