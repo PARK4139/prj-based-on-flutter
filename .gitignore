@@ -56,3 +56,5 @@ security_helper.dart
 #/android/app/src/main/AndroidManifest.xml
 #android/app/main/AndroidManifest.xml
 #*.AndroidManifest.xml
+../android/app/src/main/AndroidManifest.xml
+
