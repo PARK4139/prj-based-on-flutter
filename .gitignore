@@ -51,8 +51,8 @@ security_helper.dart
 *.g.dart
 
 #아래의 코드들은 실패
-android/app/src/main/AndroidManifest.xml
-/android/app/src/main/AndroidManifest.xml
-android/app/main/AndroidManifest.xml
-
-*.AndroidManifest.xml
+#security_helper.properties
+#android/app/src/main/AndroidManifest.xml
+#/android/app/src/main/AndroidManifest.xml
+#android/app/main/AndroidManifest.xml
+#*.AndroidManifest.xml
