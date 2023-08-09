@@ -43,6 +43,7 @@ set commit_ment=테스트 푸쉬
 
 
 
+
 git add *  
 git commit -m "%commit_ment%" 
 git push -u origin main  
