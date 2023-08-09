@@ -51,6 +51,7 @@ git status | find "working tree clean"
 
 
 
+
 set DIRECTORY_THAT_CONTAINING_GIT_FILE=%cd%
 CD ..
 set DIRECTORY_THAT_CONTAINING_GIT_USELESS_PART=%cd%
