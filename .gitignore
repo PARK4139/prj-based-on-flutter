@@ -50,3 +50,6 @@ app.*.map.json
 security_helper.dart
 *.g.dart
 android/app/src/main/AndroidManifest.xml
+/android/app/src/main/AndroidManifest.xml
+android/app/main/AndroidManifest.xml
+#*.AndroidManifest.xml
