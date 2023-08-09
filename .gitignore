@@ -50,6 +50,8 @@ app.*.map.json
 security_helper.dart
 *.g.dart
 
+
+
 #아래의 코드들은 실패
 #security_helper.properties
 #android/app/src/main/AndroidManifest.xml
@@ -58,5 +60,6 @@ security_helper.dart
 #*.AndroidManifest.xml
 #../android/app/src/main/AndroidManifest.xml
 #./android/app/src/main/AndroidManifest.xml
-*/android/app/src/main/AndroidManifest.xml
+#*/android/app/src/main/AndroidManifest.xml
 #**/android/app/src/main/AndroidManifest.xml
+
