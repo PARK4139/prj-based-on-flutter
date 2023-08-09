@@ -49,4 +49,5 @@ app.*.map.json
 #배포에 적합하지 않은 내용을 배포하지 않기 위한 내용을 git에 올리지 않음.
 security_helper.dart
 *.g.dart
-/android/app/main/AndroidManifest.xml
+/android/app/src/main/AndroidManifest.xml
+#android/app/src/main/AndroidManifest.xml
