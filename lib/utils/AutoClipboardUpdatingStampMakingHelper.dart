@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:prj_app_mvp/utils/super_helper.dart';
 
-class ReplacingStampMaker extends StatefulWidget {
+
+class AutoClipboardUpdatingStampMakingHelper extends StatefulWidget {
   String deprecated;
   final Color color;
   final FontWeight fontWeight;
@@ -14,7 +17,7 @@ class ReplacingStampMaker extends StatefulWidget {
 
   final String template;
 
-  ReplacingStampMaker({
+  AutoClipboardUpdatingStampMakingHelper({
     Key? key,
     required this.template,
     required this.deprecated,
@@ -28,20 +31,31 @@ class ReplacingStampMaker extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ReplacingStampMaker> createState() => _ReplacingStampMakerState();
+  State<AutoClipboardUpdatingStampMakingHelper> createState() => AutoClipboardUpdatingStampMakingHelperState();
 }
 
-class _ReplacingStampMakerState extends State<ReplacingStampMaker> {
+class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpdatingStampMakingHelper> {
   bool isFirstClick = true;
 
   late String resultTxts ;
 
   late String firstPastedValue;
 
+  late Timer autoClipboardUpdatingTimer;
+
   @override
   void initState() {
-    widget.borderRadius ??= BorderRadius.circular(5);
     super.initState();
+    widget.borderRadius ??= BorderRadius.circular(5);
+  }
+
+
+  @override
+  void dispose() {
+    autoClipboardUpdatingTimer.cancel();
+    printSeparatorWithMkr(txt:  "autoClipboardUpdatingTimer.cancel()");
+
+    super.dispose();
   }
 
   @override
@@ -58,7 +72,7 @@ class _ReplacingStampMakerState extends State<ReplacingStampMaker> {
       child: TextButton(
         onPressed: copyToClipboardAfterPasteButtonName,
         child: Text(
-          "${widget.template}",
+          widget.template,
           style: TextStyle(
             color: widget.color,
             fontSize: widget.fontSize,
@@ -70,34 +84,24 @@ class _ReplacingStampMakerState extends State<ReplacingStampMaker> {
   }
 
   void copyToClipboardAfterPasteButtonName() {
-    // if (isFirstClick == true) {
     FlutterClipboard.paste().then((value) {
       if (isFirstClick == true) {
         firstPastedValue = value;
+        autoClipboardUpdatingTimer = Timer.periodic(const Duration(seconds: 1), autoClipboardUpdating);
         isFirstClick = false;
       }
       setState(() {
         resultTxts = widget.template.replaceAll(widget.deprecated, firstPastedValue);
       });
-        FlutterClipboard.copy(resultTxts).then((value) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('$resultTxts\n이(가) 복사되었습니다.')));
-          debugSomething('$resultTxts\n이(가) 복사되었습니다.');
-        });
+      FlutterClipboard.copy(resultTxts).then((value) {
+        printSeparatorWithMkr(txt: "s");
+        debugSomethingWithoutMent('$resultTxts 이(가) 복사되었습니다.');
+        printSeparatorWithMkr(txt: "e");
+      });
     });
-    // } else {
-    //
-    //   FlutterClipboard.copy(resultTxts).then((value) {
-    //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('$resultTxts\n이(가) 복사되었습니다.')));
-    //     debugSomething('$resultTxts\n이(가) 복사되었습니다.');
-    //
-    //
-    //
-    //   });
-    //   // FlutterClipboard.copy(widget.txt).then((value) {
-    //   //   debugSomethingWithoutMent('copied : ${widget.txt}');
-    //   //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.txt}')));
-    //   // });
-    //
-    // }
+  }
+
+  void autoClipboardUpdating(Timer timer) {
+      copyToClipboardAfterPasteButtonName();
   }
 }

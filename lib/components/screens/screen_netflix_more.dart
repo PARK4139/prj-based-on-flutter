@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/source/remote/netflixx_api_helper.dart';
+import '../../main.dart';
 
 
 
@@ -39,7 +40,9 @@ class _ScreenNetflixMoreState extends State<ScreenNetflixMore> {
   }
 
   void initMovies() {
-    movies = moviesDummy;
+    // Bloc cubit 사용해서 상태 Read
+    MyAppStateCubit cubit = MyAppStateCubit();
+    movies = cubit.state.moviesDummy;
   }
 
   Widget circleMaker({required String imgUrl}) {

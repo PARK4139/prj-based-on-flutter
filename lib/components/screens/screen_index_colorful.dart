@@ -1,43 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_bloc_with_qubit/ScreenCommunicator.dart';
+import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_getx/ScreenGetxTest.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_navigator_push_feat_map/screen_comunicator1.dart';
 import 'package:prj_app_mvp/utils/super_helper.dart';
 
-import 'components/screens/screen___________.dart';
-import 'components/screens/screen_american_stock.dart';
-import 'components/screens/screen_animated_align.dart';
-import 'components/screens/screen_animated_position.dart';
-import 'components/screens/screen_area_calculator.dart';
-import 'components/screens/screen_by_arbor_day.dart';
-import 'components/screens/screen_by_drontal_supply_date.dart';
-import 'components/screens/screen_by_next_parasiticide_supply_date.dart';
-import 'components/screens/screen_by_now_from_day_that_we_meet.dart';
-import 'components/screens/screen_calculator_biological_age.dart';
-import 'components/screens/screen_carrot_market.dart';
-import 'components/screens/screen_checklist.dart';
-import 'components/screens/screen_developer_helper.dart';
-import 'components/screens/screen_diff_months.dart';
-import 'components/screens/screen_digital_clock.dart';
-import 'components/screens/screen_digital_photo_frame.dart';
-import 'components/screens/screen_future_builder.dart';
-import 'components/screens/screen_hello_world.dart';
-import 'components/screens/screen_image_network_test.dart';
-import 'components/screens/screen_jung_hoon_park_profile.dart';
-import 'components/screens/screen_left_days_by_2024.dart';
-import 'components/screens/screen_netflix.dart';
-import 'components/screens/screen_page_view.dart';
-import 'components/screens/screen_particular_matter.dart';
-import 'components/screens/screen_pomodoro.dart';
-import 'components/screens/screen_practice_api_connection.dart';
-import 'components/screens/screen_practice_flutter_life_cycle.dart';
-import 'components/screens/screen_practice_webview.dart';
-import 'components/screens/screen_random_number.dart';
-import 'components/screens/screen_splash.dart';
-import 'components/screens/screen_stream_builder.dart';
-import 'components/screens/screen_video_player.dart';
-import 'components/screens/screen_web_view.dart';
-import 'components/screens/screen_webtoon.dart';
-import 'components/screens/screen_weired_my_note.dart';
+import 'ScreenEarthMap.dart';
+import 'ScreenTodayCommutationNew.dart';
+import 'screen___________.dart';
+import 'screen_american_stock.dart';
+import 'screen_animated_align.dart';
+import 'screen_animated_position.dart';
+import 'screen_area_calculator.dart';
+import 'screen_by_arbor_day.dart';
+import 'screen_by_drontal_supply_date.dart';
+import 'screen_by_next_parasiticide_supply_date.dart';
+import 'screen_by_now_from_day_that_we_meet.dart';
+import 'screen_calculator_biological_age.dart';
+import 'screen_carrot_market.dart';
+import 'screen_checklist.dart';
+import 'screen_developer_helper.dart';
+import 'screen_diff_months.dart';
+import 'screen_digital_clock.dart';
+import 'screen_digital_photo_frame.dart';
+import 'screen_future_builder.dart';
+import 'screen_hello_world.dart';
+import 'screen_image_network_test.dart';
+import 'screen_jung_hoon_park_profile.dart';
+import 'screen_left_days_by_2024.dart';
+import 'screen_netflix.dart';
+import 'screen_page_view.dart';
+import 'screen_particular_matter.dart';
+import 'screen_pomodoro.dart';
+import 'screen_practice_api_connection.dart';
+import 'screen_practice_flutter_life_cycle.dart';
+import 'screen_practice_webview.dart';
+import 'screen_random_number.dart';
+import 'screen_splash.dart';
+import 'screen_stream_builder.dart';
+import 'screen_video_player.dart';
+import 'screen_web_view.dart';
+import 'screen_webtoon.dart';
+import 'screen_weired_my_note.dart';
 
 class ScreenIndexColorful extends StatefulWidget {
   bool isDarkMode;
@@ -81,9 +85,11 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
 
   void initItems() {
     itemsAsIconOnly = [
-      /*\nHello World*/ _RefactoringModule202307152216(txt: '\nHello World \ntest', destination: const ScreenPracticeHelloWorld()),
       /*\nUI Starter*/ _RefactoringModule202307152216(txt: '\nUI \ntest', destination: const Screen___________()),
+      /*\nHello World*/ _RefactoringModule202307152216(txt: '\nHello World \ntest', destination: const ScreenPracticeHelloWorld()),
       /*\nSplash*/ _RefactoringModule202307152216(txt: '\nSplash \ntest', destination: const ScreenPracticeSplash()),
+
+
       /*\nAlign animation*/ _RefactoringModule202307152216(txt: '\nAlign animation \ntest', destination: const ScreenPracticeAnimatedAlign()),
       /*\nPosition & Scale*/ _RefactoringModule202307152216(txt: '\nPosition & Scale \ntest', destination: const ScreenAnimatedPositionAndScale()),
       /*\nstful wiget\nlife cycle*/ _RefactoringModule202307152216(txt: '\nstful wiget\nlife cycle test', destination: ScreenPracticeFlutterStfulWigetLifeCycle()),
@@ -94,9 +100,12 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       /*\nImage network \ntest*/ _RefactoringModule202307152216(txt: '\nImage network \ntest', destination: const ScreenImageNetworkTest()),
       /*\nFuture Builder test*/ _RefactoringModule202307152216(txt: '\nFuture Builder test', destination: const ScreenFutureBuilder()),
       /*\nStream Builder test*/ _RefactoringModule202307152216(txt: '\nStream Builder test', destination: const ScreenStreamBuilder()),
+      /*\n위젯트리 상태관리 test*/ _RefactoringModule202307152216(txt: '\nGetX \ntest', destination:   ScreenGetxTest()),
+      /*\n위젯트리 상태관리 test*/ _RefactoringModule202307152216(txt: '\nBloC/cubit \ntest', destination:   const ScreenCommunicator()),
 
       /*\n개발자도우미, 계획집행기*/ _RefactoringModule202307152216(txt: '\n개발자도우미\n', destination: const ScreenDeveloperHelper()),
       /*\n계획실행도우미*/ _RefactoringModule202307152216(txt: '\n계획실행도우미', destination: const ScreenPlanExcuter()),
+
       /*시간계산도우미*/
       /*\n시계*/ _RefactoringModule202307152216(txt: '\n시계\n', destination: const ScreenClock()),
       /*\n계산기(평당)*/ _RefactoringModule202307152216(txt: '\n계산기\n(평당)', destination: const ScreenAreaCalculator()),
@@ -108,6 +117,7 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       /*\n드론탈급여일*/ _RefactoringModule202307152216(txt: '\n드론탈급여일\n', destination: const ScreenByNextDrontalSupplyDate()),
       /*\n개발자년차*/ _RefactoringModule202307152216(txt: '\n개발자년차\n', destination: ScreenDiffMonths(startingDateTime: DateTime(2022, 10, 26), endingDateTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))),
       /*\n포모도로*/ _RefactoringModule202307152216(txt: '\n포모도로\n', destination: const ScreenPomodoro()),
+
       /*\n참 펜시한 메모장*/ _RefactoringModule202307152216(txt: '\n참 펜시한 메모장\n', destination: const ScreenWeiredMyNote()),
       /*\n당근마껫*/ _RefactoringModule202307152216(txt: '\n당근마껫\n', destination: const ScreenCarrotMarket()),
       /*\n넷플릿쓰*/ _RefactoringModule202307152216(txt: '\n넷플릿쓰\n', destination: const ScreenNetFlix()),
@@ -120,7 +130,9 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       /*\n우리처음만난날*/ _RefactoringModule202307152216(txt: '\n우리처음만난날\n', destination: const ScreenByNowFromDayThatWeMeet()),
       /*\n다크플레이어*/ _RefactoringModule202307152216(txt: '\n비디오플레이어\n', destination: const ScreenVideoPlayer()),
       /*\nwebtoon API2*/ _RefactoringModule202307152216(txt: '\n웹툰 API \n', destination: const ScreenWebtoon()),
-      /*\n미세먼지 연동 API 연습*/ _RefactoringModule202307152216(txt: '\n미세먼지 오픈 API\n', destination: const ScreenParticularMatter()),
+      /*\n지도 API*/ _RefactoringModule202307152216(txt: '\n세계지도\n', destination: const ScreenEarthMap()),
+      /*\n근태관리*/ _RefactoringModule202307152216(txt: '\n근태관리\n', destination: const ScreenCommutationManagement()),
+      /*\n미세먼지 연동 API 연습*/ _RefactoringModule202307152216(txt: '\n미세먼지 API\n', destination: const ScreenParticularMatter()),
       /*\n미국주식 연동 API 연습*/ _RefactoringModule202307152216(txt: '\n미국주식 API\n', destination: const ScreenAmericanStock()),
 
       // /*\n아이보호 시스템*/ _RefactoringModule202307152216(txt: '\n우리아이 횡단보도 지킴이\n', destination: const Placeholder()),
@@ -134,7 +146,7 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       //   자녀보호시스템
       //   5. flutter 로 어플 출시
 
-      // /*우리강아지 보호 시스템*/ /*우리산책빌런*/ _RefactoringModule202307152216(txt: '\n우리산책빌런\n', destination: const Placeholder()),
+      // /*우리강아지 보호 시스템*/ /*나의산책빌런*/ _RefactoringModule202307152216(txt: '\n나의산책빌런\n', destination: const Placeholder()),
       // /*상대방은 알수가 없다.*/
       // /*응가봉투 위치서비스*/
       // 우리 아이가 싫어하는 강아지들을 등록, 가까이 오면 알람.
@@ -160,7 +172,7 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
 
       // /*다크플레이어*/
 
-      // 🦴  🎀🎁🎂🎉🎊🐶📅📆
+       // 🎀🎁🎂🎉🎊🐶🦴📅📆
       // /*하늘이관리*/ _RefactoringModule202307152217(
       //   txt: '하늘이관리',
       //   item: Row(

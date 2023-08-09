@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prj_app_mvp/components/screens/screen_netflix_home.dart';
 import 'package:prj_app_mvp/components/screens/screen_netflix_more.dart';
 import 'package:prj_app_mvp/components/screens/screen_netflix_search.dart';
@@ -17,12 +18,6 @@ class ScreenNetFlix extends StatefulWidget {
 class _ScreenNetFlixState extends State<ScreenNetFlix> {
   int currentPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysShow;
-
-  @override
-  void initState() {
-    
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,3 +79,7 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
     );
   }
 }
+
+
+
+

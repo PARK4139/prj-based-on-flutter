@@ -496,6 +496,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.1"
+  get:
+    dependency: "direct main"
+    description:
+      name: get
+      sha256: "2ba20a47c8f1f233bed775ba2dd0d3ac97b4cf32fc17731b3dfc672b06b0e92a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.6.5"
   glob:
     dependency: transitive
     description:
@@ -728,14 +736,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.7.1"
-  linkify:
-    dependency: "direct main"
-    description:
-      name: linkify
-      sha256: "4139ea77f4651ab9c315b577da2dd108d9aa0bd84b5d03d33323f1970c645832"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.0"
   lints:
     dependency: transitive
     description:
@@ -1165,14 +1165,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
-  timer_builder:
-    dependency: "direct main"
-    description:
-      name: timer_builder
-      sha256: "67c5653a8d9f6ce62fe9121e520736e9da74418a919fe1c0e181b5d2627dbc4a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   timing:
     dependency: transitive
     description:

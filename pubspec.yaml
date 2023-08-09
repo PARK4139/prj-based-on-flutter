@@ -1,144 +1,5 @@
-#name: prj_app_feat_nomadcoder_class
-#description: 연습작업물 feat. 노마드 코더의 flutter 강의
-#publish_to: 'none'
-#
-#environment:
-#  sdk: '>=3.0.0 <4.0.0'
-## Dependencies specify other packages that your package needs in order to work.
-## To automatically upgrade your package dependencies to the latest versions
-#
-#
-#dependencies:
-#  flutter:
-#    sdk: flutter
-#
-#
-#  #  flutter_tts: '3.0.0'
-#
-#
-#  http: ^1.0.0
-##  http_client:
-#  retrofit: '>=4.0.0 <5.0.0'
-#  dio:
-#  chopper:
-#  #  audioplayers: ^0.18.3
-#  #  audioplayers: ^4.1.0
-#  #  audioplayers: ^0.18.3    #   for web
-#  logger: ^1.4.0
-#  cupertino_icons: ^1.0.5
-#  clipboard: ^0.1.3
-#  timer_builder: ^2.0.0
-#  date_format: ^2.0.7
-#  url_launcher: ^6.1.12
-#  path_provider: ^2.0.15
-#  permission_handler:
-#  shared_preferences:  # web 불가
-#  localstorage: # Web 가능 # 로컬 데이터를 저장용
-#  flutter_session_manager: # Web 가능 # 로컬 데이터를 저장용
-#  #  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
-#  #  dio_cookie_manager: ^3.1.0
-#  #  flutter_tts: ^3.7.0
-#  flutter_tts:
-#  flutter_provider: ^2.1.0 #위젯간 데이터 통신용
-#  linkify: ^5.0.0
-#  #  webview_flutter: ^4.2.2
-#  webview_flutter:
-#  #  firebase_core:
-#  #  cloud_firestore: #firebase 의 DB
-#  #  video_player: ^2.7.0
-#  video_player:
-#  #  image_picker: ^ 1.0.1
-#  image_picker:
-#
-#  build_runner:
-##  flutter_gen_runner:
-#
-#  json_annotation:
-#  freezed_annotation:
-#
-#
-#  flutter_bloc:
-#  bloc:
-#  freezed:
-#
-#  hive:
-#  hive_flutter:
-##  dio:
-#
-#  provider:
-#  extended_image:
-#  cached_network_image:
-#  transparent_image:
-#
-#
-#
-#dev_dependencies:
-#  flutter_test:
-#    sdk: flutter
-#  flutter_lints: ^2.0.0
-##  retrofit_generator: '>=5.0.0 <6.0.0'
-##  build_runner: '>=2.3.0 <4.0.0'
-##  build_runner:
-#  json_serializable:
-#
-#  hive_generator:
-##  build_runner:
-#
-#
-#
-## the generic Dart part of this file,
-## https://dart.dev/tools/pub/pubspec
-#
-#
-#flutter:
-#  uses-material-design: true
-#  assets:
-#    - asset/images/
-#    - asset/images/random_numbers/
-#
-#
-#  fonts:
-#    - family: sunFlower
-#      fonts:
-#        - asset: asset/fonts/Sunflower-Light.ttf
-#        - asset: asset/fonts/Sunflower-Medium.ttf
-#          weight: 500
-#        - asset: asset/fonts/Sunflower-Bold.ttf
-#          weight: 700
-#
-#    - family: Parisienne
-#      fonts:
-#        - asset: asset/fonts/Parisienne-Regular.ttf
-#
-#    - family: Raleway
-#      fonts:
-#        - asset: asset/fonts/Raleway-VariableFont_wght.ttf
-#          weight: 200
-#        - asset: asset/fonts/Raleway-Italic-VariableFont_wght.ttf
-#          style: italic
-#    - family: RobotoMono
-#      fonts:
-#        - asset: asset/fonts/RobotoMono-VariableFont_wght.ttf
-#          weight: 200
-#        - asset: asset/fonts/RobotoMono-Italic-VariableFont_wght.ttf
-#          style: italic
-#    - family: RalewayDots
-#      fonts:
-#        - asset: asset/fonts/RalewayDots-Regular.ttf
-#
-#
-#  # 커스텀폰트
-#  # see https://flutter.dev/custom-fonts/#from-packages
-#
-#
-
-
-
 name: prj_app_mvp
-description: multi platform framework practice
-
-
-
+description: multi platform framework practice,
 publish_to: 'none'
 
 
@@ -147,100 +8,86 @@ version: 1.0.0+1
 environment:
   #  sdk: '>=3.0.6 <4.0.0'
   sdk: '>=3.0.5 <4.0.0'
-
-
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.5
-  google_maps_flutter: ^2.4.0
-  geolocator: ^9.0.2
-  #  geocoding:
-
-
+  # _________________________________________________________________________________________ 기기 내부 데이터 통신용
+  shared_preferences: # web 불가
+  localstorage: # Web 가능
+  hive:
+  hive_flutter:
+  flutter_session_manager: # Web 가능 # 로컬 데이터를 저장용
+  #  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
+  #  dio_cookie_manager: ^3.1.0
+  # _________________________________________________________________________________________  기기 외부 데이터 통신용
   http: ^1.0.0
   #  http_client:
   retrofit: '>=4.0.0 <5.0.0'
   dio:
   chopper:
-
-
-
-
-  logger: ^1.4.0
-
-  clipboard: ^0.1.3
-  timer_builder: ^2.0.0
-  date_format: ^2.0.7
-  url_launcher: ^6.1.12
-  path_provider: ^2.0.15
-  permission_handler:
-
-
-
-
-
-  flutter_session_manager: # Web 가능 # 로컬 데이터를 저장용
-  #  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
-  #  dio_cookie_manager: ^3.1.0
-
-
-  flutter_provider: ^2.1.0 #위젯간 데이터 통신용
-  linkify: ^5.0.0
-  #  webview_flutter: ^4.2.2
-  webview_flutter:
-
-
-  #  audioplayers: ^0.18.3
-  #  audioplayers: ^4.1.0
-  #  audioplayers: ^0.18.3    #   for web
-  #  video_player: ^2.7.0
-  video_player:
-  #  flutter_tts: '3.0.0'
-  #  flutter_tts: ^3.7.0
-  flutter_tts:
+  #  firebase_core:
+  #  cloud_firestore: #firebase 의 DB
+  # _________________________________________________________________________________________  위젯 간 데이터 통신용(위젯트리 상태관리용)
+  flutter_provider: ^2.1.0
+  flutter_bloc:
+  bloc:
+  freezed:
+  provider:
+  get:
+  # _________________________________________________________________________________________  이미지 처리용
   #  image_picker: ^ 1.0.1
   image_picker:
   extended_image:
   cached_network_image:
   transparent_image:
-
-
+  # _________________________________________________________________________________________  비디오 처리용
+  #  video_player: ^2.7.0
+  video_player:
+  # _________________________________________________________________________________________  하이퍼링크 처리용
+#  linkify: ^5.0.0
+  url_launcher: ^6.1.12
+  # _________________________________________________________________________________________  webview 구현용
+  #  webview_flutter: ^4.2.2
+  webview_flutter:
+  # _________________________________________________________________________________________  오디오파일 처리용
+  #  audioplayers: ^0.18.3
+  #  audioplayers: ^4.1.0
+  #  audioplayers: ^0.18.3    #   for web
+  # _________________________________________________________________________________________  TTS용
+  #  flutter_tts: '3.0.0'
+  #  flutter_tts: ^3.7.0
+  flutter_tts:
+  # _________________________________________________________________________________________  지도, 좌표 처리용
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.4.0
+  #  geocoding:
+  # _________________________________________________________________________________________  로깅용
+  logger: ^1.4.0
+  # _________________________________________________________________________________________  클립보드 처리용
+  clipboard: ^0.1.3
+  # _________________________________________________________________________________________  날짜,시간 포멧팅 용도
+  #  timer_builder: ^2.0.0
+  date_format: ^2.0.7
+  # _________________________________________________________________________________________  권한 처리용
+  permission_handler:
+  # _________________________________________________________________________________________  기타 용도
+  path_provider: ^2.0.15
   build_runner:
   #  flutter_gen_runner:
-
   json_annotation:
   freezed_annotation:
-
-
-
-  shared_preferences:  # web 불가
-  localstorage: # Web 가능 # 로컬 데이터를 저장용
-  flutter_bloc:
-  bloc:
-  freezed:
-  provider:
-  hive:
-  hive_flutter:
-  #  firebase_core:
-  #  cloud_firestore: #firebase 의 DB
-
-
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-
   #  retrofit_generator: '>=5.0.0 <6.0.0'
   #  build_runner: '>=2.3.0 <4.0.0'
   #  build_runner:
   json_serializable:
-
   hive_generator:
-#  build_runner:
-
 
 
 
@@ -249,8 +96,6 @@ flutter:
   assets:
     - asset/images/
     - asset/images/random_numbers/
-
-
   fonts:
     - family: sunFlower
       fonts:

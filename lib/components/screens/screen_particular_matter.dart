@@ -124,9 +124,8 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                                   scrollDirection: Axis.horizontal,
                                   physics: const PageScrollPhysics(),
                                   children: [
-                                    _OurMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 3),
-                                    _OurMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 3),
-                                    _OurMiniColumn(category: "foo", level: 'foo', stat: 'foo', width: constraint.maxWidth / 3),
+                                    _OurMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 2),
+                                    _OurMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 2),
                                           ],
                                 );
                               });

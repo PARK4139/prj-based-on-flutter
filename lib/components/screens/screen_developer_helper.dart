@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../main.dart';
+import '../../utils/AutoClipboardUpdatingStampMakingHelper.dart';
 import '../../utils/DisposalMultilineWrappingStampMaker.dart';
 import '../../utils/disposal_singleline_wrapping_stamp_maker.dart';
 import '../../utils/disposal_stamp_maker.dart';
@@ -41,15 +42,13 @@ class _ScreenDeveloperHelperState extends State<ScreenDeveloperHelper> {
 
     BlocBuilder<MyAppStateCubit, MyAppState>(
       builder: (context, MyAppState state) {
-        isDarkMode= state.isDarkMode ;
+        isDarkMode = state.isDarkMode;
         return const Placeholder();
       },
     );
     isFirstBuild = true;
     tickTimer = Timer.periodic(const Duration(seconds: 1), onTick);
   }
-
-
 
   @override
   void dispose() {
@@ -113,12 +112,10 @@ class _ScreenDeveloperHelperState extends State<ScreenDeveloperHelper> {
             /*멀티케이스스탬프*/
             MultiCaseMaker(text: '멀티케이스스탬프', backgroundColor: MyColors.blackBackground, color: Colors.white38, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 4, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
 
-            ReplacingStampMaker(template: 'debugSomething(도태할문자열,troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss,'',SSS])}");', deprecated: "도태할문자열"),
-
-            /*라이브스탬프*/
-            PlanedScheduleManagementHelper(title: "라이브스탬프", items: [
-              TextShirikableHardCodingStampMaker(template: "_RefactoringModule${formatDate(now, [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss])}"),
-               ReplacingStampMaker(template: 'debugSomething(도태할문자열,troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss,'',SSS])}");', deprecated: "도태할문자열"),
+            /*스냅샷스탬프*/
+            PlanedScheduleManagementHelper(title: "스냅샷스탬프", items: [
+              TextShirikableHardCodingStampMaker(txt: "_RefactoringModule${formatDate(now, [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss])}"),
+              ReplacingStampMaker(template: 'debugSomething(도태할문자열,troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecated: "도태할문자열"),
               ReplacingStampMaker(template: 'debugSomething("도태할문자열:\${도태할문자열}");', deprecated: "도태할문자열"), //이거 결과 테스트해보자.이상하면 지우자
               ReplacingStampMaker(template: 'printWithoutError("도태할문자열:\${도태할문자열}");', deprecated: "도태할문자열"),
               ReplacingStampMaker(template: '''
@@ -127,23 +124,22 @@ printWithoutError("도태할문자열:\${도태할문자열}");
 printWithoutError("_________________________________________________________________ debug e " );
             ''', deprecated: "도태할문자열"),
 
-              TextShirikableHardCodingStampMaker(template: '/*텍스트*/Text("텍스트", style: TextStyle(color: Colors.red, fontSize: 10, fontWeight: FontWeight.w600)'),
-              TextShirikableHardCodingStampMaker(template: "/*컬렉션포문법(collection for)코드샘플*/for (String element in <String>['String1','String2','String3']) Text(element),"),
-              TextShirikableHardCodingStampMaker(template: "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/\$i.png'),"),
-              TextShirikableHardCodingStampMaker(template: '/*상위위젯테마컬러참조코드샘플*/color: Theme.of(context).headline1,'),
-              TextShirikableHardCodingStampMaker(template: '/*빈박스코드샘플*/const SizedBox(height: 50),'),
-              TextShirikableHardCodingStampMaker(template: '/*빈박스코드샘플*/Container(),'),
-              TextShirikableHardCodingStampMaker(template: '/*빈박스코드샘플*/PloaceHolder(),'),
-              TextShirikableHardCodingStampMaker(template: '//DEVELOPMENT'),
-              TextShirikableHardCodingStampMaker(template: '#DEVELOPMENT'),
-              TextShirikableHardCodingStampMaker(template: "<!--DEVELOPMENT-->"),
-              TextShirikableHardCodingStampMaker(template: formatDate(now, [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss])),
-              TextShirikableHardCodingStampMaker(template: formatDate(now, [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss])),
-              TextShirikableHardCodingStampMaker(template: formatDate(now, [yyyy, '', mm, '', dd, '_', HH, ':', nn, ':', ss])),
-              TextShirikableHardCodingStampMaker(template: formatDate(now, [yyyy, '', mm, '', dd, '_', HH, '', nn, '', ss])),
-              TextShirikableHardCodingStampMaker(template: formatDate(now, [yyyy, '-', mm, '-', dd])),
-              TextShirikableHardCodingStampMaker(template: formatDate(now, [HH, ':', nn, ':', ss])),
-
+              TextShirikableHardCodingStampMaker(txt: '/*텍스트*/Text("텍스트", style: TextStyle(color: Colors.red, fontSize: 10, fontWeight: FontWeight.w600)'),
+              TextShirikableHardCodingStampMaker(txt: "/*컬렉션포문법(collection for)코드샘플*/for (String element in <String>['String1','String2','String3']) Text(element),"),
+              TextShirikableHardCodingStampMaker(txt: "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/\$i.png'),"),
+              TextShirikableHardCodingStampMaker(txt: '/*상위위젯테마컬러참조코드샘플*/color: Theme.of(context).headline1,'),
+              TextShirikableHardCodingStampMaker(txt: '/*빈박스코드샘플*/const SizedBox(height: 50),'),
+              TextShirikableHardCodingStampMaker(txt: '/*빈박스코드샘플*/Container(),'),
+              TextShirikableHardCodingStampMaker(txt: '/*빈박스코드샘플*/PloaceHolder(),'),
+              TextShirikableHardCodingStampMaker(txt: '//DEVELOPMENT'),
+              TextShirikableHardCodingStampMaker(txt: '#DEVELOPMENT'),
+              TextShirikableHardCodingStampMaker(txt: "<!--DEVELOPMENT-->"),
+              TextShirikableHardCodingStampMaker(txt: formatDate(now, [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss])),
+              TextShirikableHardCodingStampMaker(txt: formatDate(now, [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss])),
+              TextShirikableHardCodingStampMaker(txt: formatDate(now, [yyyy, '', mm, '', dd, '_', HH, ':', nn, ':', ss])),
+              TextShirikableHardCodingStampMaker(txt: formatDate(now, [yyyy, '', mm, '', dd, '_', HH, '', nn, '', ss])),
+              TextShirikableHardCodingStampMaker(txt: formatDate(now, [yyyy, '-', mm, '-', dd])),
+              TextShirikableHardCodingStampMaker(txt: formatDate(now, [HH, ':', nn, ':', ss])),
             ]),
 
             /*멀티라인랩핑스탬프*/
@@ -179,6 +175,27 @@ printWithoutError("_____________________________________________________________
               HardCodingStampMaker(txt: '처리하였습니다'),
               HardCodingStampMaker(txt: '부장님 처리했습니다'),
             ]),
+
+            /*라이브스탬프*/
+            const Text("라이브스탬프", style: TextStyle(color: Colors.grey, fontSize: 15)),
+            //PlanedScheduleManagementHelper() 에 넣으려면 bloc 을 이용하면 될 것 같다.
+            ReplacingStampMaker(template: 'debugSomething(도태할문자열,troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecated: "도태할문자열"),
+            ReplacingStampMaker(template: 'debugSomething("도태할문자열",troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecated: "도태할문자열"),
+            ReplacingStampMaker(template: 'debugSomething(\'도태할문자열\',troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecated: "도태할문자열"),
+            // ReplacingStampMaker(template: 'printSeperatorWithoutMkr(txt:  "도태할문자열 s");', deprecated: "도태할문자열"),
+            // ReplacingStampMaker(template: 'printSeperatorWithoutMkr(txt:  "도태할문자열 e");', deprecated: "도태할문자열"),
+            ReplacingStampMaker(template: 'printSeperatorWithoutMkr(txt:  "도태할문자열 s");\nprintSeperatorWithoutMkr(txt:  "도태할문자열 e");', deprecated: "도태할문자열"),
+            ReplacingStampMaker(template: '`ai ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecated: '도태할문자열'),
+            ReplacingStampMaker(template: '`ani ai${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecated: '도태할문자열'),
+            ReplacingStampMaker(template: '`ani ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecated: '도태할문자열'),
+            ReplacingStampMaker(template: '`movie ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecated: '도태할문자열'),
+            TextShirikableHardCodingStampMaker(txt: '`movie ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}'),
+
+            /*오토카피스탬프*/
+            const Text("오토카피스탬프", style: TextStyle(color: Colors.grey, fontSize: 15)),
+            //PlanedScheduleManagementHelper() 에 넣으려면 bloc 을 이용하면 될 것 같다.
+            AutoClipboardUpdatingStampMakingHelper(template: formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss]), deprecated: '도태할문자열'),
+            AutoClipboardUpdatingStampMakingHelper(template: '`ai ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecated: '도태할문자열'),
           ],
         ),
       ),
@@ -209,5 +226,4 @@ printWithoutError("_____________________________________________________________
       // debugSomething(now.toString(),troubleShootingId: "now20230807090513");
     });
   }
-
 }

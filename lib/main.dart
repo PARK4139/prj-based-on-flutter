@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:prj_app_mvp/screen_index_colorful.dart';
+import 'package:prj_app_mvp/components/screens/screen_index_colorful.dart';
 import 'package:prj_app_mvp/utils/rainbow_icon_maker.dart';
 import 'package:prj_app_mvp/utils/super_helper.dart';
 
-import 'screen_index_blue.dart';
+import 'components/screens/screen_index_blue.dart';
+import 'data/source/remote/netflixx_api_helper.dart';
 
 //apk 빌드 시 파일명은 main.dart 여야한다?.
 void main() {
@@ -21,7 +22,6 @@ void main() {
   //   'name': 'John Doe',
   //   'email': 'johndoe@example.com',
   // });
-
   runApp(const App());
 }
 
@@ -91,7 +91,7 @@ class _AppStateSubState extends State<AppStateSub> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: isDarkMode ? true : false,
-      title: '나의 앱들',
+      title: 'app_for_mvp',
       theme: ThemeData(
         primaryColor: Colors.pinkAccent.shade200,
         // textTheme: const TextTheme(
@@ -100,6 +100,7 @@ class _AppStateSubState extends State<AppStateSub> {
         // cardColor: const Color(0xfff4eddb),
       ),
       home: Scaffold(
+
         backgroundColor: isDarkMode ? Colors.black.withOpacity(0.9) : colorForScaffoldBackground,
         appBar: /*제어바*/ AppBar(
           title: Center(
@@ -182,30 +183,24 @@ class _AppStateSubState extends State<AppStateSub> {
     /*bring isDarkMode,  isDarkMode 변수에 저장*/ //원래는 이렇게 쓰고 싶지 않으나 이미 isDarkMode 변수를 너무 많이 쓰고 있어 손이 많이가서 이렇게 하기로..결정
     BlocProvider.of<MyAppStateCubit>(context).resetMyAppState();//isDarkMode false 로 초기화되도록 작성되어 있음
 
-
-    BlocBuilder<MyAppStateCubit, MyAppState>(
-      builder: (context, MyAppState state) {
-        // isDarkMode = state.isDarkMode;
-        debugSomething(state.isDarkMode, troubleShootingId: "202308071937");
-        return Placeholder();
-      },
-    );
-
-
-    BlocBuilder<MyAppStateCubit, MyAppState>(
-      builder: (context, MyAppState state) {
-        // isDarkMode = state.isDarkMode;
-        debugSomething(state.isDarkMode, troubleShootingId: "202308071938");
-        return Placeholder();
-      },
-    );
     BlocProvider.of<MyAppStateCubit>(context).toogleMyAppStateIsDarkMode();//isDarkMode false 로 초기화되도록 작성되어 있음
+
+
+    // Bloc cubit 사용해서 상태 Read
+    // MyAppStateCubit cubit = MyAppStateCubit();
+    // isDarkMode = cubit.state.isDarkMode;
+
+    // Bloc cubit 사용해서 상태 Update
+    // MyAppState newState = cubit.state;
+    // cubit.emit(newState);
+
+
 
     BlocBuilder<MyAppStateCubit, MyAppState>(
       builder: (context, MyAppState state) {
         // isDarkMode = state.isDarkMode;
         debugSomething(state.isDarkMode, troubleShootingId: "202308071939");
-        return Placeholder();
+        return const Placeholder();
       },
     );
 
@@ -279,15 +274,14 @@ class _AppStateSubState extends State<AppStateSub> {
 
   void toogleDevelopingMode() {
     setState(() {
-      // if (isDarkMode == true) {
-      //   isDarkMode = false;
-      // } else {
-      //   isDarkMode = true;
-      // }
+      if (isDarkMode == true) {
+        isDarkMode = false;
+      } else {
+        isDarkMode = true;
+      }
       // localStorage.setItem('isDarkMode', isDarkMode);
-      // printWithoutError("isDevelopingMode:$isDarkMode");
-
       BlocProvider.of<MyAppStateCubit>(context).toogleMyAppStateIsDarkMode();
+      // printWithoutError("isDarkMode:$isDarkMode");
     });
   }
 }
@@ -303,11 +297,53 @@ enum Platforms {
 }
 
 
+
 // State
 class MyAppState {
-  final bool isDarkMode;
+  bool isDarkMode;
+  List<Movie>? movies;
+    List<Movie> moviesDummy = [
+    Movie.fromMap({
+      'title': '사랑의 불시착',
+      'kind': '사랑/로맨스/판타지',
+      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'like': false,
+    }),
+    Movie.fromMap({
+      'title': '보헤미안 랩소디',
+      'kind': '음악/드라마/인물',
+      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'like': false,
+    }),
+    Movie.fromMap({
+      'title': '안녕, 모니카',
+      'kind': '가슴 뭉클/로맨스/코미디/금지된 사랑/정반대 캐릭터',
+      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'like': false,
+    }),
+    Movie.fromMap({
+      'title': '포레스트 검프',
+      'kind': '드라마/외국',
+      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'like': false,
+    }),
+    Movie.fromMap({
+      'title': '쇼생크 탈출',
+      'kind': '추리/반전/서스펜스',
+      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'like': false,
+    }),
+    Movie.fromMap({
+      'title': '라이언 일병 구하기',
+      'kind': '드라마/전쟁/역사',
+      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'like': false,
+    }),
+  ];
 
-  MyAppState({this.isDarkMode = false});
+
+
+  MyAppState({this.isDarkMode = false , this.movies});
 }
 
 // Cubit

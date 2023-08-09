@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'components/screens/screen_area_calculator.dart';
-import 'components/screens/screen_checklist.dart';
-import 'components/screens/screen_developer_helper.dart';
-import 'components/screens/screen_pomodoro.dart';
-import 'components/screens/screen_to_maintain_edorm.dart';
-import 'components/screens/screen_tts_test.dart';
-import 'main.dart';
+import 'screen_area_calculator.dart';
+import 'screen_checklist.dart';
+import 'screen_developer_helper.dart';
+import 'screen_pomodoro.dart';
+import 'screen_to_maintain_edorm.dart';
+import 'screen_tts_test.dart';
+import '../../main.dart';
 
 class ScreenIndexBlue extends StatefulWidget {
   const ScreenIndexBlue({Key? key}) : super(key: key);
@@ -26,7 +26,6 @@ class _ScreenIndexBlueState extends State<ScreenIndexBlue> {
 
   late String folderPomodoro;
 
-  late String folderAreaCalculator;
 
   late String folderChecklist;
 
@@ -52,7 +51,7 @@ class _ScreenIndexBlueState extends State<ScreenIndexBlue> {
     folderTextCustomization = 'text customization'.toUpperCase();
     folderDormMaintennace = 'dorm'.toUpperCase();
     folderPomodoro = 'pomodoro'.toUpperCase();
-    folderAreaCalculator = 'area calculator'.toUpperCase();
+
     folderTts = 'TTS'.toUpperCase();
     folderChecklist = 'check list'.toUpperCase();
   }
@@ -102,14 +101,14 @@ class _ScreenIndexBlueState extends State<ScreenIndexBlue> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenAreaCalculator()));
               },
               icon: const Icon(Icons.folder),
-              tooltip: folderAreaCalculator,
+              tooltip: "Calculator",
               splashColor: Colors.white,
               // hoverColor: Colors.red,
               focusColor: Colors.orange,
               color: Colors.blueAccent,
               disabledColor: Colors.purpleAccent,
             ),
-            Text(folderAreaCalculator,
+            Text("Calculator",
                 style: TextStyle(
                   color: Colors.grey.withOpacity(0.9),
                   fontSize: 10,
@@ -194,25 +193,25 @@ class _ScreenIndexBlueState extends State<ScreenIndexBlue> {
         Container(), //PRODUCTION
         Container(), //PRODUCTION
         Container(), //PRODUCTION
-        const Placeholder(), //DEVELOPMENT
-        const Placeholder(), //DEVELOPMENT
-        const Placeholder(), //DEVELOPMENT
-        const Placeholder(), //DEVELOPMENT OPMENT
+        // const Placeholder(), //DEVELOPMENT
+        // const Placeholder(), //DEVELOPMENT
+        // const Placeholder(), //DEVELOPMENT
+        // const Placeholder(), //DEVELOPMENT OPMENT
       ];
       // Container(),
       itemsAsIcon = [
-        const Placeholder(),
-        const Placeholder(),
-        const Placeholder(),
-        const Placeholder(),
-        const Placeholder(),
+        // const Placeholder(),
+        // const Placeholder(),
+        // const Placeholder(),
+        // const Placeholder(),
+        // const Placeholder(),
       ];
       itemsAsText = [
-        const Placeholder(),
-        const Placeholder(),
-        const Placeholder(),
-        const Placeholder(),
-        const Placeholder(),
+        // const Placeholder(),
+        // const Placeholder(),
+        // const Placeholder(),
+        // const Placeholder(),
+        // const Placeholder(),
       ];
 
     });

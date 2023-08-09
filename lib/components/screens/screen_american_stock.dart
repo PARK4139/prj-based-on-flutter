@@ -116,9 +116,10 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
                                   scrollDirection: Axis.horizontal,
                                   physics: const PageScrollPhysics(),
                                   children: [
-                                    _OurMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 3),
-                                    _OurMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 3),
-                                    _OurMiniColumn(category: "foo", level: 'foo', stat: 'foo', width: constraint.maxWidth / 3),
+                                    _OurMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 2),
+                                    _OurMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 2),
+                                    _OurMiniColumn(category: "foo", level: 'foo', stat: 'foo', width: constraint.maxWidth / 2),
+                                    _OurMiniColumn(category: "foo", level: 'foo', stat: 'foo', width: constraint.maxWidth / 2),
                                   ],
                                 );
                               });
@@ -133,23 +134,24 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
                           cardContents: SizedBox(
                             height: 320,
                             child: LayoutBuilder(builder: (context, constraint) {
-                              for (int i = 0; i < snapshot2.data!.length; i++) {
-                                // debugSomethingWithoutMent(snapshot.data![i].dataTime);
-                              }
+                              // for (int i = 0; i < snapshot2.data!.length; i++) {
+                              // debugSomethingWithoutMent(snapshot.data![i].dataTime);
+                              // }
                               return ListView(
                                 scrollDirection: Axis.vertical,
                                 physics: const PageScrollPhysics(),
                                 children: [
-                                  for (int i = 0; i < snapshot2.data!.length; i++)
-                                    _OurMiniRow(
-                                        columnText2: snapshot2.data![i].name,
-                                        columnText7: snapshot2.data![i].assetType,
-                                        columnText3: snapshot2.data![i].delistingDate,
-                                        columnText4: snapshot2.data![i].exchange,
-                                        columnText5: snapshot2.data![i].ipoDate,
-                                        columnText6: snapshot2.data![i].status,
-                                        columnText1: snapshot2.data![i].symbol,
-                                        height: constraint.maxHeight / 10 + 0.7),
+                                  if (snapshot2.data != null)
+                                    for (int i = 0; i < snapshot2.data!.length; i++)
+                                      _OurMiniRow(
+                                          columnText2: snapshot2.data![i].name,
+                                          columnText7: snapshot2.data![i].assetType,
+                                          columnText3: snapshot2.data![i].delistingDate,
+                                          columnText4: snapshot2.data![i].exchange,
+                                          columnText5: snapshot2.data![i].ipoDate,
+                                          columnText6: snapshot2.data![i].status,
+                                          columnText1: snapshot2.data![i].symbol,
+                                          height: constraint.maxHeight / 10 + 0.7),
                                 ],
                               );
                             }),
@@ -166,7 +168,7 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Center(child: Text(MyMents.inLoading(title: "Alpha Vantage 미국 주식 시장 API를 통해\n 미국주식 정보"), style:  TextStyle(color: _OurColors.white))),
+                        Center(child: Text(MyMents.inLoading(title: "Alpha Vantage 미국 주식 시장 API를 통해\n 미국주식 정보"), style: TextStyle(color: _OurColors.white))),
                         const SizedBox(height: 30),
                         const Center(child: _OurLinearProgressIndicatorSimple()),
                       ],
@@ -221,7 +223,7 @@ class _OurCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch, // Column() 에 crossAxisAlignment: CrossAxisAlignment.stretch, 코드를 사용하면 ListView() 와 유사한 느낌이 든다.
           children: [
             Container(
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 color: _OurColors.darkColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(4.0),
@@ -248,8 +250,10 @@ class _OurColors {
   static const black = Colors.black;
   static final darkColor = Colors.green.shade900;
   static final primaryColors = Colors.green.shade600;
+
   // static final lightColor = Colors.green.shade700;
-  static  final lightColor = Colors.green.shade400;
+  static final lightColor = Colors.green.shade400;
+
   // static final white = Colors.white60;
   // static const white = Colors.white70;
   static const white = Colors.white;

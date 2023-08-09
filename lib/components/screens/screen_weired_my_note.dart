@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../main.dart';
-import '../../screen_index_colorful.dart';
+import 'screen_index_colorful.dart';
 import '../../utils/check_box_maker.dart';
 import '../../utils/hardcoding_stamp_maker.dart';
 import '../../utils/main_content_maker.dart';

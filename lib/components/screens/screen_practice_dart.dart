@@ -448,6 +448,75 @@ void main() {
   // chattingRoomUsingPermission = State.rejected;
   //
 
+  printWithoutError('1하나One\u{1D11E}}');
+  printWithoutError('1하나One\u{1D11E}}'.length); //9 /int /unicode문자를 두 개로 셈
+  printWithoutError('1하나One\u{1D11E}}'.runes.length); //8 /int /unicode 문자를 한 개로 셈
+  printWithoutError('1하나One\u{1D11E}}'.codeUnits); //[49, 54616, 45208, 79, 110, 101, 55348, 56606, 125] /List<int> /각 문자를 UTF-16 code로 바꿔 list에 담음
+  printWithoutError('1하나One\u{1D11E}}'.codeUnitAt(2)); //45208 /int /인덱스 0부터
+  printWithoutError('1하나One\u{1D11E}}'.hashCode); //248270589 /int /해시코드 변환
+  printWithoutError('1'.isEmpty); //false
+  printWithoutError(''.isEmpty); //true
+  printWithoutError('1'.isNotEmpty); //true
+  printWithoutError(''.isNotEmpty); //false
+  bool b = false;
+  printWithoutError(b.runtimeType);//bool /Type /객체 타입 알려줌
+  int a = 123;
+  printWithoutError(a.toString()); //123 /String /스트링타입으로 변환
+  printWithoutError('1234567890'.substring(3)); //4567890 /String /시작인덱스 지정. 0부터 시작
+  printWithoutError('1234567890'.substring(3,7)); //4567 /시작, 끝 인덱스 지정. 0부터 시작 String 끝 인덱스 앞까지
+
+  //compareTo /int /문자열 정렬 순서 비교. 같으면 0, 더 앞이면 -1, 뒤면 1.
+  printWithoutError('asdf'.compareTo('asdf'));//0
+  printWithoutError('asdf'.compareTo('asdd'));//1
+  printWithoutError('asdf'.compareTo('asdg'));//-1
+  printWithoutError('aaaa'.compareTo('aaa'));//1
+  printWithoutError('aaaa'.compareTo('aaaaa'));//-1
+  printWithoutError('aaaa'.compareTo('aaaA'));//1
+  printWithoutError('asdf1234'.contains('as'));//true /bool /문자열에 포함하고 있는지 체크
+  printWithoutError('asdf1234'.contains('as',1));//false /bool /시작인덱스 지정 가능
+  printWithoutError('qwerasdf'.endsWith('asdf'));//true /bool /문자열 끝 비교
+  printWithoutError('asdfasdf'.indexOf('sd'));//1 /int /앞부터 검사하여 처음 일치하는 index 알려줌
+  printWithoutError('asdfasdf'.indexOf('123'));//-1 /int /없으면 -1
+  printWithoutError('asdfasdf'.indexOf('sd',2));//5 /int /시작인덱스 지정 가능
+  printWithoutError('asdfasdf'.lastIndexOf('sd'));//5 /int /뒤부터 검사하여 처음 일치하는 index 알려줌
+  printWithoutError('asdfasdf'.lastIndexOf('12'));//-1 /int /없으면 -1
+  printWithoutError('asdfasdf'.lastIndexOf('sd',4));//1 /시작인덱스 지정 가능. 시작인덱스부터 앞으로 가며 검사
+  printWithoutError('S'+'asdf'.padLeft(6));//S  asdf /String /문자열의 길이가 지정된 숫자보다 짧으면 왼쪽에 공백을 추가해 길이를 맞춤. 넘어가는 경우는 추가하지 않음
+  printWithoutError('S'+'asdf'.padLeft(6,'*'));//S**asdf /채우는 문자 변경 가능
+  printWithoutError('asdf'.padRight(7) + 'E');//asdf   E /String /문자열의 길이가 지정된 숫자보다 짧으면 왼쪽에 공백을 추가해 길이를 맞춤. 넘어가는 경우는 추가하지 않음
+  printWithoutError('asdf'.padRight(7,'+') + 'E');//asdf+++E /채우는 문자 변경 가능
+  printWithoutError('asdfasdf'.replaceAll('as','12'));//12df12df /String /일치하는 모든 문자를 교체함
+  int c = 10;
+  printWithoutError('asdfasdf'.replaceAllMapped('as',(match){
+    c++;
+    return c.toString();
+  }));//11df12df /String /일치하는 모든 문자를 앞부터 교체하는데.. 함수 사용
+  printWithoutError('asdfasdf'.replaceFirst('as','12'));//12dfasdf /String /첫번째로 일치하는 문자를 교체함
+  double d = 20;
+  printWithoutError('asdfasdf'.replaceFirstMapped('as',(match){
+    d = d/4;
+    return d.toString();
+  }));//5dfasdf /String /첫번째로 일치하는 문자를 교체하는데.. 함수 사용
+  printWithoutError('asdfasdf'.replaceRange(2,5,'1234'));//as1234sdf /String /시작인덱스~끝인덱스 교체
+  printWithoutError('asdf**1234'.split('*'));//[asdf,,1234] /List<String> /나누는 문자를 기준으로 나눠서 List로 만듬
+  printWithoutError('asdf'.split(''));//[a,s,d,f] /이렇게하면 문자마다 나눔
+  printWithoutError('asdf**12*34'.splitMapJoin(
+      '*',
+      onMatch: (Match m){
+        return '${m[0]!}' + '+';
+      },
+      onNonMatch: (String n){
+        return n+'A';
+      })); //asdfA*+A*+12A*+34A /String /일치하는 부분 함수이용해서 교체, 불일치 부분(일치로 인해 분리된 부분들) 함수 이용해서 교체
+  printWithoutError('asdfqwer'.startsWith('as'));//true /bool /시작 문자를 검사
+  printWithoutError('asdfqwer'.startsWith('qw',4));//true /bool /시작 인덱스 가능
+  printWithoutError('AsDf'.toLowerCase());//asdf
+  printWithoutError('AsDf'.toUpperCase());//ASDF
+  printWithoutError('S'+'   asdf   '.trim()+'E');//SasdfE /String /문자열 앞 뒤 공백을 제거 \n \t 등
+  printWithoutError('S'+'   asdf   '.trimLeft()+'E');//Sasdf   E /String /문자열 앞의 공백 제거
+  printWithoutError('S'+'   asdf   '.trimRight()+'E');//S   asdfE /String /문자열 뒤의 공백을 제거
+
+
   /*const vs final*/
   // const DateTime now_ = DateTime.now();//const 는 build time 에 초기화되는데 DateTime.now() 는 run time 에 초기화되도록 만들어진 값을 만들어낸다. 따라서 const 를 붙일 수 없다.
   final DateTime now_ = DateTime.now(); //final 는 run time 에 초기화되는 값.
@@ -545,6 +614,7 @@ void main() {
   /*인덱스 붙여서 출력*/ //굳이 필요할까 싶긴한데
   printWithoutError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',));
   printWithoutError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',).toList());
+
 
 
 

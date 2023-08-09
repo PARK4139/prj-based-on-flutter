@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'super_helper.dart';
 
 class TextShirikableHardCodingStampMaker extends StatefulWidget {
-  String template;
+  String txt;
   bool isMainContentClicked;
 
 
 
-  TextShirikableHardCodingStampMaker({super.key, this.template = '코드는 세상을 바꾼다. 코드는 사람의 실수를 줄여준다. 코드는 생산성을 높여준다. 나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.', this.isMainContentClicked=false});
+  TextShirikableHardCodingStampMaker({super.key, this.txt = '코드는 세상을 바꾼다. 코드는 사람의 실수를 줄여준다. 코드는 생산성을 높여준다. 나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.나는 코드가 좋다 너는 코드가 좋다 우리는 코드가 좋다 너도 나도 코드가 좋다.', this.isMainContentClicked=false});
 
   @override
   State<TextShirikableHardCodingStampMaker> createState() =>  _TextShirikableHardCodingStampMakerState();
@@ -43,7 +43,7 @@ class _TextShirikableHardCodingStampMakerState extends State<TextShirikableHardC
                 // overflow: TextOverflow.visible,//오버플로우 텍스트를 보이도록 렌더링
                 maxLines: widget.isMainContentClicked ? 3 : 100, //100 줄까지만 보이도록
                 // strutStyle: const StrutStyle(fontSize: 9.0),//이거 어디에 쓰이는지?..
-                text: TextSpan(text: widget.template, style: MyTextStyles.textStyle20230719),
+                text: TextSpan(text: widget.txt, style: MyTextStyles.textStyle20230719),
               ),
             ),
           ],
@@ -63,11 +63,9 @@ class _TextShirikableHardCodingStampMakerState extends State<TextShirikableHardC
   }
 
   void copyToClipboard() {
-    FlutterClipboard.copy(widget.template).then((value) {
-      debugSomethingWithoutMent('copied : ${widget.template}');
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.template}')));
-
+    FlutterClipboard.copy(widget.txt).then((value) {
+      debugSomethingWithoutMent('copied : ${widget.txt}');
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.txt}')));
     });
-
   }
 }

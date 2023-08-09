@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../data/source/remote/netflixx_api_helper.dart';
+import '../../main.dart';
 import '../../utils/super_helper.dart';
 import 'screen_netflix_home_sub.dart';
 import 'screen_netflix_util.dart';
@@ -201,7 +202,13 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
   }
 
   void initMovies() {
-    movies = moviesDummy;
+    // Bloc cubit 사용해서 상태 Read
+    MyAppStateCubit cubit = MyAppStateCubit();
+    movies = cubit.state.moviesDummy;
+
+    // Bloc cubit 사용해서 상태 Update
+    MyAppState newState = cubit.state;
+    cubit.emit(newState);
   }
 
   void initImageSliderCurrentPage() {

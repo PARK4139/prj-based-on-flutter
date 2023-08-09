@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../screen_index_colorful.dart';
+import '../../../components/screens/screen_index_colorful.dart';
 
 
 class MyRoutes {
