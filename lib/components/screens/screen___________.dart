@@ -350,7 +350,7 @@ class _Screen___________State extends State<Screen___________> {
                           /*닫을 까요?*/
                           Navigator.of(context).pop();
 
-                          /*버튼(버튼 클릭 시 5초 뒤 사라질 팝업 실행)*/
+                          /*Auto Schedule 실행 버튼*/
                           showDialog(
                             context: context,
                             builder: (context) {
@@ -756,7 +756,7 @@ class _Screen___________State extends State<Screen___________> {
                                     // mode: CupertinoDatePickerMode.dateAndTime,
                                     // mode: CupertinoDatePickerMode.time,
                                     onDateTimeChanged: (DateTime date) {
-                                      printWithoutError(date);
+                                      printWithoutWarning(date);
                                     },
                                   ),
                                 ),

@@ -8,13 +8,21 @@ class ScreenNetflixSavedContentsList extends StatefulWidget {
 }
 
 class _ScreenNetflixSavedContentsListState extends State<ScreenNetflixSavedContentsList> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Container(
+        color: Colors.black87,
+        child: ListView(
+          children: const [
+
+
+
+
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -13,15 +13,6 @@ class ScreenNetflixMore extends StatefulWidget {
 }
 
 class _ScreenNetflixMoreState extends State<ScreenNetflixMore> {
-  late List<Movie> movies;
-
-  @override
-  void initState() {
-    
-    super.initState();
-    initMovies();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,66 +30,4 @@ class _ScreenNetflixMoreState extends State<ScreenNetflixMore> {
     );
   }
 
-  void initMovies() {
-    // Bloc cubit 사용해서 상태 Read
-    MyAppStateCubit cubit = MyAppStateCubit();
-    movies = cubit.state.moviesDummy;
-  }
-
-  Widget circleMaker({required String imgUrl}) {
-    Widget widget = Container(
-      padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Transform.translate(
-            offset: const Offset(-0, -20),
-            child: Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: const BoxDecoration(
-                color: Colors.amberAccent,
-                // borderRadius: BorderRadius.circular(100),
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset(imgUrl, height: 140 + 20),
-            ),
-          ),
-        ],
-      ),
-    );
-    return widget;
-  }
-
-  List<Widget> posterListMaker(List<Movie> movies) {
-    List<Widget> lists = [
-      for (Movie movie in movies)
-        /* 영화 포스터*/ Container(
-          padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Transform.translate(
-                offset: const Offset(-0, -20),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.amberAccent,
-                    // borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Image.asset(movie.imgUrl, height: 180),
-                ),
-              ),
-            ],
-          ),
-        ),
-    ];
-    return lists;
-  }
-
-  List<Widget> titleSliderMaker(List<Movie> movies) {
-    String seperator = '    ';
-    List<Widget> lists = [
-      for (Movie movie in movies) Text(movie.title + seperator, style: const TextStyle(fontSize: 14, color: Colors.white38)),
-    ];
-    return lists;
-  }
 }

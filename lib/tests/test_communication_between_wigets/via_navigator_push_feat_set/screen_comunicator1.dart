@@ -22,7 +22,7 @@ class _ScreenComunicator1State extends State<ScreenComunicator1> {
     }
   };
 
-  final clearButtonKey = GlobalKey();
+  final clearButtonKey20230810134458 = GlobalKey();
 
   late Timer autoClickScheduler;
   late bool isFirstBuild;
@@ -58,8 +58,8 @@ class _ScreenComunicator1State extends State<ScreenComunicator1> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            /*버튼(버튼 클릭 시 5초 뒤 사라질 팝업 실행)*/ InkWell(
-              key: clearButtonKey,
+            /*Auto Schedule 실행 버튼*/ InkWell(
+              key: clearButtonKey20230810134458,
               child: const Row(
                 children: [
                   Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
@@ -92,7 +92,7 @@ class _ScreenComunicator1State extends State<ScreenComunicator1> {
   }
 
   Future<void> autoClick() async {
-    RenderBox renderbox = clearButtonKey.currentContext!.findRenderObject() as RenderBox;
+    RenderBox renderbox = clearButtonKey20230810134458.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;
     double y = position.dy;

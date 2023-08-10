@@ -105,37 +105,37 @@ class IterableAlphabetsMaker {
   }
 }
 
-void printWithoutError(var txt) {
+void printWithoutWarning(var txt) {
   /*배포 시 : Don't invoke 'print' in production code. 에러 제거를 위해 내부 주석처리*/
   print(txt.toString());
 }
 
 void debugSomething(dynamic something, {String author="Jung hoon park", String troubleShootingId = "Not Assigned"}) {
   /*배포 시 내부 주석처리*/
-  printWithoutError("__________________________________________________________________________________________________________________________ debug s");
-  printWithoutError("author : $author");
-  printWithoutError("trouble Shooting Id : $troubleShootingId");
+  printWithoutWarning("__________________________________________________________________________________________________________________________ debug s");
+  printWithoutWarning("author : $author");
+  printWithoutWarning("trouble Shooting Id : $troubleShootingId");
   if (something == null) {
-    printWithoutError("data runtimeType : null");
+    printWithoutWarning("data runtimeType : null");
   } else {
-    printWithoutError("data runtimeType : ${something.runtimeType}");
+    printWithoutWarning("data runtimeType : ${something.runtimeType}");
   }
   if (something == null) {
-    printWithoutError(something.toString());
+    printWithoutWarning(something.toString());
   }
   else if (something is bool) {
-    printWithoutError(something.toString());
+    printWithoutWarning(something.toString());
   } else if (something is String) {
-    printWithoutError(something.toString());
+    printWithoutWarning(something.toString());
   } else if (something is List<dynamic>) {
     for (dynamic item in something) {
-      printWithoutError(item.toString());
+      printWithoutWarning(item.toString());
     }
   } else if (something is int) {
-    printWithoutError(something.toString());
+    printWithoutWarning(something.toString());
   } else if (something is Set<dynamic>) {
     for (dynamic element in something) {
-      printWithoutError(element);
+      printWithoutWarning(element);
     }
 
     // } else if (something is Map<String, Map<String, dynamic>>) {
@@ -147,23 +147,23 @@ void debugSomething(dynamic something, {String author="Jung hoon park", String t
   } else if (something is Map<String, dynamic>) {
     if (something is Map<String, Map<String, dynamic>>) {
       for (var key in something.keys) {
-        printWithoutError("$key: {");
+        printWithoutWarning("$key: {");
         debugSomethingWithoutMent(something[key]);
         String properIndentation = "";
         for (int i = 0; i <= key.toString().length + 1; i++) {
           properIndentation = "$properIndentation ";
         }
-        printWithoutError("$properIndentation{");
+        printWithoutWarning("$properIndentation{");
       }
     } else {
-      printWithoutError("troubleShootingId : $troubleShootingId");
+      printWithoutWarning("troubleShootingId : $troubleShootingId");
 
       for (var key in something.keys) {
-        printWithoutError("$key: ${something[key]}");
+        printWithoutWarning("$key: ${something[key]}");
       }
     }
   } else {
-    printWithoutError("__________________________________________________________________________________________________________________________ debugSomething exception s");
+    printWithoutWarning("__________________________________________________________________________________________________________________________ debugSomething exception s");
 
     // for (var key in something.keys) {
     //   printWithoutErrorOrPrintWithError(key);
@@ -172,74 +172,74 @@ void debugSomething(dynamic something, {String author="Jung hoon park", String t
     //   printWithoutErrorOrPrintWithError("$key: $value");
     // });
     for (var entry in something.entries) {
-      printWithoutError("${entry.key}: ${entry.value}");
+      printWithoutWarning("${entry.key}: ${entry.value}");
     }
-    printWithoutError("__________________________________________________________________________________________________________________________ debugSomething exception e");
+    printWithoutWarning("__________________________________________________________________________________________________________________________ debugSomething exception e");
   }
-  printWithoutError("__________________________________________________________________________________________________________________________ debug e");
+  printWithoutWarning("__________________________________________________________________________________________________________________________ debug e");
 }
 
 void debugSomethingWithoutMent(dynamic something, {String troubleShootingId = "Not Assigned"}) {
   /*배포 시 성능을 위해 해당메소드 내부 주석처리*/
   if (something == null) {
-    printWithoutError("__________________________________________________________________________________________________________________________ debug s");
+    printWithoutWarning("__________________________________________________________________________________________________________________________ debug s");
 
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : null");
-    printWithoutError("__________________________________________________________________________________________________________________________ debug e");
+    printWithoutWarning("troubleShootingId : $troubleShootingId");
+    printWithoutWarning("data type : null");
+    printWithoutWarning("__________________________________________________________________________________________________________________________ debug e");
   } else if (something is String) {
-    printWithoutError(something.toString());
+    printWithoutWarning(something.toString());
   } else if (something is List<dynamic>) {
     for (dynamic item in something) {
-      printWithoutError(item.toString());
+      printWithoutWarning(item.toString());
     }
   } else if (something is int) {
-    printWithoutError(something.toString());
+    printWithoutWarning(something.toString());
   } else if (something is Set<dynamic>) {
     for (dynamic element in something) {
-      printWithoutError(element);
+      printWithoutWarning(element);
     }
   } else if (something is Map<String, Map<String, dynamic>>) {
     for (var key in something.keys) {
-      printWithoutError("$key: ${something[key]}");
+      printWithoutWarning("$key: ${something[key]}");
     }
   } else if (something is Map<String, dynamic>) {
     if (something is Map<String, Map<String, dynamic>>) {
       for (var key in something.keys) {
-        printWithoutError("$key: {");
+        printWithoutWarning("$key: {");
         debugSomethingWithoutMent(something[key]);
         String properIndentation = "";
         for (int i = 0; i <= key.toString().length + 1; i++) {
           properIndentation = "$properIndentation ";
         }
-        printWithoutError("$properIndentation{");
+        printWithoutWarning("$properIndentation{");
       }
     } else {
       for (var key in something.keys) {
-        printWithoutError("        $key: ${something[key]}");
+        printWithoutWarning("        $key: ${something[key]}");
       }
     }
   } else {
-    printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception s");
-    printWithoutError("troubleShootingId : $troubleShootingId");
-    printWithoutError("data type : ${something.runtimeType}");
-    printWithoutError("__________________________________________________________________________________________________________________________ debugDynamic exception e");
+    printWithoutWarning("__________________________________________________________________________________________________________________________ debugDynamic exception s");
+    printWithoutWarning("troubleShootingId : $troubleShootingId");
+    printWithoutWarning("data type : ${something.runtimeType}");
+    printWithoutWarning("__________________________________________________________________________________________________________________________ debugDynamic exception e");
   }
 }
 
 void debugSomethingSimple(String string) {
   printSeparatorWithMkr();
-  printWithoutError(string);
+  printWithoutWarning(string);
   printSeparatorWithMkr();
 }
 
-void printSeparatorWithMkr({String txt = ''}) => printWithoutError("__________________________________________________________________________________________________________________________ $txt mkr");
+void printSeparatorWithMkr({String txt = ''}) => printWithoutWarning("__________________________________________________________________________________________________________________________ $txt mkr");
 
-void printSeperatorWithoutMkr({String txt = ''}) => printWithoutError("__________________________________________________________________________________________________________________________ $txt ");
+void printSeperatorWithoutMkr({String txt = ''}) => printWithoutWarning("__________________________________________________________________________________________________________________________ $txt ");
 
-void printSeperatorWithS({String txt = ''}) => printWithoutError("__________________________________________________________________________________________________________________________ $txt s");
+void printSeperatorWithS({String txt = ''}) => printWithoutWarning("__________________________________________________________________________________________________________________________ $txt s");
 
-void printSeperatorWithE({String txt = ''}) => printWithoutError("__________________________________________________________________________________________________________________________ $txt e");
+void printSeperatorWithE({String txt = ''}) => printWithoutWarning("__________________________________________________________________________________________________________________________ $txt e");
 
 String textCuttingHelper(String text, {int cuttingPosition = 10}) {
   String result = '';
@@ -370,6 +370,13 @@ class MyUrls {
   static String youtube = 'https://www.youtube.com/';
   static String networkImageTest = 'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif';
   static String errorImageTest = 'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif';
+}
+
+class MyBehaviorHelper extends ScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
+  }
 }
 
 class MyMents {
@@ -568,7 +575,7 @@ class MySuperHelpers {
   Future<void> countdown(int couter) async {
     isCounterZero = false;
     while (true) {
-      printWithoutError('$couter 초...');
+      printWithoutWarning('$couter 초...');
       sleep(const Duration(seconds: 1));
       couter = couter - 1;
       if (couter == 0) {
@@ -635,7 +642,7 @@ class MySuperHelpers {
 
   /*테스트*/
   void testListStringHandlingFunctions() {
-    printWithoutError('__________________________________________________________________________________________________________________________ text control s');
+    printWithoutWarning('__________________________________________________________________________________________________________________________ text control s');
     List<String> textsOrigin = [
       "!",
       "2",
@@ -665,20 +672,20 @@ class MySuperHelpers {
     // List<String> results_final= results_contained;
 
     for (String result in resultsFinal) {
-      printWithoutError(result); //DEVELOPMENT
+      printWithoutWarning(result); //DEVELOPMENT
     }
-    printWithoutError('__________________________________________________________________________________________________________________________ text control e');
+    printWithoutWarning('__________________________________________________________________________________________________________________________ text control e');
 
-    printWithoutError('__________________________________________________________________________________________________________________________ iterable nature number s');
-    printWithoutError('naturalNumbers 사용 s');
+    printWithoutWarning('__________________________________________________________________________________________________________________________ iterable nature number s');
+    printWithoutWarning('naturalNumbers 사용 s');
     var naturalNumbers = IteralbleNatureNumbersMaker(endLimit: 100);
-    printWithoutError(naturalNumbers.next());
-    printWithoutError(naturalNumbers.next());
-    printWithoutError(naturalNumbers.next());
-    printWithoutError(naturalNumbers.next());
-    printWithoutError(naturalNumbers.next());
-    printWithoutError('naturalNumbers 사용 e');
-    printWithoutError('__________________________________________________________________________________________________________________________ iterable nature number e');
+    printWithoutWarning(naturalNumbers.next());
+    printWithoutWarning(naturalNumbers.next());
+    printWithoutWarning(naturalNumbers.next());
+    printWithoutWarning(naturalNumbers.next());
+    printWithoutWarning(naturalNumbers.next());
+    printWithoutWarning('naturalNumbers 사용 e');
+    printWithoutWarning('__________________________________________________________________________________________________________________________ iterable nature number e');
   }
 
   Future<void> setMySession() async {
@@ -707,8 +714,8 @@ class MySuperHelpers {
   Future<void> getMySession(String sessionKey) async {
     //get
     final User user = User.fromJson(await SessionManager().get('user'));
-    printWithoutError(user.name); // John Doe
-    printWithoutError(user.id); // 30
+    printWithoutWarning(user.name); // John Doe
+    printWithoutWarning(user.id); // 30
   }
 
   Future<void> setMyCookie() async {

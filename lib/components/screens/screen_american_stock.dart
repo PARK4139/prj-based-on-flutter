@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import '../../data/source/remote/american_stock_listing_delisting_api_helper.dart';
 import '../../data/source/remote/pm_api_helper.dart';
+import '../../tmp/table_helper2.dart';
 import '../../utils/super_helper.dart';
 
 class ScreenAmericanStock extends StatefulWidget {
@@ -65,7 +66,6 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
   void dispose() {
     scheduler.cancel();
     pageController.dispose();
-
     super.dispose(); //super.dispose() 는 일반적으로 아래에 작성해야하는 것 같음.
   }
 
@@ -75,126 +75,40 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
 
     // debugSomethingSimple(ourRegions.values.toList().runtimeType.toString());
     // debugSomething(ourRegions.values.toList());
-
-    // final DateTime now = DateTime.now();
     return Scaffold(
       backgroundColor: _OurColors.primaryColors,
       body: FutureBuilder(
-          future: AmericanStockMarketListingDelistingApiDtoServiceHelper.getAmericanStockMarketListingDelistingApiDtos(),
-          builder: (context, snapshot2) {
-            // debugSomething(snapshot2.data,troubleShootingId: "20230808 0116" );
-            if (snapshot2.data != null) {
-              for (int i = 0; i < snapshot2.data!.length; i++) {
-                //   pm25Value = int.parse(snapshot2.data![i].seoul).toDouble();
-                //   pm25Level = koreanStateMaker(pm25Value);
-              }
-            }
-            return FutureBuilder(
-                future: Pm10ApiService.getPm10s(),
-                builder: (context, snapshot) {
-                  // debugSomething(snapshot.data );
-                  if (snapshot.data != null) {
-                    for (int i = 0; i < snapshot.data!.length; i++) {
-                      // if (snapshot.data![i].dataTime.split(":").first == formatDate(DateTime.now().add(const Duration(hours: -1)), [yyyy, '-', mm, '-', dd, ' ', HH])) {
-                      //   // pm10Value = int.parse(snapshot.data![i].seoul).toDouble();
-                      //   // pm10Level = koreanStateMaker(pm10Value);
-                      //   // debugSomething(pm10Value.toString() );
-                      //   // debugSomething(pm10Level.toString() );
-                      // }
-                    }
-                    return CustomScrollView(
-                      slivers: [
-                        // slivers: [] 에는 sliver 의 형태인 wiget만 들어갈 수 있는데, 아닌 위젯을 들어가게 하려면 SliverToBoxAdapter() 로 감싸 넣어야 한다.
-                        _OurSliverAppBar(snapshot.data!),
-                        _OurCard(
-                          title: "종류별 통계",
-                          cardContents: SizedBox(
-                            height: 150,
-                            child: LayoutBuilder(builder: (context, constraint) {
-                              return Builder(builder: (context) {
-                                return ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  physics: const PageScrollPhysics(),
-                                  children: [
-                                    _OurMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 2),
-                                    _OurMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 2),
-                                    _OurMiniColumn(category: "foo", level: 'foo', stat: 'foo', width: constraint.maxWidth / 2),
-                                    _OurMiniColumn(category: "foo", level: 'foo', stat: 'foo', width: constraint.maxWidth / 2),
-                                  ],
-                                );
-                              });
-                            }),
-                          ),
-                        ),
-                        const SliverToBoxAdapter(child: SizedBox(height: 30)), //같은 논리로 SizedBox(height: 5) 또한  SliverToBoxAdapter() 로 감싸 넣어야 가능하다
-
-                        const SliverToBoxAdapter(child: SizedBox(height: 30)),
-                        _OurCard(
-                          title: "미국주식 상장 목록 (2023-08-07) 기준",
-                          cardContents: SizedBox(
-                            height: 320,
-                            child: LayoutBuilder(builder: (context, constraint) {
-                              // for (int i = 0; i < snapshot2.data!.length; i++) {
-                              // debugSomethingWithoutMent(snapshot.data![i].dataTime);
-                              // }
-                              return ListView(
-                                scrollDirection: Axis.vertical,
-                                physics: const PageScrollPhysics(),
-                                children: [
-                                  if (snapshot2.data != null)
-                                    for (int i = 0; i < snapshot2.data!.length; i++)
-                                      _OurMiniRow(
-                                        columnText1: snapshot2.data![i].symbol,
-                                        columnText2: snapshot2.data![i].name,
-                                        columnText3: snapshot2.data![i].delistingDate,
-                                        columnText4: snapshot2.data![i].exchange,
-                                        columnText5: snapshot2.data![i].ipoDate,
-                                        columnText6: snapshot2.data![i].status,
-                                        columnText7: snapshot2.data![i].assetType,
-                                        height: constraint.maxHeight / 10 , // 10 줄씩 볼것이다.
-                                      ),
-                                ],
-                              );
-                            }),
-                          ),
-                        ),
-                        const SliverToBoxAdapter(child: SizedBox(height: 300)),
-                      ],
-                    );
-                    // }
-                  }
-
-                  return SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.8,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Center(child: Text(MyMents.inLoading(title: "Alpha Vantage 미국 주식 시장 API를 통해\n 미국주식 정보"), style: TextStyle(color: _OurColors.white))),
-                        const SizedBox(height: 30),
-                        const Center(child: _OurLinearProgressIndicatorSimple()),
-                      ],
-                    ),
-                  );
-                });
-          }),
+        future: AmericanStockMarketListingDelistingApiDtoServiceHelper.getAmericanStockMarketListingDelistingApiDtos(),
+        builder: (context, snapshot2) {
+          if (snapshot2.hasData) {
+            return CustomScrollView(
+              slivers: [
+                const SliverToBoxAdapter(child: SizedBox(height: 30)),
+                SliverToBoxAdapter(
+                    child: ScrollConfiguration(
+                      behavior: MyBehaviorHelper(),
+                  child: TableHelper(futureBuilderSnapshotData: snapshot2.data),
+                )),
+                const SliverToBoxAdapter(child: SizedBox(height: 7)),
+              ],
+            );
+          } else {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(child: Text(MyMents.inLoading(title: "Alpha Vantage 미국 주식 시장 API를 통해\n 미국주식 정보"), style: TextStyle(color: _OurColors.white))),
+                  const SizedBox(height: 30),
+                  const Center(child: _OurLinearProgressIndicatorSimple()),
+                ],
+              ),
+            );
+          }
+        },
+      ),
       drawer: const _OurDrawer(),
     );
-  }
-
-  String koreanStateMaker(double pm10stat) {
-    final String pm10KoreanLevel;
-    if (0 <= pm10Value && pm10Value <= 15) {
-      pm10KoreanLevel = "좋은";
-    } else if (16 <= pm10Value && pm10Value <= 50) {
-      pm10KoreanLevel = "보통";
-    } else if (51 <= pm10Value && pm10Value <= 100) {
-      pm10KoreanLevel = "나쁜";
-    } else if (101 <= pm10Value) {
-      pm10KoreanLevel = "매우나쁜";
-    } else {
-      pm10KoreanLevel = "???";
-    }
-    return pm10KoreanLevel;
   }
 }
 
@@ -211,25 +125,16 @@ class _OurCard extends StatelessWidget {
       child: Card(
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(4.0),
-            topRight: Radius.circular(4.0),
-            bottomLeft: Radius.circular(4.0),
-            bottomRight: Radius.circular(4.0),
-          ),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0), bottomLeft: Radius.circular(4.0), bottomRight: Radius.circular(4.0)),
         ),
         color: _OurColors.lightColor,
-        // color: _OurColors.white,//DEBUG CODE
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch, // Column() 에 crossAxisAlignment: CrossAxisAlignment.stretch, 코드를 사용하면 ListView() 와 유사한 느낌이 든다.
           children: [
             Container(
               decoration: BoxDecoration(
                 color: _OurColors.darkColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(4.0),
-                  topRight: Radius.circular(4.0),
-                ),
+                borderRadius: const BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0)),
               ),
               child: Text(
                 title,
@@ -251,14 +156,8 @@ class _OurColors {
   static const black = Colors.black;
   static final darkColor = Colors.green.shade900;
   static final primaryColors = Colors.green.shade600;
-
-  // static final lightColor = Colors.green.shade700;
   static final lightColor = Colors.green.shade400;
-
-  // static final white = Colors.white60;
-  // static const white = Colors.white70;
   static const white = Colors.white;
-  static const green = Colors.green;
   static const lightGreenAccent = Colors.lightGreenAccent;
 }
 
@@ -305,6 +204,7 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
                   widget.snapShotData[i].dataTime =
                       "${widget.snapShotData[i].dataTime.split(" ").first.split("-")[0]}-${widget.snapShotData[i].dataTime.split(" ").first.split("-")[1]}-${(int.parse(widget.snapShotData[i].dataTime.split(" ").first.split("-").last) + 1).toString().padLeft(2, "0")} 00:00";
                 }
+
                 if (widget.snapShotData[i].dataTime.split(":").first == formatDate(DateTime.now().add(const Duration(hours: -1)), [yyyy, '-', mm, '-', dd, ' ', HH])) {
                   return const Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -346,10 +246,7 @@ class _OurDrawerState extends State<_OurDrawer> {
       height: MediaQuery.of(context).size.height * 0.8, //이렇게 하고 싶은데...안됬음...
       decoration: BoxDecoration(
         color: _OurColors.lightColor,
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(4.0),
-          bottomRight: Radius.circular(4.0),
-        ),
+        borderRadius: const BorderRadius.only(topRight: Radius.circular(4.0), bottomRight: Radius.circular(4.0)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -360,26 +257,20 @@ class _OurDrawerState extends State<_OurDrawer> {
             height: MediaQuery.of(context).size.height * 0.06,
             decoration: BoxDecoration(
               color: _OurColors.darkColor,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(4.0),
-              ),
+              borderRadius: const BorderRadius.only(topRight: Radius.circular(4.0)),
             ),
             child: Center(
               child: Text(
                 textAlign: TextAlign.center,
                 "지역선택",
-                style: _OurTextStyles.titleTextStyle.copyWith(
-                  fontSize: 20.0,
-                ),
+                style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20.0),
               ),
             ),
           ),
           Container(
             clipBehavior: Clip.hardEdge,
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(4.0),
-              ),
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(4.0)),
             ),
             height: MediaQuery.of(context).size.height * 0.725,
             child: ListView(
@@ -495,13 +386,13 @@ class _OurMiniRow extends StatelessWidget {
   final String columnText6;
   final String columnText7;
   double height;
-  late List<String >columnTexts;
+  late List<String> columnTexts;
 
   _OurMiniRow({required this.columnText1, required this.columnText2, required this.columnText3, required this.columnText4, required this.columnText5, required this.columnText6, Key? key, required this.height, required this.columnText7}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    columnTexts=[columnText1,columnText2,columnText3,columnText4,columnText5,columnText6,columnText7];
+    columnTexts = [columnText1, columnText2, columnText3, columnText4, columnText5, columnText6, columnText7];
     return SizedBox(
       height: height,
       child: Container(
@@ -511,16 +402,12 @@ class _OurMiniRow extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              for(String columnText in columnTexts)
-              SizedBox(
-                // width: MediaQuery.of(context).size.width / 7,
-                width: MediaQuery.of(context).size.width / columnTexts.length,
-                child: Text(
-                  columnText,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200),
-                  textAlign: TextAlign.left,
+              for (String columnText in columnTexts)
+                SizedBox(
+                  // width: MediaQuery.of(context).size.width / 7,
+                  width: MediaQuery.of(context).size.width / columnTexts.length,
+                  child: Text(columnText, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200), textAlign: TextAlign.left),
                 ),
-              ),
             ],
           ),
         ),
@@ -565,10 +452,7 @@ class _OurProgressIndicatorWithSwitchState extends State<_OurProgressIndicatorWi
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        LinearProgressIndicator(
-          value: controller.value,
-          semanticsLabel: 'Linear progress indicator',
-        ),
+        LinearProgressIndicator(value: controller.value, semanticsLabel: 'Linear progress indicator'),
         Switch(
           value: determinate,
           onChanged: (bool value) {
@@ -601,12 +485,8 @@ class _OurLinearProgressIndicatorSimpleState extends State<_OurLinearProgressInd
 
   @override
   void initState() {
-    controller = AnimationController(
-      /// [AnimationController]s can be created with `vsync: this` because of
-      /// [TickerProviderStateMixin].
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..addListener(() {
+    controller = AnimationController(vsync: this, duration: const Duration(seconds: 5))
+      ..addListener(() {
         setState(() {});
       });
     controller.repeat(reverse: true);
@@ -621,9 +501,6 @@ class _OurLinearProgressIndicatorSimpleState extends State<_OurLinearProgressInd
 
   @override
   Widget build(BuildContext context) {
-    return LinearProgressIndicator(
-      value: controller.value,
-      semanticsLabel: 'Linear progress indicator',
-    );
+    return LinearProgressIndicator(value: controller.value, semanticsLabel: 'Linear progress indicator202308102259');
   }
 }

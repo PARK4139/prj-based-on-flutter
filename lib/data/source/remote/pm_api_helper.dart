@@ -23,10 +23,10 @@ class Pm10 {
   final String jeju;
   final String chungbuk;
   final String gyeongnam;
-  String dataTime;
-  final String dataGubun;
   final String gyeonggi;
-  final String itemCode;
+  String dataTime;
+    String dataGubun;
+    String itemCode;
 
   Pm10.fromJson(Map<String, dynamic> json)
       : daegu = json['daegu'] ?? "-9999",
@@ -68,9 +68,9 @@ class Pm10 {
     json['jeju'] = jeju;
     json['chungbuk'] = chungbuk;
     json['gyeongnam'] = gyeongnam;
-    json['dataTime'] = dataTime;
-    json['dataGubun'] = dataGubun;
     json['gyeonggi'] = gyeonggi;
+    json['dataGubun'] = dataGubun;
+    json['dataTime'] = dataTime;
     json['itemCode'] = itemCode;
     return json;
   }

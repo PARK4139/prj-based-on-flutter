@@ -14,7 +14,7 @@ class ScreenAutoPopUpOnce extends StatefulWidget {
 }
 
 class _ScreenAutoPopUpOnceState extends State<ScreenAutoPopUpOnce> {
-  final clearButtonKey = GlobalKey();
+  final clearButtonKey20230810143803 = GlobalKey(debugLabel: "clearButtonKey20230810143811");
   late Timer autoClickScheduler;
   late bool isFirstBuild;
 
@@ -45,8 +45,8 @@ class _ScreenAutoPopUpOnceState extends State<ScreenAutoPopUpOnce> {
         body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           children: [
-            /*버튼(버튼 클릭 시 5초 뒤 사라질 팝업 실행)*/ InkWell(
-              key: clearButtonKey,
+            /*Auto Schedule 실행 버튼*/ InkWell(
+              key: clearButtonKey20230810143803,
               child: const Row(
                 children: [
                   Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
@@ -63,7 +63,7 @@ class _ScreenAutoPopUpOnceState extends State<ScreenAutoPopUpOnce> {
   }
 
   Future<void> autoClick() async {
-    RenderBox renderbox = clearButtonKey.currentContext!.findRenderObject() as RenderBox;
+    RenderBox renderbox = clearButtonKey20230810143803.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;
     double y = position.dy;

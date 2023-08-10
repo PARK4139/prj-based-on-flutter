@@ -146,8 +146,8 @@ class _CompanyWorkHelperState extends State<CompanyWorkHelper> {
       int i = -1;
       while (true) {
         if (clickCounter == i) {
-          printWithoutError("ClickCounter:$clickCounter"); //DEVELOPMENT
-          printWithoutError('copied : $itemsToCopy'); //DEVELOPMENT
+          printWithoutWarning("ClickCounter:$clickCounter"); //DEVELOPMENT
+          printWithoutWarning('copied : $itemsToCopy'); //DEVELOPMENT
           FlutterClipboard.copy(itemsToCopy).then((value) {});
           try {
             itemsToCopy = itemsIterable.next();

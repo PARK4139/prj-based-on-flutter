@@ -42,7 +42,7 @@ class _ScreenByNextDrontalSupplyDateState extends State<ScreenByNextDrontalSuppl
 
     /*미래에 급여할 날짜 10개 중 가장 근래에 급여할 날짜*/
     futureFeedingPromisedDate = futureFeedingPromisedDates[0];
-    printWithoutError("________________________________________________$futureFeedingPromisedDate");
+    printWithoutWarning("________________________________________________$futureFeedingPromisedDate");
 
 
     leftDaysFromNowToNextFeedingDate = now.difference(futureFeedingPromisedDate).inDays;

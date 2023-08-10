@@ -30,7 +30,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
   late bool isUpperCaseMode;
   late bool isIconColorToogled;
 
-  final clearButtonKey = GlobalKey();
+  final clearButtonKey20230810143601 = GlobalKey(debugLabel: "clearButtonKey20230810143601");
   late Timer autoClickScheduler;
   late bool isFirstBuild;
 
@@ -87,8 +87,8 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
                       },
                       icon: const Icon(Icons.android, color: Colors.lightBlueAccent),
                     ),
-                    /*버튼(버튼 클릭 시 5초 뒤 사라질 팝업 실행)*/ InkWell(
-                      key: clearButtonKey,
+                    /*Auto Schedule 실행 버튼*/ InkWell(
+                      key: clearButtonKey20230810143601,
                       child: const Row(
                         children: [
                           Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
@@ -186,11 +186,11 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
       if (isUnitSquaredMeter == true) {
         userInput = text;
         result = '${(double.parse(text) / 3.3).toStringAsFixed(2)} 평';
-        printWithoutError("onChanged: $result");
+        printWithoutWarning("onChanged: $result");
       } else {
         userInput = text;
         result = '${(double.parse(text) * 3.3).toStringAsFixed(2)} ㎡';
-        printWithoutError("onChanged: $result");
+        printWithoutWarning("onChanged: $result");
       }
     });
   }
@@ -205,7 +205,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
     setState(() {
       textEditingController = TextEditingController(text: "");
       if (textEditingController.text.isEmpty) {
-        printWithoutError('textEditingController is empty');
+        printWithoutWarning('textEditingController is empty');
       }
     });
   }
@@ -236,7 +236,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
   }
 
   Future<void> autoClick() async {
-    RenderBox renderbox = clearButtonKey.currentContext!.findRenderObject() as RenderBox;
+    RenderBox renderbox = clearButtonKey20230810143601.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;
     double y = position.dy;

@@ -10,7 +10,7 @@ class FooMaker {
 
   String getGreetingMent() => 'Hello';
 
-  void dispose() => printWithoutError('$this::dispose');
+  void dispose() => printWithoutWarning('$this::dispose');
 }
 
 class FooMaker2 {
@@ -18,7 +18,7 @@ class FooMaker2 {
 
   String getGreetingMent() => 'Hello everyone';
 
-  void dispose() => printWithoutError('$this::dispose');
+  void dispose() => printWithoutWarning('$this::dispose');
 }
 
 class FooMaker3 {
@@ -26,7 +26,7 @@ class FooMaker3 {
 
   String getGreetingMent() => 'Fall in love with Flutter';
 
-  void dispose() => printWithoutError('$this::dispose');
+  void dispose() => printWithoutWarning('$this::dispose');
 }
 
 class Sender extends StatelessWidget {

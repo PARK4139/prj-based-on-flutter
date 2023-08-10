@@ -99,13 +99,17 @@
 - UI 구현 
 - 미국주식 API 연동(API 키 신청/코드 적용)[특정기간기준 상장/비상장 목록]
 - csv 데이터 직렬화 기능(csv 라이브러리)
-
-
+- 테이블 UI Component 인 TableMaker 위젯을 작성
 
 
 
 # ✔️ING(작업중)
 #### 미국주식 API 앱
+ListView(), DataTable() 을 사용하여 item 이 너무 많을 때 out of memory 가 되는 문제를 마주했다.
+이는 ListView.builder() 로 해결을 했다.  ListView.builder() 는 매우 잘 만들어졌다.
+children:[] 내의 화면에 보여지는 child wiget 에 대해서만 렌더링을하고 나머지 child wiget 에 대해서는 dispose()를 해주는데. 
+이 부분이 구현해본적이 없는데 덕분에 쉽게 해결하고 넘어가게 되었다. DataTable() 도 마찬가지 테이블 형태에 미국주식 API 를 통해 받은 데이터들을 직렬화 시킨 뒤
+화면에 보여주려고 했으나 out of Memmory 가 나타났고, 이는 아예 도표 형태를 구현하는 계기가 되어 도표를 만들었다.
 
  
 

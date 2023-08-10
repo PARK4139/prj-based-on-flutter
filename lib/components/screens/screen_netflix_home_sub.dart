@@ -57,13 +57,13 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                             angle: 40.05,
                             child: IconButton(
                               onPressed: () {
-                                printWithoutError("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다X.");
+                                printWithoutWarning("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다X.");
                                 Navigator.pop(context);
                               },
                               icon: IconButton(
                                 icon: Icon(Icons.add_circle_outlined, color: Colors.black.withOpacity(0.6)),
                                 onPressed: () {
-                                  printWithoutError("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다O.");
+                                  printWithoutWarning("이제는 Transform 안에서도 IconButton 의 onPressed 가 동작됩니다O.");
                                   Navigator.pop(context);
                                 },
                                 tooltip: "홈으로",
@@ -219,7 +219,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                     // borderRadius: BorderRadius.circular(100),
                     shape: BoxShape.circle,
                   ),
-                  child: Image.asset(movie.imgUrl, height: 140 + 20),
+                  child: Image.network(movie.imgUrl, height: 140 + 20),
                 ),
               ),
               /*오프셋된 영화 타이틀*/ Transform.translate(
@@ -248,7 +248,7 @@ class _ScreenNetflixHomeSubState extends State<ScreenNetflixHomeSub> {
                     color: Colors.amberAccent,
                     // borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Image.asset(movie.imgUrl, height: 180),
+                  child: Image.network(movie.imgUrl, height: 180),
                 ),
               ),
             ],

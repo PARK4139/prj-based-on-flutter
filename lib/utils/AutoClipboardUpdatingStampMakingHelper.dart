@@ -4,7 +4,6 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:prj_app_mvp/utils/super_helper.dart';
 
-
 class AutoClipboardUpdatingStampMakingHelper extends StatefulWidget {
   String deprecated;
   final Color color;
@@ -35,13 +34,15 @@ class AutoClipboardUpdatingStampMakingHelper extends StatefulWidget {
 }
 
 class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpdatingStampMakingHelper> {
-  bool isFirstClick = true;
+  bool isFirstClicked = false;
 
-  late String resultTxts ;
+  late String resultTxts;
 
   late String firstPastedValue;
 
   late Timer autoClipboardUpdatingTimer;
+
+  var isToogled = false;
 
   @override
   void initState() {
@@ -49,11 +50,10 @@ class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpd
     widget.borderRadius ??= BorderRadius.circular(5);
   }
 
-
   @override
   void dispose() {
     autoClipboardUpdatingTimer.cancel();
-    printSeparatorWithMkr(txt:  "autoClipboardUpdatingTimer.cancel()");
+    printSeparatorWithMkr(txt: "autoClipboardUpdatingTimer.cancel()");
 
     super.dispose();
   }
@@ -70,7 +70,20 @@ class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpd
         vertical: widget.paddingVertical,
       ),
       child: TextButton(
-        onPressed: copyToClipboardAfterPasteButtonName,
+        onPressed: () {
+          isToogled = !isToogled;
+          if (isToogled == false) {
+            autoClipboardUpdatingTimer.cancel();
+            /*음....이렇게 해도 즉시 autoClipboardUpdatingTimer 가 종료되지는 않는데...즉시 종료할 방법은 없는가?*/
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 3000), content: Text("autoClipboardUpdatingTimer가 종료되었습니다.\n그러나 이미 Stack 된 작업은 제거될때까지 기다려야 합니다.")));
+          }else{
+            copyTextToClipboard();
+            // if(isFirstClicked==true){
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 3000), content: Text("autoClipboardUpdatingTimer가 시작되었습니다.\n한번더 클릭하면 autoClipboardUpdatingTimer를 종료할 수 있습니다.")));
+            // }
+          }
+
+        },
         child: Text(
           widget.template,
           style: TextStyle(
@@ -83,12 +96,12 @@ class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpd
     );
   }
 
-  void copyToClipboardAfterPasteButtonName() {
+  void copyTextToClipboard() {
     FlutterClipboard.paste().then((value) {
-      if (isFirstClick == true) {
+      if (isFirstClicked == false) {
         firstPastedValue = value;
         autoClipboardUpdatingTimer = Timer.periodic(const Duration(seconds: 1), autoClipboardUpdating);
-        isFirstClick = false;
+        isFirstClicked = true;
       }
       setState(() {
         resultTxts = widget.template.replaceAll(widget.deprecated, firstPastedValue);
@@ -102,6 +115,6 @@ class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpd
   }
 
   void autoClipboardUpdating(Timer timer) {
-      copyToClipboardAfterPasteButtonName();
+    copyTextToClipboard();
   }
 }

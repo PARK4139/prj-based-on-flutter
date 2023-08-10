@@ -28,9 +28,6 @@ class _ScreenWebtoonAPIState extends State<ScreenWebtoonAPI> {
     super.initState();
 
 
-    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("웹툰 정보를 가져오는 중입니다. 잠시만 기다려 주세요.")));
-    // ScaffoldMessenger 는 Scaffold() 내에서 사용을 제안(보장)하며, showSnackBar() 는 build() 블록 내에 사용할 수 없다
-
     initWebToons();
   }
 
@@ -41,7 +38,8 @@ class _ScreenWebtoonAPIState extends State<ScreenWebtoonAPI> {
         backgroundColor: Colors.black,
         title: Builder(
           builder: (context) {
-            const SnackBar(content: Text("웹툰 정보를 가져오는 중입니다. 잠시만 기다려 주세요."));
+            /*ScaffoldMessenger 는 Scaffold() 내에서 사용을 제안(보장)하며, showSnackBar() 는 build() 블록 내에 사용할 수 없다*/
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 2000), content: Text("API를 통해 정보를 가져오는 중입니다. 잠시만 기다려 주세요.")));
             return const Text('');
           }
         ),

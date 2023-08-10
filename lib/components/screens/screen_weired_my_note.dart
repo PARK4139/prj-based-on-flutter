@@ -61,7 +61,11 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
   @override
   void initState() {
     super.initState();
+
+    /*로컬 스토리지 사용해서 상태 Read*/
     // isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
+    
+    
     BlocBuilder<MyAppStateCubit, MyAppState>(
       builder: (context, MyAppState state) {
         isDarkMode= state.isDarkMode ;
@@ -132,7 +136,7 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
                 /*참 펜시한 메모장 : 타이틀*/ Center(
                   child: InkWell(
                     onTap: () {
-                      printWithoutError("참 펜시한 메모장:");
+                      printWithoutWarning("참 펜시한 메모장:");
                     },
                     child: Column(
                       children: [
@@ -199,7 +203,7 @@ flutter 로 만들어야 할 기능들.
                 MainContentMaker(level1widget: const Icon(Icons.phone_android, color: Colors.grey), level1text: 'App 요약정리', level2items: [
                   /*Flutter 핵심 요약:타이틀*/ InkWell(
                     onTap: () {
-                      printWithoutError("/*Flutter 핵심 요약:타이틀*/");
+                      printWithoutWarning("/*Flutter 핵심 요약:타이틀*/");
                     },
                     child: Column(
                       children: [

@@ -203,7 +203,7 @@ class _ScreenJungHoonParkProfileState extends State<ScreenJungHoonParkProfile> {
                     color: Colors.amberAccent,
                     // borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Image.asset(movie.imgUrl, height: 180),
+                  child: Image.network(movie.imgUrl, height: 180),
                 ),
               ),
             ],

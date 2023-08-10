@@ -101,7 +101,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                               offset: const Offset(0, 0),
                               child: Transform.scale(
                                 scale: 0.8,
-                                child: Image.asset(movie.imgUrl),
+                                child: Image.network(movie.imgUrl),
                               ),
                             ),
                           ),
@@ -232,7 +232,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                     // borderRadius: BorderRadius.circular(100),
                     shape: BoxShape.circle,
                   ),
-                  child: Image.asset(movie.imgUrl, height: 140 + 20),
+                  child: Image.network(movie.imgUrl, height: 140 + 20),
                 ),
               ),
               /*오프셋된 영화 타이틀*/ Transform.translate(
@@ -261,7 +261,7 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
                     color: Colors.amberAccent,
                     // borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Image.asset(movie.imgUrl, height: 180),
+                  child: Image.network(movie.imgUrl, height: 180),
                 ),
               ),
             ],

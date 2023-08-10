@@ -155,11 +155,11 @@ class _ScreenAreaCalculationVerOrangeAndroidState extends State<ScreenAreaCalcul
     if (isUnitSquaredMeter == true) {
       userInput = text;
       result = '${(double.parse(text) / 3.3).toStringAsFixed(2)} 평';
-      printWithoutError("onChanged: $result");
+      printWithoutWarning("onChanged: $result");
     } else {
       userInput = text;
       result = '${(double.parse(text) * 3.3).toStringAsFixed(2)} ㎡';
-      printWithoutError("onChanged: $result");
+      printWithoutWarning("onChanged: $result");
     }
   }
 }

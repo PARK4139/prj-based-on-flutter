@@ -50,16 +50,16 @@ class _ScreenPracticeWebviewState extends State<ScreenPracticeWebview> {
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
-            printWithoutError('WebView is loading (progress : $progress%)');
+            printWithoutWarning('WebView is loading (progress : $progress%)');
           },
           onPageStarted: (String url) {
-            printWithoutError('Page started loading: $url');
+            printWithoutWarning('Page started loading: $url');
           },
           onPageFinished: (String url) {
-            printWithoutError('Page finished loading: $url');
+            printWithoutWarning('Page finished loading: $url');
           },
           onWebResourceError: (WebResourceError error) {
-            printWithoutError('''
+            printWithoutWarning('''
 Page resource error:
   code: ${error.errorCode}
   description: ${error.description}
@@ -69,15 +69,15 @@ Page resource error:
           },
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.startsWith('https://www.youtube.com/')) {
-              printWithoutError('blocking navigation to ${request.url}');
+              printWithoutWarning('blocking navigation to ${request.url}');
               return NavigationDecision.prevent;
             }
-            printWithoutError('allowing navigation to ${request.url}');
+            printWithoutWarning('allowing navigation to ${request.url}');
             return NavigationDecision.navigate;
           },
           onUrlChange: (UrlChange change) {
 
-            printWithoutError('url change to ${change.url}');
+            printWithoutWarning('url change to ${change.url}');
           },
         ),
       )

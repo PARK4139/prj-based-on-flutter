@@ -32,7 +32,11 @@ class _MainContentMakerState extends State<MainContentMaker> {
   void initState() {
     
       super.initState();
+
+      /*로컬 스토리지 사용해서 상태 Read*/
       // isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
+      
+      
       BlocBuilder<MyAppStateCubit, MyAppState>(
         builder: (context, MyAppState state) {
           isDarkMode= state.isDarkMode ;

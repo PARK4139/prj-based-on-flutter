@@ -22,7 +22,7 @@ class _TextShirikableHardCodingStampMakerState extends State<TextShirikableHardC
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         copyToClipboard();
         toogleMainContentState();

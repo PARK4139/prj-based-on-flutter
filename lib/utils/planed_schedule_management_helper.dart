@@ -47,6 +47,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
 
   late int itemsLength;
   late Timer tickTimer;
+
   @override
   void initState() {
     super.initState();
@@ -63,8 +64,8 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   void dispose() {
     super.dispose();
 
-    tickTimer.cancel();}
-
+    tickTimer.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,20 +82,19 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           /*주제목 버튼*/ TextButton(
-              child: Text(
-                widget.title.length <= 60 ? '${widget.title} i/${widget.items.length}' : '${widget.title.substring(0, 60)} i/${widget.items.length}',
-                style: TextStyle(
-                  color: widget.color,
-                  fontSize: widget.fontSize,
-                  fontWeight: widget.fontWeight,
-                ),
+            onPressed: null,
+            child: Text(
+              widget.title.length <= 60 ? widget.title : widget.title.substring(0, 60),
+              style: TextStyle(
+                color: widget.color,
+                fontSize: widget.fontSize,
+                fontWeight: widget.fontWeight,
               ),
-              onPressed: () {
-                addClickCounter();
-              }),
+            ),
+          ),
           SizedBox(
             child: IconButton(
-              icon: const Icon(Icons.all_inclusive),
+              icon: const Icon(Icons.more_vert),
               color: Colors.lightBlueAccent,
               onPressed: () {
                 showDialog<void>(
@@ -105,22 +105,19 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
                       backgroundColor: Colors.black,
                       /*제목 버튼*/ title: Text(buttonTitle, style: const TextStyle(color: Colors.blueAccent)),
                       /*스탬프들*/ content: SingleChildScrollView(
-                        child: Builder(
-                          builder: (context) {
-
-                            return ListBody(
-                              children: <Widget>[
-                                for (var item in itemsSnapshotAtStart)
-                                  Row(
-                                    children: [
-                                      Text(itemsSnapshotAtStart.indexOf(item).toString().padLeft(2, " "), style: const TextStyle(color: Colors.lightGreenAccent)),
-                                      SizedBox(child: item),
-                                    ],
-                                  ),
-                              ],
-                            );
-                          }
-                        ),
+                        child: Builder(builder: (context) {
+                          return ListBody(
+                            children: <Widget>[
+                              for (var item in itemsSnapshotAtStart)
+                                Row(
+                                  children: [
+                                    Text(itemsSnapshotAtStart.indexOf(item).toString().padLeft(2, " "), style: const TextStyle(color: Colors.lightGreenAccent)),
+                                    SizedBox(child: item),
+                                  ],
+                                ),
+                            ],
+                          );
+                        }),
                       ),
                       actions: <Widget>[
                         /*닫기*/ TextButton(
@@ -147,12 +144,12 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
     );
   }
 
-  void addClickCounter() {
-    setState(() {
-      clickCounter = clickCounter + 1;
-      printWithoutError('ClickCounter:$clickCounter');
-    });
-  }
+  // void addClickCounter() {
+  //   setState(() {
+  //     clickCounter = clickCounter + 1;
+  //     printWithoutWarning('ClickCounter:$clickCounter');
+  //   });
+  // }
 
   void initClickCounter() {
     clickCounter = 0;

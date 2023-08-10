@@ -148,7 +148,7 @@ class _ScreenByNowFromDayThatWeMeetState extends State<ScreenByNowFromDayThatWeM
                                     // mode: CupertinoDatePickerMode.dateAndTime,
                                     // mode: CupertinoDatePickerMode.time,
                                     onDateTimeChanged: (DateTime date) {
-                                      printWithoutError(date);
+                                      printWithoutWarning(date);
                                       setState(() {
                                         selectedDate = date;
                                         diffDayCount = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day).difference(selectedDate).inDays;

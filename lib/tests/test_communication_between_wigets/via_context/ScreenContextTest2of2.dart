@@ -15,12 +15,16 @@ class ScreenContextTest2State extends State<ScreenContextTest2> {
   @override
   void initState() {
     super.initState();
+
+    /*로컬 스토리지 사용해서 상태 Read*/
     parent = context.findAncestorStateOfType<ScreenContextTest1State>()!; //  (2/4).
   }
 
   @override
   Widget build(BuildContext context) {
+
     parent.getParentFoo(foo: "foo"); //   (1/4).
+
     return const Placeholder();
   }
 }

@@ -35,7 +35,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
 
   late DateTime now = DateTime.now();
 
-  final clearButtonKey = GlobalKey();
+  final clearButtonKey20230810143834 = GlobalKey(debugLabel: "clearButtonKey20230810143840");
   late Timer autoClickScheduler;
   late bool isFirstBuild;
 
@@ -80,8 +80,8 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
                   icon: Icon(Icons.android, color: Colors.pinkAccent.shade100)),
             ],
           ),
-          /*버튼(버튼 클릭 시 5초 뒤 사라질 팝업 실행)*/ InkWell(
-            key: clearButtonKey,
+          /*Auto Schedule 실행 버튼*/ InkWell(
+            key: clearButtonKey20230810143834,
             child: const Row(
               children: [
                 Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
@@ -129,7 +129,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
 
 
   Future<void> autoClick() async {
-    RenderBox renderbox = clearButtonKey.currentContext!.findRenderObject() as RenderBox;
+    RenderBox renderbox = clearButtonKey20230810143834.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;
     double y = position.dy;

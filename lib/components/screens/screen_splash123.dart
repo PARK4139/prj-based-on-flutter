@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenPracticeSplash extends StatefulWidget {
-  const ScreenPracticeSplash({Key? key}) : super(key: key);
+class ScreenSplash123 extends StatefulWidget {
+  const ScreenSplash123({Key? key}) : super(key: key);
 
   @override
-  State<ScreenPracticeSplash> createState() => _ScreenPracticeSplashState();
+  State<ScreenSplash123> createState() => _ScreenSplash123State();
 }
 
-class _ScreenPracticeSplashState extends State<ScreenPracticeSplash> {
+class _ScreenSplash123State extends State<ScreenSplash123> {
   bool uiDebugMode = /*false*/ /*true*/ false;
 
   bool selected = false;

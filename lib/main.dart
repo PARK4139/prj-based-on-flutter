@@ -76,7 +76,7 @@ class _AppStateSubState extends State<AppStateSub> {
   @override
   void initState() {
     super.initState();
-    printWithoutError('__________________________________________________________________________________________________________________________ s');
+    printWithoutWarning('__________________________________________________________________________________________________________________________ s');
     initHostPlatformInfo();
     initAppModes();
     //   printWithoutError('__________________________________________________________________________________________________________________________ auth check s');
@@ -182,17 +182,7 @@ class _AppStateSubState extends State<AppStateSub> {
     BlocProvider.of<MyAppStateCubit>(context).saveMyAppState(isDarkMode: isDarkMode); //isDarkMode false 로 저장
     /*bring isDarkMode,  isDarkMode 변수에 저장*/ //원래는 이렇게 쓰고 싶지 않으나 이미 isDarkMode 변수를 너무 많이 쓰고 있어 손이 많이가서 이렇게 하기로..결정
     BlocProvider.of<MyAppStateCubit>(context).resetMyAppState();//isDarkMode false 로 초기화되도록 작성되어 있음
-
     BlocProvider.of<MyAppStateCubit>(context).toogleMyAppStateIsDarkMode();//isDarkMode false 로 초기화되도록 작성되어 있음
-
-
-    // Bloc cubit 사용해서 상태 Read
-    // MyAppStateCubit cubit = MyAppStateCubit();
-    // isDarkMode = cubit.state.isDarkMode;
-
-    // Bloc cubit 사용해서 상태 Update
-    // MyAppState newState = cubit.state;
-    // cubit.emit(newState);
 
 
 
@@ -256,20 +246,20 @@ class _AppStateSubState extends State<AppStateSub> {
   }
 
   Future<void> checkPermissionForAndroid() async {
-    printWithoutError('__________________________________________________________________________________________________________________________ permission_handler works s');
+    printWithoutWarning('__________________________________________________________________________________________________________________________ permission_handler works s');
     if (await Permission.location.isGranted) {
-      printWithoutError('권한이 부여되었습니다');
+      printWithoutWarning('권한이 부여되었습니다');
     }
     if (await Permission.location.isDenied) {
-      printWithoutError('권한 부여가 거부되었습니다');
+      printWithoutWarning('권한 부여가 거부되었습니다');
     }
     if (await Permission.location.isPermanentlyDenied) {
-      printWithoutError('권한 부여가 영구적으로 거부되었습니다');
+      printWithoutWarning('권한 부여가 영구적으로 거부되었습니다');
     }
     if (await Permission.location.isRestricted) {
-      printWithoutError('권한이 제한되었습니다.');
+      printWithoutWarning('권한이 제한되었습니다.');
     }
-    printWithoutError('__________________________________________________________________________________________________________________________ permission_handler works e');
+    printWithoutWarning('__________________________________________________________________________________________________________________________ permission_handler works e');
   }
 
   void toogleDevelopingMode() {
@@ -306,37 +296,37 @@ class MyAppState {
     Movie.fromMap({
       'title': '사랑의 불시착',
       'kind': '사랑/로맨스/판타지',
-      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'imgUrl': MyUrls.networkImageTest,
       'like': false,
     }),
     Movie.fromMap({
       'title': '보헤미안 랩소디',
       'kind': '음악/드라마/인물',
-      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'imgUrl': MyUrls.networkImageTest,
       'like': false,
     }),
     Movie.fromMap({
       'title': '안녕, 모니카',
       'kind': '가슴 뭉클/로맨스/코미디/금지된 사랑/정반대 캐릭터',
-      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'imgUrl': MyUrls.networkImageTest,
       'like': false,
     }),
     Movie.fromMap({
       'title': '포레스트 검프',
       'kind': '드라마/외국',
-      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'imgUrl': MyUrls.networkImageTest,
       'like': false,
     }),
     Movie.fromMap({
       'title': '쇼생크 탈출',
       'kind': '추리/반전/서스펜스',
-      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'imgUrl': MyUrls.networkImageTest,
       'like': false,
     }),
     Movie.fromMap({
       'title': '라이언 일병 구하기',
       'kind': '드라마/전쟁/역사',
-      'imgUrl': 'asset/images/app_netflix_movie_poster_1.png',
+      'imgUrl': MyUrls.networkImageTest,
       'like': false,
     }),
   ];
@@ -348,6 +338,7 @@ class MyAppState {
 
 // Cubit
 class MyAppStateCubit extends Cubit<MyAppState> {
+
   MyAppStateCubit() : super(MyAppState());
 
   void saveMyAppState({required bool isDarkMode}) {

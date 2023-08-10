@@ -96,7 +96,7 @@ class _ScreenTtsTestState extends State<ScreenTtsTest> {
                       return null;
                     },
                     onChanged: (value) {
-                      printWithoutError("onChanged: $value");
+                      printWithoutWarning("onChanged: $value");
                     },
                     onFieldSubmitted: (value) {},
                   ),

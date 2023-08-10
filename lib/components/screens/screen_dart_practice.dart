@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../utils/super_helper.dart';
 
-
-
 class ScreenUndefined0000 extends StatefulWidget {
   const ScreenUndefined0000({super.key});
 
@@ -67,25 +65,25 @@ class FooFoo {
 
   String? dataTypePrinter(String? foo) {
     if (foo is String) {
-      printWithoutError('$foo\'s data type : String');
+      printWithoutWarning('$foo\'s data type : String');
     } else if (foo is int) {
-      printWithoutError('$foo\'s data type : int');
+      printWithoutWarning('$foo\'s data type : int');
     } else if (foo is double) {
-      printWithoutError('$foo\'s data type : double');
+      printWithoutWarning('$foo\'s data type : double');
     } else if (foo is List<String>) {
-      printWithoutError('$foo\'s data type : List<String>');
+      printWithoutWarning('$foo\'s data type : List<String>');
     } else if (foo is List<int>) {
-      printWithoutError('$foo\'s data type : List<int>');
+      printWithoutWarning('$foo\'s data type : List<int>');
     }
     return foo;
   }
 
   String? think(dynamic foo) {
     if (foo! is! String) {
-      printWithoutError('$foo\'s data type : String');
+      printWithoutWarning('$foo\'s data type : String');
     } else if (foo == null) {
       foo ??= 'it was null'; //foo 가 null 이면 'it was null' 로서 초기화.
-      printWithoutError('$foo');
+      printWithoutWarning('$foo');
     }
     return foo;
   }
@@ -196,40 +194,33 @@ class Coach extends Creature {
 
   @override
   void sleep() {
-    printWithoutError('caach is sleeping now');
+    printWithoutWarning('caach is sleeping now');
   }
 
   @override
   void walk(String placeFrom, String placeTo) {
-    printWithoutError('caach is walking now from $placeFrom to $placeTo');
+    printWithoutWarning('caach is walking now from $placeFrom to $placeTo');
   }
 
   @override
   void eat(String food) {
-    printWithoutError('caach is eating now');
+    printWithoutWarning('caach is eating now');
   }
 }
 
 class Director extends Coach {
   Director({required super.name});
+
   //부모 변수 사용
   //부모 변수에
   //변수를 선언 초기화하지 않음
-
-
-
 
   //부모 변수 사용 + 내 변수 사용
   //부모 변수에 저장 + 내 변수에도 저장
   // Director({required super.name}) : name = name; //내 변수를 초기화
 
-
-
-
-
   //부모 함수 사용
   //함수를 선언하지 않음
-
 
   //부모 함수 사용 + 내 함수 사용
   //부모 함수 사용 + overrided 함수 사용
@@ -237,10 +228,8 @@ class Director extends Coach {
   void sleep() {
     // TODO: implement sleep
     super.sleep();
-    printWithoutError('it is important thing thiat human sleep');
+    printWithoutWarning('it is important thing thiat human sleep');
   }
-
-
 }
 
 //collaboration mixin and with
@@ -252,7 +241,7 @@ mixin MagitianDefaultProperties {
 }
 mixin MagitianDefaultMethod {
   void training() {
-    printWithoutError('in training...');
+    printWithoutWarning('in training...');
   }
 }
 
@@ -276,19 +265,19 @@ void main() {
   // ChattingRoomMember player = new ChattingRoomMember(); // flutter 스타일 가이드에서는 에서는 사용 비추천
   dynamic player;
   player = ChattingRoomMember(name: 'pjh4139', lv: 0, xp: 0, mp: 0, hp: 100000, exp: 0, age: 30, address: 'foo', loginAccoundUserId: 'Or가리튜닝', job: '어쌔신', loginAccoundUserPw: '0000', loginOk: 'ok'); // no argument constructor method + instance
-  printWithoutError(player.getChattingRoomMemberInfo());
-  printWithoutError(player.toString());
+  printWithoutWarning(player.getChattingRoomMemberInfo());
+  printWithoutWarning(player.toString());
 
   dynamic director;
   director = Director(name: '박정훈 감독');
   director.sleep();
-  printWithoutError(director.name);
+  printWithoutWarning(director.name);
 
   player = ChattingRoomMemberMixined();
-  printWithoutError(player.expDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
-  printWithoutError(player.strongDefault);
-  printWithoutError(player.intelligenceDefault);
-  printWithoutError(player.training());
+  printWithoutWarning(player.expDefault); //mixin 을 호출을 해보니 android studio 에서 자동완성 지원않음. development experience 는 마음에 안듬
+  printWithoutWarning(player.strongDefault);
+  printWithoutWarning(player.intelligenceDefault);
+  printWithoutWarning(player.training());
 
   //
   // // typedef : define s
@@ -448,177 +437,166 @@ void main() {
   // chattingRoomUsingPermission = State.rejected;
   //
 
-  printWithoutError('1하나One\u{1D11E}}');
-  printWithoutError('1하나One\u{1D11E}}'.length); //9 /int /unicode문자를 두 개로 셈
-  printWithoutError('1하나One\u{1D11E}}'.runes.length); //8 /int /unicode 문자를 한 개로 셈
-  printWithoutError('1하나One\u{1D11E}}'.codeUnits); //[49, 54616, 45208, 79, 110, 101, 55348, 56606, 125] /List<int> /각 문자를 UTF-16 code로 바꿔 list에 담음
-  printWithoutError('1하나One\u{1D11E}}'.codeUnitAt(2)); //45208 /int /인덱스 0부터
-  printWithoutError('1하나One\u{1D11E}}'.hashCode); //248270589 /int /해시코드 변환
-  printWithoutError('1'.isEmpty); //false
-  printWithoutError(''.isEmpty); //true
-  printWithoutError('1'.isNotEmpty); //true
-  printWithoutError(''.isNotEmpty); //false
+  printWithoutWarning('1하나One\u{1D11E}}');
+  printWithoutWarning('1하나One\u{1D11E}}'.length); //9 /int /unicode문자를 두 개로 셈
+  printWithoutWarning('1하나One\u{1D11E}}'.runes.length); //8 /int /unicode 문자를 한 개로 셈
+  printWithoutWarning('1하나One\u{1D11E}}'.codeUnits); //[49, 54616, 45208, 79, 110, 101, 55348, 56606, 125] /List<int> /각 문자를 UTF-16 code로 바꿔 list에 담음
+  printWithoutWarning('1하나One\u{1D11E}}'.codeUnitAt(2)); //45208 /int /인덱스 0부터
+  printWithoutWarning('1하나One\u{1D11E}}'.hashCode); //248270589 /int /해시코드 변환
+  printWithoutWarning('1'.isEmpty); //false
+  printWithoutWarning(''.isEmpty); //true
+  printWithoutWarning('1'.isNotEmpty); //true
+  printWithoutWarning(''.isNotEmpty); //false
   bool b = false;
-  printWithoutError(b.runtimeType);//bool /Type /객체 타입 알려줌
+  printWithoutWarning(b.runtimeType); //bool /Type /객체 타입 알려줌
   int a = 123;
-  printWithoutError(a.toString()); //123 /String /스트링타입으로 변환
-  printWithoutError('1234567890'.substring(3)); //4567890 /String /시작인덱스 지정. 0부터 시작
-  printWithoutError('1234567890'.substring(3,7)); //4567 /시작, 끝 인덱스 지정. 0부터 시작 String 끝 인덱스 앞까지
+  printWithoutWarning(a.toString()); //123 /String /스트링타입으로 변환
+  printWithoutWarning('1234567890'.substring(3)); //4567890 /String /시작인덱스 지정. 0부터 시작
+  printWithoutWarning('1234567890'.substring(3, 7)); //4567 /시작, 끝 인덱스 지정. 0부터 시작 String 끝 인덱스 앞까지
 
   //compareTo /int /문자열 정렬 순서 비교. 같으면 0, 더 앞이면 -1, 뒤면 1.
-  printWithoutError('asdf'.compareTo('asdf'));//0
-  printWithoutError('asdf'.compareTo('asdd'));//1
-  printWithoutError('asdf'.compareTo('asdg'));//-1
-  printWithoutError('aaaa'.compareTo('aaa'));//1
-  printWithoutError('aaaa'.compareTo('aaaaa'));//-1
-  printWithoutError('aaaa'.compareTo('aaaA'));//1
-  printWithoutError('asdf1234'.contains('as'));//true /bool /문자열에 포함하고 있는지 체크
-  printWithoutError('asdf1234'.contains('as',1));//false /bool /시작인덱스 지정 가능
-  printWithoutError('qwerasdf'.endsWith('asdf'));//true /bool /문자열 끝 비교
-  printWithoutError('asdfasdf'.indexOf('sd'));//1 /int /앞부터 검사하여 처음 일치하는 index 알려줌
-  printWithoutError('asdfasdf'.indexOf('123'));//-1 /int /없으면 -1
-  printWithoutError('asdfasdf'.indexOf('sd',2));//5 /int /시작인덱스 지정 가능
-  printWithoutError('asdfasdf'.lastIndexOf('sd'));//5 /int /뒤부터 검사하여 처음 일치하는 index 알려줌
-  printWithoutError('asdfasdf'.lastIndexOf('12'));//-1 /int /없으면 -1
-  printWithoutError('asdfasdf'.lastIndexOf('sd',4));//1 /시작인덱스 지정 가능. 시작인덱스부터 앞으로 가며 검사
-  printWithoutError('S'+'asdf'.padLeft(6));//S  asdf /String /문자열의 길이가 지정된 숫자보다 짧으면 왼쪽에 공백을 추가해 길이를 맞춤. 넘어가는 경우는 추가하지 않음
-  printWithoutError('S'+'asdf'.padLeft(6,'*'));//S**asdf /채우는 문자 변경 가능
-  printWithoutError('asdf'.padRight(7) + 'E');//asdf   E /String /문자열의 길이가 지정된 숫자보다 짧으면 왼쪽에 공백을 추가해 길이를 맞춤. 넘어가는 경우는 추가하지 않음
-  printWithoutError('asdf'.padRight(7,'+') + 'E');//asdf+++E /채우는 문자 변경 가능
-  printWithoutError('asdfasdf'.replaceAll('as','12'));//12df12df /String /일치하는 모든 문자를 교체함
+  printWithoutWarning('asdf'.compareTo('asdf')); //0
+  printWithoutWarning('asdf'.compareTo('asdd')); //1
+  printWithoutWarning('asdf'.compareTo('asdg')); //-1
+  printWithoutWarning('aaaa'.compareTo('aaa')); //1
+  printWithoutWarning('aaaa'.compareTo('aaaaa')); //-1
+  printWithoutWarning('aaaa'.compareTo('aaaA')); //1
+  printWithoutWarning('asdf1234'.contains('as')); //true /bool /문자열에 포함하고 있는지 체크
+  printWithoutWarning('asdf1234'.contains('as', 1)); //false /bool /시작인덱스 지정 가능
+  printWithoutWarning('qwerasdf'.endsWith('asdf')); //true /bool /문자열 끝 비교
+  printWithoutWarning('asdfasdf'.indexOf('sd')); //1 /int /앞부터 검사하여 처음 일치하는 index 알려줌
+  printWithoutWarning('asdfasdf'.indexOf('123')); //-1 /int /없으면 -1
+  printWithoutWarning('asdfasdf'.indexOf('sd', 2)); //5 /int /시작인덱스 지정 가능
+  printWithoutWarning('asdfasdf'.lastIndexOf('sd')); //5 /int /뒤부터 검사하여 처음 일치하는 index 알려줌
+  printWithoutWarning('asdfasdf'.lastIndexOf('12')); //-1 /int /없으면 -1
+  printWithoutWarning('asdfasdf'.lastIndexOf('sd', 4)); //1 /시작인덱스 지정 가능. 시작인덱스부터 앞으로 가며 검사
+  printWithoutWarning('S' + 'asdf'.padLeft(6)); //S  asdf /String /문자열의 길이가 지정된 숫자보다 짧으면 왼쪽에 공백을 추가해 길이를 맞춤. 넘어가는 경우는 추가하지 않음
+  printWithoutWarning('S' + 'asdf'.padLeft(6, '*')); //S**asdf /채우는 문자 변경 가능
+  printWithoutWarning('asdf'.padRight(7) + 'E'); //asdf   E /String /문자열의 길이가 지정된 숫자보다 짧으면 왼쪽에 공백을 추가해 길이를 맞춤. 넘어가는 경우는 추가하지 않음
+  printWithoutWarning('asdf'.padRight(7, '+') + 'E'); //asdf+++E /채우는 문자 변경 가능
+  printWithoutWarning('asdfasdf'.replaceAll('as', '12')); //12df12df /String /일치하는 모든 문자를 교체함
   int c = 10;
-  printWithoutError('asdfasdf'.replaceAllMapped('as',(match){
+  printWithoutWarning('asdfasdf'.replaceAllMapped('as', (match) {
     c++;
     return c.toString();
-  }));//11df12df /String /일치하는 모든 문자를 앞부터 교체하는데.. 함수 사용
-  printWithoutError('asdfasdf'.replaceFirst('as','12'));//12dfasdf /String /첫번째로 일치하는 문자를 교체함
+  })); //11df12df /String /일치하는 모든 문자를 앞부터 교체하는데.. 함수 사용
+  printWithoutWarning('asdfasdf'.replaceFirst('as', '12')); //12dfasdf /String /첫번째로 일치하는 문자를 교체함
   double d = 20;
-  printWithoutError('asdfasdf'.replaceFirstMapped('as',(match){
-    d = d/4;
+  printWithoutWarning('asdfasdf'.replaceFirstMapped('as', (match) {
+    d = d / 4;
     return d.toString();
-  }));//5dfasdf /String /첫번째로 일치하는 문자를 교체하는데.. 함수 사용
-  printWithoutError('asdfasdf'.replaceRange(2,5,'1234'));//as1234sdf /String /시작인덱스~끝인덱스 교체
-  printWithoutError('asdf**1234'.split('*'));//[asdf,,1234] /List<String> /나누는 문자를 기준으로 나눠서 List로 만듬
-  printWithoutError('asdf'.split(''));//[a,s,d,f] /이렇게하면 문자마다 나눔
-  printWithoutError('asdf**12*34'.splitMapJoin(
-      '*',
-      onMatch: (Match m){
-        return '${m[0]!}' + '+';
-      },
-      onNonMatch: (String n){
-        return n+'A';
-      })); //asdfA*+A*+12A*+34A /String /일치하는 부분 함수이용해서 교체, 불일치 부분(일치로 인해 분리된 부분들) 함수 이용해서 교체
-  printWithoutError('asdfqwer'.startsWith('as'));//true /bool /시작 문자를 검사
-  printWithoutError('asdfqwer'.startsWith('qw',4));//true /bool /시작 인덱스 가능
-  printWithoutError('AsDf'.toLowerCase());//asdf
-  printWithoutError('AsDf'.toUpperCase());//ASDF
-  printWithoutError('S'+'   asdf   '.trim()+'E');//SasdfE /String /문자열 앞 뒤 공백을 제거 \n \t 등
-  printWithoutError('S'+'   asdf   '.trimLeft()+'E');//Sasdf   E /String /문자열 앞의 공백 제거
-  printWithoutError('S'+'   asdf   '.trimRight()+'E');//S   asdfE /String /문자열 뒤의 공백을 제거
-
+  })); //5dfasdf /String /첫번째로 일치하는 문자를 교체하는데.. 함수 사용
+  printWithoutWarning('asdfasdf'.replaceRange(2, 5, '1234')); //as1234sdf /String /시작인덱스~끝인덱스 교체
+  printWithoutWarning('asdf**1234'.split('*')); //[asdf,,1234] /List<String> /나누는 문자를 기준으로 나눠서 List로 만듬
+  printWithoutWarning('asdf'.split('')); //[a,s,d,f] /이렇게하면 문자마다 나눔
+  printWithoutWarning('asdf**12*34'.splitMapJoin('*', onMatch: (Match m) {
+    return '${m[0]!}' + '+';
+  }, onNonMatch: (String n) {
+    return n + 'A';
+  })); //asdfA*+A*+12A*+34A /String /일치하는 부분 함수이용해서 교체, 불일치 부분(일치로 인해 분리된 부분들) 함수 이용해서 교체
+  printWithoutWarning('asdfqwer'.startsWith('as')); //true /bool /시작 문자를 검사
+  printWithoutWarning('asdfqwer'.startsWith('qw', 4)); //true /bool /시작 인덱스 가능
+  printWithoutWarning('AsDf'.toLowerCase()); //asdf
+  printWithoutWarning('AsDf'.toUpperCase()); //ASDF
+  printWithoutWarning('S' + '   asdf   '.trim() + 'E'); //SasdfE /String /문자열 앞 뒤 공백을 제거 \n \t 등
+  printWithoutWarning('S' + '   asdf   '.trimLeft() + 'E'); //Sasdf   E /String /문자열 앞의 공백 제거
+  printWithoutWarning('S' + '   asdf   '.trimRight() + 'E'); //S   asdfE /String /문자열 뒤의 공백을 제거
 
   /*const vs final*/
   // const DateTime now_ = DateTime.now();//const 는 build time 에 초기화되는데 DateTime.now() 는 run time 에 초기화되도록 만들어진 값을 만들어낸다. 따라서 const 를 붙일 수 없다.
   final DateTime now_ = DateTime.now(); //final 는 run time 에 초기화되는 값.
-  printWithoutError(now_);
+  printWithoutWarning(now_);
 
-  printWithoutError('-------------------------------------- 지금시간을 출력');
+  printWithoutWarning('-------------------------------------- 지금시간을 출력');
   DateTime now = DateTime.now();
-  printWithoutError(now);
+  printWithoutWarning(now);
 
-  printWithoutError('-------------------------------------- 특정시간을 출력');
+  printWithoutWarning('-------------------------------------- 특정시간을 출력');
   DateTime specificDay = DateTime(
     2017,
     11,
     23,
   );
 
-  printWithoutError(specificDay);
+  printWithoutWarning(specificDay);
 
-  printWithoutError('-------------------------------------- 지금시간을 적당하게 출력');
-  printWithoutError(now);
-  printWithoutError(now.year);
-  printWithoutError(now.month);
-  printWithoutError(now.day);
-  printWithoutError(now.hour);
-  printWithoutError(now.minute);
-  printWithoutError(now.second);
-  printWithoutError(now.millisecond);
-  printWithoutError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
-  printWithoutError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
-  printWithoutError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd]));
-  printWithoutError(formatDate(DateTime.now(), [yyyy, ' ', mm, ' ', dd, ' ', HH, ' ', nn, ' ', ss, ' ', SSS]));
-  printWithoutError(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));
-  printWithoutError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss, '.', SSS]));
-  printWithoutError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss]));
-  printWithoutError(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
+  printWithoutWarning('-------------------------------------- 지금시간을 적당하게 출력');
+  printWithoutWarning(now);
+  printWithoutWarning(now.year);
+  printWithoutWarning(now.month);
+  printWithoutWarning(now.day);
+  printWithoutWarning(now.hour);
+  printWithoutWarning(now.minute);
+  printWithoutWarning(now.second);
+  printWithoutWarning(now.millisecond);
+  printWithoutWarning(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd])); //"YYYY-MM-dd"
+  printWithoutWarning(formatDate(DateTime.now(), [yyyy, '', mm, '', dd])); //"YYYYMMdd"
+  printWithoutWarning(formatDate(DateTime.now(), [yyyy, ' ', mm, ' ', dd, ' ', HH, ' ', nn, ' ', ss, ' ', SSS]));
+  printWithoutWarning(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));
+  printWithoutWarning(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss, '.', SSS]));
+  printWithoutWarning(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss]));
+  printWithoutWarning(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
 
   Duration duration = const Duration(seconds: 60);
 
-  printWithoutError(duration);
-  printWithoutError(duration.inDays);
-  printWithoutError(duration.inHours);
-  printWithoutError(duration.inMinutes);
-  printWithoutError(duration.inSeconds);
-  printWithoutError(duration.inMilliseconds);
+  printWithoutWarning(duration);
+  printWithoutWarning(duration.inDays);
+  printWithoutWarning(duration.inHours);
+  printWithoutWarning(duration.inMinutes);
+  printWithoutWarning(duration.inSeconds);
+  printWithoutWarning(duration.inMilliseconds);
 
-  printWithoutError('-------------------------------------- now 와 specificDay 날짜 차이 비교');
-  printWithoutError(specificDay);
+  printWithoutWarning('-------------------------------------- now 와 specificDay 날짜 차이 비교');
+  printWithoutWarning(specificDay);
 
   final difference = now.difference(specificDay);
-  printWithoutError(difference);
-  printWithoutError(difference.inDays);
-  printWithoutError(difference.inHours);
-  printWithoutError(difference.inMinutes);
+  printWithoutWarning(difference);
+  printWithoutWarning(difference.inDays);
+  printWithoutWarning(difference.inHours);
+  printWithoutWarning(difference.inMinutes);
 
+  printWithoutWarning('-------------------------------------- 지금으로 부터 특정날짜 전인지 후인지 확인');
+  printWithoutWarning(now.isAfter(specificDay));
+  printWithoutWarning(now.isBefore(specificDay));
 
+  printWithoutWarning('-------------------------------------- 지금으로 부터 10시간 뒤 시간');
+  printWithoutWarning(now);
+  printWithoutWarning(now.add(const Duration(hours: 10)));
 
+  printWithoutWarning('-------------------------------------- 지금으로 부터 10시간 전 시간');
+  printWithoutWarning(now);
+  printWithoutWarning(now.subtract(const Duration(hours: 10)));
 
-  printWithoutError('-------------------------------------- 지금으로 부터 특정날짜 전인지 후인지 확인');
-  printWithoutError(now.isAfter(specificDay));
-  printWithoutError(now.isBefore(specificDay));
+  printWithoutWarning('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환'); //쪼개서 suffix 붙이기
+  printWithoutWarning("123");
+  printWithoutWarning("123".toString().split("")); //[1, 2, 3]
+  printWithoutWarning("123".toString().split("").map((x) => '${x}_suffix')); //요까지하면 iteralble 일것임. 실험 해보자
+  printWithoutWarning("123".toString().split("").map((x) => '${x}_suffix').toList()); //[1_suffix, 2_suffix, 3_suffix]
 
-  printWithoutError('-------------------------------------- 지금으로 부터 10시간 뒤 시간');
-  printWithoutError(now);
-  printWithoutError(now.add(const Duration(hours: 10)));
+  printWithoutWarning('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환'); //쪼개서 prefix 붙이기
+  printWithoutWarning("foo.jpg,foo.png,foo.gif");
+  printWithoutWarning("foo.jpg,foo.png,foo.gif".toString().split(",")); //[foo.jpg,foo.png,foo.gif]
+  printWithoutWarning("foo.jpg,foo.png,foo.gif".toString().split("").map((x) => 'prefix_$x').toList()); //[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
 
-  printWithoutError('-------------------------------------- 지금으로 부터 10시간 전 시간');
-  printWithoutError(now);
-  printWithoutError(now.subtract(const Duration(hours: 10)));
-
-  printWithoutError('-------------------------------------- "123" 에서 [1_suffix, 2_suffix, 3_suffix] 로 변환'); //쪼개서 suffix 붙이기
-  printWithoutError("123");
-  printWithoutError("123".toString().split("")); //[1, 2, 3]
-  printWithoutError("123".toString().split("").map((x) => '${x}_suffix')); //요까지하면 iteralble 일것임. 실험 해보자
-  printWithoutError("123".toString().split("").map((x) => '${x}_suffix').toList()); //[1_suffix, 2_suffix, 3_suffix]
-
-  printWithoutError('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환');//쪼개서 prefix 붙이기
-  printWithoutError("foo.jpg,foo.png,foo.gif");
-  printWithoutError("foo.jpg,foo.png,foo.gif".toString().split(","));//[foo.jpg,foo.png,foo.gif]
-  printWithoutError("foo.jpg,foo.png,foo.gif".toString().split("").map((x)=>'prefix_$x').toList());//[prefix_foo.jpg, prefix_foo.jpg, prefix_foo.jpg]
-
-  printWithoutError(123.toString().split("").map((e) => 'asset/images/random_numbers/$e.png').toList());
-
-
-
+  printWithoutWarning(123.toString().split("").map((e) => 'asset/images/random_numbers/$e.png').toList());
 
   /*entries 아주 유용하다 key, value 로 값을 받을 수 있게 해준다.*/
-  printWithoutError([123,456,789].asMap().entries.toList()[1].key);
-  printWithoutError([123,456,789].asMap().entries.toList()[1].value);
+  printWithoutWarning([123, 456, 789].asMap().entries.toList()[1].key);
+  printWithoutWarning([123, 456, 789].asMap().entries.toList()[1].value);
 
   /*이건 테스트해보자*/
-  printWithoutError([123,456,789].asMap().entries.first.key);
-  printWithoutError([123,456,789].asMap().entries.first.key);
-
+  printWithoutWarning([123, 456, 789].asMap().entries.first.key);
+  printWithoutWarning([123, 456, 789].asMap().entries.first.key);
 
   /*인덱스 붙여서 출력*/ //굳이 필요할까 싶긴한데
-  printWithoutError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',));
-  printWithoutError([123,456,789].asMap().entries.map((e) => '${e.key}:${e.value}',).toList());
-
-
-
-
-
-
-
+  printWithoutWarning([123, 456, 789].asMap().entries.map(
+        (e) => '${e.key}:${e.value}',
+      ));
+  printWithoutWarning([123, 456, 789]
+      .asMap()
+      .entries
+      .map(
+        (e) => '${e.key}:${e.value}',
+      )
+      .toList());
 }
