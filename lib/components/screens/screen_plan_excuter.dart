@@ -7,7 +7,7 @@ import 'screen_carrot_market_home.dart';
 import 'screen_carrot_market_mycarrot.dart';
 import 'screen_carrot_market_townliving.dart';
 
-// physics: NeverScrollableScrollPhysics(),
+
 // ,
 class ScreenLifeChecklist extends StatefulWidget {
   const ScreenLifeChecklist({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class ScreenLifeChecklist extends StatefulWidget {
 }
 
 class _ScreenLifeChecklistState extends State<ScreenLifeChecklist> {
-  int currentPageIndex = 0;
+  int selectedPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysShow;
 
   @override
@@ -34,10 +34,10 @@ class _ScreenLifeChecklistState extends State<ScreenLifeChecklist> {
         backgroundColor: Colors.white,
         onDestinationSelected: (int index) {
           setState(() {
-            currentPageIndex = index;
+            selectedPageIndex = index;
           });
         },
-        selectedIndex: currentPageIndex,
+        selectedIndex: selectedPageIndex,
         labelBehavior: labelBehavior,
         destinations: const <Widget>[
           NavigationDestination(
@@ -107,7 +107,7 @@ class _ScreenLifeChecklistState extends State<ScreenLifeChecklist> {
         //     ),
         //   ),
         // ),
-      ][currentPageIndex],
+      ][selectedPageIndex],
     );
   }
 }

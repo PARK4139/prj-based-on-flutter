@@ -18,7 +18,6 @@ class IterableStringListMaker {
     itemLengthSnapshotAtBornFisrt = itemsSnapshotAtStart[0];
     itemLengthSnapshotAtBornLast = itemsSnapshotAtStart[itemsSnapshotAtStart.length - 1];
     isRepeatingMode = isRepeatMode;
-
   }
   dynamic next() {
     var nextThing = itemsCurrent.first;

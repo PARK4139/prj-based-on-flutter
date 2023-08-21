@@ -378,9 +378,10 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
 
   onCheckInButtonPressed({required bool isWithinChecableRange}) async {
     final clientAnswer = await showDialog(
+      barrierDismissible: true,
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
+        return AlertDialog( backgroundColor: Colors.black,
           title: Icon(
             Icons.info_outlined,
             color: Colors.blue.shade900,
@@ -415,10 +416,10 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
   }
 
   onCheckOutButtonPressed({required bool isWithinChecableRange}) async {
-    final clientAnswer = await showDialog(
+    final clientAnswer = await showDialog(      barrierDismissible: true,
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
+          return AlertDialog( backgroundColor: Colors.black,
             title: Icon(
               Icons.info_outlined,
               color: Colors.blue.shade900,

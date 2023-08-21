@@ -134,7 +134,7 @@ class AmericanStockMarketListingDelistingApiDtoServiceHelper {
 
       /*csv 라이브러리 통한 데이터직렬화 처리*/
       // CsvToListConverter().convert(response.data.toString());
-      List <List<dynamic>> convetedCsv = CsvToListConverter().convert(response.data);
+      List <List<dynamic>> convetedCsv = const CsvToListConverter().convert(response.data);
       // convetedCsv.removeAt(0);//데이터의 첫행이 table header 가 들어간 경우 삭제처리.
       americanStockMarketListingDelistingApiDtos_ = convetedCsv.map((csvLow) => AmericanStockMarketListingDelistingApiDto.fromCsv(csvLow)).toList();
 

@@ -34,11 +34,12 @@ echo "__________________________________________________________________________
 ::set commit_ment=생물학적 나이 계산기 앱 추가
 ::set commit_ment=미세먼지 오픈 API 앱 추가
 ::set commit_ment=미세먼지 오픈 API 앱 연동 및 중간 일부 리펙토링
-set commit_ment=미국주식 오픈 API 앱 추가, 일부리펙토링, README.md 참조
+::set commit_ment=미국주식 오픈 API 앱 추가, 일부리펙토링, README.md 참조
 ::set commit_ment=깃허브 레포지토리명 변경전 백업
 ::set commit_ment=깃허브 레포지토리명 변경후 첫 커밋 테스트
 ::set commit_ment=README.md 최신화
 ::set commit_ment=세계지도 화면, 근태관리 화면 추가, 지도 API 연동, README.md 참조
+set commit_ment=신규 기능 추가, 플러터 예제 테스트, README.md 참조
 
 
 

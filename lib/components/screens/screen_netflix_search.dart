@@ -42,7 +42,7 @@ class _ScreenNetflixSearchState extends State<ScreenNetflixSearch> {
     _searchController.addListener(() {
       setState(() {
         _serchText = _searchController.text;
-        debugSomething(_serchText);
+        debugSomething(_serchText,troubleShootingId: "20230811183959");
       });
     });
     _isShown = true;

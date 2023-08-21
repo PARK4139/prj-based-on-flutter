@@ -14,7 +14,7 @@ class ScreenAutoPopUpOnce extends StatefulWidget {
 }
 
 class _ScreenAutoPopUpOnceState extends State<ScreenAutoPopUpOnce> {
-  final clearButtonKey20230810143803 = GlobalKey(debugLabel: "clearButtonKey20230810143811");
+  var clearButtonKey20230810143803 = GlobalKey(debugLabel: "clearButtonKey20230810143811");
   late Timer autoClickScheduler;
   late bool isFirstBuild;
 
@@ -34,7 +34,7 @@ class _ScreenAutoPopUpOnceState extends State<ScreenAutoPopUpOnce> {
   Widget build(BuildContext context) {
     autoClickScheduler = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (isFirstBuild == true) {
-        autoClick();
+        remoteClick1();
         isFirstBuild = false;
       }
       autoClickScheduler.cancel();
@@ -49,7 +49,7 @@ class _ScreenAutoPopUpOnceState extends State<ScreenAutoPopUpOnce> {
               key: clearButtonKey20230810143803,
               child: const Row(
                 children: [
-                  Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
+                  Text('사용자에게 보이지 않았으면 하는 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
                 ],
               ),
               onTap: () {
@@ -62,7 +62,7 @@ class _ScreenAutoPopUpOnceState extends State<ScreenAutoPopUpOnce> {
     );
   }
 
-  Future<void> autoClick() async {
+  Future<void> remoteClick1() async {
     RenderBox renderbox = clearButtonKey20230810143803.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;

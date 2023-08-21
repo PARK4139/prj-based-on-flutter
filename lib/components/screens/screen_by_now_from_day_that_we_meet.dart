@@ -174,7 +174,7 @@ class _ScreenByNowFromDayThatWeMeetState extends State<ScreenByNowFromDayThatWeM
                       ),
                       IconButton(
                           onPressed: () {
-                            showDialog<String>(
+                            showDialog<String>(      barrierDismissible: true,
                               context: context,
                               builder: (BuildContext context) => Dialog(
                                 child: Container(

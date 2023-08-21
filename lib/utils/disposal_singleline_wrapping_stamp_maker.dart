@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:prj_app_mvp/utils/super_helper.dart';
 
 class ReplacingStampMaker extends StatefulWidget {
-  String deprecated;
+  String deprecatedWord;
   final Color color;
   final FontWeight fontWeight;
   final double fontSize;
@@ -17,7 +17,7 @@ class ReplacingStampMaker extends StatefulWidget {
   ReplacingStampMaker({
     Key? key,
     required this.template,
-    required this.deprecated,
+    required this.deprecatedWord,
     this.backgroundColor = Colors.black12,
     this.color = Colors.white38,
     this.fontSize = 10,
@@ -55,14 +55,18 @@ class _ReplacingStampMakerState extends State<ReplacingStampMaker> {
         horizontal: widget.paddingHorizontal,
         vertical: widget.paddingVertical,
       ),
-      child: TextButton(
-        onPressed: copyToClipboardAfterPasteButtonName,
-        child: Text(
-          "${widget.template}",
-          style: TextStyle(
-            color: widget.color,
-            fontSize: widget.fontSize,
-            fontWeight: widget.fontWeight,
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: TextButton(
+          onPressed: copyToClipboardAfterPasteButtonName,
+          child: Text(
+            widget.template,
+            style: TextStyle(
+              color: widget.color,
+              fontSize: widget.fontSize,
+              fontWeight: widget.fontWeight,
+            ),
+            textAlign: TextAlign.left,
           ),
         ),
       ),
@@ -77,27 +81,12 @@ class _ReplacingStampMakerState extends State<ReplacingStampMaker> {
         isFirstClick = false;
       }
       setState(() {
-        resultTxts = widget.template.replaceAll(widget.deprecated, firstPastedValue);
+        resultTxts = widget.template.replaceAll(widget.deprecatedWord, firstPastedValue);
       });
         FlutterClipboard.copy(resultTxts).then((value) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('$resultTxts\n이(가) 복사되었습니다.')));
           debugSomething('$resultTxts\n이(가) 복사되었습니다.');
         });
     });
-    // } else {
-    //
-    //   FlutterClipboard.copy(resultTxts).then((value) {
-    //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('$resultTxts\n이(가) 복사되었습니다.')));
-    //     debugSomething('$resultTxts\n이(가) 복사되었습니다.');
-    //
-    //
-    //
-    //   });
-    //   // FlutterClipboard.copy(widget.txt).then((value) {
-    //   //   debugSomethingWithoutMent('copied : ${widget.txt}');
-    //   //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.txt}')));
-    //   // });
-    //
-    // }
   }
 }

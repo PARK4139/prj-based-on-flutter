@@ -1,27 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: '포커스 노드 이동 연습',
-      home: _ScreenFocusNodeMoving(),
-    );
-  }
-}
-class _ScreenFocusNodeMoving extends StatefulWidget {
-  const _ScreenFocusNodeMoving();
+class ScreenFocusNodeMovingTest extends StatefulWidget {
+  const ScreenFocusNodeMovingTest();
 
   @override
-  _ScreenFocusNodeMovingState createState() => _ScreenFocusNodeMovingState();
+  _ScreenFocusNodeMovingTestState createState() => _ScreenFocusNodeMovingTestState();
 }
 
 
-class _ScreenFocusNodeMovingState extends State<_ScreenFocusNodeMoving> {
+class _ScreenFocusNodeMovingTestState extends State<ScreenFocusNodeMovingTest> {
   late FocusNode focusNode1;
   late FocusNode focusNode2;
   late FocusNode focusNode3;
@@ -52,22 +40,28 @@ class _ScreenFocusNodeMovingState extends State<_ScreenFocusNodeMoving> {
             TextField(
               autofocus: true, //시작 시 포커스의 위치
               focusNode: focusNode1,//포커스의 깃발이라고 생각이든다.
+              textInputAction: TextInputAction.next, // 키보드의 next를 클릭함으로서 next TextField 로 이동.
             ),
              TextField(
               autofocus: false,
               focusNode: focusNode2,//포커스의 깃발이라고 생각이든다.
-            ),
+               textInputAction: TextInputAction.next, // 키보드의 next를 클릭함으로서 next TextField 로 이동.
+
+             ),
              TextField(
               autofocus: false,
               focusNode: focusNode3,//포커스의 깃발이라고 생각이든다.
-            ),
+               textInputAction: TextInputAction.next, // 키보드의 next를 클릭함으로서 next TextField 로 이동.
+
+             ),
 
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => focusNode1.requestFocus(),
-        child: const Icon(Icons.edit),
+        onPressed: () => focusNode1.requestFocus(),//focusNode1 으로 이동
+        child: const Icon(Icons.golf_course),
+
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

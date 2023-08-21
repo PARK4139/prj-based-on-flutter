@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prj_app_mvp/tests/test_routing/via_navigator_pushnamed/screen_sender.dart';
 
 import '../../../utils/super_helper.dart';
 
@@ -15,19 +16,19 @@ class _ScreenComunicator2State extends State<ScreenComunicator2> {
   @override
   Widget build(BuildContext context) {
 
-    final args = ModalRoute.of(context)!.settings.arguments ;
-    debugSomething(args.toString());
-    // final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
-    // debugSomething(args.name);
-    // debugSomething(args.title);
+    final classArguments = ModalRoute.of(context)!.settings.arguments as ClassArguments;
+    debugSomething(classArguments);
+    debugSomething(classArguments.toString());
+    debugSomething(classArguments.argument1);
+    debugSomething(classArguments.argument2);
+    debugSomething(classArguments.argument3);
 
     return Container(
       color: Colors.pinkAccent,
       child: TextButton(
         child: const Text('ScreenFirst'),
         onPressed: () {
-          Navigator.of(context).pop();
-          // Navigator.of(context).pop(args.toString());
+          Navigator.of(context).pop(classArguments.toString());
         },
       ),
     );

@@ -32,8 +32,8 @@ class _ScreenNetflixHomeState extends State<ScreenNetflixHome> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        automaticallyImplyLeading: false, //자동구현 뒤로가기 버튼 : false
-        // foregroundColor: Colors.red,//자동구현 뒤로가기 버튼 : red
+        automaticallyImplyLeading: false, //플러터 앱바에서 자동생성 버튼 숨김 : false
+        // foregroundColor: Colors.red,//플러터 앱바에서 자동생성 버튼 숨김 : red
         title: Row(
           children: [
             /*뒤로가기 버튼*/ IconButton(

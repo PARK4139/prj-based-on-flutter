@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:prj_app_mvp/components/screens/screen_road_cctv.dart';
+import 'package:prj_app_mvp/components/screens/screen_web_socket_client.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_bloc_with_qubit/ScreenBlocWithQubitTest.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_getx/ScreenGetxTest.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_navigator_push_feat_map/screen_comunicator1.dart';
 import 'package:prj_app_mvp/utils/super_helper.dart';
 
+import '../../main.dart';
 import '../../tmp/ScreenTableTest.dart';
 import '../../tmp/tmp.dart';
-import 'ScreenEarthMap.dart';
-import 'ScreenTodayCommutationNew.dart';
+import 'screen_earth_map.dart';
+import 'screen_today_commutation_new.dart';
 import 'screen___________.dart';
 import 'screen_american_stock.dart';
 import 'screen_animated_align.dart';
@@ -20,7 +23,6 @@ import 'screen_by_next_parasiticide_supply_date.dart';
 import 'screen_by_now_from_day_that_we_meet.dart';
 import 'screen_calculator_biological_age.dart';
 import 'screen_carrot_market.dart';
-import 'screen_checklist.dart';
 import 'screen_developer_helper.dart';
 import 'screen_diff_months.dart';
 import 'screen_digital_clock.dart';
@@ -46,9 +48,7 @@ import 'screen_webtoon.dart';
 import 'screen_weired_my_note.dart';
 
 class ScreenIndexColorful extends StatefulWidget {
-  bool isDarkMode;
-
-  ScreenIndexColorful({Key? key, required this.isDarkMode}) : super(key: key);
+  const ScreenIndexColorful({Key? key}) : super(key: key);
 
   @override
   State<ScreenIndexColorful> createState() => _ScreenIndexColorfulState();
@@ -57,10 +57,12 @@ class ScreenIndexColorful extends StatefulWidget {
 class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
   late List<Widget> itemsAsIconOnly;
 
+  late bool isDarkMode;
+
   @override
   void initState() {
     super.initState();
-    initItems();
+    initScreenSetting();
   }
 
   @override
@@ -68,14 +70,14 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
     final Object? myWigetTreeSetting;
     if (ModalRoute.of(context)?.settings.arguments == null) {
       //null safty 가 적용된 dart 코드는 null 인 경우 반드시 신경써서 null이 아닌 특정값으로 초기화 처리가 필요하다.
-      debugSomething(ModalRoute.of(context)?.settings.arguments);
+      // debugSomething(ModalRoute.of(context)?.settings.arguments,troubleShootingId: "20230811184027");
     } else {
       myWigetTreeSetting = ModalRoute.of(context)!.settings.arguments;
-      debugSomething(myWigetTreeSetting);
+      debugSomething(myWigetTreeSetting, troubleShootingId: "20230811184050");
     }
 
     return Scaffold(
-      backgroundColor: widget.isDarkMode ? Colors.black87 : Colors.white,
+      backgroundColor: isDarkMode ? Colors.black87 : Colors.white,
       body: GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 5, mainAxisSpacing: 10),
         children: <Widget>[
@@ -85,56 +87,30 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
     );
   }
 
-  void initItems() {
+  void initScreenSetting() {
     itemsAsIconOnly = [
-      _RefactoringModule202307152216(txt: '\nUI \ntest', destination: const Screen___________()),
-      _RefactoringModule202307152216(txt: '\nHello World \ntest', destination: const ScreenPracticeHelloWorld()),
-      _RefactoringModule202307152216(txt: '\nSplash \ntest', destination: const ScreenSplash123()),
-
-      _RefactoringModule202307152216(txt: '\nAlign animation \ntest', destination: const ScreenPracticeAnimatedAlign()),
-      _RefactoringModule202307152216(txt: '\nPosition & Scale \ntest', destination: const ScreenAnimatedPositionAndScale()),
-      _RefactoringModule202307152216(txt: '\nstful wiget\nlife cycle test', destination: ScreenPracticeFlutterStfulWigetLifeCycle()),
-      _RefactoringModule202307152216(txt: '\nweb view \ntest', destination: const ScreenPracticeWebview()),
-      _RefactoringModule202307152216(txt: '\npage view \ntest', destination: const ScreenPracticePageView()),
-      _RefactoringModule202307152216(txt: '\nwebtoon API \ntest', destination: const ScreenWebtoonAPI()),
-      _RefactoringModule202307152216(txt: 'communication \ntest', destination: const ScreenComunicator1()),
-      _RefactoringModule202307152216(txt: '\nImage network \ntest', destination: const ScreenImageNetworkTest()),
-      _RefactoringModule202307152216(txt: '\nFuture Builder test', destination: const ScreenFutureBuilder()),
-      _RefactoringModule202307152216(txt: '\nStream Builder test', destination: const ScreenStreamBuilder()),
-      _RefactoringModule202307152216(txt: '\nGetX \ntest', destination: const ScreenGetxTest()),
-      _RefactoringModule202307152216(txt: '\nBloC/cubit \ntest', destination: ScreenBlocWithQubitTest()),
-      _RefactoringModule202307152216(txt: '\n개발자도우미\n', destination: const ScreenDeveloperHelper()),
-      _RefactoringModule202307152216(txt: '\n계획실행도우미', destination: const ScreenPlanExcuter()),
+      RefactoringModule202307152216(txt: '\n계획실행도우미\n', destination: const ScreenDeveloperHelper()),
+      /*개발자도우미*/
       // _RefactoringModule202307152216(txt: '\ntable \ntest', destination: const ScreenTableTest()),
-
-      _RefactoringModule202307152216(txt: '\n시계\n', destination: const ScreenClock()),
-      _RefactoringModule202307152216(txt: '\n계산기\n(평당)', destination: const ScreenAreaCalculator()),
-      _RefactoringModule202307152216(txt: '\n계산기\n(생물학적나이)', destination: const ScreenCalculatorBiologicalAge()),
-      _RefactoringModule202307152216(txt: '\n난수생성기\n', destination: const ScreenRandomNumber()),
-      _RefactoringModule202307152216(txt: '\n2024년디데이\n', destination: const ScreenLeftDaysBy2024()),
-      _RefactoringModule202307152216(txt: '\n식목일\n', destination: const ScreenArborDay()),
-      _RefactoringModule202307152216(txt: '\n넥스가드급여일\n', destination: const ScreenByNextNexguardSupplyDate()),
-      _RefactoringModule202307152216(txt: '\n드론탈급여일\n', destination: const ScreenByNextDrontalSupplyDate()),
-      _RefactoringModule202307152216(txt: '\n개발자년차\n', destination: ScreenDiffMonths(startingDateTime: DateTime(2022, 10, 26), endingDateTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))),
-
-      _RefactoringModule202307152216(txt: '\n포모도로\n', destination: const ScreenPomodoro()),
-
-      _RefactoringModule202307152216(txt: '\n참 펜시한 메모장\n', destination: const ScreenWeiredMyNote()),
-      _RefactoringModule202307152216(txt: '\n당근마껫\n', destination: const ScreenCarrotMarket()),
-      _RefactoringModule202307152216(txt: '\n넷플릿쓰\n', destination: const ScreenNetFlix()),
-      _RefactoringModule202307152216(txt: '\n구글\n', destination: ScreenWebView(startingUrl: MyUrls.google)),
-      _RefactoringModule202307152216(txt: '\n네이버\n', destination: ScreenWebView(startingUrl: MyUrls.naver)),
-      _RefactoringModule202307152216(txt: '\n네이버날씨\n', destination: ScreenWebView(startingUrl: MyUrls.naverWeather)),
-      _RefactoringModule202307152216(txt: '\n유튜브\n', destination: ScreenWebView(startingUrl: MyUrls.youtube)),
-      _RefactoringModule202307152216(txt: '\n내프로필\n', destination: const ScreenJungHoonParkProfile()),
-      _RefactoringModule202307152216(txt: '\n하늘이디지털액자\n', destination: const ScreenDigitalPhotoFrame()),
-      _RefactoringModule202307152216(txt: '\n우리처음만난날\n', destination: const ScreenByNowFromDayThatWeMeet()),
-      _RefactoringModule202307152216(txt: '\n비디오플레이어\n', destination: const ScreenVideoPlayer()),
-      _RefactoringModule202307152216(txt: '\n웹툰\n', destination: const ScreenWebtoon()),
-      _RefactoringModule202307152216(txt: '\n세계지도\n', destination: const ScreenEarthMap()),
-      _RefactoringModule202307152216(txt: '\n근태관리\n', destination: const ScreenCommutationManagement()),
-      _RefactoringModule202307152216(txt: '\n미세먼지\n', destination: const ScreenParticularMatter()),
-      _RefactoringModule202307152216(txt: '\n미국주식\n', destination: const ScreenAmericanStock()),
+      RefactoringModule202307152216(txt: '\n포모도로\n', destination: const ScreenPomodoro()),
+      RefactoringModule202307152216(txt: '\n참 펜시한 메모장\n', destination: const ScreenWeiredMyNote()),
+      RefactoringModule202307152216(txt: '\n당근마껫\n', destination: const ScreenCarrotMarket()),
+      RefactoringModule202307152216(txt: '\n넷플릿쓰\n', destination: const ScreenNetFlix()),
+      RefactoringModule202307152216(txt: '\n구글\n', destination: ScreenWebView(startingUrl: MyUrls.google)),
+      RefactoringModule202307152216(txt: '\n네이버\n', destination: ScreenWebView(startingUrl: MyUrls.naver)),
+      RefactoringModule202307152216(txt: '\n네이버날씨\n', destination: ScreenWebView(startingUrl: MyUrls.naverWeather)),
+      RefactoringModule202307152216(txt: '\n유튜브\n', destination: ScreenWebView(startingUrl: MyUrls.youtube)),
+      RefactoringModule202307152216(txt: '\n내프로필\n', destination: const ScreenJungHoonParkProfile()),
+      RefactoringModule202307152216(txt: '\n하늘이디지털액자\n', destination: const ScreenDigitalPhotoFrame()),
+      RefactoringModule202307152216(txt: '\n우리처음만난날\n', destination: const ScreenByNowFromDayThatWeMeet()),
+      RefactoringModule202307152216(txt: '\n비디오플레이어\n', destination: const ScreenVideoPlayer()),
+      RefactoringModule202307152216(txt: '\n웹툰\n', destination: const ScreenWebtoon()),
+      RefactoringModule202307152216(txt: '\n세계지도\n', destination: const ScreenEarthMap()),
+      RefactoringModule202307152216(txt: '\n근태관리\n', destination: const ScreenCommutationManagement()),
+      RefactoringModule202307152216(txt: '\n미세먼지\n', destination: const ScreenParticularMatter()),
+      RefactoringModule202307152216(txt: '\n미국주식\n', destination: const ScreenAmericanStock()),
+      RefactoringModule202307152216(txt: '\n웹소켓통신\n', destination: ScreenWebSocketClient()),
+      RefactoringModule202307152216(txt: '\n도로CCTV\n', destination: const ScreenRoadCctv()),
 
       // /*\n아이보호 시스템*/ _RefactoringModule202307152216(txt: '\n우리아이 횡단보도 지킴이\n', destination: const Placeholder()),
       //   1. splash 화면
@@ -186,51 +162,9 @@ class _ScreenIndexColorfulState extends State<ScreenIndexColorful> {
       // ),
       //
     ];
-  }
-}
 
-class _RefactoringModule202307152216 extends StatefulWidget {
-  late String txt;
-
-  late Widget destination;
-
-  _RefactoringModule202307152216({required this.txt, required this.destination});
-
-  @override
-  State<_RefactoringModule202307152216> createState() => _RefactoringModule202307152216State();
-}
-
-class _RefactoringModule202307152216State extends State<_RefactoringModule202307152216> {
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        InkWell(
-          onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => widget.destination));
-          },
-          child: SizedBox(
-            height: 50 - 17,
-            child: Column(
-              children: [
-                Transform.translate(
-                  offset: const Offset(0, 0 + 5),
-                  // child: const FlutterLogo(size: 30),
-                  child: const FlutterLogo(size: 30),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Text(
-          widget.txt,
-          style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 9, fontWeight: FontWeight.w600),
-          textAlign: TextAlign.center,
-        ),
-      ],
-    );
+    /*Bloc cubit 사용해서 상태 Read*/
+    MyAppStateCubit cubit = MyAppStateCubit();
+    isDarkMode = cubit.state.isDarkMode;
   }
 }

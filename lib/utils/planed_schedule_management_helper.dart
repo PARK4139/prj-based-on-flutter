@@ -41,22 +41,30 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   late List<dynamic> items;
 
   late List<dynamic> itemsSnapshotAtStart;
-  late String buttonTitle;
-  final LocalStorage storage = LocalStorage('foo.foo');
-  late bool isChecked;
-
+  final LocalStorage localStorage = LocalStorage('foo.foo');
+  late bool isCheckboxChecked;
   late int itemsLength;
   late Timer tickTimer;
 
   @override
   void initState() {
     super.initState();
-    buttonTitle = widget.title;
+
 
     widget.borderRadius ??= BorderRadius.circular(5);
-    widget.backgroundColor ??= MyColors.blackBackground;
-    initClickCounter();
-    initIsChecked();
+    // widget.backgroundColor ??= MyColors.black12;
+
+    clickCounter = 0;
+
+    setState(() {
+      if (localStorage.getItem('isChecked202307041338') == null) {
+        isCheckboxChecked = false;
+        localStorage.setItem('isChecked202307041338', isCheckboxChecked);
+      } else {
+        isCheckboxChecked = localStorage.getItem('isChecked202307041338');
+      }
+    });
+
     tickTimer = Timer.periodic(const Duration(seconds: 1), reloadItems);
   }
 
@@ -71,7 +79,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.backgroundColor,
+        // color: widget.backgroundColor,
         borderRadius: widget.borderRadius,
       ),
       padding: EdgeInsets.symmetric(
@@ -95,15 +103,14 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
           SizedBox(
             child: IconButton(
               icon: const Icon(Icons.more_vert),
-              color: Colors.lightBlueAccent,
+              color: MyColors.whiteWithOpacity60Percent,
               onPressed: () {
                 showDialog<void>(
                   context: context,
-                  barrierDismissible: false,
+                  barrierDismissible: true,
                   builder: (BuildContext context) {
-                    return AlertDialog(
-                      backgroundColor: Colors.black,
-                      /*제목 버튼*/ title: Text(buttonTitle, style: const TextStyle(color: Colors.blueAccent)),
+                    return AlertDialog( backgroundColor: Colors.black,
+                      /*제목 버튼*/ title: Text(widget.title, style: TextStyle(color: MyColors.lightBlueShade50,fontSize: 15)),
                       /*스탬프들*/ content: SingleChildScrollView(
                         child: Builder(builder: (context) {
                           return ListBody(
@@ -111,7 +118,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
                               for (var item in itemsSnapshotAtStart)
                                 Row(
                                   children: [
-                                    Text(itemsSnapshotAtStart.indexOf(item).toString().padLeft(2, " "), style: const TextStyle(color: Colors.lightGreenAccent)),
+                                    Text(itemsSnapshotAtStart.indexOf(item).toString().padLeft(2, " "), style:   TextStyle(color: MyColors.whiteWithOpacity60Percent)),
                                     SizedBox(child: item),
                                   ],
                                 ),
@@ -121,7 +128,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
                       ),
                       actions: <Widget>[
                         /*닫기*/ TextButton(
-                          child: const Text('닫기', style: TextStyle(color: Colors.lightBlueAccent)),
+                          child: const Text('', style: TextStyle(color: Colors.lightBlueAccent)),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -132,12 +139,6 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
                 );
               },
             ),
-          ),
-          IconButton(
-            onPressed: () {
-              onToogleIsChecked();
-            },
-            icon: isChecked == true ? const Icon(Icons.check_box_outlined, color: Colors.lightBlueAccent) : const Icon(Icons.check_box_outline_blank, color: Colors.lightBlueAccent),
           ),
         ],
       ),
@@ -151,9 +152,7 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
   //   });
   // }
 
-  void initClickCounter() {
-    clickCounter = 0;
-  }
+
 
   void reloadItems(Timer timer) {
     itemsSnapshotAtStart = [...widget.items];
@@ -161,23 +160,14 @@ class _PlanedScheduleManagementHelperState extends State<PlanedScheduleManagemen
 
   void onToogleIsChecked() {
     setState(() {
-      if (isChecked == true) {
-        isChecked = false;
+      if (isCheckboxChecked == true) {
+        isCheckboxChecked = false;
       } else {
-        isChecked = true;
+        isCheckboxChecked = true;
       }
-      storage.setItem('isChecked202307041338', isChecked);
+      localStorage.setItem('isChecked202307041338', isCheckboxChecked);
     });
   }
 
-  void initIsChecked() {
-    setState(() {
-      if (storage.getItem('isChecked202307041338') == null) {
-        isChecked = false;
-        storage.setItem('isChecked202307041338', isChecked);
-      } else {
-        isChecked = storage.getItem('isChecked202307041338');
-      }
-    });
-  }
+
 }

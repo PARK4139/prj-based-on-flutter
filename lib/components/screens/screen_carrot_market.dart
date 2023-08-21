@@ -11,11 +11,6 @@ import '../../utils/carrot_market_floating_writing_button_maker.dart';
 
 
 
-
-
-
-// physics: NeverScrollableScrollPhysics(),
-// ,
 class ScreenCarrotMarket extends StatefulWidget {
   const ScreenCarrotMarket({Key? key}) : super(key: key);
 
@@ -24,7 +19,7 @@ class ScreenCarrotMarket extends StatefulWidget {
 }
 
 class _ScreenCarrotMarketState extends State<ScreenCarrotMarket> {
-  int currentPageIndex = 0;
+  int selectedPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysShow;
 
   @override
@@ -40,10 +35,10 @@ class _ScreenCarrotMarketState extends State<ScreenCarrotMarket> {
         backgroundColor: Colors.white,
         onDestinationSelected: (int index) {
           setState(() {
-            currentPageIndex = index;
+            selectedPageIndex = index;
           });
         },
-        selectedIndex: currentPageIndex,
+        selectedIndex: selectedPageIndex,
         labelBehavior: labelBehavior,
         destinations: const <Widget>[
           NavigationDestination(
@@ -99,21 +94,7 @@ class _ScreenCarrotMarketState extends State<ScreenCarrotMarket> {
             return const ScreenCarrotMarketMyCarrot();
           },
         ),
-        // Container(
-        //   color: Colors.black,
-        //   child: Container(
-        //     height: 50,
-        //     child: const TabBar(
-        //       labelColor: Colors.white,
-        //       unselectedLabelColor: Colors.white60,
-        //       indicatorColor: Colors.transparent,
-        //       tabs: <Widget>[
-        //
-        //       ],
-        //     ),
-        //   ),
-        // ),
-      ][currentPageIndex],
+      ][selectedPageIndex],
     );
   }
 }

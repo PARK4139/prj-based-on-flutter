@@ -7,14 +7,14 @@ import 'package:flutter/services.dart';
 import '../../data/source/remote/pm_api_helper.dart';
 import '../../utils/super_helper.dart';
 
-class ScreenParticularMatter extends StatefulWidget {
-  const ScreenParticularMatter({super.key});
+class ScreenRoadCctv extends StatefulWidget {
+  const ScreenRoadCctv({super.key});
 
   @override
-  State<ScreenParticularMatter> createState() => _ScreenParticularMatterState();
+  State<ScreenRoadCctv> createState() => _ScreenRoadCctvState();
 }
 
-class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
+class _ScreenRoadCctvState extends State<ScreenRoadCctv> {
   late int diffDayCount;
 
   late List<Widget> items;
@@ -77,7 +77,8 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
 
     // final DateTime now = DateTime.now();
     return Scaffold(
-      backgroundColor: _OurColors.primaryColors,
+
+      backgroundColor: _OurColors.black,
       body: FutureBuilder(
           future: Pm25ApiService.getPm25s(),
           builder: (context, snapshot2) {
@@ -111,67 +112,10 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                     }
                     return CustomScrollView(
                       slivers: [
-                        // slivers: [] 에는 sliver 의 형태인 wiget만 들어갈 수 있는데, 아닌 위젯을 들어가게 하려면 SliverToBoxAdapter() 로 감싸 넣을 수 있다.
                         _OurSliverAppBar(snapshot.data!),
-                        _OurCard(
-                          title: "종류별 통계",
-                          cardContents: SizedBox(
-                            height: 150,
-                            child: LayoutBuilder(builder: (context, constraint) {
-                              return Builder(builder: (context) {
-                                return ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  physics: const PageScrollPhysics(),
-                                  children: [
-                                    _OurMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 2),
-                                    _OurMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 2),
-                                  ],
-                                );
-                              });
-                            }),
-                          ),
-                        ),
                         const SliverToBoxAdapter(child: SizedBox(height: 30)), //같은 논리로 SizedBox(height: 5) 또한  SliverToBoxAdapter() 로 감싸 넣어야 가능하다
-                        // SliverToBoxAdapter(
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                        //     child: Column(
-                        //       children: [
-                        //         SizedBox(
-                        //           height: 360,
-                        //           child: LayoutBuilder(builder: (context, constraint) {
-                        //             return ListView(
-                        //               scrollDirection: Axis.vertical,
-                        //               physics: const PageScrollPhysics(),
-                        //               children: [
-                        //                 Container(
-                        //                   decoration: const BoxDecoration(
-                        //                     color: _OurColors.darkColor,
-                        //                     borderRadius: BorderRadius.only(
-                        //                       topLeft: Radius.circular(4.0),
-                        //                       topRight: Radius.circular(4.0),
-                        //                     ),
-                        //                   ),
-                        //                   child: Text(
-                        //                     "시간별 미세먼지",
-                        //                     style: _TextStyles.titleTextStyle.copyWith(
-                        //                       fontSize: 20,
-                        //                     ),
-                        //                     textAlign: TextAlign.center,
-                        //                   ),
-                        //                 ),
-                        //                 for (int i = 0; i <= 23; i++) _MiniRow(time: "$i시", imgPath: "😘", level: '좋은', height: constraint.maxHeight / 10),
-                        //               ],
-                        //             );
-                        //           }),
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        const SliverToBoxAdapter(child: SizedBox(height: 30)),
                         _OurCard(
-                          title: "시간별 미세먼지",
+                          title: "도로별 cctv",
                           cardContents: SizedBox(
                             height: 320,
                             child: LayoutBuilder(builder: (context, constraint) {
@@ -208,7 +152,6 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                   );
                 });
           }),
-      drawer: const _OurDrawer(),
     );
   }
 
@@ -240,7 +183,7 @@ class _OurCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Card(
-        margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        // margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(4.0),
@@ -249,7 +192,7 @@ class _OurCard extends StatelessWidget {
             bottomRight: Radius.circular(4.0),
           ),
         ),
-        color: _OurColors.lightColor,
+        color: MyColors.greyWithOpacity90Percent,
         // color: _OurColors.white,//DEBUG CODE
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch, // Column() 에 crossAxisAlignment: CrossAxisAlignment.stretch, 코드를 사용하면 ListView() 와 유사한 느낌이 든다.
@@ -284,6 +227,7 @@ class _OurColors {
   static const lightColor = Color(0xff52c7b8);
   static const white = Colors.white;
   static const green = Colors.green;
+  static const grey = Colors.grey;
   static const lightGreenAccent = Colors.lightGreenAccent;
   static const black = Colors.black;
 }
@@ -318,9 +262,6 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
           child: Container(
             // color: Colors.black,//DEBUG CODE
             margin: const EdgeInsets.only(top: kToolbarHeight),
-            /*margin 윗부분을 app bar의 기본높이 만큼 컨테이너의 외부에 빈공간을 만들어 drawer 와 겹치는 것을 회피.앱바를 앱바 내부에 만들때.사용할 수 있다*/
-            //kToolbarHeight 는 material.dart에서 제공받는 app bar 의 기본높이값이다.
-            //margin 은 빈공간 처럼 생각할 수 있다.
             child: Builder(builder: (context) {
               for (int i = 0; i < widget.snapShotData.length; i++) {
                 // debugSomethingWithoutMent(widget.snapShotData[i].dataTime.split(":").first );
@@ -330,48 +271,16 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
                 // "2023-08-04 24:00" 인 경우 UI가 나타나지 않음.
                 // ex) "2023-08-04 24:00"을  "2023-08-05 00:00"로 바뀌도록 처리
                 if (widget.snapShotData[i].dataTime.split(":").first.split(" ").last == "24") {
-                  // debugSomethingWithoutMent(widget.snapShotData[i].dataTime);
-                  // debugSomethingWithoutMent("${widget.snapShotData[i].dataTime.split(" ").first.split("-")[0]}-${widget.snapShotData[i].dataTime.split(" ").first.split("-")[1]}-${(int.parse(widget.snapShotData[i].dataTime.split(" ").first.split("-").last) + 1).toString().padLeft(2, "0")} 00:00");
                   widget.snapShotData[i].dataTime =
                       "${widget.snapShotData[i].dataTime.split(" ").first.split("-")[0]}-${widget.snapShotData[i].dataTime.split(" ").first.split("-")[1]}-${(int.parse(widget.snapShotData[i].dataTime.split(" ").first.split("-").last) + 1).toString().padLeft(2, "0")} 00:00";
-                  // widget.snapShotData[i].dataTime == "2023-08-05 00:00";
                 }
 
-                // printSeparatorWithMkr();
-                // debugSomethingWithoutMent(widget.snapShotData[i].dataTime.split(":").first);
-                // debugSomethingWithoutMent(formatDate(DateTime.now().add(const Duration(hours: -1)), [yyyy, '-', mm, '-', dd, ' ', HH]));
-                // printSeparatorWithMkr();
                 if (widget.snapShotData[i].dataTime.split(":").first == formatDate(DateTime.now().add(const Duration(hours: -1)), [yyyy, '-', mm, '-', dd, ' ', HH])) {
                   // debugSomethingWithoutMent(widget.snapShotData[i].dataTime.split(":").first);
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text(
-                        "서울",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontFamily: 'sunFlower',
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      // Text(
-                      // formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':',nn])+" 현재시간",
-                      //   style: _OurTextStyles.titleTextStyle.copyWith(
-                      //     fontSize: 20,
-                      //   ),
-                      // ),
-                      Text(
-                        "${widget.snapShotData[i].dataTime} 미세먼지 기준정보",
-                        style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20),
-                      ),
-                      // 😀😁😂😂😂😃😄😄😅😆😇😈😉😊😋😌😍😍😎😎😏
-                      // 😐😑😒😓😔😕😖😗😘😙😚😛😛😜😝😞😞😟😠😠😡
-                      // 😢😣😤😥😦😧😨😩😪😫
-                      // 😬
-                      // 😭😮😮‍💨😯😰😱😲😳😴😴😵😵‍💫
-                      // 😶🙁🙂🙃
-                      // "🙂"
+                      Text("${widget.snapShotData[i].dataTime} 선택 cctv 기준정보", style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20)),
                       /*텍스트버튼*/ TextButton(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -391,211 +300,6 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
               return const CircularProgressIndicator();
             }),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _OurDrawer extends StatefulWidget {
-  const _OurDrawer();
-
-  @override
-  State<_OurDrawer> createState() => _OurDrawerState();
-}
-
-class _OurDrawerState extends State<_OurDrawer> {
-  Regions selectedRegion = Regions.seoul;
-
-  bool isSelected = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.6,
-      height: MediaQuery.of(context).size.height * 0.8, //이렇게 하고 싶은데...안됬음...
-      decoration: const BoxDecoration(
-        color: _OurColors.lightColor,
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(4.0),
-          bottomRight: Radius.circular(4.0),
-        ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            clipBehavior: Clip.hardEdge,
-            // backgroundColor: Colors.transparent,
-            height: MediaQuery.of(context).size.height * 0.06,
-            decoration: const BoxDecoration(
-              color: _OurColors.darkColor,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(4.0),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                textAlign: TextAlign.center,
-                "지역선택",
-                style: _OurTextStyles.titleTextStyle.copyWith(
-                  fontSize: 20.0,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            clipBehavior: Clip.hardEdge,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(4.0),
-              ),
-            ),
-            height: MediaQuery.of(context).size.height * 0.725,
-            child: ListView(
-              children: [
-                /*collection for 방식*/
-                // for (String region in regions)
-                //   ListTile(
-                //     onTap: () => ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar),
-                //     title: Text(
-                //       region,
-                //       style: _TextStyles.titleTextStyle.copyWith(
-                //         fontSize: 18.0,
-                //       ),
-                //     ),
-                //     tileColor: _OurColors.darkColor,
-                //     focusColor: _OurColors.lightGreenAccent,
-                //     hoverColor: _OurColors.lightGreenAccent,
-                //     /*타일 셀렉트 상태*/selected: false/*false*//*true*/,
-                //     selectedTileColor: _OurColors.lightColor,
-                //     selectedColor: _OurColors.white,
-                //   ),
-
-                /*...(cascating operator) 방식*/
-                // ...ourRegions
-                //     .map((e) => ListTile(
-                //           onTap: () {
-                //             selectedRegion = regions.seoul;
-                //           },
-                //           title: Text(
-                //             e,
-                //             style: _OurTextStyles.titleTextStyle.copyWith(
-                //               fontSize: 18.0,
-                //             ),
-                //           ),
-                //           tileColor: _OurColors.white,
-                //           focusColor: _OurColors.lightGreenAccent,
-                //           hoverColor: _OurColors.lightGreenAccent,
-                //           /*타일 셀렉트 상태*/
-                //           // selected: false /*false*/ /*true*/,
-                //           selected: e == "서울1" ? false : true,
-                //           selectedTileColor: _OurColors.lightColor,
-                //           selectedColor: _OurColors.black,
-                //         ))
-                //     .toList(),
-                // .toList()의 결과는 [e] 인데 후처리로 regions의 앞에 ...(cascating operator) 를 이용해서 list 내부의 값을 각각 흩뿌릴 수 있다!! 매우 유용
-
-                for (var entry in ourRegions.entries)
-                  ListTile(
-                    onTap: () {
-                      selectedRegion = entry.key;
-                      debugSomethingSimple(selectedRegion.toString());
-                      isSelected = !isSelected;
-                      debugSomethingSimple(isSelected.toString());
-                    },
-                    title: Text(
-                      entry.value,
-                      style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 15.0, color: Colors.white60),
-                    ),
-                    tileColor: _OurColors.lightColor,
-                    focusColor: _OurColors.lightGreenAccent,
-                    hoverColor: _OurColors.lightGreenAccent,
-                    /*타일 셀렉트 상태*/
-                    selected: isSelected ? true : false,
-                    // selected: true,
-                    selectedTileColor: _OurColors.lightColor,
-                    selectedColor: _OurColors.black,
-                  )
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-enum Regions {
-  daegu,
-  chungnam,
-  incheon,
-  daejeon,
-  gyeongbuk,
-  sejong,
-  gwangju,
-  jeonbuk,
-  gangwon,
-  ulsan,
-  jeonnam,
-  seoul,
-  busan,
-  jeju,
-  chungbuk,
-  gyeongnam,
-  dataTime,
-  dataGubun,
-  gyeonggi,
-  itemCode,
-}
-
-Map<Regions, String> ourRegions = {
-  Regions.daegu: '대구',
-  Regions.chungnam: '충남',
-  Regions.incheon: '인천',
-  Regions.daejeon: '대전',
-  Regions.gyeongbuk: '경북',
-  Regions.sejong: '세종',
-  Regions.gwangju: '광주',
-  Regions.jeonbuk: '전북',
-  Regions.gangwon: '강원',
-  Regions.ulsan: '울산',
-  Regions.jeonnam: '전남',
-  Regions.seoul: '서울',
-  Regions.busan: '부산',
-  Regions.jeju: '제주',
-  Regions.chungbuk: '충북',
-  Regions.gyeongnam: '경남',
-  Regions.gyeonggi: '경기',
-};
-
-class _OurMiniColumn extends StatelessWidget {
-  final String category;
-
-  /*오염수준*/
-  final String level;
-
-  /*오염수치*/
-  final String stat;
-
-  const _OurMiniColumn({required this.category, required this.level, required this.stat, required this.width, Key? key}) : super(key: key);
-
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: _OurColors.lightColor,
-      child: SizedBox(
-        width: width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(category, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
-            // Text(imgPath, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 40, color: Colors.black, fontWeight: FontWeight.w200)),
-            Text(level, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
-            Text(stat, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
-          ],
         ),
       ),
     );

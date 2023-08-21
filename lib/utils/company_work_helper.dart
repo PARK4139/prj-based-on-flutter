@@ -99,25 +99,29 @@ class _CompanyWorkHelperState extends State<CompanyWorkHelper> {
               onPressed: () {
                 showDialog<void>(
                   context: context,
-                  barrierDismissible: false, // user must tap button!
+                  barrierDismissible: true,
                   builder: (BuildContext context) {
-                    return AlertDialog(
-                      backgroundColor: Colors.black,
+                    return AlertDialog( backgroundColor: Colors.black,
+
                       title: Text(
                         buttonTitle,
                         style: const TextStyle(color: Colors.blueAccent),
                       ),
                       content: SingleChildScrollView(
-                        child: ListBody(
-                          children: <Widget>[
-                            for (var item in itemsSnapshotAtStart) HardCodingStampMaker(txt: item, backgroundColor: MyColors.blackUndefined, color: MyColors.whiteClear, fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
-                          ],
+                        child: Container(
+                          color: MyColors.black0xff181818, //Container(  와  color: MyColors.black0xff181818, 를 추가하였음 추후 문제시 삭제필요
+                          child: ListBody(
+
+                            children: <Widget>[
+                              for (var item in itemsSnapshotAtStart) HardCodingStampMaker(txt: item,     fontSize: 10, fontWeight: FontWeight.w200, paddingVertical: 5, paddingHorizontal: 4, borderRadius: BorderRadius.circular(5)),
+                            ],
+                          ),
                         ),
                       ),
                       actions: <Widget>[
                         TextButton(
                           child: const Text(
-                            '닫기',
+                            '',
                             style: TextStyle(color: Colors.lightBlueAccent),
                           ),
                           onPressed: () {

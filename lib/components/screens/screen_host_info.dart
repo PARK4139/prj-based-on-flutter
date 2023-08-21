@@ -68,7 +68,7 @@ class _ScreenHostInfoSubState extends State<ScreenHostInfoSub> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.blackUndefined,
+      backgroundColor: MyColors.black0xff181818,
       body: ListView(
         children: [
           ElevatedButton(

@@ -6,7 +6,7 @@ import 'package:prj_app_mvp/components/screens/screen_netflix_search.dart';
 
 import 'screen_netflix_saved_contents_list.dart';
 
-// physics: NeverScrollableScrollPhysics(),
+
 // ,
 class ScreenNetFlix extends StatefulWidget {
   const ScreenNetFlix({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class ScreenNetFlix extends StatefulWidget {
 }
 
 class _ScreenNetFlixState extends State<ScreenNetFlix> {
-  int currentPageIndex = 0;
+  int selectedPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior = NavigationDestinationLabelBehavior.alwaysShow;
 
   @override
@@ -26,10 +26,10 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
         backgroundColor: Colors.black,
         onDestinationSelected: (int index) {
           setState(() {
-            currentPageIndex = index;
+            selectedPageIndex = index;
           });
         },
-        selectedIndex: currentPageIndex,
+        selectedIndex: selectedPageIndex,
         labelBehavior: labelBehavior,
         destinations: const <Widget>[
           /*홈*/ NavigationDestination(
@@ -75,7 +75,7 @@ class _ScreenNetFlixState extends State<ScreenNetFlix> {
             return const ScreenNetflixMore();
           },
         ),
-      ][currentPageIndex],
+      ][selectedPageIndex],
     );
   }
 }

@@ -69,13 +69,13 @@ class _WebViewSubState extends State<_WebViewSub> {
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
-            debugSomething('WebView is loading (progress : $progress%)');
+            debugSomething('WebView is loading (progress : $progress%)',troubleShootingId: "20230811184323" );
           },
           onPageStarted: (String url) {
-            debugSomething('Page started loading: $url');
+            debugSomething('Page started loading: $url', troubleShootingId: "20230811184325");
           },
           onPageFinished: (String url) {
-            debugSomething('Page finished loading: $url');
+            debugSomething('Page finished loading: $url', troubleShootingId: "20230811184327");
           },
           onWebResourceError: (WebResourceError error) {
             debugSomething('''
@@ -84,14 +84,14 @@ class _WebViewSubState extends State<_WebViewSub> {
   description: ${error.description}
   errorType: ${error.errorType}
   isForMainFrame: ${error.isForMainFrame}
-          ''', troubleShootingId: "202308030124");
+          ''', troubleShootingId: "20230811184336", );
           },
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.startsWith('https://www.youtube.com/')) {
-              debugSomething('blocking navigation to ${request.url}');
+              debugSomething('blocking navigation to ${request.url}',troubleShootingId: "20230811184352");
               return NavigationDecision.prevent;
             }
-            debugSomething('allowing navigation to ${request.url}');
+            debugSomething('allowing navigation to ${request.url}',troubleShootingId: "20230811184349");
             return NavigationDecision.navigate;
           },
           onUrlChange: (UrlChange change) {

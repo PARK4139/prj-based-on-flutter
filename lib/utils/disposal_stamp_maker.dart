@@ -9,21 +9,19 @@ class DisposalStampMaker extends StatefulWidget {
   final Color color;
   final FontWeight fontWeight;
   final double fontSize;
-  final Color backgroundColor;
   final double paddingVertical;
   final double paddingHorizontal;
-  late  BorderRadius? borderRadius;
+  late BorderRadius? borderRadius;
 
-  final String  prefix;
+  final String prefix;
 
-  final String  suffix;
+  final String suffix;
 
   DisposalStampMaker({
     Key? key,
     this.prefix = "",
     required this.txt,
     this.suffix = "",
-    this.backgroundColor = Colors.black12,
     this.color = Colors.white38,
     this.fontSize = 10,
     this.fontWeight = FontWeight.w200,
@@ -37,34 +35,39 @@ class DisposalStampMaker extends StatefulWidget {
 }
 
 class _DisposalStampMakerState extends State<DisposalStampMaker> {
-  bool isFirstClick = true;
+  late bool isFirstClick;
 
   @override
   void initState() {
     widget.borderRadius ??= BorderRadius.circular(5);
-
     super.initState();
+    isFirstClick = true;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.backgroundColor,
+        // color: widget.backgroundColor,
+        // color: MyColors.black12,
         borderRadius: widget.borderRadius,
       ),
       padding: EdgeInsets.symmetric(
         horizontal: widget.paddingHorizontal,
         vertical: widget.paddingVertical,
       ),
-      child: TextButton(
-        onPressed: copyToClipboardAfterPasteButtonName,
-        child: Text(
-          widget.prefix+widget.txt+widget.suffix,
-          style: TextStyle(
-            color: widget.color,
-            fontSize: widget.fontSize,
-            fontWeight: widget.fontWeight,
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: TextButton(
+          onPressed: copyToClipboardAfterPasteButtonName,
+          child: Text(
+            widget.prefix + widget.txt + widget.suffix,
+            style: TextStyle(
+              color: widget.color,
+              fontSize: widget.fontSize,
+              fontWeight: widget.fontWeight,
+            ),
+            // textAlign: TextAlign.left,
           ),
         ),
       ),
@@ -76,17 +79,17 @@ class _DisposalStampMakerState extends State<DisposalStampMaker> {
       FlutterClipboard.paste().then((value) {
         setState(() {
           widget.txt = value;
-          FlutterClipboard.copy(widget.prefix+widget.txt+widget.suffix).then((value) {
-            debugSomethingWithoutMent('copied : ${widget.prefix+widget.txt+widget.suffix}');
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.prefix+widget.txt+widget.suffix}')));
+          FlutterClipboard.copy(widget.prefix + widget.txt + widget.suffix).then((value) {
+            debugSomethingWithoutMent('copied : ${widget.prefix + widget.txt + widget.suffix}');
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.prefix + widget.txt + widget.suffix}')));
           });
           isFirstClick = false;
         });
       });
     } else {
-      FlutterClipboard.copy(widget.prefix+widget.txt+widget.suffix).then((value) {
-        debugSomethingWithoutMent('copied : ${widget.prefix+widget.txt+widget.suffix}');
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.prefix+widget.txt+widget.suffix}')));
+      FlutterClipboard.copy(widget.prefix + widget.txt + widget.suffix).then((value) {
+        debugSomethingWithoutMent('copied : ${widget.prefix + widget.txt + widget.suffix}');
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 1000), content: Text('복사되었습니다.\n${widget.prefix + widget.txt + widget.suffix}')));
       });
     }
   }

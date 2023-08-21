@@ -35,7 +35,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
 
   late DateTime now = DateTime.now();
 
-  final clearButtonKey20230810143834 = GlobalKey(debugLabel: "clearButtonKey20230810143840");
+    GlobalKey<State<StatefulWidget>> clearButtonKey20230810143834 = GlobalKey(debugLabel: "clearButtonKey20230810143840");
   late Timer autoClickScheduler;
   late bool isFirstBuild;
 
@@ -60,7 +60,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
       const Duration(milliseconds: 100),
       (timer) {
         if (isFirstBuild == true) {
-          autoClick();
+          remoteClick1();
           isFirstBuild = false;
         }
         autoClickScheduler.cancel();
@@ -68,7 +68,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
     );
 
     return Scaffold(
-      backgroundColor: MyColors.blackUndefined,
+      backgroundColor: MyColors.black0xff181818,
       body: ListView(
         children: [
           Column(
@@ -84,7 +84,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
             key: clearButtonKey20230810143834,
             child: const Row(
               children: [
-                Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
+                Text('사용자에게 보이지 않았으면 하는 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
               ],
             ),
             onTap: () {
@@ -128,7 +128,7 @@ class _ScreenDigitalClockSubState extends State<ScreenDigitalClockSub> {
   }
 
 
-  Future<void> autoClick() async {
+  Future<void> remoteClick1() async {
     RenderBox renderbox = clearButtonKey20230810143834.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;

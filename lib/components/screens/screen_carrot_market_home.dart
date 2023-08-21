@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:prj_app_mvp/components/screens/screen_carrot_market_home_sub_to_notificate_info.dart';
 
 import '../../data/source/remote/carrot_markket_api_helper.dart';
+import '../../main.dart';
 import '../../utils/super_helper.dart';
 import 'screen_carrot_market_home_sub_to_search.dart';
 import 'screen_carrot_market_home_sub_to_set_category.dart';
@@ -14,9 +17,19 @@ class ScreenCarrotMarketHome extends StatefulWidget {
 }
 
 class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
+  // dummy data
+  late List<CarrotUserCardInfos> carrotUserCardInfos;
+
   @override
   void initState() {
     super.initState();
+
+
+    /*Bloc cubit 사용해서 상태 Read*/
+    MyAppStateCubit cubit = MyAppStateCubit();
+    carrotUserCardInfos = cubit.state.carrotUserCardInfosDummy;
+
+
   }
 
   @override
@@ -32,18 +45,6 @@ class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.chevron_left, color: Colors.deepOrangeAccent),
-                      tooltip: "뒤로가기",
-                      onPressed: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) => const App()));
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
                 Container(
                   padding: const EdgeInsets.fromLTRB(0, 0, 1, 0),
                   child: InkWell(
@@ -101,36 +102,25 @@ class _ScreenCarrotMarketHomeState extends State<ScreenCarrotMarketHome> {
         ],
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: carrotUserCardInfos.length,
         itemBuilder: (context, index) {
-          return const UserCardForHome();
+          return UserItemCard(item: carrotUserCardInfos[index]);
         },
       ),
     );
   }
 }
 
-class UserCardForHome extends StatefulWidget {
-  const UserCardForHome({Key? key}) : super(key: key);
+class UserItemCard extends StatefulWidget {
+  CarrotUserCardInfos item;
+
+  UserItemCard({Key? key, required this.item}) : super(key: key);
 
   @override
-  State<UserCardForHome> createState() => _UserCardForHomeState();
+  State<UserItemCard> createState() => _UserItemCardState();
 }
 
-class _UserCardForHomeState extends State<UserCardForHome> {
-  // dummy data
-  List<CarrotUserCardInfos> carrotUserCardInfos = [
-    CarrotUserCardInfos.fromMap({
-      'userItemImgUrl': 'asset/images/app_carrot_market_logo.png',
-      'itemCategory': '반려식물',
-      'userLocation': '안양시 동안구 석수동',
-      'userUploadingTime': '6분 전',
-      'itemPrice': 180000,
-      'heartCount': 1,
-      'chattingRequestCount': 2,
-    })
-  ];
-
+class _UserItemCardState extends State<UserItemCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -141,10 +131,9 @@ class _UserCardForHomeState extends State<UserCardForHome> {
             padding: const EdgeInsets.all(10),
             height: 130,
             width: 130,
-            child: Image.asset(carrotUserCardInfos[0].userItemImgUrl ,fit: BoxFit.fitWidth),
+            child: Image.network(widget.item.userItemImgUrl, fit: BoxFit.fitWidth),
             // child: FadeInImage(
-            //   // image: NetworkImage(carrot_user_card_infos[0].userItemImgUrl),//외부 주소로 img 받아 올때
-            //   image: AssetImage(carrotUserCardInfos[0].userItemImgUrl),
+            //   image: NetworkImage(carrot_user_card_infos[0].userItemImgUrl),//외부 주소로 img 받아 올때
             //   placeholder: const AssetImage("assets/notReadyYet.jpg"),
             //   imageErrorBuilder: (context, error, stackTrace) {
             //     // return Image.asset('asset/images/error.jpg', fit: BoxFit.fitWidth);
@@ -153,14 +142,12 @@ class _UserCardForHomeState extends State<UserCardForHome> {
             //   fit: BoxFit.fitWidth,
             // ),
           ),
-          // Image.network(carrot_user_card_infos[0].userItemImgUrl, fit: BoxFit.contain)),
-
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(carrotUserCardInfos[0].itemCategory, style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w400)),
-              Text('${carrotUserCardInfos[0].userLocation} * ${carrotUserCardInfos[0].userUploadingTime}', style: const TextStyle(color: Colors.grey, fontSize: 11, fontWeight: FontWeight.w400)),
-              Text('${carrotUserCardInfos[0].itemPrice}원', style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w600)),
+              Text(widget.item.itemCategory, style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w400)),
+              Text('${widget.item.userLocation} * ${widget.item.userUploadingTime}', style: const TextStyle(color: Colors.grey, fontSize: 11, fontWeight: FontWeight.w400)),
+              Text('${widget.item.itemPrice}원', style: const TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.w600)),
               const SizedBox(height: 40),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -168,11 +155,11 @@ class _UserCardForHomeState extends State<UserCardForHome> {
                   const SizedBox(height: 1, width: 200),
                   const Icon(Icons.question_answer_outlined, size: 15, color: Colors.black38),
                   const SizedBox(height: 1, width: 1),
-                  Text(carrotUserCardInfos[0].chattingRequestCount.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
+                  Text(widget.item.chattingRequestCount.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
                   const SizedBox(height: 2, width: 2),
                   const Icon(Icons.favorite_border, size: 15, color: Colors.black38),
                   const SizedBox(height: 1, width: 1),
-                  Text(carrotUserCardInfos[0].heartCount.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
+                  Text(widget.item.heartCount.toString(), style: const TextStyle(color: Colors.black38, fontSize: 10)),
                 ],
               ),
             ],
@@ -194,12 +181,14 @@ class _UserCardForActivityNotificationState extends State<UserCardForActivityNot
   // dummy data
   List<CarrotUserCardForActivityNotificationInfos> cardInfos = [
     CarrotUserCardForActivityNotificationInfos.fromMap({
-      'notificationImgUrl': 'asset/images/app_carrot_market_logo.png',
+      'notificationImgUrl': MyUrls.networkImageTest,
       'notificationDescription1': '♨♨달안동 이웃을 사로잡은 금주의 인기매물,지금 만나보세요!',
       'notificationDescription2': '정훈94님께 소중한 나눔으로 환경보호 실천한 사연 전해요.',
       'notificationUploadingTime': '6분 전',
     })
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -212,8 +201,7 @@ class _UserCardForActivityNotificationState extends State<UserCardForActivityNot
             height: 90,
             width: 90,
             child: FadeInImage(
-              // image: NetworkImage(carrot_user_card_infos[0].userItemImgUrl),//외부 주소로 img 받아 올때
-              image: AssetImage(cardInfos[0].notificationImgUrl),
+              image: NetworkImage(cardInfos[0].notificationImgUrl),
               placeholder: const AssetImage("assets/placeholder.jpg"),
               imageErrorBuilder: (context, error, stackTrace) {
                 return Image.asset('asset/images/error.jpg', fit: BoxFit.fitWidth);

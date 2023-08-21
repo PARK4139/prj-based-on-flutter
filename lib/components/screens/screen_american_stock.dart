@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../data/source/remote/american_stock_listing_delisting_api_helper.dart';
 import '../../data/source/remote/pm_api_helper.dart';
@@ -76,20 +77,161 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
     // debugSomethingSimple(ourRegions.values.toList().runtimeType.toString());
     // debugSomething(ourRegions.values.toList());
     return Scaffold(
-      backgroundColor: _OurColors.primaryColors,
+      backgroundColor: OurColors.greenShade600,
+      drawer: const _LeftDrawer(),
+      // drawer: Drawer(
+      //   backgroundColor: Colors.black.withOpacity(0.3),
+      //   child: Container(
+      //     height: MediaQuery.of(context).size.height * 0.8,
+      //     width: MediaQuery.of(context).size.height * 0.6,
+      //     decoration: BoxDecoration(
+      //       color: Colors.black.withOpacity(0.3),
+      //       borderRadius: BorderRadius.circular(5.0),
+      //       border: const Border(
+      //         top: BorderSide(color: Colors.black, width: 3.0),
+      //         bottom: BorderSide(color: Colors.black, width: 3.0),
+      //         left: BorderSide(color: Colors.black, width: 3.0),
+      //         right: BorderSide(color: Colors.black, width: 3.0),
+      //       ),
+      //     ),
+      //     child: Column(
+      //       mainAxisAlignment: MainAxisAlignment.start,
+      //       children: [
+      //         /*foo*/ GestureDetector(
+      //           onTap: () async {
+      //           },
+      //           child: Container(
+      //             height: 30,
+      //             width: 130,
+      //             decoration: BoxDecoration(
+      //               color: Colors.black.withOpacity(0.3),
+      //               borderRadius: BorderRadius.circular(5.0),
+      //               border: const Border(top: BorderSide(color: Colors.black, width: 1.5), bottom: BorderSide(color: Colors.black, width: 1.5), left: BorderSide(color: Colors.black, width: 1.5), right: BorderSide(color: Colors.black, width: 1.5)),
+      //             ),
+      //             child: const Center(
+      //               child: Text("foo", style: TextStyle(color: Colors.white), textAlign: TextAlign.center),
+      //             ),
+      //           ),
+      //         ),
+      //         /*foo*/ GestureDetector(
+      //           onTap: () async {
+      //           },
+      //           child: Container(
+      //             height: 30,
+      //             width: 130,
+      //             decoration: BoxDecoration(
+      //               color: Colors.black.withOpacity(0.3),
+      //               borderRadius: BorderRadius.circular(5.0),
+      //               border: const Border(top: BorderSide(color: Colors.black, width: 1.5), bottom: BorderSide(color: Colors.black, width: 1.5), left: BorderSide(color: Colors.black, width: 1.5), right: BorderSide(color: Colors.black, width: 1.5)),
+      //             ),
+      //             child: const Center(
+      //               child: Text("foo", style: TextStyle(color: Colors.white), textAlign: TextAlign.center),
+      //             ),
+      //           ),
+      //         ),
+      //         /*foo*/ GestureDetector(
+      //           onTap: () async {
+      //           },
+      //           child: Container(
+      //             height: 30,
+      //             width: 130,
+      //             decoration: BoxDecoration(
+      //               color: Colors.black.withOpacity(0.3),
+      //               borderRadius: BorderRadius.circular(5.0),
+      //               border: const Border(top: BorderSide(color: Colors.black, width: 1.5), bottom: BorderSide(color: Colors.black, width: 1.5), left: BorderSide(color: Colors.black, width: 1.5), right: BorderSide(color: Colors.black, width: 1.5)),
+      //             ),
+      //             child: const Center(
+      //               child: Text("foo", style: TextStyle(color: Colors.white), textAlign: TextAlign.center),
+      //             ),
+      //           ),
+      //         ),
+      //         /*foo*/ GestureDetector(
+      //           onTap: () async {
+      //           },
+      //           child: Container(
+      //             height: 30,
+      //             width: 130,
+      //             decoration: BoxDecoration(
+      //               color: Colors.black.withOpacity(0.3),
+      //               borderRadius: BorderRadius.circular(5.0),
+      //               border: const Border(top: BorderSide(color: Colors.black, width: 1.5), bottom: BorderSide(color: Colors.black, width: 1.5), left: BorderSide(color: Colors.black, width: 1.5), right: BorderSide(color: Colors.black, width: 1.5)),
+      //             ),
+      //             child: const Center(
+      //               child: Text("foo", style: TextStyle(color: Colors.white), textAlign: TextAlign.center),
+      //             ),
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+
       body: FutureBuilder(
         future: AmericanStockMarketListingDelistingApiDtoServiceHelper.getAmericanStockMarketListingDelistingApiDtos(),
-        builder: (context, snapshot2) {
-          if (snapshot2.hasData) {
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
             return CustomScrollView(
               slivers: [
                 const SliverToBoxAdapter(child: SizedBox(height: 30)),
                 SliverToBoxAdapter(
-                    child: ScrollConfiguration(
-                      behavior: MyBehaviorHelper(),
-                  child: TableHelper(futureBuilderSnapshotData: snapshot2.data),
-                )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      /*왼쪽서랍*/ Builder(
+                        builder: (context) {
+                          return IconButton(
+                            onPressed: () => Scaffold.of(context).openDrawer(),
+                            icon: const Icon(Icons.menu),
+                            tooltip: "왼쪽서랍",
+                          );
+                        },
+                      ),
+                      /*오른쪽서랍*/ Builder(
+                        builder: (context) {
+                          return IconButton(
+                            onPressed: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: const Duration(milliseconds: 2000), content: Text(MyMents.notReadyYet))),
+                            icon: const Icon(Icons.menu),
+                            tooltip: "오른쪽서랍",
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: ScrollConfiguration(
+                    behavior: MyBehaviorHelper(),
+                    child: TableHelper(futureBuilderSnapshotData: snapshot.data),
+                  ),
+                ),
                 const SliverToBoxAdapter(child: SizedBox(height: 7)),
+                SliverToBoxAdapter(
+                  child: GestureDetector(
+                    onTap: _getImage,
+                    child: Container(
+                      width: 300 - 45, //폭 설정
+                      padding: const EdgeInsets.all(10),
+                      color: Colors.black38.withOpacity(0.5),
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Flexible(
+                            child: /*줄길이에 따라 변하도록 할 수있는 유용한 텍스트박스*/ RichText(
+                              selectionColor: Colors.blueAccent,
+                              // overflow: TextOverflow.clip,//오버플로우 텍스트를 잘라내어 보이지 않도록 렌더링
+                              overflow: TextOverflow.fade, //오버플로우 텍스트를 그라데이션효과로 사라지도록 렌더링
+                              // overflow: TextOverflow.ellipsis,//오버플로우 텍스트를 ...으로 렌더링
+                              // overflow: TextOverflow.visible,//오버플로우 텍스트를 보이도록 렌더링
+                              maxLines: 100, //100 줄까지만 보이도록
+                              // strutStyle: const StrutStyle(fontSize: 9.0),//이거 어디에 쓰이는지?..
+                              text: TextSpan(text: "준비중", style: MyTextStyles.textStyle20230719),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             );
           } else {
@@ -98,7 +240,7 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(child: Text(MyMents.inLoading(title: "Alpha Vantage 미국 주식 시장 API를 통해\n 미국주식 정보"), style: TextStyle(color: _OurColors.white))),
+                  Center(child: Text(MyMents.inLoading(title: "Alpha Vantage 미국 주식 시장 API를 통해\n 미국주식 정보"), style: const TextStyle(color: OurColors.white))),
                   const SizedBox(height: 30),
                   const Center(child: _OurLinearProgressIndicatorSimple()),
                 ],
@@ -107,17 +249,26 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
           }
         },
       ),
-      drawer: const _OurDrawer(),
     );
+  }
+
+  late final ImagePicker _picker = ImagePicker();
+  late XFile? _image;
+
+  Future _getImage() async {
+    XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
   }
 }
 
-class _OurCard extends StatelessWidget {
+class _SliverCard extends StatelessWidget {
   String title;
 
   dynamic cardContents;
 
-  _OurCard({required this.title, required this.cardContents});
+  _SliverCard({required this.title, required this.cardContents});
 
   @override
   Widget build(BuildContext context) {
@@ -127,18 +278,18 @@ class _OurCard extends StatelessWidget {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0), bottomLeft: Radius.circular(4.0), bottomRight: Radius.circular(4.0)),
         ),
-        color: _OurColors.lightColor,
+        color: OurColors.greenShade400,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch, // Column() 에 crossAxisAlignment: CrossAxisAlignment.stretch, 코드를 사용하면 ListView() 와 유사한 느낌이 든다.
           children: [
             Container(
               decoration: BoxDecoration(
-                color: _OurColors.darkColor,
+                color: OurColors.greenShade900,
                 borderRadius: const BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0)),
               ),
               child: Text(
                 title,
-                style: _OurTextStyles.titleTextStyle.copyWith(
+                style: OurTextStyles.titleTextStyle.copyWith(
                   fontSize: 20,
                 ),
                 textAlign: TextAlign.center,
@@ -152,38 +303,21 @@ class _OurCard extends StatelessWidget {
   }
 }
 
-class _OurColors {
-  static const black = Colors.black;
-  static final darkColor = Colors.green.shade900;
-  static final primaryColors = Colors.green.shade600;
-  static final lightColor = Colors.green.shade400;
-  static const white = Colors.white;
-  static const lightGreenAccent = Colors.lightGreenAccent;
-}
-
-class _OurTextStyles {
-  static const TextStyle titleTextStyle = TextStyle(
-    color: Colors.white,
-    fontSize: 40,
-    fontFamily: 'sunFlower',
-    fontWeight: FontWeight.w700,
-  );
-}
-
-class _OurSliverAppBar extends StatefulWidget {
+class _SliverAppBar extends StatefulWidget {
   List<Pm10> snapShotData;
 
-  _OurSliverAppBar(this.snapShotData);
+  _SliverAppBar(this.snapShotData);
 
   @override
-  State<_OurSliverAppBar> createState() => _OurSliverAppBarState();
+  State<_SliverAppBar> createState() => _SliverAppBarState();
 }
 
-class _OurSliverAppBarState extends State<_OurSliverAppBar> {
+class _SliverAppBarState extends State<_SliverAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: _OurColors.primaryColors,
+      automaticallyImplyLeading: false,
+      backgroundColor: OurColors.greenShade600,
       expandedHeight: 350,
       /*expandedHeight: 350, 앱바의 기본높이를 커스텀 설정*/
       flexibleSpace: FlexibleSpaceBar(
@@ -227,14 +361,14 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
   }
 }
 
-class _OurDrawer extends StatefulWidget {
-  const _OurDrawer();
+class _LeftDrawer extends StatefulWidget {
+  const _LeftDrawer();
 
   @override
-  State<_OurDrawer> createState() => _OurDrawerState();
+  State<_LeftDrawer> createState() => _LeftDrawerState();
 }
 
-class _OurDrawerState extends State<_OurDrawer> {
+class _LeftDrawerState extends State<_LeftDrawer> {
   Regions selectedRegion = Regions.seoul;
 
   bool isSelected = false;
@@ -245,7 +379,7 @@ class _OurDrawerState extends State<_OurDrawer> {
       width: MediaQuery.of(context).size.width * 0.6,
       height: MediaQuery.of(context).size.height * 0.8, //이렇게 하고 싶은데...안됬음...
       decoration: BoxDecoration(
-        color: _OurColors.lightColor,
+        color: OurColors.greenShade400,
         borderRadius: const BorderRadius.only(topRight: Radius.circular(4.0), bottomRight: Radius.circular(4.0)),
       ),
       child: Column(
@@ -256,14 +390,14 @@ class _OurDrawerState extends State<_OurDrawer> {
             // backgroundColor: Colors.transparent,
             height: MediaQuery.of(context).size.height * 0.06,
             decoration: BoxDecoration(
-              color: _OurColors.darkColor,
+              color: OurColors.greenShade900,
               borderRadius: const BorderRadius.only(topRight: Radius.circular(4.0)),
             ),
             child: Center(
               child: Text(
                 textAlign: TextAlign.center,
-                "지역선택",
-                style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20.0),
+                "202308212333",
+                style: OurTextStyles.titleTextStyle.copyWith(fontSize: 20.0),
               ),
             ),
           ),
@@ -285,16 +419,16 @@ class _OurDrawerState extends State<_OurDrawer> {
                     },
                     title: Text(
                       entry.value,
-                      style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 15.0, color: _OurColors.white),
+                      style: OurTextStyles.titleTextStyle.copyWith(fontSize: 15.0, color: OurColors.white),
                     ),
-                    tileColor: _OurColors.lightColor,
-                    focusColor: _OurColors.lightGreenAccent,
-                    hoverColor: _OurColors.lightGreenAccent,
+                    tileColor: OurColors.greenShade400,
+                    focusColor: OurColors.lightGreenAccent,
+                    hoverColor: OurColors.lightGreenAccent,
                     /*타일 셀렉트 상태*/
                     selected: isSelected ? true : false,
                     // selected: true,
-                    selectedTileColor: _OurColors.lightColor,
-                    selectedColor: _OurColors.black,
+                    selectedTileColor: OurColors.greenShade400,
+                    selectedColor: OurColors.black,
                   )
               ],
             ),
@@ -304,49 +438,6 @@ class _OurDrawerState extends State<_OurDrawer> {
     );
   }
 }
-
-enum Regions {
-  daegu,
-  chungnam,
-  incheon,
-  daejeon,
-  gyeongbuk,
-  sejong,
-  gwangju,
-  jeonbuk,
-  gangwon,
-  ulsan,
-  jeonnam,
-  seoul,
-  busan,
-  jeju,
-  chungbuk,
-  gyeongnam,
-  dataTime,
-  dataGubun,
-  gyeonggi,
-  itemCode,
-}
-
-Map<Regions, String> ourRegions = {
-  Regions.daegu: '대구',
-  Regions.chungnam: '충남',
-  Regions.incheon: '인천',
-  Regions.daejeon: '대전',
-  Regions.gyeongbuk: '경북',
-  Regions.sejong: '세종',
-  Regions.gwangju: '광주',
-  Regions.jeonbuk: '전북',
-  Regions.gangwon: '강원',
-  Regions.ulsan: '울산',
-  Regions.jeonnam: '전남',
-  Regions.seoul: '서울',
-  Regions.busan: '부산',
-  Regions.jeju: '제주',
-  Regions.chungbuk: '충북',
-  Regions.gyeongnam: '경남',
-  Regions.gyeonggi: '경기',
-};
 
 class _OurMiniColumn extends StatelessWidget {
   final String category;
@@ -360,16 +451,16 @@ class _OurMiniColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: _OurColors.lightColor,
+      color: OurColors.greenShade400,
       child: SizedBox(
         width: width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(category, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: _OurColors.white, fontWeight: FontWeight.w200)),
+            Text(category, style: OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: OurColors.white, fontWeight: FontWeight.w200)),
             // Text(imgPath, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 40, color: _OurColors.white, fontWeight: FontWeight.w200)),
-            Text(level, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: _OurColors.white, fontWeight: FontWeight.w200)),
-            Text(stat, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: _OurColors.white, fontWeight: FontWeight.w200)),
+            Text(level, style: OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: OurColors.white, fontWeight: FontWeight.w200)),
+            Text(stat, style: OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: OurColors.white, fontWeight: FontWeight.w200)),
           ],
         ),
       ),
@@ -396,7 +487,7 @@ class _OurMiniRow extends StatelessWidget {
     return SizedBox(
       height: height,
       child: Container(
-        color: _OurColors.lightColor,
+        color: OurColors.greenShade400,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -406,7 +497,7 @@ class _OurMiniRow extends StatelessWidget {
                 SizedBox(
                   // width: MediaQuery.of(context).size.width / 7,
                   width: MediaQuery.of(context).size.width / columnTexts.length,
-                  child: Text(columnText, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: _OurColors.white, fontWeight: FontWeight.w200), textAlign: TextAlign.left),
+                  child: Text(columnText, style: OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: OurColors.white, fontWeight: FontWeight.w200), textAlign: TextAlign.left),
                 ),
             ],
           ),

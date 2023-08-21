@@ -48,13 +48,14 @@ class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpd
   void initState() {
     super.initState();
     widget.borderRadius ??= BorderRadius.circular(5);
+    autoClipboardUpdatingTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      debugSomething("autoClipboardUpdatingTimer: default initialization");
+    },);
   }
 
   @override
   void dispose() {
-    autoClipboardUpdatingTimer.cancel();
-    printSeparatorWithMkr(txt: "autoClipboardUpdatingTimer.cancel()");
-
+    // autoClipboardUpdatingTimer.cancel(); 부모 위젯에서 now 를 참조를 하sms 것과 밀접해 보임
     super.dispose();
   }
 
@@ -69,27 +70,30 @@ class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpd
         horizontal: widget.paddingHorizontal,
         vertical: widget.paddingVertical,
       ),
-      child: TextButton(
-        onPressed: () {
-          isToogled = !isToogled;
-          if (isToogled == false) {
-            autoClipboardUpdatingTimer.cancel();
-            /*음....이렇게 해도 즉시 autoClipboardUpdatingTimer 가 종료되지는 않는데...즉시 종료할 방법은 없는가?*/
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 3000), content: Text("autoClipboardUpdatingTimer가 종료되었습니다.\n그러나 이미 Stack 된 작업은 제거될때까지 기다려야 합니다.")));
-          }else{
-            copyTextToClipboard();
-            // if(isFirstClicked==true){
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: TextButton(
+          onPressed: () {
+            isToogled = !isToogled;
+            if (isToogled == false) {
+              autoClipboardUpdatingTimer.cancel();
+              /*음....이렇게 해도 즉시 autoClipboardUpdatingTimer 가 종료되지는 않는데...즉시 종료할 방법은 없는가?*/
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 3000), content: Text("autoClipboardUpdatingTimer가 종료되었습니다.\n그러나 이미 Stack 된 작업은 제거될때까지 기다려야 합니다.")));
+            } else {
+              copyTextToClipboard();
+              // if(isFirstClicked==true){
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 3000), content: Text("autoClipboardUpdatingTimer가 시작되었습니다.\n한번더 클릭하면 autoClipboardUpdatingTimer를 종료할 수 있습니다.")));
-            // }
-          }
-
-        },
-        child: Text(
-          widget.template,
-          style: TextStyle(
-            color: widget.color,
-            fontSize: widget.fontSize,
-            fontWeight: widget.fontWeight,
+              // }
+            }
+          },
+          child: Text(
+            widget.template,
+            style: TextStyle(
+              color: widget.color,
+              fontSize: widget.fontSize,
+              fontWeight: widget.fontWeight,
+            ),
+            // textAlign: TextAlign.left,
           ),
         ),
       ),
@@ -100,7 +104,9 @@ class AutoClipboardUpdatingStampMakingHelperState extends State<AutoClipboardUpd
     FlutterClipboard.paste().then((value) {
       if (isFirstClicked == false) {
         firstPastedValue = value;
-        autoClipboardUpdatingTimer = Timer.periodic(const Duration(seconds: 1), autoClipboardUpdating);
+        if (autoClipboardUpdatingTimer == null) {
+          autoClipboardUpdatingTimer = Timer.periodic(const Duration(seconds: 1), autoClipboardUpdating);
+        }
         isFirstClicked = true;
       }
       setState(() {

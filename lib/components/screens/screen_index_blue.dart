@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'screen_area_calculator.dart';
-import 'screen_checklist.dart';
 import 'screen_developer_helper.dart';
 import 'screen_pomodoro.dart';
 import 'screen_to_maintain_edorm.dart';
@@ -75,24 +74,6 @@ class _ScreenIndexBlueState extends State<ScreenIndexBlue> {
   void initItems() {
     setState(() {
       itemsAsFolder = [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenPlanExcuter()));
-              },
-              icon: const Icon(Icons.folder),
-              tooltip: folderChecklist,
-              splashColor: Colors.white,
-              // hoverColor: Colors.red,
-              focusColor: Colors.orange,
-              color: Colors.blueAccent,
-              disabledColor: Colors.purpleAccent,
-            ),
-            Text(folderChecklist, style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.w600))
-          ],
-        ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

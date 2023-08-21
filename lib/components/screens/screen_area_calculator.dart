@@ -30,7 +30,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
   late bool isUpperCaseMode;
   late bool isIconColorToogled;
 
-  final clearButtonKey20230810143601 = GlobalKey(debugLabel: "clearButtonKey20230810143601");
+   GlobalKey<State<StatefulWidget>> clearButtonKey20230810143601 = GlobalKey(debugLabel: "clearButtonKey20230810143601");
   late Timer autoClickScheduler;
   late bool isFirstBuild;
 
@@ -60,7 +60,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
       const Duration(milliseconds: 100),
       (timer) {
         if (isFirstBuild == true) {
-          autoClick();
+          remoteClick1();
           isFirstBuild = false;
         }
         autoClickScheduler.cancel();
@@ -68,7 +68,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
     );
 
     return Scaffold(
-      backgroundColor: MyColors.blackUndefined,
+      backgroundColor: MyColors.black0xff181818,
       body: ListView(
         children: [
           Container(
@@ -91,7 +91,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
                       key: clearButtonKey20230810143601,
                       child: const Row(
                         children: [
-                          Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
+                          Text('사용자에게 보이지 않았으면 하는 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
                         ],
                       ),
                       onTap: () {
@@ -235,7 +235,7 @@ class _ScreenAreaCalculatorState extends State<ScreenAreaCalculator> {
     });
   }
 
-  Future<void> autoClick() async {
+  Future<void> remoteClick1() async {
     RenderBox renderbox = clearButtonKey20230810143601.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;

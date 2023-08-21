@@ -15,14 +15,14 @@ class ScreenAutoPopUpRepeatable extends StatefulWidget {
 }
 
 class _ScreenAutoPopUpRepeatableState extends State<ScreenAutoPopUpRepeatable> {
-  final clearButtonKey20230810143943 = GlobalKey(debugLabel: "clearButtonKey20230810143947");
+    GlobalKey<State<StatefulWidget>> clearButtonKey20230810143943 = GlobalKey(debugLabel: "clearButtonKey20230810143947");
   late Timer autoClickScheduler;
 
   @override
   void initState() {
     super.initState();
     autoClickScheduler = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
-      autoClick();
+      remoteClick1();
     });
   }
 
@@ -44,7 +44,7 @@ class _ScreenAutoPopUpRepeatableState extends State<ScreenAutoPopUpRepeatable> {
               key: clearButtonKey20230810143943,
               child: const Row(
                 children: [
-                  Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
+                  Text('사용자에게 보이지 않았으면 하는 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
                 ],
               ),
               onTap: () {
@@ -57,7 +57,7 @@ class _ScreenAutoPopUpRepeatableState extends State<ScreenAutoPopUpRepeatable> {
     );
   }
 
-  Future<void> autoClick() async {
+  Future<void> remoteClick1() async {
     RenderBox renderbox = clearButtonKey20230810143943.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;

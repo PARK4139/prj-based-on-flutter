@@ -81,10 +81,10 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
       screenSeconds = screenSeconds - 1;
       if (screenSeconds == 0) {
         pomodoros = pomodoros + 1;
-        debugSomething("pomodoros$pomodoros");
+        debugSomething("pomodoros$pomodoros",troubleShootingId: "20230811184110");
         isRunning = true;
         screenSeconds = defaultSeconds;
-        debugSomething("ScreenSeconds$screenSeconds");
+        debugSomething("ScreenSeconds$screenSeconds",troubleShootingId: "20230811184114");
         // print("___________"+___________.toString());
       }
     });
@@ -109,7 +109,7 @@ class _ScreenPomodoroHomeState extends State<ScreenPomodoroHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.blackUndefined,
+      backgroundColor: MyColors.black0xff181818,
       body: ListView(
         children: [
           ElevatedButton(

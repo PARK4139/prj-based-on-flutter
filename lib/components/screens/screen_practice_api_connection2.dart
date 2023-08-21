@@ -39,7 +39,7 @@ class _ScreenWebtoonAPI2State extends State<ScreenWebtoonAPI2> {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenWebtoonDetail(webtoon: webtoon)));
                           },
                           child: Builder(builder: (context) {
-                            debugSomething(MyUrls.networkImageTest);
+                            debugSomething(MyUrls.networkImageTest,troubleShootingId: "20230811183916");
 
                             return Column(
                               children: [

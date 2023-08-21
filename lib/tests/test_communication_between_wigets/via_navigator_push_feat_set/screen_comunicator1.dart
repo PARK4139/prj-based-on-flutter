@@ -22,7 +22,7 @@ class _ScreenComunicator1State extends State<ScreenComunicator1> {
     }
   };
 
-  final clearButtonKey20230810134458 = GlobalKey();
+  var clearButtonKey20230810134458 = GlobalKey();
 
   late Timer autoClickScheduler;
   late bool isFirstBuild;
@@ -45,7 +45,7 @@ class _ScreenComunicator1State extends State<ScreenComunicator1> {
       const Duration(milliseconds: 100),
       (timer) {
         if (isFirstBuild == true) {
-          autoClick();
+          remoteClick1();
           isFirstBuild = false;
         }
         autoClickScheduler.cancel();
@@ -62,7 +62,7 @@ class _ScreenComunicator1State extends State<ScreenComunicator1> {
               key: clearButtonKey20230810134458,
               child: const Row(
                 children: [
-                  Text('사용자에게 보이지 않을 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
+                  Text('사용자에게 보이지 않았으면 하는 버튼', style: TextStyle(color: Colors.white, fontSize: 1)),
                 ],
               ),
               onTap: () {
@@ -91,7 +91,7 @@ class _ScreenComunicator1State extends State<ScreenComunicator1> {
     );
   }
 
-  Future<void> autoClick() async {
+  Future<void> remoteClick1() async {
     RenderBox renderbox = clearButtonKey20230810134458.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
     double x = position.dx;

@@ -532,7 +532,7 @@ void main() {
   printWithoutWarning(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd])); //"YYYY-MM-dd"
   printWithoutWarning(formatDate(DateTime.now(), [yyyy, '', mm, '', dd])); //"YYYYMMdd"
   printWithoutWarning(formatDate(DateTime.now(), [yyyy, ' ', mm, ' ', dd, ' ', HH, ' ', nn, ' ', ss, ' ', SSS]));
-  printWithoutWarning(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));
+  printWithoutWarning(formatDate(DateTime.now(), [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss, '', SSS]));//"yyyymmddHHnnssSSS"
   printWithoutWarning(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss, '.', SSS]));
   printWithoutWarning(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn, ':', ss]));
   printWithoutWarning(formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]));
@@ -573,6 +573,7 @@ void main() {
   printWithoutWarning("123".toString().split("").map((x) => '${x}_suffix')); //요까지하면 iteralble 일것임. 실험 해보자
   printWithoutWarning("123".toString().split("").map((x) => '${x}_suffix').toList()); //[1_suffix, 2_suffix, 3_suffix]
 
+
   printWithoutWarning('-------------------------------------- "foo.jpg,foo.png,foo.gif" 에서 [prefix_foo, prefix_foo, prefix_foo] 로 변환'); //쪼개서 prefix 붙이기
   printWithoutWarning("foo.jpg,foo.png,foo.gif");
   printWithoutWarning("foo.jpg,foo.png,foo.gif".toString().split(",")); //[foo.jpg,foo.png,foo.gif]
@@ -599,4 +600,9 @@ void main() {
         (e) => '${e.key}:${e.value}',
       )
       .toList());
+
+
+
+  printWithoutWarning([...naturalNumbersMaker(0,1000)]);
+
 }

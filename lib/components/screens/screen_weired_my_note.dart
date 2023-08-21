@@ -12,18 +12,11 @@ import '../../utils/rainbow_text_maker.dart';
 import '../../utils/super_helper.dart';
 import '../../utils/toggle_maker.dart';
 
-
-
-
 class ScreenWeiredMyNote extends StatefulWidget {
   const ScreenWeiredMyNote({super.key});
 
- 
-
   @override
   State<ScreenWeiredMyNote> createState() => _ScreenWeiredMyNoteState();
-
-
 }
 
 class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
@@ -64,15 +57,18 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
 
     /*로컬 스토리지 사용해서 상태 Read*/
     // isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
-    
-    
-    BlocBuilder<MyAppStateCubit, MyAppState>(
-      builder: (context, MyAppState state) {
-        isDarkMode= state.isDarkMode ;
-        return Placeholder();
-      },
-    );
 
+    /*Bloc cubit 사용해서 상태 Read*/
+    MyAppStateCubit cubit = MyAppStateCubit();
+    isDarkMode = cubit.state.isDarkMode;
+
+    /*Bloc cubit 사용해서 상태 Read*/
+    // BlocBuilder<MyAppStateCubit, MyAppState>(
+    //   builder: (context, MyAppState state) {
+    //     isDarkMode = state.isDarkMode;
+    //     return Placeholder();
+    //   },
+    // );
 
     // SampleWeiredItems = [];
     // SampleWeiredWiget= <Widget>[
@@ -99,14 +95,8 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
                       Opacity(
                         opacity: 1,
                         child: SizedBox(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-                          height: MediaQuery
-                              .of(context)
-                              .size
-                              .height,
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
                           child: Stack(
                             children: [
                               Transform.translate(
@@ -157,7 +147,7 @@ class _ScreenWeiredMyNoteState extends State<ScreenWeiredMyNote> {
                   ),
                 ),
                 for (int i = 1; i < 2; i++) const SizedBox(height: 3),
-                MainContentMaker(level1widget: Text('📋', style: textStyle5), level1text: '오늘의 스케쥴', level2items: const [
+                AccordionMaker(leading: Text('📋', style: textStyle5), title: '오늘의 스케쥴', level2items: const [
                   """
 DONE
 - 프로모도 앱
@@ -200,7 +190,7 @@ flutter 로 만들어야 할 기능들.
 
 """,
                 ]),
-                MainContentMaker(level1widget: const Icon(Icons.phone_android, color: Colors.grey), level1text: 'App 요약정리', level2items: [
+                AccordionMaker(leading: const Icon(Icons.phone_android, color: Colors.grey), title: 'App 요약정리', level2items: [
                   /*Flutter 핵심 요약:타이틀*/ InkWell(
                     onTap: () {
                       printWithoutWarning("/*Flutter 핵심 요약:타이틀*/");
@@ -460,22 +450,16 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 고객 데이터 소실에 대한 책임에 대한 문제는 있어보인다.
 """,
                 ]),
-                MainContentMaker(level1widget: Text('📑', style: textStyle5), level1text: '잡동사니', level2items: [
-/*움직이는 벌레 버튼*/ Stack(
+                AccordionMaker(leading: Text('📑', style: textStyle5), title: '잡동사니', level2items: [
+                  /*움직이는 벌레 버튼*/ Stack(
                     children: [
                       Opacity(
                         opacity: 1,
                         child: SizedBox(
                           height: 30,
                           child: SizedBox(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
-                            height: MediaQuery
-                                .of(context)
-                                .size
-                                .height,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height,
                             child: Stack(
                               children: [
                                 Transform.translate(
@@ -497,14 +481,20 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                                             // color: Colors.yellowAccent,
                                             color: Colors.blueAccent,
                                             shadows: [],
-                                            semanticLabel: "이건 뭐다냐",
+                                            semanticLabel: "semanticLabel ? 의미론적 레이블? 이건 뭐다냐",
                                           ),
                                           onPressed: () {
                                             // Navigator.pop(context);
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => ScreenIndexColorful(isDarkMode: isDarkMode),
+                                                builder: (context) {
+                                                  /*Bloc cubit 사용해서 상태 Update*/
+                                                  MyAppStateCubit cubit = MyAppStateCubit();
+                                                  cubit.emit(cubit.state);
+
+                                                  return const ScreenIndexColorful();
+                                                },
                                               ),
                                             );
                                           },
@@ -521,7 +511,7 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                       ),
                     ],
                   ),
-                  MainContentMaker(level1widget: Text('📂', style: textStyle5), level1text: '아이콘텍스트 모음', level2items: const [
+                  AccordionMaker(leading: Text('📂', style: textStyle5), title: '아이콘텍스트 모음', level2items: const [
                     """
 ✔️ CORRECT  
 ❌ INCORRECT
@@ -1199,86 +1189,84 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
 🟥🟦🟧🟨🟩🟪🟫
 """,
                   ]),
-
-
-
-                  MainContentMaker(level1widget: Text('🥴🤐🤡🤢', style: textStyle5), level1text: '웃자', level2items: [
+                  AccordionMaker(leading: Text('🥴🤐🤡🤢', style: textStyle5), title: '웃자', level2items: [
                     """
 오늘도 수고했어!
 
 언젠가 빛을 보리라.
 이번에 좀 슬펐지만 다음에 더 잘하면 되지. 
 """,
-                    MainContentMaker(level1widget: const Text('☘', style: TextStyle(color: Colors.green)), level1text: '행운이 그대에게 가득하기를', level2items: const []),
+                    AccordionMaker(leading: const Text('☘', style: TextStyle(color: Colors.green)), title: '행운이 그대에게 가득하기를', level2items: const []),
                   ]),
                 ]),
-                MainContentMaker(
-                    level1widget: const Icon(
-                      Icons.code,
-                      color: Colors.lightBlueAccent,
-                    ),
-                    level1text: '플러터 샘플 위젯 모음',
-                    level2items: [
-                      /*플러터문법스탬프*/ PlanedScheduleManagementHelper(title: "플러터문법스탬프", items:   [
-                        HardCodingStampMaker(txt: "/*컬렉션포문법(collection for)코드샘플*/for (String element in <String>['String1','String2','String3']) Text(element),"),
-                        HardCodingStampMaker(txt: "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/\$i.png'),"),
-                        HardCodingStampMaker(txt: '/*상위위젯테마컬러참조코드샘플*/color: Theme.of(context).cardColor,'),
-                        HardCodingStampMaker(txt: '/*빈박스코드샘플*/const SizedBox(height: 50),'),
-                        HardCodingStampMaker(txt: '/*빈박스코드샘플*/Container(),'),
-                        HardCodingStampMaker(txt: '/*빈박스코드샘플*/PloaceHolder(),'),
-                      ]),
-                      /*토글버튼*/ const ToggleMaker(),
-                      /*체크박스*/ const CheckBoxMaker(),
-                      /*버튼*/ FloatingActionButton(
-                        mini: false,
-                        backgroundColor: Colors.blue.shade900,
-                        splashColor: Colors.black,
-                        onPressed: () {},
-                        hoverElevation: 1.5,
-                        shape: const StadiumBorder(side: BorderSide(color: Colors.blue, width: 4)),
-                        elevation: 1.5,
-                        child: const Icon(
-                          Icons.message,
-                          color: Colors.red,
-                        ),
+                AccordionMaker(
+                  leading: const Icon(
+                    Icons.code,
+                    color: Colors.lightBlueAccent,
+                  ),
+                  title: '플러터 샘플 위젯 모음',
+                  level2items: [
+                    /*플러터문법스탬프*/ PlanedScheduleManagementHelper(title: "플러터문법스탬프", items: [
+                      HardCodingStampMaker(txt: "/*컬렉션포문법(collection for)코드샘플*/for (String element in <String>['String1','String2','String3']) Text(element),"),
+                      HardCodingStampMaker(txt: "/*컬렉션포문법(collection for)코드샘플*/for (int i=1;i<=3;i++) Image.asset('asset/images/random_numbers/\$i.png'),"),
+                      HardCodingStampMaker(txt: '/*상위위젯테마컬러참조코드샘플*/color: Theme.of(context).cardColor,'),
+                      HardCodingStampMaker(txt: '/*빈박스코드샘플*/const SizedBox(height: 50),'),
+                      HardCodingStampMaker(txt: '/*빈박스코드샘플*/Container(),'),
+                      HardCodingStampMaker(txt: '/*빈박스코드샘플*/PloaceHolder(),'),
+                    ]),
+                    /*토글버튼*/ const ToggleMaker(),
+                    /*체크박스*/ const CheckBoxMaker(),
+                    /*버튼*/ FloatingActionButton(
+                      mini: false,
+                      backgroundColor: Colors.blue.shade900,
+                      splashColor: Colors.black,
+                      onPressed: () {},
+                      hoverElevation: 1.5,
+                      shape: const StadiumBorder(side: BorderSide(color: Colors.blue, width: 4)),
+                      elevation: 1.5,
+                      child: const Icon(
+                        Icons.message,
+                        color: Colors.red,
                       ),
-                      /*버튼*/ Container(
+                    ),
+                    /*버튼*/ Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.blue, width: 4),
+                        color: Colors.yellow,
+                        shape: BoxShape.circle,
+                      ),
+                      child: IconButton(
+                        iconSize: 56,
+                        icon: const Icon(Icons.message),
+                        onPressed: () {},
+                      ),
+                    ),
+                    /*버튼*/ Material(
+                      type: MaterialType.transparency, //Makes it usable on any background color, thanks @IanSmith
+                      child: Ink(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue, width: 4),
-                          color: Colors.yellow,
+                          border: Border.all(color: Colors.indigoAccent, width: 4.0),
+                          color: Colors.indigo[900],
                           shape: BoxShape.circle,
                         ),
-                        child: IconButton(
-                          iconSize: 56,
-                          icon: const Icon(Icons.message),
-                          onPressed: () {},
-                        ),
-                      ),
-                      /*버튼*/ Material(
-                        type: MaterialType.transparency, //Makes it usable on any background color, thanks @IanSmith
-                        child: Ink(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.indigoAccent, width: 4.0),
-                            color: Colors.indigo[900],
-                            shape: BoxShape.circle,
-                          ),
-                          child: InkWell(
-                            //This keeps the splash effect within the circle
-                            borderRadius: BorderRadius.circular(1000.0), //Something large to ensure a circle
-                            onTap: () {},
-                            child: const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Icon(
-                                Icons.message,
-                                size: 30.0,
-                                color: Colors.white,
-                              ),
+                        child: InkWell(
+                          //This keeps the splash effect within the circle
+                          borderRadius: BorderRadius.circular(1000.0), //Something large to ensure a circle
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Icon(
+                              Icons.message,
+                              size: 30.0,
+                              color: Colors.white,
                             ),
                           ),
                         ),
                       ),
-                    ]),
-                MainContentMaker(level1widget: Text('📂', style: textStyle5), level1text: '아이콘텍스트 모음', level2items: const [
+                    ),
+                  ],
+                ),
+                AccordionMaker(leading: Text('📂', style: textStyle5), title: '아이콘텍스트 모음', level2items: const [
                   """
 💻💼🖱🕐🕑🕒🕓🕔🕕🕖🕗🕘🕙🕚🕛🕜🕝🕞🕟🕠🕡🕢🕣🕤🕥🕦🕧
 🔅🔆
@@ -2008,14 +1996,8 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                   child: SizedBox(
                     height: 30,
                     child: SizedBox(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width,
-                      height: MediaQuery
-                          .of(context)
-                          .size
-                          .height,
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
                       child: Stack(
                         children: [
                           Transform.translate(
@@ -2037,14 +2019,20 @@ DB 는 업체에 맡기고 DB 설정만 개발자가 프로젝트 소스 상에�
                                       // color: Colors.yellowAccent,
                                       color: Colors.blueAccent,
                                       shadows: [],
-                                      semanticLabel: "이건 뭐다냐",
+                                      semanticLabel: "semanticLabel ? 의미론적 레이블? 이건 뭐다냐",
                                     ),
                                     onPressed: () {
                                       // Navigator.pop(context);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => ScreenIndexColorful(isDarkMode: isDarkMode),
+                                          builder: (context) {
+                                            /*Bloc cubit 사용해서 상태 Update*/
+                                            MyAppStateCubit cubit = MyAppStateCubit();
+                                            cubit.emit(cubit.state);
+
+                                            return const ScreenIndexColorful();
+                                          },
                                         ),
                                       );
                                     },

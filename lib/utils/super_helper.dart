@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,11 +11,38 @@ import 'package:http/http.dart';
 import '../data/source/remote/carrot_markket_api_helper.dart';
 import 'hardcoding_stamp_maker.dart';
 
+enum MyPlatforms {
+  web,
+  android,
+  fuchsia,
+  iOS,
+  linux,
+  macOS,
+  windows,
+}
+
+class MyRoutes {
+  static String indexRoute = "/index-route";
+  static String testRoute = "/test-route";
+  static String fooRoute = "/foo-route";
+  static String mainRoute = "/main-route";
+  static String errorRoute = "/error-route";
+  static String notReadyYetRoute = "/not-ready-yet-route";
+}
+
 enum Job { paladin, worrior, magitian }
 
 enum StudyLevel { begginer, intermediate, advanced }
 
 enum ProgrammingProficiencyLevel { begginer, intermediate, pro }
+
+List<int> naturalNumbersMaker(int min, int max) {
+  List<int> naturalNumbers = [];
+  for (int i = min; i <= max; i++) {
+    naturalNumbers.add(i);
+  }
+  return naturalNumbers;
+}
 
 class IteralbleNatureNumbersMaker {
   List<int> itemsHistory = [];
@@ -28,22 +56,6 @@ class IteralbleNatureNumbersMaker {
       index++;
     }
   }
-
-  // void push(int item) {
-  //   items.add(item);
-  // }
-  //
-  // int pop() {
-  //   return items.removeLast();
-  // }
-  //
-  // bool isEmpty() {
-  //   return items.isEmpty;
-  // }
-  //
-  // int get size {
-  //   return items.length;
-  // }
 
   int first() => itemsHistory.first;
 
@@ -70,22 +82,6 @@ class IterableAlphabetsMaker {
     length = alpabetsSnapshotAtFirstInitialization.length;
   }
 
-  // void push(int item) {
-  //   items.add(item);
-  // }
-  //
-  // String pop() {
-  //   return items.removeLast();
-  // }
-  //
-  // bool isEmpty() {
-  //   return items.isEmpty;
-  // }
-  //
-  // String get size {
-  //   return items.length;
-  // }
-
   String first() => alpabets.first;
 
   String last() => alpabets.last;
@@ -110,20 +106,19 @@ void printWithoutWarning(var txt) {
   print(txt.toString());
 }
 
-void debugSomething(dynamic something, {String author="Jung hoon park", String troubleShootingId = "Not Assigned"}) {
+void debugSomething(dynamic something, {String author = "Jung hoon park", String troubleShootingId = "Not Assigned"}) {
   /*배포 시 내부 주석처리*/
   printWithoutWarning("__________________________________________________________________________________________________________________________ debug s");
-  printWithoutWarning("author : $author");
-  printWithoutWarning("trouble Shooting Id : $troubleShootingId");
+  // printWithoutWarning("author: $author");
+  printWithoutWarning("troubleShootingId: $troubleShootingId");
   if (something == null) {
-    printWithoutWarning("data runtimeType : null");
+    printWithoutWarning("data runtimeType: null");
   } else {
-    printWithoutWarning("data runtimeType : ${something.runtimeType}");
+    printWithoutWarning("data runtimeType: ${something.runtimeType}");
   }
   if (something == null) {
     printWithoutWarning(something.toString());
-  }
-  else if (something is bool) {
+  } else if (something is bool) {
     printWithoutWarning(something.toString());
   } else if (something is String) {
     printWithoutWarning(something.toString());
@@ -260,51 +255,55 @@ String timeFormattingHelper(int seconds) {
   }
 }
 
-class MyIcons {
-  static Icon icon_1 = const Icon(Icons.adb, color: Colors.red);
-  static Icon icon_2 = const Icon(Icons.check_box, color: Colors.red);
-  static Icon icon_3 = const Icon(Icons.checklist_outlined, color: Colors.red);
-  static Icon icon_4 = const Icon(Icons.checklist_rtl, color: Colors.red);
-  static Icon icon_5 = const Icon(Icons.check, color: Colors.red);
-  static Icon icon_6 = const Icon(Icons.fact_check, color: Colors.red);
-  static Icon icon_7 = const Icon(Icons.library_add_check_outlined, color: Colors.red);
-  static Icon icon_8 = const Icon(Icons.adb);
-  static Icon icon_9 = const Icon(Icons.all_inclusive);
-  static Icon icon_10 = const Icon(Icons.add_reaction);
-  static Icon icon_11 = const Icon(Icons.add_reaction);
-  static Icon icon_12 = const Icon(Icons.airplay);
-  static Icon icon_13 = const Icon(Icons.animation);
-  static Icon icon_14 = const Icon(Icons.announcement_rounded);
-  static Icon icon_15 = const Icon(Icons.radio_button_on);
-  static Icon icon_16 = const Icon(Icons.radio_button_off);
-  static Icon icon_17 = const Icon(Icons.arrow_drop_down);
-  static Icon icon_18 = const Icon(Icons.arrow_downward);
-  static Icon icon_23 = const Icon(Icons.dark_mode);
-  static Icon icon_19 = const Icon(Icons.laptop_windows);
-  static Icon icon_20 = const Icon(Icons.laptop_mac);
-  static Icon icon_21 = const Icon(Icons.monitor_heart);
-  static Icon icon_22 = const Icon(Icons.favorite);
-  static Icon icon_24 = const Icon(Icons.set_meal_outlined);
-  static Icon icon_25 = const Icon(Icons.settings_ethernet);
+class _MyIconData {
+  IconData iconData_1 = Icons.adb;
+  IconData icon_Data12 = Icons.airplay;
+  IconData icon_Data19 = Icons.laptop_windows;
+  IconData icon_Data20 = Icons.laptop_mac;
+  IconData iconData_2 = Icons.check_box;
+  IconData iconData_3 = Icons.checklist_outlined;
+  IconData iconData_4 = Icons.checklist_rtl;
+  IconData iconData_5 = Icons.check;
+  IconData iconData_9 = Icons.all_inclusive;
+  IconData iconData_6 = Icons.fact_check;
+  IconData iconData_7 = Icons.library_add_check_outlined;
+  IconData icon_Data17 = Icons.arrow_drop_down;
+  IconData icon_Data18 = Icons.arrow_downward;
+  IconData icon_Data23 = Icons.dark_mode;
+  IconData icon_Data10 = Icons.add_reaction;
+  IconData icon_Data13 = Icons.animation;
+  IconData icon_Data14 = Icons.announcement_rounded;
+  IconData icon_Data15 = Icons.radio_button_on;
+  IconData icon_Data16 = Icons.radio_button_off;
+  IconData icon_Data21 = Icons.monitor_heart;
+  IconData icon_Data22 = Icons.favorite;
+  IconData icon_Data24 = Icons.set_meal_outlined;
+  IconData icon_Data25 = Icons.settings_ethernet;
+  IconData iconDataMenu = Icons.menu;
+  IconData iconDataMoreVert = Icons.more_vert;
+  IconData iconDataMoreHoriz = Icons.more_horiz;
 }
 
 class MyColors {
-  static Color blackUndefined = const Color(0xFF181818);
-  static Color blackBackground = Colors.black12;
-  static Color blackClear = Colors.black.withOpacity(0.5);
-  static Color greyClear = Colors.grey.withOpacity(0.9);
-  static Color whiteClear = Colors.white.withOpacity(0.6);
-  static Color whilteGeneral = Colors.white;
-  static Color redWarning = Colors.red;
-  static Color orangeCaution = Colors.orange;
-
-  static const darkGreen2023080622041 = Color(0xff009688);
-  static const darkGreen2023080622042 = Color(0xff00675b);
-  static const darkGreen2023080622043 = Color(0xff52c7b8);
-  static const white2023080622041 = Colors.white;
-  static const green2023080622041 = Colors.green;
-  static const lightGreenAccent2023080622041 = Colors.lightGreenAccent;
-  static const black2023080622041 = Colors.black;
+  static const Color black = Colors.black;
+  static const Color black12 = Colors.black12;
+  static const Color white = Colors.white;
+  static const Color red = Colors.red;
+  static const Color orange = Colors.orange;
+  static const Color green = Colors.green;
+  static const Color lightGreenAccent = Colors.lightGreenAccent;
+  static const Color black0xff181818 = Color(0xFF181818);
+  static const Color darkGreen2023080622041 = Color(0xff009688);
+  static const Color darkGreen2023080622042 = Color(0xff00675b);
+  static const Color darkGreen2023080622043 = Color(0xff52c7b8);
+  static Color blackWithOpacity50Percent = Colors.black.withOpacity(0.5);
+  static Color greyWithOpacity90Percent = Colors.grey.withOpacity(0.9);
+  static Color whiteWithOpacity90Percent = Colors.white.withOpacity(0.9);
+  static Color whiteWithOpacity60Percent = Colors.white.withOpacity(0.6);
+  static Color whiteWithOpacity40Percent = Colors.white.withOpacity(0.4);
+  static Color lightBlueShade50 = Colors.lightBlue.shade50;
+  static Color blackWithOpacity40Percent = Colors.black.withOpacity(0.4);
+  static Color blackWithOpacity20Percent = Colors.black.withOpacity(0.2);
 }
 
 class MyTextStyles {
@@ -330,8 +329,6 @@ class MySeperators {
         height: 50,
         child: HardCodingStampMaker(
           txt: positionId,
-          color: Colors.grey,
-          backgroundColor: Colors.black,
         ));
   }
 }
@@ -400,8 +397,12 @@ class MyMents {
 
   static String thisAppServeCurrentTime = '해당 스크린에서는 오늘 날짜와 현재 시간을 제공하는 서비스를 제공합니다.';
 
-  static String descriptionAboutAreaCalculatingService = '평형 계산기는 *"평" 과 ㎡(제곱미터) 간 단위변환 한 결과를 제공해주는 서비스를 제공합니다 \n\n'
-      '＊"평" : 한국에서 사용하는 집의 면적에 대한 단위입니다.\n               해당 단위는 점차 ㎡ 로 대체되고 있습니다.';
+  static String descriptionAboutAreaCalculatingService = '평형 계산기는 *"평" 과 ㎡(제곱미터) 간 단위변환 한 결과를 제공해주는 서비스를 제공합니다 \n\n＊"평" : 한국에서 사용하는 집의 면적에 대한 단위입니다.\n 해당 단위는 점차 ㎡ 로 대체되고 있습니다.';
+
+  static String didOpenLeftDrawer = '왼쪽서랍버튼을 열었습니다.';
+  static String didOpenRightDrawer = '오른쪽서랍버튼을 열었습니다.';
+
+  static String thisFunctionScheduleManagementService = '해당 기능은 반드시 확인하고 싶은 개인의 반복적인 일정을 작성해 두고 check를 함으로서 계획을 관리하는 습관을 기르도록 돕는 서비스를 제공합니다 \n\n';
 
   static String inLoading({String title = "해당기능"}) => "$title 을(를) 로딩 중입니다";
 }
@@ -414,7 +415,7 @@ class MySuperHelpers {
     SystemNavigator.pop(); //이 코드는 앱을 백그라운드에서 종료하고 시스템으로 돌아갑니다.
   }
 
-  // MyTool() {
+  // MyLogger() {
   // var logger = Logger();
   // var logger = Logger(printer: PrettyPrinter());
   // var loggerNoStack = Logger(printer: PrettyPrinter(methodCount: 0));
@@ -675,12 +676,9 @@ class MySuperHelpers {
       printWithoutWarning(result); //DEVELOPMENT
     }
     printWithoutWarning('__________________________________________________________________________________________________________________________ text control e');
-
     printWithoutWarning('__________________________________________________________________________________________________________________________ iterable nature number s');
     printWithoutWarning('naturalNumbers 사용 s');
     var naturalNumbers = IteralbleNatureNumbersMaker(endLimit: 100);
-    printWithoutWarning(naturalNumbers.next());
-    printWithoutWarning(naturalNumbers.next());
     printWithoutWarning(naturalNumbers.next());
     printWithoutWarning(naturalNumbers.next());
     printWithoutWarning(naturalNumbers.next());
@@ -733,7 +731,7 @@ class MySuperHelpers {
 //replaceAll 을 활용하면 될듯.
 }
 
-class CommonTextData {
+class OurTextData {
   static const String code0000 = "CODE_COMMON";
   static const String code1000 = "CODE_BIZMEKA";
   static const Map<String, dynamic> stamps = {
@@ -759,3 +757,222 @@ class CommonTextData {
     "종료": '종료',
   };
 }
+
+class OurColors {
+  static const black = Colors.black;
+  static final greenShade900 = Colors.green.shade900;
+  static final greenShade600 = Colors.green.shade600;
+  static final greenShade400 = Colors.green.shade400;
+  static const white = Colors.white;
+  static const lightGreenAccent = Colors.lightGreenAccent;
+}
+
+class OurTextStyles {
+  static const TextStyle titleTextStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 40,
+    fontFamily: 'sunFlower',
+    fontWeight: FontWeight.w700,
+  );
+}
+
+enum Regions {
+  daegu,
+  chungnam,
+  incheon,
+  daejeon,
+  gyeongbuk,
+  sejong,
+  gwangju,
+  jeonbuk,
+  gangwon,
+  ulsan,
+  jeonnam,
+  seoul,
+  busan,
+  jeju,
+  chungbuk,
+  gyeongnam,
+  dataTime,
+  dataGubun,
+  gyeonggi,
+  itemCode,
+}
+
+Map<Regions, String> ourRegions = {
+  Regions.daegu: '대구',
+  Regions.chungnam: '충남',
+  Regions.incheon: '인천',
+  Regions.daejeon: '대전',
+  Regions.gyeongbuk: '경북',
+  Regions.sejong: '세종',
+  Regions.gwangju: '광주',
+  Regions.jeonbuk: '전북',
+  Regions.gangwon: '강원',
+  Regions.ulsan: '울산',
+  Regions.jeonnam: '전남',
+  Regions.seoul: '서울',
+  Regions.busan: '부산',
+  Regions.jeju: '제주',
+  Regions.chungbuk: '충북',
+  Regions.gyeongnam: '경남',
+  Regions.gyeonggi: '경기',
+};
+
+class RefactoringModule202307152216 extends StatefulWidget {
+  late String txt;
+
+  late Widget destination;
+
+  RefactoringModule202307152216({required this.txt, required this.destination});
+
+  @override
+  State<RefactoringModule202307152216> createState() => _RefactoringModule202307152216State();
+}
+
+class _RefactoringModule202307152216State extends State<RefactoringModule202307152216> {
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => widget.destination));
+          },
+          child: SizedBox(
+            height: 50 - 17,
+            child: Column(
+              children: [
+                Transform.translate(
+                  offset: const Offset(0, 0 + 5),
+                  // child: const FlutterLogo(size: 30),
+                  child: const FlutterLogo(size: 30),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Text(
+          widget.txt,
+          style: TextStyle(color: Colors.grey.withOpacity(0.9), fontSize: 9, fontWeight: FontWeight.w600),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+}
+
+Future<void> alertHelper(BuildContext context, String something) async {
+  showDialog<String>(
+    barrierDismissible: true,
+    context: context,
+    builder: (BuildContext context) => Dialog(
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.7,
+        width: MediaQuery.of(context).size.height * 0.7,
+        color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(
+            // mainAxisSize: MainAxisSize.min,
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Icon(
+                Icons.bug_report,
+                color: Colors.red,
+                size: 20,
+              ),
+              const SizedBox(height: 15),
+              Text(something, style: const TextStyle(color: Colors.red)),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+class WificonnectingHelper {
+  Future<void> checkInternetConnection() async {
+    var result = await (Connectivity().checkConnectivity());
+    if (result == ConnectivityResult.none) {
+      throw const SocketException("인터넷 연결 상태를 확인해 주세요.");
+    }
+    if (result == ConnectivityResult.mobile) {
+      // I am connected to a mobile network. 모바일 데이터 사용
+    } else if (result == ConnectivityResult.wifi) {
+      // I am connected to a wifi network. 와이파이 사용
+    }
+  }
+}
+
+// class BluetoothConnectingHelper {
+//   final String SERVICE_UUID = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
+//   final String CHARACTERISTIC_UUID_RX = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
+//   final String CHARACTERISTIC_UUID_TX = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
+//   final String TARGET_DEVICE_NAME = "ESP32 TEST";
+//
+// //   late List<ScanResult> scanResult; // Bluetooth Device Scan List
+// //   late BluetoothDevice targetDevice;
+// //   late BluetoothCharacteristic targetCharacteristicRx;
+// //   late BluetoothCharacteristic targetCharacteristicTx;
+// //
+// // // Scan을 시작함. List에 넣기만 하는 함수.
+// //   Future<void> startScan() async {
+// //     print("Start Scan!");
+// //
+// //     // Start scanning 3초간 진행됨.
+// //     flutterBlue.startScan(timeout: const Duration(seconds:3), allowDuplicates: false);
+// //
+// //     // Scan이 시작되는 동안에 받는 listener 관련 액션을 수행함.
+// //     flutterBlue.scanResults.listen((results) {
+// //     },onError: (e) =>print(e)
+// //     ).onData((data) {print(data.length); scanResult=data;});
+// //     // Stop scanning
+// //     flutterBlue.stopScan();
+// //     Future.delayed(const Duration(seconds: 5) , (){scanDevice();});
+// //   }
+// //
+// // // Scan List에 있는 Device들 중, 내가 원하는 Device를 찾는 함수
+// //   Future<void> scanDevice() async {
+// //     for (ScanResult r in scanResult) {
+// //       if (r.device.name == TARGET_DEVICE_NAME)
+// //       {
+// //         print("Target : ${r.device.name} Found!");
+// //         if (!isConnected) {
+// //           targetDevice = r.device;
+// //           // Device Connect를 여기서 함.
+// //           await connectToDevice(targetDevice);
+// //         }
+// //       }
+// //     }
+// //   }
+//
+//   void checkBluetooth() {
+//     FlutterBlue flutterBlue = FlutterBlue.instance;
+//
+//     //장치검색
+//     // Start scanning
+//     flutterBlue.startScan(timeout: Duration(seconds: 4));
+//
+// // Listen to scan results
+//     var subscription = flutterBlue.scanResults.listen((results) {
+//       for (ScanResult r in results) {
+//         print('${r.device.name} found! rssi: ${r.rssi}');
+//       }
+//     });
+//
+//     // Stop scanning
+//     flutterBlue.stopScan();
+//
+//
+//     // Connect to the device
+//     await BluetoothDevice.connect();
+//
+//     // Disconnect from device
+//     BluetoothDevice.disconnect();
+//   }
+// }

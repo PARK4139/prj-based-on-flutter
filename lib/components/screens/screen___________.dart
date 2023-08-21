@@ -30,18 +30,7 @@ class _Screen___________State extends State<Screen___________> {
               ),
               child: ListView(
                 children: [
-
-
-
                   const NationalFlags(),
-
-
-
-
-
-
-
-
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
@@ -88,16 +77,8 @@ class _Screen___________State extends State<Screen___________> {
                               color: Colors.black,
                               width: 50,
                               child: Column(
-
-
                                 mainAxisAlignment: MainAxisAlignment.center,
-
-
-
-
-
                                 crossAxisAlignment: CrossAxisAlignment.center,
-
                                 children: [
                                   Expanded(flex: 1, child: Container(height: 50, width: 50, color: Colors.red)),
                                   Expanded(flex: 2, child: Container(height: 50, width: 50, color: Colors.orange)),
@@ -139,7 +120,6 @@ class _Screen___________State extends State<Screen___________> {
                       ),
                     ),
                   ),
-
                   MySeperators.withId(positionId: "202307221656"),
                   /*가로형 컨테이너*/ Container(
                     color: Colors.black,
@@ -196,7 +176,6 @@ class _Screen___________State extends State<Screen___________> {
                           ],
                         ),
                         Row(
-
                           children: [
                             Container(height: 25, width: 25, color: Colors.red),
                             Container(height: 25, width: 25, color: Colors.orange),
@@ -250,7 +229,6 @@ class _Screen___________State extends State<Screen___________> {
                             Container(height: 25, width: 25, color: Colors.purple),
                           ],
                         ),
-
                       ],
                     ),
                   ),
@@ -260,7 +238,6 @@ class _Screen___________State extends State<Screen___________> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -314,16 +291,13 @@ class _Screen___________State extends State<Screen___________> {
                         ),
                       ),
 
-
-
-
                       /*더블피니트 컨테이너*/ GestureDetector(
                         onTap: () => ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar),
                         child: Container(
                           color: Colors.red,
                           height: 30,
                           width: double.infinity,
-                          child: const Text("더블인피니트 버튼", style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                          child: const Text("더블인피니트 버튼", style: TextStyle(color: Colors.white), textAlign: TextAlign.center),
                         ),
                       ),
                       // const SizedBox(height: 50,child: Text("202307221654")),
@@ -344,7 +318,7 @@ class _Screen___________State extends State<Screen___________> {
 
                           /*미래에 실행할 코드*/
                           Future.delayed(const Duration(milliseconds: 2000), () {
-                            /*1000 milliseconds 후 실행할 코드*/ debugSomething("2초 경과했습니다");
+                            /*1000 milliseconds 후 실행할 코드*/ debugSomething("2초 경과했습니다", troubleShootingId: "20230811183943");
                           });
 
                           /*닫을 까요?*/
@@ -352,12 +326,14 @@ class _Screen___________State extends State<Screen___________> {
 
                           /*Auto Schedule 실행 버튼*/
                           showDialog(
+                            barrierDismissible: true,
                             context: context,
                             builder: (context) {
                               Future.delayed(const Duration(seconds: 5), () {
                                 Navigator.of(context).pop(true);
                               });
                               return const AlertDialog(
+                                backgroundColor: Colors.black,
                                 title: Text('빙빙'),
                               );
                             },
@@ -370,16 +346,19 @@ class _Screen___________State extends State<Screen___________> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  backgroundColor: Colors.white,
+                                  backgroundColor: Colors.black,
                                   title: const Icon(Icons.warning_outlined, color: Colors.orangeAccent),
-                                  content: const Text("당신 경고입니다.\n이번엔 봐줄게요"),
+                                  content: const Text(
+                                    "당신 경고입니다.\n이번엔 봐줄게요",
+                                    style: TextStyle(color: Colors.white70),
+                                  ),
                                   actions: <Widget>[
                                     TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                         // Navigator.of(context).pop();
                                       },
-                                      child:   Text(MyMents.yes),
+                                      child: Text(MyMents.yes),
                                     ),
                                   ],
                                 );
@@ -390,6 +369,7 @@ class _Screen___________State extends State<Screen___________> {
                           /*풀스크린다이얼로그*/
                           setState(() {
                             showDialog(
+                              barrierDismissible: true,
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
@@ -408,32 +388,16 @@ class _Screen___________State extends State<Screen___________> {
                               },
                             );
                           });
-                          /*경고팝업*/
-                          showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                              title: const Text('AlertDialog Title', style: TextStyle(color: Colors.white)),
-                              content: const Text('AlertDialog description', style: TextStyle(color: Colors.white)),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context, 'Cancel'),
-                                  child: const Text('Cancel', style: TextStyle(color: Colors.white)),
-                                ),
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context, 'OK'),
-                                  child: const Text('OK', style: TextStyle(color: Colors.white)),
-                                ),
-                              ],
-                            ),
-                          );
+
 
                           /*경고팝업*/
                           setState(() {
                             showDialog(
+                              barrierDismissible: true,
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  backgroundColor: Colors.white,
+                                  backgroundColor: Colors.black,
                                   title: const Icon(Icons.warning_outlined, color: Colors.orangeAccent),
                                   content: Text(MyMents.notReadyYet, style: const TextStyle(color: Colors.white)),
                                   actions: <Widget>[
@@ -457,6 +421,7 @@ class _Screen___________State extends State<Screen___________> {
                               useRootNavigator: false,
                               builder: (BuildContext context) {
                                 return AlertDialog(
+                                  backgroundColor: Colors.black,
                                   content: const Text('foo', style: TextStyle(color: Colors.white)),
                                   insetPadding: const EdgeInsets.fromLTRB(0, 80, 0, 80),
                                   actions: [
@@ -479,7 +444,7 @@ class _Screen___________State extends State<Screen___________> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  backgroundColor: Colors.white,
+                                  backgroundColor: Colors.black,
                                   title: const Icon(Icons.warning_outlined, color: Colors.orangeAccent),
                                   content: const Text("당신 경고입니다.\n이번엔 봐줄게요"),
                                   actions: <Widget>[
@@ -496,11 +461,37 @@ class _Screen___________State extends State<Screen___________> {
                             );
                           });
 
+                          /*경고팝업*/
+                          // setState(() {
+                          //   showDialog<String>(
+                          //     barrierDismissible: true,
+                          //     context: context,
+                          //     builder: (BuildContext context) => AlertDialog(
+                          //       backgroundColor: Colors.black,
+                          //       title: const Text('AlertDialog Title', style: TextStyle(color: Colors.white)),
+                          //       content: const Text('AlertDialog description', style: TextStyle(color: Colors.white)),
+                          //       actions: <Widget>[
+                          //         TextButton(
+                          //           onPressed: () => Navigator.pop(context, 'Cancel'),
+                          //           child: const Text('Cancel', style: TextStyle(color: Colors.white)),
+                          //         ),
+                          //         TextButton(
+                          //           onPressed: () => Navigator.pop(context, 'OK'),
+                          //           child: const Text('OK', style: TextStyle(color: Colors.white)),
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   );
+                          // });
+
+
                           /*양식제출*/
                           showDialog(
+                            barrierDismissible: true,
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
+                                backgroundColor: Colors.black,
                                 content: Stack(
                                   clipBehavior: Clip.none,
                                   children: <Widget>[
@@ -537,9 +528,10 @@ class _Screen___________State extends State<Screen___________> {
                                               onPressed: () {
                                                 showDialog<void>(
                                                   context: context,
-                                                  barrierDismissible: false, // user must tap button!
+                                                  barrierDismissible: true, //바깥영역 터치시 닫힘 셋팅
                                                   builder: (BuildContext context) {
                                                     return AlertDialog(
+                                                      backgroundColor: Colors.black,
                                                       title: const Text('경고'),
                                                       content: const SingleChildScrollView(
                                                         child: ListBody(
@@ -580,16 +572,17 @@ class _Screen___________State extends State<Screen___________> {
                             },
                           );
 
-                          /*양식제출*/
+                          /*양식제출20230813151429636*/
                           showDialog(
+                            barrierDismissible: true,
                             context: context,
                             builder: (BuildContext context) {
                               return Container(
                                 height: 10.0,
                                 width: 10.0,
-                                color: Colors.white,
+                                color: Colors.black12,
                                 child: const Center(
-                                  child: Text("?"),
+                                  child: Text("양식제출20230813151429636",style: TextStyle(color: Colors.white70),),
                                 ),
                               );
                             },
@@ -598,16 +591,16 @@ class _Screen___________State extends State<Screen___________> {
                           /*메테리얼배너*/
                           ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
 
-                          /*메테리얼배너*/
+                          /*메테리얼배너20230813151442385*/
                           ScaffoldMessenger.of(context).showMaterialBanner(
                             MaterialBanner(
-                              content: const Text('사랑해'),
+                              content: const Text('메테리얼배너20230813151442385'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
                                   },
-                                  child: const Text('확인'),
+                                  child: const Text('메테리얼배너20230813151442386'),
                                 ),
                               ],
                             ),
@@ -615,6 +608,7 @@ class _Screen___________State extends State<Screen___________> {
 
                           /*미니사이즈 다이얼로그팝업*/
                           showDialog<String>(
+                            barrierDismissible: true,
                             context: context,
                             builder: (BuildContext context) => Dialog(
                               child: Padding(
@@ -649,7 +643,7 @@ class _Screen___________State extends State<Screen___________> {
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: const Text('닫기'),
+                                  child: const Text(''),
                                 ),
                               ],
                             ),
@@ -658,7 +652,7 @@ class _Screen___________State extends State<Screen___________> {
                           /*사랑해*/
                           showDialog<void>(
                             context: context,
-                            barrierDismissible: false, // user must tap button!
+                            barrierDismissible: true,
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 backgroundColor: Colors.black,
@@ -672,7 +666,7 @@ class _Screen___________State extends State<Screen___________> {
                                 actions: <Widget>[
                                   TextButton(
                                     child: const Text(
-                                      '닫기',
+                                      '',
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     onPressed: () {
@@ -696,9 +690,9 @@ class _Screen___________State extends State<Screen___________> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
-                                      const Text('Modal BottomSheet'),
+                                      const Text('모달버텀시트'),
                                       TextButton(
-                                        child: const Text('Close BottomSheet'),
+                                        child: const Text(''),
                                         onPressed: () => Navigator.pop(context),
                                       ),
                                     ],
@@ -719,7 +713,7 @@ class _Screen___________State extends State<Screen___________> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
-                                      const Text('Modal BottomSheet'),
+                                      const Text('모달버텀시트'),
                                       TextButton(
                                         child: const Text('Close BottomSheet'),
                                         onPressed: () => Navigator.pop(context),
@@ -733,6 +727,7 @@ class _Screen___________State extends State<Screen___________> {
 
                           /*데이트피커*/
                           showDialog(
+                            barrierDismissible: true,
                             context: context,
                             builder: (context) => DatePickerDialog(
                               restorationId: 'date_picker_dialog',
@@ -766,6 +761,7 @@ class _Screen___________State extends State<Screen___________> {
 
                           /*경고팝업*/
                           showDialog<String>(
+                            barrierDismissible: true,
                             context: context,
                             builder: (BuildContext context) => Dialog.fullscreen(
                               backgroundColor: Colors.black,
@@ -779,7 +775,7 @@ class _Screen___________State extends State<Screen___________> {
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: const Text('닫기', style: TextStyle(color: Colors.white)),
+                                    child: const Text('', style: TextStyle(color: Colors.white)),
                                   ),
                                 ],
                               ),
@@ -788,6 +784,7 @@ class _Screen___________State extends State<Screen___________> {
 
                           /*경고팝업*/
                           showDialog<String>(
+                            barrierDismissible: true,
                             context: context,
                             builder: (BuildContext context) => Dialog(
                               backgroundColor: Colors.black,
@@ -803,7 +800,7 @@ class _Screen___________State extends State<Screen___________> {
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: const Text('닫기', style: TextStyle(color: Colors.white)),
+                                      child: const Text('', style: TextStyle(color: Colors.white)),
                                     ),
                                   ],
                                 ),
@@ -858,7 +855,6 @@ class _Screen___________State extends State<Screen___________> {
 
                       MySeperators.withId(positionId: "202307221656"),
 
-
                       /*TextButton*/ Container(
                         width: MediaQuery.of(context).size.width - 30,
                         height: 30,
@@ -899,10 +895,6 @@ class _Screen___________State extends State<Screen___________> {
                       //   ),
                       // ),
 
-
-
-
-
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
                         // height: MediaQuery.of(context).size.height,
@@ -910,40 +902,26 @@ class _Screen___________State extends State<Screen___________> {
                         child: GridView(
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, crossAxisSpacing: 5, mainAxisSpacing: 10),
                           children: <Widget>[
-
                             /*사진버튼*/
                             GestureDetector(
                               onTap: () {
                                 ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
                               },
-                              child: Center(child: SizedBox(height: 300/5, width: 200/5,child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover))),
+                              child: Center(child: SizedBox(height: 300 / 5, width: 200 / 5, child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover))),
                             ),
                             /*사진버튼*/
                             GestureDetector(
                               onTap: () {
                                 ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
                               },
-                              child: SizedBox(height: 300/5, width: 200/5, child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover)),
+                              child: SizedBox(height: 300 / 5, width: 200 / 5, child: Image.asset('asset/images/sky_best (1).jpg', fit: BoxFit.cover)),
                             ),
-                              /*아이콘버튼*/ GestureDetector(
+                            /*아이콘버튼*/ GestureDetector(
                               child: const Icon(Icons.question_mark, size: 40, color: Colors.pink),
                               onTap: () {
                                 ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
                               },
                             ),
-
-
-
-
-
-
-
-
-
-
-
-
-
                             /*버튼*/ FloatingActionButton(
                               mini: false,
                               backgroundColor: Colors.blue.shade900,
@@ -965,8 +943,6 @@ class _Screen___________State extends State<Screen___________> {
                                 border: Border.all(color: Colors.blue, width: 4),
                                 color: Colors.white,
                                 shape: BoxShape.circle,
-
-
                               ),
                               child: IconButton(
                                 iconSize: 56,
@@ -984,7 +960,6 @@ class _Screen___________State extends State<Screen___________> {
                                   color: Colors.white,
                                   // color: Colors.indigo[900],
                                   shape: BoxShape.circle,
-
                                 ),
                                 child: InkWell(
                                   borderRadius: BorderRadius.circular(1000.0),
@@ -1023,7 +998,7 @@ class _Screen___________State extends State<Screen___________> {
                                     const TextStyle(color: Colors.white, fontSize: 18),
                                   ),
                                   backgroundColor: MaterialStateProperty.resolveWith(
-                                        (Set<MaterialState> states) {
+                                    (Set<MaterialState> states) {
                                       if (states.contains(MaterialState.pressed)) {
                                         return Colors.red;
                                       } else if (states.contains(MaterialState.hovered)) {
@@ -1082,31 +1057,6 @@ class _Screen___________State extends State<Screen___________> {
                               height: 50,
                             ),
                             MySeperators.withId(positionId: "202307221656"),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                           ],
                         ),
                       )
@@ -1153,7 +1103,6 @@ class _ZebraStripeContainerState extends State<ZebraStripeContainer> {
   }
 }
 
-
 class NationalFlags extends StatefulWidget {
   const NationalFlags({super.key});
 
@@ -1190,16 +1139,18 @@ class _NationalFlagsState extends State<NationalFlags> {
 
   void renderFlags() {
     items = [
-      /*POLAND*/
-      ScreenNationalFlagModule(text: 'POLAND', item: StripedBoxHelper(colors: const [Colors.red, Colors.white], ratioX: 3, ratioY: 4, stripeCount: 2, isOppositeDirection: true)),
+      /*폴란드*/
+      ScreenNationalFlagModule(text: '폴란드', item: StripedBoxHelper(colors: const [Colors.red, Colors.white], ratioX: 3, ratioY: 4, stripeCount: 2, isOppositeDirection: true)),
       /*인도네시아*/
       ScreenNationalFlagModule(text: '인도네시아', item: StripedBoxHelper(colors: const [Colors.white, Colors.red], ratioX: 3, ratioY: 4, stripeCount: 2, isOppositeDirection: true)),
-      /*GERMANY*/
-      ScreenNationalFlagModule(text: 'GERMANY', item: ThreelinesBoxMaker(colors: const [Colors.black, Colors.red, Colors.yellow], ratioX: 3, ratioY: 4, isOppositeDirection: true)),
+      /*우크라이나*/
+      ScreenNationalFlagModule(text: '우크라이나', item: StripedBoxHelper(colors: const [Colors.blue, Colors.yellow], ratioX: 3, ratioY: 4, stripeCount: 2, isOppositeDirection: true)),
+      /*독일*/
+      ScreenNationalFlagModule(text: '독일', item: ThreelinesBoxMaker(colors: const [Colors.black, Colors.red, Colors.yellow], ratioX: 3, ratioY: 4, isOppositeDirection: true)),
       /*오스트리아*/
       ScreenNationalFlagModule(text: '오스트리아', item: ThreelinesBoxMaker(colors: const [Colors.red, Colors.white, Colors.red], ratioX: 3, ratioY: 4, isOppositeDirection: true)),
-      /*ITALIA*/
-      ScreenNationalFlagModule(text: 'ITALIA', item: ThreelinesBoxMaker(colors: const [Colors.green, Colors.white, Colors.red], ratioX: 3, ratioY: 4, isOppositeDirection: false)),
+      /*이탈리아*/
+      ScreenNationalFlagModule(text: '이탈리아', item: ThreelinesBoxMaker(colors: const [Colors.green, Colors.white, Colors.red], ratioX: 3, ratioY: 4, isOppositeDirection: false)),
       /*프랑스*/
       ScreenNationalFlagModule(text: '프랑스', item: ThreelinesBoxMaker(colors: [Colors.blue.shade900, Colors.white, Colors.red], ratioX: 3, ratioY: 4, isOppositeDirection: false)),
       /*KOREA*/
@@ -1208,14 +1159,15 @@ class _NationalFlagsState extends State<NationalFlags> {
         item: Column(
           children: [
             StripedBoxHelper(colors: const [Colors.white], ratioX: 3, ratioY: 4),
-            /*태극문양*/Column(
-              children: [ Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 0.3 + 0.3, child: SemiCircleMaker(diameter: 0.01, color: Colors.red)))),
+            /*태극문양*/ Column(
+              children: [
+                Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 0.3 + 0.3, child: SemiCircleMaker(diameter: 0.01, color: Colors.red)))),
                 Transform.translate(offset: const Offset(0, -1.4), child: Transform.scale(scale: 150, child: Transform.rotate(angle: 3.15 + 0.3 + 0.3, child: SemiCircleMaker(diameter: 0.01, color: Colors.blue.shade900)))),
                 Transform.translate(offset: const Offset(-0.31, -1.65), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxHelper(item: StripedBoxHelper(colors: const [Colors.red], ratioX: 0.01, ratioY: 0.01)))),
                 Transform.translate(offset: const Offset(0.31, -1.25), child: Transform.scale(scale: 150 / 1.9, child: CircleBoxHelper(item: StripedBoxHelper(colors: [Colors.blue.shade900], ratioX: 0.01, ratioY: 0.01)))),
               ],
             ),
-            /*건곤감이*/Transform.translate(
+            /*건(하늘)*/ Transform.translate(
               offset: const Offset(0.16, -1.36),
               child: Transform.rotate(
                 angle: -0.95,
@@ -1227,7 +1179,9 @@ class _NationalFlagsState extends State<NationalFlags> {
                   ],
                 ),
               ),
-            )
+            ),
+            /*곤감이*/
+            /*나중에 하자*/
           ],
         ),
       ),
@@ -1262,7 +1216,8 @@ class ScreenNationalFlagModule extends StatefulWidget {
 
   late Widget item;
 
-  ScreenNationalFlagModule({super.key,
+  ScreenNationalFlagModule({
+    super.key,
     required this.text,
     required this.item,
   });

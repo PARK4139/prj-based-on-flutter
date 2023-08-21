@@ -6,44 +6,27 @@ import 'main_text_contentents_box_maker.dart';
 import 'super_helper.dart';
 
 
-class MainContentMaker extends StatefulWidget {
-  String level1text;
-  Widget level1widget;
+class AccordionMaker extends StatefulWidget {
+  String title;
+  Widget leading;
 
   List<dynamic> level2items;
 
-   MainContentMaker({super.key, required this.level1widget, required this.level1text, required this.level2items});
+   AccordionMaker({super.key, required this.leading, required this.title, required this.level2items});
 
   @override
-  State<MainContentMaker> createState() => _MainContentMakerState();
+  State<AccordionMaker> createState() => _AccordionMakerState();
 
 
 }
 
-class _MainContentMakerState extends State<MainContentMaker> {
+class _AccordionMakerState extends State<AccordionMaker> {
 
-  late bool isDarkMode;
+
 
   bool isMainContentClicked = false;
 
 
-
-  @override
-  void initState() {
-    
-      super.initState();
-
-      /*로컬 스토리지 사용해서 상태 Read*/
-      // isDarkMode = context.findAncestorStateOfType<AppState>()!.isDarkMode;
-      
-      
-      BlocBuilder<MyAppStateCubit, MyAppState>(
-        builder: (context, MyAppState state) {
-          isDarkMode= state.isDarkMode ;
-          return Placeholder();
-        },
-      );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +38,7 @@ class _MainContentMakerState extends State<MainContentMaker> {
             toogleMainContentState();
           },
           child: Row(
-            children: [for (int i = 1; i < 5; i++) const SizedBox(width: 3), widget.level1widget, for (int i = 1; i < 4; i++) const SizedBox(width: 3), Text(widget.level1text, style: MyTextStyles.textStyle3)],
+            children: [for (int i = 1; i < 5; i++) const SizedBox(width: 3), widget.leading, for (int i = 1; i < 4; i++) const SizedBox(width: 3), Text(widget.title, style: MyTextStyles.textStyle3)],
           ),
         ),
         for (int i = 1; i < 2; i++) const SizedBox(height: 3),
