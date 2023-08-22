@@ -78,7 +78,7 @@ class Pm10 {
 
 class Pm10ApiService {
   static const String baseUrl = "https://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureLIst";
-  static String serviceKey = SecurityHelper.pm10ApiServiceServiceKeyDecoded;
+  static String serviceKey = SecurityHelper.pm10ApiKey;
   static const String etcApiSetting = ""
       "&returnType=json"
       "&numOfRows=30"
@@ -209,7 +209,7 @@ class Pm25 {
 
 class Pm25ApiService {
   static const String baseUrl = "https://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureLIst";
-  static String serviceKey = SecurityHelper.pm10ApiServiceServiceKeyDecoded;
+  static String serviceKey = SecurityHelper.pm10ApiKey;
   static const String etcApiSetting = ""
       "&returnType=json"
       "&numOfRows=30"

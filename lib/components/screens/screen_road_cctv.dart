@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -77,8 +78,29 @@ class _ScreenRoadCctvState extends State<ScreenRoadCctv> {
 
     // final DateTime now = DateTime.now();
     return Scaffold(
-
-      backgroundColor: _OurColors.black,
+      bottomNavigationBar: ConvexAppBar.badge(const {0: '99+', 1: 'New', 2: Colors.red},
+        style: TabStyle.flip,
+        // curveSize: 30,
+        // top: -50,
+        // height: 50,
+badgeColor: MyColors.orange,
+        backgroundColor: MyColors.black12,
+        color: MyColors.whiteWithOpacity40Percent,
+        activeColor: MyColors.white,
+        items: const [
+          TabItem(icon: Icons.home, title: '홈'),
+          TabItem(icon: Icons.map, title: '지도'),
+          TabItem(icon: Icons.add, title: '설정'),
+          TabItem(icon: Icons.add, title: '기타'),
+          TabItem(icon: Icons.message, title: '메시지'),
+          TabItem(icon: Icons.people, title: '프로필',),
+        ],
+        onTap: (int i) => debugSomething('click index=$i',troubleShootingId: "20230822020151"),
+      ),
+      // bottomNavigationBar: ConvexButton.fab(
+      //   onTap: () => setState(() => debugSomething('clicked',troubleShootingId: "20230822020152")),
+      // ),
+      backgroundColor: MyColors.black,
       body: FutureBuilder(
           future: Pm25ApiService.getPm25s(),
           builder: (context, snapshot2) {
@@ -112,10 +134,10 @@ class _ScreenRoadCctvState extends State<ScreenRoadCctv> {
                     }
                     return CustomScrollView(
                       slivers: [
-                        _OurSliverAppBar(snapshot.data!),
+                        MySliverAppBar(snapshot.data!),
                         const SliverToBoxAdapter(child: SizedBox(height: 30)), //같은 논리로 SizedBox(height: 5) 또한  SliverToBoxAdapter() 로 감싸 넣어야 가능하다
-                        _OurCard(
-                          title: "도로별 cctv",
+                        MyCard(
+                          title: "도로 cctv 관제",
                           cardContents: SizedBox(
                             height: 320,
                             child: LayoutBuilder(builder: (context, constraint) {
@@ -127,7 +149,7 @@ class _ScreenRoadCctvState extends State<ScreenRoadCctv> {
                                 scrollDirection: Axis.vertical,
                                 physics: const PageScrollPhysics(),
                                 children: [
-                                  for (int i = 0; i < snapshot.data!.length; i++) _OurMiniRow(time: snapshot.data![i].dataTime, imgPath: "${snapshot.data![i].seoul} ㎍/㎥", level: koreanStateMaker(int.parse(snapshot.data![i].seoul).toDouble()), height: constraint.maxHeight / 10 + 0.7),
+                                  for (int i = 0; i < snapshot.data!.length; i++) MyMiniRow(time: snapshot.data![i].dataTime, imgPath: "${snapshot.data![i].seoul} ㎍/㎥", level: koreanStateMaker(int.parse(snapshot.data![i].seoul).toDouble()), height: constraint.maxHeight / 10 + 0.7),
                                 ],
                               );
                             }),
@@ -144,9 +166,9 @@ class _ScreenRoadCctvState extends State<ScreenRoadCctv> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Center(child: Text(MyMents.inLoading(title: "공공데이터포털의 API를 통해\n 미세먼지 정보"), style: const TextStyle(color: _OurColors.white))),
+                        Center(child: Text(MyMents.inLoading(title: "공공데이터포털의 API를 통해\n 미세먼지 정보"), style: const TextStyle(color: MyColors.white))),
                         const SizedBox(height: 30),
-                        const Center(child: _OurLinearProgressIndicatorSimple()),
+                        const Center(child: MyLinearProgressIndicatorSimple()),
                       ],
                     ),
                   );
@@ -172,12 +194,12 @@ class _ScreenRoadCctvState extends State<ScreenRoadCctv> {
   }
 }
 
-class _OurCard extends StatelessWidget {
+class MyCard extends StatelessWidget {
   String title;
 
   dynamic cardContents;
 
-  _OurCard({required this.title, required this.cardContents});
+  MyCard({required this.title, required this.cardContents});
 
   @override
   Widget build(BuildContext context) {
@@ -193,13 +215,13 @@ class _OurCard extends StatelessWidget {
           ),
         ),
         color: MyColors.greyWithOpacity90Percent,
-        // color: _OurColors.white,//DEBUG CODE
+        // color: MyColors.white,//DEBUG CODE
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch, // Column() 에 crossAxisAlignment: CrossAxisAlignment.stretch, 코드를 사용하면 ListView() 와 유사한 느낌이 든다.
           children: [
             Container(
               decoration: const BoxDecoration(
-                color: _OurColors.darkColor,
+                color: MyColors.color0xff00675b,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(4.0),
                   topRight: Radius.circular(4.0),
@@ -207,7 +229,7 @@ class _OurCard extends StatelessWidget {
               ),
               child: Text(
                 title,
-                style: _OurTextStyles.titleTextStyle.copyWith(
+                style: MyTextStyles.sunFlower.copyWith(
                   fontSize: 20,
                 ),
                 textAlign: TextAlign.center,
@@ -221,41 +243,21 @@ class _OurCard extends StatelessWidget {
   }
 }
 
-class _OurColors {
-  static const primaryColors = Color(0xff009688);
-  static const darkColor = Color(0xff00675b);
-  static const lightColor = Color(0xff52c7b8);
-  static const white = Colors.white;
-  static const green = Colors.green;
-  static const grey = Colors.grey;
-  static const lightGreenAccent = Colors.lightGreenAccent;
-  static const black = Colors.black;
-}
-
-class _OurTextStyles {
-  static const TextStyle titleTextStyle = TextStyle(
-    color: Colors.white,
-    fontSize: 40,
-    fontFamily: 'sunFlower',
-    fontWeight: FontWeight.w700,
-  );
-}
-
-class _OurSliverAppBar extends StatefulWidget {
+class MySliverAppBar extends StatefulWidget {
   List<Pm10> snapShotData;
 
-  _OurSliverAppBar(this.snapShotData);
+  MySliverAppBar(this.snapShotData);
 
   @override
-  State<_OurSliverAppBar> createState() => _OurSliverAppBarState();
+  State<MySliverAppBar> createState() => _MySliverAppBarState();
 }
 
-class _OurSliverAppBarState extends State<_OurSliverAppBar> {
+class _MySliverAppBarState extends State<MySliverAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: _OurColors.primaryColors,
+      backgroundColor: MyColors.color0xff009688,
       /*앱바의 기본높이를 커스텀 설정*/ expandedHeight: 350,
       /*스크롤하면 사라질 공간*/ flexibleSpace: FlexibleSpaceBar(
         background: SafeArea(
@@ -280,7 +282,7 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text("${widget.snapShotData[i].dataTime} 선택 cctv 기준정보", style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20)),
+                      Text("${widget.snapShotData[i].dataTime} 선택 cctv 기준정보", style: MyTextStyles.sunFlower.copyWith(fontSize: 20)),
                       /*텍스트버튼*/ TextButton(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -306,7 +308,7 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
   }
 }
 
-class _OurMiniRow extends StatelessWidget {
+class MyMiniRow extends StatelessWidget {
   final String time;
   final String imgPath;
 
@@ -315,14 +317,14 @@ class _OurMiniRow extends StatelessWidget {
 
   double height;
 
-  _OurMiniRow({required this.time, required this.imgPath, required this.level, Key? key, required this.height}) : super(key: key);
+  MyMiniRow({required this.time, required this.imgPath, required this.level, Key? key, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
       child: Container(
-        color: _OurColors.lightColor,
+        color: MyColors.color0xff52c7b8,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -332,7 +334,7 @@ class _OurMiniRow extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 3 - 50 + 40,
                 child: Text(
                   time,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 13, color: Colors.black, fontWeight: FontWeight.w200),
+                  style: MyTextStyles.sunFlower.copyWith(fontSize: 13, color: Colors.black, fontWeight: FontWeight.w200),
                   textAlign: TextAlign.left,
                 ),
               ),
@@ -340,7 +342,7 @@ class _OurMiniRow extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 3 - 50,
                 child: Text(
                   imgPath,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
+                  style: MyTextStyles.sunFlower.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -348,7 +350,7 @@ class _OurMiniRow extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 3 - 50,
                 child: Text(
                   level,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
+                  style: MyTextStyles.sunFlower.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
                   textAlign: TextAlign.right,
                 ),
               ),
@@ -356,105 +358,6 @@ class _OurMiniRow extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _OurProgressIndicatorWithSwitch extends StatefulWidget {
-  const _OurProgressIndicatorWithSwitch();
-
-  @override
-  State<_OurProgressIndicatorWithSwitch> createState() => _OurProgressIndicatorWithSwitchState();
-}
-
-class _OurProgressIndicatorWithSwitchState extends State<_OurProgressIndicatorWithSwitch> with TickerProviderStateMixin {
-  late AnimationController controller;
-  bool determinate = false;
-
-  @override
-  void initState() {
-    controller = AnimationController(
-      /// [AnimationController]s can be created with `vsync: this` because of
-      /// [TickerProviderStateMixin].
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    )..addListener(() {
-        setState(() {});
-      });
-    controller.repeat();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        LinearProgressIndicator(
-          value: controller.value,
-          semanticsLabel: 'Linear progress indicator',
-        ),
-        Switch(
-          value: determinate,
-          onChanged: (bool value) {
-            setState(() {
-              determinate = value;
-              if (determinate) {
-                controller.stop();
-              } else {
-                controller
-                  ..forward(from: controller.value)
-                  ..repeat();
-              }
-            });
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class _OurLinearProgressIndicatorSimple extends StatefulWidget {
-  const _OurLinearProgressIndicatorSimple();
-
-  @override
-  State<_OurLinearProgressIndicatorSimple> createState() => _OurLinearProgressIndicatorSimpleState();
-}
-
-class _OurLinearProgressIndicatorSimpleState extends State<_OurLinearProgressIndicatorSimple> with TickerProviderStateMixin {
-  late AnimationController controller;
-
-  @override
-  void initState() {
-    controller = AnimationController(
-      /// [AnimationController]s can be created with `vsync: this` because of
-      /// [TickerProviderStateMixin].
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..addListener(() {
-        setState(() {});
-      });
-    controller.repeat(reverse: true);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return LinearProgressIndicator(
-      value: controller.value,
-      semanticsLabel: 'Linear progress indicator',
     );
   }
 }

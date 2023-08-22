@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../utils/super_helper.dart';
+
 class ScreenCommutationManagement extends StatefulWidget {
   const ScreenCommutationManagement({Key? key}) : super(key: key);
 
@@ -12,21 +14,21 @@ class ScreenCommutationManagement extends StatefulWidget {
 class _ScreenCommutationManagementState extends State<ScreenCommutationManagement> {
   GoogleMapController? mapController;
 
-  static const LatLng _YeouidolatLng = LatLng(37.5233273, 126.921252);
-  static const LatLng _SouthKoreaLatLng = LatLng(35.9078, 127.7669);
+  static const LatLng _yeouidolatLng = LatLng(37.5233273, 126.921252);
+  static const LatLng _southKoreaLatLng = LatLng(35.9078, 127.7669);
   static const LatLng checkableCircleLatLng = LatLng(37.4027, 126.9279);
   static const LatLng anyangLatLng = LatLng(37.4027, 126.9279);
-  static const CameraPosition _YeouidoCameraPosition = CameraPosition(bearing: 233, target: _YeouidolatLng, tilt: 0.0, zoom: 15);
-  static const CameraPosition _AnyangCameraPosition = CameraPosition(bearing: 192.8334901395799, target: anyangLatLng, tilt: 59.440717697143555, zoom: 19.151926040649414);
-  static const CameraPosition _SouthKoreaCameraPosition = CameraPosition(bearing: 0, target: _SouthKoreaLatLng, tilt: 0, zoom: 7);
+  static const CameraPosition _yeouidoCameraPosition = CameraPosition(bearing: 233, target: _yeouidolatLng, tilt: 0.0, zoom: 15);
+  static const CameraPosition _anyangCameraPosition = CameraPosition(bearing: 192.8334901395799, target: anyangLatLng, tilt: 59.440717697143555, zoom: 19.151926040649414);
+  static const CameraPosition _southKoreaCameraPosition = CameraPosition(bearing: 0, target: _southKoreaLatLng, tilt: 0, zoom: 7);
   static const CameraPosition _initialCameraPosition = CameraPosition(bearing: 0, target: checkableCircleLatLng, tilt: 0, zoom: 16);
   static const CameraPosition initialPosition = CameraPosition(bearing: 0, target: checkableCircleLatLng, tilt: 0, zoom: 16);
-  static final double okDistance = 100;
-  static final Circle checkableCircle = Circle(circleId: CircleId('withinDistanceCircle'), center: checkableCircleLatLng, fillColor: Colors.blue.withOpacity(0.5), radius: okDistance, strokeColor: Colors.blue, strokeWidth: 1);
-  static final Circle uncheckableCircle = Circle(circleId: CircleId('notWithinDistanceCircle'), center: checkableCircleLatLng, fillColor: Colors.red.withOpacity(0.5), radius: okDistance, strokeColor: Colors.red, strokeWidth: 1);
-  static final Circle checkedinCircle = Circle(circleId: CircleId('checkedinCircle'), center: checkableCircleLatLng, fillColor: Colors.green.withOpacity(0.5), radius: okDistance, strokeColor: Colors.green, strokeWidth: 1);
+  static const double okDistance = 100;
+  static final Circle checkableCircle = Circle(circleId: const CircleId('withinDistanceCircle'), center: checkableCircleLatLng, fillColor: Colors.blue.withOpacity(0.5), radius: okDistance, strokeColor: Colors.blue, strokeWidth: 1);
+  static final Circle uncheckableCircle = Circle(circleId: const CircleId('notWithinDistanceCircle'), center: checkableCircleLatLng, fillColor: Colors.red.withOpacity(0.5), radius: okDistance, strokeColor: Colors.red, strokeWidth: 1);
+  static final Circle checkedinCircle = Circle(circleId: const CircleId('checkedinCircle'), center: checkableCircleLatLng, fillColor: Colors.green.withOpacity(0.5), radius: okDistance, strokeColor: Colors.green, strokeWidth: 1);
   static final Circle checkedOutCircle = Circle(circleId: const CircleId('checkedOutCircle'), center: checkableCircleLatLng, fillColor: Colors.white.withOpacity(0.5), radius: okDistance, strokeColor: Colors.white, strokeWidth: 1);
-  static final Marker marker = Marker(markerId: MarkerId('marker'), position: checkableCircleLatLng);
+  static const Marker marker = Marker(markerId: MarkerId('marker'), position: checkableCircleLatLng);
 
   final List<MapType> mapTypes = [
     MapType.normal, //심플 지도
@@ -38,11 +40,9 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
   late int currentIndex;
 
   bool isClientLocationServiceAndLocationPermissionAllowed = false;
-
-  bool IsClientCheckedIn = false;
-  bool IsClientCheckedOut = false;
-
-  var isWithinChecableRange;
+  bool isClientCheckedIn = false;
+  bool isClientCheckedOut = false;
+  late bool isWithinChecableRange;
 
   @override
   void initState() {
@@ -59,11 +59,11 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
 
           mapController!.animateCamera(CameraUpdate.newLatLng(LatLng(gps.latitude, gps.longitude)));
         },
+        backgroundColor: Colors.white,
         child: Icon(
           Icons.my_location,
           color: Colors.blue.shade900,
         ),
-        backgroundColor: Colors.white,
       ),
       drawer: Drawer(
         backgroundColor: Colors.black.withOpacity(0.3),
@@ -84,7 +84,10 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               /*위치권한허용버튼*/ GestureDetector(
-                onTap: _determinePositionPermission,
+                onTap: (){
+                  determineUserLocationUsingPermission();
+
+                },
                 child: Container(
                   height: 30,
                   width: 130,
@@ -202,7 +205,7 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
       extendBodyBehindAppBar: true,
       //앱바 배경 반투명 설정
       body: FutureBuilder<String>(
-        future: _determineLocationPermission(), //FutureBuilder() 의 future 에는 future 를 return하는 함수를 바인딩 해야합니다.
+        future: determineLocationPermission(), //FutureBuilder() 의 future 에는 future 를 return하는 함수를 바인딩 해야합니다.
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           /*클라이언트 위치사용불허 루틴(ConnectionState.deniedForever) 의 경우 이 루틴을 벗어나기 위해서는 사용자가 앱을 재설치를 해야함.*/
           if (!snapshot.hasData) {
@@ -215,7 +218,8 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
             return StreamBuilder<Position>(
               stream: Geolocator.getPositionStream(), //현재위치가 바뀌는 이벤트를 수신하여 동작한다. 이게 StreamBuilder() 을 사용하는 큰이유이지 않을 까 싶다
               builder: (context, snapshot) {
-                bool isWithinChecableRange = false;
+                // bool isWithinChecableRange = false;
+                isWithinChecableRange = false;
                 /*파랑서클 내에 있는지 빨간서클 내에 있는지 비교*/
                 if (snapshot.hasData) {
                   final start = snapshot.data!;
@@ -239,9 +243,9 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
                     // SizedBox(height: MediaQuery.of(context).padding.top + kToolbarHeight), //appBar 높이 만큼을 빈공간을 넣는다.
                     _MyGoogleMap(
                       initialPosition: initialPosition,
-                      circle: IsClientCheckedOut
+                      circle: isClientCheckedOut
                           ? checkedOutCircle
-                          : IsClientCheckedIn
+                          : isClientCheckedIn
                               ? checkedinCircle
                               : isWithinChecableRange
                                   ? checkableCircle
@@ -282,7 +286,7 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
                         ),
                       ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                    /*출근*/ if (!IsClientCheckedIn && isWithinChecableRange)
+                    /*출근*/ if (!isClientCheckedIn && isWithinChecableRange)
                       GestureDetector(
                         onTap: () {
                           onCheckInButtonPressed(isWithinChecableRange: isWithinChecableRange);
@@ -326,13 +330,13 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
                         }),
                       ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                    /*퇴근*/ if (!IsClientCheckedOut && isWithinChecableRange)
+                    /*퇴근*/ if (!isClientCheckedOut && isWithinChecableRange)
                       GestureDetector(
                         onTap: () {
                           onCheckOutButtonPressed(isWithinChecableRange: isWithinChecableRange);
                         },
                         child: Builder(builder: (context) {
-                          final Color stateColor = IsClientCheckedOut
+                          final Color stateColor = isClientCheckedOut
                               ? Colors.green
                               : isWithinChecableRange
                                   ? Colors.blue.shade900
@@ -381,7 +385,8 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
       barrierDismissible: true,
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog( backgroundColor: Colors.black,
+        return AlertDialog(
+          backgroundColor: Colors.black,
           title: Icon(
             Icons.info_outlined,
             color: Colors.blue.shade900,
@@ -400,7 +405,7 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
                 if (isWithinChecableRange == true) {
                   // DB 에 insert 되도록 추가 작업필요
                   setState(() {
-                    IsClientCheckedIn = true;
+                    isClientCheckedIn = true;
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 2000), content: Text('출근처리 되었습니다.')));
                   });
                 } else {
@@ -416,10 +421,12 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
   }
 
   onCheckOutButtonPressed({required bool isWithinChecableRange}) async {
-    final clientAnswer = await showDialog(      barrierDismissible: true,
+    final clientAnswer = await showDialog(
+        barrierDismissible: true,
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog( backgroundColor: Colors.black,
+          return AlertDialog(
+            backgroundColor: Colors.black,
             title: Icon(
               Icons.info_outlined,
               color: Colors.blue.shade900,
@@ -435,12 +442,12 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(true);
-                  if (IsClientCheckedIn == false) {
+                  if (isClientCheckedIn == false) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 2000), content: Text('출근처리를 하셔야 퇴근처리가 가능합니다.\n출근처리를 수행해주세요.')));
                   } else {
                     if (isWithinChecableRange == true) {
                       setState(() {
-                        IsClientCheckedOut = true;
+                        isClientCheckedOut = true;
                       });
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration: Duration(milliseconds: 2000), content: Text('퇴근처리 되었습니다.')));
                     } else {
@@ -455,7 +462,7 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
         });
   }
 
-  Future<String> _determineLocationPermission() async {
+  Future<String> determineLocationPermission() async {
     final isLocationEnabled = await Geolocator.isLocationServiceEnabled();
 
     if (!isLocationEnabled) {
@@ -501,122 +508,86 @@ class _ScreenCommutationManagementState extends State<ScreenCommutationManagemen
     });
   }
 
-  Future<Position> _determinePositionPermission() async {
-    bool serviceEnabled;
-    LocationPermission permission;
+  // Future<Position> _determinePosition() async {
+  //   bool serviceEnabled;
+  //   LocationPermission permission;
+  //
+  //   // Test if location services are enabled.
+  //   serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  //   if (!serviceEnabled) {
+  //     // Location services are not enabled don't continue
+  //     // accessing the position and request users of the
+  //     // App to enable the location services.
+  //     return Future.error('Location services are disabled.');
+  //   }
+  //
+  //   permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied) {
+  //     permission = await Geolocator.requestPermission();
+  //     if (permission == LocationPermission.denied) {
+  //       // Permissions are denied, next time you could try
+  //       // requesting permissions again (this is also where
+  //       // Android's shouldShowRequestPermissionRationale
+  //       // returned true. According to Android guidelines
+  //       // your App should show an explanatory UI now.
+  //       return Future.error('Location permissions are denied');
+  //     }
+  //   }
+  //
+  //   if (permission == LocationPermission.deniedForever) {
+  //     // Permissions are denied forever, handle appropriately.
+  //     return Future.error('Location permissions are permanently denied, we cannot request permissions.');
+  //   }
+  //
+  //   // When we reach here, permissions are granted and we can
+  //   // continue accessing the position of the device.
+  //   return await Geolocator.getCurrentPosition();
+  // }
 
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-      return Future.error('_________________________________ Location services are disabled._________________________________');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        return Future.error('_________________________________ Location permissions are denied _________________________________ ');
-      }
-    }
-    if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error('_________________________________ Location permissions are permanently denied, we cannot request permissions. _________________________________ ');
-    }
-
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    print("_________________________________ location permissions are granted _________________________________");
-    return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  }
-
-  Future<Position> _determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-      return Future.error('Location services are disabled.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error('Location permissions are permanently denied, we cannot request permissions.');
-    }
-
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
-  }
-
-  Future<String> checkLocationPermisstion() async {
-    //위치권한
-    final isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled(); //모바일 시스템 상에서 하로 스와이핑 시 아이콘과 연등되는 것으로 생각하면 된다.
-    if (!isLocationServiceEnabled) {
-      return _MyMents.pleaseMakeLocationServiceAble;
-    }
-    LocationPermission locationPermission = await Geolocator.checkPermission(); //현재 앱의 위치서비스 권한
-    if (locationPermission == LocationPermission.denied) {
-      locationPermission = await Geolocator.requestPermission();
-
-      if (locationPermission == LocationPermission.denied) {
-        return _MyMents.pleaseDetermineLocationPermission;
-      }
-    }
-
-    if (locationPermission == LocationPermission.deniedForever) {
-      return _MyMents.pleaseDetermineLocationPermissionAtSetting;
-    }
-
-    return _MyMents.LocationPermissionsIsGranted;
-  }
+  // Future<String> checkLocationPermisstion() async {
+  //   //위치권한
+  //   final isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled(); //모바일 시스템 상에서 하로 스와이핑 시 아이콘과 연등되는 것으로 생각하면 된다.
+  //   if (!isLocationServiceEnabled) {
+  //     return _MyMents.pleaseMakeLocationServiceAble;
+  //   }
+  //   LocationPermission locationPermission = await Geolocator.checkPermission(); //현재 앱의 위치서비스 권한
+  //   if (locationPermission == LocationPermission.denied) {
+  //     locationPermission = await Geolocator.requestPermission();
+  //
+  //     if (locationPermission == LocationPermission.denied) {
+  //       return _MyMents.pleaseDetermineLocationPermission;
+  //     }
+  //   }
+  //
+  //   if (locationPermission == LocationPermission.deniedForever) {
+  //     return _MyMents.pleaseDetermineLocationPermissionAtSetting;
+  //   }
+  //
+  //   return _MyMents.LocationPermissionsIsGranted;
+  // }
 }
 
-Future<String> checkPermisstion() async {
-  //위치권한
-  final isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled(); //모바일 시스템 상에서 하로 스와이핑 시 아이콘과 연등되는 것으로 생각하면 된다.
-  if (!isLocationServiceEnabled) {
-    return _MyMents.pleaseMakeLocationServiceAble;
-  }
-  LocationPermission locationPermission = await Geolocator.checkPermission(); //현재 앱의 위치서비스 권한
-  if (locationPermission == LocationPermission.denied) {
-    locationPermission = await Geolocator.requestPermission();
-
-    if (locationPermission == LocationPermission.denied) {
-      return _MyMents.pleaseDetermineLocationPermission;
-    }
-  }
-
-  if (locationPermission == LocationPermission.deniedForever) {
-    return _MyMents.pleaseDetermineLocationPermissionAtSetting;
-  }
-
-  return _MyMents.LocationPermissionsIsGranted;
-}
+// Future<String> checkPermisstion() async {
+//   //위치권한
+//   final isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled(); //모바일 시스템 상에서 하로 스와이핑 시 아이콘과 연등되는 것으로 생각하면 된다.
+//   if (!isLocationServiceEnabled) {
+//     return _MyMents.pleaseMakeLocationServiceAble;
+//   }
+//   LocationPermission locationPermission = await Geolocator.checkPermission(); //현재 앱의 위치서비스 권한
+//   if (locationPermission == LocationPermission.denied) {
+//     locationPermission = await Geolocator.requestPermission();
+//
+//     if (locationPermission == LocationPermission.denied) {
+//       return _MyMents.pleaseDetermineLocationPermission;
+//     }
+//   }
+//
+//   if (locationPermission == LocationPermission.deniedForever) {
+//     return _MyMents.pleaseDetermineLocationPermissionAtSetting;
+//   }
+//
+//   return _MyMents.LocationPermissionsIsGranted;
+// }
 
 class _MyCircleId {
   static String commutingCheckableCircle = "commutingCheckableCircle";

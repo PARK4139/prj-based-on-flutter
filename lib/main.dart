@@ -10,12 +10,12 @@ import 'package:prj_app_mvp/components/screens/screen_index_colorful.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_bloc_with_qubit/ScreenBlocWithQubitTest.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_getx/ScreenGetxTest.dart';
 import 'package:prj_app_mvp/tests/test_communication_between_wigets/via_navigator_push_feat_list/screen_comunicator1.dart';
-import 'package:prj_app_mvp/utils/rainbow_icon_maker.dart';
 import 'package:prj_app_mvp/utils/super_helper.dart';
 
 import 'components/screens/screen___________.dart';
 import 'components/screens/screen_animated_align.dart';
 import 'components/screens/screen_animated_position.dart';
+import 'components/screens/screen_apis_test.dart';
 import 'components/screens/screen_area_calculator.dart';
 import 'components/screens/screen_by_arbor_day.dart';
 import 'components/screens/screen_by_drontal_supply_date.dart';
@@ -28,7 +28,6 @@ import 'components/screens/screen_focus_node_moving.dart';
 import 'components/screens/screen_future_builder.dart';
 import 'components/screens/screen_hello_world.dart';
 import 'components/screens/screen_image_network_test.dart';
-import 'components/screens/screen_index_blue.dart';
 import 'components/screens/screen_left_days_by_2024.dart';
 import 'components/screens/screen_page_view.dart';
 import 'components/screens/screen_practice_api_connection.dart';
@@ -130,12 +129,13 @@ class _AppStateSubState extends State<AppStateSub> {
       RefactoringModule202307152216(txt: '\nStream Builder \ntest', destination: const ScreenStreamBuilder()),
       RefactoringModule202307152216(txt: '\nGetX \ntest', destination: const ScreenGetxTest()),
       RefactoringModule202307152216(txt: '\nBloC/cubit \ntest', destination: ScreenBlocWithQubitTest()),
-      RefactoringModule202307152216(txt: '${MyMents.helloWorld} \ntest\n', destination: const ScreenPracticeHelloWorld()),
+      RefactoringModule202307152216(txt: '${MyMents.helloWorld} \ntest\n', destination: const ScreenHelloWorld()),
       RefactoringModule202307152216(txt: '\nSplash \ntest\n', destination: const ScreenSplash123()),
       RefactoringModule202307152216(txt: '\nAlign \n animation \ntest', destination: const ScreenPracticeAnimatedAlign()),
       RefactoringModule202307152216(txt: '\nPosition\n & Scale \ntest', destination: const ScreenAnimatedPositionAndScale()),
-      RefactoringModule202307152216(txt: '\nscroll position \ntest', destination:   ScreenScrollPositionControl()),
-      RefactoringModule202307152216(txt: '\nfocus node \ntest', destination:   const ScreenFocusNodeMovingTest()),
+      RefactoringModule202307152216(txt: '\nscroll position \ntest', destination: ScreenScrollPositionControl()),
+      RefactoringModule202307152216(txt: '\nfocus node \ntest', destination: const ScreenFocusNodeMovingTest()),
+      RefactoringModule202307152216(txt: '\napis\ntest', destination: const ScreenApisTest()),
     ];
     toDoDrawerItems = [
       RefactoringModule202307152216(txt: '\n시계\n', destination: const ScreenClock()),
@@ -256,6 +256,7 @@ class _AppStateSubState extends State<AppStateSub> {
     isDevelopmentConcentrationMode = true; /*false*/ /*true*/
   }
 
+  // LocalStorage() 를 사용한 cashing
   // void initIsDevelopingModeIntoLocalStorage() {
   // localStorage = LocalStorage('foo.foo');
   // if (localStorage.getItem('isDarkMode') == null) {
@@ -333,15 +334,15 @@ class MyAppState {
   bool isDarkMode;
   List<Movie>? movies;
 
-  AutoManagerableIdMaker autoIds=AutoManagerableIdMaker();
+  AutoIdHelper autoIds = AutoIdHelper();
 
   // DUMMY DATA
   List<CarrotUserCardInfos> carrotUserCardInfosDummy = [
     for (var naturalNumber in naturalNumbersMaker(0, 10))
       CarrotUserCardInfos.fromMap({
         'userItemImgUrl': MyUrls.networkImageTest,
-        'itemCategory': ['반려식물', '반려동물', '가구'][Random().nextInt(['반려식물', '반려동물', '가구'].length   )],
-        'userLocation': ['안양시 동안구 석수동', '서울특별시', '군포시 산본동'][Random().nextInt( ['안양시 동안구 석수동', '서울특별시', '군포시 산본동'].length)],
+        'itemCategory': ['반려식물', '반려동물', '가구'][Random().nextInt(['반려식물', '반려동물', '가구'].length)],
+        'userLocation': ['안양시 동안구 석수동', '서울특별시', '군포시 산본동'][Random().nextInt(['안양시 동안구 석수동', '서울특별시', '군포시 산본동'].length)],
         'userUploadingTime': naturalNumbersMaker(0, 59).map((e) => '$e분 전').toList()[Random().nextInt(naturalNumbersMaker(0, 59).length)],
         'itemPrice': Random().nextInt(180000),
         'heartCount': Random().nextInt(12),
@@ -355,41 +356,41 @@ class MyAppState {
       'title': '사랑의 불시착',
       'kind': '사랑/로맨스/판타지',
       'imgUrl': MyUrls.networkImageTest,
-      'like': [false,true][Random().nextInt(1)],
+      'like': [false, true][Random().nextInt(1)],
     }),
     Movie.fromMap({
       'title': '보헤미안 랩소디',
       'kind': '음악/드라마/인물',
       'imgUrl': MyUrls.networkImageTest,
-      'like': [false,true][Random().nextInt(1)],
+      'like': [false, true][Random().nextInt(1)],
     }),
     Movie.fromMap({
       'title': '안녕, 모니카',
       'kind': '가슴 뭉클/로맨스/코미디/금지된 사랑/정반대 캐릭터',
       'imgUrl': MyUrls.networkImageTest,
-      'like': [false,true][Random().nextInt(1)],
+      'like': [false, true][Random().nextInt(1)],
     }),
     Movie.fromMap({
       'title': '포레스트 검프',
       'kind': '드라마/외국',
       'imgUrl': MyUrls.networkImageTest,
-      'like': [false,true][Random().nextInt(1)],
+      'like': [false, true][Random().nextInt(1)],
     }),
     Movie.fromMap({
       'title': '쇼생크 탈출',
       'kind': '추리/반전/서스펜스',
       'imgUrl': MyUrls.networkImageTest,
-      'like': [false,true][Random().nextInt(1)],
+      'like': [false, true][Random().nextInt(1)],
     }),
     Movie.fromMap({
       'title': '라이언 일병 구하기',
       'kind': '드라마/전쟁/역사',
       'imgUrl': MyUrls.networkImageTest,
-      'like': [false,true][Random().nextInt(1)],
+      'like': [false, true][Random().nextInt(1)],
     }),
   ];
 
-  Map<String, dynamic> multiCaseMakerState= {};
+  Map<String, dynamic> multiCaseMakerState = {};
 
   MyAppState({this.isDarkMode = true, this.movies});
 }
@@ -461,7 +462,7 @@ class _ExperimentsDrawerState extends State<_ExperimentsDrawer> {
               child: Text(
                 textAlign: TextAlign.center,
                 "Experimental Screens",
-                style: OurTextStyles.titleTextStyle.copyWith(fontSize: 16.0, color: MyColors.black12),
+                style: MyTextStyles.sunFlower.copyWith(fontSize: 16.0, color: MyColors.black12),
               ),
             ),
           ),
@@ -480,14 +481,14 @@ class _ExperimentsDrawerState extends State<_ExperimentsDrawer> {
                       ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
                     },
                     title: widget.leftDrawerItems[index],
-                    tileColor: OurColors.greenShade400,
-                    focusColor: OurColors.lightGreenAccent,
-                    hoverColor: OurColors.lightGreenAccent,
+                    tileColor: MyColors.greenShade400,
+                    focusColor: MyColors.lightGreenAccent,
+                    hoverColor: MyColors.lightGreenAccent,
                     /*타일 셀렉트 상태*/
                     selected: isSelected ? true : false,
                     // selected: true,
-                    selectedTileColor: OurColors.greenShade400,
-                    selectedColor: OurColors.black,
+                    selectedTileColor: MyColors.greenShade400,
+                    selectedColor: MyColors.black,
                   );
                 }),
           ),
@@ -547,7 +548,7 @@ class _ToDoDrawerState extends State<_ToDoDrawer> {
                 child: Text(
                   textAlign: TextAlign.center,
                   "TO DO(손볼것)",
-                  style: OurTextStyles.titleTextStyle.copyWith(fontSize: 16.0, color: MyColors.lightBlueShade50),
+                  style: MyTextStyles.sunFlower.copyWith(fontSize: 16.0, color: MyColors.lightBlueShade50),
                 ),
               ),
             ),
@@ -566,14 +567,14 @@ class _ToDoDrawerState extends State<_ToDoDrawer> {
                         ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar);
                       },
                       title: widget.rightDrawerItems[index],
-                      tileColor: OurColors.greenShade400,
-                      focusColor: OurColors.lightGreenAccent,
-                      hoverColor: OurColors.lightGreenAccent,
+                      tileColor: MyColors.greenShade400,
+                      focusColor: MyColors.lightGreenAccent,
+                      hoverColor: MyColors.lightGreenAccent,
                       /*타일 셀렉트 상태*/
                       selected: isSelected ? true : false,
                       // selected: true,
-                      selectedTileColor: OurColors.greenShade400,
-                      selectedColor: OurColors.black,
+                      selectedTileColor: MyColors.greenShade400,
+                      selectedColor: MyColors.black,
                     );
                   }),
             ),

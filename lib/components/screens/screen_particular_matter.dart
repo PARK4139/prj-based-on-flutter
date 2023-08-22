@@ -77,7 +77,7 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
 
     // final DateTime now = DateTime.now();
     return Scaffold(
-      backgroundColor: _OurColors.primaryColors,
+      backgroundColor: MyColors.color0xff009688,
       body: FutureBuilder(
           future: Pm25ApiService.getPm25s(),
           builder: (context, snapshot2) {
@@ -112,8 +112,8 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                     return CustomScrollView(
                       slivers: [
                         // slivers: [] 에는 sliver 의 형태인 wiget만 들어갈 수 있는데, 아닌 위젯을 들어가게 하려면 SliverToBoxAdapter() 로 감싸 넣을 수 있다.
-                        _OurSliverAppBar(snapshot.data!),
-                        _OurCard(
+                        MySliverAppBar(snapshot.data!),
+                        MyCard(
                           title: "종류별 통계",
                           cardContents: SizedBox(
                             height: 150,
@@ -123,8 +123,8 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                                   scrollDirection: Axis.horizontal,
                                   physics: const PageScrollPhysics(),
                                   children: [
-                                    _OurMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 2),
-                                    _OurMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 2),
+                                    MyMiniColumn(category: "미세먼지", level: pm10Level, stat: '$pm10Value㎍/㎥', width: constraint.maxWidth / 2),
+                                    MyMiniColumn(category: "초미세먼지", level: pm25Level, stat: '$pm25Value㎍/㎥', width: constraint.maxWidth / 2),
                                   ],
                                 );
                               });
@@ -154,7 +154,7 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                         //                   ),
                         //                   child: Text(
                         //                     "시간별 미세먼지",
-                        //                     style: _TextStyles.titleTextStyle.copyWith(
+                        //                     style: _TextStyles.sunFlower.copyWith(
                         //                       fontSize: 20,
                         //                     ),
                         //                     textAlign: TextAlign.center,
@@ -170,7 +170,7 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                         //   ),
                         // ),
                         const SliverToBoxAdapter(child: SizedBox(height: 30)),
-                        _OurCard(
+                        MyCard(
                           title: "시간별 미세먼지",
                           cardContents: SizedBox(
                             height: 320,
@@ -183,7 +183,7 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                                 scrollDirection: Axis.vertical,
                                 physics: const PageScrollPhysics(),
                                 children: [
-                                  for (int i = 0; i < snapshot.data!.length; i++) _OurMiniRow(time: snapshot.data![i].dataTime, imgPath: "${snapshot.data![i].seoul} ㎍/㎥", level: koreanStateMaker(int.parse(snapshot.data![i].seoul).toDouble()), height: constraint.maxHeight / 10 + 0.7),
+                                  for (int i = 0; i < snapshot.data!.length; i++) MyMiniRow(time: snapshot.data![i].dataTime, imgPath: "${snapshot.data![i].seoul} ㎍/㎥", level: koreanStateMaker(int.parse(snapshot.data![i].seoul).toDouble()), height: constraint.maxHeight / 10 + 0.7),
                                 ],
                               );
                             }),
@@ -200,15 +200,15 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Center(child: Text(MyMents.inLoading(title: "공공데이터포털의 API를 통해\n 미세먼지 정보"), style: const TextStyle(color: _OurColors.white))),
+                        Center(child: Text(MyMents.inLoading(title: "공공데이터포털의 API를 통해\n 미세먼지 정보"), style: const TextStyle(color: MyColors.white))),
                         const SizedBox(height: 30),
-                        const Center(child: _OurLinearProgressIndicatorSimple()),
+                        const Center(child: MyLinearProgressIndicatorSimple()),
                       ],
                     ),
                   );
                 });
           }),
-      drawer: const _OurDrawer(),
+      drawer: const MyDrawer(),
     );
   }
 
@@ -229,12 +229,12 @@ class _ScreenParticularMatterState extends State<ScreenParticularMatter> {
   }
 }
 
-class _OurCard extends StatelessWidget {
+class MyCard extends StatelessWidget {
   String title;
 
   dynamic cardContents;
 
-  _OurCard({required this.title, required this.cardContents});
+  MyCard({required this.title, required this.cardContents});
 
   @override
   Widget build(BuildContext context) {
@@ -249,14 +249,14 @@ class _OurCard extends StatelessWidget {
             bottomRight: Radius.circular(4.0),
           ),
         ),
-        color: _OurColors.lightColor,
+        color: MyColors.color0xff52c7b8,
         // color: _OurColors.white,//DEBUG CODE
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch, // Column() 에 crossAxisAlignment: CrossAxisAlignment.stretch, 코드를 사용하면 ListView() 와 유사한 느낌이 든다.
           children: [
             Container(
               decoration: const BoxDecoration(
-                color: _OurColors.darkColor,
+                color: MyColors.color0xff00675b,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(4.0),
                   topRight: Radius.circular(4.0),
@@ -264,7 +264,7 @@ class _OurCard extends StatelessWidget {
               ),
               child: Text(
                 title,
-                style: _OurTextStyles.titleTextStyle.copyWith(
+                style: MyTextStyles.sunFlower.copyWith(
                   fontSize: 20,
                 ),
                 textAlign: TextAlign.center,
@@ -278,40 +278,21 @@ class _OurCard extends StatelessWidget {
   }
 }
 
-class _OurColors {
-  static const primaryColors = Color(0xff009688);
-  static const darkColor = Color(0xff00675b);
-  static const lightColor = Color(0xff52c7b8);
-  static const white = Colors.white;
-  static const green = Colors.green;
-  static const lightGreenAccent = Colors.lightGreenAccent;
-  static const black = Colors.black;
-}
-
-class _OurTextStyles {
-  static const TextStyle titleTextStyle = TextStyle(
-    color: Colors.white,
-    fontSize: 40,
-    fontFamily: 'sunFlower',
-    fontWeight: FontWeight.w700,
-  );
-}
-
-class _OurSliverAppBar extends StatefulWidget {
+class MySliverAppBar extends StatefulWidget {
   List<Pm10> snapShotData;
 
-  _OurSliverAppBar(this.snapShotData);
+  MySliverAppBar(this.snapShotData);
 
   @override
-  State<_OurSliverAppBar> createState() => _OurSliverAppBarState();
+  State<MySliverAppBar> createState() => _MySliverAppBarState();
 }
 
-class _OurSliverAppBarState extends State<_OurSliverAppBar> {
+class _MySliverAppBarState extends State<MySliverAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: _OurColors.primaryColors,
+      backgroundColor: MyColors.color0xff009688,
       /*앱바의 기본높이를 커스텀 설정*/ expandedHeight: 350,
       /*스크롤하면 사라질 공간*/ flexibleSpace: FlexibleSpaceBar(
         background: SafeArea(
@@ -357,13 +338,13 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
                       ),
                       // Text(
                       // formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':',nn])+" 현재시간",
-                      //   style: _OurTextStyles.titleTextStyle.copyWith(
+                      //   style: _MyTextStyles.sunFlower.copyWith(
                       //     fontSize: 20,
                       //   ),
                       // ),
                       Text(
                         "${widget.snapShotData[i].dataTime} 미세먼지 기준정보",
-                        style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20),
+                        style: MyTextStyles.sunFlower.copyWith(fontSize: 20),
                       ),
                       // 😀😁😂😂😂😃😄😄😅😆😇😈😉😊😋😌😍😍😎😎😏
                       // 😐😑😒😓😔😕😖😗😘😙😚😛😛😜😝😞😞😟😠😠😡
@@ -397,14 +378,14 @@ class _OurSliverAppBarState extends State<_OurSliverAppBar> {
   }
 }
 
-class _OurDrawer extends StatefulWidget {
-  const _OurDrawer();
+class MyDrawer extends StatefulWidget {
+  const MyDrawer();
 
   @override
-  State<_OurDrawer> createState() => _OurDrawerState();
+  State<MyDrawer> createState() => _MyDrawerState();
 }
 
-class _OurDrawerState extends State<_OurDrawer> {
+class _MyDrawerState extends State<MyDrawer> {
   Regions selectedRegion = Regions.seoul;
 
   bool isSelected = false;
@@ -415,7 +396,7 @@ class _OurDrawerState extends State<_OurDrawer> {
       width: MediaQuery.of(context).size.width * 0.6,
       height: MediaQuery.of(context).size.height * 0.8, //이렇게 하고 싶은데...안됬음...
       decoration: const BoxDecoration(
-        color: _OurColors.lightColor,
+        color: MyColors.color0xff52c7b8,
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(4.0),
           bottomRight: Radius.circular(4.0),
@@ -429,7 +410,7 @@ class _OurDrawerState extends State<_OurDrawer> {
             // backgroundColor: Colors.transparent,
             height: MediaQuery.of(context).size.height * 0.06,
             decoration: const BoxDecoration(
-              color: _OurColors.darkColor,
+              color: MyColors.color0xff00675b,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(4.0),
               ),
@@ -438,7 +419,7 @@ class _OurDrawerState extends State<_OurDrawer> {
               child: Text(
                 textAlign: TextAlign.center,
                 "지역선택",
-                style: _OurTextStyles.titleTextStyle.copyWith(
+                style: MyTextStyles.sunFlower.copyWith(
                   fontSize: 20.0,
                 ),
               ),
@@ -460,7 +441,7 @@ class _OurDrawerState extends State<_OurDrawer> {
                 //     onTap: () => ScaffoldMessenger.of(context).showSnackBar(MySnackBars.notReadySnackBar),
                 //     title: Text(
                 //       region,
-                //       style: _TextStyles.titleTextStyle.copyWith(
+                //       style: _TextStyles.sunFlower.copyWith(
                 //         fontSize: 18.0,
                 //       ),
                 //     ),
@@ -480,7 +461,7 @@ class _OurDrawerState extends State<_OurDrawer> {
                 //           },
                 //           title: Text(
                 //             e,
-                //             style: _OurTextStyles.titleTextStyle.copyWith(
+                //             style: _MyTextStyles.sunFlower.copyWith(
                 //               fontSize: 18.0,
                 //             ),
                 //           ),
@@ -496,7 +477,7 @@ class _OurDrawerState extends State<_OurDrawer> {
                 //     .toList(),
                 // .toList()의 결과는 [e] 인데 후처리로 regions의 앞에 ...(cascating operator) 를 이용해서 list 내부의 값을 각각 흩뿌릴 수 있다!! 매우 유용
 
-                for (var entry in ourRegions.entries)
+                for (var entry in MyRegions.entries)
                   ListTile(
                     onTap: () {
                       selectedRegion = entry.key;
@@ -506,16 +487,16 @@ class _OurDrawerState extends State<_OurDrawer> {
                     },
                     title: Text(
                       entry.value,
-                      style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 15.0, color: Colors.white60),
+                      style: MyTextStyles.sunFlower.copyWith(fontSize: 15.0, color: Colors.white60),
                     ),
-                    tileColor: _OurColors.lightColor,
-                    focusColor: _OurColors.lightGreenAccent,
-                    hoverColor: _OurColors.lightGreenAccent,
+                    tileColor: MyColors.color0xff52c7b8,
+                    focusColor: MyColors.lightGreenAccent,
+                    hoverColor: MyColors.lightGreenAccent,
                     /*타일 셀렉트 상태*/
                     selected: isSelected ? true : false,
                     // selected: true,
-                    selectedTileColor: _OurColors.lightColor,
-                    selectedColor: _OurColors.black,
+                    selectedTileColor: MyColors.color0xff52c7b8,
+                    selectedColor: MyColors.black,
                   )
               ],
             ),
@@ -549,7 +530,7 @@ enum Regions {
   itemCode,
 }
 
-Map<Regions, String> ourRegions = {
+Map<Regions, String> MyRegions = {
   Regions.daegu: '대구',
   Regions.chungnam: '충남',
   Regions.incheon: '인천',
@@ -569,7 +550,7 @@ Map<Regions, String> ourRegions = {
   Regions.gyeonggi: '경기',
 };
 
-class _OurMiniColumn extends StatelessWidget {
+class MyMiniColumn extends StatelessWidget {
   final String category;
 
   /*오염수준*/
@@ -578,23 +559,23 @@ class _OurMiniColumn extends StatelessWidget {
   /*오염수치*/
   final String stat;
 
-  const _OurMiniColumn({required this.category, required this.level, required this.stat, required this.width, Key? key}) : super(key: key);
+  const MyMiniColumn({required this.category, required this.level, required this.stat, required this.width, Key? key}) : super(key: key);
 
   final double width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: _OurColors.lightColor,
+      color: MyColors.color0xff52c7b8,
       child: SizedBox(
         width: width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(category, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
-            // Text(imgPath, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 40, color: Colors.black, fontWeight: FontWeight.w200)),
-            Text(level, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
-            Text(stat, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
+            Text(category, style: MyTextStyles.sunFlower.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
+            // Text(imgPath, style: _MyTextStyles.sunFlower.copyWith(fontSize: 40, color: Colors.black, fontWeight: FontWeight.w200)),
+            Text(level, style: MyTextStyles.sunFlower.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
+            Text(stat, style: MyTextStyles.sunFlower.copyWith(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w200)),
           ],
         ),
       ),
@@ -602,7 +583,7 @@ class _OurMiniColumn extends StatelessWidget {
   }
 }
 
-class _OurMiniRow extends StatelessWidget {
+class MyMiniRow extends StatelessWidget {
   final String time;
   final String imgPath;
 
@@ -611,14 +592,14 @@ class _OurMiniRow extends StatelessWidget {
 
   double height;
 
-  _OurMiniRow({required this.time, required this.imgPath, required this.level, Key? key, required this.height}) : super(key: key);
+  MyMiniRow({required this.time, required this.imgPath, required this.level, Key? key, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
       child: Container(
-        color: _OurColors.lightColor,
+        color: MyColors.color0xff52c7b8,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -628,7 +609,7 @@ class _OurMiniRow extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 3 - 50 + 40,
                 child: Text(
                   time,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 13, color: Colors.black, fontWeight: FontWeight.w200),
+                  style: MyTextStyles.sunFlower.copyWith(fontSize: 13, color: Colors.black, fontWeight: FontWeight.w200),
                   textAlign: TextAlign.left,
                 ),
               ),
@@ -636,7 +617,7 @@ class _OurMiniRow extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 3 - 50,
                 child: Text(
                   imgPath,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
+                  style: MyTextStyles.sunFlower.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -644,7 +625,7 @@ class _OurMiniRow extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 3 - 50,
                 child: Text(
                   level,
-                  style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
+                  style: MyTextStyles.sunFlower.copyWith(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w200),
                   textAlign: TextAlign.right,
                 ),
               ),
@@ -652,105 +633,6 @@ class _OurMiniRow extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _OurProgressIndicatorWithSwitch extends StatefulWidget {
-  const _OurProgressIndicatorWithSwitch();
-
-  @override
-  State<_OurProgressIndicatorWithSwitch> createState() => _OurProgressIndicatorWithSwitchState();
-}
-
-class _OurProgressIndicatorWithSwitchState extends State<_OurProgressIndicatorWithSwitch> with TickerProviderStateMixin {
-  late AnimationController controller;
-  bool determinate = false;
-
-  @override
-  void initState() {
-    controller = AnimationController(
-      /// [AnimationController]s can be created with `vsync: this` because of
-      /// [TickerProviderStateMixin].
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    )..addListener(() {
-        setState(() {});
-      });
-    controller.repeat();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        LinearProgressIndicator(
-          value: controller.value,
-          semanticsLabel: 'Linear progress indicator',
-        ),
-        Switch(
-          value: determinate,
-          onChanged: (bool value) {
-            setState(() {
-              determinate = value;
-              if (determinate) {
-                controller.stop();
-              } else {
-                controller
-                  ..forward(from: controller.value)
-                  ..repeat();
-              }
-            });
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class _OurLinearProgressIndicatorSimple extends StatefulWidget {
-  const _OurLinearProgressIndicatorSimple();
-
-  @override
-  State<_OurLinearProgressIndicatorSimple> createState() => _OurLinearProgressIndicatorSimpleState();
-}
-
-class _OurLinearProgressIndicatorSimpleState extends State<_OurLinearProgressIndicatorSimple> with TickerProviderStateMixin {
-  late AnimationController controller;
-
-  @override
-  void initState() {
-    controller = AnimationController(
-      /// [AnimationController]s can be created with `vsync: this` because of
-      /// [TickerProviderStateMixin].
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..addListener(() {
-        setState(() {});
-      });
-    controller.repeat(reverse: true);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return LinearProgressIndicator(
-      value: controller.value,
-      semanticsLabel: 'Linear progress indicator',
     );
   }
 }

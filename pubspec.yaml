@@ -13,15 +13,21 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.5
   # _________________________________________________________________________________________ 기기 내부 데이터 통신용
-  shared_preferences: # web 불가
-  localstorage: # Web 가능
+  shared_preferences: # web 불가, user 앱설정 데이터를 device local storage 에 cashing
+  localstorage:
   hive:
   hive_flutter:
   flutter_session_manager: # Web 가능 # 로컬 데이터를 저장용
   #  indexed_db: # Web 가능 # 로컬 데이터를 저장용 # 내장라이브러리 인듯. 여기서 dependency 추가 하면 안됨.
   #  dio_cookie_manager: ^3.1.0
   # _________________________________________________________________________________________  기기 외부 데이터 통신용
-  connectivity:
+  device_info: # 사용자 장치 정보
+  package_info: # 사용자 장치 앱 패키지 정보
+  connectivity: # 사용자 장치 인터넷 연결 정보
+  share:   # 사용자 공유기능
+  sensors: # 사용자 장치 센서 값(기울기, 가속도)
+  battery: # 사용자 장치 배터리 정보
+  path_provider: ^2.0.15 # 사용자 장치 디렉토리 경로 정보
   http: ^1.0.0
   #  http_client:
   retrofit: '>=4.0.0 <5.0.0'
@@ -30,7 +36,8 @@ dependencies:
   #  firebase_core:
   #  cloud_firestore: #firebase 의 DB
   csv:
-#  flutter_blue:
+  xml2json:
+  #  flutter_blue:
   flutter_bluetooth_serial:
 #  flutter_bluetooth_plus:
   web_socket_channel:
@@ -87,15 +94,14 @@ dependencies:
   camera:
   # _________________________________________________________________________________________  사이드바 기능 처리용
 #  flutter_sidebar: null safety 지원 않함.
+  # _________________________________________________________________________________________  네비게이션바 기능 처리용
+  convex_bottom_bar:
   # _________________________________________________________________________________________  기타 용도
-  path_provider: ^2.0.15
   build_runner:
   #  flutter_gen_runner:
   json_annotation:
   freezed_annotation:
   intl:
-  package_info:
-#  package_info_plus:
 
 dev_dependencies:
   flutter_test:

@@ -77,7 +77,7 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
     // debugSomethingSimple(ourRegions.values.toList().runtimeType.toString());
     // debugSomething(ourRegions.values.toList());
     return Scaffold(
-      backgroundColor: OurColors.greenShade600,
+      backgroundColor: MyColors.greenShade600,
       drawer: const _LeftDrawer(),
       // drawer: Drawer(
       //   backgroundColor: Colors.black.withOpacity(0.3),
@@ -240,9 +240,9 @@ class _ScreenAmericanStockState extends State<ScreenAmericanStock> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(child: Text(MyMents.inLoading(title: "Alpha Vantage 미국 주식 시장 API를 통해\n 미국주식 정보"), style: const TextStyle(color: OurColors.white))),
+                  Center(child: Text(MyMents.inLoading(title: "Alpha Vantage 미국 주식 시장 API를 통해\n 미국주식 정보"), style: const TextStyle(color: MyColors.white))),
                   const SizedBox(height: 30),
-                  const Center(child: _OurLinearProgressIndicatorSimple()),
+                  const Center(child: MyLinearProgressIndicatorSimple()),
                 ],
               ),
             );
@@ -278,18 +278,18 @@ class _SliverCard extends StatelessWidget {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0), bottomLeft: Radius.circular(4.0), bottomRight: Radius.circular(4.0)),
         ),
-        color: OurColors.greenShade400,
+        color: MyColors.greenShade400,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch, // Column() 에 crossAxisAlignment: CrossAxisAlignment.stretch, 코드를 사용하면 ListView() 와 유사한 느낌이 든다.
           children: [
             Container(
               decoration: BoxDecoration(
-                color: OurColors.greenShade900,
+                color: MyColors.greenShade900,
                 borderRadius: const BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0)),
               ),
               child: Text(
                 title,
-                style: OurTextStyles.titleTextStyle.copyWith(
+                style: MyTextStyles.sunFlower.copyWith(
                   fontSize: 20,
                 ),
                 textAlign: TextAlign.center,
@@ -317,7 +317,7 @@ class _SliverAppBarState extends State<_SliverAppBar> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: OurColors.greenShade600,
+      backgroundColor: MyColors.greenShade600,
       expandedHeight: 350,
       /*expandedHeight: 350, 앱바의 기본높이를 커스텀 설정*/
       flexibleSpace: FlexibleSpaceBar(
@@ -379,7 +379,7 @@ class _LeftDrawerState extends State<_LeftDrawer> {
       width: MediaQuery.of(context).size.width * 0.6,
       height: MediaQuery.of(context).size.height * 0.8, //이렇게 하고 싶은데...안됬음...
       decoration: BoxDecoration(
-        color: OurColors.greenShade400,
+        color: MyColors.greenShade400,
         borderRadius: const BorderRadius.only(topRight: Radius.circular(4.0), bottomRight: Radius.circular(4.0)),
       ),
       child: Column(
@@ -390,14 +390,14 @@ class _LeftDrawerState extends State<_LeftDrawer> {
             // backgroundColor: Colors.transparent,
             height: MediaQuery.of(context).size.height * 0.06,
             decoration: BoxDecoration(
-              color: OurColors.greenShade900,
+              color: MyColors.greenShade900,
               borderRadius: const BorderRadius.only(topRight: Radius.circular(4.0)),
             ),
             child: Center(
               child: Text(
                 textAlign: TextAlign.center,
                 "202308212333",
-                style: OurTextStyles.titleTextStyle.copyWith(fontSize: 20.0),
+                style: MyTextStyles.sunFlower.copyWith(fontSize: 20.0),
               ),
             ),
           ),
@@ -419,16 +419,16 @@ class _LeftDrawerState extends State<_LeftDrawer> {
                     },
                     title: Text(
                       entry.value,
-                      style: OurTextStyles.titleTextStyle.copyWith(fontSize: 15.0, color: OurColors.white),
+                      style: MyTextStyles.sunFlower.copyWith(fontSize: 15.0, color: MyColors.white),
                     ),
-                    tileColor: OurColors.greenShade400,
-                    focusColor: OurColors.lightGreenAccent,
-                    hoverColor: OurColors.lightGreenAccent,
+                    tileColor: MyColors.greenShade400,
+                    focusColor: MyColors.lightGreenAccent,
+                    hoverColor: MyColors.lightGreenAccent,
                     /*타일 셀렉트 상태*/
                     selected: isSelected ? true : false,
                     // selected: true,
-                    selectedTileColor: OurColors.greenShade400,
-                    selectedColor: OurColors.black,
+                    selectedTileColor: MyColors.greenShade400,
+                    selectedColor: MyColors.black,
                   )
               ],
             ),
@@ -451,16 +451,16 @@ class _OurMiniColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: OurColors.greenShade400,
+      color: MyColors.greenShade400,
       child: SizedBox(
         width: width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(category, style: OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: OurColors.white, fontWeight: FontWeight.w200)),
-            // Text(imgPath, style: _OurTextStyles.titleTextStyle.copyWith(fontSize: 40, color: _OurColors.white, fontWeight: FontWeight.w200)),
-            Text(level, style: OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: OurColors.white, fontWeight: FontWeight.w200)),
-            Text(stat, style: OurTextStyles.titleTextStyle.copyWith(fontSize: 20, color: OurColors.white, fontWeight: FontWeight.w200)),
+            Text(category, style: MyTextStyles.sunFlower.copyWith(fontSize: 20, color: MyColors.white, fontWeight: FontWeight.w200)),
+            // Text(imgPath, style: _MyTextStyles.titleTextStyle.copyWith(fontSize: 40, color: _OurColors.white, fontWeight: FontWeight.w200)),
+            Text(level, style: MyTextStyles.sunFlower.copyWith(fontSize: 20, color: MyColors.white, fontWeight: FontWeight.w200)),
+            Text(stat, style: MyTextStyles.sunFlower.copyWith(fontSize: 20, color: MyColors.white, fontWeight: FontWeight.w200)),
           ],
         ),
       ),
@@ -487,7 +487,7 @@ class _OurMiniRow extends StatelessWidget {
     return SizedBox(
       height: height,
       child: Container(
-        color: OurColors.greenShade400,
+        color: MyColors.greenShade400,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -497,7 +497,7 @@ class _OurMiniRow extends StatelessWidget {
                 SizedBox(
                   // width: MediaQuery.of(context).size.width / 7,
                   width: MediaQuery.of(context).size.width / columnTexts.length,
-                  child: Text(columnText, style: OurTextStyles.titleTextStyle.copyWith(fontSize: 10, color: OurColors.white, fontWeight: FontWeight.w200), textAlign: TextAlign.left),
+                  child: Text(columnText, style: MyTextStyles.sunFlower.copyWith(fontSize: 10, color: MyColors.white, fontWeight: FontWeight.w200), textAlign: TextAlign.left),
                 ),
             ],
           ),
@@ -561,37 +561,5 @@ class _OurProgressIndicatorWithSwitchState extends State<_OurProgressIndicatorWi
         ),
       ],
     );
-  }
-}
-
-class _OurLinearProgressIndicatorSimple extends StatefulWidget {
-  const _OurLinearProgressIndicatorSimple();
-
-  @override
-  State<_OurLinearProgressIndicatorSimple> createState() => _OurLinearProgressIndicatorSimpleState();
-}
-
-class _OurLinearProgressIndicatorSimpleState extends State<_OurLinearProgressIndicatorSimple> with TickerProviderStateMixin {
-  late AnimationController controller;
-
-  @override
-  void initState() {
-    controller = AnimationController(vsync: this, duration: const Duration(seconds: 5))
-      ..addListener(() {
-        setState(() {});
-      });
-    controller.repeat(reverse: true);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return LinearProgressIndicator(value: controller.value, semanticsLabel: 'Linear progress indicator202308102259');
   }
 }

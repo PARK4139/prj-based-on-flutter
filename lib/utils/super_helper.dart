@@ -6,6 +6,8 @@ import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 
 import '../data/source/remote/carrot_markket_api_helper.dart';
@@ -291,11 +293,14 @@ class MyColors {
   static const Color red = Colors.red;
   static const Color orange = Colors.orange;
   static const Color green = Colors.green;
-  static const Color lightGreenAccent = Colors.lightGreenAccent;
   static const Color black0xff181818 = Color(0xFF181818);
   static const Color darkGreen2023080622041 = Color(0xff009688);
   static const Color darkGreen2023080622042 = Color(0xff00675b);
   static const Color darkGreen2023080622043 = Color(0xff52c7b8);
+  static final Color greenShade900 = Colors.green.shade900;
+  static final Color greenShade600 = Colors.green.shade600;
+  static final Color greenShade400 = Colors.green.shade400;
+  static const Color lightGreenAccent = Colors.lightGreenAccent;
   static Color blackWithOpacity50Percent = Colors.black.withOpacity(0.5);
   static Color greyWithOpacity90Percent = Colors.grey.withOpacity(0.9);
   static Color whiteWithOpacity90Percent = Colors.white.withOpacity(0.9);
@@ -304,19 +309,24 @@ class MyColors {
   static Color lightBlueShade50 = Colors.lightBlue.shade50;
   static Color blackWithOpacity40Percent = Colors.black.withOpacity(0.4);
   static Color blackWithOpacity20Percent = Colors.black.withOpacity(0.2);
+  static const color0xff009688 = Color(0xff009688);
+  static const color0xff00675b = Color(0xff00675b);
+  static const color0xff52c7b8 = Color(0xff52c7b8);
 }
 
 class MyTextStyles {
   //리펙토링 진행 예정. 정렬우선순위=[fontSize,fontWeight,color]
-  static TextStyle textStyle1 = const TextStyle(fontSize: 18, color: Colors.lightBlueAccent, fontWeight: FontWeight.w900);
-  static TextStyle textStyle2 = const TextStyle(fontSize: 27, color: Colors.white, fontWeight: FontWeight.w900);
-  static TextStyle textStyle3 = const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w100);
-  static TextStyle textStyle4 = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w100);
-  static TextStyle textStyle5 = const TextStyle(fontSize: 18, color: Colors.red, fontWeight: FontWeight.w100);
+  static const TextStyle textStyle1 = TextStyle(fontSize: 18, color: Colors.lightBlueAccent, fontWeight: FontWeight.w900);
+  static const TextStyle textStyle2 = TextStyle(fontSize: 27, color: Colors.white, fontWeight: FontWeight.w900);
+  static const TextStyle textStyle3 = TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w100);
+  static const TextStyle textStyle4 = TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w100);
+  static const TextStyle textStyle5 = TextStyle(fontSize: 18, color: Colors.red, fontWeight: FontWeight.w100);
+  static const TextStyle textStyle20230722_1841 = TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w300);
+  static const TextStyle sunFlower = TextStyle(color: Colors.white, fontSize: 40, fontFamily: 'sunFlower', fontWeight: FontWeight.w700);
   static TextStyle textStyle20230719 = TextStyle(fontSize: 9, color: Colors.grey.shade600, fontWeight: FontWeight.w500);
   static TextStyle textStyle20230722_1842 = textStyle1.copyWith(fontWeight: FontWeight.w900); //copyWith()를 사용하여 파라미터를 overwrite 해서 쓸 수있다.
-  static TextStyle textStyle20230722_1841 = const TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w300);
-  static const TextStyle titleTextStyle202308062043 = TextStyle(color: Colors.white, fontSize: 40, fontFamily: 'sunFlower', fontWeight: FontWeight.w700);
+  static TextStyle googleLato = GoogleFonts.lato();
+  static TextStyle googleAclonica = GoogleFonts.aclonica();
 }
 
 class MySeperators {
@@ -731,7 +741,7 @@ class MySuperHelpers {
 //replaceAll 을 활용하면 될듯.
 }
 
-class OurTextData {
+class MyCodes {
   static const String code0000 = "CODE_COMMON";
   static const String code1000 = "CODE_BIZMEKA";
   static const Map<String, dynamic> stamps = {
@@ -758,22 +768,96 @@ class OurTextData {
   };
 }
 
-class OurColors {
-  static const black = Colors.black;
-  static final greenShade900 = Colors.green.shade900;
-  static final greenShade600 = Colors.green.shade600;
-  static final greenShade400 = Colors.green.shade400;
-  static const white = Colors.white;
-  static const lightGreenAccent = Colors.lightGreenAccent;
+class MyLinearProgressIndicatorSimple extends StatefulWidget {
+  const MyLinearProgressIndicatorSimple();
+
+  @override
+  State<MyLinearProgressIndicatorSimple> createState() => _MyLinearProgressIndicatorSimpleState();
 }
 
-class OurTextStyles {
-  static const TextStyle titleTextStyle = TextStyle(
-    color: Colors.white,
-    fontSize: 40,
-    fontFamily: 'sunFlower',
-    fontWeight: FontWeight.w700,
-  );
+class _MyLinearProgressIndicatorSimpleState extends State<MyLinearProgressIndicatorSimple> with TickerProviderStateMixin {
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    controller = AnimationController(vsync: this, duration: const Duration(seconds: 5))
+      ..addListener(() {
+        setState(() {});
+      });
+    controller.repeat(reverse: true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return LinearProgressIndicator(value: controller.value, semanticsLabel: 'Linear progress indicator202308102259');
+  }
+}
+
+class MyProgressIndicatorWithSwitch extends StatefulWidget {
+  const MyProgressIndicatorWithSwitch();
+
+  @override
+  State<MyProgressIndicatorWithSwitch> createState() => MyProgressIndicatorWithSwitchState();
+}
+
+class MyProgressIndicatorWithSwitchState extends State<MyProgressIndicatorWithSwitch> with TickerProviderStateMixin {
+  late AnimationController controller;
+  bool determinate = false;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      /// [AnimationController]s can be created with `vsync: this` because of
+      /// [TickerProviderStateMixin].
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..addListener(() {
+        setState(() {});
+      });
+    controller.repeat();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        LinearProgressIndicator(
+          value: controller.value,
+          semanticsLabel: 'Linear progress indicator',
+        ),
+        Switch(
+          value: determinate,
+          onChanged: (bool value) {
+            setState(() {
+              determinate = value;
+              if (determinate) {
+                controller.stop();
+              } else {
+                controller
+                  ..forward(from: controller.value)
+                  ..repeat();
+              }
+            });
+          },
+        ),
+      ],
+    );
+  }
 }
 
 enum Regions {
@@ -976,3 +1060,30 @@ class WificonnectingHelper {
 //     BluetoothDevice.disconnect();
 //   }
 // }
+
+
+Future<Position> determineUserLocationUsingPermission() async {
+  bool serviceEnabled;
+  LocationPermission permission;
+
+// Test if location services are enabled.
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    return Future.error('_________________________________ Location services are disabled._________________________________');
+  }
+
+  permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      return Future.error('_________________________________ Location permissions are denied _________________________________ ');
+    }
+  }
+  if (permission == LocationPermission.deniedForever) {
+// Permissions are denied forever, handle appropriately.
+    return Future.error('_________________________________ Location permissions are permanently denied, we cannot request permissions. _________________________________ ');
+  }
+
+  print("_________________________________ location permissions are granted _________________________________");
+  return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+}

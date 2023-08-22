@@ -589,7 +589,7 @@ void main() {
   printWithoutWarning([123, 456, 789].asMap().entries.first.key);
   printWithoutWarning([123, 456, 789].asMap().entries.first.key);
 
-  /*인덱스 붙여서 출력*/ //굳이 필요할까 싶긴한데
+  /*인덱스 붙여서 출력*/
   printWithoutWarning([123, 456, 789].asMap().entries.map(
         (e) => '${e.key}:${e.value}',
       ));
@@ -602,7 +602,10 @@ void main() {
       .toList());
 
 
-
   printWithoutWarning([...naturalNumbersMaker(0,1000)]);
+
+
+  //정렬 연습
+  printWithoutWarning([...naturalNumbersMaker(0,5)]..sort((a, b) => a.compareTo(b),));
 
 }

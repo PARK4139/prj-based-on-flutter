@@ -40,7 +40,7 @@ class ApiDto {
 
 class ApiDtoServiceHelper {
   static const String baseUrl = "https://www.alphavantage.co/query?function=LISTING_STATUS";
-  static String apiKey = SecurityHelper.americanStockMarketListingDelistingApiServiceServiceKeyDecoded;
+  static String apiKey = SecurityHelper.americanStockMarketListingDelistingApiKey;
   static String requiredApiSetting = "$baseUrl&apikey=${apiKey}";
   static const String optionalApiSetting = ""
       "&date=2010-01-02"

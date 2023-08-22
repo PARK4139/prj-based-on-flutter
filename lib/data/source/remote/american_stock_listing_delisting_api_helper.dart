@@ -89,7 +89,7 @@ class AmericanStockMarketListingDelistingApiDto {
 
 class AmericanStockMarketListingDelistingApiDtoServiceHelper {
   static const String baseUrl = "https://www.alphavantage.co/query?";
-  static String apiKey = SecurityHelper.americanStockMarketListingDelistingApiServiceServiceKeyDecoded;
+  static String apiKey = SecurityHelper.americanStockMarketListingDelistingApiKey;
   static String funtion = "LISTING_STATUS";
   static String requiredApiSetting = "$baseUrl"
       "function=$funtion"

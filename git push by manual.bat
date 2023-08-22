@@ -39,7 +39,7 @@ echo "__________________________________________________________________________
 ::set commit_ment=깃허브 레포지토리명 변경후 첫 커밋 테스트
 ::set commit_ment=README.md 최신화
 ::set commit_ment=세계지도 화면, 근태관리 화면 추가, 지도 API 연동, README.md 참조
-set commit_ment=신규 기능 추가, 플러터 예제 테스트, README.md 참조
+set commit_ment=신규 기능 추가, 추가코드샘플 테스트, README.md 참조
 
 
 

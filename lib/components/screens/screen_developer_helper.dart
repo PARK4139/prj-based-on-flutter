@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:localstorage/localstorage.dart';
 
 import '../../data/source/remote/netflixx_api_helper.dart';
+import '../../data/source/remote/road_cctv_api_helper.dart';
 import '../../main.dart';
 import '../../tmp/tmp.dart';
 import '../../utils/AutoClipboardUpdatingStampMakingHelper.dart';
@@ -28,15 +29,6 @@ class ScreenDeveloperHelper extends StatefulWidget {
 }
 
 class _ScreenDeveloperHelperState extends State<ScreenDeveloperHelper> {
-  @override
-  String toStringScreenDeveloperHelperState() {
-    return '_ScreenDeveloperHelperState{isDarkMode: $isDarkMode, '
-        'remoteConnection20230810134516: $remoteConnection20230810134516,'
-        ' remoteConnection20230813125516: $remoteConnection20230813125516,'
-        ' remoteConnection20230812222003475: $remoteConnection20230812222003475, '
-        'autoClickScheduler: $autoClickScheduler, tickTimer: $tickTimer, now: $now, isFirstBuild: $isFirstBuild, _searchController: $_searchController, _focusNodeSearch: $_focusNodeSearch, _searchText: $_searchText, _previousSearchText: $_previousSearchText, moviesSearched: $moviesSearched, cubit: $cubit, isVisiableSearchingUserHelpingBox: $isVisiableSearchingUserHelpingBox, isVisiableLiveStamp: $isVisiableLiveStamp, isVisiableAutoCopyStamp: $isVisiableAutoCopyStamp, isVisiableMyRandomSchedule: $isVisiableMyRandomSchedule, localStorage: $localStorage, checkBoxesState: $checkBoxesState, rows: $rows, autoIds: $autoIds, index: $index, isVisiableReportingStamp: $isVisiableReportingStamp, isVisiableDisposableStamp: $isVisiableDisposableStamp, _currentFocusNode: $_currentFocusNode, _focusNodeNoWhere: $_focusNodeNoWhere, isFocusNodeStable: $isFocusNodeStable, yyyymmddHHnnssSSS: $yyyymmddHHnnssSSS, isClickedOnce: $isFirstClicked}';
-  }
-
   late bool isDarkMode;
   final GlobalKey remoteConnection20230810134516 = GlobalKey(debugLabel: "remoteButtonConnection20230810134516"); //의도된 화면으로 라우팅되면 화면기능을 묘사해주는 기능
   final GlobalKey remoteConnection20230813125516 = GlobalKey(debugLabel: "remoteButtonConnection20230813125516"); //검색박스 reset 기능
@@ -73,7 +65,7 @@ class _ScreenDeveloperHelperState extends State<ScreenDeveloperHelper> {
 
   List<Row> rows = [];
 
-  late AutoManagerableIdMaker autoIds;
+  late AutoIdHelper autoIds;
   late int index;
 
   late bool isVisiableReportingStamp;
@@ -586,6 +578,45 @@ class _ScreenDeveloperHelperState extends State<ScreenDeveloperHelper> {
                             ),
                           ],
                         );
+                      } else if (_searchText == "`roadApi") {
+                        _previousSearchText = _searchText;
+
+                        // isVisiableSearchingUserHelpingBox = false;
+                        isVisiableLiveStamp = false;
+                        isVisiableAutoCopyStamp = false;
+                        isVisiableMyRandomSchedule = false;
+                        isVisiableReportingStamp = false;
+                        isVisiableDisposableStamp = true;
+                        // FocusScope.of(context).requestFocus(_focusNodeNoWhere);
+                        return Column(
+                          children: [
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                // color: Colors.grey.shade900.withOpacity(0.4),
+                                color: Colors.green.withOpacity(0.4),
+                                borderRadius: const BorderRadius.only(
+                                  topRight: Radius.circular(7),
+                                  topLeft: Radius.circular(7),
+                                  bottomLeft: Radius.circular(7),
+                                  bottomRight: Radius.circular(7),
+                                ),
+                              ),
+                              child: Center(
+                                child: FutureBuilder(
+                                  future: RoadCctvApiService.getRoadCctvs(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      return Text(snapshot.data![0].cctvname, style: const TextStyle(color: Colors.white), textAlign: TextAlign.center);
+                                    }
+                                    return Text(_searchText, style: const TextStyle(color: Colors.white), textAlign: TextAlign.center);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
                       } else if (_searchText == "`ti") {
                         _previousSearchText = _searchText;
 
@@ -645,7 +676,6 @@ class _ScreenDeveloperHelperState extends State<ScreenDeveloperHelper> {
                         );
                       } else if (_searchText == "`multi") {
                         // alertHelper(context, "mkr");
-
 
                         _previousSearchText = _searchText;
                         if (_previousSearchText == _searchText) {
@@ -824,16 +854,17 @@ printWithoutError("_____________________________________________________________
               FoldableStampsContainerMaker(
                 title: "라이브스탬프",
                 items: [
-                  if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: 'debugSomething(도태할문자열,troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecatedWord: "도태할문자열")),
-                  if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: 'debugSomething("도태할문자열",troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecatedWord: "도태할문자열")),
-                  if (isVisiableLiveStamp == true)
-                    SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: 'debugSomething(\'도태할문자열\',troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecatedWord: "도태할문자열")),
+                  if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: formatDate(now, [yyyy, '', mm, '', dd, '', HH, '', nn, '', ss]), deprecatedWord: '도태할문자열')),
                   if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss]), deprecatedWord: '도태할문자열')),
                   if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: '`ai ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecatedWord: '도태할문자열')),
                   if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: '``ai ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecatedWord: '도태할문자열')),
                   if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: '`ani ai${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecatedWord: '도태할문자열')),
                   if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: '`ani ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecatedWord: '도태할문자열')),
                   if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: ' troubleShootingId: ${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss])}', deprecatedWord: '도태할문자열')),
+                  if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: 'debugSomething(도태할문자열,troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecatedWord: "도태할문자열")),
+                  if (isVisiableLiveStamp == true) SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: 'debugSomething("도태할문자열",troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecatedWord: "도태할문자열")),
+                  if (isVisiableLiveStamp == true)
+                    SizedBox(width: MediaQuery.of(context).size.width, child: ReplacingStampMaker(template: 'debugSomething(\'도태할문자열\',troubleShootingId: "도태할문자열${formatDate(now, [yyyy, '', mm, '', dd, ' ', HH, '', nn, '', ss, '', SSS])}");', deprecatedWord: "도태할문자열")),
                 ],
                 onTap: _toogleIsShowLifeStamp,
                 isVisiable: isVisiableLiveStamp,
@@ -997,6 +1028,15 @@ printWithoutError("_____________________________________________________________
     );
   }
 
+  @override
+  String toStringScreenDeveloperHelperState() {
+    return '_ScreenDeveloperHelperState{isDarkMode: $isDarkMode, '
+        'remoteConnection20230810134516: $remoteConnection20230810134516,'
+        ' remoteConnection20230813125516: $remoteConnection20230813125516,'
+        ' remoteConnection20230812222003475: $remoteConnection20230812222003475, '
+        'autoClickScheduler: $autoClickScheduler, tickTimer: $tickTimer, now: $now, isFirstBuild: $isFirstBuild, _searchController: $_searchController, _focusNodeSearch: $_focusNodeSearch, _searchText: $_searchText, _previousSearchText: $_previousSearchText, moviesSearched: $moviesSearched, cubit: $cubit, isVisiableSearchingUserHelpingBox: $isVisiableSearchingUserHelpingBox, isVisiableLiveStamp: $isVisiableLiveStamp, isVisiableAutoCopyStamp: $isVisiableAutoCopyStamp, isVisiableMyRandomSchedule: $isVisiableMyRandomSchedule, localStorage: $localStorage, checkBoxesState: $checkBoxesState, rows: $rows, autoIds: $autoIds, index: $index, isVisiableReportingStamp: $isVisiableReportingStamp, isVisiableDisposableStamp: $isVisiableDisposableStamp, _currentFocusNode: $_currentFocusNode, _focusNodeNoWhere: $_focusNodeNoWhere, isFocusNodeStable: $isFocusNodeStable, yyyymmddHHnnssSSS: $yyyymmddHHnnssSSS, isClickedOnce: $isFirstClicked}';
+  }
+
   Future<void> onClickViaRemoteConnection20230810134516() async {
     RenderBox renderbox = remoteConnection20230810134516.currentContext!.findRenderObject() as RenderBox;
     Offset position = renderbox.localToGlobal(Offset.zero);
@@ -1111,7 +1151,7 @@ printWithoutError("_____________________________________________________________
   }
 }
 
-class AutoManagerableIdMaker {
+class AutoIdHelper {
   List<int> intIds = naturalNumbersMaker(0, 100);
 
   int next() {

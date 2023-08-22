@@ -16,7 +16,7 @@
 - 클린 아키텍쳐를 지향하며 모방한다.
 - Android/IOS/웹 순서로 작업진행.
 - 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutErrorOrPrintWithError()로 대체하던 것을 도태.
-- 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutError()로 대체
+- 추후 print() 를 사용하는 상황이 왔을 때는 print() 대신에 printWithoutError()로 대체 printWithoutWarning()로 대체
 - 추후 묘사용 주석 작성 //대신에 /**/(여러줄 주석용 주석) 로 작업약속.
 코드묘사용 주석은 /**/(여러줄 주석용 주석) 로 일부 변경 
 종종 보이면 변경 계획 
@@ -108,14 +108,17 @@ children:[] 내의 화면에 보여지는 child wiget 에 대해서만 렌더링
 #### 테스트 앱
 - Scroll position 이동 테스트(globalKey() 이용)
 - TextField 의 focus 이동 테스트(focusNode() 이용)
+#### 도로 CCTV 앱
+- 클라이언트 UI 구현 
+#### 웹소켓 통신 앱
+- 웹소켓 통신 테스트를 위한 클라이언트 UI 구현 
+
 
 
 # ✔️ING(작업중)
-#### 웹소켓 통신 앱
-웹소켓 통신 테스트를 위한 클라이언트 UI 구현 
 #### 도로 CCTV 앱
-
- 
+- 도로교통 오픈 API 연동
+- 직렬화 처리하는데 잘 안되는 문제 발견...직렬화 툴을 가지고 재시도 예정. 
 
 
 
